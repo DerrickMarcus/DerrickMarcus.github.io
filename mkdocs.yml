@@ -1,5 +1,32 @@
-site_name: Personal website of Yanxu Chen
+site_name: Yanxu Chen homepage
 sit_url: https://DerrickMarcus.github.io
 site_author: Yanxu Chen
 theme:
-  name: material 
+  name: material
+
+  palette:
+
+    # Toggle light mode
+    - scheme: default
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
+    # Toggle dark mode
+    - scheme: slate
+      primary: blue
+      accent: blue
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+
+  font:
+    text: Roboto
+    code: Roboto Mono
+
+  language: zh
+
+  icon:
+    logo: material/library
