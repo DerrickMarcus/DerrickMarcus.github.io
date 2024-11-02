@@ -1,1 +1,5 @@
-site_name: My Docs
+site_name: Personal website of Yanxu Chen
+sit_url: https://DerrickMarcus.github.io
+site_author: Yanxu Chen
+theme:
+  name: material 
