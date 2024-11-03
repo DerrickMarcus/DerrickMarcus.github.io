@@ -1,11 +1,13 @@
-site_name: Yanxu Chen homepage
-sit_url: https://DerrickMarcus.github.io
+site_name: Yanxu Chen
+sit_url: https://www.chenyanx22.top
 site_author: Yanxu Chen
+repo_url: https://github.com/DerrickMarcus/DerrickMarcus.github.io
+repo_name: DerrickMarcus.github.io
+
 theme:
   name: material
 
   palette:
-
     # Toggle light mode
     - scheme: default
       primary: teal
@@ -16,8 +18,8 @@ theme:
 
     # Toggle dark mode
     - scheme: slate
-      primary: blue
-      accent: blue
+      primary: indigo
+      accent: indigo
       toggle:
         icon: material/weather-night
         name: Switch to dark mode
@@ -30,3 +32,22 @@ theme:
 
   icon:
     logo: material/library
+    repo: fontawesome/brands/github
+
+  features:
+    - search.suggest
+    - search.highlight
+    - search.share
+
+extra:
+  social:
+    - icon: fontawesome/brands/
+      link: https://www.github.com/DerrickMarcus
+      name: DerrickMarcus on Github
+
+  generator: false
+
+plugins:
+  - search:
+      lang: en
+      separator: '[\s\-\.]+'
