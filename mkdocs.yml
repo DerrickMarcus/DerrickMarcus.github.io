@@ -1,4 +1,4 @@
-site_name: Yanxu Chen
+site_name: Yanxu Chen's Homepage
 sit_url: https://www.chenyanx22.top
 site_author: Yanxu Chen
 repo_url: https://github.com/DerrickMarcus/DerrickMarcus.github.io
@@ -45,7 +45,7 @@ theme:
 
 extra:
   social:
-    - icon: fontawesome/brands/
+    - icon: fontawesome/brands/github
       link: https://www.github.com/DerrickMarcus
       name: DerrickMarcus on Github
 
