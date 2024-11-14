@@ -49,8 +49,6 @@ extra:
       link: https://www.github.com/DerrickMarcus
       name: DerrickMarcus on Github
 
-  generator: false
-
 plugins:
   - search:
       lang: en

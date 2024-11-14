@@ -1,22 +1,5 @@
-Hello, world!
+# Welcome to my personal blog!
 
-```cpp
-#include<cstdio>
+In this blog, I plan to share some college course notes, research knowledge and skills during my exploration to computer science. They may focus on some environmental settings, development tools, programming and professional softwares.
 
-int main(int argc, const char* argv[]) {
-    printf("Hello, world!");
-    return 0;
-}
-```
-
-also:
-
-```python
-print("Hello, world!")
-```
-
-this is a try for personal blog
-
-let's wait for more learn notes in my college life!
-
-2024-11-03 Yanxu Chen
+Let's begin!
