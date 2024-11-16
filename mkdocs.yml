@@ -1,22 +1,21 @@
 site_name: Yanxu Chen's Homepage
 sit_url: https://www.chenyanx22.top
 site_author: Yanxu Chen
+
 repo_url: https://github.com/DerrickMarcus/DerrickMarcus.github.io
 repo_name: DerrickMarcus.github.io
 
 theme:
   name: material
+  language: zh
 
   palette:
-    # Toggle light mode
     - scheme: default
       primary: teal
       accent: teal
       toggle:
         icon: material/weather-sunny
         name: Switch to light mode
-
-    # Toggle dark mode
     - scheme: slate
       primary: indigo
       accent: indigo
@@ -27,8 +26,6 @@ theme:
   font:
     text: Roboto
     code: Roboto Mono
-
-  language: zh
 
   icon:
     logo: material/library
@@ -50,6 +47,29 @@ extra:
       name: DerrickMarcus on Github
 
 plugins:
-  - search:
-      lang: en
-      separator: '[\s\-\.]+'
+  - search
+  - git-revision-date-localized:
+      fallback_to_build_date: true
+      locale: zh
+  - git-authors:
+      show_contribution: true
+      show_line_count: true
+
+nav:
+  - 首页:
+      - index.md
+      - ROS: ros/index_ros.md
+      - 课程笔记: coursenotes/index_notes.md
+  - ROS:
+      - ros/index_ros.md
+      - ROS Noetic: ROS/ROS1/noetic.md
+      - Gazebo:
+          - Gazebo Classic: ros/gazebo/gazebo11.md
+          - Gazebo: ros/gazebo/gazebo.md
+      - Catkin 工具: ros/catkin/catkin.md
+      - SLAM: ros/slam/slam.md
+      - LIO-SAM: ros/liosam/liosam.md
+  - 课程笔记:
+      - coursenotes/index_notes.md
+      - 信号与系统:
+          期末复习: coursenotes/ss/review.md

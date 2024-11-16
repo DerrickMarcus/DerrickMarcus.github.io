@@ -1,11 +1,11 @@
 **本为适用于新版 Gazebo，搭配 Ubuntu 22 或 24 + ROS2**
 
 gazebo 使用 SDF(Simulation Description Format) 文件保存模型，场景和机器人
-有一个 \<sdf> 是顶级标签，下面有一个 \<world> 子元素，\<world> 包含多种子元素，比如 \<scene>, \<light>, \<model>
+有一个 sdf 是顶级标签，下面有一个 world 子元素，world 包含多种子元素，比如 scene, light, model
 
 模型名称：ground_plane 地面，box 立方体，cylinder 圆柱体，sphere 球体，capsule 胶囊形状，epplisoid 椭球体
 
-例如对于一个 \<box> 模型：
+例如对于一个 box 模型：
 
 ```xml
     <model name="box">
@@ -46,7 +46,7 @@ gazebo 使用 SDF(Simulation Description Format) 文件保存模型，场景和�
     </model>
 ```
 
-\<pose> 元素设置初始位置和姿态，例如 \<pose>X Y Z R P Y\</pose> 前三个为直角坐标 xyz，后三个为欧拉旋转的坐标 rpy (Row, Pitch, Yaw)，默认弧度制。\<pose degrees="true">0 0 0.5 0 0 0\</pose> 使用角度制。
+pose 元素设置初始位置和姿态，例如 `\<pose>X Y Z R P Y\</pose>` 前三个为直角坐标 xyz，后三个为欧拉旋转的坐标 rpy (Row, Pitch, Yaw)，默认弧度制。`\<pose degrees="true">0 0 0.5 0 0 0\</pose>` 使用角度制。
 
 在另外一个终端中打开并使用如下命令，实现动态改变模型的位置：
 
@@ -54,11 +54,11 @@ gazebo 使用 SDF(Simulation Description Format) 文件保存模型，场景和�
 gz service -s /world/shapes/set_pose --reqtype gz.msgs.Pose --reptype gz.msgs.Boolean --timeout 300 --req 'name: "box", position: {z: 5.0}'
 ```
 
-\<link> 元素表示机器人中的杆件，有三个子元素：
+link 元素表示机器人中的杆件，有三个子元素：
 
-1. \<inertial> 转动惯量，可自动计算。
-2. \<collision> 碰撞模型，内有一个 \<geometry> 几何体模型，用于碰撞检测。
-3. \<visual> 3D模型，同样有 \<geometry> 元素，还有 \<material> 元素，用于改变杆件颜色，\<ambient>,\<diffuse>,\<specular> 分别设置环境光照，漫反射和镜面反射中 4 个值红、绿、蓝、透明度取值，范围为 0-1。
+1. inertial 转动惯量，可自动计算。
+2. collision 碰撞模型，内有一个 geometry 几何体模型，用于碰撞检测。
+3. visual 3D模型，同样有 geometry 元素，还有 material 元素，用于改变杆件颜色，ambient,diffuse,specular 分别设置环境光照，漫反射和镜面反射中 4 个值红、绿、蓝、透明度取值，范围为 0-1。
 
 
 
