@@ -6,12 +6,14 @@ on: # when to launch workflow
   pull_request: # merge PR on main branch
     branches:
       - main
+permissions:
+  contents: write
 jobs: # content of workflow
   deploy:
     runs-on: ubuntu-latest # create a cloud virtual machine
     steps:
-      - uses: actions/checkout@v2 # checkout to main branch
-      - uses: actions/setup-python@v2 # install python3 env
+      - uses: actions/checkout@v4 # checkout to main branch
+      - uses: actions/setup-python@v5 # install python3 env
         with:
           python-version: 3.x
       - run: pip install -r requirements.txt # use pip to install

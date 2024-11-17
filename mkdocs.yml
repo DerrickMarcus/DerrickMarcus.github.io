@@ -4,6 +4,7 @@ site_author: Yanxu Chen
 
 repo_url: https://github.com/DerrickMarcus/DerrickMarcus.github.io
 repo_name: DerrickMarcus.github.io
+edit_uri: edit/main/docs/
 
 theme:
   name: material
@@ -36,9 +37,14 @@ theme:
     - search.highlight
     - search.share
     - content.code.annotate
+    - navigation.instant
     - navigation.top
     - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
     - navigation.indexes
+    - toc.integrate
 
 extra:
   social:
@@ -46,20 +52,76 @@ extra:
       link: https://www.github.com/DerrickMarcus
       name: DerrickMarcus on Github
 
+copyright: Copyright &copy; Yanxu Chen
+
 plugins:
-  - search
+  - search:
+      lang:
+        - zh
+        - en
+      separator: '[\s\-\.]+'
+      prebuild_index: true
+  - git-revision-date:
+      enabled_if_env: CI
   - git-revision-date-localized:
       fallback_to_build_date: true
+      type: date
       locale: zh
   - git-authors:
       show_contribution: true
       show_line_count: true
 
+markdown_extensions:
+  - attr_list
+  - admonition
+  - codehilite:
+      guess_lang: false
+      linenums: true
+  - footnotes
+  - def_list
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  # - pymdownx.emoji:
+  #     emoji_index: !!python/name:material.extensions.emoji.twemoji
+  #     emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.inlinehilite
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+  - meta
+  - pymdownx.highlight:
+      linenums: true
+      auto_title: true
+  - pymdownx.keys
+  - pymdownx.snippets
+  - pymdownx.progressbar
+  # - pymdownx.superfences:
+  #     custom_fences:
+  #       - name: mermaid
+  #         class: mermaid
+  #         format: !!python/name:pymdownx.superfences.fence_code_format
+  #       - name: math
+  #         class: arithmatex
+  #         format: !!python/name:pymdownx.arithmatex.fence_mathjax_format
+
 nav:
   - 首页:
       - index.md
-      - ROS: ros/index_ros.md
       - 课程笔记: coursenotes/index_notes.md
+      - ROS: ros/index_ros.md
+  - 课程笔记:
+      - coursenotes/index_notes.md
+      - 信号与系统:
+          期末复习: coursenotes/ss/review.md
   - ROS:
       - ros/index_ros.md
       - ROS Noetic: ROS/ROS1/noetic.md
@@ -69,7 +131,3 @@ nav:
       - Catkin 工具: ros/catkin/catkin.md
       - SLAM: ros/slam/slam.md
       - LIO-SAM: ros/liosam/liosam.md
-  - 课程笔记:
-      - coursenotes/index_notes.md
-      - 信号与系统:
-          期末复习: coursenotes/ss/review.md
