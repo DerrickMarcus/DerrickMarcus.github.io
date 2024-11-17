@@ -124,7 +124,7 @@ nav:
           期末复习: coursenotes/ss/review.md
   - ROS:
       - ros/index_ros.md
-      - ROS Noetic: ROS/ROS1/noetic.md
+      - ROS Noetic: ros/ros1/noetic.md
       - Gazebo:
           - Gazebo Classic: ros/gazebo/gazebo11.md
           - Gazebo: ros/gazebo/gazebo.md
