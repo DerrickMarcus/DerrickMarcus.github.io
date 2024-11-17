@@ -6,8 +6,6 @@ on: # when to launch workflow
   pull_request: # merge PR on main branch
     branches:
       - main
-permissions:
-  contents: write
 jobs: # content of workflow
   deploy:
     runs-on: ubuntu-latest # create a cloud virtual machine
