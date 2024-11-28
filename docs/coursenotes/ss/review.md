@@ -27,18 +27,24 @@ Yanxu Chen, June 6th, 2024
 频域判断：
 
 首先有平方可积条件：
+
 $$
 \int_{-\infty}^{\infty}|H(\mathrm{j}\omega)|^2\,\mathrm{d}\omega<\infty
 $$
+
 根据帕塞瓦尔定理：
+
 $$
 \int_{-\infty}^{\infty}|h(t)|^2\,\mathrm{d}t=
 \frac{1}{2\pi}\int_{-\infty}^{\infty}|H(\mathrm{j}\omega)|^2\,\mathrm{d}\omega
 $$
+
 佩利-维纳准则（必要不充分条件）：
+
 $$
 \int_{-\infty}^{\infty}\frac{|\ln|H(\mathrm{j}\omega)||}{1+\omega^2}\,\mathrm{d}\omega<\infty
 $$
+
 不满足 PW 准则的幅度函数，响应比冲激激励先出现，违反了因果性。
 
 PW 准则不允许 $|H(\mathrm{j}\omega)|$ 在某一频带内恒为0（理想滤波器不可能实现），但允许在一些不连续的点为0。
@@ -54,6 +60,7 @@ PW 准则不是物理可实现的充分条件，因为对相频特性 $\varphi(\
 ### 2. 希尔伯特变换研究系统的约束特性
 
 对于一个因果稳定的系统有：
+
 $$
 \begin{align}
 H(\mathrm{j}\omega) &= R(\omega) + \mathrm{j}X(\omega)
@@ -600,7 +607,7 @@ $$
 \\
 X(z) = \sum_{m=0}^K \frac{A_m z}{z-z_m}=A_0+\sum_{m=1}^K \frac{A_m z}{z-z_m}
 \\
-A_m = \Res[\frac{X(z)}{z}]_{z=z_m}=\bigg[(z-z_m)\frac{X(z)}{z}\bigg]_{z=z_m}
+A_m = \rm{Res}[\frac{X(z)}{z}]_{z=z_m}=\bigg[(z-z_m)\frac{X(z)}{z}\bigg]_{z=z_m}
 \\
 A_0 = [X(z)]_{z=0}=\frac{b_0}{a_0}
 $$

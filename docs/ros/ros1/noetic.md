@@ -79,20 +79,20 @@ PS: 如果找不到软件包，用 `source devel/setup.bash` 而非 `source deve
 
 查看节点：
 
-```
+```bash
 rosnode list
 rosnode info <node_name>
 ```
 
 运行一个节点，基于一个软件包：
 
-```
+```bash
 rosrun [package_name] [node_name]
 ```
 
 运行多个节点，基于 .launch 文件：
 
-```
+```bash
 roslaunch [package] [filename.launch]
 ```
 
@@ -216,7 +216,7 @@ command 功能类型，file 参数文件的路径，param 参数名称。
 
 使用 rqt_graph 查看节点状态图：
 
-```
+```bash
 rosrun rqt_graph rqt_graph
 rqt
 rqt_graph
@@ -228,7 +228,7 @@ rqt_graph
 
 关于话题的命令：
 
-```
+```bash
 rostopic bw     display bandwidth used by topic
 rostopic echo   print messages to screen
 rostopic hz     display publishing rate of topic
@@ -243,7 +243,7 @@ rosmsg show <topic_type_name>
 
 关于服务的命令：
 
-```
+```bash
 rosservice list         print information about active services
 rosservice call         call the service with the provided args
 rosservice type         print service type
@@ -255,7 +255,7 @@ rosservice uri          print service ROSRPC uri
 
 关于参数的命令：
 
-```
+```bash
 rosparam set            set parameter
 rosparam get            get parameter
 rosparam load           load parameters from file
@@ -268,7 +268,7 @@ rosparam list           list parameter names
 
 编辑某一个软件包内的某一个文件：
 
-```
+```bash
 rosed [package_name] [filename]
 ```
 
@@ -280,7 +280,7 @@ package.xml 文件中的 `<depend>xxx</depend>` 标签。
 
 CMakeLists.txt 文件中的
 
-```
+```cmake
 find_package(catkin REQUIRED COMPONENTS
   roscpp
   std_msgs
@@ -294,7 +294,28 @@ find_package(catkin REQUIRED COMPONENTS
 
 使用 rosdep 检查是否满足依赖，以及安装未依赖的包：
 
-```
+```bash
 rosdep check --from-path src --ignore-src -r -y
 rosdep install --from-path src --ignore-src -r -y
 ```
+
+## 录制数据包
+
+.bag 文件可以保存 ROS 系统运行过程中产生的话题和服务数据，并播放出来供其他系统使用。
+
+开始录制数据：
+
+```bash
+rosbag record -a
+rosbag record -O xxx /turtle1/cmd_vel /turtle1/pose
+```
+
+录制全部话题，或者选择其中一部分话题。
+
+```bash
+rosbag info xxx.bag
+rosbag play xxx.bag
+rosbag play xxx.bag -r 4
+```
+
+查看数据包信息，以及播放数据包、按照一定速率播放数据包。
