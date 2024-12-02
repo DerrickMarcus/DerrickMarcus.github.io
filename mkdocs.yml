@@ -130,4 +130,6 @@ nav:
           - Gazebo: ros/gazebo/gazebo.md
       - Catkin 工具: ros/catkin/catkin.md
       - SLAM: ros/slam/slam.md
-      - LIO-SAM: ros/liosam/liosam.md
+      - LIO-SAM:
+        - LIO-SAM 部署: ros/liosam/liosam.md
+        - LIO-SAM 仿真: ros/liosam/liosam_gazebo.md
