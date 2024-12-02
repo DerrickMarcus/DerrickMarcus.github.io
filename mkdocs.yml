@@ -1,4 +1,4 @@
-site_name: Yanxu Chen's Homepage
+site_name: Yanxu Chen's Blog
 sit_url: https://www.chenyanx22.top
 site_author: Yanxu Chen
 
@@ -36,14 +36,17 @@ theme:
     - search.suggest
     - search.highlight
     - search.share
-    - content.code.annotate
+    - navigation.expand
+    - navigation.indexes
     - navigation.instant
+    - navigation.path
+    - navigation.sections
+    - navigation.tracking
     - navigation.top
     - navigation.tabs
     - navigation.tabs.sticky
-    - navigation.sections
-    - navigation.expand
-    - navigation.indexes
+    - content.code.annotate
+    - content.action.edit
     - toc.integrate
 
 extra:
@@ -54,22 +57,31 @@ extra:
 
 copyright: Copyright &copy; Yanxu Chen
 
-# plugins:
-#   - search:
-#       lang:
-#         - zh
-#         - en
-#       separator: '[\s\-\.]+'
-#       prebuild_index: true
-#   - git-revision-date:
-#       enabled_if_env: CI
-#   - git-revision-date-localized:
-#       fallback_to_build_date: true
-#       type: date
-#       locale: zh
-#   - git-authors:
-#       show_contribution: true
-#       show_line_count: true
+plugins:
+  - search:
+      lang:
+        - zh
+        - en
+      separator: '[\s\-\.]+'
+      prebuild_index: true
+  - git-revision-date:
+      enabled_if_env: CI
+  - git-revision-date-localized:
+      fallback_to_build_date: true
+      type: date
+      locale: zh
+  - git-authors:
+      show_contribution: true
+      show_line_count: true
+  - offline
+
+markdown_extensions:
+  - admonition
+  - footnotes
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.details
+  - pymdownx.superfences
 
 # markdown_extensions:
 #   - attr_list
@@ -131,5 +143,5 @@ nav:
       - Catkin 工具: ros/catkin/catkin.md
       - SLAM: ros/slam/slam.md
       - LIO-SAM:
-        - LIO-SAM 部署: ros/liosam/liosam.md
-        - LIO-SAM 仿真: ros/liosam/liosam_gazebo.md
+          - LIO-SAM 部署: ros/liosam/liosam.md
+          - LIO-SAM 仿真: ros/liosam/liosam_gazebo.md
