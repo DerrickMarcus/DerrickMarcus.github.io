@@ -64,8 +64,6 @@ plugins:
         - en
       separator: '[\s\-\.]+'
       prebuild_index: true
-  - git-revision-date:
-      enabled_if_env: CI
   - git-revision-date-localized:
       fallback_to_build_date: true
       type: date
