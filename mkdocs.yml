@@ -133,7 +133,7 @@ nav:
   - 课程笔记:
       - coursenotes/index_notes.md
       - 信号与系统:
-          期末复习: coursenotes/ss/review.md
+          - 期末复习: coursenotes/ss/review.md
   - ROS:
       - ros/index_ros.md
       - ROS Noetic: ros/ros1/noetic.md
