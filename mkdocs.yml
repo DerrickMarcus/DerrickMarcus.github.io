@@ -131,12 +131,14 @@ extra:
 nav:
   - 首页:
       - index.md
-      - 课程笔记: coursenotes/index_notes.md
+      - 课程笔记: course_notes/index_notes.md
       - ROS: ros/index_ros.md
   - 课程笔记:
-      - coursenotes/index_notes.md
+      - course_notes/index_notes.md
       - 信号与系统:
-          - 期末复习: coursenotes/ss/review.md
+          - 期末复习: course_notes/signal_system/review.md
+      - 数字图像处理:
+          - 绪论: course_notes/digital_image/chapter1.md
   - ROS:
       - ros/index_ros.md
       - ROS Noetic: ros/ros1/noetic.md
