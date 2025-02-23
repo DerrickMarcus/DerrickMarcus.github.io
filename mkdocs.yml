@@ -139,6 +139,8 @@ nav:
           - 期末复习: course_notes/signal_system/review.md
       - 数字图像处理:
           - 绪论: course_notes/digital_image/chapter1.md
+      - 操作系统:
+          - 01-绪论: course_notes/operating_system/chapter1.md
   - ROS:
       - ros/index_ros.md
       - ROS Noetic: ros/ros1/noetic.md
