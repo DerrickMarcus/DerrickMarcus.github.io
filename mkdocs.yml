@@ -1,6 +1,8 @@
+# website info
 site_name: Yanxu Chen's Blog
 site_url: https://www.chenyanx22.top
 site_author: Yanxu Chen
+site_description: Yanxu Chen's personal blog
 
 repo_url: https://github.com/DerrickMarcus/DerrickMarcus.github.io
 repo_name: DerrickMarcus.github.io
@@ -11,18 +13,20 @@ theme:
   language: zh
 
   palette:
+    # light mode
     - scheme: default
       primary: teal
       accent: teal
       toggle:
         icon: material/weather-sunny
-        name: Switch to light mode
+        name: switch to light mode
+    # dark mode
     - scheme: slate
       primary: black
       accent: black
       toggle:
         icon: material/weather-night
-        name: Switch to dark mode
+        name: switch to dark mode
 
   font:
     text: Roboto
@@ -33,30 +37,35 @@ theme:
     repo: fontawesome/brands/github
 
   features:
-    - search.suggest
-    - search.highlight
+    - search.suggest # 搜索提示
+    - search.highlight # 搜索关键词高亮
     - search.share
-    - navigation.expand
-    - navigation.indexes
+    - navigation.expand # 打开 tab 时左侧目录全部展开
+    - navigation.indexes # 给每一个 tab 添加一个 index.md
     - navigation.instant
     - navigation.path
     - navigation.sections
     - navigation.tracking
-    - navigation.top
-    - navigation.tabs
+    - navigation.top # 显示返回顶部按钮
+    - navigation.tabs # 使用 tab 分类
     - navigation.tabs.sticky
     - content.code.annotate
-    - content.action.edit
+    - content.code.copy # 通过按钮复制代码
+    - content.action.edit # 点击跳转至 github 编辑源文件
     - toc.integrate
+
+copyright: Copyright &copy; Yanxu Chen
 
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://www.github.com/DerrickMarcus
-      name: DerrickMarcus on Github
+      link: https://github.com/DerrickMarcus
+      name: Yanxu Chen on Github
+    - icon: fontawesome/brands/bilibili
+      link: https://space.bilibili.com/627449965
+      name: Yanxu Chen on Bilibili
 
-copyright: Copyright &copy; Yanxu Chen
-
+# extensions
 plugins:
   - search:
       lang:
@@ -72,33 +81,30 @@ plugins:
       show_contribution: true
       show_line_count: true
   - offline
+  - tags
 
 markdown_extensions:
   - admonition
   - footnotes
+  # 数学公式支持
   - pymdownx.arithmatex:
       generic: true
   - pymdownx.details
-  - pymdownx.superfences
-
-markdown_extensions:
+  # 图片功能支持
   - attr_list
-  - admonition
-  - codehilite:
-      guess_lang: false
-      linenums: true
-  - footnotes
-  - def_list
+  - md_in_html
+  # 标题添加链接
   - toc:
-      permalink: true
-  - pymdownx.arithmatex
+      permalink: true # 固定标题位置为当前位置
+  - pymdownx.highlight:
+      linenums: true # 显示行号
+      auto_title: true # 显示语言名称
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
   - pymdownx.caret
   - pymdownx.critic
-  - pymdownx.details
-  - pymdownx.emoji:
-      emoji_index: !!python/name:material.extensions.emoji.twemoji
-      emoji_generator: !!python/name:material.extensions.emoji.to_svg
-  - pymdownx.inlinehilite
   - pymdownx.magiclink
   - pymdownx.mark
   - pymdownx.smartsymbols
@@ -107,32 +113,35 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.tilde
-  - meta
-  - pymdownx.highlight:
-      linenums: true
-      auto_title: true
   - pymdownx.keys
-  - pymdownx.snippets
   - pymdownx.progressbar
-  - pymdownx.superfences:
-      custom_fences:
-        - name: mermaid
-          class: mermaid
-          format: !!python/name:pymdownx.superfences.fence_code_format
-        - name: math
-          class: arithmatex
-          format: !!python/name:pymdownx.arithmatex.fence_mathjax_format
+  - pymdownx.superfences
+  - meta
+  - codehilite:
+      guess_lang: false
+      linenums: true
+  - def_list
 
-extra:
-  extra_javascript:
-    - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js
+extra_javascript:
+  # [数学公式支持]
+  - mkdocs/javascripts/katex.js
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js
+extra_css:
+  # [数学公式支持]
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css
+  # [自定义 css]
+  # 不使用底部的翻页
+  - mkdocs/css/no-footer.css
+  # 无序列表符号自定义
+  - mkdocs/css/unordered-list-symbols.css
 
-
+# navigation
 nav:
   - 首页:
       - index.md
       - 课程笔记: course_notes/index_notes.md
-      - ROS: ros/index_ros.md
+      - ROS 学习: ros/index_ros.md
   - 课程笔记:
       - course_notes/index_notes.md
       - 信号与系统:
@@ -147,6 +156,9 @@ nav:
           - 01-绪论: course_notes/digital_image/chapter1.md
       - 操作系统:
           - 01-绪论: course_notes/operating_system/chapter1.md
+      - 固体物理:
+          - 01-晶体的结构: course_notes/solid_physics/chapter1.md
+          - 课后测试题: course_notes/solid_physics/test.md
   - ROS:
       - ros/index_ros.md
       - ROS Noetic: ros/ros1/noetic.md
