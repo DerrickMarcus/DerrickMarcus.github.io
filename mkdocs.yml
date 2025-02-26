@@ -84,43 +84,31 @@ plugins:
   - tags
 
 markdown_extensions:
-  - admonition
-  - footnotes
-  # 数学公式支持
+  # [数学公式支持]
   - pymdownx.arithmatex:
       generic: true
-  - pymdownx.details
-  # 图片功能支持
+  # [图片功能支持]
   - attr_list
   - md_in_html
-  # 标题添加链接
+  # [给标题添加链接]
   - toc:
       permalink: true # 固定标题位置为当前位置
+  # [代码语法高亮]
   - pymdownx.highlight:
-      linenums: true # 显示行号
-      auto_title: true # 显示语言名称
+      # 显示行号
+      linenums: true
+      # 显示编程语言名称
+      auto_title: true
       line_spans: __span
       pygments_lang_class: true
   - pymdownx.inlinehilite
   - pymdownx.snippets
-  - pymdownx.caret
-  - pymdownx.critic
-  - pymdownx.magiclink
-  - pymdownx.mark
-  - pymdownx.smartsymbols
-  - pymdownx.tabbed:
-      alternate_style: true
-  - pymdownx.tasklist:
-      custom_checkbox: true
-  - pymdownx.tilde
-  - pymdownx.keys
-  - pymdownx.progressbar
   - pymdownx.superfences
-  - meta
-  - codehilite:
-      guess_lang: false
-      linenums: true
-  - def_list
+  # [Markdown 提示]
+  - admonition
+  - pymdownx.details
+  # [Markdown footnote 语法支持]
+  - footnotes
 
 extra_javascript:
   # [数学公式支持]
