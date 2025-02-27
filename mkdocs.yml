@@ -63,9 +63,9 @@ theme:
     - toc.integrate
     - toc.follow
 
-    nav_style: dark
-    collapse_navigation: true
-    sticky_navigation: true
+  nav_style: dark
+  collapse_navigation: true
+  sticky_navigation: true
 
 copyright: Copyright &copy; 2025 Yanxu Chen
 
