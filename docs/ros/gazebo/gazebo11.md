@@ -1,3 +1,6 @@
+# Gazebo Classic
+
+
 **本文适用于 Gazebo Classic，搭配 ROS1 版本**
 
 Gazebo 使用 `.world` **文件扩展名**来表示**仿真场景**的配置文件，`.world` 文件实际上是 XML 格式的文件，**只不过它使用的是 SDF格式进行描述。**

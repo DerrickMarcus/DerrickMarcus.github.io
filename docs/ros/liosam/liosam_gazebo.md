@@ -1,4 +1,4 @@
-# 在 Gazebo 仿真环境中运行 LIO-SAM
+# Run LIO-SAM in Gazebo
 
 在没有硬件设备的情况下，我们也可以在 Gazebo 中仿真，模拟真实的环境，并通过录制 rosbag 包方便后期调试排查问题。
 

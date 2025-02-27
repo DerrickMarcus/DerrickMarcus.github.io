@@ -1,4 +1,5 @@
-# 部署 LIO-SAM 项目
+# Deploy LIO-SAM
+
 
 LIO-SAM 项目地址：https://github.com/TixiaoShan/LIO-SAM
 

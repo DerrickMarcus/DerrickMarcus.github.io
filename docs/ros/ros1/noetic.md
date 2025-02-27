@@ -1,8 +1,7 @@
 # ROS 1 Noetic
 
+
 Ubuntu 20.04 Focal, ROS 1 Noetic.
-
-
 
 一些基本概念：
 
