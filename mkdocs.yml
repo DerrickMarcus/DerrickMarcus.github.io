@@ -194,7 +194,7 @@ extra_css:
 
 # Page tree
 nav:
-  - 首页:
+  - 主页:
       - index.md
       - 课程笔记: course_notes/index_notes.md
       - ROS 学习: ros/index_ros.md
