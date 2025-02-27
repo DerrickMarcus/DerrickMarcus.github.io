@@ -56,12 +56,14 @@ theme:
     - navigation.top
     - navigation.tabs
     # - navigation.tabs.sticky
+    - navigation.footer
 
     - content.code.annotate
     - content.code.copy
     - content.code.select
     - content.action.view
     - content.action.edit
+    - content.tooltips
     - content.footnote.tooltips
     - content.tabs.link
 
@@ -189,8 +191,11 @@ extra_javascript:
   - javascripts/mathjax.js
   # - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
-  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg-full.js
   - https://cdn.jsdelivr.net/npm/plantuml-encoder@1.4.0/dist/plantuml-encoder.min.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
 
   # - https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-mml-chtml.js
   # - https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-chtml.js
