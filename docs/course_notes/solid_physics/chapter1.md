@@ -25,6 +25,10 @@
     2.  纤锌矿晶格：氮化镓($\ce{GaN}$)、氮化铝($\ce{AlN}$)
 
 
+$$
+\ce{Zn^2+ <=>[+ 2OH-][+ 2H+] Zn(OH)2 v <=>[+ 2OH-][+ 2H+] [Zn(OH)4]^2-}
+$$
+
 简单立方晶格：Simple Cubic, SC。
 
 体心立方晶格：Body-Centered Cubic, BCC。
