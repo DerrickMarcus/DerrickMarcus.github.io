@@ -1,13 +1,18 @@
-# website info
+# Project information
 site_name: Yanxu Chen's Blog
 site_url: https://www.chenyanx22.top
 site_author: Yanxu Chen
 site_description: Yanxu Chen's personal blog
 
+# Repository
 repo_url: https://github.com/DerrickMarcus/DerrickMarcus.github.io
 repo_name: DerrickMarcus.github.io
 edit_uri: edit/main/docs/
 
+# Copyright
+copyright: Copyright &copy; 2025 Yanxu Chen
+
+# Configuration
 theme:
   name: material
   language: zh
@@ -30,9 +35,9 @@ theme:
     text: Roboto
     code: Roboto Mono
 
-  favicon: assets/favicon.png
+  # favicon: assets/favicon.png
   icon:
-    logo: material/library
+    logo: assets/favicon.png
     repo: fontawesome/brands/git-alt
     edit: material/pencil
     view: material/eye
@@ -68,24 +73,13 @@ theme:
   collapse_navigation: true
   sticky_navigation: true
 
-copyright: Copyright &copy; 2025 Yanxu Chen
-
-extra:
-  social:
-    - icon: fontawesome/brands/github
-      link: https://github.com/DerrickMarcus
-      name: Yanxu Chen on Github
-    - icon: fontawesome/brands/bilibili
-      link: https://space.bilibili.com/627449965
-      name: Yanxu Chen on Bilibili
-
-# extensions
+# Plugins
 plugins:
   - search:
       lang:
         - zh
         - en
-      separator: '[\s\-\.]+'
+      separator: '[\s\u200b\-_,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
       prebuild_index: true
       indexing:
         - full_sections: false
@@ -115,6 +109,17 @@ plugins:
       words_per_minute: 200
   - heti
 
+# Additional configuration
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/DerrickMarcus
+      name: Yanxu Chen on Github
+    - icon: fontawesome/brands/bilibili
+      link: https://space.bilibili.com/627449965
+      name: Yanxu Chen on Bilibili
+
+# Extensions
 markdown_extensions:
   - meta
   - def_list
@@ -153,6 +158,10 @@ markdown_extensions:
   - pymdownx.keys
   - pymdownx.tabbed:
       alternate_style: true
+      combine_header_slug: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
   - pymdownx.details
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
@@ -183,7 +192,7 @@ extra_javascript:
 extra_css:
   - https://unpkg.com/katex@0/dist/katex.min.css
 
-# navigation
+# Page tree
 nav:
   - 首页:
       - index.md
