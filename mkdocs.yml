@@ -30,8 +30,9 @@ theme:
     text: Roboto
     code: Roboto Mono
 
+  favicon: assets/favicon.png
   icon:
-    logo: material/book-open-page-variant
+    logo: material/library
     repo: fontawesome/brands/git-alt
     edit: material/pencil
     view: material/eye
@@ -137,7 +138,7 @@ markdown_extensions:
       auto_title: true
       line_spans: __span
       pygments_lang_class: true
-      # use_pygments: true
+      use_pygments: true
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.superfences:
