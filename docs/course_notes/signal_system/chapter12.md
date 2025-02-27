@@ -11,13 +11,11 @@
 
 
 状态方程与输出方程分别为：
-
 $$
 \dot{\boldsymbol{\lambda}}(t)=\boldsymbol{A\lambda}(t)+\boldsymbol{Be}(t)
 \\
 \boldsymbol{r}(t)=\boldsymbol{C\lambda}(t)+\boldsymbol{De}(t)
 $$
-
 对于 LTI 系统 ABCD 矩阵是常数，而对于时变系统 ABCD 矩阵是时间的函数。
 
 （看典型结构示意图）
@@ -67,13 +65,11 @@ $$
 
 
 同连续时间系统的形式，用差分代替微分。
-
 $$
 \boldsymbol{\lambda}(n+1)=\boldsymbol{A\lambda}(n)+\boldsymbol{Bx}(n)
 \\
 \boldsymbol{y}(n)=\boldsymbol{C\lambda}(n)+\boldsymbol{Dx}(n)
 $$
-
 （看典型结构示意图）
 
 由定义建立。

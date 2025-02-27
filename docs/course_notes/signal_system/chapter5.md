@@ -9,24 +9,18 @@
 频域判断：
 
 首先有平方可积条件：
-
 $$
 \int_{-\infty}^{\infty}|H(\mathrm{j}\omega)|^2\,\mathrm{d}\omega<\infty
 $$
-
 根据帕塞瓦尔定理：
-
 $$
 \int_{-\infty}^{\infty}|h(t)|^2\,\mathrm{d}t=
 \frac{1}{2\pi}\int_{-\infty}^{\infty}|H(\mathrm{j}\omega)|^2\,\mathrm{d}\omega
 $$
-
 佩利-维纳准则（必要不充分条件）：
-
 $$
 \int_{-\infty}^{\infty}\frac{|\ln|H(\mathrm{j}\omega)||}{1+\omega^2}\,\mathrm{d}\omega<\infty
 $$
-
 不满足 PW 准则的幅度函数，响应比冲激激励先出现，违反了因果性。
 
 PW 准则不允许 $|H(\mathrm{j}\omega)|$ 在某一频带内恒为0（理想滤波器不可能实现），但允许在一些不连续的点为0。
@@ -42,7 +36,6 @@ PW 准则不是物理可实现的充分条件，因为对相频特性 $\varphi(\
 ## 2. 希尔伯特变换研究系统的约束特性
 
 对于一个因果稳定的系统有：
-
 $$
 \begin{align}
 H(\mathrm{j}\omega) &= R(\omega) + \mathrm{j}X(\omega)
@@ -52,7 +45,6 @@ H(\mathrm{j}\omega) &= R(\omega) + \mathrm{j}X(\omega)
 \implies X(\omega) &= -\frac{1}{\pi} \int_{-\infty}^{\infty} \frac{R(\lambda)}{\omega-\lambda}\,\mathrm{d}\lambda
 \end{align}
 $$
-
 
 实部是虚部的 Hilbert 变换，虚部是实部的 Hilbert 逆变换。实部与虚部相互约束，二者可以互相确定，两者不能任意给定。
 
@@ -73,7 +65,7 @@ $$
 \begin{align}
 g_0(t) &= f(t)\cos(\omega_0 t)=g(t)\cos^2(\omega_0 t)=\frac{1}{2}g(t)(1+\cos(2\omega_0 t))
 \\
-\implies G_0(\omega) &= \frac{1}{2}G(\omega)+\frac{1}{4}[G(\omega+2\omega_0)+G(\omega-2\omega_0)]
+G_0(\omega) &= \frac{1}{2}G(\omega)+\frac{1}{4}[G(\omega+2\omega_0)+G(\omega-2\omega_0)]
 \end{align}
 $$
 注意：$f(t)$ 的频域 $F(\omega)=\frac{1}{2}G(\omega-\omega_0)+\frac{1}{2}G(\omega+\omega_0)$ 不含载波的频谱 $\delta(\omega)$ 。
@@ -136,14 +128,13 @@ PM（调相），直接作用于频率： $f(t)=A\cos(\omega_c t+\int_{-\infty}^
 
 ## 4. 从抽样信号恢复连续时间信号
 
-1. 冲激抽样信号恢复连续时间信号（常规）：时域抽样——频域周期延拓——低通滤波器——恢复。
+1. 冲激抽样信号恢复连续时间信号（常规）：
+   时域抽样——频域周期延拓——低通滤波器——恢复。
 
 2. 零阶抽样保持：
-
    脉冲信号 $p(t)$ 对信号 $f(t)$ 抽样时，保持样本值到下一次抽样为止，抽样输出信号 $f_s(t)$ 呈阶梯形状。
 
 3. 一阶抽样保持：
-
    使用一个冲激响应为三角型脉冲的 LTI 系统，使得由抽样信号 $f_s(t)$ 经过该系统形成的三角脉冲叠加恢复出 $f(t)$ 。
 
 零阶抽样保持和一阶抽样保持都是对第一种方法的逼近。

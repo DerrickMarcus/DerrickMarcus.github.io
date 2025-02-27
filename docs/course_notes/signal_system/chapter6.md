@@ -12,21 +12,16 @@ $\infty$-范数：信号的幅度/峰值
 
 
 对于能量无限大的信号，功率定义为：
-
 $$
 \lim_{T\to\infty}\frac{1}{T} \int_{-T/2}^{T/2}|x(t)|^2\,\mathrm{d}t
 $$
-
 功率的平方根：方均根值（rms）
 
 平均值/直流分量：
-
 $$
 \lim_{T\to\infty}\frac{1}{T} \int_{-T/2}^{T/2}x(t)\,\mathrm{d}t
 $$
-
 内积性质的例子：
-
 $$
 \left\langle x,y \right\rangle = \int_{-\infty}^{\infty} x(t)y^*(t)\,\mathrm{d}t
 \\
@@ -42,37 +37,27 @@ $$
 
 
 对于两个矢量 $x,y$ ，用 $cy$ 逼近 $x$ ，误差最小的为：
-
 $$
 c=\frac{\left\langle x,y \right\rangle}{\left\langle y,y \right\rangle}
 $$
-
-
 推广到函数，在区间 $t_1<t<t_2$ 内用 $f_2(t)$ 近似表示 $f_1(t)$ ：$f_1(t)\approx c_{12}f_2(t)$​
 
 方均误差（误差的方均值）：
-
 $$
 \overline{\epsilon^2}=\frac{1}{t_2-t_1} \int_{t_1}^{t_2}[f_1(t)-c_{12}f_2(t)]^2\,\mathrm{d}t
 $$
-
 方均误差最小（对  $c_{12}$ 的二阶导为0），有：
-
 $$
 \begin{align}
 c_{12}=\frac{\left\langle f_1(t),f_2(t) \right\rangle}{\left\langle f_2(t),f_2(t) \right\rangle}
 =\frac{\int_{t_1}^{t_2} f_1(t)f_2(t)\,\mathrm{d}t}{\int_{t_1}^{t_2} f_2^2(t)\,\mathrm{d}t}
 \end{align}
 $$
-
 正交的等价条件为：
-
 $$
 \int_{t_1}^{t_2} f_1(t)f_2(t)\,\mathrm{d}t=0
 $$
-
 对于复变量函数，上面条件变为：
-
 $$
 \begin{align}
 c_{12}=\frac{\left\langle f_1(t),f_2(t) \right\rangle}{\left\langle f_2(t),f_2(t) \right\rangle}
@@ -85,7 +70,6 @@ $$
 
 
 帕塞瓦尔方程：
-
 $$
 \int_{t_1}^{t_2} f^2(t)\,\mathrm{d}t=\sum_{r=1}^{\infty}c_r^2K_r
 $$
@@ -99,7 +83,6 @@ $$
 
 
 对于能量信号，能量有限：
-
 $$
 \begin{align}
 E &= \int_{-\infty}^{\infty} |f(t)|^2\,\mathrm{d}t
@@ -107,9 +90,7 @@ E &= \int_{-\infty}^{\infty} |f(t)|^2\,\mathrm{d}t
 &= \int_{-\infty}^{\infty} f^2(t)\,\mathrm{d}t\quad(\text{real\ variable})
 \end{align}
 $$
-
 对于功率信号，能量无限，平均功率有限：
-
 $$
 \begin{align}
 P &= \lim_{T\to\infty} \int_{-T/2}^{T/2}|f(t)|^2 \,\mathrm{d}t
@@ -117,11 +98,9 @@ P &= \lim_{T\to\infty} \int_{-T/2}^{T/2}|f(t)|^2 \,\mathrm{d}t
 &= \lim_{T\to\infty} \int_{-T/2}^{T/2} f^2(t) \,\mathrm{d}t\quad(\text{real\ variable})
 \end{align}
 $$
-
 有些信号既不属于能量信号，也不属于功率信号，比如 $f(t)=e^t$​ 。
 
 对于能量信号，有相关系数（类似于矢量的夹角）：
-
 $$
 \rho_{12}=\frac{\left\langle f_1,f_2 \right\rangle}{||f_1||_2 \cdot ||f_2||_2}
 $$
@@ -133,7 +112,6 @@ $$
 复变量表示的相关函数，其中 $\tau$ 为两个信号的时差。实函数将共轭去掉即可。
 
 对于能量信号：
-
 $$
 \begin{align}
 R_{12}(\tau) &= \int_{-\infty}^{\infty} f_1(t)f_2^*(t-\tau)\,\mathrm{d}t
@@ -143,9 +121,7 @@ R(\tau) &= \int_{-\infty}^{\infty} f(t)f^*(t-\tau)\,\mathrm{d}t
 = \int_{-\infty}^{\infty} f(t+\tau)f^*(t)\,\mathrm{d}t
 \end{align}
 $$
-
 对于功率信号：
-
 $$
 \begin{align}
 R_{12}(\tau) &= \lim_{T\to\infty} \int_{-T/2}^{T/2} f_1(t)f_2^*(t-\tau) \,\mathrm{d}t
@@ -155,7 +131,6 @@ R(\tau) &= \lim_{T\to\infty} \int_{-T/2}^{T/2} f(t)f^*(t-\tau) \,\mathrm{d}t
 =\lim_{T\to\infty} \int_{-T/2}^{T/2} f(t+\tau)f^*(t) \,\mathrm{d}t
 \end{align}
 $$
-
 性质——共轭反对称： $R_{12}(\tau)=R_{21}^*(-\tau),\quad R(\tau)=R^*(-\tau)$ 。
 
 特别地，对于实函数有： $R_{12}(\tau)=R_{21}(-\tau),\quad R(\tau)=R(-\tau)$ ，自相关函数为偶函数。
@@ -168,13 +143,11 @@ $$
 ### 与卷积的比较
 
 相关与卷积的关系：卷积要“反褶 + 移位 + 积分”，相关仅为“移位 + 积分”，不用反褶。
-
 $$
 R_{12}(\tau) = f_1(t)*f_2(t)
 \\
 R(\tau) = f(t)*f(-t)
 $$
-
 对于实偶函数，卷积和相关结果相同。
 
 
@@ -182,13 +155,11 @@ $$
 
 
 若有 $\mathscr{F}[f_1(t)]=F_1(\omega),\mathscr{F}[f_2(t)]=F_2(\omega)$ ，则有：
-
 $$
 \mathscr{F}[R_{12}(\tau)] = F_1(\omega)\cdot F_2^*(\omega)
 \\
 \mathscr{F}[R(\tau)] = F(\omega)\cdot F^*(\omega)=|F(\omega)|^2
 $$
-
 若 $f_2(t)$ 为实偶函数， $F_2(\omega)$​ 为实函数，则与卷积定理结果相同。
 
 
@@ -197,15 +168,12 @@ $$
 能谱：
 
 能量信号，自相关函数在0处的取值 = 时域 $f^2(t)$ 覆盖的面积 = 频域 $|F_1(f)|^2$ 覆盖的面积，时域能量等于频域能量：
-
 $$
 R(0)=\int_{-\infty}^{\infty}f^2(t)\,\mathrm{d}t
 =\frac{1}{2\pi}\int_{-\infty}^{\infty}|F(\omega)|^2\,\mathrm{d}\omega
 =\int_{-\infty}^{\infty}|F_1(f)|^2\,\mathrm{d}f
 $$
-
 定义能量谱密度/能谱，反映了单位带宽内的能量：
-
 $$
 \mathscr{E}(\omega) = |F(\omega)|^2
 \\
@@ -214,12 +182,10 @@ $$
 E = \frac{1}{2\pi} \int_{-\infty}^{\infty}\mathscr{E}(\omega)\,\mathrm{d}\omega
 =\int_{-\infty}^{\infty}\mathscr{E}_1(\omega)\,\mathrm{d}\omega
 $$
-
 自相关函数和能谱函数是一对 Fourier 变换对。
 
 
 功率谱：
-
 $$
 \mathscr{P}(\omega) = \lim_{T\to\infty}\frac{|F_T(\omega)|^2}{T}
 \\
@@ -227,7 +193,6 @@ $$
 \\
 P = \frac{1}{2\pi}\int_{-\infty}^{\infty}\mathscr{P}(\omega)\,\mathrm{d}\omega
 $$
-
 自相关函数和功率谱函数是一对 Fourier 变换对。（维纳-欣钦关系）
 
 注意：能量信号和功率信号的自相关函数单位不同， 因此能量谱和功率谱的单位也不同，相差时间单位。

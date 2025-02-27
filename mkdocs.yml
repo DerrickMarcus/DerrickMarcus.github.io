@@ -10,7 +10,7 @@ repo_name: DerrickMarcus.github.io
 edit_uri: edit/main/docs/
 
 # Copyright
-copyright: Copyright &copy; 2025 Yanxu Chen
+copyright: Copyright &copy; 2024-2025 Yanxu Chen
 
 # Configuration
 theme:
@@ -207,7 +207,6 @@ nav:
           - 08-z变换、离散时间系统z域分析: course_notes/signal_system/chapter8.md
           - 11-反馈系统: course_notes/signal_system/chapter11.md
           - 12-系统的状态变量分析: course_notes/signal_system/chapter12.md
-          - 期末复习: course_notes/signal_system/review.md
       - 数字图像处理:
           - 01-绪论: course_notes/digital_image/chapter1.md
       - 操作系统:
