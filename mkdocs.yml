@@ -47,7 +47,7 @@ theme:
     - search.highlight
     - search.share
 
-    - navigation.expand
+    # - navigation.expand
     - navigation.indexes
     - navigation.instant
     - navigation.path
@@ -66,7 +66,7 @@ theme:
     - content.tabs.link
 
     - header.autohide
-    - toc.integrate
+    # - toc.integrate
     - toc.follow
 
   nav_style: dark
