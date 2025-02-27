@@ -197,7 +197,7 @@ nav:
   - 主页:
       - index.md
       - 课程笔记: course_notes/index_notes.md
-      - ROS 学习: ros/index_ros.md
+      - ROS: ros/index_ros.md
   - 课程笔记:
       - course_notes/index_notes.md
       - 信号与系统:
