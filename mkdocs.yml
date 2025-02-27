@@ -174,18 +174,23 @@ markdown_extensions:
 
 extra_javascript:
   - javascripts/katex.js
-  - https://unpkg.com/katex@0/dist/katex.min.js
-  - https://unpkg.com/katex@0/dist/contrib/auto-render.min.js
-  - https://unpkg.com/katex@0/dist/contrib/mhchem.min.js
-
-  - javascripts/mathjax.js
-  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
-  - https://polyfill.io/v3/polyfill.min.js?features=es6
-  - https://cdn.jsdelivr.net/npm/plantuml-encoder@1.4.0/dist/plantuml-encoder.min.js
-  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+  # - https://unpkg.com/katex@0/dist/katex.min.js
+  # - https://unpkg.com/katex@0/dist/contrib/auto-render.min.js
+  # - https://unpkg.com/katex@0/dist/contrib/mhchem.min.js
 
   # - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js
   # - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js
+  # - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/mhchem.min.js
+
+  - https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js
+  - https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js
+  - https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/mhchem.min.js
+
+  - javascripts/mathjax.js
+  # - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/plantuml-encoder@1.4.0/dist/plantuml-encoder.min.js
 
   # - https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-mml-chtml.js
   # - https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-chtml.js
@@ -193,7 +198,9 @@ extra_javascript:
   # - https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-svg-full.js
 
 extra_css:
-  - https://unpkg.com/katex@0/dist/katex.min.css
+  # - https://unpkg.com/katex@0/dist/katex.min.css
+  # - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css
+  - https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css
 
 # Page tree
 nav:
