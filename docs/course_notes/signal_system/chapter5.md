@@ -12,6 +12,7 @@
 $$
 \int_{-\infty}^{\infty}|H(\mathrm{j}\omega)|^2\,\mathrm{d}\omega<\infty
 $$
+
 根据帕塞瓦尔定理：
 $$
 \int_{-\infty}^{\infty}|h(t)|^2\,\mathrm{d}t=
