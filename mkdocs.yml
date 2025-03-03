@@ -211,9 +211,9 @@ extra_css:
 nav:
   - 主页:
       - index.md
-      - 课程笔记: course_notes/index_notes.md
+      - Course Notes: course_notes/index_notes.md
       - ROS: ros/index_ros.md
-  - 课程笔记:
+  - Course Notes:
       - course_notes/index_notes.md
       - 信号与系统:
           - 05-傅里叶变换应用于通信系统: course_notes/signal_system/chapter5.md
@@ -223,12 +223,27 @@ nav:
           - 11-反馈系统: course_notes/signal_system/chapter11.md
           - 12-系统的状态变量分析: course_notes/signal_system/chapter12.md
       - 数字图像处理:
-          - 01-绪论: course_notes/digital_image/chapter1.md
+          - 01-图像处理概述: course_notes/digital_image/chapter1.md
+          - 02-图像信息与视觉感知: course_notes/digital_image/chapter2.md
       - 操作系统:
-          - 01-绪论: course_notes/operating_system/chapter1.md
+          - 01-绪论(1): course_notes/operating_system/chapter1.md
+            02-绪论(2): course_notes/operating_system/chapter2.md
       - 固体物理:
           - 01-晶体的结构: course_notes/solid_physics/chapter1.md
           - 课后测试题: course_notes/solid_physics/test.md
+  - Course Labs:
+      - course_labs/index_labs.md
+      - 数据与算法:
+          - OJ-1: course_labs/data_algorithm/oj1.md
+          - OJ-2: course_labs/data_algorithm/oj2.md
+          - OJ-3: course_labs/data_algorithm/oj3.md
+          - OJ-4: course_labs/data_algorithm/oj4.md
+          - OJ-5: course_labs/data_algorithm/oj5.md
+          - OJ-6: course_labs/data_algorithm/oj6.md
+          - OJ-7: course_labs/data_algorithm/oj7.md
+          - OJ-8: course_labs/data_algorithm/oj8.md
+          - OJ-9: course_labs/data_algorithm/oj9.md
+          - OJ-10: course_labs/data_algorithm/oj10.md
   - ROS:
       - ros/index_ros.md
       - ROS Noetic: ros/ros1/noetic.md
