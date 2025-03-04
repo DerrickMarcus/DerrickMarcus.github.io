@@ -251,8 +251,15 @@ nav:
       - Gazebo:
           - Gazebo Classic: ros/gazebo/gazebo11.md
           - Gazebo: ros/gazebo/gazebo.md
-      - Catkin 工具: ros/catkin/catkin.md
+      - Catkin tool: ros/catkin/catkin.md
       - SLAM: ros/slam/slam.md
       - LIO-SAM:
           - LIO-SAM 部署: ros/liosam/liosam.md
           - LIO-SAM 仿真: ros/liosam/liosam_gazebo.md
+  - Railway:
+      - railway/index_railway.md
+      - China Railway:
+          - 动车组列车: railway/china_railway/high_speed.md
+          - 铁路局: railway/china_railway/group.md
+          - 车站: railway/china_railway/station.md
+          - 其他: railway/china_railway/else.md
