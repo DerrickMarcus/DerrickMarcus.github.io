@@ -14,244 +14,245 @@ copyright: Copyright &copy; 2024-2025 Yanxu Chen
 
 # Configuration
 theme:
-    name: material
-    language: zh
+  name: material
+  language: zh
 
-    palette:
-        - scheme: default
-          primary: teal
-          accent: teal
-          toggle:
-              icon: material/weather-sunny
-              name: switch to light mode
-        - scheme: slate
-          primary: black
-          accent: black
-          toggle:
-              icon: material/weather-night
-              name: switch to dark mode
+  palette:
+    - scheme: default
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/weather-sunny
+        name: switch to light mode
+    - scheme: slate
+      primary: black
+      accent: black
+      toggle:
+        icon: material/weather-night
+        name: switch to dark mode
 
-    font:
-        text: Roboto
-        code: Roboto Mono
+  font:
+    text: Roboto
+    code: Roboto Mono
 
-    favicon: assets/favicon.png
-    icon:
-        logo: logo
-        repo: fontawesome/brands/git-alt
-        edit: material/pencil
-        view: material/eye
+  favicon: assets/favicon.png
+  icon:
+    logo: logo
+    repo: fontawesome/brands/git-alt
+    edit: material/pencil
+    view: material/eye
 
-    features:
-        - search.suggest
-        - search.highlight
-        - search.share
+  features:
+    - search.suggest
+    - search.highlight
+    - search.share
 
-        # - navigation.expand
-        - navigation.indexes
-        - navigation.instant
-        - navigation.path
-        - navigation.sections
-        - navigation.tracking
-        - navigation.top
-        - navigation.tabs
-        # - navigation.tabs.sticky
-        - navigation.footer
+    # - navigation.expand
+    - navigation.indexes
+    - navigation.instant
+    - navigation.path
+    - navigation.sections
+    - navigation.tracking
+    - navigation.top
+    - navigation.tabs
+    # - navigation.tabs.sticky
+    - navigation.footer
 
-        - content.code.annotate
-        - content.code.copy
-        - content.code.select
-        - content.action.view
-        - content.action.edit
-        - content.tooltips
-        - content.footnote.tooltips
-        - content.tabs.link
+    - content.code.annotate
+    - content.code.copy
+    - content.code.select
+    - content.action.view
+    - content.action.edit
+    - content.tooltips
+    - content.footnote.tooltips
+    - content.tabs.link
 
-        - header.autohide
-        # - toc.integrate
-        - toc.follow
+    - header.autohide
+    # - toc.integrate
+    - toc.follow
 
-    nav_style: dark
-    collapse_navigation: true
-    sticky_navigation: true
+  nav_style: dark
+  collapse_navigation: true
+  sticky_navigation: true
 
 # Plugins
 plugins:
-    - search:
-          lang:
-              - zh
-              - en
-          separator: '[\s\u200b\-_,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
-          prebuild_index: true
-          indexing:
-              - full_sections: false
-              - headings: true
-              - content: true
-    - git-revision-date-localized:
-          fallback_to_build_date: true
-          enable_creation_date: true
-          type: date
-          locale: zh
-          timezone: Asia/Shanghai
-    - git-authors:
-          show_contribution: true
-          show_line_count: true
-    - minify:
-          minify_html: true
-          minify_js: true
-          minify_css: true
-          htmlmin_opts:
-              remove_comments: true
-    - toc
-    - offline
-    - tags
-    - callouts
-    - glightbox:
-          width: 80%
-    - statistics:
-          words_per_minute: 200
-    - heti
+  - search:
+      lang:
+        - zh
+        - en
+      separator: '[\s\u200b\-_,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+      prebuild_index: true
+      indexing:
+        - full_sections: false
+        - headings: true
+        - content: true
+  - git-revision-date-localized:
+      fallback_to_build_date: true
+      enable_creation_date: true
+      type: date
+      locale: zh
+      timezone: Asia/Shanghai
+  - git-authors:
+      show_contribution: true
+      show_line_count: true
+  - minify:
+      minify_html: true
+      minify_js: true
+      minify_css: true
+      htmlmin_opts:
+        remove_comments: true
+  - toc
+  - offline
+  - tags
+  - callouts
+  - glightbox:
+      width: 80%
+  - statistics:
+      words_per_minute: 200
+  - heti
 
 # Additional configuration
 extra:
-    social:
-        - icon: fontawesome/brands/github
-          link: https://github.com/DerrickMarcus
-          name: Yanxu Chen on Github
-        - icon: fontawesome/brands/bilibili
-          link: https://space.bilibili.com/627449965
-          name: Yanxu Chen on Bilibili
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/DerrickMarcus
+      name: Yanxu Chen on Github
+    - icon: fontawesome/brands/bilibili
+      link: https://space.bilibili.com/627449965
+      name: Yanxu Chen on Bilibili
 
 # Extensions
 markdown_extensions:
-    - meta
-    - def_list
-    - attr_list
-    - md_in_html
-    - sane_lists
-    - footnotes
-    - admonition
-    - tables
-    - toc:
-          permalink: true
-          toc_depth: 3
+  - meta
+  - def_list
+  - attr_list
+  - md_in_html
+  - sane_lists
+  - footnotes
+  - admonition
+  - tables
+  - toc:
+      permalink: true
+      toc_depth: 3
 
-    - pymdownx.arithmatex:
-          generic: true
-    - pymdownx.highlight:
-          anchor_linenums: true
-          linenums: true
-          linenums_style: pymdownx-inline
-          auto_title: true
-          line_spans: __span
-          pygments_lang_class: true
-          use_pygments: true
-    - pymdownx.inlinehilite
-    - pymdownx.snippets
-    - pymdownx.superfences:
-          custom_fences:
-              - name: mermaid
-                class: mermaid
-                format: !!python/name:pymdownx.superfences.fence_div_format
-    - pymdownx.betterem
-    - pymdownx.magiclink
-    - pymdownx.mark
-    - pymdownx.critic
-    - pymdownx.tilde
-    - pymdownx.caret
-    - pymdownx.keys
-    - pymdownx.tabbed:
-          alternate_style: true
-          combine_header_slug: true
-          slugify: !!python/object/apply:pymdownx.slugs.slugify
-              kwds:
-                  case: lower
-    - pymdownx.details
-    - pymdownx.emoji:
-          emoji_index: !!python/name:material.extensions.emoji.twemoji
-          emoji_generator: !!python/name:material.extensions.emoji.to_svg
-    - pymdownx.tasklist:
-          custom_checkbox: true
-          clickable_checkbox: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      linenums: true
+      linenums_style: pymdownx-inline
+      auto_title: true
+      line_spans: __span
+      pygments_lang_class: true
+      use_pygments: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_div_format
+  - pymdownx.betterem
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.critic
+  - pymdownx.tilde
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.tabbed:
+      alternate_style: true
+      combine_header_slug: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.tasklist:
+      custom_checkbox: true
+      clickable_checkbox: true
 
 extra_javascript:
-    - javascripts/katex.js
-    # - https://unpkg.com/katex@0/dist/katex.min.js
-    # - https://unpkg.com/katex@0/dist/contrib/auto-render.min.js
-    # - https://unpkg.com/katex@0/dist/contrib/mhchem.min.js
+  - javascripts/katex.js
+  # - https://unpkg.com/katex@0/dist/katex.min.js
+  # - https://unpkg.com/katex@0/dist/contrib/auto-render.min.js
+  # - https://unpkg.com/katex@0/dist/contrib/mhchem.min.js
 
-    # - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js
-    # - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js
-    # - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/mhchem.min.js
+  # - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js
+  # - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js
+  # - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/mhchem.min.js
 
-    - https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js
-    - https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js
-    - https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/mhchem.min.js
+  - https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js
+  - https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js
+  - https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/mhchem.min.js
 
-    - javascripts/mathjax.js
-    # - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
-    - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
-    - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js
-    - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js
-    - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg-full.js
-    - https://cdn.jsdelivr.net/npm/plantuml-encoder@1.4.0/dist/plantuml-encoder.min.js
-    - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - javascripts/mathjax.js
+  # - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg-full.js
+  - https://cdn.jsdelivr.net/npm/plantuml-encoder@1.4.0/dist/plantuml-encoder.min.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
 
-    # - https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-mml-chtml.js
-    # - https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-chtml.js
-    # - https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-chtml-full.js
-    # - https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-svg-full.js
+  # - https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-mml-chtml.js
+  # - https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-chtml.js
+  # - https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-chtml-full.js
+  # - https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-svg-full.js
 
 extra_css:
-    # - https://unpkg.com/katex@0/dist/katex.min.css
-    # - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css
-    - https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css
+  # - https://unpkg.com/katex@0/dist/katex.min.css
+  # - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css
+  - https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css
 
 # Page tree
 nav:
-    - 主页:
-          - index.md
-          - Course Notes: course_notes/index_notes.md
-          - ROS: ros/index_ros.md
-    - Course Notes:
-          - course_notes/index_notes.md
-          - 信号与系统:
-                - 05-傅里叶变换应用于通信系统: course_notes/signal_system/chapter5.md
-                - 06-信号的矢量空间: course_notes/signal_system/chapter6.md
-                - 07-离散时间系统的时域分析: course_notes/signal_system/chapter7.md
-                - 08-z变换、离散时间系统z域分析: course_notes/signal_system/chapter8.md
-                - 11-反馈系统: course_notes/signal_system/chapter11.md
-                - 12-系统的状态变量分析: course_notes/signal_system/chapter12.md
-          - 数字图像处理:
-                - 01-图像处理概述: course_notes/digital_image/chapter1.md
-                - 02-图像信息与视觉感知: course_notes/digital_image/chapter2.md
-          - 操作系统:
-                - 01-绪论(1): course_notes/operating_system/chapter1.md
-                - 02-绪论(2): course_notes/operating_system/chapter2.md
-          - 固体物理:
-                - 01-晶体的结构: course_notes/solid_physics/chapter1.md
-                - 课后测试题: course_notes/solid_physics/test.md
-    - Course Labs:
-          - course_labs/index_labs.md
-          - 数据与算法:
-                - OJ-1: course_labs/data_algorithm/oj1.md
-                - OJ-2: course_labs/data_algorithm/oj2.md
-                - OJ-3: course_labs/data_algorithm/oj3.md
-                - OJ-4: course_labs/data_algorithm/oj4.md
-                - OJ-5: course_labs/data_algorithm/oj5.md
-                - OJ-6: course_labs/data_algorithm/oj6.md
-                - OJ-7: course_labs/data_algorithm/oj7.md
-                - OJ-8: course_labs/data_algorithm/oj8.md
-                - OJ-9: course_labs/data_algorithm/oj9.md
-                - OJ-10: course_labs/data_algorithm/oj10.md
-    - ROS:
-          - ros/index_ros.md
-          - ROS Noetic: ros/ros1/noetic.md
-          - Gazebo:
-                - Gazebo Classic: ros/gazebo/gazebo11.md
-                - Gazebo: ros/gazebo/gazebo.md
-          - Catkin 工具: ros/catkin/catkin.md
-          - SLAM: ros/slam/slam.md
-          - LIO-SAM:
-                - LIO-SAM 部署: ros/liosam/liosam.md
-                - LIO-SAM 仿真: ros/liosam/liosam_gazebo.md
+  - 主页:
+      - index.md
+      - Course Notes: course_notes/index_notes.md
+      - Course Labs: course_labs/index_labs.md
+      - ROS: ros/index_ros.md
+  - Course Notes:
+      - course_notes/index_notes.md
+      - 信号与系统:
+          - 05-傅里叶变换应用于通信系统: course_notes/signal_system/chapter5.md
+          - 06-信号的矢量空间: course_notes/signal_system/chapter6.md
+          - 07-离散时间系统的时域分析: course_notes/signal_system/chapter7.md
+          - 08-z变换、离散时间系统z域分析: course_notes/signal_system/chapter8.md
+          - 11-反馈系统: course_notes/signal_system/chapter11.md
+          - 12-系统的状态变量分析: course_notes/signal_system/chapter12.md
+      - 数字图像处理:
+          - 01-图像处理概述: course_notes/digital_image/chapter1.md
+          - 02-图像信息与视觉感知: course_notes/digital_image/chapter2.md
+      - 操作系统:
+          - 01-绪论(1): course_notes/operating_system/chapter1.md
+          - 02-绪论(2): course_notes/operating_system/chapter2.md
+      - 固体物理:
+          - 01-晶体的结构: course_notes/solid_physics/chapter1.md
+          - 课后测试题: course_notes/solid_physics/test.md
+  - Course Labs:
+      - course_labs/index_labs.md
+      - 数据与算法:
+          - OJ-1: course_labs/data_algorithm/oj1.md
+          - OJ-2: course_labs/data_algorithm/oj2.md
+          - OJ-3: course_labs/data_algorithm/oj3.md
+          - OJ-4: course_labs/data_algorithm/oj4.md
+          - OJ-5: course_labs/data_algorithm/oj5.md
+          - OJ-6: course_labs/data_algorithm/oj6.md
+          - OJ-7: course_labs/data_algorithm/oj7.md
+          - OJ-8: course_labs/data_algorithm/oj8.md
+          - OJ-9: course_labs/data_algorithm/oj9.md
+          - OJ-10: course_labs/data_algorithm/oj10.md
+  - ROS:
+      - ros/index_ros.md
+      - ROS Noetic: ros/ros1/noetic.md
+      - Gazebo:
+          - Gazebo Classic: ros/gazebo/gazebo11.md
+          - Gazebo: ros/gazebo/gazebo.md
+      - Catkin 工具: ros/catkin/catkin.md
+      - SLAM: ros/slam/slam.md
+      - LIO-SAM:
+          - LIO-SAM 部署: ros/liosam/liosam.md
+          - LIO-SAM 仿真: ros/liosam/liosam_gazebo.md

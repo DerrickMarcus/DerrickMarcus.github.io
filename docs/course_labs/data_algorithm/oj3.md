@@ -42,7 +42,8 @@ input:
 2
 5
 
-output:10
+output:
+10
 ```
 
 ## Hint
