@@ -209,7 +209,7 @@ extra_css:
 
 # Page tree
 nav:
-  - 主页:
+  - Home:
       - index.md
       - Course Notes: course_notes/index_notes.md
       - Course Labs: course_labs/index_labs.md

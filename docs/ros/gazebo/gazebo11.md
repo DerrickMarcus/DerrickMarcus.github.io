@@ -1,35 +1,30 @@
 # Gazebo Classic
 
-
-**本文适用于 Gazebo Classic，搭配 ROS1 版本**
+**本文适用于 Gazebo Classic，搭配 ROS1 版本.**
 
 Gazebo 使用 `.world` **文件扩展名**来表示**仿真场景**的配置文件，`.world` 文件实际上是 XML 格式的文件，**只不过它使用的是 SDF格式进行描述。**
 
 模型文件中，sdf 更适合 gazebo 仿真，是 urdf 的升级版。urdf 更适合描述机器人模型，其中 xacro 是 urdf 的升级版。有些使用场景需要注意：比如使用 rviz 可视化只能使用 urdf 文件，并且 xacro 兼容性更好，并联机器人的 gazebo 仿真只能使用 sdf。
 
-
-
 `.world` 文件是一个 XML 文档，它以 `<world>` 标签为根元素，包含了描述仿真世界的各种元素和其属性。通常，`.world`文件包括了仿真世界中的各种模型、传感器、光源设置等信息。
 
 gazebo通过命令行打开world文件，加载仿真场景。
 
-```
+```bash
 gazebo /usr/share/gazebo-11/worlds/empty_sky.world
 ```
 
-ROS必须通过`gazebo_ros`这个包来加载world场景，**其本质是 `gazebo_ros` 包调用gazebo仿真器，继而加载world场景。**
+ROS必须通过 `gazebo_ros` 这个包来加载world场景，**其本质是 `gazebo_ros` 包调用gazebo仿真器，继而加载world场景。**
 
 ROS打开仿真world场景命令：
 
-```
+```bash
 roslaunch xxx xxx.launch # roslaunch 软件包名称 launch文件名称
 roslaunch gazebo_ros empty_world.launch
 roslaunch gazebo_ros empty_world.launch world_name:=/path/to/your/world_file.world
 ```
 
 `empty_world.launch`用于加载`empty.world`或其他仿真世界文件，并可以包含其他ROS节点、参数设置和配置。
-
-
 
 大致文件结构
 
@@ -39,15 +34,9 @@ roslaunch gazebo_ros empty_world.launch world_name:=/path/to/your/world_file.wor
 
 创建一个 launch 目录，用于存放启动文件，比如 c.launch ，使用 XML 编写。
 
-
-
-
-
 基本概念：
 
 模型 models，世界 worlds，插件 Plugins，传感器 sensors，视觉和物理属性，通信接口。
-
-
 
 注意：
 
@@ -56,8 +45,6 @@ roslaunch gazebo_ros empty_world.launch world_name:=/path/to/your/world_file.wor
 **`roslaunch`形式是通过`gazebo_ros`包，启动gazebo**，然后把`world`的路径作为参数传进去，**本质还是用gazebo打开world文件，相当于ROS在外部进行了封装**。launch文件提供了world文件的路径供gazebo_ros包加载，传给gazebo并打开world文件。
 
 `roslaunch`加载world文件，等效于直接在终端或命令行中使用`gazebo world_file.world`命令。
-
-
 
 ## xacro 文件
 
@@ -69,8 +56,6 @@ Xacro 可以声明变量，可以通过数学运算求解，使用流程控制�
 
 作用
 较之于纯粹的 URDF 实现，可以编写更安全、精简、易读性更强的机器人模型文件，且可以提高编写效率。
-
-
 
 注意：
 
@@ -119,8 +104,6 @@ Xacro 可以声明变量，可以通过数学运算求解，使用流程控制�
 ```
 
 需要注意的是，原则上，除了 base_footprint 外，机器人的每个刚体部分都需要设置惯性矩阵，且惯性矩阵必须经计算得出，如果随意定义刚体部分的惯性矩阵，那么可能会导致机器人在 Gazebo 中出现抖动，移动等现象。
-
-
 
 ## ros_control
 

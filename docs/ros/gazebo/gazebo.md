@@ -1,7 +1,6 @@
 # Gazebo
 
-
-**本为适用于新版 Gazebo，搭配 Ubuntu 22 或 24 + ROS2**
+**本为适用于新版 Gazebo，搭配 Ubuntu 22 或 24 + ROS2.**
 
 gazebo 使用 SDF(Simulation Description Format) 文件保存模型，场景和机器人
 有一个 sdf 是顶级标签，下面有一个 world 子元素，world 包含多种子元素，比如 scene, light, model
@@ -63,11 +62,7 @@ link 元素表示机器人中的杆件，有三个子元素：
 2. collision 碰撞模型，内有一个 geometry 几何体模型，用于碰撞检测。
 3. visual 3D模型，同样有 geometry 元素，还有 material 元素，用于改变杆件颜色，ambient,diffuse,specular 分别设置环境光照，漫反射和镜面反射中 4 个值红、绿、蓝、透明度取值，范围为 0-1。
 
-
-
 Gazebo GUI 操作，放置物体，添加光源，改变位置，改变视图（透明，显示坐标轴，显示质心，显示碰撞模型，显示转动惯量，显示线框图），复制粘贴，……
-
-
 
 右侧插件：
 

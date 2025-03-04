@@ -6,7 +6,6 @@
 
 ![oj5_description](../../assets/images/course_labs/data_algorithm/oj5_description.png)
 
-
 ## Input
 
 输入共N+M+1行
@@ -23,7 +22,7 @@
 
 ## Example
 
-```
+```text
 input:
 4 2
 2 1 2
@@ -41,7 +40,7 @@ output:
 
 ## Hint
 
-1.  测试样例情况：
+1. 测试样例情况：
 
     1-4测试样例：$N<2^{10},M=0$
 
@@ -51,9 +50,7 @@ output:
 
     对于所有测试样例，边数 $E<2^{20}$
 
-2.  图中无自环、重边
-
-
+2. 图中无自环、重边
 
 ## Solution
 

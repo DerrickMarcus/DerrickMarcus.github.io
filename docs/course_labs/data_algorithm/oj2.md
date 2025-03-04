@@ -1,6 +1,5 @@
 # OJ2：军训排队
 
-
 ## Description
 
 军训时需要将所有同学(包括教官)排成一队，一开始只有教官(编号为1)排在第一个，之后教官会发出如下三种命令：
@@ -14,7 +13,6 @@
 要求对于每次命令2，都输出报告同学后面同学的编号，并最后从头到尾输出队列中同学的编号。
 
 ![oj2_description](../../assets/images/course_labs/data_algorithm/oj2_description.png)
-
 
 ## Input
 
@@ -30,7 +28,7 @@
 
 ## Example
 
-```
+```text
 input:
 7
 1 1 2
@@ -49,7 +47,6 @@ output:
 2
 4
 ```
-
 
 ## Hint
 

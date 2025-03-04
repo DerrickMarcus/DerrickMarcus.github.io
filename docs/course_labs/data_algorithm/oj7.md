@@ -16,8 +16,6 @@ $$
 
 ![img](http://oj.ee.tsinghua.edu.cn/media/ckeditor_uploads/2023/11/26/2023-11-26-140122.png)由m个列向量构成。现在给定非奇异矩阵A和矩阵Z，求解矩阵X。
 
-
-
 ## Input
 
 第1行输入p，表示矩阵A中存在非零元素的对角线的条数，p为3或5。
@@ -34,26 +32,13 @@ $$
 
 ![img](http://oj.ee.tsinghua.edu.cn/media/ckeditor_uploads/2023/11/26/2023-11-26-140724.png)
 
-
-
-## 【输出格式】
+## Output
 
 输出共m行，每行为n个浮点数，分别为矩阵X的每一列的各个元素值，每个元素值结果四舍五入保留4位小数。
 
+## Example
 
-
-## 【输入样例】
-
-```
-3
-3 2
-44 62
-44 43 30
-3 34
-27 63 53
-14 52 19
-```
-
+```text
 3
 3 2
 44 62
@@ -62,126 +47,109 @@ $$
 27 63 53
 14 52 19
 
-
-
-## 【输出样例】
-
-```
+output:
 -0.9846 1.5983 -0.0447
 0.7073 -0.3892 1.0744
 ```
 
--0.9846 1.5983 -0.0447
-0.7073 -0.3892 1.0744
+## Restriction
 
+Time: 1000ms
 
+Memory: 1500KB
 
-## 【时间、内存限制】
-
-时间1000ms
-
-内存1500KB
-
-
-
-## 【提示】
+## Hint
 
 计算带限矩阵LU分解后元素间的递推表达式。
 
+## Solution
 
+（1）矩阵A作用于X的第i个列向量，得到Z的第i个列向量。
+$$
+AX=Z \\
+Ax_i=z_i
+$$
+因此可以每读入一个Z的列向量，计算出X对应的列向量，进行输出。
 
-## 【思路】
+（2）对矩阵A进行LU分解：
+$$
+A=LU
+$$
 
-1. 矩阵A作用于X的第i个列向量，得到Z的第i个列向量。
-   $$
-   AX=Z\\
-   Ax_i=z_i
-   $$
-   因此可以每读入一个Z的列向量，计算出X对应的列向量，进行输出。
+LU分解如下：
+$$
+\begin{bmatrix}
+b_1 & c_1 \\
+a_2 & b_2 & c_2\\
+& \ddots & \ddots & \ddots\\
+& & a_{n-1} & b_{n-1} & c_{n-1}\\
+& & & a_n & b_n
+\end{bmatrix}
+=
+\begin{bmatrix}
+\beta_1\\
+a_2 & \beta_2\\
+& \ddots & \ddots\\
+& & a_{n-1} & \beta_{n-1}\\
+& & & a_n & \beta_n
+\end{bmatrix}
+\begin{bmatrix}
+1 & \gamma_1 \\
+& 1 & \gamma_2\\
+& & \ddots & \ddots\\
+& & & 1 & \gamma_{n-1}\\
+& & & & 1
+\end{bmatrix}
+$$
+递推公式为：
+$$
+\beta_1=b_1,\ \gamma_1=\frac{c_1}{b_1}\\
+\beta_i=b_i-a_i\gamma_{i-1},\ \gamma_i=\frac{c_i}{\beta_i}
+$$
 
-2. 对矩阵A进行LU分解：
-   $$
-   A=LU
-   $$
+因此只需将数组 `b[n]` 替换为 `β[n]`，将数组 `c[n-1]` 替换为 `γ[n-1]`，即可求出 LU 分解。
 
+先通过前向回代，求解：
+$$
+Ly=z
+$$
+再通过后向回代，求解：
+$$
+Ux=y
+$$
 
-   LU分解如下：
-   $$
-   \begin{bmatrix}
-   b_1 & c_1 \\
-   a_2 & b_2 & c_2\\
-   & \ddots & \ddots & \ddots\\
-   & & a_{n-1} & b_{n-1} & c_{n-1}\\
-   & & & a_n & b_n
-   \end{bmatrix}
-   =
-   \begin{bmatrix}
-   \beta_1\\
-   a_2 & \beta_2\\
-   & \ddots & \ddots\\
-   & & a_{n-1} & \beta_{n-1}\\
-   & & & a_n & \beta_n
-   \end{bmatrix}
-   \begin{bmatrix}
-   1 & \gamma_1 \\
-   & 1 & \gamma_2\\
-   & & \ddots & \ddots\\
-   & & & 1 & \gamma_{n-1}\\
-   & & & & 1
-   \end{bmatrix}
-   $$
-   递推公式为：
-   $$
-   \beta_1=b_1,\ \gamma_1=\frac{c_1}{b_1}\\
-   \beta_i=b_i-a_i\gamma_{i-1},\ \gamma_i=\frac{c_i}{\beta_i}
-   $$
+上述方法参见教程：[三对角矩阵的LU分解](https://blog.csdn.net/Giannis_34/article/details/107872239 "CSDN博客：追赶法求三对角矩阵、LU分解")
 
-   因此只需将数组`b[n]`替换为`β[n]`，将数组`c[n-1]`替换为`γ[n-1]`，即可求出LU分解。
+（2）对于五对角矩阵，可以采取大致相同的思路，是不过稍微复杂一点：
 
-   先通过前向回代，求解：
-   $$
-   Ly=z
-   $$
-   再通过后向回代，求解：
-   $$
-   Ux=y
-   $$
-   ![image-20231212145422615](C:\Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20231212145422615.png)
+LU分解如下：
+$$
+\begin{bmatrix}
+c_1 & d_1 & e_1\\
+b_2 & c_2 & d_2 & e_2\\
+a_3 & b_3 & c_3 & d_3 & e_3\\
+& a_4 & b_4 & c_4 & d_4 & e_4\\
+& & \ddots & \ddots & \ddots & \ddots & \ddots\\
+& & & \ddots & \ddots & \ddots & \ddots & \ddots\\
+& & & & a_{n-2} & b_{n-2} & c_{n-2} & d_{n-2} & e_{n-2}\\
+& & & & & a_{n-1} & b_{n-1} & c_{n-1} & d_{n-1}\\
+& &  && & & a_n & b_n & c_n\\
+\end{bmatrix}
+=
+$$
+![img](http://oj.ee.tsinghua.edu.cn/media/ckeditor_uploads/2023/11/23/2023-11-23-230031.png)
 
-   上述方法参见教程：[三对角矩阵的LU分解](https://blog.csdn.net/Giannis_34/article/details/107872239 "CSDN博客：追赶法求三对角矩阵、LU分解")
+![oj7_solution1](../../assets/images/course_labs/data_algorithm/oj7_solution1.png)
 
-3. 对于五对角矩阵，可以采取大致相同的思路，是不过稍微复杂一点：
+![oj7_solution2](../../assets/images/course_labs/data_algorithm/oj7_solution2.png)
 
-   LU分解如下：
-   $$
-   \begin{bmatrix}
-   c_1 & d_1 & e_1\\
-   b_2 & c_2 & d_2 & e_2\\
-   a_3 & b_3 & c_3 & d_3 & e_3\\
-   & a_4 & b_4 & c_4 & d_4 & e_4\\
-   & & \ddots & \ddots & \ddots & \ddots & \ddots\\
-   & & & \ddots & \ddots & \ddots & \ddots & \ddots\\
-   & & & & a_{n-2} & b_{n-2} & c_{n-2} & d_{n-2} & e_{n-2}\\
-   & & & & & a_{n-1} & b_{n-1} & c_{n-1} & d_{n-1}\\
-   & &  && & & a_n & b_n & c_n\\
-   \end{bmatrix}
-   =
-   $$
-   ![img](http://oj.ee.tsinghua.edu.cn/media/ckeditor_uploads/2023/11/23/2023-11-23-230031.png)
-
-   ![屏幕截图 2023-12-12 195445](D:\ASUS\Pictures\Saved Pictures\屏幕截图 2023-12-12 195445.png)
-
-
-
-![屏幕截图 2023-12-12 195500](D:\ASUS\Pictures\Saved Pictures\屏幕截图 2023-12-12 195500.png)
-
-![屏幕截图 2023-12-12 195530](D:\ASUS\Pictures\Saved Pictures\屏幕截图 2023-12-12 195530.png)
+![oj7_solution3](../../assets/images/course_labs/data_algorithm/oj7_solution3.png)
 
 上述的方法参见教程：[五对角追赶发求解线性方程组](https://blog.csdn.net/wxkhturfun/article/details/125023717)。
 
+## Code
 
-
-## 【代码（C）】
+Language: C
 
 ```c
 #include <stdio.h>

@@ -2,7 +2,6 @@
 
 CMake 是 C/C++ 开发中常用的编译工具链，在 ROS 中我们可以使用 catkin_make 工具，它集成了 CMake 且功能更加适用于 ROS 开发，语法与 CMake 相同，配置文件均为 CMakeLists.txt
 
-
 语法规则如下：
 
 注意：有一些预定义的变量， `PROJECT_SOURCE_DIR` 表示源代码目录（包含 CMakeLists.txt 文件的目录，一般也就是项目的根目录），`PROJECT_BINARY_DIR` ，项目的构建目录，生成编译文件的位置，一般也就是 build/ 。`LIBRARY_OUTPUT_PATH` 是生成的库文件存放的位置。
@@ -48,8 +47,6 @@ aux_source_directory(dir val)
 aux_source_direcctory(. SRC_LIST) # 然后使用 add_executable(hello ${SRC_LIST})
 ```
 
-
-
 一个示例：
 
 ```cmake
@@ -94,13 +91,11 @@ add_dependencies(add_two_ints_client beginner_tutorials_gencpp)
 # %EndTag(FULLTEXT)%
 ```
 
-
-
 构建流程
 
 Out-of-space 构建，将构建文件放于源代码之外的独立目录中，大致如下：
 
-```
+```text
 MyProject/
 ├── CMakeLists.txt
 ├── src/
@@ -132,10 +127,6 @@ make MyExecutable # 指定目标名称
 make clean
 rm -rf build/* # 或者这个
 ```
-
-
-
-
 
 对于 catkin，有一些额外的需要注意：
 

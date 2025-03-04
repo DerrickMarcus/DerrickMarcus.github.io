@@ -1,6 +1,5 @@
 # ROS 1 Noetic
 
-
 Ubuntu 20.04 Focal, ROS 1 Noetic.
 
 一些基本概念：
@@ -12,8 +11,6 @@ tf，坐标变换系统。两种坐标系：固定坐标系（用于表示世界
 Gazebo，物理仿真工具。
 
 SLAM(Simultaneous Localization and Mapping)，同步定位与建图
-
-
 
 ## 工作空间
 
@@ -72,8 +69,6 @@ CMakeLists.txt, package.xml, scripts/ , msg/ , srv/ , include/ , src/ , launch/ 
 
 PS: 如果找不到软件包，用 `source devel/setup.bash` 而非 `source devel/local_setup.bash` 。
 
-
-
 ## ROS 节点
 
 查看节点：
@@ -94,8 +89,6 @@ rosrun [package_name] [node_name]
 ```bash
 roslaunch [package] [filename.launch]
 ```
-
-
 
 ## launch 文件的结构
 
@@ -127,7 +120,7 @@ pkg 节点所在包的名称，type 可执行文件（节点）的名称，name 
 <param name="param_name" type="param_type" value="param_value" />
 <!-- param 标签可以嵌入到 node 标签中，以此来作为该 node 的私有参数 -->
 <node>
-	<param name="param_name" type="param_type" value="param_value" />
+ <param name="param_name" type="param_type" value="param_value" />
 </node>
 ```
 
@@ -158,7 +151,7 @@ command 功能类型，file 参数文件的路径，param 参数名称。
 <remap from="turtle1/cmd_vel" to="/cmd_vel" />
 <!-- remap 标签同样可以嵌入到 node 标签中，以此来作为该 node 的私有重映射 -->
 <node>
-	<remap from="turtle1/cmd_vel" to="/cmd_vel" />
+ <remap from="turtle1/cmd_vel" to="/cmd_vel" />
 </node>
 ```
 
@@ -209,8 +202,6 @@ command 功能类型，file 参数文件的路径，param 参数名称。
 
 **launch文件启动之前，无需再执行`roscore`指令启动`rosmaster`，launch文件可以自启动rosmaster**
 
-
-
 ## rqt 工具
 
 使用 rqt_graph 查看节点状态图：
@@ -220,8 +211,6 @@ rosrun rqt_graph rqt_graph
 rqt
 rqt_graph
 ```
-
-
 
 ## 话题、服务、参数
 
@@ -238,8 +227,6 @@ rostopic type   print topic type
 rosmsg show <topic_type_name>
 ```
 
-
-
 关于服务的命令：
 
 ```bash
@@ -249,8 +236,6 @@ rosservice type         print service type
 rosservice find         find services by service type
 rosservice uri          print service ROSRPC uri
 ```
-
-
 
 关于参数的命令：
 
@@ -263,15 +248,11 @@ rosparam delete         delete parameter
 rosparam list           list parameter names
 ```
 
-
-
 编辑某一个软件包内的某一个文件：
 
 ```bash
 rosed [package_name] [filename]
 ```
-
-
 
 添加软件包需要的依赖，修改：
 
@@ -286,8 +267,6 @@ find_package(catkin REQUIRED COMPONENTS
   # Add more dependencies here
 )
 ```
-
-
 
 ## rosdep 工具
 
