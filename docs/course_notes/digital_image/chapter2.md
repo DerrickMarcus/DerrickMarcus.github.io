@@ -108,6 +108,7 @@ HSI 模型：用户直观的色彩模型，H(色调 hue)，S(饱和度 saturatio
 H 和S 分量与人感受彩色的方式紧密相连（合称色度），I 分量与图象的彩色信息无关。
 
 从 RGB 转换到 HSI：
+
 $$
 I = \frac{1}{3} (R + G + B) \\
 S = 1 - \frac{3}{R + G + B} \min(R, G, B) \\
@@ -117,6 +118,7 @@ $$
 从 HSI 转换到 RGB：
 
 当 $H\in[0^\circ,120^\circ]$ ：
+
 $$
 B = I(1 - S)\\
 R = I \left[ 1 + \frac{S \cos H}{\cos(60^\circ - H)} \right]\\
@@ -124,6 +126,7 @@ G = 3I - (B + R)
 $$
 
 当 $H\in[120^\circ,240^\circ]$ ：
+
 $$
 R = I(1 - S)\\
 G = I \left[ 1 + \frac{S \cos(H-120^\circ)}{\cos(180^\circ - H)} \right]\\
@@ -131,6 +134,7 @@ B = 3I - (R + G)
 $$
 
 当 $H\in[240^\circ,360^\circ]$ ：
+
 $$
 G = I(1 - S)\\
 B = I \left[ 1 + \frac{S \cos(H - 240^\circ)}{\cos(300^\circ - H)} \right]\\

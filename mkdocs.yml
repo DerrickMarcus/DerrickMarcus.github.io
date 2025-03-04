@@ -214,6 +214,7 @@ nav:
       - Course Notes: course_notes/index_notes.md
       - Course Labs: course_labs/index_labs.md
       - ROS: ros/index_ros.md
+      - Railway: railway/index_railway.md
   - Course Notes:
       - course_notes/index_notes.md
       - 信号与系统:
