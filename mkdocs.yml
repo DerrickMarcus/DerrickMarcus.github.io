@@ -230,6 +230,7 @@ nav:
       - 操作系统:
           - 01-绪论(1): course_notes/operating_system/chapter1.md
           - 02-绪论(2): course_notes/operating_system/chapter2.md
+          - 03-进程的描述与控制: course_notes/operating_system/chapter3.md
       - 固体物理:
           - 01-晶体的结构: course_notes/solid_physics/chapter1.md
           - 课后测试题: course_notes/solid_physics/test.md
