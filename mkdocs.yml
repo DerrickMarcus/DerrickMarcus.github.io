@@ -211,10 +211,7 @@ extra_css:
 nav:
   - Home:
       - index.md
-      - Course Notes: course_notes/index_notes.md
-      - Course Labs: course_labs/index_labs.md
-      - ROS: ros/index_ros.md
-      - Railway: railway/index_railway.md
+      - about.md
   - Course Notes:
       - course_notes/index_notes.md
       - 信号与系统:
@@ -248,17 +245,15 @@ nav:
           - OJ-8: course_labs/data_algorithm/oj8.md
           - OJ-9: course_labs/data_algorithm/oj9.md
           - OJ-10: course_labs/data_algorithm/oj10.md
-  - ROS:
-      - ros/index_ros.md
-      - ROS Noetic: ros/ros1/noetic.md
-      - Gazebo:
-          - Gazebo Classic: ros/gazebo/gazebo11.md
-          - Gazebo: ros/gazebo/gazebo.md
-      - Catkin tool: ros/catkin/catkin.md
-      - SLAM: ros/slam/slam.md
-      - LIO-SAM:
-          - LIO-SAM 部署: ros/liosam/liosam.md
-          - LIO-SAM 仿真: ros/liosam/liosam_gazebo.md
+  - Research:
+      - research/index_research.md
+      - Robot:
+          - About: research/robot/about.md
+          - ROS basic: research/robot/ros_basic.md
+          - Gazebo: research/robot/gazebo.md
+          - Catkin Tool: research/robot/catkin.md
+          - SLAM: research/robot/slam.md
+          - LIO-SAM: research/robot/liosam.md
   - Railway:
       - railway/index_railway.md
       - China Railway:
