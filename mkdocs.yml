@@ -55,7 +55,7 @@ theme:
     - navigation.tracking
     - navigation.top
     - navigation.tabs
-    # - navigation.tabs.sticky
+    - navigation.tabs.sticky
     - navigation.footer
 
     - content.code.annotate

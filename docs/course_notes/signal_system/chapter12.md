@@ -2,19 +2,21 @@
 
 状态 / 状态变量 / 状态矢量：一个动态系统的状态是表示系统的一组最少变量，只需知道 $t=t_0$ 时刻这组变量和 $t\geqslant t_0$ 时刻以后的输入， 就能确定系统在 $t\geqslant t_0$​ 时刻以后的行为。
 
-> 引入状态变量的目的：相当于使用中间变量表示输入输出，可以把一元 N 阶方程转换为 N 元一阶方程，每一阶都用状态变量表示，相邻阶的中间变量之间是一阶关系。
+引入状态变量的目的：相当于使用中间变量表示输入输出，可以把一元 N 阶方程转换为 N 元一阶方程，每一阶都用状态变量表示，相邻阶的中间变量之间是一阶关系。
 
 算子 $p$ 是微分运算，算子 $1/p$​ 是积分运算。算子表达式就是关于积分和微分环节的组合。
 
 ## 1. 连续时间系统状态方程的建立
 
 状态方程与输出方程分别为：
+
 $$
 \dot{\boldsymbol{\lambda}}(t)=\boldsymbol{A\lambda}(t)+\boldsymbol{Be}(t)
 \\
 \boldsymbol{r}(t)=\boldsymbol{C\lambda}(t)+\boldsymbol{De}(t)
 $$
-对于 LTI 系统 ABCD 矩阵是常数，而对于时变系统 ABCD 矩阵是时间的函数。
+
+对于 LTI 系统，ABCD 矩阵是常数，而对于时变系统 ABCD 矩阵是时间的函数。
 
 （看典型结构示意图）
 
@@ -22,13 +24,13 @@ $$
 
 由系统输入输出方程或信号流图建立状态方程。对于与给定的系统，流图的形式可以不同，状态变量的选择不唯一， ABCD 矩阵也不唯一。
 
-![2024春信号与系统26第二十四讲12.1-12.3_15](D:\ASUS\Pictures\Saved Pictures\2024春信号与系统26第二十四讲12.1-12.3_15.png)
+![2024春信号与系统26第二十四讲12.1-12.3_15](../../assets/images/course_notes/signal_system/ch12_img1.png)
 
 由算子表达式分解或系统函数建立状态方程。部分分式展开 $H(p)=\sum\frac{\beta_i}{p+\alpha_i}$​ ，由基本单元串联、并联、级联组装。
 
 基本单元：
 
-![2024春信号与系统26第二十四讲12.1-12.3_20](D:\ASUS\Pictures\Saved Pictures\2024春信号与系统26第二十四讲12.1-12.3_20.png)
+![2024春信号与系统26第二十四讲12.1-12.3_20](../../assets/images/course_notes/signal_system/ch12_img2.png)
 
 ## 2. 连续时间系统状态方程的求解
 
@@ -36,35 +38,35 @@ $$
 
 写不动了，直接上图：
 
-![2024春信号与系统26第二十四讲12.1-12.3_27](D:\ASUS\Pictures\Saved Pictures\2024春信号与系统26第二十四讲12.1-12.3_27.png)
+![2024春信号与系统26第二十四讲12.1-12.3_27](../../assets/images/course_notes/signal_system/ch12_img3.png)
 
-![2024春信号与系统26第二十四讲12.1-12.3_28](D:\ASUS\Pictures\Saved Pictures\2024春信号与系统26第二十四讲12.1-12.3_28.png)
+![2024春信号与系统26第二十四讲12.1-12.3_28](../../assets/images/course_notes/signal_system/ch12_img4.png)
 
 ### 时域解法
 
 写不动了，直接上图：
 
-![2024春信号与系统26第二十四讲12.1-12.3_34](D:\ASUS\Pictures\Saved Pictures\2024春信号与系统26第二十四讲12.1-12.3_34.png)
+![2024春信号与系统26第二十四讲12.1-12.3_34](../../assets/images/course_notes/signal_system/ch12_img5.png)
 
 ## 3. 根据状态方程求转移函数
 
 写不动了，直接上图：
 
-![2024春信号与系统26第二十四讲12.1-12.3_36](D:\ASUS\Pictures\Saved Pictures\2024春信号与系统26第二十四讲12.1-12.3_36.png)
+![2024春信号与系统26第二十四讲12.1-12.3_36](../../assets/images/course_notes/signal_system/ch12_img6.png)
 
 ## 4. 离散时间系统状态方程的建立
 
 同连续时间系统的形式，用差分代替微分。
+
 $$
 \boldsymbol{\lambda}(n+1)=\boldsymbol{A\lambda}(n)+\boldsymbol{Bx}(n)
 \\
 \boldsymbol{y}(n)=\boldsymbol{C\lambda}(n)+\boldsymbol{Dx}(n)
 $$
+
 （看典型结构示意图）
 
-由定义建立。
-
-由框图或流图建立。
+由定义建立。由框图或流图建立。
 
 ## 5. 离散时间系统状态方程的求解
 
@@ -72,15 +74,15 @@ $$
 
 写不动了，直接上图：
 
-![2024春信号与系统27第二十五讲12.4-12.7_14](D:\ASUS\Pictures\Saved Pictures\2024春信号与系统27第二十五讲12.4-12.7_14.png)
+![2024春信号与系统27第二十五讲12.4-12.7_14](../../assets/images/course_notes/signal_system/ch12_img7.png)
 
 ### z 变换求解
 
 写不动了，直接上图：
 
-![2024春信号与系统27第二十五讲12.4-12.7_16](D:\ASUS\Pictures\Saved Pictures\2024春信号与系统27第二十五讲12.4-12.7_16.png)
+![2024春信号与系统27第二十五讲12.4-12.7_16](../../assets/images/course_notes/signal_system/ch12_img8.png)
 
-![2024春信号与系统27第二十五讲12.4-12.7_17](D:\ASUS\Pictures\Saved Pictures\2024春信号与系统27第二十五讲12.4-12.7_17.png)
+![2024春信号与系统27第二十五讲12.4-12.7_17](../../assets/images/course_notes/signal_system/ch12_img9.png)
 
 ## 6. 状态矢量的线性变换
 
@@ -90,7 +92,7 @@ $$
 
 判断系统的稳定性：
 
-![2024春信号与系统27第二十五讲12.4-12.7_28](D:\ASUS\Pictures\Saved Pictures\2024春信号与系统27第二十五讲12.4-12.7_28.png)
+![2024春信号与系统27第二十五讲12.4-12.7_28](../../assets/images/course_notes/signal_system/ch12_img10.png)
 
 ## 7. 系统的可控性和可观性
 
@@ -102,12 +104,12 @@ $$
 
 利用可控阵和可观阵判定：
 
-![2024春信号与系统27第二十五讲12.4-12.7_37](D:\ASUS\Pictures\Saved Pictures\2024春信号与系统27第二十五讲12.4-12.7_37.png)
+![2024春信号与系统27第二十五讲12.4-12.7_37](../../assets/images/course_notes/signal_system/ch12_img11.png)
 
 A 矩阵规范化之后判别。（略）
 
 可控可观与转移函数的关系：
 
-![2024春信号与系统27第二十五讲12.4-12.7_44](D:\ASUS\Pictures\Saved Pictures\2024春信号与系统27第二十五讲12.4-12.7_44.png)
+![2024春信号与系统27第二十五讲12.4-12.7_44](../../assets/images/course_notes/signal_system/ch12_img12.png)
 
 留意一下串联、并联、级联可能发生零极点相消，导致系统不可控不稳定就行。
