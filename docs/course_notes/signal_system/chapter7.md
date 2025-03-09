@@ -23,7 +23,7 @@ $x(an)$ 波形压缩， $x(\frac{x}{n})$​ 波形扩展，这时可能要按规
 
 与连续信号类似， $\delta(n),\ u(n),\ nu(n)$ 仍然有差分关系： $\delta(n)=u(n)-u(n-1),\ u(n)=nu(n)-(n-1)u(n-1)$ 。
 
-系统方框图： $1/E$ 代表单位延时。
+系统方框图中： $1/E$ 代表单位延时。
 
 ![2024春信号与系统20第十八讲7.1-7.7_20](../../assets/images/course_notes/signal_system/ch7_img3.png)
 

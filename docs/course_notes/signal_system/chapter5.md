@@ -58,11 +58,13 @@ $$
 已调信号 $f(t)=g(t)\cos(\omega_0t)$ ，把 $g(t)$ 频谱搬移到 $\pm\omega_0$ 上，且分成两部分，各占1/2。
 
 解调：从已调信号 $f(t)$ 恢复出基带信号 $g(t)$ 需要用本地载波 $\cos(\omega_0t)$ ，使频谱 $F(\omega)$ 左右移动，经过低通滤波器（带宽大于 $\omega_m$，小于 $2\omega_0-\omega_m$）之后取出 $G(\omega)$ ，但能量变为原来的一半。
+
 $$
 g_0(t) = f(t)\cos(\omega_0 t)=g(t)\cos^2(\omega_0 t)=\frac{1}{2}g(t)(1+\cos(2\omega_0 t))
 \\
 G_0(\omega) = \frac{1}{2}G(\omega)+\frac{1}{4}[G(\omega+2\omega_0)+G(\omega-2\omega_0)]
 $$
+
 注意：$f(t)$ 的频域 $F(\omega)=\frac{1}{2}G(\omega-\omega_0)+\frac{1}{2}G(\omega+\omega_0)$ 不含载波的频谱 $\delta(\omega)$ 。
 
 缺点：解调使用的本地载波需要与发送端相同，接收机较为复杂。

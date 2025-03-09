@@ -46,25 +46,37 @@ $$
 \lim_{n\to\infty}|\frac{a_{n+1}}{a_n}|=\rho
 \\
 \lim_{n\to\infty}|\sqrt[n]{|a_n|}=\rho
-\\
-\rho<1\ 收敛, \quad \rho>1\ 发散\, \quad \rho=1\ 不确定
 $$
+
+$\rho<1$ 收敛，$\rho>1$ 发散，$\rho=1$ 不确定。
 
 （课本 P53，表8-1）对于双边 z 变换，序列的 ROC：
 
 1. 有限长序列：几乎为整个平面。
+
     （1）原点左右均有， $0<|z|<\infty$。
+
     （2）原点及其右边， $0<|z|$。
+
     （3）原点及其左边， $|z|<\infty$。​
-     有限长序列，求和范围里有 $n>0$ 的项，ZT 中会含有 $\frac{1}{z}$，因此 ROC 不包含 $z=0$。
-     求和范围里有 $n<0$ 的项，ZT 中会含有 $z$ 的乘方，因此 ROC 不包含 $z=\infty$ 。
+
+    有限长序列，求和范围里有 $n>0$ 的项，ZT 中会含有 $\frac{1}{z}$，因此 ROC 不包含 $z=0$。
+
+    求和范围里有 $n<0$ 的项，ZT 中会含有 $z$ 的乘方，因此 ROC 不包含 $z=\infty$。
+
 2. 右边序列：圆外（z 要足够大，抑制序列的增长）。
-    （1）包含原点，有原点左边的部分（非因果），$R_{x1}<|z|<\infty$ 。
-    （2）原点及其右边（因果），$R_{x1}<|z|$ 。
+
+    （1）包含原点，有原点左边的部分（非因果），$R_{x1}<|z|<\infty$。
+
+    （2）原点及其右边（因果），$R_{x1}<|z|$。
+
 3. 左边序列：圆内（1/z 要足够大，抑制序列的增长）。
-    （1）包含原点，有原点右边的部分，$0<|z|<R_{x2}$ 。
-    （2）原点及其左边，$z<R_{x2}$ 。
-4. 双边序列：圆环，$R_{x1}<|z|<R_{x2}$ 。​
+
+    （1）包含原点，有原点右边的部分，$0<|z|<R_{x2}$。
+
+    （2）原点及其左边，$z<R_{x2}$。
+
+4. 双边序列：圆环，$R_{x1}<|z|<R_{x2}$。​
 
 ![img](https://bkimg.cdn.bcebos.com/pic/f603918fa0ec08fa513d065caea62a6d55fbb3fb6cbd?x-bce-process=image/format,f_auto/resize,m_lfit,limit_1,h_1000)
 
@@ -102,7 +114,7 @@ $$
 \\
 X(z) = \sum_{m=0}^K \frac{A_m z}{z-z_m}=A_0+\sum_{m=1}^K \frac{A_m z}{z-z_m}
 \\
-A_m = \rm{Res}[\frac{X(z)}{z}]_{z=z_m}=\bigg[(z-z_m)\frac{X(z)}{z}\bigg]_{z=z_m}
+A_m = \mathrm{Res}[\frac{X(z)}{z}]_{z=z_m}=\left[(z-z_m)\frac{X(z)}{z}\right]_{z=z_m}
 \\
 A_0 = [X(z)]_{z=0}=\frac{b_0}{a_0}
 $$
@@ -114,7 +126,7 @@ X(z)=A_0+\sum_{m=1}^M \frac{A_m z}{z-z_m}+\sum_{j=1}^s \frac{B_j z}{(z-z_i)^j}
 \\
 X(z)=A_0+\sum_{m=1}^M \frac{A_m z}{z-z_m}+\sum_{j=1}^s \frac{C_j z^j}{(z-z_i)^j}
 \\
-C_s=\bigg[(\frac{z-z_i}{z})^sX(z)\bigg]_{z=z_i}
+C_s=\left[(\frac{z-z_i}{z})^sX(z)\right]_{z=z_i}
 $$
 
 部分分式展开要多练习（）
@@ -224,9 +236,9 @@ $$
 展开为部分分式：
 
 $$
-h(n) = \mathscr{Z}[H(z)]=\mathscr{Z}^{-1}\bigg[ \sum_{k=0}^N\frac{A_k z}{z-p_k} \bigg]
+h(n) = \mathscr{Z}[H(z)]=\mathscr{Z}^{-1}\left[ \sum_{k=0}^N\frac{A_k z}{z-p_k} \right]
 \\
-= \mathscr{Z}^{-1}\bigg[ A_0+\sum_{k=1}^N\frac{A_k z}{z-p_k} \bigg]
+= \mathscr{Z}^{-1}\left[ A_0+\sum_{k=1}^N\frac{A_k z}{z-p_k} \right]
 \\
 = A_0\delta(n)+\sum_{k=1}^N A_k(p_k)^n u(n)
 $$
@@ -248,7 +260,7 @@ $$
 $$
 \sum_{n=-\infty}^{\infty}|h(n)|<M
 \\
-H(z)\bigg|_{z=1}=\sum_{n=-\infty}^{\infty}h(n)
+H(z)\big|_{z=1}=\sum_{n=-\infty}^{\infty}h(n)
 $$
 
 因此**稳定系统的系统函数 ROC 包含单位圆在内**。
