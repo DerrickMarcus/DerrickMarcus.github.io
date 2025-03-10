@@ -91,7 +91,7 @@ a_2 & b_2 & c_2\\
 & & a_{n-1} & b_{n-1} & c_{n-1}\\
 & & & a_n & b_n
 \end{bmatrix}
-=
+=\\
 \begin{bmatrix}
 \beta_1\\
 a_2 & \beta_2\\

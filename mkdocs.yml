@@ -213,12 +213,12 @@ nav:
       - index.md
       - about.md
   - Course Notes:
-      - course_notes/index_notes.md
+      - About: course_notes/about_notes.md
       - 信号与系统:
           - 05-傅里叶变换应用于通信系统: course_notes/signal_system/chapter5.md
           - 06-信号的矢量空间: course_notes/signal_system/chapter6.md
           - 07-离散时间系统的时域分析: course_notes/signal_system/chapter7.md
-          - 08-z变换、离散时间系统z域分析: course_notes/signal_system/chapter8.md
+          - 08-z变换与离散时间系统z域分析: course_notes/signal_system/chapter8.md
           - 11-反馈系统: course_notes/signal_system/chapter11.md
           - 12-系统的状态变量分析: course_notes/signal_system/chapter12.md
       - 数字图像处理:
@@ -233,7 +233,7 @@ nav:
           - 01-晶体的结构: course_notes/solid_physics/chapter1.md
           - 课后测试题: course_notes/solid_physics/test.md
   - Course Labs:
-      - course_labs/index_labs.md
+      - About: course_labs/about_labs.md
       - 数据与算法:
           - OJ-1: course_labs/data_algorithm/oj1.md
           - OJ-2: course_labs/data_algorithm/oj2.md
@@ -246,18 +246,17 @@ nav:
           - OJ-9: course_labs/data_algorithm/oj9.md
           - OJ-10: course_labs/data_algorithm/oj10.md
   - Research:
-      - research/index_research.md
+      - About: research/about_research.md
       - Robot:
-          - About: research/robot/about.md
+          - About: research/robot/about_robot.md
           - ROS basic: research/robot/ros_basic.md
           - Gazebo: research/robot/gazebo.md
           - Catkin Tool: research/robot/catkin.md
           - SLAM: research/robot/slam.md
           - LIO-SAM: research/robot/liosam.md
   - Railway:
-      - railway/index_railway.md
-      - China Railway:
-          - 动车组列车: railway/china_railway/high_speed.md
-          - 铁路局: railway/china_railway/group.md
-          - 车站: railway/china_railway/station.md
-          - 其他: railway/china_railway/else.md
+      - About: railway/about_railway.md
+      - 动车组列车: railway/high_speed.md
+      - 铁路局: railway/group.md
+      - 车站: railway/station.md
+      - 其他: railway/else.md

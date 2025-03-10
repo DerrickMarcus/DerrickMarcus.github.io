@@ -79,9 +79,9 @@ rosbag play bag_name -r 3 # 以3倍速率播放
 
 该项目的主要功能：在机器人模型中添加 16线激光雷达、IMU、RGB-D 相机，然后使用 LIO-SAM 建图，其中小车的移动使用 ros 包 teleop_twist_keyboard 实现，后期笔者考虑在项目中添加 SLAM 算法，实现机器小车的自主路径规划和导航。
 
-环境要求：Ubuntu 20.04 + ROS1 Noetic
+环境要求：Ubuntu 20.04 + ROS1 Noetic。
 
-软件包要求，参见章节 “LIO-SAM 部署”
+软件包要求，参见章节 “LIO-SAM 部署”。
 
 在终端中运行：
 
@@ -99,7 +99,7 @@ catkin_make
 roslaunch scout_gazebo scout_gazebo.launch
 ```
 
-启动 Rviz 界面
+启动 Rviz 界面：
 
 ```bash
 roslaunch lio_sam run.launch
@@ -118,7 +118,7 @@ savePCD: true
 savePCDDirectory: "/robot_ws/src/pcd_maps/"
 ```
 
-完成见图之后到对应目录查看
+完成见图之后到对应目录查看：
 
 ```bash
 pcl_viewer xxx.pcd
