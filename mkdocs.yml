@@ -261,13 +261,14 @@ nav:
   - Computer Basic:
       - About: computer_basic/about_computer.md
       - Environment:
-          - About: computer_basic/environment/about.md
+          - About: computer_basic/environment/about_environment.md
           - Python: computer_basic/environment/python.md
           - JavaScript: computer_basic/environment/javascript.md
   - Else:
-      - About: railway/about_else.md
+      - About: else/about_else.md
       - Railway:
-          动车组列车: railway/high_speed.md
-          铁路局: railway/group.md
-          车站: railway/station.md
-          其他: railway/else.md
+          - About: else/railway/about_railway.md
+          - 动车组列车: else/railway/high_speed.md
+          - 铁路局: else/railway/group.md
+          - 车站: else/railway/station.md
+          - 其他: else/railway/else.md
