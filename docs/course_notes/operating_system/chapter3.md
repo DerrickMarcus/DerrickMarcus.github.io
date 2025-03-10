@@ -60,7 +60,7 @@ PCB表的组织方式：
 3. 就绪-->运行：调度程序选择该进程运行。
 4. 阻塞-->就绪：所等待的事件发生。
 
-![chapter3_img1](../../assets/images/course_notes/operating_system/ch3_img1.png)
+![ch3_img1](../../assets/images/course_notes/operating_system/ch3_img1.png)
 
 我们认为不存在另外两种情况。“就绪-->阻塞”不可能发生，某些 OS 可能存在“阻塞-->运行”。
 

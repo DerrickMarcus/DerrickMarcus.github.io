@@ -3,9 +3,11 @@
 ## Description
 
 考虑如下的带限矩阵方程组：
+
 $$
 AX=Z
 $$
+
 其中![img](http://oj.ee.tsinghua.edu.cn/media/ckeditor_uploads/2023/11/23/2023-11-23-230051.png)为带限的三对角或五对角矩阵，若为三对角矩阵则有以下形式：
 
 ![img](http://oj.ee.tsinghua.edu.cn/media/ckeditor_uploads/2023/11/23/2023-11-23-230003.png)
@@ -65,18 +67,22 @@ Memory: 1500KB
 ## Solution
 
 （1）矩阵A作用于X的第i个列向量，得到Z的第i个列向量。
+
 $$
 AX=Z \\
 Ax_i=z_i
 $$
+
 因此可以每读入一个Z的列向量，计算出X对应的列向量，进行输出。
 
 （2）对矩阵A进行LU分解：
+
 $$
 A=LU
 $$
 
 LU分解如下：
+
 $$
 \begin{bmatrix}
 b_1 & c_1 \\
@@ -93,6 +99,7 @@ a_2 & \beta_2\\
 & & a_{n-1} & \beta_{n-1}\\
 & & & a_n & \beta_n
 \end{bmatrix}
+
 \begin{bmatrix}
 1 & \gamma_1 \\
 & 1 & \gamma_2\\
@@ -101,7 +108,9 @@ a_2 & \beta_2\\
 & & & & 1
 \end{bmatrix}
 $$
+
 递推公式为：
+
 $$
 \beta_1=b_1,\ \gamma_1=\frac{c_1}{b_1}\\
 \beta_i=b_i-a_i\gamma_{i-1},\ \gamma_i=\frac{c_i}{\beta_i}
@@ -110,10 +119,13 @@ $$
 因此只需将数组 `b[n]` 替换为 `β[n]`，将数组 `c[n-1]` 替换为 `γ[n-1]`，即可求出 LU 分解。
 
 先通过前向回代，求解：
+
 $$
 Ly=z
 $$
+
 再通过后向回代，求解：
+
 $$
 Ux=y
 $$
@@ -123,20 +135,7 @@ $$
 （2）对于五对角矩阵，可以采取大致相同的思路，是不过稍微复杂一点：
 
 LU分解如下：
-$$
-\begin{bmatrix}
-c_1 & d_1 & e_1\\
-b_2 & c_2 & d_2 & e_2\\
-a_3 & b_3 & c_3 & d_3 & e_3\\
-& a_4 & b_4 & c_4 & d_4 & e_4\\
-& & \ddots & \ddots & \ddots & \ddots & \ddots\\
-& & & \ddots & \ddots & \ddots & \ddots & \ddots\\
-& & & & a_{n-2} & b_{n-2} & c_{n-2} & d_{n-2} & e_{n-2}\\
-& & & & & a_{n-1} & b_{n-1} & c_{n-1} & d_{n-1}\\
-& &  && & & a_n & b_n & c_n\\
-\end{bmatrix}
-=
-$$
+
 ![img](http://oj.ee.tsinghua.edu.cn/media/ckeditor_uploads/2023/11/23/2023-11-23-230031.png)
 
 ![oj7_solution1](../../assets/images/course_labs/data_algorithm/oj7_solution1.png)

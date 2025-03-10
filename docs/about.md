@@ -4,4 +4,4 @@
 
 😄 I'm interested in computer science and information system.
 
-👀 You can find me by [Github](https://github.com/DerrickMarcus) or [Bilibili](https://space.bilibili.com/627449965), or use email to contact me.
+👀 You can find me by [Github](https://github.com/DerrickMarcus) or [Bilibili](https://space.bilibili.com/627449965), or use [email](mailto:chenyanx22@mails.tsinghua.edu.cn) to contact me.
