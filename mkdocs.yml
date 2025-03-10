@@ -15,7 +15,7 @@ copyright: Copyright &copy; 2024-2025 Yanxu Chen
 # Configuration
 theme:
   name: material
-  language: zh
+  language: en
 
   palette:
     - scheme: default
@@ -180,32 +180,33 @@ extra_javascript:
   # - https://unpkg.com/katex@0/dist/contrib/auto-render.min.js
   # - https://unpkg.com/katex@0/dist/contrib/mhchem.min.js
 
-  # - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js
-  # - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js
-  # - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/mhchem.min.js
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/mhchem.min.js
 
-  - https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js
-  - https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js
-  - https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/mhchem.min.js
+  # - https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js
+  # - https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js
+  # - https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/mhchem.min.js
 
   - javascripts/mathjax.js
   # - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
-  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
-  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js
-  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js
-  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg-full.js
-  - https://cdn.jsdelivr.net/npm/plantuml-encoder@1.4.0/dist/plantuml-encoder.min.js
-  - https://polyfill.io/v3/polyfill.min.js?features=es6
 
-  # - https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-mml-chtml.js
-  # - https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-chtml.js
-  # - https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-chtml-full.js
-  # - https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-svg-full.js
+  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-mml-chtml.js
+  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-chtml.js
+  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-chtml-full.js
+  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-svg-full.js
+
+  # - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+  # - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js
+  # - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js
+  # - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg-full.js
+  # - https://cdn.jsdelivr.net/npm/plantuml-encoder@1.4.0/dist/plantuml-encoder.min.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
 
 extra_css:
   # - https://unpkg.com/katex@0/dist/katex.min.css
-  # - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css
-  - https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css
+  # - https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css
 
 # Page tree
 nav:
@@ -229,8 +230,10 @@ nav:
           - 01-绪论(1): course_notes/operating_system/chapter1.md
           - 02-绪论(2): course_notes/operating_system/chapter2.md
           - 03-进程的描述与控制: course_notes/operating_system/chapter3.md
+          - 04-线程及其实现: course_notes/operating_system/chapter4.md
       - 固体物理:
           - 01-晶体的结构: course_notes/solid_physics/chapter1.md
+          - 02-固体的结合: course_notes/solid_physics/chapter2.md
           - 课后测试题: course_notes/solid_physics/test.md
   - Course Labs:
       - About: course_labs/about_labs.md
@@ -254,9 +257,17 @@ nav:
           - Catkin Tool: research/robot/catkin.md
           - SLAM: research/robot/slam.md
           - LIO-SAM: research/robot/liosam.md
-  - Railway:
-      - About: railway/about_railway.md
-      - 动车组列车: railway/high_speed.md
-      - 铁路局: railway/group.md
-      - 车站: railway/station.md
-      - 其他: railway/else.md
+          - Kalman Filter: research/robot/kalman_filter.md
+  - Computer Basic:
+      - About: computer_basic/about_computer.md
+      - Environment:
+          - About: computer_basic/environment/about.md
+          - Python: computer_basic/environment/python.md
+          - JavaScript: computer_basic/environment/javascript.md
+  - Else:
+      - About: railway/about_else.md
+      - Railway:
+          动车组列车: railway/high_speed.md
+          铁路局: railway/group.md
+          车站: railway/station.md
+          其他: railway/else.md
