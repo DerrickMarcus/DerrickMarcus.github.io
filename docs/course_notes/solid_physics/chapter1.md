@@ -69,11 +69,9 @@
 **原胞体积的求法：惯用晶胞的体积除以所含格点数（因为原胞只含一个格点）。**
 
 原胞边矢量 $(\alpha_1,\alpha_2,\alpha_3)$ 称为**晶格基矢**，构成一组完备基，在设定某一格点为原点后，点阵中任一格点的位置都可以表示成：
-
 $$
-R=n_1\alpha_1+n_2\alpha_2+n_3\alpha_3
+\vec{R}=n_1\vec{\alpha}_1+n_2\vec{\alpha}_2+n_3\vec{\alpha}_3
 $$
-
 而惯用晶胞的边矢量 $a_1,a_2,a_3$ 通常为坐标系的轴方向 $(i,j,k)$ 。
 
 **牢记简单立方、体心立方、面心立方中，晶格基矢与惯用晶胞边矢量的线性表示关系。这里没有六角密排是因为他不是布拉菲格子。**
@@ -81,33 +79,31 @@ $$
 坐标系单位方向矢量为 $(i,j,k)$。
 
 简单立方：
-
 $$
-\alpha_1=a\vec{i}
+\vec{\alpha}_1=a\vec{i}
 \\
-\alpha_2=a\vec{j}
+\vec{\alpha}_2=a\vec{j}
 \\
-\alpha_3=a\vec{k}
+\vec{\alpha}_3=a\vec{k}
 $$
-
 体心立方：
 
 $$
-\alpha_1=\frac a2(-\vec{i}+\vec{j}+\vec{k})
+\vec{\alpha}_1=\frac a2(-\vec{i}+\vec{j}+\vec{k})
 \\
-\alpha_2=\frac a2(\vec{i}-\vec{j}+\vec{k})
+\vec{\alpha}_2=\frac a2(\vec{i}-\vec{j}+\vec{k})
 \\
-\alpha_3=\frac a2(\vec{i}+\vec{j}-\vec{k})
+\vec{\alpha}_3=\frac a2(\vec{i}+\vec{j}-\vec{k})
 $$
 
 面心立方：
 
 $$
-\alpha_1=\frac a2(\vec{j}+\vec{k})
+\vec{\alpha}_1=\frac a2(\vec{j}+\vec{k})
 \\
-\alpha_2=\frac a2(\vec{i}+\vec{k})
+\vec{\alpha}_2=\frac a2(\vec{i}+\vec{k})
 \\
-\alpha_3=\frac a2(\vec{i}+\vec{j})
+\vec{\alpha}_3=\frac a2(\vec{i}+\vec{j})
 $$
 
 堆积比/致密度（packing ratio）：注意计算，体心立方中体对角线长为 $4r$ ，面心立方中面对角线长为 $4r$ ，六角密排中按照上下两个小正四面体计算。
@@ -148,37 +144,37 @@ $$
 
 ## 1.4 倒格子与布里渊区
 
-正格矢：$R_n=n_1\alpha_1+n_2\alpha_2+n_3\alpha_3$，晶格基矢表示。
+正格矢：$\vec{R}_n=n_1\vec{\alpha}_1+n_2\vec{\alpha}_2+n_3\vec{\alpha}_3$，晶格基矢表示。
 
-倒格矢：$G_h=h_1\beta_1+h_2\beta_2+h_3\beta_3$。$G_h$ 端点构成倒格子。
+倒格矢：$\vec{G}_h=h_1\vec{\beta}_1+h_2\vec{\beta}_2+h_3\vec{\beta}_3$。$G_h$ 端点构成倒格子。
 
-满足关系 $G_h \cdot R_h=2\pi m$，且 $\alpha_i\cdot\beta_j=2\pi\delta_{ij}$。
+满足关系 $\vec{G}_h \cdot \vec{R}_h=2\pi m$，且 $\vec{\alpha}_i\cdot \vec{\beta}_j=2\pi\delta_{ij}$。
 
 $$
-\beta_1 = 2\pi \frac{\vec{\alpha}_2 \times \vec{\alpha}_3}{\vec{\alpha}_1 \cdot [\vec{\alpha}_2 \times \vec{\alpha}_3]}
+\vec{\beta}_1 = 2\pi \frac{\vec{\alpha}_2 \times \vec{\alpha}_3}{\vec{\alpha}_1 \cdot (\vec{\alpha}_2 \times \vec{\alpha}_3)}
 \\
-\beta_2 = 2\pi \frac{\vec{\alpha}_3 \times \vec{\alpha}_1}{\vec{\alpha}_2 \cdot [\vec{\alpha}_3 \times \vec{\alpha}_1]}
+\vec{\beta}_2 = 2\pi \frac{\vec{\alpha}_3 \times \vec{\alpha}_1}{\vec{\alpha}_2 \cdot (\vec{\alpha}_3 \times \vec{\alpha}_1)}
 \\
-\beta_3 = 2\pi \frac{\vec{\alpha}_1 \times \vec{\alpha}_2}{\vec{\alpha}_3 \cdot [\vec{\alpha}_1 \times \vec{\alpha}_2]}
+\vec{\beta}_3 = 2\pi \frac{\vec{\alpha}_1 \times \vec{\alpha}_2}{\vec{\alpha}_3 \cdot (\vec{\alpha}_1 \times \vec{\alpha}_2)}
 $$
 
 体心立方的倒格子是面心立方，面心立方的倒格子是体心立方。简单立方的倒格子是简单立方。
 
 倒格矢与晶面的关系：
 
-(1) 晶面 $(h_1,h_2,h_3)$ 与对应系数的倒格矢 $G_h=h_1\beta_1+h_2\beta_2+h_3\beta_3$ 正交。
+(1) 晶面 $(h_1,h_2,h_3)$ 与对应系数的倒格矢 $\vec{G}_h=h_1\vec{\beta}_1+h_2\vec{\beta}_2+h_3\vec{\beta}_3$ 正交。
 
-(2) 若正格子晶面系 $(h_1,h_2,h_3)$ 的面间距为 $d$，则倒格矢 $G_h$ 长度为 $2\pi/d$。
+(2) 若正格子晶面系 $(h_1,h_2,h_3)$ 的面间距为 $d$，则倒格矢 $\vec{G}_h$ 长度为 $\dfrac{2\pi}{d}$。
 
 布里渊区：倒格子空间中以某倒格点为中心，由中心格点到相邻格点的连线的垂直平分面所围成的多面体。第一布里渊区为倒格空间的原胞。
 
-第n+1布里渊区：从原点出发经过n个中垂面(或中垂线)才能到达的区域(n为正整数)。不同布里渊区的体积相等。
+第n+1布里渊区：从原点出发经过n个中垂面(或中垂线)才能到达的区域(n为正整数)。穿过交点的时候也要算交叉面的数量。**不同布里渊区的体积相等**。
 
 ## 1.5 晶格结构的观测
 
-布拉格定律：$2d\sin\theta=n\lambda,\;n\in \mathbb{Z}$。波长必须小于 $2d$。
+布拉格定律：$2d\sin\theta=n\lambda,\;n\in \mathbb{Z}$。$\theta$ 为入射波与晶面的夹角。波长必须小于 $2d$ 才能出现衍射。
 
-波粒二象性：$\lambda=h/p$。
+波粒二象性：$\lambda=\dfrac{h}{p}$。
 
 不是所有的晶面都能观测到衍射峰——衍射峰的消光现象。出现衍射峰的晶面：
 
@@ -188,4 +184,4 @@ $$
 
 其他晶面由于消光不会出现衍射峰。
 
-劳厄衍射方程：$\vec{R}_l\cdot(\vec{k}_2-\vec{k}_1)=2\pi n$。
+劳厄衍射方程：$\vec{R}_l\cdot(\vec{k}_2-\vec{k}_1)=2\pi n$。存在一个倒格矢与其对应：$\vec{G}=\vec{k}_2-\vec{k}_1$，一个空间的周期性结构相当于一个虚拟波，与入射波合成为衍射波。有 $|\vec{k}_1|\sin\theta=\dfrac12|\vec{G}|$。
