@@ -18,18 +18,24 @@ theme:
   language: en
 
   palette:
-    - scheme: default
-      primary: teal
-      accent: teal
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/theme-light-dark
+        name: Switch to light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: blue grey
+      accent: blue grey
       toggle:
         icon: material/weather-sunny
-        name: switch to light mode
-    - scheme: slate
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
       primary: black
       accent: black
       toggle:
         icon: material/weather-night
-        name: switch to dark mode
+        name: Switch to system preference
 
   font:
     text: Roboto
