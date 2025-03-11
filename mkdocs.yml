@@ -91,7 +91,7 @@ plugins:
       fallback_to_build_date: true
       enable_creation_date: true
       type: date
-      locale: zh
+      locale: en
       timezone: Asia/Shanghai
   - git-authors:
       show_contribution: true
@@ -121,6 +121,12 @@ extra:
     - icon: fontawesome/brands/bilibili
       link: https://space.bilibili.com/627449965
       name: Yanxu Chen on Bilibili
+    - icon: fontawesome/brands/zhihu
+      link: https://www.zhihu.com/people/quz9pb
+      name: Yanxu Chen on Zhihu
+    - icon: fontawesome/brands/google
+      link: mailto:derick.julius.921@gmail.com
+      name: Yanxu Chen on Gmail
 
 # Extensions
 markdown_extensions:
@@ -176,6 +182,7 @@ markdown_extensions:
 
 extra_javascript:
   - javascripts/katex.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
   # - https://unpkg.com/katex@0/dist/katex.min.js
   # - https://unpkg.com/katex@0/dist/contrib/auto-render.min.js
   # - https://unpkg.com/katex@0/dist/contrib/mhchem.min.js
@@ -190,6 +197,9 @@ extra_javascript:
 
   - javascripts/mathjax.js
   # - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+  # - https://unpkg.com/mathjax@3/es5/tex-chtml.js
+  # - https://unpkg.com/mathjax@3/es5/tex-chtml-full.js
+  # - https://unpkg.com/mathjax@3/es5/tex-svg-full.js
 
   - https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-mml-chtml.js
   - https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-chtml.js
@@ -200,8 +210,7 @@ extra_javascript:
   # - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js
   # - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js
   # - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg-full.js
-  # - https://cdn.jsdelivr.net/npm/plantuml-encoder@1.4.0/dist/plantuml-encoder.min.js
-  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - javascripts/toc.js
 
 extra_css:
   # - https://unpkg.com/katex@0/dist/katex.min.css
