@@ -249,6 +249,7 @@ nav:
       - 固体物理:
           - 01-晶体的结构: course_notes/solid_physics/chapter1.md
           - 02-固体的结合: course_notes/solid_physics/chapter2.md
+          - 03-固体电子论: course_notes/solid_physics/chapter3.md
           - 课后测试题: course_notes/solid_physics/test.md
   - Course Labs:
       - About: course_labs/about_labs.md
