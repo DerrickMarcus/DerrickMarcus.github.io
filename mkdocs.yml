@@ -246,6 +246,8 @@ nav:
           - 02-绪论(2): course_notes/operating_system/chapter2.md
           - 03-进程的描述与控制: course_notes/operating_system/chapter3.md
           - 04-线程及其实现: course_notes/operating_system/chapter4.md
+          - 05-互斥和同步(1): course_notes/operating_system/chapter5.md
+          - 06-互斥和同步(2): course_notes/operating_system/chapter6.md
       - 固体物理:
           - 01-晶体的结构: course_notes/solid_physics/chapter1.md
           - 02-固体的结合: course_notes/solid_physics/chapter2.md
@@ -287,4 +289,6 @@ nav:
           - 动车组列车: else/railway/high_speed.md
           - 铁路局: else/railway/group.md
           - 车站: else/railway/station.md
+          - 本人行程记录: else/railway/my_journey.md
+          - 运转日记: else/railway/diary.md
           - 其他: else/railway/else.md

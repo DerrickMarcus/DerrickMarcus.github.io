@@ -2,7 +2,7 @@
 
 ## 1. Install Anaconda/Miniconda
 
-均内置python，搭配conda包管理。
+Anaconda 和 Miniconda 均内置python，搭配conda包管理。
 
 **Anaconda**自带常用库，有图形化管理界面。
 
@@ -112,8 +112,8 @@ conda update Anaconda
 
   "[python]": {
     "editor.tabSize": 4,
-    // "editor.defaultFormatter": "ms-python.black-formatter",
-    "editor.defaultFormatter": "charliermarsh.ruff",//这句话下载了ruff插件才能生效
+    // "editor.defaultFormatter": "ms-python.black-formatter", // 需要下载 black 插件
+    "editor.defaultFormatter": "charliermarsh.ruff", // 需要下载 ruff 插件
     "editor.formatOnPaste": true,
     "editor.formatOnSaveMode": "file",
     "editor.formatOnSave": true,
@@ -130,24 +130,9 @@ conda update Anaconda
   },
 ```
 
-可以下载code runner插件，方便运行。下载后添加如下配置：
-
-```json
-//code runner插件
-  "code-runner.executorMap": {
-    "python": "set PYTHONIOENCODING=utf8 && $pythonPath -u $fullFileName",
-  },
-  "code-runner.clearPreviousOutput": false,
-  "code-runner.showExecutionMessage": true,
-  "code-runner.saveFileBeforeRun": true, //运行前自动保存
-  "code-runner.runInTerminal": false, //是否在vscode终端中运行
-```
-
-之后就可以愉快地调试和运行了
-
 ## 3. Configure PyCharm
 
-下载安装过程略（注意添加环境变量）
+下载安装过程略（注意添加环境变量）。
 
 新建python项目，选择添加本地解释器——Conda环境，在conda可执行文件中选择：（对照自己的路径）
 
@@ -159,10 +144,10 @@ E:\miniconda3\Scripts\conda.exe
 
 ## Else
 
-血泪教训：又遇到无论如何包都会下载到base环境的问题，无法指向虚拟环境，目前的解决办法是
+血泪教训：又遇到无论如何包都会下载到base环境的问题，无法指向虚拟环境，目前的解决办法是：
 
 ```bash
-conda create -n test python=3.9 #可指定python版本，-n等同于--name
+conda create -n test python=3.9 # 可指定python版本，-n等同于--name
 ```
 
-创建虚拟环境时带上python的版本号
+创建虚拟环境时带上python的版本号。
