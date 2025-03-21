@@ -286,9 +286,10 @@ nav:
       - About: else/about_else.md
       - Railway:
           - About: else/railway/about_railway.md
-          - 动车组列车: else/railway/high_speed.md
+          - 复兴号: else/railway/cr.md
+          - 和谐号: else/railway/crh.md
           - 铁路局: else/railway/group.md
           - 车站: else/railway/station.md
-          - 本人行程记录: else/railway/my_journey.md
+          - 行程记录: else/railway/journey.md
           - 运转日记: else/railway/diary.md
           - 其他: else/railway/else.md
