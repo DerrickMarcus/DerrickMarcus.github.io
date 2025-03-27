@@ -1,3 +1,7 @@
+---
+comments: true
+---
+
 # Robot Navigation and SLAM
 
 五项关键技术：全局地图，自身定位，路径规划，运动控制，环境感知。

@@ -1,3 +1,7 @@
+---
+comments: true
+---
+
 # OJ4：缺损二叉树
 
 ## Description

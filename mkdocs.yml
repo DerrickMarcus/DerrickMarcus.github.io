@@ -10,11 +10,12 @@ repo_name: DerrickMarcus.github.io
 edit_uri: edit/main/docs/
 
 # Copyright
-copyright: Copyright &copy; 2024-2025 Yanxu Chen
+copyright: Copyright &copy; 2024 - 2025 Yanxu Chen
 
 # Configuration
 theme:
   name: material
+  custom_dir: overrides
   language: en
 
   palette:
@@ -88,15 +89,10 @@ plugins:
         - zh
         - en
       separator: '[\s\u200b\-_,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
-      prebuild_index: true
-      indexing:
-        - full_sections: false
-        - headings: true
-        - content: true
   - git-revision-date-localized:
-      fallback_to_build_date: true
+      type: iso_date
+      fallback_to_build_date: false
       enable_creation_date: true
-      type: date
       locale: en
       timezone: Asia/Shanghai
   - git-authors:
@@ -108,7 +104,7 @@ plugins:
       minify_css: true
       htmlmin_opts:
         remove_comments: true
-  - toc
+  # - toc
   - offline
   - tags
   - callouts
@@ -127,9 +123,6 @@ extra:
     - icon: fontawesome/brands/bilibili
       link: https://space.bilibili.com/627449965
       name: Yanxu Chen on Bilibili
-    - icon: fontawesome/brands/zhihu
-      link: https://www.zhihu.com/people/quz9pb
-      name: Yanxu Chen on Zhihu
     - icon: fontawesome/brands/google
       link: mailto:derick.julius.921@gmail.com
       name: Yanxu Chen on Gmail
@@ -147,7 +140,6 @@ markdown_extensions:
   - toc:
       permalink: true
       toc_depth: 3
-
   - pymdownx.arithmatex:
       generic: true
   - pymdownx.highlight:
@@ -164,7 +156,10 @@ markdown_extensions:
       custom_fences:
         - name: mermaid
           class: mermaid
-          format: !!python/name:pymdownx.superfences.fence_div_format
+          format: !!python/name:pymdownx.superfences.fence_code_format
+        - name: math
+          class: arithmatex
+          format: !!python/name:pymdownx.arithmatex.fence_mathjax_format
   - pymdownx.betterem
   - pymdownx.magiclink
   - pymdownx.mark
@@ -185,6 +180,17 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
       clickable_checkbox: true
+  - pymdownx.blocks.details:
+      types:
+        - name: info
+          class: terminal-alert
+          title: Info
+        - name: warning
+          class: "terminal-alert terminal-alert-error"
+          title: Warning
+        - name: important
+          class: "terminal-alert terminal-alert-primary"
+          title: Important
 
 extra_javascript:
   - javascripts/katex.js
@@ -217,6 +223,7 @@ extra_javascript:
   # - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js
   # - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg-full.js
   - javascripts/toc.js
+  - javascripts/time_diff.js
 
 extra_css:
   # - https://unpkg.com/katex@0/dist/katex.min.css
@@ -241,6 +248,7 @@ nav:
           - 01-图像处理概述: course_notes/digital_image/chapter1.md
           - 02-图像信息与视觉感知: course_notes/digital_image/chapter2.md
           - 03-空域图像增强: course_notes/digital_image/chapter3.md
+          - 04-频域图像增强: course_notes/digital_image/chapter4.md
       - 操作系统:
           - 01-绪论(1): course_notes/operating_system/chapter1.md
           - 02-绪论(2): course_notes/operating_system/chapter2.md

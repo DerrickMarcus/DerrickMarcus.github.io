@@ -1,3 +1,7 @@
+---
+comments: true
+---
+
 # Python Environment in Windows
 
 ## 1. Install Anaconda/Miniconda
@@ -78,24 +82,24 @@ index-url = https://pypi.tuna.tsinghua.edu.cn/simple
 trusted-host = pypi.tuna.tsinghua.edu.cn
 ```
 
-保存文件，重命名修改扩展名，最后命名为**pip.ini**。
+保存文件，重命名并修改扩展名，最后命名为**pip.ini**。
 
 仍在上述Anaconda Prompt，conda常用环境命令如下：
 
 ```bash
-conda create -n test python=3.9 #可指定python版本，-n等同于--name
-conda activate test #进入名为test的虚拟环境
-conda deactivate #退出当前环境，回到base
+conda create -n test python=3.9 # 指定python版本，-n等同于--name
+conda activate test # 激活test虚拟环境
+conda deactivate # 退出当前环境，回到base
 conda env list
 conda info -e
-conda info --envs #上面三个均为查看环境信息，输出内容中带星号*的为当前所在环境
-conda remove -n test --all #删除test环境
-conda config --show #显示conda配置
-conda update conda
+conda info --envs # 上面3个均为查看环境信息，输出中带星号*的为当前所在环境
+conda remove -n test --all # 删除test环境
+conda config --show # 显示conda配置
+conda update conda # 更新conda
 conda update Anaconda
 ```
 
-**注意：后续各种包的安装、更新建议全部使用 pip，避免 pip 和 conda 混用。**
+**注意：除了使用 conda 创建环境以外，后续建议使用 pip 安装和更新软件包，避免 pip 和 conda 混用。**
 
 ## 2. Configure VS Code
 
@@ -147,7 +151,7 @@ E:\miniconda3\Scripts\conda.exe
 血泪教训：又遇到无论如何包都会下载到base环境的问题，无法指向虚拟环境，目前的解决办法是：
 
 ```bash
-conda create -n test python=3.9 # 可指定python版本，-n等同于--name
+conda create -n test python=3.9 # 指定python版本，-n等同于--name
 ```
 
-创建虚拟环境时带上python的版本号。
+也就是一定要在创建虚拟环境时指定python的版本号，否则创建好的环境会和 base 环境混在一起。

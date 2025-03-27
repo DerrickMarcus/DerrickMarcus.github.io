@@ -1,3 +1,7 @@
+---
+comments: true
+---
+
 # Deploy LIO-SAM
 
 ## Reproduce the project 复现项目

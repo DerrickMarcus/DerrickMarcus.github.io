@@ -1,3 +1,7 @@
+---
+comments: true
+---
+
 # About Course Labs
 
 这里存档一些课程的大作业或实验项目。

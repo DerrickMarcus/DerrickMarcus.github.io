@@ -1,3 +1,7 @@
+---
+comments: true
+---
+
 # OJ5：信息传递
 
 ## Description

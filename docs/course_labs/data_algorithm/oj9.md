@@ -1,3 +1,7 @@
+---
+comments: true
+---
+
 # OJ9：小明的火车旅行计划
 
 ## Description

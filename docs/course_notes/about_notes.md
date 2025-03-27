@@ -1,3 +1,7 @@
+---
+comments: true
+---
+
 # About Course Notes
 
 记录一些课程笔记。

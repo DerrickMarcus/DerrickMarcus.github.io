@@ -1,3 +1,7 @@
+---
+comments: true
+---
+
 # OJ8：缺失数据恢复
 
 ## Description

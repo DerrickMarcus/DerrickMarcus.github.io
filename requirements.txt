@@ -1,6 +1,10 @@
 mkdocs
 mkdocs-material
 mkdocs-material-extensions
+markdown
+pygments
+pymdown-extensions
+jinja2
 mkdocs-git-authors-plugin
 mkdocs-git-revision-date-localized-plugin
 mkdocs-minify-plugin
@@ -13,8 +17,6 @@ mkdocs-callouts
 mkdocs-changelog-plugin
 mkdocs-video
 mkdocs-bi-directional-links
+mkdocs-mermaid2-plugin
+mkdocs-macros-plugin
 rich
-markdown
-pygments
-pymdown-extensions
-jinja2
