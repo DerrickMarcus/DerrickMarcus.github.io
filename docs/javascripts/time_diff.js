@@ -8,8 +8,8 @@ function updateTimeDiff() {
     const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-    document.getElementById("time-diff-zh").innerHTML = `本站已经运行 ${days} 天 ${hours} 小时 ${minutes} 分钟 ${seconds} 秒`;
-    document.getElementById("time-diff-en").innerHTML = `This site has been running for ${days} days ${hours} hours ${minutes} minutes ${seconds} seconds`;
+    document.getElementById("time-diff-zh").innerHTML = `本站已经运行 ${days} 天 ${hours} 小时 ${minutes} 分钟 ${seconds} 秒。`;
+    document.getElementById("time-diff-en").innerHTML = `This site has been running for ${days} days ${hours} hours ${minutes} minutes ${seconds} seconds.`;
 }
 
 setInterval(updateTimeDiff, 1000); // 每秒更新一次

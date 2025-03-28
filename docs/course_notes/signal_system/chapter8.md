@@ -16,11 +16,11 @@ z=e^{sT},\quad s=\frac{1}{T}\ln z
 T=1 \implies X(z)=\sum_{n=0}^{\infty} x(n)z^{-n}
 $$
 
-![2024春信号与系统22第二十讲8.1-8.5_06](../../assets/images/course_notes/signal_system/ch8_img1.png)
+![2024春信号与系统22第二十讲8.1-8.5_06](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/ch8_img1.png)
 
 也可以由洛朗级数引出（~~又到了最喜欢的复变~~）。
 
-![2024春信号与系统22第二十讲8.1-8.5_07](../../assets/images/course_notes/signal_system/ch8_img2.png)
+![2024春信号与系统22第二十讲8.1-8.5_07](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/ch8_img2.png)
 
 单边 z 变换：
 
@@ -82,11 +82,11 @@ $\rho<1$ 收敛，$\rho>1$ 发散，$\rho=1$ 不确定。
 
 4. 双边序列：圆环，$R_{x1}<|z|<R_{x2}$。​
 
-![ch8_img3](../../assets/images/course_notes/signal_system/ch8_img3.png)
+![ch8_img3](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/ch8_img3.png)
 
-![ch8_img4](../../assets/images/course_notes/signal_system/ch8_img4.png)
+![ch8_img4](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/ch8_img4.png)
 
-![2024春信号与系统22第二十讲8.1-8.5_19](../../assets/images/course_notes/signal_system/ch8_img5.png)
+![2024春信号与系统22第二十讲8.1-8.5_19](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/ch8_img5.png)
 
 ## 3. 逆 z 变换
 
@@ -189,7 +189,7 @@ $$
 
 （在某些点发生跳变似乎要单独讨论......但这似乎不重要）
 
-![2024春信号与系统23第二十一讲8.6-8.8_04](../../assets/images/course_notes/signal_system/ch8_img6.png)
+![2024春信号与系统23第二十一讲8.6-8.8_04](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/ch8_img6.png)
 
 z 平面与 s 平面的映射关系：（T 为序列的时间间隔）
 
@@ -213,7 +213,7 @@ s 平面的实轴对应 z 平面正实轴，s 平面平行于实轴的直线对�
 
 s 平面沿虚轴移动，z 平面上绕单位圆周期旋转。每平移 $\omega_s$ ，沿单位圆绕一圈，因此一个 z 值对应多个 s 值。
 
-![2024春信号与系统23第二十一讲8.6-8.8_09](../../assets/images/course_notes/signal_system/ch8_img7.png)
+![2024春信号与系统23第二十一讲8.6-8.8_09](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/ch8_img7.png)
 
 **查表：课本 P80，表8-7 常用信号的 LT 与 ZT。**
 
@@ -251,11 +251,11 @@ $$
 
 “大圆图”，课本 P86。
 
-![2024春信号与系统23第二十一讲8.6-8.8_36](../../assets/images/course_notes/signal_system/ch8_img8.png)
+![2024春信号与系统23第二十一讲8.6-8.8_36](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/ch8_img8.png)
 
-![2024春信号与系统23第二十一讲8.6-8.8_37](../../assets/images/course_notes/signal_system/ch8_img9.png)
+![2024春信号与系统23第二十一讲8.6-8.8_37](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/ch8_img9.png)
 
-![2024春信号与系统23第二十一讲8.6-8.8_38](../../assets/images/course_notes/signal_system/ch8_img10.png)
+![2024春信号与系统23第二十一讲8.6-8.8_38](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/ch8_img10.png)
 
 ### 从 z 域考察离散时间系统的因果性和稳定性
 
@@ -282,7 +282,7 @@ $$
 
 这也限制了**所有极点都在单位圆内**。
 
-![2024春信号与系统23第二十一讲8.6-8.8_40](../../assets/images/course_notes/signal_system/ch8_img11.png)
+![2024春信号与系统23第二十一讲8.6-8.8_40](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/ch8_img11.png)
 
 ## 9. 序列的傅里叶变换（DTFT）
 
@@ -325,7 +325,7 @@ DTFT 存在的充分条件：序列 $x(n)$ 绝对可和。必要条件至今未�
 8. 帕塞瓦尔定理：能量守恒。
 9. 共轭： $x^*(n)\iff X^*(e^{-\mathrm{j}\omega})$ 。因此对于实函数： $X(e^{\mathrm{j}\omega})=X^*(e^{-\mathrm{j}\omega})$
 
-![第4章离散信号傅里叶分析_21](../../assets/images/course_notes/signal_system/ch8_img12.png)
+![第4章离散信号傅里叶分析_21](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/ch8_img12.png)
 
 ## 10. 离散时间系统的频率响应
 
@@ -365,11 +365,11 @@ $$
 
 如果为实系数， $|H(e^{\mathrm{j}\omega})|$ 为偶函数， $\varphi(\omega)$ 为奇函数，也只需要关注半个周期 $(0,\omega_s/2)$ 内的情况。0和 $\omega_s$ 是最低频， $\omega_s/2$ 是最高频，以此来判断低通/高通/带通/带阻/全通的系统特性。
 
-![2024春信号与系统24第二十二讲8.9-8.11_14](../../assets/images/course_notes/signal_system/ch8_img13.png)
+![2024春信号与系统24第二十二讲8.9-8.11_14](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/ch8_img13.png)
 
-![2024春信号与系统24第二十二讲8.9-8.11_15](../../assets/images/course_notes/signal_system/ch8_img14.png)
+![2024春信号与系统24第二十二讲8.9-8.11_15](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/ch8_img14.png)
 
-![第4章离散信号傅里叶分析_04](../../assets/images/course_notes/signal_system/ch8_img15.png)
+![第4章离散信号傅里叶分析_04](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/ch8_img15.png)
 
 频率响应的几何确定法：
 
@@ -377,7 +377,7 @@ $$
 
 幅度响应靠近极点处出现峰点，靠近零点处出现谷点。 $z=0$​ 处的零极点只影响相位响应，不影响幅度响应。
 
-![2024春信号与系统24第二十二讲8.9-8.11_19](../../assets/images/course_notes/signal_system/ch8_img16.png)
+![2024春信号与系统24第二十二讲8.9-8.11_19](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/ch8_img16.png)
 
 ## 11. z 变换应用实例
 
@@ -391,13 +391,13 @@ $$
 
 结构上改进：使用中间信号 $W(z)$ 实现结构复用，系统可同时产生 sin 和 cos 信号。
 
-![2024春信号与系统24第二十二讲8.9-8.11_51](../../assets/images/course_notes/signal_system/ch8_img17.png)
+![2024春信号与系统24第二十二讲8.9-8.11_51](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/ch8_img17.png)
 
 数字滤波器：
 
 原理：输入的连续信号 $x(t)$ 频带受限 $-\omega_m\sim\omega_m$ ，抽样间隔满足奈奎斯特抽样频率 $\omega_s=\frac{2\pi}{T}\geqslant2\omega_m$ 。
 
-![2024春信号与系统24第二十二讲8.9-8.11_28](../../assets/images/course_notes/signal_system/ch8_img18.png)
+![2024春信号与系统24第二十二讲8.9-8.11_28](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/ch8_img18.png)
 
 **冲激不变法**设计数字滤波器（低通）：
 

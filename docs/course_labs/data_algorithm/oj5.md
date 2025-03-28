@@ -8,7 +8,7 @@ comments: true
 
 某组织在执行任务时需要进行信息传递，为保证信息传递的安全性，每个节点只能向特定的某些节点发送消息，已知有N个节点，初始信息由0号节点开始发送，现在系统的设计师需要确认所设计的连接方式能否使得所有节点最终都收到0号节点发送的消息。为了保证系统的鲁棒性，系统设计师还需要考虑若有信道损坏是否会影响信息的传递。具体来说，给定M条可能毁坏的信道，需要依次考虑只有一条信道被毁坏时是否所有节点仍能收到0号节点发送的信息。下面是一幅与输入输出样例对应的示意图，绿色节点能收到0号节点发送的信息，橙色节点则无法收到。
 
-![oj5_description](../../assets/images/course_labs/data_algorithm/oj5_description.png)
+![oj5_description](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/oj5_description.png)
 
 ## Input
 

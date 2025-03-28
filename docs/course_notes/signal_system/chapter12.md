@@ -28,13 +28,13 @@ $$
 
 由系统输入输出方程或信号流图建立状态方程。对于与给定的系统，流图的形式可以不同，状态变量的选择不唯一， ABCD 矩阵也不唯一。
 
-![2024春信号与系统26第二十四讲12.1-12.3_15](../../assets/images/course_notes/signal_system/ch12_img1.png)
+![2024春信号与系统26第二十四讲12.1-12.3_15](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/ch12_img1.png)
 
 由算子表达式分解或系统函数建立状态方程。部分分式展开 $H(p)=\sum\frac{\beta_i}{p+\alpha_i}$​ ，由基本单元串联、并联、级联组装。
 
 基本单元：
 
-![2024春信号与系统26第二十四讲12.1-12.3_20](../../assets/images/course_notes/signal_system/ch12_img2.png)
+![2024春信号与系统26第二十四讲12.1-12.3_20](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/ch12_img2.png)
 
 ## 2. 连续时间系统状态方程的求解
 
@@ -42,21 +42,21 @@ $$
 
 写不动了，直接上图：
 
-![2024春信号与系统26第二十四讲12.1-12.3_27](../../assets/images/course_notes/signal_system/ch12_img3.png)
+![2024春信号与系统26第二十四讲12.1-12.3_27](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/ch12_img3.png)
 
-![2024春信号与系统26第二十四讲12.1-12.3_28](../../assets/images/course_notes/signal_system/ch12_img4.png)
+![2024春信号与系统26第二十四讲12.1-12.3_28](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/ch12_img4.png)
 
 ### 时域解法
 
 写不动了，直接上图：
 
-![2024春信号与系统26第二十四讲12.1-12.3_34](../../assets/images/course_notes/signal_system/ch12_img5.png)
+![2024春信号与系统26第二十四讲12.1-12.3_34](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/ch12_img5.png)
 
 ## 3. 根据状态方程求转移函数
 
 写不动了，直接上图：
 
-![2024春信号与系统26第二十四讲12.1-12.3_36](../../assets/images/course_notes/signal_system/ch12_img6.png)
+![2024春信号与系统26第二十四讲12.1-12.3_36](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/ch12_img6.png)
 
 ## 4. 离散时间系统状态方程的建立
 
@@ -78,15 +78,15 @@ $$
 
 写不动了，直接上图：
 
-![2024春信号与系统27第二十五讲12.4-12.7_14](../../assets/images/course_notes/signal_system/ch12_img7.png)
+![2024春信号与系统27第二十五讲12.4-12.7_14](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/ch12_img7.png)
 
 ### z 变换求解
 
 写不动了，直接上图：
 
-![2024春信号与系统27第二十五讲12.4-12.7_16](../../assets/images/course_notes/signal_system/ch12_img8.png)
+![2024春信号与系统27第二十五讲12.4-12.7_16](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/ch12_img8.png)
 
-![2024春信号与系统27第二十五讲12.4-12.7_17](../../assets/images/course_notes/signal_system/ch12_img9.png)
+![2024春信号与系统27第二十五讲12.4-12.7_17](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/ch12_img9.png)
 
 ## 6. 状态矢量的线性变换
 
@@ -96,7 +96,7 @@ $$
 
 判断系统的稳定性：
 
-![2024春信号与系统27第二十五讲12.4-12.7_28](../../assets/images/course_notes/signal_system/ch12_img10.png)
+![2024春信号与系统27第二十五讲12.4-12.7_28](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/ch12_img10.png)
 
 ## 7. 系统的可控性和可观性
 
@@ -108,12 +108,12 @@ $$
 
 利用可控阵和可观阵判定：
 
-![2024春信号与系统27第二十五讲12.4-12.7_37](../../assets/images/course_notes/signal_system/ch12_img11.png)
+![2024春信号与系统27第二十五讲12.4-12.7_37](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/ch12_img11.png)
 
 A 矩阵规范化之后判别。（略）
 
 可控可观与转移函数的关系：
 
-![2024春信号与系统27第二十五讲12.4-12.7_44](../../assets/images/course_notes/signal_system/ch12_img12.png)
+![2024春信号与系统27第二十五讲12.4-12.7_44](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/ch12_img12.png)
 
 留意一下串联、并联、级联可能发生零极点相消，导致系统不可控不稳定就行。

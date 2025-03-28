@@ -16,7 +16,7 @@ comments: true
 
 要求对于每次命令2，都输出报告同学后面同学的编号，并最后从头到尾输出队列中同学的编号。
 
-![oj2_description](../../assets/images/course_labs/data_algorithm/oj2_description.png)
+![oj2_description](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/oj2_description.png)
 
 ## Input
 

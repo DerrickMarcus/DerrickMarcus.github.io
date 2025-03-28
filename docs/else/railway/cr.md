@@ -40,11 +40,11 @@ CR400BF、CR400BF-A、CR400BF-B、CR400BF-C、CR400BF-G、CR400BF-Z、CR400BF-AZ
 
 CR400BF-Z 龙凤呈祥智能动车图片：
 
-![cr400bfz1](../../assets/images/else/railway/cr400bfz1.jpg)
+![cr400bfz1](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/cr400bfz1.jpg)
 
 作者本人收藏的 CR400BF-Z 龙凤呈祥智能动车模型（仅车头）：
 
-![my_cr400bfz](../../assets/images/else/railway/my_cr400bfz.jpg)
+![my_cr400bfz](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/my_cr400bfz.jpg)
 
 **CR400BF-G-0051**：原可变轨距复兴号动车组，设计为跨国互联互通动车组，由中车长客研制。头型为“旗鱼”。除车内外显示屏等设施和部分内饰与 CR400BF 智能动车组相同外，坐席规格和布局与普通 CR400BF 一致。2018年12月，该车头型首次亮相，采用“瑞雪迎春”涂装（但与现在的“瑞雪迎春”有细微差别）。2024年1月该车完成相关试验后，更改为普通转向架和普通涂装，车号改为 CR400BF-G-0051，2024年2月投入运营。目前主要跑北京与唐山区间。
 
@@ -56,7 +56,7 @@ CR400BF-Z 龙凤呈祥智能动车图片：
 
 下图为作者于2025年3月12日运转京张高铁 G7842 次（张家口——北京北），从清河站上车到达终点站北京北站时，在北京北站拍摄的“瑞雪迎春”。
 
-![my_cr400bfc5162](../../assets/images/else/railway/my_cr400bfc5162.jpg)
+![my_cr400bfc5162](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/my_cr400bfc5162.jpg)
 
 **CR400BF-Z-0524**：官方外号“**润泽江南**”，民间外号“**紫茄子**”中车长客为2023杭州亚运会量身打造的复兴号亚运智能动车组，全国唯一。不同于瑞雪迎春只跑管内“养在深闺人未识”，润泽江南经常出现在全国各地。
 

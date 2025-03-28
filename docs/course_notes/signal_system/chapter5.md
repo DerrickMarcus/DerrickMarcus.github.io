@@ -73,7 +73,7 @@ $$
 
 缺点：解调使用的本地载波需要与发送端相同，接收机较为复杂。
 
-![2024春信号与系统16第十四讲5.5-5.7_22](../../assets/images/course_notes/signal_system/ch5_img1.png)
+![2024春信号与系统16第十四讲5.5-5.7_22](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/ch5_img1.png)
 
 ### AM（调幅）
 
@@ -87,9 +87,9 @@ $$
 
 当 $A$ 足够大时，$f(t)$ 的波形包络就是 $A+g(t)$​ ，使用包络检测器（二极管、电容、电阻）即可恢复。
 
-![2024春信号与系统16第十四讲5.5-5.7_26](../../assets/images/course_notes/signal_system/ch5_img2.png)
+![2024春信号与系统16第十四讲5.5-5.7_26](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/ch5_img2.png)
 
-![2024春信号与系统16第十四讲5.5-5.7_27](../../assets/images/course_notes/signal_system/ch5_img3.png)
+![2024春信号与系统16第十四讲5.5-5.7_27](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/ch5_img3.png)
 
 ### SSB（单边带）
 
@@ -99,15 +99,15 @@ $$
 
 优点是节省频带，多容纳电台。但“陡峭的”边带滤波器不易制作，所以适用于信号中无直流成分且缺少一段低频成分，此时对边带滤波器的要求放宽。
 
-![2024春信号与系统16第十四讲5.5-5.7_29](../../assets/images/course_notes/signal_system/ch5_img4.png)
+![2024春信号与系统16第十四讲5.5-5.7_29](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/ch5_img4.png)
 
 ### VSB（残留边带）
 
 斜着切。
 
-![2024春信号与系统16第十四讲5.5-5.7_32](../../assets/images/course_notes/signal_system/ch5_img5.png)
+![2024春信号与系统16第十四讲5.5-5.7_32](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/ch5_img5.png)
 
-![2024春信号与系统16第十四讲5.5-5.7_33](../../assets/images/course_notes/signal_system/ch5_img6.png)
+![2024春信号与系统16第十四讲5.5-5.7_33](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/ch5_img6.png)
 
 ### FM，PM（调频与调相）
 
@@ -119,7 +119,7 @@ PM（调相），直接作用于频率： $f(t)=A\cos(\omega_c t+\int_{-\infty}^
 
 解调过程：对 $f(t)$ 求导，进行包络检波。
 
-![2024春信号与系统16第十四讲5.5-5.7_35](../../assets/images/course_notes/signal_system/ch5_img7.png)
+![2024春信号与系统16第十四讲5.5-5.7_35](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/ch5_img7.png)
 
 ### FDM（频分复用）
 
@@ -139,8 +139,8 @@ PM（调相），直接作用于频率： $f(t)=A\cos(\omega_c t+\int_{-\infty}^
 
 具体内容可以看书。
 
-![2024春信号与系统17第十五讲5.9-5.12_07](../../assets/images/course_notes/signal_system/ch5_img8.png)
+![2024春信号与系统17第十五讲5.9-5.12_07](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/ch5_img8.png)
 
-![2024春信号与系统17第十五讲5.9-5.12_14](../../assets/images/course_notes/signal_system/ch5_img9.png)
+![2024春信号与系统17第十五讲5.9-5.12_14](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/ch5_img9.png)
 
-![2024春信号与系统17第十五讲5.9-5.12_19](../../assets/images/course_notes/signal_system/ch5_img10.png)
+![2024春信号与系统17第十五讲5.9-5.12_19](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/ch5_img10.png)

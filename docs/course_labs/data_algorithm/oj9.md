@@ -8,7 +8,7 @@ comments: true
 
 小明计划乘坐火车去远方的城市旅游。铁路系统可以被抽象为一个有向图，其中每个节点代表一个城市的火车站，边表示不同城市之间的火车线路。每条边都有两个权重，分别表示乘坐该线路所需的时间和费用。小明需要在一定的时间之内到达目的地，并且希望尽量减少花费。请问，你能帮助小明计算在满足时间要求的情况下，到达目的地所需的最低费用是多少吗？
 
-![oj9_description](../../assets/images/course_labs/data_algorithm/oj9_description.png)
+![oj9_description](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/oj9_description.png)
 
 ## Input
 

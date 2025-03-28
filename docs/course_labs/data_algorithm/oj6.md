@@ -8,7 +8,7 @@ comments: true
 
 有一系列相邻的台阶，每级台阶具有不同的高度，台阶间的水平距离相等，如图所示
 
-![oj6_description](../../assets/images/course_labs/data_algorithm/oj6_description.png)
+![oj6_description](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/oj6_description.png)
 
 有一只青蛙在不同台阶之间跳跃，设青蛙可以跳跃的最长水平距离为K个台阶，最大的垂直距离为H（需要注意的是，为简化问题，垂直距离只需考虑跳跃起点和终点的高度差，不需要考虑途中经过的台阶高度和起点的高度差），以上图为例，若K=5，H=2，则青蛙可以从当前位置跳跃到编号为{0, 3, 6}的三个台阶，因为这三个台阶与当前台阶的水平距离均不大于5，且垂直距离的绝对值分别为{2, 1, 1}，均不大于2。
 

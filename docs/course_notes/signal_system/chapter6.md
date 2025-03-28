@@ -142,7 +142,7 @@ $$
 
 周期信号的自相关函数也为周期函数，且周期相同。
 
-![2024春信号与系统19第十七讲6.6-6.11_15](../../assets/images/course_notes/signal_system/ch6_img1.png)
+![2024春信号与系统19第十七讲6.6-6.11_15](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/ch6_img1.png)
 
 ### 与卷积的比较
 

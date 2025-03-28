@@ -12,9 +12,9 @@ comments: true
 
 $x(an)$ 波形压缩， $x(\frac{x}{n})$​ 波形扩展，这时可能要按规律去除某些点或补足0值。
 
-![2024春信号与系统20第十八讲7.1-7.7_12](../../assets/images/course_notes/signal_system/ch7_img1.png)
+![2024春信号与系统20第十八讲7.1-7.7_12](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/ch7_img1.png)
 
-![2024春信号与系统20第十八讲7.1-7.7_13](../../assets/images/course_notes/signal_system/ch7_img2.png)
+![2024春信号与系统20第十八讲7.1-7.7_13](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/ch7_img2.png)
 
 典型序列：
 
@@ -29,7 +29,7 @@ $x(an)$ 波形压缩， $x(\frac{x}{n})$​ 波形扩展，这时可能要按规
 
 系统方框图中： $1/E$ 代表单位延时。
 
-![2024春信号与系统20第十八讲7.1-7.7_20](../../assets/images/course_notes/signal_system/ch7_img3.png)
+![2024春信号与系统20第十八讲7.1-7.7_20](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/ch7_img3.png)
 
 ## 2. 常系数线性差分方程
 
@@ -48,11 +48,11 @@ $x(an)$ 波形压缩， $x(\frac{x}{n})$​ 波形扩展，这时可能要按规
 3. 求零输入响应 + 零状态响应，用求齐次解的方法（激励置为0）得到零输入响应，用卷积和（或边界条件全置0）求零状态响应。
 4. z 变换法（下一章）。
 
-![2024春信号与系统20第十八讲7.1-7.7_32](../../assets/images/course_notes/signal_system/ch7_img4.png)
+![2024春信号与系统20第十八讲7.1-7.7_32](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/ch7_img4.png)
 
-![2024春信号与系统20第十八讲7.1-7.7_33](../../assets/images/course_notes/signal_system/ch7_img5.png)
+![2024春信号与系统20第十八讲7.1-7.7_33](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/ch7_img5.png)
 
-![2024春信号与系统20第十八讲7.1-7.7_34](../../assets/images/course_notes/signal_system/ch7_img6.png)
+![2024春信号与系统20第十八讲7.1-7.7_34](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/ch7_img6.png)
 
 ## 3. 单位样值响应、卷积和
 

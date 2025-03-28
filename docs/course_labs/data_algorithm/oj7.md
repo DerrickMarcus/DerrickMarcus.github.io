@@ -12,15 +12,15 @@ $$
 AX=Z
 $$
 
-其中![img](http://oj.ee.tsinghua.edu.cn/media/ckeditor_uploads/2023/11/23/2023-11-23-230051.png)为带限的三对角或五对角矩阵，若为三对角矩阵则有以下形式：
+其中![img](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/2023-11-23-230051.png)为带限的三对角或五对角矩阵，若为三对角矩阵则有以下形式：
 
-![img](http://oj.ee.tsinghua.edu.cn/media/ckeditor_uploads/2023/11/23/2023-11-23-230003.png)
+![img](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/2023-11-23-230003.png)
 
 若为五对角矩阵则有以下形式：
 
-![img](http://oj.ee.tsinghua.edu.cn/media/ckeditor_uploads/2023/11/23/2023-11-23-230031.png)
+![img](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/2023-11-23-230031.png)
 
-![img](http://oj.ee.tsinghua.edu.cn/media/ckeditor_uploads/2023/11/26/2023-11-26-140122.png)由m个列向量构成。现在给定非奇异矩阵A和矩阵Z，求解矩阵X。
+![img](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/2023-11-26-140122.png)由m个列向量构成。现在给定非奇异矩阵A和矩阵Z，求解矩阵X。
 
 ## Input
 
@@ -30,13 +30,13 @@ $$
 
 第3行到第p+2行，按照从矩阵A的最上方的对角线到最下方的对角线的顺序依次输入各对角线的元素值。
 
-即对于三对角矩阵，第3行输入![img](http://oj.ee.tsinghua.edu.cn/media/ckeditor_uploads/2023/11/23/2023-11-23-230340.png)，第4行输入![img](http://oj.ee.tsinghua.edu.cn/media/ckeditor_uploads/2023/11/23/2023-11-23-230358.png)，第5行输入![img](http://oj.ee.tsinghua.edu.cn/media/ckeditor_uploads/2023/11/23/2023-11-23-230423.png)；
+即对于三对角矩阵，第3行输入![img](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/2023-11-23-230340.png)，第4行输入![img](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/2023-11-23-230358.png)，第5行输入![img](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/2023-11-23-230423.png)；
 
-对于五对角矩阵， 第3行输入![img](http://oj.ee.tsinghua.edu.cn/media/ckeditor_uploads/2023/11/23/2023-11-23-230617.png)，第4行输入![img](http://oj.ee.tsinghua.edu.cn/media/ckeditor_uploads/2023/11/23/2023-11-23-230643.png)，第5行输入![img](http://oj.ee.tsinghua.edu.cn/media/ckeditor_uploads/2023/11/23/2023-11-23-230700.png)，第6行输入![img](http://oj.ee.tsinghua.edu.cn/media/ckeditor_uploads/2023/11/23/2023-11-23-230712.png)，第7行输入![img](http://oj.ee.tsinghua.edu.cn/media/ckeditor_uploads/2023/11/23/2023-11-23-230731.png)。
+对于五对角矩阵， 第3行输入![img](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/2023-11-23-230617.png)，第4行输入![img](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/2023-11-23-230643.png)，第5行输入![img](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/2023-11-23-230700.png)，第6行输入![img](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/2023-11-23-230712.png)，第7行输入![img](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/2023-11-23-230731.png)。
 
 最后m行每行输入n个浮点数，为别为矩阵Z的第m列向量zm的n个元素值，即
 
-![img](http://oj.ee.tsinghua.edu.cn/media/ckeditor_uploads/2023/11/26/2023-11-26-140724.png)
+![img](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/2023-11-26-140724.png)
 
 ## Output
 
@@ -140,13 +140,13 @@ $$
 
 LU分解如下：
 
-![img](http://oj.ee.tsinghua.edu.cn/media/ckeditor_uploads/2023/11/23/2023-11-23-230031.png)
+![img](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/2023-11-23-230031.png)
 
-![oj7_solution1](../../assets/images/course_labs/data_algorithm/oj7_solution1.png)
+![oj7_solution1](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/oj7_solution1.png)
 
-![oj7_solution2](../../assets/images/course_labs/data_algorithm/oj7_solution2.png)
+![oj7_solution2](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/oj7_solution2.png)
 
-![oj7_solution3](../../assets/images/course_labs/data_algorithm/oj7_solution3.png)
+![oj7_solution3](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/oj7_solution3.png)
 
 上述的方法参见教程：[五对角追赶发求解线性方程组](https://blog.csdn.net/wxkhturfun/article/details/125023717)。
 

@@ -22,7 +22,7 @@ $$
 
 1个2-D变换核可分解成2个1-D变换核，对应 x 和 y 两个方向。
 
-平移定理： $f(x-a,y-b)\iff F(u,v)\exp(-j2\pi (au+bv)/N)$ 。
+平移定理： $f(x-a,y-b)\iff F(u,v)\exp(-j2\pi \dfrac{au+bv}{N})$ 。
 
 旋转定理：$f(x,y)$ 旋转角度 $\theta_0$ ，$F(u,v)$ 也转过相同角度。$F(u,v)$ 旋转角度 $\theta_0$ ，$f(x,y)$ 也转过相同角度。
 

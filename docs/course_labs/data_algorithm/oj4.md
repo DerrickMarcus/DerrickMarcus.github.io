@@ -8,7 +8,7 @@ comments: true
 
 输入给定一系列缺损点，将一棵无限深度的满二叉树进行重新编号，编号方式为从1开始逐行从左至右顺序编号，缺损点得到编号后，其子树被删去，后续编号中该子树的结点跳过不编号，编号后的树被称为“缺损二叉树”。例如下图为缺损点为 {5,6,9} 的缺损二叉树的一部分（下方可无限延长），红色数字标注了缺损点，其下方灰色子树被删去。对于输入给定的目标编号，输出缺损二叉树上根节点到目标结点的路径，该路径用经过的所有结点的编号表示。下图中，蓝色表示根结点到目标结点15的路径，路径用途径结点编号 {1,3,7,10,15} 表示。
 
-![oj4_description](../../assets/images/course_labs/data_algorithm/oj4_description.png)
+![oj4_description](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/oj4_description.png)
 
 ## Input
 

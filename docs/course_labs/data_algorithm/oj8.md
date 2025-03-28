@@ -60,11 +60,11 @@ output:
 
 判断两个点是否为同一个点的最大标准是 `epsilon=0.02` 时，能够通过除了第6个点的所有点。如下图：
 
-![oj8_solution1](../../assets/images/course_labs/data_algorithm/oj8_solution1.png)
+![oj8_solution1](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/oj8_solution1.png)
 
 同时，`epsilon=0.5` 的时候能够单过第6个点，说明第6个点任意两个点的横坐标间距都大于0.5：
 
-![oj8_solution2](../../assets/images/course_labs/data_algorithm/oj8_solution2.png)
+![oj8_solution2](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/oj8_solution2.png)
 
 后来不论怎样都没法全部通过（改变 `epsilon` 后可能第6个点过了，但第9个点又 wrong answer 了），这时我从同学那里得到一个重要信息：每个测试点的点的数目都不相同。
 
@@ -72,7 +72,7 @@ output:
 
 于是我在读入数据之前加一个判断：n=100时 `epsilon=0.5` ，进入第6个测试点的判断，其他情况 `epsilon=0.02`，进入其他点的判断，最后不出意外的10个测试点全部通过。
 
-![oj8_solution3](../../assets/images/course_labs/data_algorithm/oj8_solution3.png)
+![oj8_solution3](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/oj8_solution3.png)
 
 ## Code
 

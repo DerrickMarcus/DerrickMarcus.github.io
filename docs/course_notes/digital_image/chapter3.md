@@ -48,14 +48,14 @@ comments: true
 
 增强对比度：分段拉伸函数。
 
-![ch3_img1](../../assets/images/course_notes/digital_image/ch3_img1.png)
+![ch3_img1](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/ch3_img1.png)
 
 动态范围调整(压缩)：调整灰度变化的动态范围，低灰度范围的值得到扩展，高灰度范围的值得到压缩，使图像分布均匀。
 常用对数变换 $t=c\cdot\log(1+s)$
 
 灰度切分：突出某一范围的灰度，将 s1->s2 区间的灰度级突出，而将其他区间的灰度值变换为一个低灰度值。
 
-![ch3_img2](../../assets/images/course_notes/digital_image/ch3_img2.png)
+![ch3_img2](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/ch3_img2.png)
 
 伽马校正：$t=Cs^{\gamma}$，$\gamma<1$ 提高灰度级，在正比函数上方，使图像变亮。$\gamma>1$ 降低灰度级，在正比函数下方，使图像变暗。
 
