@@ -15,7 +15,7 @@ copyright: Copyright &copy; 2024 - 2025 Yanxu Chen
 # Configuration
 theme:
   name: material
-  custom_dir: overrides
+  custom_dir: overrides # 自定义目录
   language: en
 
   palette:
@@ -42,27 +42,28 @@ theme:
     text: Roboto
     code: Roboto Mono
 
-  favicon: assets/favicon.png
+  favicon: assets/favicon.png # 浏览器标签页图标
   icon:
-    logo: logo
-    repo: fontawesome/brands/git-alt
+    logo: logo # 网站左上角图标
+    repo: fontawesome/brands/git-alt # 网站右上角仓库图标
     edit: material/pencil
     view: material/eye
 
   features:
-    - search.suggest
-    - search.highlight
-    - search.share
+    - search.suggest # 搜索建议
+    - search.highlight # 搜索高亮
+    - search.share # 搜索分享
 
-    # - navigation.expand
+    # - navigation.expand # 目录自动展开子目录
     - navigation.indexes
     - navigation.instant
+    - navigation.instant.progress
     - navigation.path
     - navigation.sections
-    - navigation.tracking
-    - navigation.top
-    - navigation.tabs
-    - navigation.tabs.sticky
+    - navigation.tracking # 滑动对应的标题时更新地址栏
+    - navigation.top # 显示回到最上方的按钮
+    - navigation.tabs # 一级目录融合至顶栏，只显示二级目录
+    # - navigation.tabs.sticky
     - navigation.footer
 
     - content.code.annotate
@@ -75,8 +76,8 @@ theme:
     - content.tabs.link
 
     - header.autohide
-    # - toc.integrate
-    - toc.follow
+    # - toc.integrate # 右侧toc集成到左侧
+    - toc.follow # 右侧toc随页面而滚动
 
   nav_style: dark
   collapse_navigation: true
@@ -133,14 +134,14 @@ markdown_extensions:
   - meta
   - def_list
   - attr_list
-  - md_in_html
+  - md_in_html # 允许Markdown中使用HTML
   - sane_lists
   - footnotes
   - admonition
   - tables
   - toc:
-      permalink: true
-      toc_depth: 3
+      permalink: true # 各标题生成各自链接
+      # toc_depth: 3
   - pymdownx.arithmatex:
       generic: true
   - pymdownx.highlight:
@@ -257,10 +258,20 @@ nav:
           - 04-线程及其实现: course_notes/operating_system/chapter4.md
           - 05-互斥和同步(1): course_notes/operating_system/chapter5.md
           - 06-互斥和同步(2): course_notes/operating_system/chapter6.md
+          - 07-处理机调度&死锁: course_notes/operating_system/chapter7.md
+          - 08-存储器管理(1): course_notes/operating_system/chapter8.md
+          - 09-存储器管理(2): course_notes/operating_system/chapter9.md
+          - 10-存储器管理(3): course_notes/operating_system/chapter10.md
+          - 11-设备管理(1): course_notes/operating_system/chapter11.md
+          - 12-设备管理(2): course_notes/operating_system/chapter12.md
+          - 13-文件系统(1): course_notes/operating_system/chapter13.md
+          - 14-文件系统(2): course_notes/operating_system/chapter14.md
+          - 知识总结(计算机系): course_notes/operating_system/review_cst.md
       - 固体物理:
           - 01-晶体的结构: course_notes/solid_physics/chapter1.md
           - 02-固体的结合: course_notes/solid_physics/chapter2.md
           - 03-固体电子论: course_notes/solid_physics/chapter3.md
+          - 04-固体的电特性: course_notes/solid_physics/chapter4.md
           - 课后测试题: course_notes/solid_physics/test.md
   - Course Labs:
       - About: course_labs/about_labs.md
@@ -275,6 +286,13 @@ nav:
           - OJ-8: course_labs/data_algorithm/oj8.md
           - OJ-9: course_labs/data_algorithm/oj9.md
           - OJ-10: course_labs/data_algorithm/oj10.md
+      - 数字图像处理:
+          - Lab-1: course_labs/digital_image/lab1.md
+          - Lab-2: course_labs/digital_image/lab2.md
+          - Lab-3: course_labs/digital_image/lab3.md
+          - Lab-4: course_labs/digital_image/lab4.md
+          - Lab-5: course_labs/digital_image/lab5.md
+          - Lab-6: course_labs/digital_image/lab6.md
   - Research:
       - About: research/about_research.md
       - Robot:
