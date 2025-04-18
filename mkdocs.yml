@@ -251,6 +251,7 @@ nav:
           - 02-图像信息与视觉感知: course_notes/digital_image/chapter2.md
           - 03-空域图像增强: course_notes/digital_image/chapter3.md
           - 04-频域图像增强: course_notes/digital_image/chapter4.md
+          - 05-图像分割: course_notes/digital_image/chapter5.md
       - 操作系统:
           - 01-绪论(1): course_notes/operating_system/chapter1.md
           - 02-绪论(2): course_notes/operating_system/chapter2.md
