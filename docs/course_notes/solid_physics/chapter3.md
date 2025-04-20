@@ -55,7 +55,7 @@ comments: true
 
 也叫弱晶格近似。认为周期性势场很弱，当作微扰，用微扰论求解。
 
-**考虑简单的一维情况**：将周期性势场展开为傅里叶级数： $V(x)=\displaystyle\sum_n V_n\exp\left(i\dfrac{2\pi nx}{a}\right)$ ，傅里叶系数为 $V_n=\dfrac{1}{a}\displaystyle\int_0^a V(x)\exp\left(-i\dfrac{2\pi nx}{a}\right)$ 。
+**考虑简单的一维情况**：将周期性势场展开为傅里叶级数： $V(x)=\displaystyle\sum_n V_n\exp\left(i\dfrac{2\pi nx}{a}\right)$ ，傅里叶系数为 $V_n=\dfrac{1}{a}\displaystyle\int_0^a V(x)\exp\left(-i\dfrac{2\pi nx}{a}\right)\mathrm{d}x$ 。
 
 第一项 $V_0$ 实际上是 $V(x)$ 的平均值，看作零级哈密顿量的一部分，而其他从 $V_1$ 开始视为微扰。
 

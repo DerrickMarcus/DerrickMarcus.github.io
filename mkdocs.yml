@@ -246,6 +246,12 @@ nav:
           - 08-z变换与离散时间系统z域分析: course_notes/signal_system/chapter8.md
           - 11-反馈系统: course_notes/signal_system/chapter11.md
           - 12-系统的状态变量分析: course_notes/signal_system/chapter12.md
+      - 固体物理:
+          - 01-晶体的结构: course_notes/solid_physics/chapter1.md
+          - 02-固体的结合: course_notes/solid_physics/chapter2.md
+          - 03-固体电子论: course_notes/solid_physics/chapter3.md
+          - 04-固体的电特性: course_notes/solid_physics/chapter4.md
+          - 课后测试题: course_notes/solid_physics/test.md
       - 数字图像处理:
           - 01-图像处理概述: course_notes/digital_image/chapter1.md
           - 02-图像信息与视觉感知: course_notes/digital_image/chapter2.md
@@ -268,12 +274,6 @@ nav:
           - 13-文件系统(1): course_notes/operating_system/chapter13.md
           - 14-文件系统(2): course_notes/operating_system/chapter14.md
           - 知识总结(计算机系): course_notes/operating_system/review_cst.md
-      - 固体物理:
-          - 01-晶体的结构: course_notes/solid_physics/chapter1.md
-          - 02-固体的结合: course_notes/solid_physics/chapter2.md
-          - 03-固体电子论: course_notes/solid_physics/chapter3.md
-          - 04-固体的电特性: course_notes/solid_physics/chapter4.md
-          - 课后测试题: course_notes/solid_physics/test.md
   - Course Labs:
       - About: course_labs/about_labs.md
       - 数据与算法:
