@@ -15,3 +15,5 @@ You can contact me by email: chenyanx22 [at] mails.thu.edu.cn
 邮件联系：chenyanx22 [at] mails.thu.edu.cn
 
 <p id="time-diff-zh"></p>
+
+Reference to: [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/)

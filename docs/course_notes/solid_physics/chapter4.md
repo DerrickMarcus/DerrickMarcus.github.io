@@ -20,7 +20,7 @@ comments: true
 
 波包群速度（中心波矢的速度） $v(k_0)$ 等于电子的平均速度 $\bar{v}=\dfrac{1}{\hbar}\dfrac{\mathrm{d}E}{\mathrm{d}k}$ 。平均速度由晶体内电子 $E\sim k$ 关系决定。
 
-（1）自由电子有 $\bar h=\dfrac{\hbar k}{m}$ 。
+（1）自由电子有 $\bar v=\dfrac{\hbar k}{m}$ 。
 
 （2）晶体中，能带顶和能带底， $\dfrac{\mathrm{d}E}{\mathrm{d}k}=0$ ，平均速度为0。能带中 $\dfrac{\mathrm{d}^2E}{\mathrm{d}k^2}=0$ 的点，平均速度最大。这是在周期性势场作用下，电子动能与势能相互转换的结果。
 
@@ -28,7 +28,7 @@ comments: true
 
 电子在晶体中具有加速度 $\hbar\dfrac{\mathrm{d}\vec{k}}{\mathrm{d}t}=\vec{F}$ （该式是推导出来的，不是加速度定义式）。
 
-有效质量定义为 $\dfrac{1}{m*}=\dfrac{1}{\hbar^2}\dfrac{\partial^2E}{\partial k^2}$ 。
+有效质量定义为 $\dfrac{1}{m^*}=\dfrac{1}{\hbar^2}\dfrac{\partial^2E}{\partial k^2}$ 。
 
 有效质量为张量，可正可负。能带底为下凸函数，有效质量为正，加速度为正，速度为0。能带顶为上凸函数，有效质量为负，加速度为负，速度为0。晶体电子加速度和外力方向可以不一致，取决于有效质量的正负。
 
@@ -70,4 +70,51 @@ comments: true
 
 对于绝缘体，例如金刚石， $\text{sp}^3$ 杂化，一半成键轨道，全部填满，为价带；一半反键轨道，全空，为导带。不导电。
 
-半导体中原来的外层满带价带，有少量电子激发到导带中，但仍然接近全满，称为**近满带**，等效为空穴移动。空穴的有效质量与电子相反 $\dfrac{1}{m}=-\dfrac{1}{\hbar^2}\dfrac{\partial^2E}{\partial k^2}$ 。
+半导体中原来的外层满带价带，有少量电子激发到导带中，但仍然接近全满，称为**近满带**，等效为空穴移动。空穴的有效质量与电子相反 $\dfrac{1}{m^*}=-\dfrac{1}{\hbar^2}\dfrac{\partial^2E}{\partial k^2}$ 。
+
+## 4.2 金属中电子输运过程
+
+## 4.3 半导体中载流子的输运过程
+
+半导体：绝对零度不导电而室温具有导电性。（绝对零度下就相当于绝缘体）
+
+金属电阻率 $<10^{-6}\Omega\cdot \text{cm}$ ，绝缘体 $>10^{14}\Omega\cdot \text{cm}$ ，半导体介于金属和绝缘体之间。
+
+### 4.3.1 费米能级与载流子浓度
+
+![2025-固体物理基础-第四章_89](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/2025-固体物理基础-第四章_89.png)
+
+![2025-固体物理基础-第四章_98](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/2025-固体物理基础-第四章_98.png)
+
+![2025-固体物理基础-第四章_100](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/2025-固体物理基础-第四章_100.png)
+
+![2025-固体物理基础-第四章_101](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/2025-固体物理基础-第四章_101.png)
+
+![2025-固体物理基础-第四章_102](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/2025-固体物理基础-第四章_102.png)
+
+![2025-固体物理基础-第四章_103](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/2025-固体物理基础-第四章_103.png)
+
+### 4.3.2 本征激发
+
+本征半导体：无杂质、无缺陷的半导体，此时半导体的 $E_F$ 和载流子浓度完全取决于半导体本身的性质。
+
+电子受热激发，从价带跃迁到导带。价带产生空穴，导带产生电子。空穴数目等于电子数目，这种电子和空穴统称本征载流子
+
+![2025-固体物理基础-第四章_107](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/2025-固体物理基础-第四章_107.png)
+
+![2025-固体物理基础-第四章_108](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/2025-固体物理基础-第四章_108.png)
+
+### 4.3.3 杂质与杂质激发
+
+半导体材料中的杂质使严格的周期性势场受到破坏，从而有可能产生能量在带隙中的局域化电子态，称为杂质能级。
+
+![2025-固体物理基础-第四章_113](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/2025-固体物理基础-第四章_113.png)
+
+![2025-固体物理基础-第四章_114](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/2025-固体物理基础-第四章_114.png)
+
+![2025-固体物理基础-第四章_115](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/2025-固体物理基础-第四章_115.png)
+
+![2025-固体物理基础-第四章_116](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/2025-固体物理基础-第四章_116.png)
+
+!!! important
+    外电城下，电子和空穴运动方向相反，电流方向相同，计算总电流的时候应该像相加。

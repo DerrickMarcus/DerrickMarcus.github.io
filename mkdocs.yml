@@ -251,6 +251,7 @@ nav:
           - 02-固体的结合: course_notes/solid_physics/chapter2.md
           - 03-固体电子论: course_notes/solid_physics/chapter3.md
           - 04-固体的电特性: course_notes/solid_physics/chapter4.md
+          - 06-固体的磁特性: course_notes/solid_physics/chapter6.md
           - 课后测试题: course_notes/solid_physics/test.md
       - 数字图像处理:
           - 01-图像处理概述: course_notes/digital_image/chapter1.md
@@ -258,6 +259,7 @@ nav:
           - 03-空域图像增强: course_notes/digital_image/chapter3.md
           - 04-频域图像增强: course_notes/digital_image/chapter4.md
           - 05-图像分割: course_notes/digital_image/chapter5.md
+          - 06-图像复原: course_notes/digital_image/chapter6.md
       - 操作系统:
           - 01-绪论(1): course_notes/operating_system/chapter1.md
           - 02-绪论(2): course_notes/operating_system/chapter2.md
@@ -294,6 +296,9 @@ nav:
           - Lab-4: course_labs/digital_image/lab4.md
           - Lab-5: course_labs/digital_image/lab5.md
           - Lab-6: course_labs/digital_image/lab6.md
+          - Lab-7: course_labs/digital_image/lab7.md
+          - Lab-8: course_labs/digital_image/lab8.md
+          - Lab-9: course_labs/digital_image/lab9.md
   - Research:
       - About: research/about_research.md
       - Robot:

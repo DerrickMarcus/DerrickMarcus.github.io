@@ -8,15 +8,15 @@ comments: true
 
 Anaconda 和 Miniconda 均内置python，搭配conda包管理。
 
-**Anaconda**自带常用库，有图形化管理界面。
+Anaconda 自带科学计算常用库（如 numpy, scipy），有图形化管理界面。
 
-**Miniconda**相当于最小化安装，然后自己手动安装各种库（推荐使用）。
+Miniconda 相当于最小化安装，需要自己手动安装各种库（推荐使用）。
 
 下载地址：
 
 官网：<https://www.anaconda.com/download/>
 
-也可在清华镜像站下载，速度更快，适用于没有科学上网时
+也可在清华镜像站下载，速度更快，适用于没有科学上网时：
 <https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Miniconda3-latest-Windows-x86_64.exe>
 
 安装过程可全默认，注意勾选“添加环境变量”。

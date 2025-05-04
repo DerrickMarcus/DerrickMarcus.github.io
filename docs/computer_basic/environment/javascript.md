@@ -2,7 +2,7 @@
 comments: true
 ---
 
-# JavaScript Envirment in Windows
+# JavaScript Environment in Windows
 
 ## Install Node.js
 

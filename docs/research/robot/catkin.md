@@ -40,7 +40,7 @@ set(<variable> <value>...)
 set(CMAKE_CXX_STANDARD 11) # 比如指定C++标准
 
 # 查找外部库和包
-find_package(xxx REQUIERD)
+find_package(xxx REQUIRED)
 find_package(catkin REQUIRED COMPONENTS roscpp rospy std_msgs genmsg)
 
 # else
@@ -48,7 +48,7 @@ find_package(catkin REQUIRED COMPONENTS roscpp rospy std_msgs genmsg)
 add_compile_options(-std=c++20 -Wall -O2)
 # 使用变量存储源文件，适用于源文件特别多的时候
 aux_source_directory(dir val)
-aux_source_direcctory(. SRC_LIST) # 然后使用 add_executable(hello ${SRC_LIST})
+aux_source_directory(. SRC_LIST) # 然后使用 add_executable(hello ${SRC_LIST})
 ```
 
 一个示例：

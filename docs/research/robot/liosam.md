@@ -122,14 +122,14 @@ savePCD: true
 savePCDDirectory: "/robot_ws/src/pcd_maps/"
 ```
 
-完成见图之后到对应目录查看：
+首先安装 PCL 工具包 `pcl_tools` ：
+
+```bash
+sudo apt install pcl-tools
+```
+
+完成建图之后，使用 pcl_viewer 查看 .pcd(Point Cloud Data) 格式文件：
 
 ```bash
 pcl_viewer xxx.pcd
-```
-
-如果报错，提示命令未找到，可以使用如下命令安装 `pcl_tools` 后再次执行上面的命令：
-
-```bash
-sudo apt install pcl_tools
 ```
