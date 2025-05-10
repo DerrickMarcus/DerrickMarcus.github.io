@@ -25,8 +25,8 @@ theme:
         name: Switch to light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: white
-      accent: white
+      primary: black
+      accent: black
       toggle:
         icon: material/weather-sunny
         name: Switch to dark mode
@@ -221,6 +221,7 @@ extra_javascript:
 
   - javascripts/toc.js
   - javascripts/time_diff.js
+  - javascripts/up_time.js
 
 extra_css:
   # - https://unpkg.com/katex@0/dist/katex.min.css

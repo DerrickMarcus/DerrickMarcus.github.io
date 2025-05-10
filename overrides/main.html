@@ -26,3 +26,8 @@ and
 {{ super() }}
 <script src="{{ 'assets/javascripts/custom.9458f965.min.js' | url }}"></script>
 {% endblock %}
+
+{% block footer %}
+{{ super() }}
+<div id="site-uptime" class="md-footer__link" style="margin-top:0.5rem; text-align:center;"></div>
+{% endblock %}
