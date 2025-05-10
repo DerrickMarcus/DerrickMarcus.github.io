@@ -25,8 +25,8 @@ theme:
         name: Switch to light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: blue grey
-      accent: blue grey
+      primary: white
+      accent: white
       toggle:
         icon: material/weather-sunny
         name: Switch to dark mode
@@ -39,8 +39,8 @@ theme:
         name: Switch to system preference
 
   font:
-    text: Roboto
-    code: Roboto Mono
+    text: LXGW WenKai GB
+    code: Fira Code
 
   favicon: assets/favicon.png # logo on the browser tab
   icon:
@@ -50,20 +50,21 @@ theme:
     view: material/eye
 
   features:
+    - announce.dismiss
     - search.suggest # 搜索建议
     - search.highlight # 搜索高亮
     - search.share # 搜索分享
 
     # - navigation.expand # 目录自动展开子目录
     - navigation.indexes
-    - navigation.instant
+    - navigation.instant # 导航栏立即打开，而不是在悬停时显示
     - navigation.instant.progress
     - navigation.path
     - navigation.sections
     - navigation.tracking # 滑动对应的标题时更新地址栏
     - navigation.top # 显示回到最上方的按钮
     - navigation.tabs # 一级目录融合至顶栏，只显示二级目录
-    # - navigation.tabs.sticky
+    - navigation.tabs.sticky
     - navigation.footer
 
     - content.code.annotate
@@ -75,7 +76,7 @@ theme:
     - content.footnote.tooltips
     - content.tabs.link
 
-    - header.autohide
+    # - header.autohide
     # - toc.integrate # 右侧toc集成到左侧
     - toc.follow # 右侧toc随页面而滚动
 
@@ -91,11 +92,16 @@ plugins:
         - en
       separator: '[\s\u200b\-_,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
   - git-revision-date-localized:
-      type: iso_date
+      enabled: !ENV [CI, false]
+      type: iso_datetime
       fallback_to_build_date: false
       enable_creation_date: true
       locale: en
       timezone: Asia/Shanghai
+  - git-committers:
+      enabled: !ENV [CI, false]
+      repository: DerrickMarcus/DerrickMarcus.github.io
+      branch: main
   - git-authors:
       show_contribution: true
       show_line_count: true
@@ -125,9 +131,8 @@ extra:
     - icon: fontawesome/brands/bilibili
       link: https://space.bilibili.com/627449965
       name: Yanxu Chen on Bilibili
-    - icon: fontawesome/brands/google
-      link: mailto:derick.julius.921@gmail.com
-      name: Yanxu Chen on Gmail
+    - icon: fontawesome/regular/envelope
+      link: mailto:<chenyanx22@mails.tsinghua.edu.cn>
 
 # Extensions
 markdown_extensions:
@@ -182,17 +187,6 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
       clickable_checkbox: true
-  - pymdownx.blocks.details:
-      types:
-        - name: info
-          class: terminal-alert
-          title: Info
-        - name: warning
-          class: "terminal-alert terminal-alert-error"
-          title: Warning
-        - name: important
-          class: "terminal-alert terminal-alert-primary"
-          title: Important
 
 extra_javascript:
   - javascripts/katex.js
@@ -224,6 +218,7 @@ extra_javascript:
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg-full.js
+
   - javascripts/toc.js
   - javascripts/time_diff.js
 
@@ -231,6 +226,7 @@ extra_css:
   # - https://unpkg.com/katex@0/dist/katex.min.css
   # - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css
   - https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css
+  - stylesheets/extra.css
 
 # Page tree
 nav:
@@ -317,6 +313,7 @@ nav:
           - About: computer_basic/environment/about_environment.md
           - Python: computer_basic/environment/python.md
           - JavaScript: computer_basic/environment/javascript.md
+          - Ubuntu: computer_basic/environment/ubuntu.md
   - Else:
       - About: else/about_else.md
       - Railway:
