@@ -52,7 +52,7 @@ $$
 
 改变巴特沃斯低通滤波器的阶数，滤波效果如下：
 
-![digital_image_hw7_butterworth_n](./digital_image_hw7_butterworth_n.png)
+![digital_image_hw7_butterworth_n](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo-image/images/digital_image_hw7_butterworth_n.png)
 
 巴特沃斯滤波器的阶数越高，过渡带越窄，越接近于理想低通滤波器，滤波之后的图像也越模糊。同时，当结束达到 5 或 6 时，也出现了一点振铃效应。
 

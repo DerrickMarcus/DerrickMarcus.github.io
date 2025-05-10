@@ -133,3 +133,32 @@ sudo apt install pcl-tools
 ```bash
 pcl_viewer xxx.pcd
 ```
+
+## My Work
+
+参考 Github 项目 <https://github.com/linzs-online/robot_gazebo> 。
+
+该项目对原 LIO-SAM 仓库的代码进行了一些配置修改，位于 `LIO-SAM` 包中。通过 `roslaunch lio_sam run.launch` 启动。
+
+包 `scout_gazebo` 用于启动 Gazebo 仿真环境、加载机器人模型、发布机器人状态信息等，也包含了机器车的模型信息，配备 IMU 模块和 VLP16 Velodyne 激光雷达2个核心部件。通过 `roslaunch scout_gazebo scout_gazebo.launch` 启动。
+
+如果仿真运行机器车的同时实时建图，对系统计算能力要求较高，且要求及汽车移动速度不能过大，否则极易出现 IMU 数据偏差迅速累积和建图漂移。因此采用“仿真采集数据集 + 后期离线建图”，即：
+
+1. 先运行 `scout_gazebo` 节点，其中包含运动控制的 Python 代码，控制机器车在世界中行驶一圈（LIO-SAM 中有回环因子，如果走到曾经到过的地方可以校正误差，结果更精确）。
+2. 机器车上的激光雷达传感器将点云数据发布到 `/velodyne_points` 话题，IMU 传感器将 IMU 数据发布到 `/imu/data` 话题，这两个话题对于建图已经足够，GPS 数据非必须。
+3. 使用 `rosbag record` 录制上述 `/velodyne_points, /imu/data` 话题，得到数据集 `.bag` 。
+4. 仿真结束后，运行 `lio_sam` 包，播放数据集，LIO-SAM 的节点自动根据点云数据和 IMU 数据完成建图，并保存为 `.pcd` 文件，包括全局地图、边缘角落地图。
+
+Rviz 中的建图效果如下：
+
+![202505072333160](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo-image/images/202505072333160.png)
+
+边缘地图 `CornerMap.pcd` 。
+
+![202505080938008](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo-image/images/202505080938008.png)
+
+全局地图 `GlobalMap.pcd` 。
+
+![202505080940125](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo-image/images/202505080940125.png)
+
+如果实时建图，可以考虑使用 LIO-SAM 处理过后的里程计数据（由点云和 IMU 计算得到）作为机器车自身真实位姿的估计，但是一方面精度可能不够高，另外数据发布频率只有 5Hz ，机器车运动速度不能过快，否则无法及时更新自身位姿，另一方面计算需求也增大。

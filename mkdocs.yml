@@ -42,10 +42,10 @@ theme:
     text: Roboto
     code: Roboto Mono
 
-  favicon: assets/favicon.png # 浏览器标签页图标
+  favicon: assets/favicon.png # logo on the browser tab
   icon:
-    logo: logo # 网站左上角图标
-    repo: fontawesome/brands/git-alt # 网站右上角仓库图标
+    logo: logo # logo on the top left of the site
+    repo: fontawesome/brands/git-alt # logo on the top right of the site
     edit: material/pencil
     view: material/eye
 
@@ -251,6 +251,7 @@ nav:
           - 02-固体的结合: course_notes/solid_physics/chapter2.md
           - 03-固体电子论: course_notes/solid_physics/chapter3.md
           - 04-固体的电特性: course_notes/solid_physics/chapter4.md
+          - 05-固体间接触的电特性: course_notes/solid_physics/chapter5.md
           - 06-固体的磁特性: course_notes/solid_physics/chapter6.md
           - 课后测试题: course_notes/solid_physics/test.md
       - 数字图像处理:
@@ -260,6 +261,7 @@ nav:
           - 04-频域图像增强: course_notes/digital_image/chapter4.md
           - 05-图像分割: course_notes/digital_image/chapter5.md
           - 06-图像复原: course_notes/digital_image/chapter6.md
+          - 07-图像校正和修补: course_notes/digital_image/chapter7.md
       - 操作系统:
           - 01-绪论(1): course_notes/operating_system/chapter1.md
           - 02-绪论(2): course_notes/operating_system/chapter2.md
