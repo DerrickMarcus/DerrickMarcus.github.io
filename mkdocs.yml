@@ -39,8 +39,8 @@ theme:
         name: Switch to system preference
 
   font:
-    text: LXGW WenKai GB
-    code: Fira Code
+    text: '"LXGW WenKai GB Screen", "Noto Serif SC", sans-serif'
+    code: '"Fira Code", "Noto Sans SC", monospace'
 
   favicon: assets/2001.png # logo on the browser tab
   logo: assets/2001.png # logo on the top left of the site
@@ -223,9 +223,14 @@ extra_javascript:
   - javascripts/toc.js
 
 extra_css:
-  - https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css
+  - https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@latest/style.css
+  - https://cdn.jsdelivr.net/npm/@fontsource/fira-code@latest/index.css
+  - https://cdn.jsdelivr.net/npm/@fontsource/noto-serif-sc@latest/index.css
+  - https://cdn.jsdelivr.net/npm/@fontsource/noto-sans-sc@latest/index.css
 
   - stylesheets/extra.css
+
+  - https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css
 
 # Page tree
 nav:
