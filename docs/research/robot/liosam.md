@@ -54,7 +54,7 @@ set(CMAKE_CXX_FLAGS "-std=c++14")
 
 此时作出如上修改后，可能会编译成功。若仍不成功，可继续在文件 `./src/LIO-SAM/include/utility.h` 中，将 `#include <pcl/kdtree/kdtree_flann.h>` 一句放在 `#include <opencv2/opencv.hpp>` 的前面，然后再次编译。
 
-编译完成后，配置环境变量，运行 launch 文件
+编译完成后，配置环境变量，运行 launch 文件：
 
 ```bash
 # in ~/liosam_ws directory
@@ -84,8 +84,6 @@ rosbag play bag_name -r 3 # 以3倍速率播放
 该项目的主要功能：在机器人模型中添加 16线激光雷达、IMU、RGB-D 相机，然后使用 LIO-SAM 建图，其中小车的移动使用 ros 包 teleop_twist_keyboard 实现，后期笔者考虑在项目中添加 SLAM 算法，实现机器小车的自主路径规划和导航。
 
 环境要求：Ubuntu 20.04 + ROS1 Noetic。
-
-软件包要求，参见章节 “LIO-SAM 部署”。
 
 在终端中运行：
 

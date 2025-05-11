@@ -223,12 +223,12 @@ extra_javascript:
   - javascripts/toc.js
 
 extra_css:
-  - https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@latest/style.css
+  - https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-web@latest/style.css
   - https://cdn.jsdelivr.net/npm/@fontsource/fira-code@latest/index.css
   - https://cdn.jsdelivr.net/npm/@fontsource/noto-serif-sc@latest/index.css
   - https://cdn.jsdelivr.net/npm/@fontsource/noto-sans-sc@latest/index.css
 
-  - stylesheets/extra.css
+  - stylesheets/custom.css
 
   - https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css
 
