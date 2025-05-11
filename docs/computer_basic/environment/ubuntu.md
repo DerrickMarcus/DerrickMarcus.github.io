@@ -100,7 +100,7 @@ Run:
 sudo apt install ibus-libpinyin
 ```
 
-Then open Settings->Region & Language, add choose `Chinese-Intelligent Pinyin` .
+Then open Settings->Region & Language, add and choose `Chinese-Intelligent Pinyin` .
 
 ## Install VS Code
 

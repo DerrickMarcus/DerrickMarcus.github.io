@@ -4,16 +4,8 @@ comments: true
 
 # Home
 
-Welcome to my personal blog!
+Welcome to my personal blog! My name is **Yanxu Chen**, and my English name is **Derrick Marcus**, which is also my Github username.
 
-You can contact me by email: chenyanx22 [at] mails.thu.edu.cn
+You can contact me by email: "chenyanx22 [at] mails.tsinghua.edu.cn".
 
-<p id="time-diff-en"></p>
-
-欢迎来到我的个人博客！
-
-邮件联系：chenyanx22 [at] mails.thu.edu.cn
-
-<p id="time-diff-zh"></p>
-
-Reference to: [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/)
+The site is built based on: [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/).

@@ -1,8 +1,8 @@
 # Project information
-site_name: Yanxu Chen's Blog
+site_name: Blog of Yanxu Chen
 site_url: https://www.yanxuchen.com
 site_author: Yanxu Chen
-site_description: Yanxu Chen's personal blog
+site_description: Personal blog website of Yanxu Chen.
 
 # Repository
 repo_url: https://github.com/DerrickMarcus/DerrickMarcus.github.io
@@ -15,7 +15,7 @@ copyright: Copyright &copy; 2024 - 2025 Yanxu Chen
 # Configuration
 theme:
   name: material
-  custom_dir: overrides # 自定义目录
+  custom_dir: overrides # 自定义的覆写目录
   language: en
 
   palette:
@@ -42,9 +42,10 @@ theme:
     text: LXGW WenKai GB
     code: Fira Code
 
-  favicon: assets/favicon.png # logo on the browser tab
+  favicon: assets/2001.png # logo on the browser tab
+  logo: assets/2001.png # logo on the top left of the site
   icon:
-    logo: logo # logo on the top left of the site
+    # logo: logo # logo on the top left of the site
     repo: fontawesome/brands/git-alt # logo on the top right of the site
     edit: material/pencil
     view: material/eye
@@ -102,9 +103,10 @@ plugins:
       enabled: !ENV [CI, false]
       repository: DerrickMarcus/DerrickMarcus.github.io
       branch: main
-  - git-authors:
-      show_contribution: true
-      show_line_count: true
+      token: !ENV [GITHUB_TOKEN, ""]
+  # - git-authors:
+  #     show_contribution: true
+  #     show_line_count: true
   - minify:
       minify_html: true
       minify_js: true
@@ -133,6 +135,21 @@ extra:
       name: Yanxu Chen on Bilibili
     - icon: fontawesome/regular/envelope
       link: mailto:<chenyanx22@mails.tsinghua.edu.cn>
+
+  analytics:
+    provider: google
+    property: G-GRKG9RVNHS
+    feedback:
+      title: Was this page helpful?
+      ratings:
+        - icon: material/thumb-up-outline
+          name: This page was helpful
+          data: 1
+          note: Thanks for your feedback!
+        - icon: material/thumb-down-outline
+          name: This page could be improved
+          data: 0
+          note: Thanks for your feedback!
 
 # Extensions
 markdown_extensions:
@@ -189,30 +206,14 @@ markdown_extensions:
       clickable_checkbox: true
 
 extra_javascript:
-  - javascripts/katex.js
   - https://polyfill.io/v3/polyfill.min.js?features=es6
-  # - https://unpkg.com/katex@0/dist/katex.min.js
-  # - https://unpkg.com/katex@0/dist/contrib/auto-render.min.js
-  # - https://unpkg.com/katex@0/dist/contrib/mhchem.min.js
-
-  # - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js
-  # - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js
-  # - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/mhchem.min.js
+  - javascripts/katex.js
 
   - https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js
   - https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js
   - https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/mhchem.min.js
 
   - javascripts/mathjax.js
-  # - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
-  # - https://unpkg.com/mathjax@3/es5/tex-chtml.js
-  # - https://unpkg.com/mathjax@3/es5/tex-chtml-full.js
-  # - https://unpkg.com/mathjax@3/es5/tex-svg-full.js
-
-  # - https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-mml-chtml.js
-  # - https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-chtml.js
-  # - https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-chtml-full.js
-  # - https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-svg-full.js
 
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js
@@ -220,13 +221,10 @@ extra_javascript:
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg-full.js
 
   - javascripts/toc.js
-  - javascripts/time_diff.js
-  - javascripts/up_time.js
 
 extra_css:
-  # - https://unpkg.com/katex@0/dist/katex.min.css
-  # - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css
   - https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css
+
   - stylesheets/extra.css
 
 # Page tree
