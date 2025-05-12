@@ -2,7 +2,7 @@
 comments: true
 ---
 
-# Python Environment in Windows
+# Python environment in Windows
 
 ## 1. Install Anaconda/Miniconda
 
@@ -103,7 +103,7 @@ conda update Anaconda
 
 ## 2. Configure VS Code
 
-下载插件：python，jupyter（必需），ruff（可选）
+下载插件：python，jupyter（必需），ruff（可选）。
 
 打开设置，转到**setting.json**，添加如下配置（注意修改路径为自己的python路径）：
 
@@ -144,9 +144,9 @@ conda update Anaconda
 E:\miniconda3\Scripts\conda.exe
 ```
 
-然后加载，你会看到base环境和自己创建的各种环境，选择一个即可，然后就可以开始愉快地运行和调试了
+然后加载，你会看到base环境和自己创建的各种环境，选择一个即可，然后就可以开始愉快地运行和调试了。
 
-## Else
+## 4. Else
 
 血泪教训：又遇到无论如何包都会下载到base环境的问题，无法指向虚拟环境，目前的解决办法是：
 

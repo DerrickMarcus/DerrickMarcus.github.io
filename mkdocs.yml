@@ -61,7 +61,7 @@ theme:
     - navigation.instant # 导航栏立即打开，而不是在悬停时显示
     - navigation.instant.progress
     - navigation.path
-    - navigation.sections
+    # - navigation.sections
     - navigation.tracking # 滑动对应的标题时更新地址栏
     - navigation.top # 显示回到最上方的按钮
     - navigation.tabs # 一级目录融合至顶栏，只显示二级目录
@@ -123,6 +123,19 @@ plugins:
       words_per_minute: 200
       page_template: "page_template/page_statistics.html"
   - heti
+  - mkdocs-breadcrumbs-plugin:
+      delimiter: " > " # separator between sections
+      log_level: "WARNING" # "DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"
+      exclude_paths:
+        - "docs/assets" # avoid generating index.md
+        - "docs/javascripts"
+        - "docs/stylesheets"
+        - "docs/page_template"
+      additional_index_folders:
+        - temp_dir
+      generate_home_index: false
+      use_page_titles: true # use page title instead of path in breadcrumbs
+      home_text: "Home"
 
 # Additional configuration
 extra:
@@ -234,19 +247,19 @@ extra_css:
 
 # Page tree
 nav:
-  - Home:
-      - index.md
-      - about.md
+  - index.md
   - Course Notes:
-      - About: course_notes/about_notes.md
-      - 信号与系统:
+      - course_notes/index.md
+      - Signals and Systems:
+          - course_notes/signal_system/index.md
           - 05-傅里叶变换应用于通信系统: course_notes/signal_system/chapter5.md
           - 06-信号的矢量空间: course_notes/signal_system/chapter6.md
           - 07-离散时间系统的时域分析: course_notes/signal_system/chapter7.md
           - 08-z变换与离散时间系统z域分析: course_notes/signal_system/chapter8.md
           - 11-反馈系统: course_notes/signal_system/chapter11.md
           - 12-系统的状态变量分析: course_notes/signal_system/chapter12.md
-      - 固体物理:
+      - Foundation of Solid State Physics:
+          - course_notes/solid_physics/index.md
           - 01-晶体的结构: course_notes/solid_physics/chapter1.md
           - 02-固体的结合: course_notes/solid_physics/chapter2.md
           - 03-固体电子论: course_notes/solid_physics/chapter3.md
@@ -254,7 +267,8 @@ nav:
           - 05-固体间接触的电特性: course_notes/solid_physics/chapter5.md
           - 06-固体的磁特性: course_notes/solid_physics/chapter6.md
           - 课后测试题: course_notes/solid_physics/test.md
-      - 数字图像处理:
+      - Digital Image Processing:
+          - course_notes/digital_image/index.md
           - 01-图像处理概述: course_notes/digital_image/chapter1.md
           - 02-图像信息与视觉感知: course_notes/digital_image/chapter2.md
           - 03-空域图像增强: course_notes/digital_image/chapter3.md
@@ -262,7 +276,8 @@ nav:
           - 05-图像分割: course_notes/digital_image/chapter5.md
           - 06-图像复原: course_notes/digital_image/chapter6.md
           - 07-图像校正和修补: course_notes/digital_image/chapter7.md
-      - 操作系统:
+      - Operating System:
+          - course_notes/operating_system/index.md
           - 01-绪论(1): course_notes/operating_system/chapter1.md
           - 02-绪论(2): course_notes/operating_system/chapter2.md
           - 03-进程的描述与控制: course_notes/operating_system/chapter3.md
@@ -279,8 +294,9 @@ nav:
           - 14-文件系统(2): course_notes/operating_system/chapter14.md
           - 知识总结(计算机系): course_notes/operating_system/review_cst.md
   - Course Labs:
-      - About: course_labs/about_labs.md
-      - 数据与算法:
+      - course_labs/index.md
+      - Data and Algorithm:
+          - course_labs/data_algorithm/index.md
           - OJ-1: course_labs/data_algorithm/oj1.md
           - OJ-2: course_labs/data_algorithm/oj2.md
           - OJ-3: course_labs/data_algorithm/oj3.md
@@ -291,7 +307,8 @@ nav:
           - OJ-8: course_labs/data_algorithm/oj8.md
           - OJ-9: course_labs/data_algorithm/oj9.md
           - OJ-10: course_labs/data_algorithm/oj10.md
-      - 数字图像处理:
+      - Digital Image Processing:
+          - course_labs/digital_image/index.md
           - Lab-1: course_labs/digital_image/lab1.md
           - Lab-2: course_labs/digital_image/lab2.md
           - Lab-3: course_labs/digital_image/lab3.md
@@ -302,30 +319,32 @@ nav:
           - Lab-8: course_labs/digital_image/lab8.md
           - Lab-9: course_labs/digital_image/lab9.md
   - Research:
-      - About: research/about_research.md
+      - research/index.md
       - Robot:
-          - About: research/robot/about_robot.md
+          - research/robot/index.md
           - ROS basic: research/robot/ros_basic.md
           - Gazebo: research/robot/gazebo.md
           - Catkin Tool: research/robot/catkin.md
           - SLAM: research/robot/slam.md
           - LIO-SAM: research/robot/liosam.md
           - Kalman Filter: research/robot/kalman_filter.md
-  - Computer Basic:
-      - About: computer_basic/about_computer.md
-      - Environment:
-          - About: computer_basic/environment/about_environment.md
+  - Computer Science Basic:
+      - computer_basic/index.md
+      - Environment Configuration:
+          - computer_basic/environment/index.md
           - Python: computer_basic/environment/python.md
           - JavaScript: computer_basic/environment/javascript.md
           - Ubuntu: computer_basic/environment/ubuntu.md
   - Else:
-      - About: else/about_else.md
+      - else/index.md
       - Railway:
-          - About: else/railway/about_railway.md
-          - 复兴号: else/railway/cr.md
-          - 和谐号: else/railway/crh.md
-          - 铁路局: else/railway/group.md
-          - 车站: else/railway/station.md
-          - 行程记录: else/railway/journey.md
-          - 运转日记: else/railway/diary.md
-          - 其他: else/railway/else.md
+          - else/railway/index.md
+          - CR (Fuxing): else/railway/cr.md
+          - CRH (Hexie): else/railway/crh.md
+          - Railway Group: else/railway/group.md
+          - Station: else/railway/station.md
+          - Journey Record: else/railway/journey.md
+          - Diary: else/railway/diary.md
+          - Else: else/railway/else.md
+  - About:
+      - about/index.md
