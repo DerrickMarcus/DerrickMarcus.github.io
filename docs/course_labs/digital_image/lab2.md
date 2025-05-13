@@ -1,7 +1,3 @@
----
-comments: true
----
-
 # 数字图像处理 第2周作业
 
 修改待处理图片的路径然后运行文件 `task.py` ，分解图像的 R,G,B 分量，分解 C,M,Y 分量，分解 H,S,I 分量。结果分别保存在 `img1_decomposed.jpg` 和 `img2_decomposed.jpg` 文件中。

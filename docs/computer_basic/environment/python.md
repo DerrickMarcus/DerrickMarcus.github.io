@@ -1,7 +1,3 @@
----
-comments: true
----
-
 # Python environment in Windows
 
 ## 1. Install Anaconda/Miniconda

@@ -1,7 +1,3 @@
----
-comments: true
----
-
 # 数字图像处理 第8周作业
 
 原图像为 `./digital_image_hw8_img1.png` ，首先运行 `./add_noise.py` 文件，对原图像添加轻度和重度的高斯噪声，分别得到 `./digital_image_hw8_img2.png` 和 `./digital_image_hw8_img3.png` ，三张图像的对比图为：

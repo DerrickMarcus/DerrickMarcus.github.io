@@ -42,8 +42,8 @@ theme:
     text: '"LXGW WenKai GB Screen", "Noto Serif SC", sans-serif'
     code: '"Fira Code", "Noto Sans SC", monospace'
 
-  favicon: assets/2001.png # logo on the browser tab
-  logo: assets/2001.png # logo on the top left of the site
+  favicon: https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/2001.jpg # logo on the browser tab
+  logo: https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/2001.jpg # logo on the top left of the site
   icon:
     # logo: logo # logo on the top left of the site
     repo: fontawesome/brands/git-alt # logo on the top right of the site
@@ -92,6 +92,21 @@ plugins:
         - zh
         - en
       separator: '[\s\u200b\-_,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+  - meta
+  - blog:
+      post_date_format: full
+      draft: true
+      draft_if_future_date: true # 自动将具有未来日期的帖子标记为草稿
+      post_readtime: true
+      post_readtime_words_per_minute: 200
+      post_url_format: "{date}/{slug}"
+      categories_slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+      categories_toc: true
+      pagination_per_page: 5
+      pagination_url_format: "page/{page}"
+      authors_file: "{blog}/.authors.yml"
   - git-revision-date-localized:
       enabled: !ENV [CI, false]
       type: iso_datetime
@@ -119,23 +134,24 @@ plugins:
   - callouts
   - glightbox:
       width: 80%
-  - statistics:
-      words_per_minute: 200
-      page_template: "page_template/page_statistics.html"
+  # - statistics:
+  #     words_per_minute: 200
+  #     page_template: "page_template/page_statistics.html"
   - heti
-  - mkdocs-breadcrumbs-plugin:
-      delimiter: " > " # separator between sections
-      log_level: "WARNING" # "DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"
-      exclude_paths:
-        - "docs/assets" # avoid generating index.md
-        - "docs/javascripts"
-        - "docs/stylesheets"
-        - "docs/page_template"
-      additional_index_folders:
-        - temp_dir
-      generate_home_index: false
-      use_page_titles: true # use page title instead of path in breadcrumbs
-      home_text: "Home"
+  # - mkdocs-breadcrumbs-plugin:
+  #     delimiter: " > " # separator between sections
+  #     log_level: "WARNING" # "DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"
+  #     exclude_paths: # avoid generating index.md
+  #       - "docs/assets"
+  #       - "docs/javascripts"
+  #       - "docs/stylesheets"
+  #       - "docs/page_template"
+  #       - "docs/blog/posts"
+  #     additional_index_folders:
+  #       - temp_dir
+  #     generate_home_index: false
+  #     use_page_titles: true # use page title instead of path in breadcrumbs
+  #     home_text: "Home"
 
 # Additional configuration
 extra:
@@ -175,7 +191,7 @@ markdown_extensions:
   - admonition
   - tables
   - toc:
-      permalink: true # 各标题生成各自链接
+      permalink: ⚓ # 各标题生成各自链接
       # toc_depth: 3
   - pymdownx.arithmatex:
       generic: true
@@ -222,18 +238,25 @@ extra_javascript:
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - javascripts/katex.js
 
-  - https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js
-  - https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js
-  - https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/mhchem.min.js
+  - https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js
+  - https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/auto-render.min.js
+  - https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/mhchem.min.js
 
-  - javascripts/mathjax.js
+  # - javascripts/mathjax.js
 
-  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
-  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js
-  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js
-  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg-full.js
+  # - https://cdn.jsdelivr.net/npm/mathjax@latest/es5/tex-mml-chtml.js
+  # - https://cdn.jsdelivr.net/npm/mathjax@latest/es5/tex-chtml.js
+  # - https://cdn.jsdelivr.net/npm/mathjax@latest/es5/tex-chtml-full.js
+  # - https://cdn.jsdelivr.net/npm/mathjax@latest/es5/tex-svg-full.js
+
+  # anmie
+  - https://cdn.jsdelivr.net/npm/animejs@latest/lib/anime.min.js
 
   - javascripts/toc.js
+  - javascripts/time.js
+  - javascripts/anime.js
+  # - javascripts/background_line.js
+  # - javascripts/background_particle.js
 
 extra_css:
   - https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-web@latest/style.css
@@ -243,15 +266,17 @@ extra_css:
 
   - stylesheets/custom.css
 
-  - https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css
+  - https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css
 
 # Page tree
 nav:
-  - index.md
-  - Course Notes:
-      - course_notes/index.md
+  - "🏠 Home": index.md
+  - "📝 Blog":
+      - Blog: blog/index.md
+  - "📚 Course Notes":
+      - Course Notes: course_notes/index.md
       - Signals and Systems:
-          - course_notes/signal_system/index.md
+          - Signals and Systems: course_notes/signal_system/index.md
           - 05-傅里叶变换应用于通信系统: course_notes/signal_system/chapter5.md
           - 06-信号的矢量空间: course_notes/signal_system/chapter6.md
           - 07-离散时间系统的时域分析: course_notes/signal_system/chapter7.md
@@ -259,7 +284,7 @@ nav:
           - 11-反馈系统: course_notes/signal_system/chapter11.md
           - 12-系统的状态变量分析: course_notes/signal_system/chapter12.md
       - Foundation of Solid State Physics:
-          - course_notes/solid_physics/index.md
+          - Foundation of Solid State Physics: course_notes/solid_physics/index.md
           - 01-晶体的结构: course_notes/solid_physics/chapter1.md
           - 02-固体的结合: course_notes/solid_physics/chapter2.md
           - 03-固体电子论: course_notes/solid_physics/chapter3.md
@@ -268,7 +293,7 @@ nav:
           - 06-固体的磁特性: course_notes/solid_physics/chapter6.md
           - 课后测试题: course_notes/solid_physics/test.md
       - Digital Image Processing:
-          - course_notes/digital_image/index.md
+          - Digital Image Processing: course_notes/digital_image/index.md
           - 01-图像处理概述: course_notes/digital_image/chapter1.md
           - 02-图像信息与视觉感知: course_notes/digital_image/chapter2.md
           - 03-空域图像增强: course_notes/digital_image/chapter3.md
@@ -277,7 +302,7 @@ nav:
           - 06-图像复原: course_notes/digital_image/chapter6.md
           - 07-图像校正和修补: course_notes/digital_image/chapter7.md
       - Operating System:
-          - course_notes/operating_system/index.md
+          - Operating System: course_notes/operating_system/index.md
           - 01-绪论(1): course_notes/operating_system/chapter1.md
           - 02-绪论(2): course_notes/operating_system/chapter2.md
           - 03-进程的描述与控制: course_notes/operating_system/chapter3.md
@@ -293,10 +318,10 @@ nav:
           - 13-文件系统(1): course_notes/operating_system/chapter13.md
           - 14-文件系统(2): course_notes/operating_system/chapter14.md
           - 知识总结(计算机系): course_notes/operating_system/review_cst.md
-  - Course Labs:
-      - course_labs/index.md
+  - "📈 Course Labs":
+      - Course Labs: course_labs/index.md
       - Data and Algorithm:
-          - course_labs/data_algorithm/index.md
+          - Data and Algorithm: course_labs/data_algorithm/index.md
           - OJ-1: course_labs/data_algorithm/oj1.md
           - OJ-2: course_labs/data_algorithm/oj2.md
           - OJ-3: course_labs/data_algorithm/oj3.md
@@ -308,7 +333,7 @@ nav:
           - OJ-9: course_labs/data_algorithm/oj9.md
           - OJ-10: course_labs/data_algorithm/oj10.md
       - Digital Image Processing:
-          - course_labs/digital_image/index.md
+          - Digital Image Processing: course_labs/digital_image/index.md
           - Lab-1: course_labs/digital_image/lab1.md
           - Lab-2: course_labs/digital_image/lab2.md
           - Lab-3: course_labs/digital_image/lab3.md
@@ -318,33 +343,34 @@ nav:
           - Lab-7: course_labs/digital_image/lab7.md
           - Lab-8: course_labs/digital_image/lab8.md
           - Lab-9: course_labs/digital_image/lab9.md
-  - Research:
-      - research/index.md
-      - Robot:
-          - research/robot/index.md
+          - Lab-12: course_labs/digital_image/lab12.md
+  - "🔬 Research":
+      - Research: research/index.md
+      - "🤖 Robot":
+          - Robot: research/robot/index.md
           - ROS basic: research/robot/ros_basic.md
           - Gazebo: research/robot/gazebo.md
           - Catkin Tool: research/robot/catkin.md
           - SLAM: research/robot/slam.md
           - LIO-SAM: research/robot/liosam.md
           - Kalman Filter: research/robot/kalman_filter.md
-  - Computer Science Basic:
-      - computer_basic/index.md
-      - Environment Configuration:
-          - computer_basic/environment/index.md
+  - "💻 Computer Science Basic":
+      - Computer Science Basic: computer_basic/index.md
+      - "⚙️ Environment Configuration":
+          - Environment Configuration: computer_basic/environment/index.md
           - Python: computer_basic/environment/python.md
           - JavaScript: computer_basic/environment/javascript.md
           - Ubuntu: computer_basic/environment/ubuntu.md
-  - Else:
-      - else/index.md
-      - Railway:
-          - else/railway/index.md
-          - CR (Fuxing): else/railway/cr.md
-          - CRH (Hexie): else/railway/crh.md
+  - "🗃️ Else":
+      - Else: else/index.md
+      - "🚅 Railway":
+          - Railway: else/railway/index.md
+          - CR (Fuxing Train): else/railway/cr.md
+          - CRH (Hexie Train): else/railway/crh.md
           - Railway Group: else/railway/group.md
-          - Station: else/railway/station.md
+          - Railway Station: else/railway/station.md
           - Journey Record: else/railway/journey.md
           - Diary: else/railway/diary.md
           - Else: else/railway/else.md
-  - About:
-      - about/index.md
+  - "🥳 About":
+      - About: about/index.md

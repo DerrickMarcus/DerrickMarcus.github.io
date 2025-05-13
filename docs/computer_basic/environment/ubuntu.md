@@ -1,13 +1,9 @@
----
-comments: true
----
-
 # Ubuntu in Virtual Machine
 
 !!! Tip
     Before installing any package or software, please think twice. It is recommended to keep the system clean and away from redundant packages.
 
-## Change the mirror source
+## 1. Change the mirror source
 
 In China mainland, using the default Ubuntu source is very slow. It is recommended to change it to Tsinghua University source.
 
@@ -48,7 +44,7 @@ sudo apt update
 sudo apt upgrade
 ```
 
-## Install vmware tools
+## 2. Install vmware tools
 
 Run:
 
@@ -57,9 +53,9 @@ sudo apt install open-vm-tools
 sudo apt install open-vm-tools-desktop
 ```
 
-## Configure the proxy
+## 3. Configure the proxy
 
-### Using Clash Verge Rev
+### 3.1 Using Clash Verge Rev
 
 To visit some foreign websites, we need to use a proxy. Clash Verge Rev is a modified version of Clash-for-Windows, but with a core of Clash.Meta(mihomo). You can visit <https://www.clashverge.dev> for detailed information and installation guides.
 
@@ -76,7 +72,7 @@ sudo apt install ./clash-verge_1.7.7_amd64.deb
 
 ```
 
-### Using Clash for Windows
+### 3.2 Using Clash for Windows
 
 Visit [Clash for Windows](https://archive.org/download/clash_for_windows_pkg) and select `Clash.for.Windows-0.20.39-x64-linux.tar.gz` . Or you can run:
 
@@ -92,7 +88,7 @@ cd clash
 ./cfw
 ```
 
-## Install Chinese input method
+## 4. Install Chinese input method
 
 Run:
 
@@ -102,7 +98,7 @@ sudo apt install ibus-libpinyin
 
 Then open Settings->Region & Language, add and choose `Chinese-Intelligent Pinyin` .
 
-## Install VS Code
+## 5. Install VS Code
 
 Go to <https://code.visualstudio.com/> and download the latest version of `code_*.deb` . Then Run:
 

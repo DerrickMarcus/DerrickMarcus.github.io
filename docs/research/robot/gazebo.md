@@ -1,7 +1,3 @@
----
-comments: true
----
-
 # Gazebo Classic
 
 **本文适用于 Gazebo Classic，搭配 ROS1 版本。新版 Gazebo gz 请参考 <https://gazebosim.org/>**

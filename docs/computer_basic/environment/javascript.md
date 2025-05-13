@@ -1,10 +1,6 @@
----
-comments: true
----
-
 # JavaScript environment in Windows
 
-## Install Node.js
+## 1. Install Node.js
 
 访问官网：[Node.js — Download Node.js® (nodejs.org)](https://nodejs.org/en/download)。
 
@@ -33,7 +29,7 @@ npm -v
 
 若能正确输出版本号，即为安装成功。
 
-## Configure system environment variable
+## 2. Configure system environment variable
 
 文件资源管理器中，打开刚才的安装目录：
 
@@ -43,7 +39,7 @@ E:\Program Files\nodejs
 
 新建两个文件夹： node_global 和 node_cache
 
-创建完成后，以**管理员身份打开cmd**，输入下面两个命令：
+创建完成后，以管理员身份打开cmd，输入下面两个命令：
 
 ```bash
 npm config set prefix E:\Program Files\nodejs\node_global
@@ -61,13 +57,13 @@ npm config get prefix
 npm config get cache
 ```
 
-然后进行**系统环境变量**设置，打开“查看高级系统设置——环境变量，在下方系统变量中新建变量**NODE_PATH**，变量值为：`E:\Program Files\nodejs\node_global\node_modules` 。
+然后进行系统环境变量设置，打开“查看高级系统设置——环境变量，在下方系统变量中新建变量 NODE_PATH，变量值为：`E:\Program Files\nodejs\node_global\node_modules` 。
 
 在 `PATH` 中，新建项 `%NODE_PATH%`，顺便把C盘下默认 `AppData\Roaming\npm` 修改为 `E:\Program Files\nodejs\node_global`（如果有）。
 
 创建好后，`E:\Program Files\nodejs\node_global` 目录下应该会出现文件夹 `node_modules` ，如果没有，手动创建即可。
 
-## Test
+## 3. Test
 
 全局安装一个最常用的 express 模块进行测试。命令行输入：
 
@@ -79,7 +75,7 @@ npm install -g express  // -g代表全局安装
 
 右键点击对应文件夹——【属性】——【安全】——【编辑】——勾选所有权限——【确定】。
 
-## Configure Taobao Mirror
+## 4. Configure Taobao Mirror
 
 ```bash
 npm config set registry https://registry.npmmirror.com/
@@ -103,7 +99,7 @@ npm install -g cnpm --registry=https://registry.npmmirror.com
 cnpm -v
 ```
 
-## Configure VS Code
+## 5. Configure VS Code
 
 下载插件 Code Runner（By Jun Han）。
 

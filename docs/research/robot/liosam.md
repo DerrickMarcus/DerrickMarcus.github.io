@@ -1,7 +1,3 @@
----
-comments: true
----
-
 # Deploy LIO-SAM
 
 ## Reproduce the project 复现项目
@@ -71,7 +67,7 @@ rosbag play bag_name -r 3 # 以3倍速率播放
 
 步行的数据集不需要修改任何参数，可以直接运行。
 
-公园数据集用于使用 GPS 数据测试 LIO-SAM。该数据集由 Yewei Huang(<https://robustfieldautonomylab.github.io/people.html>) 收集。要启用 GPS 功能，请将"params.yaml"中的"gpsTopic"更改为"odometry/gps"。在 Rviz 中，取消选中"地图（云）“并选中"地图（全局）”。还要检查"Odom GPS"，它可以可视化 GPS 里程计。可以调整"gpsCovThreshold"以过滤不良 GPS 读数。 “poseCovThreshold"可用于调整将 GPS 因子添加到图形的频率。例如，您会注意到 GPS 会不断修正轨迹，因为您将"poseCovThreshold"设置为 1.0。由于 iSAM 的重度优化(heavy optimization)，建议播放速度为”-r 1"。
+公园数据集用于使用 GPS 数据测试 LIO-SAM。该数据集由 Yewei Huang(<https://robustfieldautonomylab.github.io/people.html>) 收集。要启用 GPS 功能，请将 `params.yaml` 中的 `gpsTopic` 更改为 `odometry/gps` 。在 Rviz 中，取消选中“地图（云）”，并选中“地图（全局）”。还要检查 `Odom GPS` ，它可以可视化 GPS 里程计。可以调整 `gpsCovThreshold` 以过滤不良 GPS 读数。 `poseCovThreshold` 可用于调整将 GPS 因子添加到图形的频率。例如，您会注意到 GPS 会不断修正轨迹，因为您将 `poseCovThreshold` 设置为 1.0。由于 iSAM 的重度优化(heavy optimization)，建议播放速度为`-r 1` 。
 
 保存地图：在 `~/liosam_ws/src/LIO-SAM/config/params.yaml` 文件中修改 `savePCD` 为 `true` ，以及修改 `savePCDDirectory` 为想要保存地图的目录。
 
@@ -79,7 +75,7 @@ rosbag play bag_name -r 3 # 以3倍速率播放
 
 在没有硬件设备的情况下，我们也可以在 Gazebo 中仿真，模拟真实的环境，并通过录制 rosbag 包方便后期调试排查问题。
 
-现今在 github 上有较为可行的项目，地址为 <https://github.com/balmung08/Slam_Simulation> ，选择其中的“基于 Velodyne 雷达 SDK 与 Gazebo 的车辆模型与仿真环境”，也可以直接访问仓库 <https://github.com/linzs-online/robot_gazebo> ，经过测试，该仓库中的 `fdilink_ahrs` 实际上为冗余目录，而 `realsense_ros_gazebo` 代表相机的软件包实际上并非必须，也就是我们使用 VLP_16 激光雷达和 IMU 单元就可以完成建图，在录制包的过程中我们只需要录雷达和imu话题（/velodyne_points和/imu/data）就可以了。
+现今在 github 上有较为可行的项目，地址为 <https://github.com/balmung08/Slam_Simulation> ，选择其中的“基于 Velodyne 雷达 SDK 与 Gazebo 的车辆模型与仿真环境”，也可以直接访问仓库 <https://github.com/linzs-online/robot_gazebo> ，经过测试，该仓库中的 `fdilink_ahrs` 实际上为冗余目录，而 `realsense_ros_gazebo` 代表相机的软件包实际上并非必须，也就是我们使用 VLP_16 激光雷达和 IMU 单元就可以完成建图，在录制包的过程中我们只需要录雷达和imu话题 `/velodyne_points, /imu/data` 就可以了。
 
 该项目的主要功能：在机器人模型中添加 16线激光雷达、IMU、RGB-D 相机，然后使用 LIO-SAM 建图，其中小车的移动使用 ros 包 teleop_twist_keyboard 实现，后期笔者考虑在项目中添加 SLAM 算法，实现机器小车的自主路径规划和导航。
 

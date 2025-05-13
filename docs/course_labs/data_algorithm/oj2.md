@@ -1,7 +1,3 @@
----
-comments: true
----
-
 # OJ2：军训排队
 
 ## Description

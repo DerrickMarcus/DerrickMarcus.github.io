@@ -1,7 +1,3 @@
----
-comments: true
----
-
 # OJ3：比武
 
 ## Description

@@ -1,7 +1,3 @@
----
-comments: true
----
-
 # 操作系统（计算机系） 复习笔记
 
 !!! info "Info"

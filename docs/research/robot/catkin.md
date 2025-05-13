@@ -1,7 +1,3 @@
----
-comments: true
----
-
 # CMake and Catkin
 
 CMake 是 C/C++ 开发中常用的编译工具链，在 ROS 中我们可以使用 catkin_make 工具，它集成了 CMake 且功能更加适用于 ROS 开发，语法与 CMake 相同，配置文件均为 CMakeLists.txt

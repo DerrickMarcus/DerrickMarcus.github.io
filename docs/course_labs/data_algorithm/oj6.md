@@ -1,7 +1,3 @@
----
-comments: true
----
-
 # OJ6：跳跳乐
 
 ## Description

@@ -1,7 +1,3 @@
----
-comments: true
----
-
 # 数字图像处理 第4周作业
 
 编写 MATLAB 代码：首先载入 `./work.mat` 得到变量 `image`，其类型是 `complex double`，取幅度值得到 `spectrum`。然后进行对数变换：

@@ -1,7 +1,3 @@
----
-comments: true
----
-
 # ROS Basic
 
 Ubuntu 20.04 Focal, ROS 1 Noetic.

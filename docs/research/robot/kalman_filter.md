@@ -1,7 +1,3 @@
----
-comments: true
----
-
 # Kalman Filter 卡尔曼滤波
 
 ## KF 卡尔曼滤波
