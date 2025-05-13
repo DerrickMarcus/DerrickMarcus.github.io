@@ -1,5 +1,5 @@
 :root {
-    --md-text-font: "LXGW WenKai GB Screen", "Noto Serif SC", sans-serif;
+    --md-text-font: "Noto Serif SC", "LXGW WenKai GB Screen", sans-serif;
     --md-code-font: "Fira Code", "Noto Sans SC", monospace;
 }
 
@@ -103,12 +103,12 @@
     color: var(--md-accent-fg-color);
 }
 
-.md-sidebar--secondary .md-nav > .md-nav__list > li > a + .md-nav {
-  display: none;
+.md-sidebar--secondary .md-nav>.md-nav__list>li>a+.md-nav {
+    display: none;
 }
 
-.md-sidebar--secondary .md-nav > .md-nav__list > li > a.is-active + .md-nav {
-  display: block;
+.md-sidebar--secondary .md-nav>.md-nav__list>li>a.is-active+.md-nav {
+    display: block;
 }
 
 [data-md-color-scheme="default"] .md-nav__title {
@@ -146,7 +146,7 @@
 
 /* 正文部分页面宽度扩大（移动端可能会有问题） */
 .md-grid {
-  max-width: 1350px;
+    max-width: 1350px;
 }
 
 /* 代码字体大小 */
@@ -199,20 +199,21 @@
 }
 
 /* 链接下划线 */
-.md-typeset a {
-  text-decoration-line: underline;
-}
+/* .md-typeset a {
+    text-decoration-line: underline;
+} */
 
-.md-copyright a, .index-item-wrapper a {
-  text-decoration-line: none;
+.md-copyright a,
+.index-item-wrapper a {
+    text-decoration-line: none;
 }
 
 a.headerlink {
-  text-decoration-line: none;
+    text-decoration-line: none;
 }
 
 .tabbed-labels.tabbed-labels--linked a {
-  text-decoration-line: none;
+    text-decoration-line: none;
 }
 
 .tightBlock p {
