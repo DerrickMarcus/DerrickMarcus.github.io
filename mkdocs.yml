@@ -1,8 +1,8 @@
 # Project information
-site_name: Blog of Yanxu Chen
-site_url: https://www.yanxuchen.com
+site_name: Blog of Derrick Marcus
+site_url: https://blog.yanxuchen.com
 site_author: Yanxu Chen
-site_description: Personal blog website of Yanxu Chen.
+site_description: Personal website.
 
 # Repository
 repo_url: https://github.com/DerrickMarcus/DerrickMarcus.github.io
@@ -38,12 +38,13 @@ theme:
         icon: material/weather-night
         name: Switch to system preference
 
-  font:
-    text: '"LXGW WenKai GB Screen", "Noto Serif SC", sans-serif'
-    code: '"Fira Code", "Noto Sans SC", monospace'
+  # see font in docs/stylesheets/custom.css
+  # font:
+  #   text: '"Source Han Serif", "LXGW WenKai GB Screen", sans-serif'
+  #   code: '"Fira Code", "Source Han Sans", monospace'
 
-  favicon: https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/2001.jpg # logo on the browser tab
-  logo: https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/2001.jpg # logo on the top left of the site
+  favicon: https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo-image/images/2001.jpg # logo on the browser tab
+  logo: https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo-image/images/2001.jpg # logo on the top left of the site
   icon:
     # logo: logo # logo on the top left of the site
     repo: fontawesome/brands/git-alt # logo on the top right of the site
@@ -94,18 +95,18 @@ plugins:
       separator: '[\s\u200b\-_,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
   - meta
   - blog:
+      blog_dir: blog
+      blog_toc: true
       post_date_format: full
       draft: true
-      draft_if_future_date: true # 自动将具有未来日期的帖子标记为草稿
+      draft_if_future_date: true
+      post_excerpt: required
+      post_excerpt_separator: <!-- more -->
       post_readtime: true
       post_readtime_words_per_minute: 200
-      post_url_format: "{date}/{slug}"
-      categories_slugify: !!python/object/apply:pymdownx.slugs.slugify
-        kwds:
-          case: lower
       categories_toc: true
       pagination_per_page: 5
-      pagination_url_format: "page/{page}"
+      pagination_format: "$link_first $link_previous ~2~ $link_next $link_last"
       authors_file: "{blog}/.authors.yml"
   - git-revision-date-localized:
       enabled: !ENV [CI, false]
@@ -134,10 +135,10 @@ plugins:
   - callouts
   - glightbox:
       width: 80%
+  - heti
   # - statistics:
   #     words_per_minute: 200
   #     page_template: "page_template/page_statistics.html"
-  - heti
   # - mkdocs-breadcrumbs-plugin:
   #     delimiter: " > " # separator between sections
   #     log_level: "WARNING" # "DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"
@@ -163,7 +164,7 @@ extra:
       link: https://space.bilibili.com/627449965
       name: Yanxu Chen on Bilibili
     - icon: fontawesome/regular/envelope
-      link: mailto:<chenyanx22@mails.tsinghua.edu.cn>
+      link: mailto:<blog@yanxuchen.com>
 
   analytics:
     provider: google
@@ -191,7 +192,7 @@ markdown_extensions:
   - admonition
   - tables
   - toc:
-      permalink: ⚓ # 各标题生成各自链接
+      permalink: "⚓" # 各标题生成各自链接
       # toc_depth: 3
   - pymdownx.arithmatex:
       generic: true
@@ -260,9 +261,6 @@ extra_javascript:
 
 extra_css:
   - https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-web@latest/style.css
-  - https://cdn.jsdelivr.net/npm/@fontsource/fira-code@latest/index.css
-  - https://cdn.jsdelivr.net/npm/@fontsource/noto-serif-sc@latest/index.css
-  - https://cdn.jsdelivr.net/npm/@fontsource/noto-sans-sc@latest/index.css
 
   - stylesheets/custom.css
 

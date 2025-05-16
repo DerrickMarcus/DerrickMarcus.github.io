@@ -38,7 +38,7 @@ function updateCurrentTime(elementId) {
     el.textContent = formatted;
 }
 
-const startTime = "2024-11-02T13:22:00";
+const startTime = "2024-11-02T13:22:38";
 
 setInterval(() => {
     updateRuntime(startTime, "runtime-in-md");

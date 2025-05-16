@@ -4,13 +4,13 @@ Ubuntu 20.04 Focal, ROS 1 Noetic.
 
 一些基本概念：
 
-rviz，3D 可视化工具，用来创建地图、显示 3D 点云。
+Rviz，3D 可视化工具，可以显示出机器人所处的环境、各种类型话题的消息等，如显示 3D 点云。
 
-tf，坐标变换系统。两种坐标系：固定坐标系（用于表示世界的参考坐标系），目标坐标系（相对于摄像机视角的参考坐标系）
+TF，坐标变换系统。两种坐标系：固定坐标系（用于表示世界的参考坐标系），目标坐标系（相对于摄像机视角的参考坐标系）
 
-Gazebo，物理仿真工具。
+Gazebo，物理仿真工具，与实际环境对应，为机器人运动提供逼真的物理环境。
 
-SLAM(Simultaneous Localization and Mapping)，同步定位与建图
+SLAM(Simultaneous Localization and Mapping)，同步定位与建图。
 
 ## 工作空间
 
