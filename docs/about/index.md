@@ -17,3 +17,4 @@
 
 !!! success "TODO List"
     - [ ] Deploy my own Git server using Gitea and host it at the domain name `git.yanxuchen.com` .
+    - [ ] Create a site for the main domain `www.yanxuchen.com` .

@@ -67,7 +67,7 @@ rosbag play bag_name -r 3 # 以3倍速率播放
 
 步行的数据集不需要修改任何参数，可以直接运行。
 
-公园数据集用于使用 GPS 数据测试 LIO-SAM。该数据集由 Yewei Huang(<https://robustfieldautonomylab.github.io/people.html>) 收集。要启用 GPS 功能，请将 `params.yaml` 中的 `gpsTopic` 更改为 `odometry/gps` 。在 Rviz 中，取消选中“地图（云）”，并选中“地图（全局）”。还要检查 `Odom GPS` ，它可以可视化 GPS 里程计。可以调整 `gpsCovThreshold` 以过滤不良 GPS 读数。 `poseCovThreshold` 可用于调整将 GPS 因子添加到图形的频率。例如，您会注意到 GPS 会不断修正轨迹，因为您将 `poseCovThreshold` 设置为 1.0。由于 iSAM 的重度优化(heavy optimization)，建议播放速度为`-r 1` 。
+公园数据集用于使用 GPS 数据测试 LIO-SAM。该数据集由 Yewei Huang(<https://robustfieldautonomylab.github.io/people.html>) 收集。要启用 GPS 功能，请将 `params.yaml` 中的 `gpsTopic` 更改为 `odometry/gps` 。在 Rviz 中，取消选中“地图（云）”，并选中“地图（全局）”。还要检查 `Odom GPS` ，它可以可视化 GPS 里程计。可以调整 `gpsCovThreshold` 以过滤不良 GPS 读数。 `poseCovThreshold` 可用于调整将 GPS 因子添加到图形的频率。例如，您会注意到 GPS 会不断修正轨迹，因为您将 `poseCovThreshold` 设置为 1.0。由于 iSAM 的重度优化(heavy optimization)，建议播放速度为 `-r 1` 。
 
 保存地图：在 `~/liosam_ws/src/LIO-SAM/config/params.yaml` 文件中修改 `savePCD` 为 `true` ，以及修改 `savePCDDirectory` 为想要保存地图的目录。
 

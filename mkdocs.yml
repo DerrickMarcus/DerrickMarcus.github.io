@@ -38,7 +38,7 @@ theme:
         icon: material/weather-night
         name: Switch to system preference
 
-  # see font in docs/stylesheets/custom.css
+  # See font in docs/stylesheets/custom.css
   # font:
   #   text: '"Source Han Serif", "LXGW WenKai GB Screen", sans-serif'
   #   code: '"Fira Code", "Source Han Sans", monospace'
@@ -52,17 +52,17 @@ theme:
     view: material/eye
 
   features:
-    - announce.dismiss
+    - announce.dismiss # 可以选择关闭公告栏
     - search.suggest # 搜索建议
     - search.highlight # 搜索高亮
     - search.share # 搜索分享
 
     # - navigation.expand # 目录自动展开子目录
-    - navigation.indexes
+    - navigation.indexes # 目录索引
     - navigation.instant # 导航栏立即打开，而不是在悬停时显示
     - navigation.instant.progress
-    - navigation.path
-    # - navigation.sections
+    - navigation.path # insiders 专用
+    # - navigation.sections # 目录栏显示当前所在的目录
     - navigation.tracking # 滑动对应的标题时更新地址栏
     - navigation.top # 显示回到最上方的按钮
     - navigation.tabs # 一级目录融合至顶栏，只显示二级目录
@@ -78,13 +78,9 @@ theme:
     - content.footnote.tooltips
     - content.tabs.link
 
-    # - header.autohide
+    # - header.autohide # 滚动时隐藏标题栏
     # - toc.integrate # 右侧toc集成到左侧
     - toc.follow # 右侧toc随页面而滚动
-
-  nav_style: dark
-  collapse_navigation: true
-  sticky_navigation: true
 
 # Plugins
 plugins:
@@ -129,13 +125,10 @@ plugins:
       minify_css: true
       htmlmin_opts:
         remove_comments: true
-  # - toc
   - offline
   - tags
-  - callouts
   - glightbox:
       width: 80%
-  - heti
   # - statistics:
   #     words_per_minute: 200
   #     page_template: "page_template/page_statistics.html"
@@ -183,7 +176,6 @@ extra:
 
 # Extensions
 markdown_extensions:
-  - meta
   - def_list
   - attr_list
   - md_in_html # 允许Markdown中使用HTML
@@ -193,7 +185,10 @@ markdown_extensions:
   - tables
   - toc:
       permalink: "⚓" # 各标题生成各自链接
-      # toc_depth: 3
+      toc_depth: 6
+      slugify: !!python/object/apply:pymdownx.slugs.slugify {
+          kwds: { case: lower },
+        } # enable Unicode link
   - pymdownx.arithmatex:
       generic: true
   - pymdownx.highlight:
@@ -236,7 +231,7 @@ markdown_extensions:
       clickable_checkbox: true
 
 extra_javascript:
-  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://polyfill.io/v3/polyfill.min.js?features=es6 # latex 支持
   - javascripts/katex.js
 
   - https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js
@@ -342,6 +337,7 @@ nav:
           - Lab-8: course_labs/digital_image/lab8.md
           - Lab-9: course_labs/digital_image/lab9.md
           - Lab-12: course_labs/digital_image/lab12.md
+          - Lab-13: course_labs/digital_image/lab13.md
   - "🔬 Research":
       - Research: research/index.md
       - "🤖 Robot":
