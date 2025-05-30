@@ -294,6 +294,8 @@ nav:
           - 05-图像分割: course_notes/digital_image/chapter5.md
           - 06-图像复原: course_notes/digital_image/chapter6.md
           - 07-图像校正和修补: course_notes/digital_image/chapter7.md
+          - 08-图像压缩编码: course_notes/digital_image/chapter8.md
+          - 09-图像3D成像: course_notes/digital_image/chapter9.md
       - Operating System:
           - Operating System: course_notes/operating_system/index.md
           - 01-绪论(1): course_notes/operating_system/chapter1.md
@@ -366,5 +368,9 @@ nav:
           - Journey Record: else/railway/journey.md
           - Diary: else/railway/diary.md
           - Else: else/railway/else.md
+      - "📖 Readings":
+          - Readings: else/readings/index.md
+          - "你是勇士": else/readings/read1.md
+          - "一组诗": else/readings/read2.md
   - "🥳 About":
       - About: about/index.md
