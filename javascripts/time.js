@@ -8,7 +8,7 @@ function timingTime(startTimeString) {
     diff %= 3600;
     const minutes = Math.floor(diff / 60);
     const seconds = diff % 60;
-    return `${days}days ${hours}h ${minutes}min ${seconds}s.`;
+    return `${days} days ${hours} h ${minutes} min ${seconds} s.`;
 }
 
 function updateRuntime(startTimeString, elementId) {
