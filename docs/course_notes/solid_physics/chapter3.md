@@ -23,17 +23,23 @@
 !!! note
     波矢空间与倒格空间是同一个坐标系，但是波矢空间的基矢长度为倒格空间基矢除以该方向原胞数 $N_i$ ，因此波矢空间点阵密度比倒格空间紧密 $N$ 倍， $N$ 为原胞总数。
 
-能态密度分析：
+#### 能态密度分析
 
-**三维情形**：波矢 $\vec{k}=\dfrac{2\pi n_x}{L_x}\hat{x}+\dfrac{2\pi n_y}{L_y}\hat{y}+\dfrac{2\pi n_z}{L_z}\hat{z},\;n_x,n_y,n_z\in \mathbb{Z}$ 。每一个离散取值的 $\vec{k}$ 代表一个电子运动可能的状态（即本征态），这些本征态在 $\vec{k}$ 空间排列成点阵，每一个量子态在 $\vec{k}$ 空间所占体积：$\dfrac{(2\pi)^3}{L_xL_yL_z}=\dfrac{8\pi^3}{V}$。 $\vec{k}$ 空间点阵密度为其倒数 $\rho(\vec{k})=\dfrac{V}{8\pi^3}$ ，考虑电子自旋简并度为2，单位 $\vec{k}$ 空间本征态数目，即 $\vec{k}$ 空间的能态密度为 $g(\vec{k})=2\rho(\vec{k})=\dfrac{V}{4\pi^3}$ 。
+三维情形：
+
+波矢 $\vec{k}=\dfrac{2\pi n_x}{L_x}\hat{x}+\dfrac{2\pi n_y}{L_y}\hat{y}+\dfrac{2\pi n_z}{L_z}\hat{z},\;n_x,n_y,n_z\in \mathbb{Z}$ 。每一个离散取值的 $\vec{k}$ 代表一个电子运动可能的状态（即本征态），这些本征态在 $\vec{k}$ 空间排列成点阵，每一个量子态在 $\vec{k}$ 空间所占体积：$\dfrac{(2\pi)^3}{L_xL_yL_z}=\dfrac{8\pi^3}{V}$。 $\vec{k}$ 空间点阵密度为其倒数 $\rho(\vec{k})=\dfrac{V}{8\pi^3}$ ，考虑电子自旋简并度为2，单位 $\vec{k}$ 空间本征态数目，即 $\vec{k}$ 空间的能态密度为 $g(\vec{k})=2\rho(\vec{k})=\dfrac{V}{4\pi^3}$ 。
 
 考虑电子自旋为2，能量为相等的状态，波矢 $\vec{k}$ 的模相等。因此能量 $E$ 以内的所有波矢状态围成一个球体，球体内电子能态总数为 $Z(E)=2\cdot \dfrac{V}{8\pi^3} \cdot \dfrac43\pi|\vec{k}|^3=2\cdot \dfrac{V}{8\pi^3} \cdot \dfrac43\pi(\dfrac{\sqrt{2mE}}{\hbar})^3$ ，能态密度为 $N(E)=\dfrac{\mathrm{d}Z}{\mathrm{d}E}=\dfrac{V}{2\pi^2}(\dfrac{2m}{\hbar^2})^{3/2}E^{1/2}$ ，电子能量越高，能态密度越大。
 
-**二维情形**：波矢 $\vec{k}=\dfrac{2\pi n_x}{L_x}\hat{x}+\dfrac{2\pi n_y}{L_y}\hat{y},\;n_x,n_y\in \mathbb{Z}$ 。每一个量子态在 $\vec{k}$ 空间所占面积：$\dfrac{(2\pi)^2}{L_xL_y}=\dfrac{4\pi^2}{S}$。
+二维情形：
+
+波矢 $\vec{k}=\dfrac{2\pi n_x}{L_x}\hat{x}+\dfrac{2\pi n_y}{L_y}\hat{y},\;n_x,n_y\in \mathbb{Z}$ 。每一个量子态在 $\vec{k}$ 空间所占面积：$\dfrac{(2\pi)^2}{L_xL_y}=\dfrac{4\pi^2}{S}$。
 
 能量为 $E$ 的圆中，电子能态总数为 $Z(E)=2\cdot \dfrac{S}{4\pi^2}\cdot \pi|\vec{k}|^2=\dfrac{mSE}{\pi\hbar^2}$ ，能态密度为 $N(E)=\dfrac{mS}{\pi\hbar^2}$ 为定值，不随能量改变。
 
-**一维情形**：波矢 $\vec{k}=\dfrac{2\pi n}{L}\hat{x},\;n\in\mathbb{Z}$ 。每一个量子态在 $\vec{k}$ 空间所占长度：$\dfrac{2\pi}{L}$。
+一维情形：
+
+波矢 $\vec{k}=\dfrac{2\pi n}{L}\hat{x},\;n\in\mathbb{Z}$ 。每一个量子态在 $\vec{k}$ 空间所占长度：$\dfrac{2\pi}{L}$。
 
 能量为 $E$ 的两个端点组成的线段中，电子能态总数为 $Z(E)=2\cdot \dfrac{L}{2\pi}\cdot 2|\vec{k}|=\dfrac{2L\sqrt{2mE}}{\pi\hbar}$ ，能态密度为 $N(E)=\dfrac{L\sqrt{2m}}{\pi\hbar}E^{-1/2}$ ，电子能量越高，能态密度越低。
 
@@ -112,4 +118,4 @@ $E_F$ 为**费米能级**，实际上是系统的化学势，由电子总数决�
 
 基态下 $T=0\text{K}$ ，总能量 $E=\dfrac{3}{5}NE_{F0}$ ，单个电子平均能量 $\dfrac{3}{5}E_{F0}$。
 
-温度升高时，只有费米面附近少部分 $|E-E_{F0}|\sim k_BT$ 的电子激发到较高能态。费米能量 $E_{F0}$ 以下占有概率减小，以上占有概率增大。由于能量越高能态密度越高（三维），因此有限温度下费米能级略低于费米能量 $E_F<E_{F0}$ 。
+温度升高时，只有费米面附近少部分 $|E-E_{F0}|\sim k_BT$ 的电子激发到较高能态。费米能量 $E_{F0}$ 以下占有概率减小，以上占有概率增大。由于能量越高能态密度越高（三维），因此**有限温度下费米能级略低于费米能量**， $E_F<E_{F0}$ 。
