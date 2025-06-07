@@ -284,6 +284,7 @@ nav:
           - 04-固体的电特性: course_notes/solid_physics/chapter4.md
           - 05-固体间接触的电特性: course_notes/solid_physics/chapter5.md
           - 06-固体的磁特性: course_notes/solid_physics/chapter6.md
+          - 07-晶格振动和固体的热性质: course_notes/solid_physics/chapter7.md
           - 课后测试题: course_notes/solid_physics/test.md
       - Digital Image Processing:
           - Digital Image Processing: course_notes/digital_image/index.md

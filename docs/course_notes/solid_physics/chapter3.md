@@ -92,11 +92,9 @@ $k$ 空间的平移对称性：布洛赫波的波矢 $k$ 平移 $\dfrac{2\pi n}{
 
 费米分布函数 $f(E)=\dfrac{1}{e^{(E-E_F)/k_BT}+1}$ 表示能量为 $E$ 的本征态被电子占据的概率。 $k_B$ 为玻尔兹曼常数。
 
-$E_F$ 为**费米能级**，实际上是系统的化学势，由电子总数决定：$N=\displaystyle\sum_i f(E_i)$ 或 $N=\displaystyle\int_0^\infty f(E)N(E)\mathrm{d}E$ 。
+$E_F$ 为**费米能级**，实际上是系统的化学势，由电子总数决定：$N=\displaystyle\sum_i f(E_i)$ 或 $N=\displaystyle\int_0^\infty f(E)N(E)\mathrm{d}E$ 。费米能级处，电子占据概率为 $f(E_F)=0.5$ 。
 
 系统总能量为 $U=\displaystyle\int_0^\infty Ef(E)N(E)\mathrm{d}E$ 。平均能量为 $\bar U=\dfrac{U}{N}$ 。
-
-费米能级处，电子占据概率为 $f(E_F)=0.5$ 。
 
 绝对零度 $T=0\text{K}$ 时，**费米能量** $E_{F0}$ 是费米能级 $E_F$ 在绝对零度下的特例。取极限知道费米分布函数在费米能级一下为1，费米能级以上为0，也就是费米能量是电子填充的最高能级的能量。
 
