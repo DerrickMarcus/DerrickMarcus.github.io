@@ -285,6 +285,8 @@ nav:
           - 05-固体间接触的电特性: course_notes/solid_physics/chapter5.md
           - 06-固体的磁特性: course_notes/solid_physics/chapter6.md
           - 07-晶格振动和固体的热性质: course_notes/solid_physics/chapter7.md
+          - 08-超导: course_notes/solid_physics/chapter8.md
+          - 09-场与物质的相互作用: course_notes/solid_physics/chapter9.md
           - 课后测试题: course_notes/solid_physics/test.md
       - Digital Image Processing:
           - Digital Image Processing: course_notes/digital_image/index.md

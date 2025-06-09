@@ -10,7 +10,7 @@
 
 质量 $m$ 越大，抛物线 $E(k)$ 越胖。
 
-波函数为平面波 $\psi_k(\vec{r})=\dfrac{1}{\sqrt{V}}\exp(i\vec{k}\cdot\vec{r})$ （已经归一化）。
+波函数为平面波 $\psi_k(\vec{r})=\dfrac{1}{\sqrt{V}}\exp(i\vec{k}\cdot\vec{r})$ ，已归一化。
 
 ### 3.1.2 能级与态密度
 
