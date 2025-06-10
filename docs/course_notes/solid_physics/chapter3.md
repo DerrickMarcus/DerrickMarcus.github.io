@@ -25,23 +25,41 @@
 
 #### 能态密度分析
 
-三维情形：
+三维情形
 
-波矢 $\vec{k}=\dfrac{2\pi n_x}{L_x}\hat{x}+\dfrac{2\pi n_y}{L_y}\hat{y}+\dfrac{2\pi n_z}{L_z}\hat{z},\;n_x,n_y,n_z\in \mathbb{Z}$ 。每一个离散取值的 $\vec{k}$ 代表一个电子运动可能的状态（即本征态），这些本征态在 $\vec{k}$ 空间排列成点阵，每一个量子态在 $\vec{k}$ 空间所占体积：$\dfrac{(2\pi)^3}{L_xL_yL_z}=\dfrac{8\pi^3}{V}$。 $\vec{k}$ 空间点阵密度为其倒数 $\rho(\vec{k})=\dfrac{V}{8\pi^3}$ ，考虑电子自旋简并度为2，单位 $\vec{k}$ 空间本征态数目，即 $\vec{k}$ 空间的能态密度为 $g(\vec{k})=2\rho(\vec{k})=\dfrac{V}{4\pi^3}$ 。
+波矢 $\vec{k}=\dfrac{2\pi n_x}{L_x}\hat{x}+\dfrac{2\pi n_y}{L_y}\hat{y}+\dfrac{2\pi n_z}{L_z}\hat{z},\;n_x,n_y,n_z\in \mathbb{Z}$ 。
 
-考虑电子自旋为2，能量为相等的状态，波矢 $\vec{k}$ 的模相等。因此能量 $E$ 以内的所有波矢状态围成一个球体，球体内电子能态总数为 $Z(E)=2\cdot \dfrac{V}{8\pi^3} \cdot \dfrac43\pi|\vec{k}|^3=2\cdot \dfrac{V}{8\pi^3} \cdot \dfrac43\pi(\dfrac{\sqrt{2mE}}{\hbar})^3$ ，能态密度为 $N(E)=\dfrac{\mathrm{d}Z}{\mathrm{d}E}=\dfrac{V}{2\pi^2}(\dfrac{2m}{\hbar^2})^{3/2}E^{1/2}$ ，电子能量越高，能态密度越大。
+每一个离散取值的 $\vec{k}$ 代表一个电子运动可能的状态（即本征态），这些本征态在 $\vec{k}$ 空间排列成点阵，每一个量子态在 $\vec{k}$ 空间所占体积：$\dfrac{(2\pi)^3}{L_xL_yL_z}=\dfrac{8\pi^3}{V}$。
 
-二维情形：
+$\vec{k}$ 空间点阵密度为其倒数 $\rho(\vec{k})=\dfrac{V}{8\pi^3}$ ，考虑电子自旋简并度为2，单位 $\vec{k}$ 空间本征态数目，即 $\vec{k}$ 空间的能态密度为 $g(\vec{k})=2\rho(\vec{k})=\dfrac{V}{4\pi^3}$ 。
 
-波矢 $\vec{k}=\dfrac{2\pi n_x}{L_x}\hat{x}+\dfrac{2\pi n_y}{L_y}\hat{y},\;n_x,n_y\in \mathbb{Z}$ 。每一个量子态在 $\vec{k}$ 空间所占面积：$\dfrac{(2\pi)^2}{L_xL_y}=\dfrac{4\pi^2}{S}$。
+考虑电子自旋为2，能量为相等的状态，波矢 $\vec{k}$ 的模相等。因此能量 $E$ 以内的所有波矢状态围成一个球体，球体内电子能态总数为 $Z(E)=2\cdot \dfrac{V}{8\pi^3} \cdot \dfrac43\pi|\vec{k}|^3=2\cdot \dfrac{V}{8\pi^3} \cdot \dfrac43\pi(\dfrac{\sqrt{2mE}}{\hbar})^3$ 。
 
-能量为 $E$ 的圆中，电子能态总数为 $Z(E)=2\cdot \dfrac{S}{4\pi^2}\cdot \pi|\vec{k}|^2=\dfrac{mSE}{\pi\hbar^2}$ ，能态密度为 $N(E)=\dfrac{mS}{\pi\hbar^2}$ 为定值，不随能量改变。
+能态密度为 $N(E)=\dfrac{\mathrm{d}Z}{\mathrm{d}E}=\dfrac{V}{2\pi^2}(\dfrac{2m}{\hbar^2})^{3/2}E^{1/2}$ ，电子能量越高，能态密度越大。
 
-一维情形：
+---
 
-波矢 $\vec{k}=\dfrac{2\pi n}{L}\hat{x},\;n\in\mathbb{Z}$ 。每一个量子态在 $\vec{k}$ 空间所占长度：$\dfrac{2\pi}{L}$。
+二维情形
 
-能量为 $E$ 的两个端点组成的线段中，电子能态总数为 $Z(E)=2\cdot \dfrac{L}{2\pi}\cdot 2|\vec{k}|=\dfrac{2L\sqrt{2mE}}{\pi\hbar}$ ，能态密度为 $N(E)=\dfrac{L\sqrt{2m}}{\pi\hbar}E^{-1/2}$ ，电子能量越高，能态密度越低。
+波矢 $\vec{k}=\dfrac{2\pi n_x}{L_x}\hat{x}+\dfrac{2\pi n_y}{L_y}\hat{y},\;n_x,n_y\in \mathbb{Z}$ 。
+
+每一个量子态在 $\vec{k}$ 空间所占面积：$\dfrac{(2\pi)^2}{L_xL_y}=\dfrac{4\pi^2}{S}$。
+
+能量为 $E$ 的圆中，电子能态总数为 $Z(E)=2\cdot \dfrac{S}{4\pi^2}\cdot \pi|\vec{k}|^2=\dfrac{mSE}{\pi\hbar^2}$ 。
+
+能态密度为 $N(E)=\dfrac{mS}{\pi\hbar^2}$ 为定值，不随能量改变。
+
+---
+
+一维情形
+
+波矢 $\vec{k}=\dfrac{2\pi n}{L}\hat{x},\;n\in\mathbb{Z}$ 。
+
+每一个量子态在 $\vec{k}$ 空间所占长度：$\dfrac{2\pi}{L}$。
+
+能量为 $E$ 的两个端点组成的线段中，电子能态总数为 $Z(E)=2\cdot \dfrac{L}{2\pi}\cdot 2|\vec{k}|=\dfrac{2L\sqrt{2mE}}{\pi\hbar}$ 。
+
+能态密度为 $N(E)=\dfrac{L\sqrt{2m}}{\pi\hbar}E^{-1/2}$ ，电子能量越高，能态密度越低。
 
 ## 3.2 周期势场中电子运动状态
 
@@ -94,7 +112,7 @@ $k$ 空间的平移对称性：布洛赫波的波矢 $k$ 平移 $\dfrac{2\pi n}{
 
 $E_F$ 为**费米能级**，实际上是系统的化学势，由电子总数决定：$N=\displaystyle\sum_i f(E_i)$ 或 $N=\displaystyle\int_0^\infty f(E)N(E)\mathrm{d}E$ 。费米能级处，电子占据概率为 $f(E_F)=0.5$ 。
 
-系统总能量为 $U=\displaystyle\int_0^\infty Ef(E)N(E)\mathrm{d}E$ 。平均能量为 $\bar U=\dfrac{U}{N}$ 。
+系统总能量为 $U=\displaystyle\int_0^\infty Ef(E)N(E)\mathrm{d}E$ 。平均能量为 $\overline{U}=\dfrac{U}{N}$ 。
 
 绝对零度 $T=0\text{K}$ 时，**费米能量** $E_{F0}$ 是费米能级 $E_F$ 在绝对零度下的特例。取极限知道费米分布函数在费米能级一下为1，费米能级以上为0，也就是费米能量是电子填充的最高能级的能量。
 

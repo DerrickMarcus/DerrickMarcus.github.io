@@ -28,12 +28,6 @@
     </a>
 </div>
 
-<div class="admonition success">
-    <p style="text-align: center;">
-        Victory belongs to the most tenacious. — Napoleon Bonaparte
-    </p>
-</div>
-
 <!-- <div class="admonition success">
     <p style="text-align: center; font-size: 1.4em;">
         <span>⏳ The site has been running for </span>
