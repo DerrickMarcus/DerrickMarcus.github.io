@@ -27,22 +27,22 @@
 对于 $M\times N$ 二维图像：
 
 $$
-F(u,v)=\frac{1}{MN}\sum_{x=0}^{M-1}\sum_{y=0}^{N-1}f(x,y)\exp\left[-j2\pi (\frac{ux}{M}+\frac{vy}{N})\right]
+F(u,v)=\frac{1}{MN}\sum_{x=0}^{M-1}\sum_{y=0}^{N-1}f(x,y)\exp\left[-\mathrm{j} 2\pi (\frac{ux}{M}+\frac{vy}{N})\right]
 $$
 
 对于 $N\times N$ 二维图像：
 
 $$
-F(u,v)=\frac{1}{N}\sum_{x=0}^{N-1}\sum_{y=0}^{N-1}f(x,y)\exp\left(-j2\pi \frac{ux+vy}{N}\right)
+F(u,v)=\frac{1}{N}\sum_{x=0}^{N-1}\sum_{y=0}^{N-1}f(x,y)\exp\left(-\mathrm{j} 2\pi \frac{ux+vy}{N}\right)
 $$
 
 1个 2-D 变换核可分解成2个 1-D 变换核，对应 x 和 y 两个方向：
 
 $$
-\frac{1}{N} \exp\left(-j 2\pi \frac{ux+vy}{N}\right) = \frac{1}{\sqrt{N}} \exp\left(-j2\pi \frac{ux}{N}\right) \cdot \frac{1}{\sqrt{N}} \exp\left(-j2\pi \frac{vy}{N}\right)
+\frac{1}{N} \exp\left(-\mathrm{j} 2\pi \frac{ux+vy}{N}\right) = \frac{1}{\sqrt{N}} \exp\left(-\mathrm{j} 2\pi \frac{ux}{N}\right) \cdot \frac{1}{\sqrt{N}} \exp\left(-\mathrm{j} 2\pi \frac{vy}{N}\right)
 $$
 
-平移定理： $f(x-a,y-b)\iff F(u,v)\exp(-j2\pi \dfrac{au+bv}{N})$ 。
+平移定理： $f(x-a,y-b)\iff F(u,v)\exp(-\mathrm{j}2\pi \dfrac{au+bv}{N})$ 。
 
 旋转定理：$f(x,y)$ 旋转角度 $\theta_0$ ，$F(u,v)$ 也转过相同角度。$F(u,v)$ 旋转角度 $\theta_0$ ，$f(x,y)$ 也转过相同角度。
 
@@ -50,7 +50,7 @@ $$
 
 卷积定理：$f(x,y)*g(x,y)\iff F(u,v)G(u,v),f(x,y)g(x,y)\iff F(u,v)*G(u,v)$ 。
 
-FFT 与普通 FT 的计算量比为 $N/ \log_2 N$ ，当 $N$ 较大时，可节省可观的计算量。
+普通 FT 的计算复杂度为 $N^2$ ，FFT 的复杂度为 $N\log_2 N$ ，当 $N$ 较大时，FFT 可节省可观的计算量。
 
 !!! example
     大圆经 FT 之后，其圆环小；而小圆经 FT 之后，其圆环反而大。因为越尖锐变换越剧烈的信号总包含着更多的频率成分。可类比《信号与系统》中傅里叶变换，时域缩小则频域扩展，时域扩展则频域缩小。
@@ -68,7 +68,7 @@ FFT 与普通 FT 的计算量比为 $N/ \log_2 N$ ，当 $N$ 较大时，可节�
 对于 n 阶巴特沃斯低通滤波器，表达式为：
 
 $$
-H(d)=\frac{1}{1+(\frac{d}{D_0})^{2n}}
+H(d)=\frac{1}{1+\left(\dfrac{d}{D_0}\right)^{2n}}
 $$
 
 也称为“最大平坦滤波器”。1阶巴特沃斯低通滤波器，高频低频间的过渡较光滑(高低频之间没有明显的截止点)，可以有效减少振铃效应。但是巴特沃斯滤波器阶数很高时仍然会出现振铃效应。
@@ -76,7 +76,7 @@ $$
 对于 n 阶Ⅰ型切比雪夫低通滤波器，表达式为：
 
 $$
-H(d)=\frac{1}{\sqrt{1+\varepsilon^2T_n^2(\frac{d}{D_0})}}
+H(d)=\frac{1}{\sqrt{1+\varepsilon^2T_n^2\left(\dfrac{d}{D_0}\right)}}
 $$
 
 其中， $T_n(\Omega)$ 为 n 阶切比雪夫多项式：
@@ -103,14 +103,14 @@ n 阶巴特沃斯高通滤波器、n 阶切比雪夫高通滤波器，只需将�
 
 高通滤波之后图像背景的平均强度减小到接近黑色，因为大多数图像中高频分量都是很弱的。解决办法是把一定比例的原始图像加到过滤后的结果中去。
 
-高频加强：在高通滤波器函数前乘以一个常数，再加一个偏移，使零频率不被滤掉，传递函数为 $H_{hfe}(u,v)=a+bH_{hp}(u,v)$ ，其中 $b>a\geqslant 0$ ，a 一般取0.25-0.5，b 一般取1.5-2.0。
+高频加强：在高通滤波器函数前乘以一个常数，再加一个偏移，使零频率不被滤掉，传递函数为 $H_{hfe}(u,v)=a+bH_{hp}(u,v)$ ，其中 $b>a\geqslant 0$ ，a 一般取 $0.25\sim0.5$ ，b 一般取 $1.5\sim2.0$ 。
 
 ## 4.3 带通和带阻滤波
 
 带阻滤波器：可消除周期性噪声。可用 N 阶巴特沃斯带阻滤波器实现， $W$ 为带宽， $D_0$ 为截止频率：
 
 $$
-H(u,v) = \frac{1}{1 + \left( \frac{D(u,v)W}{D^2(u,v) - D_0^2} \right)^{2n}}
+H(u,v) = \frac{1}{1 + \left( \dfrac{D(u,v)W}{D^2(u,v) - D_0^2} \right)^{2n}}
 $$
 
 带通滤波器：可提取周期性噪声。直接用“1减去一个带阻滤波器”： $H_{bp}(u,v)=1-H_{br}(u,v)$ 。

@@ -46,9 +46,9 @@ N的取值范围为 $[1,1\times10^6]$ 的整数；
 
 1~3测试样例 $N<1\times10^4$;
 
-4~5测试样例 $1\times10^4\leq N\leq 5\times10^5$；
+4~5测试样例 $1\times10^4\leqslant N\leqslant 5\times10^5$；
 
-6~10测试样例 $5\times10^5< N \leq1\times10^6$；
+6~10测试样例 $5\times10^5< N \leqslant 1\times10^6$；
 
 **3. 时间和空间.**
 

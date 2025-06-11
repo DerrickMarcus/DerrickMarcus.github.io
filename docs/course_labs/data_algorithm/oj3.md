@@ -55,13 +55,13 @@ output:
 
 可能用到的结论：对于任意士兵Z，排在Z前面且武力值比Z小的士兵不会和排在Z后面的士兵比武
 
-对于全部的测试点，保证 $1\leq$ 每个士兵的武力值 $<2^{31}$
+对于全部的测试点，保证 $1\leqslant$ 每个士兵的武力值 $<2^{31}$
 
-1-2测试样例：$N \leq 1\times 10^3$
+1-2测试样例：$N \leqslant 1\times 10^3$
 
-3-4测试样例：$1\times 10^3 < N \leq 1\times 10^4$
+3-4测试样例：$1\times 10^3 < N \leqslant 1\times 10^4$
 
-5-10测试样例：$1\times 10^4 < N \leq 5\times 10^5$
+5-10测试样例：$1\times 10^4 < N \leqslant 5\times 10^5$
 
 ## Solution
 

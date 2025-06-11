@@ -368,9 +368,10 @@ nav:
           - CRH (Hexie Train): else/railway/crh.md
           - Railway Group: else/railway/group.md
           - Railway Station: else/railway/station.md
+          - Railway Line: else/railway/line.md
+          - Train Number: else/railway/train_number.md
           - Journey Record: else/railway/journey.md
           - Diary: else/railway/diary.md
-          - Else: else/railway/else.md
       - "📖 Readings":
           - Readings: else/readings/index.md
           - "你是勇士": else/readings/read1.md

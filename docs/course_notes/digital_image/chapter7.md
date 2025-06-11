@@ -14,20 +14,20 @@
 变换的表达：
 
 $$
-\begin{pmatrix}
+\begin{bmatrix}
 x' \\ y' \\ 1
-\end{pmatrix}
+\end{bmatrix}
 =
-\begin{pmatrix}
+\begin{bmatrix}
 a_{11} & a_{12} & a_{13} \\
 a_{21} & a_{22} & a_{23} \\
 a_{31} & a_{32} & a_{33}
-\end{pmatrix}
-\begin{pmatrix}
+\end{bmatrix}
+\begin{bmatrix}
 x \\
 y \\
 1
-\end{pmatrix}
+\end{bmatrix}
 $$
 
 ### 7.1.1 基本坐标变换
@@ -35,31 +35,31 @@ $$
 平移变换，变换矩阵：
 
 $$
-T = \begin{pmatrix}
+T = \begin{bmatrix}
 1 & 0 & T_x \\
 0 & 1 & T_y \\
 0 & 0 & 1
-\end{pmatrix}
+\end{bmatrix}
 $$
 
 放缩变换，变换矩阵：
 
 $$
-S = \begin{pmatrix}
+S = \begin{bmatrix}
 S_x & 0 & 0 \\
 0 & S_y & 0 \\
 0 & 0 & 1
-\end{pmatrix}
+\end{bmatrix}
 $$
 
 旋转变换，绕 Z 轴旋转，变换矩阵：
 
 $$
-R_{\gamma} = \begin{pmatrix}
+R_{\gamma} = \begin{bmatrix}
 \cos\gamma & \sin\gamma & 0 \\
 -\sin\gamma & \cos\gamma & 0 \\
 0 & 0 & 1
-\end{pmatrix}
+\end{bmatrix}
 $$
 
 若旋转轴不在原点，则：绕非原点旋转 = 平移至原点 + 绕原点旋转 + 平移回去。
@@ -67,11 +67,11 @@ $$
 镜像变换，水平镜像的变换矩阵为：
 
 $$
-J = \begin{pmatrix}
+J = \begin{bmatrix}
 -1 & 0 & 0 \\
 0 & 1 & 0 \\
 0 & 0 & 1
-\end{pmatrix}
+\end{bmatrix}
 $$
 
 竖直镜像的矩阵同理。可见镜像变换是放缩变换的一个特例。
@@ -81,23 +81,23 @@ $$
 反变换：
 
 $$
-T^{-1} = \begin{pmatrix}
+T^{-1} = \begin{bmatrix}
 1 & 0 & -T_x \\
 0 & 1 & -T_y \\
 0 & 0 & 1
-\end{pmatrix} \quad \text{对比平移矩阵}
+\end{bmatrix}
 \\
-S^{-1} = \begin{pmatrix}
+S^{-1} = \begin{bmatrix}
 1/S_x & 0 & 0 \\
 0 & 1/S_y & 0 \\
 0 & 0 & 1
-\end{pmatrix} \quad \text{对比放缩矩阵}
+\end{bmatrix}
 \\
-R_{\gamma}^{-1} = \begin{pmatrix}
+R_{\gamma}^{-1} = \begin{bmatrix}
 \cos(-\gamma) & \sin(-\gamma) & 0 \\
 -\sin(-\gamma) & \cos(-\gamma) & 0 \\
 0 & 0 & 1
-\end{pmatrix} \quad \text{对比旋转矩阵}
+\end{bmatrix}
 $$
 
 变换的级联，$v'=R_\gamma[S(Tv)]=Av$ ，本质是若干矩阵相乘得到一个矩阵，注意级联的运算次序不可交换。
@@ -105,27 +105,27 @@ $$
 拉伸变换，变换矩阵（一个方向放大一个方向缩小，理论上面积不变。也可看作放缩变换的一个特例）：
 
 $$
-L = \begin{pmatrix}
+L = \begin{bmatrix}
 L & 0 & 0 \\
 0 & 1/L & 0 \\
 0 & 0 & 1
-\end{pmatrix}
+\end{bmatrix}
 $$
 
 剪切变换，变换矩阵：
 
 $$
-\text{水平剪切}\quad\boldsymbol{J}_{\text{h}} = \begin{pmatrix}
+\text{水平剪切}\quad\boldsymbol{J}_{\text{h}} = \begin{bmatrix}
 1 & J_x & 0 \\
 0 & 1 & 0 \\
 0 & 0 & 1
-\end{pmatrix}\\
+\end{bmatrix}\\
 \text{垂直剪切}\quad
-\boldsymbol{J}_{\text{v}} = \begin{pmatrix}
+\boldsymbol{J}_{\text{v}} = \begin{bmatrix}
 1 & 0 & 0 \\
 J_y & 1 & 0 \\
 0 & 0 & 1
-\end{pmatrix}
+\end{bmatrix}
 $$
 
 旋转变换的分解：
@@ -133,46 +133,46 @@ $$
 (1) 旋转 = 垂直剪切放缩 + 水平剪切放缩：
 
 $$
-\boldsymbol{R} = \begin{pmatrix}
+\boldsymbol{R} = \begin{bmatrix}
 \cos\theta & \sin\theta & 0 \\
 -\sin\theta & \cos\theta & 0 \\
 0 & 0 & 1
-\end{pmatrix}
-= \begin{pmatrix}
+\end{bmatrix}
+= \begin{bmatrix}
 1 & 0 & 0 \\
 -\tan\theta & 1/\cos\theta & 0 \\
 0 & 0 & 1
-\end{pmatrix}
-\begin{pmatrix}
+\end{bmatrix}
+\begin{bmatrix}
 \cos\theta & \sin\theta & 0 \\
 0 & 1 & 0 \\
 0 & 0 & 1
-\end{pmatrix}
+\end{bmatrix}
 $$
 
 (2) 旋转 = 水平剪切 + 垂直剪切 + 水平剪切：
 
 $$
-\boldsymbol{R} = \begin{pmatrix}
+\boldsymbol{R} = \begin{bmatrix}
 \cos\theta & \sin\theta & 0 \\
 -\sin\theta & \cos\theta & 0 \\
 0 & 0 & 1
-\end{pmatrix}
-= \begin{pmatrix}
+\end{bmatrix}
+= \begin{bmatrix}
 1 & \tan(\theta/2) & 0 \\
 0 & 1 & 0 \\
 0 & 0 & 1
-\end{pmatrix}
-\begin{pmatrix}
+\end{bmatrix}
+\begin{bmatrix}
 1 & 0 & 0 \\
 -\sin\theta & 1 & 0 \\
 0 & 0 & 1
-\end{pmatrix}
-\begin{pmatrix}
+\end{bmatrix}
+\begin{bmatrix}
 1 & \tan(\theta/2) & 0 \\
 0 & 1 & 0 \\
 0 & 0 & 1
-\end{pmatrix}
+\end{bmatrix}
 $$
 
 ## 7.2 图像仿射变换
@@ -182,25 +182,25 @@ $$
 一般仿射变换：一个非奇异线性变换接一个平移变换。平面上的仿射变换有6个自由度。
 
 $$
-\begin{pmatrix}
+\begin{bmatrix}
 x' \\ y' \\ 1
-\end{pmatrix}
+\end{bmatrix}
 =
-\begin{pmatrix}
+\begin{bmatrix}
 a_{11} & a_{12} & t_x \\
 a_{21} & a_{22} & t_y \\
 0 & 0 & 1
-\end{pmatrix}
-\begin{pmatrix}
+\end{bmatrix}
+\begin{bmatrix}
 x \\ y \\ 1
-\end{pmatrix}\\
-=\begin{pmatrix}
+\end{bmatrix}\\
+=\begin{bmatrix}
 \boldsymbol{A} & \boldsymbol{t} \\
 0^T & 1
-\end{pmatrix}
-\begin{pmatrix}
+\end{bmatrix}
+\begin{bmatrix}
 x \\ y \\ 1
-\end{pmatrix}
+\end{bmatrix}
 $$
 
 ![第十二周课件上课_82](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo-image/images/第十二周课件上课_82.png)
@@ -294,13 +294,13 @@ $$
 对于局部微小的移动量 $[u, v]$ ，可以近似得到：
 
 $$
-E(u, v) \cong [u, v] M \begin{pmatrix} u \\ v \end{pmatrix}
+E(u, v) \cong [u, v] M \begin{bmatrix} u \\ v \end{bmatrix}
 $$
 
 其中 $M$ 是 $2 \times 2$ 矩阵，可由图像的导数求得（梯度的协方差矩阵）:
 
 $$
-M = \sum_{x,y} w(x, y) \begin{pmatrix} I_x^2 & I_xI_y \\ I_xI_y & I_y^2 \end{pmatrix}
+M = \sum_{x,y} w(x, y) \begin{bmatrix} I_x^2 & I_xI_y \\ I_xI_y & I_y^2 \end{bmatrix}
 $$
 
 于是窗口移动导致的图像变化等价于实对称矩阵 $M$ 的特征值分析。
@@ -315,11 +315,11 @@ R = \det M - k(\text{trace } M)^2=\lambda_1 \lambda_2-k(\lambda_1 + \lambda_2)^2
 \text{trace } M = \lambda_1 + \lambda_2
 $$
 
-k 为经验常数，一般取 $0.04\sim0.06$。R 只与 M 的特征值有关：
+$k$ 为经验常数，一般取 $0.04\sim0.06$。$R$ 只与 $M$ 的特征值有关：
 
-- 角点：R 为大数值正数。
-- 边缘：R 为大数值负数。
-- 平坦区：R 为小数值。
+- 角点：$R$ 为大数值正数。
+- 边缘：$R$ 为大数值负数。
+- 平坦区：$R$ 为小数值。
 
 算法流程：
 
@@ -365,10 +365,10 @@ Harris 角点性质：
 桶形失真，枕形失真。
 
 $$
-s \begin{pmatrix} u \\ v \\ 1 \end{pmatrix}
-= \begin{pmatrix} f_x & \gamma & u_0 \\ 0 & f_y & v_0 \\ 0 & 0 & 1 \end{pmatrix} \begin{pmatrix} R & t \end{pmatrix} \begin{pmatrix} X \\ Y \\ Z \\ 1 \end{pmatrix} \\
-=A \begin{pmatrix} r_1 & r_2 & r_3 & t \end{pmatrix} \begin{pmatrix} X \\ Y \\ 0 \\ 1 \end{pmatrix}
-=A \begin{pmatrix} r_1 & r_2 & t \end{pmatrix} \begin{pmatrix} X \\ Y \\ 1 \end{pmatrix}
+s \begin{bmatrix} u \\ v \\ 1 \end{bmatrix}
+= \begin{bmatrix} f_x & \gamma & u_0 \\ 0 & f_y & v_0 \\ 0 & 0 & 1 \end{bmatrix} \begin{bmatrix} R & t \end{bmatrix} \begin{bmatrix} X \\ Y \\ Z \\ 1 \end{bmatrix} \\
+=A \begin{bmatrix} r_1 & r_2 & r_3 & t \end{bmatrix} \begin{bmatrix} X \\ Y \\ 0 \\ 1 \end{bmatrix}
+=A \begin{bmatrix} r_1 & r_2 & t \end{bmatrix} \begin{bmatrix} X \\ Y \\ 1 \end{bmatrix}
 $$
 
 内参矩阵 $A:3\times 3$ ，描述从相机坐标系到像素坐标系的变换，自由度为5。只与**相机本身的几何/电子特性**相关，对同一个相机拍出的任何照片都恒定不变。

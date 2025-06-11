@@ -17,7 +17,7 @@
 
 !!! success "TODO List"
     - [x] Finish the notes of Digital Image Processing.
-    - [ ] Finish the notes of Foundation of Solid State Physics.
+    - [x] Finish the notes of Foundation of Solid State Physics.
     - [x] Finish the notes of Operating System.
     - [ ] Deploy my own Git server using Gitea and host it at the domain name `git.yanxuchen.com` .
     - [ ] Create a site for the main domain `www.yanxuchen.com` .

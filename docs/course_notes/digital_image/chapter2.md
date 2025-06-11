@@ -201,13 +201,13 @@ RGB-IR 技术：一部分 G 替换为红外(IR)，即 R,G,B,IR 四种数量相�
 
 根据物体不同，成像方法各有特点：反射特性 CCD 成像、深度信息成像、高速高动态成像。
 
-光通量(luminous flux)：单位时间通过某一面积的光辐射能，单位流明 lm。
+光通量(luminous flux)：单位时间通过某一面积的光辐射能，单位流明 $\text{lm}$ 。
 
-光强(luminous intensity)：点光源 Q 沿方向 r 的发光强度 I，定义为沿此方向上单位立体角内发出的光通量 $I=\dfrac{\mathrm{d}\Phi}{\mathrm{d}\Omega}$ ，单位坎德拉 cd=lm/sr。
+光强(luminous intensity)：点光源 Q 沿方向 r 的发光强度 I，定义为沿此方向上单位立体角内发出的光通量 $I=\dfrac{\mathrm{d}\Phi}{\mathrm{d}\Omega}$ ，单位坎德拉 $\text{cd}=\text{lm/sr}$。
 
-亮度(brightness)：表示发光面明亮程度，指发光表面在指定方向的发光强度与垂直在指定方向的发光面的面积之比 $B=\dfrac{\mathrm{d}\Phi}{\mathrm{d}\Omega \mathrm{d}S \cos\theta}$ ，单位尼特 nit=cd/m^2。
+亮度(brightness)：表示发光面明亮程度，指发光表面在指定方向的发光强度与垂直在指定方向的发光面的面积之比 $B=\dfrac{\mathrm{d}\Phi}{\mathrm{d}\Omega \mathrm{d}S \cos\theta}$ ，单位尼特 $\text{nit}=\text{cd/m}^2$ 。
 
-照度(illuminance)：一个被光线照射的物体表面上的照度，定义为照射在单位面积上的光通量 $E=\dfrac{\mathrm{d}\Phi}{\mathrm{d}S}$ ，单位勒克斯 lx=lm/m^2。
+照度(illuminance)：一个被光线照射的物体表面上的照度，定义为照射在单位面积上的光通量 $E=\dfrac{\mathrm{d}\Phi}{\mathrm{d}S}$ ，单位勒克斯 $\text{lx}=\text{lm/m}^2$ 。
 
 !!! note "照度和亮度的区别"
     照度是光源对物体辐射的一种度量，照射在单位面积上的光通量；亮度是观察者对所看到的、物体表面光强的一种度量。
@@ -267,7 +267,7 @@ RGB 只是告诉我们颜色可由红、绿、蓝三个分量混合得到，但�
 
 RGB 三通道图像转换为灰度图像
 
-OpenCV 使用的方法：加权平均 $\text{Gray}=0.299R+0.587G+0.114B$ 。人眼对绿色最敏感（权重最大），其次是红色、蓝色。
+OpenCV 使用的方法：加权平均 $0.299R+0.587G+0.114B$ 。人眼对绿色最敏感（权重最大），其次是红色、蓝色。
 
 ---
 

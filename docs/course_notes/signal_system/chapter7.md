@@ -6,7 +6,7 @@
 
 序列之间加减乘除、延时（右移）、左移、反褶、尺度倍乘（波形压缩、扩展）、差分、累加。
 
-$x(an)$ 波形压缩， $x(\dfrac{x}{n})$​ 波形扩展，这时可能要按规律去除某些点或补足0值。
+$x(an)$ 波形压缩， $x\left(\dfrac{x}{n}\right)$​ 波形扩展，这时可能要按规律去除某些点或补足0值。
 
 ![2024春信号与系统20第十八讲7.1-7.7_12](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/ch7_img1.png)
 
