@@ -1,5 +1,15 @@
 # 数字图像处理 第9周作业
 
+题目要求：
+
+一、对所给图像（img1.jpg）用迭代确定阈值、局部阈值法和大津法进行分割并分析。尝试以上三种分割方法，运用膨胀腐蚀等操作对分割结果进行优化或其它探索。
+
+![202506121159248](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo-image/images/202506121159248.png)
+
+二、对下面的两张灰度图像（img2-1.jpg, img2-2.jpg ）采用不同的变换函数进行伪彩色增强，并分析图像效果和伪彩色增强的作用。
+
+![202506121200432](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo-image/images/202506121200432.png)
+
 ## Task 1
 
 该部分源代码为 `./task1.py` 。

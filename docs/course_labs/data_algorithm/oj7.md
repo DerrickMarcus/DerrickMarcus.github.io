@@ -16,31 +16,32 @@ $$
 
 ![img](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/2023-11-23-230031.png)
 
-![img](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/2023-11-26-140122.png)由m个列向量构成。现在给定非奇异矩阵A和矩阵Z，求解矩阵X。
+![img](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/2023-11-26-140122.png)由 $m$ 个列向量构成。现在给定非奇异矩阵 $A$ 和矩阵 $Z$ ，求解矩阵 $X$ 。
 
 ## Input
 
-第1行输入p，表示矩阵A中存在非零元素的对角线的条数，p为3或5。
+第1行输入 $p$ ，表示矩阵 $A$ 中存在非零元素的对角线的条数， $p$ 为3或5。
 
-第2行输入n和m，表示矩阵A的维数和矩阵Z的维数。其中n不超过10000，m不超过500.
+第2行输入 $n$ 和 $m$ ，表示矩阵 $A$ 的维数和矩阵 $Z$ 的维数。其中 $n$ 不超过10000，$m$ 不超过500.
 
-第3行到第p+2行，按照从矩阵A的最上方的对角线到最下方的对角线的顺序依次输入各对角线的元素值。
+第3行到第 $p+2$ 行，按照从矩阵 $A$ 的最上方的对角线到最下方的对角线的顺序依次输入各对角线的元素值。
 
 即对于三对角矩阵，第3行输入![img](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/2023-11-23-230340.png)，第4行输入![img](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/2023-11-23-230358.png)，第5行输入![img](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/2023-11-23-230423.png)；
 
 对于五对角矩阵， 第3行输入![img](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/2023-11-23-230617.png)，第4行输入![img](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/2023-11-23-230643.png)，第5行输入![img](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/2023-11-23-230700.png)，第6行输入![img](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/2023-11-23-230712.png)，第7行输入![img](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/2023-11-23-230731.png)。
 
-最后m行每行输入n个浮点数，为别为矩阵Z的第m列向量zm的n个元素值，即
+最后 $m$ 行每行输入 $n$ 个浮点数，为别为矩阵 $Z$ 的第 $m$ 列向量 $z_m$ 的 $n$ 个元素值，即：
 
 ![img](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/2023-11-26-140724.png)
 
 ## Output
 
-输出共m行，每行为n个浮点数，分别为矩阵X的每一列的各个元素值，每个元素值结果四舍五入保留4位小数。
+输出共 $m$ 行，每行为 $n$ 个浮点数，分别为矩阵 $X$ 的每一列的各个元素值，每个元素值结果四舍五入保留4位小数。
 
 ## Example
 
 ```text
+input
 3
 3 2
 44 62
@@ -56,32 +57,25 @@ output:
 
 ## Restriction
 
-Time: 1000ms
+Time: 1000ms.
 
-Memory: 1500KB
+Memory: 1500KB.
 
 ## Hint
 
-计算带限矩阵LU分解后元素间的递推表达式。
+计算带限矩阵 LU 分解后元素间的递推表达式。
 
 ## Solution
 
-（1）矩阵A作用于X的第i个列向量，得到Z的第i个列向量。
+（1）矩阵 $A$ 作用于 $X$ 的第 $i$ 个列向量，得到 $Z$ 的第 $i$ 个列向量。
 
 $$
-AX=Z \\
-Ax_i=z_i
+AX=Z, \quad Ax_i=z_i
 $$
 
-因此可以每读入一个Z的列向量，计算出X对应的列向量，进行输出。
+因此可以每读入一个 $Z$ 的列向量，计算出 $X$ 对应的列向量，进行输出。
 
-（2）对矩阵A进行LU分解：
-
-$$
-A=LU
-$$
-
-LU分解如下：
+（2）对矩阵 $A$ 进行 LU 分解：
 
 $$
 \begin{bmatrix}
@@ -112,27 +106,17 @@ $$
 递推公式为：
 
 $$
-\beta_1=b_1,\ \gamma_1=\frac{c_1}{b_1}\\
-\beta_i=b_i-a_i\gamma_{i-1},\ \gamma_i=\frac{c_i}{\beta_i}
+\beta_1=b_1,\;\gamma_1=\frac{c_1}{b_1}\\
+\beta_i=b_i-a_i\gamma_{i-1},\;\gamma_i=\frac{c_i}{\beta_i}
 $$
 
 因此只需将数组 `b[n]` 替换为 `β[n]`，将数组 `c[n-1]` 替换为 `γ[n-1]`，即可求出 LU 分解。
 
-先通过前向回代，求解：
-
-$$
-Ly=z
-$$
-
-再通过后向回代，求解：
-
-$$
-Ux=y
-$$
+先通过前向回代，求解 $Ly=z$ ，再通过后向回代，求解：$Ux=y$ 。
 
 上述方法参见教程：[三对角矩阵的LU分解](https://blog.csdn.net/Giannis_34/article/details/107872239 "CSDN博客：追赶法求三对角矩阵、LU分解")
 
-（2）对于五对角矩阵，可以采取大致相同的思路，是不过稍微复杂一点：
+（2）对于五对角矩阵，可以采取大致相同的思路，只不过稍微复杂一点：
 
 LU分解如下：
 
@@ -147,8 +131,6 @@ LU分解如下：
 上述的方法参见教程：[五对角追赶发求解线性方程组](https://blog.csdn.net/wxkhturfun/article/details/125023717)。
 
 ## Code
-
-Language: C
 
 ```c
 #include <stdio.h>

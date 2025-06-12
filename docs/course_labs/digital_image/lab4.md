@@ -1,5 +1,11 @@
 # 数字图像处理 第4周作业
 
+![202506121150091](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo-image/images/202506121150091.png)
+
+题目要求：对给出的频谱值数据进行对数变换，并比较对数变换前后频谱图的视觉效果变化。
+
+---
+
 编写 MATLAB 代码：首先载入 `./work.mat` 得到变量 `image`，其类型是 `complex double`，取幅度值得到 `spectrum`。然后进行对数变换：
 
 ```matlab
@@ -18,8 +24,6 @@ log_spectrum = c * log(1 + spectrum);
 附 MATLAB 源代码：
 
 ```matlab
-% homework 4: log transformation
-
 load('./work.mat');
 
 spectrum = abs(image);

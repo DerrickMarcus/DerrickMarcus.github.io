@@ -36,7 +36,7 @@ $$
 F(u,v)=\frac{1}{N}\sum_{x=0}^{N-1}\sum_{y=0}^{N-1}f(x,y)\exp\left(-\mathrm{j} 2\pi \frac{ux+vy}{N}\right)
 $$
 
-1个 2-D 变换核可分解成2个 1-D 变换核，对应 x 和 y 两个方向：
+1个 2-D 变换核可分解成2个 1-D 变换核，对应 $x$ 和 $y$ 两个方向：
 
 $$
 \frac{1}{N} \exp\left(-\mathrm{j} 2\pi \frac{ux+vy}{N}\right) = \frac{1}{\sqrt{N}} \exp\left(-\mathrm{j} 2\pi \frac{ux}{N}\right) \cdot \frac{1}{\sqrt{N}} \exp\left(-\mathrm{j} 2\pi \frac{vy}{N}\right)

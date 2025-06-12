@@ -1,6 +1,15 @@
 # 数字图像处理 第3周作业
 
-## 1. 处理思路
+题目要求：
+
+1. 使用给出的图片和蒙版将图中的人物单独提取出来。
+2. 自行选择背景图，为提取出的人物更换背景。
+
+![202506121146123](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo-image/images/202506121146123.png)
+
+![202506121146191](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo-image/images/202506121146191.png)
+
+## 处理思路
 
 源代码路径：`./main.py`。
 
@@ -10,9 +19,9 @@
 
 替换背景时，只需将提取出的人物图片和背景图片去除蒙版的部分相加即可。
 
-经过测试，卷积核大小设定为 `(7, 7)`，迭代次数分别为3,3时效果较好。
+经过测试，卷积核大小设定为 `(7, 7)`，迭代次数分别为 3,3 时效果较好。
 
-## 2. 运行结果
+## 运行结果
 
 图片1：处理过后衣服两侧的小凹陷被填补，但是衣服右侧和脖子右侧也多出了额外的背景部分。
 
@@ -26,9 +35,7 @@
 
 ![new_image2](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/new_image2.jpg)
 
-## 3. 源代码
-
-见 `./main.py` ：
+## 源代码
 
 ```py
 import cv2

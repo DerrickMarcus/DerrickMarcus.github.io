@@ -241,11 +241,11 @@ Robert 交叉差分 $|\nabla f| \approx |z9-z5|+|z8-z6|$ 。
 基于二阶微分：拉普拉斯算子，4-邻域或8-邻域（系数之和均为0）：
 
 $$
-\begin{pmatrix}
+\begin{bmatrix}
 0 & -1 & 0 \\
 -1 & 4 & -1 \\
 0 & -1 & 0
-\end{pmatrix}
+\end{bmatrix}
 \text{or}
 \begin{bmatrix}
 -1 & -1 & -1 \\

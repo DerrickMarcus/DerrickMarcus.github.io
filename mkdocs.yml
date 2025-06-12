@@ -276,6 +276,25 @@ nav:
           - 08-z变换与离散时间系统z域分析: course_notes/signal_system/chapter8.md
           - 11-反馈系统: course_notes/signal_system/chapter11.md
           - 12-系统的状态变量分析: course_notes/signal_system/chapter12.md
+      - Probability and Stochastic Process:
+          - Probability and Stochastic Process: course_notes/probability/index.md
+          - 01-概率论基础: course_notes/probability/chapter1.md
+          - 02-一元随机变量: course_notes/probability/chapter2.md
+          - 03-多元随机变量: course_notes/probability/chapter3.md
+          - 04-二阶矩过程与谱分析: course_notes/probability/chapter4.md
+          - 05-高斯过程: course_notes/probability/chapter5.md
+          - 06-马尔可夫过程: course_notes/probability/chapter6.md
+          - 07-泊松过程: course_notes/probability/chapter7.md
+      - Media and Cognition:
+          - Media and Cognition: course_notes/media_cognition/index.md
+          - 01-人工智能与机器学习: course_notes/media_cognition/chapter1.md
+          - 02-认知的生物机理: course_notes/media_cognition/chapter2.md
+          - 03-机器学习: course_notes/media_cognition/chapter3.md
+          - 04-深度学习: course_notes/media_cognition/chapter4.md
+          - 05-卷积神经网络: course_notes/media_cognition/chapter5.md
+          - 06-循环神经网络: course_notes/media_cognition/chapter6.md
+          - 07-Transformers: course_notes/media_cognition/chapter7.md
+          - 08-贝叶斯决策与概率模型: course_notes/media_cognition/chapter8.md
       - Foundation of Solid State Physics:
           - Foundation of Solid State Physics: course_notes/solid_physics/index.md
           - 01-晶体的结构: course_notes/solid_physics/chapter1.md
@@ -320,29 +339,29 @@ nav:
       - Course Labs: course_labs/index.md
       - Data and Algorithm:
           - Data and Algorithm: course_labs/data_algorithm/index.md
-          - OJ-1: course_labs/data_algorithm/oj1.md
-          - OJ-2: course_labs/data_algorithm/oj2.md
-          - OJ-3: course_labs/data_algorithm/oj3.md
-          - OJ-4: course_labs/data_algorithm/oj4.md
-          - OJ-5: course_labs/data_algorithm/oj5.md
-          - OJ-6: course_labs/data_algorithm/oj6.md
-          - OJ-7: course_labs/data_algorithm/oj7.md
-          - OJ-8: course_labs/data_algorithm/oj8.md
-          - OJ-9: course_labs/data_algorithm/oj9.md
-          - OJ-10: course_labs/data_algorithm/oj10.md
+          - OJ-1-丢失的练习册: course_labs/data_algorithm/oj1.md
+          - OJ-2-军训排队: course_labs/data_algorithm/oj2.md
+          - OJ-3-比武: course_labs/data_algorithm/oj3.md
+          - OJ-4-缺损二叉树: course_labs/data_algorithm/oj4.md
+          - OJ-5-信息传递: course_labs/data_algorithm/oj5.md
+          - OJ-6-跳跳乐: course_labs/data_algorithm/oj6.md
+          - OJ-7-带限矩阵方程组求解: course_labs/data_algorithm/oj7.md
+          - OJ-8-缺失数据恢复: course_labs/data_algorithm/oj8.md
+          - OJ-9-小明的火车旅行计划: course_labs/data_algorithm/oj9.md
+          - OJ-10-张量相乘的最小开销问题: course_labs/data_algorithm/oj10.md
       - Digital Image Processing:
           - Digital Image Processing: course_labs/digital_image/index.md
-          - Lab-1: course_labs/digital_image/lab1.md
-          - Lab-2: course_labs/digital_image/lab2.md
-          - Lab-3: course_labs/digital_image/lab3.md
-          - Lab-4: course_labs/digital_image/lab4.md
-          - Lab-5: course_labs/digital_image/lab5.md
-          - Lab-6: course_labs/digital_image/lab6.md
-          - Lab-7: course_labs/digital_image/lab7.md
-          - Lab-8: course_labs/digital_image/lab8.md
-          - Lab-9: course_labs/digital_image/lab9.md
-          - Lab-12: course_labs/digital_image/lab12.md
-          - Lab-13: course_labs/digital_image/lab13.md
+          - Lab-1-课程概述: course_labs/digital_image/lab1.md
+          - Lab-2-彩色分量分解: course_labs/digital_image/lab2.md
+          - Lab-3-人脸蒙版提取: course_labs/digital_image/lab3.md
+          - Lab-4-灰度伽马变换: course_labs/digital_image/lab4.md
+          - Lab-5-直方图均衡化/规定化: course_labs/digital_image/lab5.md
+          - Lab-6-滤波去噪: course_labs/digital_image/lab6.md
+          - Lab-7-频域滤波: course_labs/digital_image/lab7.md
+          - Lab-8-边缘检测: course_labs/digital_image/lab8.md
+          - Lab-9-阈值分割&伪彩色增强: course_labs/digital_image/lab9.md
+          - Lab-12-图像复原: course_labs/digital_image/lab12.md
+          - Lab-13-图像仿射变换: course_labs/digital_image/lab13.md
   - "🔬 Research":
       - Research: research/index.md
       - "🤖 Robot":
@@ -374,7 +393,7 @@ nav:
           - Diary: else/railway/diary.md
       - "📖 Readings":
           - Readings: else/readings/index.md
-          - "你是勇士": else/readings/read1.md
-          - "一组诗": else/readings/read2.md
+          - 你是勇士: else/readings/read1.md
+          - 一组诗: else/readings/read2.md
   - "🥳 About":
       - About: about/index.md

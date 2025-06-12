@@ -1,5 +1,11 @@
 # 数字图像处理 第8周作业
 
+题目要求：
+
+编程（可调用内置函数）对比 Robert 算子，Sobel 算子，Laplace 算子和 Canny 算子在所给图片的边缘检测效果并加以分析。在边缘检测结果的基础上利用 Hough 变换进行直线检测。
+
+---
+
 原图像为 `./digital_image_hw8_img1.png` ，首先运行 `./add_noise.py` 文件，对原图像添加轻度和重度的高斯噪声，分别得到 `./digital_image_hw8_img2.png` 和 `./digital_image_hw8_img3.png` ，三张图像的对比图为：
 
 ![digital_image_hw8_img_noise](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/digital_image_hw8_img_noise.png)
