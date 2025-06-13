@@ -96,7 +96,7 @@ plugins:
       post_date_format: full
       draft: true
       draft_if_future_date: true
-      post_excerpt: required
+      post_excerpt: optional
       post_excerpt_separator: <!-- more -->
       post_readtime: true
       post_readtime_words_per_minute: 200
@@ -289,12 +289,12 @@ nav:
           - Media and Cognition: course_notes/media_cognition/index.md
           - 01-人工智能与机器学习: course_notes/media_cognition/chapter1.md
           - 02-认知的生物机理: course_notes/media_cognition/chapter2.md
-          - 03-机器学习: course_notes/media_cognition/chapter3.md
-          - 04-深度学习: course_notes/media_cognition/chapter4.md
-          - 05-卷积神经网络: course_notes/media_cognition/chapter5.md
-          - 06-循环神经网络: course_notes/media_cognition/chapter6.md
+          - 03-Machine Learing: course_notes/media_cognition/chapter3.md
+          - 04-Deep Learing: course_notes/media_cognition/chapter4.md
+          - 05-CNN: course_notes/media_cognition/chapter5.md
+          - 06-RNN: course_notes/media_cognition/chapter6.md
           - 07-Transformers: course_notes/media_cognition/chapter7.md
-          - 08-贝叶斯决策与概率模型: course_notes/media_cognition/chapter8.md
+          - 08-Bayes Decision: course_notes/media_cognition/chapter8.md
       - Foundation of Solid State Physics:
           - Foundation of Solid State Physics: course_notes/solid_physics/index.md
           - 01-晶体的结构: course_notes/solid_physics/chapter1.md
