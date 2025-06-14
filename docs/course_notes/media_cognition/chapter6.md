@@ -4,7 +4,7 @@
 
 ## 6.1 Sequence Modeling
 
-基于神经网络的模式识别
+基于神经网络的模式识别：
 
 1. 模式识别：图像分类、目标检测、图像分割等。
 2. 序列识别：自动语音识别 ASR、手写文字识别、机器翻译、词性标记等。
@@ -15,13 +15,13 @@
 
 ## 6.2 RNN
 
-前馈神经网络
+前馈神经网络：
 
 - 结构为有向无环图
 - 隐含层 $h = f(\boldsymbol{w}^T \boldsymbol{x})$
 - 适合处理网格化数据
 
-循环神经网络
+循环神经网络：
 
 - 引入反馈环路
 - $h_t = f(\boldsymbol{w}_x^T \boldsymbol{x}_t + \boldsymbol{w}_h^T h_{t-1})$
@@ -29,7 +29,7 @@
 
 输入词向量的方式：独热编码 one-hot，word2vec，词嵌入 word embedding 等。
 
-RNN 基本单元：
+RNN 的基本单元：
 
 $$
 \boldsymbol{h}_t = f(\boldsymbol{h}_{t-1}, \boldsymbol{x}_t;\theta_f) \\
@@ -56,7 +56,7 @@ $$
 
 拓展：
 
-双向 RNN。
+双向 RNN (Bidirectional RNN)。
 
 深度循环神经网络：多个 RNN 单元堆叠形成深度循环神经网络(deep RNN)，或称为多层 RNN(multi-layers RNN)。
 
@@ -97,7 +97,7 @@ $$
 
 [Long short-term memory - Wikipedia](https://en.wikipedia.org/wiki/Long_short-term_memory)
 
-关键结构：3个门、2个状态
+关键结构：3个门、2个状态。
 
 ![202506132052148](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo-image/images/202506132052148.png)
 
@@ -113,6 +113,8 @@ $$
 
 输出状态：$\boldsymbol{h}_t = \boldsymbol{o}_t \odot \tanh(\boldsymbol{c}_t)$。
 
+> 运算符 $\odot$ 表示向量逐元素相乘。
+
 单元详解：
 
 遗忘门 forget gate：决定细胞状态 $\boldsymbol{c}_{t-1}$ 有多少信息将被遗忘。若 $\boldsymbol{f}_t=1$ 则全部保留，若 $\boldsymbol{f}_t=0$ 则全部遗忘。
@@ -123,7 +125,7 @@ $$
 
 [Gated recurrent unit - Wikipedia](https://en.wikipedia.org/wiki/Gated_recurrent_unit)
 
-门控循环单元 GRU。
+门控循环单元 GRU (Gated Recurrent Unit)。
 
 ![202506132104521](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo-image/images/202506132104521.png)
 

@@ -27,7 +27,7 @@ CNN 的基本单元：卷积层、池化层、激活函数、Batch Normalization
 
 > 默认情况下，我们使用的都是全通道卷积: 卷积核通道数与输入数据通道数一致。
 
-当同时输入 $N$ 个样本，即 $\text{batch\_size}=N$ ，输入数据维度为 $N \times C_{in} \times H_{in} \times W_{in}$ ，卷积核数目 $C_{out}$ ，卷积步长 $\text{stride}=S$ ，填充 $\text{padding}=P$ 时，输出数据维度为： $N \times C_{out} \times H_{out} \times W_{out}$ ，其中
+当同时输入 $N$ 个样本，即 $\text{batch\_size}=N$ ，输入数据维度为 $N \times C_{in} \times H_{in} \times W_{in}$ ，卷积核数目 $C_{out}$ ，卷积步长 $\text{stride}=S$ ，填充 $\text{padding}=P$ 时，输出数据维度为： $N \times C_{out} \times H_{out} \times W_{out}$ ，其中：
 
 $$
 H_{out}=\left \lfloor \frac{H_{in} - K_h + 2P}{S} + 1 \right \rfloor,\;
@@ -92,7 +92,7 @@ $$
 
 ### 5.1.2 Pooling Layer
 
-池化层/下采样层 Pooling layer。作用是
+池化层/下采样层 Pooling layer。作用是：
 
 1. 保持主要信息，剔除次要信息。
 2. 增加感受野，精炼特征图尺寸。
@@ -110,7 +110,7 @@ Pytorch 中的池化层为 `torch.nn.MaxPool2d()` 和 `torch.nn.AvgPool2d()` 。
 
 在训练过程中每次迭代时，将各层的输出节点以一定概率随机置为0。
 
-训练阶段：根据 Bernoulli 分布随机生成随机数 $u$ ，并基于如下准则判断该节点参数是否更新。
+训练阶段：根据 Bernoulli 分布随机生成随机数 $u$ ，并基于如下准则判断该节点参数是否更新：
 
 $$
 y_{\text{train}} =
@@ -140,7 +140,7 @@ $$
 
 Pytorch 中的 Batch Normalization 为 `torch.nn.BatchNorm2d()` 。
 
-## 5.2 典型 CNN 架构
+## 5.2 Typical CNN
 
 LeNet: 卷积神经网络的开山之作
 
@@ -213,7 +213,7 @@ ShuffleNet
 - 利用分组卷积，但分组卷积会造成输出通道只和某些输入通道有关；
 - 利用 channel shuffle 解决全局信息流通不畅，网络表达能力不足的问题。
 
-## 5.3 CNN 的应用
+## 5.3 Application
 
 图像分类 image classification
 

@@ -278,46 +278,46 @@ nav:
           - 12-系统的状态变量分析: course_notes/signal_system/chapter12.md
       - Probability and Stochastic Process:
           - Probability and Stochastic Process: course_notes/probability/index.md
-          - 01-概率论基础: course_notes/probability/chapter1.md
-          - 02-一元随机变量: course_notes/probability/chapter2.md
-          - 03-多元随机变量: course_notes/probability/chapter3.md
-          - 04-二阶矩过程与谱分析: course_notes/probability/chapter4.md
-          - 05-高斯过程: course_notes/probability/chapter5.md
-          - 06-马尔可夫过程: course_notes/probability/chapter6.md
-          - 07-泊松过程: course_notes/probability/chapter7.md
+          - 1-概率论基础: course_notes/probability/chapter1.md
+          - 2-一元随机变量: course_notes/probability/chapter2.md
+          - 3-多元随机变量: course_notes/probability/chapter3.md
+          - 4-二阶矩过程与谱分析: course_notes/probability/chapter4.md
+          - 5-Gaussian Process: course_notes/probability/chapter5.md
+          - 6-Markov Chain: course_notes/probability/chapter6.md
+          - 7-Poisson Process: course_notes/probability/chapter7.md
       - Media and Cognition:
           - Media and Cognition: course_notes/media_cognition/index.md
-          - 01-人工智能与机器学习: course_notes/media_cognition/chapter1.md
-          - 02-认知的生物机理: course_notes/media_cognition/chapter2.md
-          - 03-Machine Learing: course_notes/media_cognition/chapter3.md
-          - 04-Deep Learing: course_notes/media_cognition/chapter4.md
-          - 05-CNN: course_notes/media_cognition/chapter5.md
-          - 06-RNN: course_notes/media_cognition/chapter6.md
-          - 07-Transformers: course_notes/media_cognition/chapter7.md
-          - 08-Bayes Decision: course_notes/media_cognition/chapter8.md
+          - 1-Artificial Intelligence: course_notes/media_cognition/chapter1.md
+          - 2-Cognition: course_notes/media_cognition/chapter2.md
+          - 3-Machine Learing: course_notes/media_cognition/chapter3.md
+          - 4-Deep Learing: course_notes/media_cognition/chapter4.md
+          - 5-CNN: course_notes/media_cognition/chapter5.md
+          - 6-RNN: course_notes/media_cognition/chapter6.md
+          - 7-Transformer: course_notes/media_cognition/chapter7.md
+          - 8-Bayes Decision: course_notes/media_cognition/chapter8.md
       - Foundation of Solid State Physics:
           - Foundation of Solid State Physics: course_notes/solid_physics/index.md
-          - 01-晶体的结构: course_notes/solid_physics/chapter1.md
-          - 02-固体的结合: course_notes/solid_physics/chapter2.md
-          - 03-固体电子论: course_notes/solid_physics/chapter3.md
-          - 04-固体的电特性: course_notes/solid_physics/chapter4.md
-          - 05-固体间接触的电特性: course_notes/solid_physics/chapter5.md
-          - 06-固体的磁特性: course_notes/solid_physics/chapter6.md
-          - 07-晶格振动和固体的热性质: course_notes/solid_physics/chapter7.md
-          - 08-超导: course_notes/solid_physics/chapter8.md
-          - 09-场与物质的相互作用: course_notes/solid_physics/chapter9.md
+          - 1-晶体的结构: course_notes/solid_physics/chapter1.md
+          - 2-固体的结合: course_notes/solid_physics/chapter2.md
+          - 3-固体电子论: course_notes/solid_physics/chapter3.md
+          - 4-固体的电特性: course_notes/solid_physics/chapter4.md
+          - 5-固体间接触的电特性: course_notes/solid_physics/chapter5.md
+          - 6-固体的磁特性: course_notes/solid_physics/chapter6.md
+          - 7-晶格振动和固体的热性质: course_notes/solid_physics/chapter7.md
+          - 8-超导: course_notes/solid_physics/chapter8.md
+          - 9-场与物质的相互作用: course_notes/solid_physics/chapter9.md
           - 课后测试题: course_notes/solid_physics/test.md
       - Digital Image Processing:
           - Digital Image Processing: course_notes/digital_image/index.md
-          - 01-图像处理概述: course_notes/digital_image/chapter1.md
-          - 02-图像信息与视觉感知: course_notes/digital_image/chapter2.md
-          - 03-空域图像增强: course_notes/digital_image/chapter3.md
-          - 04-频域图像增强: course_notes/digital_image/chapter4.md
-          - 05-图像分割: course_notes/digital_image/chapter5.md
-          - 06-图像复原: course_notes/digital_image/chapter6.md
-          - 07-图像校正和修补: course_notes/digital_image/chapter7.md
-          - 08-图像压缩编码: course_notes/digital_image/chapter8.md
-          - 09-图像3D成像: course_notes/digital_image/chapter9.md
+          - 1-图像处理概述: course_notes/digital_image/chapter1.md
+          - 2-图像信息与视觉感知: course_notes/digital_image/chapter2.md
+          - 3-空域图像增强: course_notes/digital_image/chapter3.md
+          - 4-频域图像增强: course_notes/digital_image/chapter4.md
+          - 5-图像分割: course_notes/digital_image/chapter5.md
+          - 6-图像复原: course_notes/digital_image/chapter6.md
+          - 7-图像校正和修补: course_notes/digital_image/chapter7.md
+          - 8-图像压缩编码: course_notes/digital_image/chapter8.md
+          - 9-图像3D成像: course_notes/digital_image/chapter9.md
       - Operating System:
           - Operating System: course_notes/operating_system/index.md
           - 01-绪论(1): course_notes/operating_system/chapter1.md
