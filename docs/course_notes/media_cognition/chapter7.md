@@ -58,39 +58,39 @@ $$
 
 上式中的 $\alpha_{ij}$ 称为注意力系数，表示输入向量 $\boldsymbol{x}_j$ 对输出向量 $\boldsymbol{y}_i$ 的贡献程度。注意力系数应满足2个约束条件： $\alpha_{ij}\geqslant 0, \displaystyle\sum_{j=1}^N\alpha_{ij}=1$ 。
 
-如何计算注意力系数？我们引入 查询 Query、键 Key、值 Value 的概念。想象我们在搜索引擎中搜索一部想看的电影，那么 Key 就相当于每部电影的特征，例如类型、主演、年份等，Query 就相当于观影偏好，例如“我想看一部漫威的科幻电影”，而 Value 就相当于最后搜引擎返回的结果。
+如何计算注意力系数？我们引入 **查询 Query、键 Key、值 Value** 的概念。想象我们在搜索引擎中搜索一部想看的电影，那么 Key 就相当于每部电影的特征，例如类型、主演、年份等，Query 就相当于观影偏好，例如“我想看一部漫威的科幻电影”，而 Value 就相当于最后搜引擎返回的结果。
 
-引入点积自注意力机制，用点积衡量 Query $\boldsymbol{x}_j$ 和 Key $\boldsymbol{x}_i$ 之间的相似度：
+引入 **点积自注意力机制**，用点积衡量 Query $\boldsymbol{x}_j$ 和 Key $\boldsymbol{x}_i$ 之间的相似度：
 
 除此之外，当前从输入向量到输出向量的转换时固定的，我们希望网络能够对输入向量的某些特征给予更多关注，因此通过引入一个可学习的权重矩阵 $\boldsymbol{W}$ ，定义出各自具有线性独立变换的 Query、Key、Value 矩阵（**我们常常设定它们的维度相同**）：
 
 $$
 \boldsymbol{Q}=\boldsymbol{X}\boldsymbol{W}^{(q)}= \begin{bmatrix}
-\boldsymbol{q}_1^T \\ \vdots \\ \boldsymbol{q}_n
+\boldsymbol{q}_1^T \\ \vdots \\ \boldsymbol{q}_N^T
 \end{bmatrix},
 \boldsymbol{K}=\boldsymbol{X}\boldsymbol{W}^{(k)}= \begin{bmatrix}
-\boldsymbol{k}_1^T \\ \vdots \\ \boldsymbol{k}_n
+\boldsymbol{k}_1^T \\ \vdots \\ \boldsymbol{k}_N^T
 \end{bmatrix},
 \boldsymbol{V}=\boldsymbol{X}\boldsymbol{W}^{(v)}= \begin{bmatrix}
-\boldsymbol{v}_1^T \\ \vdots \\ \boldsymbol{v}_n
+\boldsymbol{v}_1^T \\ \vdots \\ \boldsymbol{v}_N^T
 \end{bmatrix} \\
 \boldsymbol{Q},\boldsymbol{K},\boldsymbol{V}\in \mathbb{R}^{N\times d},\quad
 \boldsymbol{W}^{(q)},\boldsymbol{W}^{(k)},\boldsymbol{W}^{(v)}\in \mathbb{R}^{d\times d}
 $$
 
-上面的3个权重矩阵 $\boldsymbol{W}^{(q)},\boldsymbol{W}^{(k)},\boldsymbol{W}^{(v)}$ 即为最后 Transformer 架构所需要训练的可学习参数。并且通过权重矩阵 $\boldsymbol{W}$ $所有输入数据可以实现实现 **参数共享** 。
+上面的3个权重矩阵 $\boldsymbol{W}^{(q)},\boldsymbol{W}^{(k)},\boldsymbol{W}^{(v)}$ 即为最后 Transformer 架构所需要训练的可学习参数。并且通过权重矩阵 $\boldsymbol{W}$ 所有输入数据可以实现实现 **参数共享** 。
 
 计算注意力分数 $\boldsymbol{S}=\boldsymbol{Q}\boldsymbol{K}^T \in \mathbb{R}^{N\times N}$ 。
 
-注意力系数矩阵 $\boldsymbol{A}=\text{softmax}\left(\dfrac{\boldsymbol{Q}\boldsymbol{K}^T}{\sqrt{d}}\right) \in\mathbb{R}^{N\times N}$ 。这里我们使用了点积缩放并做 Softmax 归一化，优化数值稳定性。注意 矩阵是**每个行向量做 Softmax 运算** 。
+**注意力系数矩阵** $\boldsymbol{A}=\text{softmax}\left(\dfrac{\boldsymbol{Q}\boldsymbol{K}^T}{\sqrt{d}}\right) \in\mathbb{R}^{N\times N}$ 。这里我们使用了 **点积缩放** 并做 Softmax 归一化，优化数值稳定性，否则点积计算的范围会随维度增加而增加，会导致之后的注意权重分布与 token 向量的维度有很强的关联。注意 该矩阵是 **每个行向量做 Softmax 运算**。
 
 最后把注意力系数作用在 Value 上： $\boldsymbol{Y}=\boldsymbol{A}\boldsymbol{V}=\text{softmax}\left(\dfrac{\boldsymbol{Q}\boldsymbol{K}^T}{\sqrt{d}}\right)\boldsymbol{V} ,\;\boldsymbol{Y}\in\mathbb{R}^{N\times d}$ ，相当于返回搜索结果。
 
-输出矩阵 $\boldsymbol{Y}$ 的每一行 $\boldsymbol{y}_i$ 可以看成是 值矩阵 $\boldsymbol{V}$ 中的行向量以 注意力系数矩阵 $\boldsymbol{A}$ 为权重的线性组合。
+输出矩阵 $\boldsymbol{Y}$ 的每一行 $\boldsymbol{y}_i^T$ 可以看成是 值矩阵 $\boldsymbol{V}$ 中各个行向量 $\boldsymbol{v}_j^T,\;j=1,\cdots N$ 以 注意力系数矩阵 $\boldsymbol{A}$ 中的一行为权重的线性组合。
 
 > 输出矩阵 $\boldsymbol{Y}$ 的计算复杂度为 $O(N^2d)$ 。
 
-对于单个输入 $\boldsymbol{x}_i$ ，其对应的 Query、Key、Value 分别为 $\boldsymbol{q}_i=\boldsymbol{x}_i\boldsymbol{W}^{(q)},\;\boldsymbol{k}_i=\boldsymbol{x}_i\boldsymbol{W}^{(k)},\;\boldsymbol{v}_i=\boldsymbol{x}_i\boldsymbol{W}^{(v)}$ 。
+对于单个输入 $\boldsymbol{x}_i,\;i=1,\cdots N$ ，其对应的 Query、Key、Value 分别为 $\boldsymbol{q}_i=\boldsymbol{W}^{(q)T}\boldsymbol{x}_i,\;\boldsymbol{k}_i=\boldsymbol{W}^{(k)T}\boldsymbol{x}_i,\;\boldsymbol{v}_i=\boldsymbol{W}^{(v)T}\boldsymbol{x}_i$ 。
 
 单个注意力系数：
 
@@ -122,7 +122,7 @@ $$
 \boldsymbol{H}^{(h)}=\text{softmax}\left(\dfrac{\boldsymbol{Q}^{(h)}\boldsymbol{K}^{(h)T}}{\sqrt{d}}\right)\boldsymbol{V}^{(h)},\quad\boldsymbol{H}^{(h)}\in\mathbb{R}^{N\times d}
 $$
 
-将所有 $H$ 个头的输出拼接成一个矩阵： $\boldsymbol{H}=[\boldsymbol{H}^{(1)},\cdots \boldsymbol{H}^{(H)}]\in\mathbb{R}^{N\times Hd}$
+将所有 $H$ 个头的输出拼接成一个矩阵： $\boldsymbol{H}=[\boldsymbol{H}^{(1)},\cdots, \boldsymbol{H}^{(H)}]\in\mathbb{R}^{N\times Hd}$
 
 使用一个维度为 $Hd\times d$ 的线性变换矩阵 $\boldsymbol{W}^{(o)}$ 对拼接后的矩阵变换，得到最终的多头注意力输出： $\boldsymbol{Y}=\boldsymbol{H}\boldsymbol{W}^{(o)}$ ，其中 $\boldsymbol{Y}\in\mathbb{R}^{N\times d}$ 与输入矩阵 $\boldsymbol{X}$ 维度相同。
 
@@ -142,9 +142,9 @@ Transformer 由多个 编码器 Encoder 和 解码器 Decoder 组成。编码器
 2. Decoder 基于 Encoder 提供的上下文信息，逐步生成目标语言的输出文本。
 
 !!! note "计算复杂度"
-    对于注意力机制，输出矩阵 $\boldsymbol{Y}$ 的计算复杂度为 $O(N^2d)$ 。如果是多头注意力机制，则为 $O(HN^2d)$ 。
+    对于注意力机制，输出矩阵 $\boldsymbol{Y}$ 的计算复杂度为 $O(N^2d)$ 。如果是多头注意力机制，则 $\boldsymbol{Y}$ 的计算复杂度为 $O(HN^2d)$ 。
 
-    对于整个 Transformer，应考虑 注意力机制 + 前馈神经网络 MLP，总的计算复杂度为 $O(N^2d+Nd^2)$ 。
+    对于整个 Transformer，计算复杂度应考虑 “注意力机制 + 前馈神经网络 MLP”，总计算复杂度为 $O(N^2d+Nd^2)$ 。
 
 ### 7.3.1 Encoder
 
@@ -161,7 +161,7 @@ Encoder 由 $N$ 个相同结构的编码器层 Encoder Layer 组成，每个 Enc
     - 两个线性层 + ReLU 激活函数，增强非线性建模能力。
     - 残差连接 + Layer Normalization。
 
-Encoder 是由多头自注意力模块和 FFN 模块交替堆叠而成的，且不同的 Encoder Layer 之间 **参数不共享** ，提高模型的表达能力，使得不同层可以学习到不同层次的特征。
+Encoder 是由多头自注意力模块和 FFN 模块交替堆叠而成的，且不同的 Encoder Layer 之间 **参数不共享**，提高模型的表达能力，使得不同层可以学习到不同层次的特征。
 
 ### 7.3.2 Decoder
 
@@ -207,9 +207,9 @@ $$
 
 其中， $p$ 为 token 位置， $i$ 为编码向量的维度索引， $d$ 为模型的维度。
 
-偶数维度使用 正弦函数，奇数维度使用 余弦函数。该 Sinusoidal 函数的核心是频率和维度的关系：低维频率较高，编码变化快，能够提供细粒度的位置信息；高维频率较低，编码变化慢，能够捕捉更长周期的位置信息。Sinusoidal 函数不仅能够表示绝对位置，还能通过位置之间的相对关系进行编码，使模型能够学习位置之间的相对关系。
+**偶数维度 使用 正弦函数，奇数维度 使用 余弦函数**。该 Sinusoidal 函数的核心是频率和维度的关系：低维频率较高，编码变化快，能够提供细粒度的位置信息；高维频率较低，编码变化慢，能够捕捉更长周期的位置信息。Sinusoidal 函数不仅能够表示绝对位置，还能通过位置之间的相对关系进行编码，使模型能够学习位置之间的相对关系。
 
-旋转位置编码 RoPE (Rotary Position Embedding)
+旋转位置编码 RoPE (Rotary Position Embedding)，对 Sinusoidal 的改进。
 
 ### 7.3.5 Layer Normalization
 
@@ -217,7 +217,7 @@ $$
 
 与前面的 批次归一化 Batch Normalization 不同，层归一化对每一个样本向量计算在不同特征维度上的均值和方差，利用其在维度上进行归一化和尺度变换。
 
-> 常见的归一化方法有：batch normalization，对同一批次内数据计算均值和方差；layer normalization，对每个样本的不同维度的特征计算均值和方差；instance normalization，对每个样本的每个通道特征计算均值和方差；group normalization，对每个样本的特征按照通道分组计算均值和方差。
+> 常见的归一化方法有：Batch Norm，对同一批次内数据计算均值和方差；Layer Norm，对每个样本的不同维度的特征计算均值和方差；Instance Norm，对每个样本的每个通道特征计算均值和方差；Group Norm，对每个样本的特征按照通道分组计算均值和方差。
 
 归一化方法对比：
 
@@ -234,7 +234,7 @@ $$
 
 ### 7.4.1 LLM
 
-BERT: Bidirectional Encoder Representations from Transformers (Google)
+**BERT**: Bidirectional Encoder Representations from Transformers (Google)
 
 架构：双向 Transformer，可以同时学习文本中的前后文信息。
 
@@ -246,7 +246,7 @@ BERT: Bidirectional Encoder Representations from Transformers (Google)
 
 ---
 
-GPT: Generative Pre-trained Transformer (OpenAI)
+**GPT**: Generative Pre-trained Transformer (OpenAI)
 
 架构：从左到右的单向 Transformer 模型，主要关注当前词的左侧上下文。
 
@@ -270,18 +270,18 @@ SAM: Segment anything.
 
 ## 7.5 Technology
 
-大规模预训练：
+大规模**预训练**：
 
 - 使用与下游任务无关的大规模数据进行模型参数的初始训练，可以认为是为模型参数找到一个较好的“初值点”。
 - 大语言模型的能力基础主要来源于预训练数据，数据的收集与清洗对于模型性能具有重要的影响。
 
-指令微调与人类对齐：
+**指令微调与人类对齐**：
 
 - 使用任务输入与输出的配对数据进行模型训练，使语言模型较好地掌握通过问答形式进行任务求解的能力。
 - 指令微调很难教会大语言模型预训练阶段没有学习到的知识与能力，主要起到对于模型能力的激发作用，而不是知识注入作用。
 - 与预训练相比，指令微调通常来说需要的指令实例数据规模要小的多。
 
-数据预处理。为了确保数据的质量和效用，还需要对数据进行预处理：
+数据**预处理**。为了确保数据的质量和效用，还需要对数据进行预处理：
 
 - 质量过滤：去除语料库中的低质量数据。
 - 敏感内容过滤：过滤和处理数据中的有毒内容或隐私信。
@@ -290,18 +290,18 @@ SAM: Segment anything.
 
 Tokenization：
 
-1. BPE(Byte Pair Encoder)分词
+1. BPE(Byte Pair Encoder) 分词
     - 合并：从一组基本符号（例如字母表）开始，迭代地寻找语料库中的两个相邻词元，并将它们替换为新的词元。
     - 合并的选择标准是计算两个连续词元的共现频率，一直持续达到预定义的词表大小。
-2. WordPiece分词
+2. WordPiece 分词
     - 和BPE分词的做法相似，但合并的选择策略有不同。
     - 合并前，先训练一个语言模型，对所有可能的词元对进行评分。
     - 每次合并，选择使得训练数据的似然性增加最多的词元对。
-3. Unigram分词
+3. Unigram 分词
     - 从一组足够大的初始集合开始，迭代地删除其中的词元，直到达到预期的词表大小。
     - 选择标准是删除某个词元后，训练语料的似然增加情况。
 
-语言模型的架构：
+**语言模型的架构**：
 
 1. Encoder: BERT, RoBerta, Reformer, FlauBERT, CamemBERT, Electra, MobileBERT, Longformer.
 2. Decoder: Transformer-XL, XLNet, GPT series, DialoGPT.
@@ -309,11 +309,11 @@ Tokenization：
 
 ---
 
-Scaling Law：在大模型训练中，如何以较小的计算代价(computational cost)预测模型性能(performance)？
+Scaling Law：在大模型训练中，如何以较小的计算代价预测模型性能？
 
 影响模型性能的因素：模型大小 model size，数据规模 data size，训练计算量 training compute budget。
 
-自监督学习 Self-supervised learning
+自监督学习 Self-supervised Learning
 
 - 无监督学习的特殊形式.
 - 对于无标签数据，通过设计辅助任务来挖掘数据自身的表征特征作为监督信号，从而提升模型的特征提取能力。
@@ -325,9 +325,9 @@ LLM 常用的预训练任务：语言建模（Language Modeling, LM），去噪�
 
 ---
 
-指令微调 Instruction Tuning 是指使用自然语言形式的数据，对预训练后的大语言模型进行参数微调。
+**指令微调** Instruction Tuning 是指使用自然语言形式的数据，对预训练后的大语言模型进行参数微调。
 
-低秩适配 Low-Rank Adaptation (LoRA) 微调方法，预训练模型的参数矩阵上添加低秩分解矩阵，来近似每层的参数更新，从而减少所需训练的参数。
+**低秩适配** Low-Rank Adaptation (LoRA) 微调方法，预训练模型的参数矩阵上添加低秩分解矩阵，来近似每层的参数更新，从而减少所需训练的参数。
 
 适配器微调 Adapter Tuning：在 Transformer 模型中引入小型神经网络模块（适配器），首先将原始特征压缩到较低维度，随后进行非线性变换，最后恢复到原始维度。适配器模块集成到 Transformer 架构的每一层中，原始的模型参数保持不变。
 
@@ -335,7 +335,7 @@ LLM 常用的预训练任务：语言建模（Language Modeling, LM），去噪�
 
 提示微调：仅在输入嵌入层中加入可训练的提示向量。
 
-为什么进行人类对齐？
+为什么进行 **人类对齐？
 
 经过大规模的预训练和有监督指令微调，大语言模型具备了解决各种任务的通用能力和指令遵循能力。但是同时也可能生成有偏见的、冒犯的以及事实错误的文本内容。因此，在大语言模型的学习过程中，如何确保大语言模型的行为与人类价值观、人类真实意图和社会伦理相一致成为了一个关键研究问题，通常称这一研究问题为人类对齐。
 
@@ -353,7 +353,7 @@ LLM 常用的预训练任务：语言建模（Language Modeling, LM），去噪�
 
 ---
 
-提示 Prompt 学习
+提示学习 (Prompt)
 
 提示，通常为包含特定任务信息的一组人工设计的输入或者可学习的特征向量，用于引导模型从输入文本或图像中提取特定任务所需要的信息。通过选择或生成合适的提示，引导模型适应多样化的输入和下游任务。
 

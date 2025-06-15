@@ -36,12 +36,12 @@ $$
 \hat{\boldsymbol{y}}_t = g(\boldsymbol{h}_t;\theta_g)
 $$
 
-通过 $\theta_f,\theta_g$ 实现 **时序参数共享** ：
+通过 $\theta_f,\theta_g$ 实现 **时序参数共享**：
 
 $$
 \boldsymbol{h}_1 = f\left(\boldsymbol{h}_0, \boldsymbol{x}_1; \theta_f\right), \ \hat{\boldsymbol{y}}_1 = g\left(\boldsymbol{h}_1; \theta_g\right) \\
 \boldsymbol{h}_2 = f\left(\boldsymbol{h}_1, \boldsymbol{x}_2; \theta_f\right), \ \hat{\boldsymbol{y}}_2 = g\left(\boldsymbol{h}_2; \theta_g\right) \\
-\ldots
+\cdots
 $$
 
 最常见的形式为：
@@ -66,7 +66,7 @@ Truncated BPTT：实际上我们采用时间截断的 BPTT，误差仅在有限�
 
 RNN 容易出现梯度消失于梯度爆炸。对于长序列，计算梯度时（根据链式法则）有多项连乘，要么趋于0要么很大，导致梯度消失或梯度爆炸。解决方法：
 
-1. 梯度裁剪 gradient clipping：如果梯度超过阈值 $\boldsymbol{g}_{\text{clipped}}=\theta\dfrac{\boldsymbol{g}}{\|\boldsymbol{g}|} \;\text{if } \|\boldsymbol{g}\| > \theta$ ，否则正常梯度更新。
+1. 梯度裁剪 gradient clipping：如果梯度超过阈值 $\boldsymbol{g}_{\text{clipped}}=\theta\dfrac{\boldsymbol{g}}{\|\boldsymbol{g}|} ,\;\text{if } \|\boldsymbol{g}\| > \theta$ ，否则正常梯度更新。
 2. 换 tanh 激活函数为 ReLU 函数。
 3. 引入门控机制。
 
@@ -113,7 +113,7 @@ $$
 
 输出状态：$\boldsymbol{h}_t = \boldsymbol{o}_t \odot \tanh(\boldsymbol{c}_t)$。
 
-> 运算符 $\odot$ 表示向量逐元素相乘。
+> 运算符 $\odot$ 表示哈达玛乘积，两个向量逐元素相乘。
 
 单元详解：
 

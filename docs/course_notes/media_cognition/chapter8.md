@@ -5,7 +5,7 @@
 模式 Pattern
 
 1. 模式(认知心理学)：由若干元素或成分按一定关系形成的某种刺激结构。
-2. 模式(机器学习)：人们在一定条件环境下，根据一定需要对自然事物的一种抽象的分类概念。模式集合记为 $\Omega=\omega_1,\cdots, \omega_C$ 。
+2. 模式(机器学习)：人们在一定条件环境下，根据一定需要对自然事物的一种抽象的分类概念。模式集合记为 $\Omega=\{\omega_1,\cdots, \omega_C\}$ 。
 
 样本/对象 (sample, object) ：自然界的具体事物，具有一定的类别特性，是抽象模式的具体体现。样本的观测量记为 $\boldsymbol{x}=[x_1,\cdots, x_N]^T$ 。
 
@@ -23,7 +23,7 @@
 特征变换：降维。
 
 $$
-\boldsymbol{x}\in \mathbb{R}^p \to f(\boldsymbol{x}) \to \boldsymbol{z}\in \mathbb{R}^k,\quad k<p
+\boldsymbol{x}\in \mathbb{R}^p \to \boldsymbol{z}=f(\boldsymbol{x}) \to \boldsymbol{z}\in \mathbb{R}^k,\quad k<p
 $$
 
 机器学习中的维度灾难：在给定精度下，准确地对某些变量的函数进行估计，所需样本量会随着样本维数的增加而呈指数形式增长。
@@ -54,13 +54,15 @@ $$
 \boldsymbol{\Sigma}=\mathbb{E}[(\boldsymbol{x}-\boldsymbol{\mu})(\boldsymbol{x}-\boldsymbol{\mu})^T] =\frac{1}{n}\sum_{i=1}^n(\boldsymbol{x}_i-\boldsymbol{\mu})(\boldsymbol{x}_i-\boldsymbol{\mu})^T
 $$
 
-上面求协方差时使用了 **去中心化** $\boldsymbol{x}_i=\boldsymbol{x}_i-\boldsymbol{\mu}$ 也即变为**零均值** 。如果是 **无偏估计** ，则协方差求法变为 $\boldsymbol{\Sigma}=\dfrac{1}{n-1}\displaystyle\sum_{i=1}^n(\boldsymbol{x}_i-\boldsymbol{\mu})(\boldsymbol{x}_i-\boldsymbol{\mu})^T$ 。但实际上，该系数并不会对后面求向量造成影响，只是特征值进行了缩放。
+上面求协方差时使用了 **去中心化** $\boldsymbol{x}_i=\boldsymbol{x}_i-\boldsymbol{\mu}$ ,也即变为**零均值**。如果是 **无偏估计** ，则 **散度矩阵/样本协方差矩阵** 变为 $\boldsymbol{\Sigma}=\dfrac{1}{n-1}\displaystyle\sum_{i=1}^n(\boldsymbol{x}_i-\boldsymbol{\mu})(\boldsymbol{x}_i-\boldsymbol{\mu})^T$ 。但实际上，该系数并不会对后面求特征向量造成影响，只是特征值进行了缩放。
+
+> 关于前面的系数是 1/n 还是 1/(n-1) ，区分不同的场景：最大似然估计的数学推导出来前面是 1/n，这是符合最大似然估计优化原理的理论推导结果。但是在实际用的时候，发现就是这个理论推导的估计有问题，所以重新定义了样本协方差矩阵，前面是 1/(n-1)。简化理解，就是 1/n 是理论推导，1/(n-1) 是实际使用。
 
 （2）对协方差矩阵 $\boldsymbol{\Sigma}$ 进行特征值分解。
 
 （3）选取前 $k$ 个特征值最大的特征向量 $\boldsymbol{v}_1,\cdots,\boldsymbol{v}_k$ 。
 
-（4）将样本点投影到由 $\boldsymbol{v}_1,\cdots,\boldsymbol{v}_k$ 张成的子空间上，得到降维后的样本点 $\boldsymbol{z}_i=\boldsymbol{V}^T(\boldsymbol{x}_i-\boldsymbol{\mu})$ 。
+（4）将样本点投影到由 $\boldsymbol{v}_1,\cdots,\boldsymbol{v}_k$ 张成的子空间（各个列向量需要**归一化**）上，得到降维后的样本点 $\boldsymbol{z}_i=\boldsymbol{V}^T(\boldsymbol{x}_i-\boldsymbol{\mu})$ 。
 
 （5）重建： $k$ 维投影子空间内的某个向量 $\boldsymbol{z}$ ，可以重构原始空间的向量 $\tilde{\boldsymbol{x}}=\boldsymbol{V}\boldsymbol{z}+\boldsymbol{\mu}$ 。
 
@@ -70,10 +72,8 @@ PCA 的几何意义：样本 $\boldsymbol{x}_i,\cdots\boldsymbol{x}_n$ 在 $p$ �
 
 PCA 的优缺点分析：
 
-1. 优点：采用样本协方差矩阵的特征向量作为变换的基向量，与样本的统计特性完全匹配。在 **最小均方误差准则** 下是最佳变换。
+1. 优点：采用样本协方差矩阵的特征向量作为变换的基向量，与样本的统计特性完全匹配。PCA 在 **最小均方误差准则** 下是最佳变换。
 2. 缺点：变换矩阵随样本数据而异，无快速算法（散度最大不一定最利于区分样本类别）。
-
-> 区分不同的场景：最大似然估计的数学推导出来前面是 1/n，这是符合最大似然估计优化原理的理论推导结果。但是在实际用的时候，发现就是这个理论推导的估计有问题，所以重新定义了样本协方差矩阵，前面是 1/(n-1)。简化理解，就是 1/n 是理论推导，1/(n-1) 是实际使用。
 
 ---
 
@@ -82,14 +82,14 @@ t-SNE (t-distributed stochastic neighbor embedding)
 高维空间: 以数据点在 $x_i$ 为中心的高斯分布中所占概率密度为标准选择近邻：
 
 $$
-p_{j|i} = \frac{\exp\left(-\|x_i - x_j\|^2 / 2\sigma_i^2\right)}{\sum_{k \neq i} \exp\left(-\|x_i - x_k\|^2 / 2\sigma_i^2\right)} \\
-p_{ij} = \frac{(p_{i|j} + p_{j|i})}{2N}
+p_{j|i} = \frac{\exp\left(-\|x_i - x_j\|^2 / 2\sigma_i^2\right)}{\displaystyle\sum_{k \neq i} \exp\left(-\|x_i - x_k\|^2 / 2\sigma_i^2\right)} \\
+p_{ij} = \frac{p_{i|j} + p_{j|i}}{2N}
 $$
 
 低维空间: 以 t 分布替代高斯分布表达距离：
 
 $$
-q_{ij} = \frac{\left(1 + \|y_i - y_j\|^2\right)^{-1}}{\sum_{k \neq l} \left(1 + \|y_k - y_l\|^2\right)^{-1}}
+q_{ij} = \frac{\left(1 + \|y_i - y_j\|^2\right)^{-1}}{\displaystyle\sum_{k \neq l} \left(1 + \|y_k - y_l\|^2\right)^{-1}}
 $$
 
 优化目标：高维空间和低维空间的概率分布之间距离——KL 散度 (Kullback-Leibler divergences)：
@@ -139,7 +139,7 @@ $$
 n 事件的贝叶斯定理为：
 
 $$
-P(A_i|B) = \frac{P(A_i)P(B|A_i)}{P(A_1)P(B|A_1) + \cdots + P(A_n)P(B|A_n)}, \quad i = 1, 2, \ldots, n
+P(A_i|B) = \frac{P(A_i)P(B|A_i)}{\displaystyle\sum_{j=1}^{n} P(A_j)P(B|A_j)}
 $$
 
 ---
@@ -189,7 +189,7 @@ $$
 
 找到所有 $g_i(\boldsymbol{x})$ 的最大值，则判别为类别 $\omega_i$ 。两个类之间的分类判别边界为 $g_i(\boldsymbol{x}) = g_j(\boldsymbol{x})$ 。
 
-对于常见的 **二分类问题** ，分类判别边界为 $g_1(\boldsymbol{x})-g_2(\boldsymbol{x})=0$ ，即：
+对于常见的 **二分类问题**，分类判别边界为 $g_1(\boldsymbol{x})-g_2(\boldsymbol{x})=0$ ，即：
 
 $$
 g_1(\boldsymbol{x})-g_2(\boldsymbol{x}) >0 \implies \boldsymbol{x} \in \omega_1 \\
@@ -210,9 +210,9 @@ $$
 
 此时，有 $\| \boldsymbol{\Sigma}_i \|=\sigma^{2d},\; \boldsymbol{\Sigma}_i^{-1}=\dfrac{1}{\sigma^2}\boldsymbol{I},\;i-1,\cdots c$ 。
 
-（1）条件： $\boldsymbol{\Sigma}_i = \sigma^2 \boldsymbol{I},\;p(\omega_i)=\dfrac{1}{c},\;i=1,\cdots c$ 即各类先验概率都相等时，为 **最小欧氏距离分类器** 。
+（1）条件： $\boldsymbol{\Sigma}_i = \sigma^2 \boldsymbol{I},\;p(\omega_i)=\dfrac{1}{c},\;i=1,\cdots c$ 即各类先验概率都相等时，为 **最小欧氏距离分类器**。
 
-我们 **忽略所有与类别无关的常数项** ，只剩下带协方差矩阵的那一项，得到判别函数：
+我们 **忽略所有与类别无关的常数项**，只剩下带协方差矩阵的那一项，得到判别函数：
 
 $$
 g_i(\boldsymbol{x}) = -\frac{\|\boldsymbol{x} - \boldsymbol{\mu}_i\|^2}{2\sigma^2}
@@ -223,14 +223,14 @@ $$
 判决规则：每个样本 以它到 每类样本均值 的 欧式距离平方的最小值 确定其分类，即：
 
 $$
-\|\boldsymbol{x} - \boldsymbol{\mu}_i\|^2 = \min_{j=1,\cdots,c} \|\boldsymbol{x} - \boldsymbol{\mu}_j\|^2 \implies \boldsymbol{x} \in \omega_i
+i = \argmin_{j=1,\cdots,c} \|\boldsymbol{x} - \boldsymbol{\mu}_j\|^2 \implies \boldsymbol{x} \in \omega_i
 $$
 
 各类 $d$ 维球状分布，判决超平面 垂直于 连接两类中心（类别均值向量）的连线。
 
 > 可看作模板匹配：每个类有一个典型样本(即均值向量)，称为模板；而待分类样本 $\boldsymbol{x}$ 只需按欧氏距离计算与哪个模板最相似(欧氏距离最短)即可作决定。
 
-（2）条件： $\boldsymbol{\Sigma}_i = \sigma^2 \boldsymbol{I},\;p(\omega_i)\neq p(\omega_j)$ 即 各类的先验概率未知，为 **线性分类器** 。
+（2）条件： $\boldsymbol{\Sigma}_i = \sigma^2 \boldsymbol{I},\;p(\omega_i)\neq p(\omega_j)$ 即 各类的先验概率未知，为 **线性分类器**。
 
 忽略与类别无关的常数项，得到判别函数——**线性判别函数** LDF (Linear Discriminant Function)：
 
@@ -247,7 +247,7 @@ $$
 
 假设 各类协方差矩阵相等，但不再是前面特殊的对角阵形式，即： $\boldsymbol{\Sigma}_i = \boldsymbol{\Sigma},\;i=1,\cdots c$ 。
 
-（3） 条件： $\boldsymbol{\Sigma}_i = \boldsymbol{\Sigma},\;p(\omega_i)=\dfrac{1}{c},\;i=1,\cdots c$ 即各类先验概率都相等时，为 **最小马氏距离分类器** 。
+（3） 条件： $\boldsymbol{\Sigma}_i = \boldsymbol{\Sigma},\;p(\omega_i)=\dfrac{1}{c},\;i=1,\cdots c$ 即各类先验概率都相等时，为 **最小马氏距离分类器**。
 
 > 马氏距离(Mahalanobis distance) $d_M(\boldsymbol{x},\boldsymbol{\mu}_i) = \sqrt{(\boldsymbol{x} - \boldsymbol{\mu}_i)^T \boldsymbol{\Sigma}_i^{-1} (\boldsymbol{x} - \boldsymbol{\mu}_i)}$ 。
 
@@ -261,7 +261,7 @@ $$
 
 各类 $d$ 维椭球状分布，判决超平面通过两类中心的中点，但未必垂直于连接两类中心的连线。
 
-（4）条件： $\boldsymbol{\Sigma}_i = \boldsymbol{\Sigma},\;p(\omega_i)\neq p(\omega_j)$ 即各类的先验概率未知，仍然为 **线性分类器** 。
+（4）条件： $\boldsymbol{\Sigma}_i = \boldsymbol{\Sigma},\;p(\omega_i)\neq p(\omega_j)$ 即各类的先验概率未知，仍然为 **线性分类器**。
 
 $$
 g_i(\boldsymbol{x}) = -\frac{1}{2} (\boldsymbol{x} - \boldsymbol{\mu}_i)^T \boldsymbol{\Sigma}^{-1} (\boldsymbol{x} - \boldsymbol{\mu}_i) + \ln p(\omega_i) \\
@@ -282,7 +282,7 @@ $$
 
 $$
 g_i(x)=-\frac{1}{2} (\boldsymbol{x} - \boldsymbol{\mu}_i)^T \boldsymbol{\Sigma}_i^{-1} (\boldsymbol{x} - \boldsymbol{\mu}_i) + \ln p(\omega_i) - \frac{1}{2}\ln|\boldsymbol{\Sigma}_i| \\
-=\boldsymbol{x}^T\boldsymbol{W}_i\boldsymbol{x} + \boldsymbol{w}_i^T\boldsymbol{x} + b_i \\
+=\boxed{\boldsymbol{x}^T\boldsymbol{W}_i\boldsymbol{x} + \boldsymbol{w}_i^T\boldsymbol{x} + b_i} \\
 \boldsymbol{W}_i = -\frac{1}{2} \boldsymbol{\Sigma}_i^{-1}, \quad \boldsymbol{w}_i = \boldsymbol{\Sigma}_i^{-1} \boldsymbol{\mu}_i, \quad b_i = -\frac{1}{2} \boldsymbol{\mu}_i^T \boldsymbol{\Sigma}_i^{-1} \boldsymbol{\mu}_i + \ln p(\omega_i) - \frac{1}{2}\ln|\boldsymbol{\Sigma}_i|
 $$
 
@@ -294,8 +294,8 @@ $$
 
 频率学派和贝叶斯学派：
 
-- 相同点：**最大似然函数**在频率学派和贝叶斯学派都具有重要的作用，其思想是认为已观测数据的概率分布是最大概率，最大概率对应的模型就是需要找的模型，“存在即合理”。
-- 不同点：频率学派认为模型是一成不变的，即**模型参数是常数**，常使用的参数估计方法为 **极大似然估计 MLE** ；贝叶斯学派认为模型是一直在变的，当获取新的信息后，模型也相应的在改变，即**模型参数是变量**，用概率去描述模型参数的不确定性，常使用的参数估计方法为 **最大后验概率估计 MAP** 。
+- 相同点：**最大似然函数** 在频率学派和贝叶斯学派都具有重要的作用，其思想是认为已观测数据的概率分布是最大概率，最大概率对应的模型就是需要找的模型，“存在即合理”。
+- 不同点：频率学派认为模型是一成不变的，即 **模型参数是常数**，常使用的参数估计方法为 **极大似然估计 MLE**；贝叶斯学派认为模型是一直在变的，当获取新的信息后，模型也相应的在改变，即 **模型参数是变量**，用概率去描述模型参数的不确定性，常使用的参数估计方法为 **最大后验概率估计 MAP**。
 
 ### 8.4.1 MLE
 
@@ -338,17 +338,14 @@ $$
 最大后验估计：
 
 $$
-l(\theta) = \ln p(D|\theta) = \sum_{i=1}^{n} \ln p(\boldsymbol{x}_i|\theta)
-$$
-
-$$
-\hat{\theta}_{MAP} = \arg \max_{\theta} l(\theta) + \ln p(\theta)
+l(\theta) = \ln p(D|\theta) = \sum_{i=1}^{n} \ln p(\boldsymbol{x}_i|\theta) \\
+\hat{\theta} = \arg \max_{\theta} l(\theta) + \ln p(\theta)
 $$
 
 高斯分布假设的最大后验估计（均值未知）：
 
 $$
-\boldsymbol{\mu}_n = \boldsymbol{\Sigma_0} \left( \frac{1}{n} \boldsymbol{\Sigma} + \boldsymbol{\Sigma}_0 \right)^{-1} \left( \frac{1}{n} \sum_{k=1}^{n} \boldsymbol{x}_k \right) + \frac{1}{n} \boldsymbol{\Sigma} \left( \frac{1}{n} \boldsymbol{\Sigma} + \boldsymbol{\Sigma}_0 \right)^{-1} \boldsymbol{\mu}_0 \\
+\boldsymbol{\mu}_n = \boldsymbol{\Sigma}_0 \left( \frac{1}{n} \boldsymbol{\Sigma} + \boldsymbol{\Sigma}_0 \right)^{-1} \left( \frac{1}{n} \sum_{k=1}^{n} \boldsymbol{x}_k \right) + \frac{1}{n} \boldsymbol{\Sigma} \left( \frac{1}{n} \boldsymbol{\Sigma} + \boldsymbol{\Sigma}_0 \right)^{-1} \boldsymbol{\mu}_0 \\
 \boldsymbol{\Sigma}_n = \boldsymbol{\Sigma}_0 \left( \frac{1}{n} \boldsymbol{\Sigma} + \boldsymbol{\Sigma}_0 \right)^{-1} \frac{1}{n} \boldsymbol{\Sigma}
 $$
 
@@ -365,12 +362,6 @@ p(\boldsymbol{x}|\omega) = \sum_{k=1}^{K} \pi_k \mathcal{N}(\boldsymbol{x}|\bold
 \sum_{k=1}^{K} \pi_k = 1
 $$
 
-期望最大值 EM 算法：
-
-给定一些观察数据 $\boldsymbol{x}$，假设 $\boldsymbol{x}$ 符合如下混合高斯分布： $p(x)=\displaystyle\sum_{k=1}^{K} \pi_k \mathcal{N}(\boldsymbol{x}|\boldsymbol{\mu}_k, \boldsymbol{\Sigma}_k)$ 。求混合高斯分布的参数 $\boldsymbol{\theta}=\{\pi_k,\boldsymbol{\mu}_k,\boldsymbol{\Sigma}_k\}$ 的最大似然估计。
-
----
-
 混合分布的概率密度估计问题：
 
 所有样本都来自于 $K$ 种类别，且 $K$ 已知，样本类别未被标记。每种类别的先验概率 $p(\omega_i)$ 未知，类条件概率的数学形式已知 $p(\boldsymbol{x}|\omega_i,\boldsymbol{\theta}_i)$ 但参数 $\boldsymbol{\theta}_i$ 未知。
@@ -379,13 +370,17 @@ $$
 p(\boldsymbol{x}|\boldsymbol{\theta}) = \sum_{i=1}^{K} p(\boldsymbol{x}|\omega_i,\boldsymbol{\theta}_i)p(\omega_i) = \sum_{i=1}^{K} \pi_i \mathcal{N}(\boldsymbol{x}|\boldsymbol{\mu}_i, \boldsymbol{\Sigma}_i)
 $$
 
-混合高斯分布一共有 $K$ 个分布，并且对于每个观察到的 $\boldsymbol{x}$ ，如果我们同时还知道它属于 $1\sim K$ 中的哪一种分布，则我们可以根据**最大似然估计**求出每个参数。观察数据 $\boldsymbol{x}$ 属于哪个高斯分布是未知的，这时需要采用 EM 算法。
+混合高斯分布一共有 $K$ 个分布，并且对于每个观察到的 $\boldsymbol{x}$ ，如果我们同时还知道它属于 $1\sim K$ 中的哪一种分布，则我们可以根据 **最大似然估计** 求出每个参数。观察数据 $\boldsymbol{x}$ 属于哪个高斯分布是未知的，这时需要采用 EM 算法。
 
-EM 算法 应用于 混合高斯模型参数估计：
+**EM 算法** 应用于 **混合高斯模型参数估计**
+
+期望最大值 **EM 算法**：
+
+给定一些观察数据 $\boldsymbol{x}$，假设 $\boldsymbol{x}$ 符合如下混合高斯分布： $p(x)=\displaystyle\sum_{k=1}^{K} \pi_k \mathcal{N}(\boldsymbol{x}|\boldsymbol{\mu}_k, \boldsymbol{\Sigma}_k)$ 。求混合高斯分布的参数 $\boldsymbol{\theta}=\{\pi_k,\boldsymbol{\mu}_k,\boldsymbol{\Sigma}_k\}$ 的最大似然估计。
 
 （1）初始化 $K$ 个高斯分布参数 $\boldsymbol{\mu}_k, \boldsymbol{\Sigma_k}$，初始化 $\pi_k$ 并保证 $\displaystyle\sum_{k=1}^{K} \pi_k = 1$
 
-（2）依据目前的高斯分布参数，对样本 $\boldsymbol{x}$ 的类别隐藏变量 $z_{nk}$ 求 **期望** ，则 $\gamma(z_{nk})$ 表示第 $n$ 个样本 $\boldsymbol{x}_n$ 属于第 $k$ 类的概率：
+（2）依据目前的高斯分布参数，对样本 $\boldsymbol{x}$ 的类别隐藏变量 $z_{nk}$ 求 **期望**，则 $\gamma(z_{nk})$ 表示第 $n$ 个样本 $\boldsymbol{x}_n$ 属于第 $k$ 类的概率：
 
 $$
 \gamma(z_{nk}) = \frac{\pi_k \mathcal{N}(\boldsymbol{x}_n|\boldsymbol{\mu}_k, \boldsymbol{\Sigma}_k)}{\displaystyle\sum_{j=1}^{K} \pi_j \mathcal{N}(\boldsymbol{x}_n|\boldsymbol{\mu}_j, \boldsymbol{\Sigma}_j)}
@@ -405,7 +400,9 @@ $$
 
 隐含马尔可夫模型 HMM (Hidden Markov Model)
 
-数学基础（复习随机过程时间到😂）
+#### 数学基础
+
+（复习随机过程时间到😂）
 
 假设 $Q = (q_1, q_2, \cdots, q_T)$ 是一取值于有限集合 $S = \{s_1, s_2, \cdots, s_N\}$ 的随机变量序列，满足：
 
@@ -420,7 +417,7 @@ $$
 齐次 Markov 链可以用状态转移概率矩阵 $\boldsymbol{A}$ 和初始概率 $\boldsymbol{\pi}$ 唯一确定表示：
 
 $$
-A = \{a_{ij}\} \\
+\boldsymbol{A} = \{a_{ij}\} \\
 a_{ij} = p(q_{t+1} = s_j | q_t = s_i), \quad a_{ij} \geqslant 0, \quad \sum_{j=1}^{N} a_{ij} = 1, \forall i \\
 \pi_i = P(q_1 = s_i), \quad \sum_{i=1}^{N} \pi_i = 1
 $$
@@ -438,7 +435,7 @@ $$
 
 观测集 $O=\{o_1,o_2,\cdots,o_T\},o_i\in V$ 。
 
-状态转移概率矩阵 $\boldsymbol{A}\in\mathbb{R}^{N\times N}$ ，其中 $a_{ij}$ ，表示从第 $i$ 个状态 $s_i$ 转移到第 $j$ 个状态 $s_j$ 的概率。
+状态转移概率矩阵 $\boldsymbol{A}\in\mathbb{R}^{N\times N}$ ，其中 $a_{ij}$ 表示从第 $i$ 个状态 $s_i$ 转移到第 $j$ 个状态 $s_j$ 的概率。
 
 观测概率矩阵 $\boldsymbol{B}\in\mathbb{R}^{N\times M}$ ，其中 $b_{ij}$ 表示在第 $i$ 个状态 $s_i$ 下，观测到第 $j$ 个符号 $v_j$ 的概率。
 
@@ -465,7 +462,7 @@ b_{N1} & b_{N2} & \cdots & b_{NM}
 $$
 
 !!! note
-    注意 $\boldsymbol{\pi}$ 是 **行向量** ！矩阵 $\boldsymbol{A},\,\boldsymbol{B}$ 均满足 **行和为1** 。
+    注意 $\boldsymbol{\pi}$ 是 **行向量**！矩阵 $\boldsymbol{A},\,\boldsymbol{B}$ 均满足 **行和为1**。
 
 |        参数        |             含义             |          实例          |
 | :----------------: | :--------------------------: | :--------------------: |
@@ -505,13 +502,13 @@ HMM 的3个基本问题：
 
 $P(O|\lambda) = \displaystyle\sum_{Q} P(O,Q|\lambda) = \displaystyle\sum_{Q} P(O|Q,\lambda)P(Q|\lambda)$
 
-$P(O|Q,\lambda) = \displaystyle\prod_{t=1}^{T} P(O_t|q_t, \lambda) = b_{q_1}(O_1)b_{q_2}(O_2)\cdots b_{q_T}(O_T)$
+$P(O|Q,\lambda) = \displaystyle\prod_{t=1}^{T} P(O_t|q_t, \lambda) = b_{q_1}(O_1) \cdots b_{q_T}(O_T)$
 
-$P(Q|\lambda) = \pi_{q_1} a_{q_1q_2} a_{q_2q_3} \cdots a_{q_{T-1}q_T}$
+$P(Q|\lambda) = \pi_{q_1} a_{q_1q_2} \cdots a_{q_{T-1}q_T}$
 
 $P(O,Q|\lambda) = P(O|Q,\lambda)P(Q|\lambda)$
 
-$P(O|\lambda) = \displaystyle\sum_{Q} P(O|Q,\lambda)P(Q|\lambda) = \displaystyle\sum_{q_1,q_2,\cdots,q_T} \pi_{q_1} b_{q_1}(O_1) a_{q_1q_2} b_{q_2}(O_2) \cdots a_{q_{T-1}q_T} b_{q_T}(O_T)$
+$P(O|\lambda) = \displaystyle\sum_{Q} P(O|Q,\lambda)P(Q|\lambda) = \displaystyle\sum_{q_1,\cdots,q_T} \pi_{q_1} b_{q_1}(O_1) a_{q_1q_2} b_{q_2}(O_2) \cdots a_{q_{T-1}q_T} b_{q_T}(O_T)$
 
 计算复杂度为 $O(TN^T)$ 。
 
@@ -519,36 +516,36 @@ $P(O|\lambda) = \displaystyle\sum_{Q} P(O|Q,\lambda)P(Q|\lambda) = \displaystyle
 
 （2）前向计算法
 
-定义 **前向变量** ：$\boldsymbol{\alpha}_t(i) = P(O_1, \cdots O_t, q_t = s_i | \lambda) ,\; 1\leqslant i \leqslant N,\,1 \leqslant t \leqslant T$ 。表示 $t$ 时刻由第 $i$ 个状态 $s_i$ 生成观测 $O_t$ 且前时刻序列为 $O_1, \cdots, O_{t-1}$ 的概率。这里 $\boldsymbol{\alpha}\in\mathbb{R}^{N}$ 是一个列向量，它的下表 $t$ 代表时刻，括号里的 $i$ 代表元素的位置索引。
+定义 **前向变量**：$\alpha_t(i) = P(O_1, \cdots O_t, q_t = s_i | \lambda) ,\; 1\leqslant i \leqslant N,\,1 \leqslant t \leqslant T$ 。表示 $t$ 时刻由第 $i$ 个状态 $s_i$ 生成观测 $O_t$ 且前时刻序列为 $O_1, \cdots, O_{t-1}$ 的概率。这里 $\boldsymbol{\alpha}\in\mathbb{R}^{N}$ 是一个列向量，它的下表 $t$ 代表时刻，括号里的 $i$ 代表元素的位置索引。
 
-> 我认为更规范更合理的表达方式是 $\boldsymbol{\alpha}^{(t)}\in\mathbb{R}^{N}$ ，每一个前向变量表示为 $\boldsymbol{\alpha}^{(t)}_i$ 。
+> 我认为更规范更合理的表达方式是 $\boldsymbol{\alpha}^{(t)}\in\mathbb{R}^{N}$ ，每一个前向变量表示为 $\alpha^{(t)}_i \in \mathbb{R}$ 。
 
-同理 $\boldsymbol{\alpha}^{(t+1)}_j = P(O_1, \cdots O_{t+1}, q_{t+1} = s_j | \lambda)$ 表示 $t+1$ 时刻由第 $j$ 个状态 $s_j$ 生成观测 $O_{t+1}$ 且前时刻序列为 $O_1, \cdots, O_t$ 的概率。
+同理 $\alpha^{(t+1)}_j = P(O_1, \cdots O_{t+1}, q_{t+1} = s_j | \lambda)$ 表示 $t+1$ 时刻由第 $j$ 个状态 $s_j$ 生成观测 $O_{t+1}$ 且前时刻序列为 $O_1, \cdots, O_t$ 的概率。
 
 $$
-\boldsymbol{\alpha}^{(t+1)}_j = \sum_{i=1}^{N} \boxed{\color{blue}P(O_1, \cdots O_t, q_t = s_i | \lambda)} \cdot \boxed{\color{red}P(q_{t+1} = s_j | q_t = s_i, \lambda)} \cdot \boxed{\color{green}P(O_{t+1} | q_{t+1} = s_j, \lambda)} \\
-=\left[ \sum_{i=1}^{N} {\color{blue}\boldsymbol{\alpha}^{(t)}_i} {\color{red}a_{ij}} \right] {\color{green}b_j(O_{t+1})},\;1 \leqslant j \leqslant N,\;1 \leqslant t \leqslant T-1
+\alpha^{(t+1)}_j = \sum_{i=1}^{N} \boxed{\color{blue}P(O_1, \cdots O_t, q_t = s_i | \lambda)} \cdot \boxed{\color{red}P(q_{t+1} = s_j | q_t = s_i, \lambda)} \cdot \boxed{\color{green}P(O_{t+1} | q_{t+1} = s_j, \lambda)} \\
+=\left[ \sum_{i=1}^{N} {\color{blue}\alpha^{(t)}_i} {\color{red}a_{ij}} \right] {\color{green}b_j(O_{t+1})},\;1 \leqslant j \leqslant N,\;1 \leqslant t \leqslant T-1
 $$
 
-上式中，<span style="color:blue">蓝色部分</span>即为前向变量 $\boldsymbol{\alpha}^{(t)}_i$ ，<span style="color:red">红色部分</span>为状态转移概率 $a_{ij}$ （利用到**齐次马尔可夫性质**），<span style="color:green">绿色部分</span>为序列下一个观测值的观测概率 $b_j(O_{t+1})$ （利用到**观测序列的独立性**），也即观测概率矩阵 $\boldsymbol{B}$ 中第 $j$ 行、状态 $O_{t+1}$ 对应的那一列的元素。
+上式中，<span style="color:blue">蓝色部分</span>即为前向变量 $\alpha^{(t)}_i$ ，<span style="color:red">红色部分</span>为状态转移概率 $a_{ij}$ （利用到**齐次马尔可夫性质**），<span style="color:green">绿色部分</span>为序列下一个观测值的观测概率 $b_j(O_{t+1})$ （利用到**观测序列的独立性**），也即观测概率矩阵 $\boldsymbol{B}$ 中第 $j$ 行、状态 $O_{t+1}$ 对应的那一列的元素。
 
 具体算法步骤：
 
-(Ⅰ) **初始化**： $\boldsymbol{\alpha}^{(1)}_i = \boldsymbol{\pi}_i b_i(O_1) ,\; 1 \leqslant i \leqslant N$ ，表示在 $t=1$ 时刻由第 $i$ 个状态生成观测 $O_1$ 的概率。这样计算出的向量 $\boldsymbol{\alpha}^{(1)}$ ，相当于初态 $\boldsymbol{\pi}$ 和 $\boldsymbol{B}(O_1)$ 列向量进行 **逐元素相乘** $\boldsymbol{\alpha}^{(1)} =\left( \boldsymbol{\pi}^T \odot \boldsymbol{B}[:,O_1] \right)$ 。
+(Ⅰ) **初始化**： $\alpha^{(1)}_i = \pi_i b_i(O_1) ,\; 1 \leqslant i \leqslant N$ ，表示在 $t=1$ 时刻由第 $i$ 个状态生成观测 $O_1$ 的概率。这样计算出的向量 $\boldsymbol{\alpha}^{(1)}$ ，相当于初态 $\boldsymbol{\pi}$ 和 $\boldsymbol{B}(O_1)$ 列向量进行 **逐元素相乘** $\boldsymbol{\alpha}^{(1)} =\left( \boldsymbol{\pi}^T \odot \boldsymbol{B}[:,O_1] \right)$ 。
 
-(Ⅱ) **递归**：对于 $t=1, \ldots, T-1$，计算：
+(Ⅱ) **递归**：对于 $t=1, \cdots, T-1$，计算：
 
 $$
-\boldsymbol{\alpha}^{(t+1)}_j = \left[ \sum_{i=1}^{N} \boldsymbol{\alpha}^{(t)}_i a_{ij} \right] b_j(O_{t+1}), \quad 1 \leqslant j \leqslant N,\; 1 \leqslant t \leqslant T-1
+\alpha^{(t+1)}_j = \left[ \sum_{i=1}^{N} \alpha^{(t)}_i a_{ij} \right] b_j(O_{t+1}), \quad 1 \leqslant j \leqslant N,\; 1 \leqslant t \leqslant T-1
 $$
 
-上式中，中括号内部分 $\left[ \displaystyle\sum_{i=1}^{N} \boldsymbol{\alpha}^{(t)}_i a_{ij} \right]$ 将计算结果汇总起来后可以发现，实际上是做了这样一个矩阵相乘操作 $\boldsymbol{A}^T\boldsymbol{\alpha}^{(t)}$ ，仍然返回一个列向量 $\in\mathbb{R}^N$ 。然后在与 $\boldsymbol{B}$ 中第 $j$ 行、状态 $O_{t+1}$ 对应的那一列的元素进行逐元素相乘，因此迭代过程实际上是进行了如下运算：
+上式中，中括号内部分 $\left[ \displaystyle\sum_{i=1}^{N} \alpha^{(t)}_i a_{ij} \right]$ 将计算结果汇总起来后可以发现，实际上是做了这样一个矩阵相乘操作 $\boldsymbol{A}^T\boldsymbol{\alpha}^{(t)}$ ，仍然返回一个列向量 $\in\mathbb{R}^N$ 。然后再与 $\boldsymbol{B}$ 中第 $j$ 行、状态 $O_{t+1}$ 对应的那一列的元素进行逐元素相乘，因此迭代过程实际上是进行了如下运算：
 
 $$
 \boldsymbol{\alpha}^{(t+1)} = \left(\boldsymbol{A}^T\boldsymbol{\alpha}^{(t)} \right) \odot \boldsymbol{B}[:, O_{t+1}]
 $$
 
-(Ⅲ) **终止**：计算观测序列的总概率 $P(O|\lambda) = \displaystyle\sum_{i=1}^{N} \boldsymbol{\alpha}^{(T)}_i$ ，即为前向向量 $\boldsymbol{\alpha}^{(T)}$ **所有元素之和** 。
+(Ⅲ) **终止**：计算观测序列的总概率 $P(O|\lambda) = \displaystyle\sum_{i=1}^{N} \alpha^{(T)}_i$ ，即为前向向量 $\boldsymbol{\alpha}^{(T)}$ **所有元素之和**。
 
 ---
 
@@ -556,27 +553,31 @@ $$
 
 > 类似于前向计算法，我们还将后向向量写成 $\boldsymbol{\beta}^{(t)}$ 的形式，与课件中不同。
 
-定义 **后向变量** ：$\boldsymbol{\beta}^{(t)}_i = P(O_{t+1}, \cdots, O_T | q_t = s_i, \lambda) ,\; 1\leqslant i \leqslant N,\,1 \leqslant t \leqslant T$ 。表示 $t$ 时刻由第 $i$ 个状态 $s_i$ 生成观测序列 $O_{t+1}, \cdots, O_T$ 的概率。
+定义 **后向变量**：$\beta^{(t)}_i = P(O_{t+1}, \cdots, O_T | q_t = s_i, \lambda) ,\; 1\leqslant i \leqslant N,\,1 \leqslant t \leqslant T$ 。表示 $t$ 时刻由第 $i$ 个状态 $s_i$ 生成观测序列 $O_{t+1}, \cdots, O_T$ 的概率。
 
-同理有 $\boldsymbol{\beta}^{(t+1)}_j = P(O_{t+2}, \cdots, O_T | q_{t+1} = s_j, \lambda), 1\leqslant t \leqslant T-1$ 表示 $t+1$ 时刻由第 $j$ 个状态 $s_j$ 生成观测序列 $O_{t+2}, \cdots, O_T$ 的概率。
+同理有 $\beta^{(t+1)}_j = P(O_{t+2}, \cdots, O_T | q_{t+1} = s_j, \lambda), 1\leqslant t \leqslant T-1$ 表示 $t+1$ 时刻由第 $j$ 个状态 $s_j$ 生成观测序列 $O_{t+2}, \cdots, O_T$ 的概率。
 
 $$
-\boldsymbol{\beta}^{(t)}_i = \sum_{j=1}^{N} \boxed{\color{blue}P(O_{t+2}, \cdots O_T| q_{t+1} = s_j, \lambda)} \cdot \boxed{\color{red}P(q_{t+1} = s_j | q_t = s_i, \lambda)} \cdot \boxed{\color{green}P(O_{t+1} | q_{t+1} = s_j, \lambda)} \\
-= \sum_{j=1}^{N} {\color{blue}\boldsymbol{\beta}^{(t+1)}_j} {\color{red}a_{ij}} {\color{green}b_j(O_{t+1})},\;1 \leqslant j \leqslant N,\;1 \leqslant t \leqslant T-1
+\beta^{(t)}_i = \sum_{j=1}^{N} \boxed{\color{blue}P(O_{t+2}, \cdots O_T| q_{t+1} = s_j, \lambda)} \cdot \boxed{\color{red}P(q_{t+1} = s_j | q_t = s_i, \lambda)} \cdot \boxed{\color{green}P(O_{t+1} | q_{t+1} = s_j, \lambda)} \\
+= \sum_{j=1}^{N} {\color{blue}\beta^{(t+1)}_j} {\color{red}a_{ij}} {\color{green}b_j(O_{t+1})},\;1 \leqslant j \leqslant N,\;1 \leqslant t \leqslant T-1
 $$
 
-上式中，<span style="color:blue">蓝色部分</span>即为后向变量 $\boldsymbol{\beta}^{(t+1)}_j$ ，<span style="color:red">红色部分</span>为状态转移概率 $a_{ij}$ （利用到**齐次马尔可夫性质**），<span style="color:green">绿色部分</span>为序列下一个观测值的观测概率 $b_j(O_{t+1})$ （利用到**观测序列的独立性**），也即观测概率矩阵 $\boldsymbol{B}$ 中第 $j$ 行、状态 $O_{t+1}$ 对应的那一列的元素。
+上式中，<span style="color:blue">蓝色部分</span>即为后向变量 $\beta^{(t+1)}_j$ ，<span style="color:red">红色部分</span>为状态转移概率 $a_{ij}$ （利用到**齐次马尔可夫性质**），<span style="color:green">绿色部分</span>为序列下一个观测值的观测概率 $b_j(O_{t+1})$ （利用到**观测序列的独立性**），也即观测概率矩阵 $\boldsymbol{B}$ 中第 $j$ 行、状态 $O_{t+1}$ 对应的那一列的元素。
 
 具体算法步骤：
 
 (Ⅰ) **初始化**： $\boldsymbol{\beta}^{(T)}=\boldsymbol{1}^{N\times 1}$ ，初值全部为 $1$ 。
 
-(Ⅱ) **递归**： $\boldsymbol{\beta}^{(t)}_i = \displaystyle\sum_{j=1}^{N} \boldsymbol{\beta}^{(t+1)}_j a_{ij} b_j(O_{t+1}), \quad 1 \leqslant i \leqslant N,\; 1 \leqslant t \leqslant T-1$ 。相当于做矩阵运算：
+(Ⅱ) **递归**： $\beta^{(t)}_i = \displaystyle\sum_{j=1}^{N}\beta^{(t+1)}_j a_{ij} b_j(O_{t+1}), \quad 1 \leqslant i \leqslant N,\; 1 \leqslant t \leqslant T-1$ 。相当于做矩阵运算：
 
 $$\boldsymbol{\beta}^{(t)}=\boldsymbol{A}\left(\boldsymbol{\beta}^{(t+1)}\odot \boldsymbol{B}[:,O_{t+1}]\right)
 $$
 
-(Ⅲ) **终止**： $P(O|\lambda) = \displaystyle\sum_{i=1}^{N} \boldsymbol{\pi}_i b_i(O_1) \boldsymbol{\beta}^{(1)}_i$ ，相当于做了逐元素相乘 + 内积运算 $\boldsymbol{\pi}^T \left( \boldsymbol{\beta}^{(1)} \odot \boldsymbol{B}[:,O_1] \right)$ 。
+(Ⅲ) **终止**： $P(O|\lambda) = \displaystyle\sum_{i=1}^{N} \pi_i b_i(O_1) \beta^{(1)}_i$ ，相当于做了逐元素相乘 + 内积运算：
+
+$$
+P(O|\lambda) = \boldsymbol{\pi}^T \left( \boldsymbol{\beta}^{(1)} \odot \boldsymbol{B}[:,O_1] \right)
+$$
 
 > 上面的矩阵运算简化形式经过编写 MATLAB 程序验证是正确的。
 
@@ -592,50 +593,48 @@ $$
 \max_{q_1, q_2, \cdots, q_T} P(q_1, q_2, \cdots, q_T, O_1, O_2, \cdots, O_T | \lambda)
 $$
 
-**Viterbi 算法**：**动态规划**
+我们使用 **Viterbi 算法**：**动态规划**
 
-思想：记录 $t$ 时刻出现状态 $i$ 的最大可能路径及其对应概率：
+思想：记录 $t$ 时刻出现状态 $i$ 的最大可能路径及其对应概率，称为 **最大局部概率**：
 
 $$
-\boldsymbol{\delta}^{(t)}_i = \max_{q_1, q_2, \cdots, q_{t-1}} P(q_1, q_2, \cdots, q_t = i, O_1, O_2, \cdots, O_t | \lambda)
+\delta^{(t)}_i = \max_{q_1, q_2, \cdots, q_{t-1}} P(q_1, q_2, \cdots, q_t = i, O_1, O_2, \cdots, O_t | \lambda)
 $$
 
-最大局部概率：$t$ 时刻出现状态 $i$ 的最大概率：
-
-记 $\boldsymbol{\varphi}^{(t)}_j$ 代表 $t$ 时刻为第 $j$ 个状态时，对应前一时刻 $t-1$ 的状态，与 $O_t$ 无关。
+记 $\varphi^{(t)}_j$ 代表 $t$ 时刻为第 $j$ 个状态时，对应前一时刻 $t-1$ 的状态，与 $O_t$ 无关。
 
 具体算法步骤：
 
-(Ⅰ) **初始化**： $\boldsymbol{\delta}^{(1)}_i=\boldsymbol{\pi}_i b_i(O_1),\;\boldsymbol{\varphi}^{(1)}_i=\boldsymbol{0}^{N\times 1},\; 1\leqslant i \leqslant N$ 。
+(Ⅰ) **初始化**： $\delta^{(1)}_i=\pi_i b_i(O_1),\;\varphi^{(1)}_i=0,\; 1\leqslant i \leqslant N$ 。
 
-其中第一步 相当于 做逐元素相乘操作 $\boldsymbol{\delta}^{(1)} =\left( \boldsymbol{\pi}^T \odot \boldsymbol{B}[:,O_1] \right)$ 。
+其中第一步 相当于 做逐元素相乘操作 $\boldsymbol{\delta}^{(1)} =\left( \boldsymbol{\pi}^T \odot \boldsymbol{B}[:,O_1] \right)$ 以及 $\boldsymbol{\varphi}^{(1)}=\boldsymbol{0}^{N\times 1}$ 。
 
 初始时刻，路径尚未开始，节点局部概率 为 初始时刻在状态 $i$ 发射观测符号 $O_1$ 的概率。
 
 (Ⅱ) **递归**：对于 $t=2,3,\cdots,T$，计算：
 
 $$
-\boldsymbol{\delta}^{(t)}_j = \max_{1\leq i \leq N} \left[ \boldsymbol{\delta}^{(t-1)}_i a_{ij} \right] b_j(O_t) ,\; 1\leqslant j \leqslant N \\
-\boldsymbol{\varphi}^{(t)}_j = \argmax_{1\leq i \leq N} \left[ \boldsymbol{\delta}^{(t-1)}_i a_{ij} \right] ,\; 1\leqslant j \leqslant N
+\delta^{(t)}_j = \max_{1\leq i \leq N} \left[ \delta^{(t-1)}_i a_{ij} \right] b_j(O_t) ,\; 1\leqslant j \leqslant N \\
+\varphi^{(t)}_j = \argmax_{1\leq i \leq N} \left[ \delta^{(t-1)}_i a_{ij} \right] ,\; 1\leqslant j \leqslant N
 $$
 
 其中第一步 相当于**向量与矩阵逐元素相乘** $\boldsymbol{\delta}^{(t-1)}\boldsymbol{A}$ （把矩阵看作多个列向量，分别与同一个列向量主元素相乘，组成一个新的矩阵），然后 **每一列** 取最大值得到一个行向量 $\max\left( \boldsymbol{\delta}^{(t-1)}\boldsymbol{A} \right) \in\mathbb{R}^{1\times N}$ ，**取转置** 变为列向量 之后再和 $\boldsymbol{B}[:,O_t] \in\mathbb{R}^N$ 列向量 做逐元素相乘，得到 $\boldsymbol{\delta}^{(t)}$ 。因此简化为矩阵运算形式：
 
 $$
-\boldsymbol{\delta}^{(t)} = \left( \max \left(\boldsymbol{\delta}^{(t-1)}\boldsymbol{A} \right)^T \odot \boldsymbol{B}[:, O_t] \right)
+\boldsymbol{\delta}^{(t)} = \left( \max \boldsymbol{\delta}^{(t-1)}\boldsymbol{A} \right)^T \odot \boldsymbol{B}[:, O_t]
 $$
 
 而 $\boldsymbol{\varphi}^{(t)}$ 就是在寻找矩阵 $\boldsymbol{\delta}^{(t-1)}\boldsymbol{A}$ 中每一列最大值时，那个最大值在其 **列向量** 中的索引。
 
-转移概率 $a_{ij}$ 与上一步的最大局部概率 $\boldsymbol{\delta}^{(t-1)}_i$ 相乘，记录其中最大的一个。
+转移概率 $a_{ij}$ 与上一步的最大局部概率 $\delta^{(t-1)}_i$ 相乘，记录其中最大的一个。
 
-如果最优路径在 $t$ 时刻到达节点 $j$ ，则从起始时刻到达到该节点的最优路径对应 $\boldsymbol{\delta}^{(t-1)}_i$ 和 $a_{ij}$ 乘积的最小值，并包含从 $1$ 到 $t-1$ 的到达节点 $i$ 的最优路径。
+如果最优路径在 $t$ 时刻到达节点 $j$ ，则从起始时刻到达到该节点的最优路径对应 $\delta^{(t-1)}_i$ 和 $a_{ij}$ 乘积的最小值，并包含从 $1$ 到 $t-1$ 的到达节点 $i$ 的最优路径。
 
-(Ⅲ) **终止**： $P^*=\displaystyle\max_{1\leq i \leq N} \boldsymbol{\delta}^{(T)}_i ,\; q^*_T = \displaystyle\argmax_{1\leq i \leq N} \boldsymbol{\delta}^{(T)}_i$ ，即 $t=T$ 时刻的最大局部概率。
+(Ⅲ) **终止**： $P^*=\displaystyle\max_{1\leq i \leq N} \delta^{(T)}_i ,\; q^*_T = \displaystyle\argmax_{1\leq i \leq N} \delta^{(T)}_i$ ，得到 $t=T$ 时刻的最大局部概率 $P^*$ 及其对应状态 $q^*_T$ 。
 
-(Ⅳ) **回溯**：从 $q^*_T$ 开始， $q^*_t=\boldsymbol{\varphi}_{t+1}(q^*_{t+1}),\;t=T-1,T-2,\cdots 1$ 向前回溯，得到最优路径 $Q^* = (\hat{q}_1, \hat{q}_2, \cdots, \hat{q}_T)$ 。
+(Ⅳ) **回溯**：从 $q^*_T$ 开始， $q^*_t=\boldsymbol{\varphi}_{t+1}(q^*_{t+1}),\;t=T-1,T-2,\cdots 1$ 向前回溯，得到最优路径 $Q^* = (q^*_1, \cdots, q^*_T)$ 。
 
-$\boldsymbol{\delta}^{(T)}_i$ 对应最大值 即为 全局最优路径 $Q^*$ 出现的概率，即为联合似然概率最大值。 $q^*_T$ 为最优路径在 $T$ 时刻状态，结合 $\boldsymbol{\varphi}$ 从 $T-1$ 时刻反向推演到 $1$ 时刻可以获取最优路径。
+$\delta^{(T)}_i$ 对应最大值 即为 全局最优路径 $Q^*$ 出现的概率，即为联合似然概率最大值。 $q^*_T$ 为最优路径在 $T$ 时刻状态，结合 $\boldsymbol{\varphi}$ 从 $T-1$ 时刻反向推演到 $1$ 时刻可以获取最优路径。
 
 #### 学习模型参数问题
 
@@ -657,7 +656,7 @@ Baum-Welch 算法是一种 EM 算法，是一种从不完全数据（样本特�
 
 首先利用前面定义过的 前向变量和后向变量：
 
-$\alpha_t(i) = P(O_1, \ldots, O_t, q_t = s_i | \lambda)$
+$\alpha_t(i) = P(O_1, \cdots, O_t, q_t = s_i | \lambda)$
 
 $\beta_t(i) = P(O_{t+1}, O_{t+2} \cdots O_T | q_t = s_i, \lambda)$
 
@@ -665,7 +664,7 @@ $\beta_t(i) = P(O_{t+1}, O_{t+2} \cdots O_T | q_t = s_i, \lambda)$
 
 $$
 \xi_t(i,j) = P(q_t = i, q_{t+1} = j | O, \lambda) \\
-= \frac{\boldsymbol{\alpha}_t(i) a_{ij} b_j(O_{t+1}) \boldsymbol{\beta}_{t+1}(j)} {\displaystyle\sum_{i=1}^{N} \displaystyle\sum_{j=1}^{N} \boldsymbol{\alpha}_t(i) a_{ij} b_j(O_{t+1}) \boldsymbol{\beta}_{t+1}(j)}
+= \frac{\alpha_t(i) a_{ij} b_j(O_{t+1}) \beta_{t+1}(j)} {\displaystyle\sum_{i=1}^{N} \displaystyle\sum_{j=1}^{N} \alpha_t(i) a_{ij} b_j(O_{t+1})\beta_{t+1}(j)}
 $$
 
 $\gamma_t(i) = \displaystyle\sum_{j=1}^{N} \xi_t(i,j) = P(q_t = i | O, \lambda)$ 表示 $t$ 时刻处于状态 $s_i$ 的概率。
@@ -681,7 +680,7 @@ $$
 \hat{b}_j(k) = \frac{\text{expected number of times in state } j \text{ and observing } k}{\text{expected number of times in state } j} = \frac{\displaystyle\sum_{t, O_t = k} \gamma_t(j)}{\displaystyle\sum_t \gamma_t(j)}
 $$
 
-$\hat{\boldsymbol{\pi}}_i=\gamma_1(i)$ ，表示 $t=1$ 时刻处于第 $i$ 个状态 $s_i$ 的概率。
+$\hat{\pi}_i=\gamma_1(i)$ ，表示 $t=1$ 时刻处于第 $i$ 个状态 $s_i$ 的概率。
 
 > 直观理解：利用从状态 $i$ 转移到状态 $j$ 的频次作为 $a_{ij}$ 的估计值；利用从状态 $j$ 产生观测 $k$ 的频次作为 $b_{jk}$ 的估计值。
 
@@ -758,7 +757,7 @@ HMM 的应用：
 |                正例                 | TP (真正例) | FN (假反例) |
 |                反例                 | FP (假正例) | TN (真反例) |
 
-**召回率 Recall** 、**精确率 Precision** ：
+**召回率 Recall**、**精确率 Precision**：
 
 $$
 \text{Recall} = \frac{TP}{TP + FN}, \quad \text{Precision} = \frac{TP}{TP + FP}
@@ -776,23 +775,23 @@ $$
 \text{TPR} = \frac{TP}{TP + FN}, \quad \text{FPR} = \frac{FP}{TN + FP}
 $$
 
-**ROC 曲线** ：
+**ROC 曲线**：
 
 ROC (Receiver Operator Characteristic) 曲线，称为受试者工作特征曲线或接收者操作特性曲线，是以假阳性率 FPR 为横坐标，以真阳性率 TPR 为纵坐标，绘制的曲线。
 
-**AUC 曲线** (Area Under Curve) 是 **ROC 曲线下的面积** ，表示分类器的性能。AUC 的值范围在 0 到 1 之间，值越大表示分类器性能越好。AUC 用于衡量模型对正类和负类的区分能力，即：从所有正类和负类中随机选一个，模型将正类排在前面的概率。特点：与具体阈值无关；适合二分类问题。
+**AUC 曲线** (Area Under Curve) 是 **ROC 曲线下的面积**，表示分类器的性能。AUC 的值范围在 0 到 1 之间，值越大表示分类器性能越好。AUC 用于衡量模型对正类和负类的区分能力，即：从所有正类和负类中随机选一个，模型将正类排在前面的概率。特点：与具体阈值无关；适合二分类问题。
 
-> 思考一下什么样的 ROC 曲线代表高性能的模式识别系统？答：ROC 曲线越接近**左上角**越好，因为 FPR 越小越好， TPR 越大越好。
+> 思考一下什么样的 ROC 曲线代表高性能的模式识别系统？答：ROC 曲线越接近 **左上角** 越好，因为 FPR 越小越好， TPR 越大越好。
 
-**PR 曲线** ：
+**PR 曲线**：
 
 PR (Precision-Recall) 曲线，是以召回率 recall 为横坐标，精度 precision 为纵坐标，绘制的曲线。
 
-**AP 曲线** (Average Precision) 是 **PR 曲线下的面积** 。AP 用于衡量模型在不同 recall 水平下的平均准确率，即：所有召回水平下，精度的加权平均（更关注排序前段的准确性）。多用于目标检测（如 COCO）或信息检索，常和 mAP (mean AP) 配合使用（多个类别取平均）。
+**AP 曲线** (Average Precision) 是 **PR 曲线下的面积**。AP 用于衡量模型在不同 recall 水平下的平均准确率，即：所有召回水平下，精度的加权平均（更关注排序前段的准确性）。多用于目标检测（如 COCO）或信息检索，常和 mAP (mean AP) 配合使用（多个类别取平均）。
 
 > 单词测试使用固定的阈值，计算出 recall 和 precision。多次测试使用不同的阈值，得到多组 precision 和 recall 值，就能绘制出 PR 曲线。
 
-**F-score** ：
+**F-score**：
 
 F1-score 是精度和召回率的调和平均数，综合考虑了精度和召回率的平衡。公式为：
 

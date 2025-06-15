@@ -28,7 +28,7 @@
 多分类问题中的损失函数： **Softmax 激活 + 负对数似然损失**
 
 $$
-L=-\sum_{i} \log\left(\frac{\exp(z_{i,j})}{\sum_{k} \exp(z_{i,k})}\right)
+L=-\sum_{i} \log\left(\frac{\exp(z_{i,j})}{\displaystyle\sum_{k} \exp(z_{i,k})}\right)
 $$
 
 上式中 $j$ 为第 $i$ 个样本 $x_i$ 的真实类别标签， $z_{i,k}$ 为输出的预测向量。
@@ -46,7 +46,7 @@ $$
 $$
 L_i=\begin{cases}
 \dfrac{1}{2}(y_i - \hat{y}_i)^2 & \text{if } |y_i - \hat{y}_i| < 1 \\
-|y_i - \hat{y}_i| - \frac{1}{2} & \text{otherwise}
+|y_i - \hat{y}_i| - \dfrac{1}{2} & \text{otherwise}
 \end{cases},\quad L=\sum_{i} L_i
 $$
 
@@ -66,9 +66,9 @@ Back Propagation (BP) 学习算法
 
 最常用的神经网络的监督学习算法，其数学基础是**链式求导法则**。BP 学习算法由前向传播和误差反向传播组成：
 
-前向传播是输入信号从输入层经隐含层，传向输出层。若输出层得到了期望的输出，则学习算法结束；否则，转至反向传播。
+**前向传播** 是输入信号从输入层经隐含层，传向输出层。若输出层得到了期望的输出，则学习算法结束；否则，转至反向传播。
 
-反向传播是将误差（样本输出与网络输出之差）按原联接通路反向计算，由**梯度下降法**调整各层节点的权值和阈值，使误差减小。
+**反向传播** 是将误差（样本输出与网络输出之差）按原联接通路反向计算，由**梯度下降法**调整各层节点的权值和阈值，使误差减小。
 
 !!! warning "说明"
     前传和反传、梯度的计算过程需要结合具体的神经网络图像才能较好讲解，因此此处略过。
@@ -82,6 +82,8 @@ $$
 \frac{\partial \boldsymbol{z}^{(l)}}{\partial \boldsymbol{W}^{(l)}} = \boldsymbol{a}^{(l-1)},\quad \frac{\partial \boldsymbol{z}^{(l)}}{\partial \boldsymbol{b}^{(l)}} = 1
 $$
 
+> 与前面讨论的向量 $\boldsymbol{w}$ 不同，全连接层的权重 $\boldsymbol{W}$ 是一个二维矩阵，因此每一层的输出形如 $\boldsymbol{y}=\boldsymbol{W}\boldsymbol{x}+\boldsymbol{b}$ ，权重不需要做转置。
+
 反向传播（递推表达式）：
 
 $$
@@ -94,6 +96,67 @@ $$
 $$
 \frac{\partial L}{\partial \boldsymbol{W}_{ij}^{(l)}} = \frac{\partial L}{\partial z_i^{(l)}} \cdot \frac{\partial z_i^{(l)}}{\partial \boldsymbol{W}_{ij}^{(l)}} = \delta_i^{(l)} \cdot a_j^{(l-1)}
 $$
+
+---
+
+简单总结 **使用矩阵求导方法做 BP**，可能会比逐个权重元素计算更简单快捷。这类题目不会出的很难，因为矩阵、向量之间千变万化、过于复杂，而逐个元素计算梯度也很容易计算量爆炸，因此掌握基本的求导公式就能应付大部分题目。
+
+经典的链式求导公式：
+
+$$
+\frac{\partial g(f(\boldsymbol{x}))}{\partial \boldsymbol{x}} = \frac{\partial g}{\partial f} \cdot \frac{\partial f}{\partial \boldsymbol{x}}
+$$
+
+有3种常见的求导：
+
+1. 激活函数求导： $\mathbb{R}^N \to \mathbb{R}^N$ 。
+2. 矩阵求导。
+3. Loss 求导： $\mathbb{R}^N \to \mathbb{R}$ 。
+
+对于 **激活函数求导**，由于是对向量各个元素作用，因此需要使用 Hadamard 乘积（逐元素相乘），以 Sigmoid 函数为例：
+
+$$
+\sigma'(x) = \frac{e^{-x}}{(1 + e^{-x})^2} = \sigma(x)(1 - \sigma(x)),\quad x\in\mathbb{R} \\
+\frac{\partial \sigma(\boldsymbol{x})}{\partial \boldsymbol{x}} = \sigma(\boldsymbol{x}) \odot (1 - \sigma(\boldsymbol{x})) ,\quad \boldsymbol{x}\in\mathbb{R}^N
+$$
+
+对于 **矩阵/向量求导**，有以下常用公式：
+
+$\dfrac{\partial \boldsymbol{W} \boldsymbol{x}}{\partial \boldsymbol{W}} = \boldsymbol{x}^T ,\quad \dfrac{\partial \boldsymbol{W} \boldsymbol{x}}{\partial \boldsymbol{x}} = \boldsymbol{W}^T$
+
+$\dfrac{\partial L}{\partial \boldsymbol{W}} = \dfrac{\partial L}{\partial (\boldsymbol{W}\boldsymbol{x})} \boldsymbol{x}^T ,\quad \dfrac{\partial L}{\partial \boldsymbol{x}}=\boldsymbol{W}^T \dfrac{\partial L}{\partial (\boldsymbol{W}\boldsymbol{x})}$
+
+$\|\boldsymbol{A}\|_2^2 = \text{trace}(\boldsymbol{A}^T \boldsymbol{A})$
+
+$\dfrac{\partial \,\text{trace}(\boldsymbol{A}^T \boldsymbol{B})}{\partial \boldsymbol{A}} = \boldsymbol{B} ,\quad \dfrac{\partial \,\text{trace}(\boldsymbol{A} \boldsymbol{B})}{\partial \boldsymbol{B}} = \boldsymbol{A}^T$
+
+$\text{trace}(\boldsymbol{A} \boldsymbol{B} \boldsymbol{C}) = \text{trace}(\boldsymbol{C} \boldsymbol{A} \boldsymbol{B}) = \text{trace}(\boldsymbol{B} \boldsymbol{C} \boldsymbol{A})$
+
+$\text{trace}(\boldsymbol{A}) = \text{trace}(\boldsymbol{A}^T)$
+
+$\text{trace}(\boldsymbol{A} + \boldsymbol{B}) = \text{trace}(\boldsymbol{A}) + \text{trace}(\boldsymbol{B})$
+
+> 一个可能用到的小技巧：导数和被导数可以同时转置。
+
+标量 对 矩阵/向量 求导： $\dfrac{\partial \mathbb{R}^{1\times 1}}{\partial \mathbb{R}^{m \times n}}\to \mathbb{R}^{m \times n}$ ，标量对任何矩阵/向量求导，结果的维度 都与 被求导的矩阵/向量 相同。
+
+向量 对 向量 求导： $\dfrac{\partial \mathbb{R}^{m\times 1}}{\partial \mathbb{R}^{n \times 1}}\to \mathbb{R}^{m \times n}$ 。
+
+矩阵 对 矩阵 求导： $\dfrac{\partial \mathbb{R}^{m\times n}}{\partial \mathbb{R}^{p \times q}}\to \mathbb{R}^{mn \times pq}$ 。严格来讲“矩阵对矩阵”导数本质是 4 阶张量，但是经常 reshape 成二维矩阵。这种情况不常见。
+
+对于 **Loss 求导**，本质是 标量 对 矩阵/向量 求导，我们只需要掌握 MSE 和交叉熵两种：
+
+$$
+\text{MSE:} \quad L(\boldsymbol{y},\boldsymbol{t}) = \frac{1}{2} \|\boldsymbol{y}-\boldsymbol{t}\|^2 ,\quad
+\frac{\partial \|\boldsymbol{y}-\boldsymbol{t}\|^2}{\partial \boldsymbol{y}} = 2(\boldsymbol{y}-\boldsymbol{t}) \\
+\text{Cross Entropy:} \quad L(\boldsymbol{y},\boldsymbol{t}) = -\sum_{i=1}^{N} t_i \log(y_i) ,\quad \frac{\partial L}{\partial \boldsymbol{y}} = -\frac{\boldsymbol{t}}{\boldsymbol{y}}
+$$
+
+上式中 $\boldsymbol{t}$ 为真实值，$\boldsymbol{y}$ 为预测值，它们做 **逐元素除法**。
+
+> 如果完全按照上面的方法，那么链式求导 各项相乘的时候，很可能会出现维度不匹配的现象，很正常，这时候就需要随机应变了😂。另外，最好不要一步写到位，从后往前一步一步来，每一步使用添加合适的转置等方法，保证中间结果每一步都是对的。
+
+---
 
 训练方法：梯度下降
 
@@ -179,7 +242,7 @@ s_t = \beta_2 s_{t-1} + (1 - \beta_2) \left( \nabla_\theta L(\theta_t) \right)^2
 \theta_{t+1} = \theta_t - \eta \frac{v_t}{\sqrt{s_t} + \varepsilon}
 $$
 
-参数设置： $\beta_1 = 0.9$ ， $\beta_2$ 接近于 1，例如 0.9999。
+参数设置： $\beta_1 = 0.9$ ， $\beta_2$ 接近于 $1$ ，例如 $0.9999$ 。
 
 ---
 
@@ -216,7 +279,7 @@ $$
 \frac{\partial L}{\partial b_1}\leqslant \left(\frac{1}{4}\right)^n w_2 w_3 \cdots w_n \frac{\partial L}{\partial b_n}
 $$
 
-随着网络深度的加深，梯度衰减非常严重，梯度趋于0导致无法继续训练。
+随着网络深度的加深，幂指数项很快趋于0，梯度衰减非常严重，梯度消失导致无法继续训练。
 
 如何缓解梯度消失：
 
@@ -231,7 +294,7 @@ $$
 
 $$
 \frac{\partial L}{\partial b_1} = \sigma'(b_1) w_2 \sigma'(b_2) w_3 \cdots \sigma'(b_{N-1}) w_N \frac{\partial L}{\partial b_N} \\
-\left| w_j \sigma'(b_j)\right| > 1
+\text{when }  \left| w_j \sigma'(b_j)\right| > 1 \implies \frac{\partial L}{\partial b_1} \gg 1
 $$
 
 如何缓解梯度爆炸：
