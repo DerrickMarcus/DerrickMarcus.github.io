@@ -268,7 +268,7 @@ $$
 y=\boldsymbol{w}^T\boldsymbol{x}+b,\quad \boldsymbol{x},\boldsymbol{w}\in\mathbb{R}^n
 $$
 
-假设有 $N$ 个数据点 $\boldsymbol{X}=[\boldsymbol{x}_1,\dots,\boldsymbol{x}_N]^T\in \mathbb{R}^{N\times n}, \boldsymbol{y}=[y_1,\dots,y_N]^T\in\mathbb{R}^n$ 。注意此时矩阵 $\boldsymbol{X}$ 中每一行是一个数据点，即列数为数据点的维度 $d$ ，行数为数据点的个数 $N$ 。
+假设有 $N$ 个数据点 $\boldsymbol{X}=[\boldsymbol{x}_1,\cdots,\boldsymbol{x}_N]^T\in \mathbb{R}^{N\times n}, \boldsymbol{y}=[y_1,\cdots,y_N]^T\in\mathbb{R}^n$ 。注意此时矩阵 $\boldsymbol{X}$ 中每一行是一个数据点，即列数为数据点的维度 $d$ ，行数为数据点的个数 $N$ 。
 
 最小二乘法：找到一条直线，使所有样本到直线上预测点的均方误差最小，由此定义该均方误差为损失函数：
 
@@ -309,22 +309,22 @@ $$
 
 $$
 \boldsymbol{x}=\begin{bmatrix}
-    1 \\ x_1 \\ x_2 \\ \dots \\ x_n
+    1 \\ x_1 \\ x_2 \\ \cdots \\ x_n
 \end{bmatrix} \to
 \boldsymbol{x} =\begin{bmatrix}
-    1 \\ x \\ x^2 \\ \dots \\ x^n
+    1 \\ x \\ x^2 \\ \cdots \\ x^n
 \end{bmatrix} \\
 \boldsymbol{X} =\begin{bmatrix}
-    1 & x^{(1)}_1 & x^{(1)}_2 & \dots & x^{(1)}_n \\
-    1 & x^{(2)}_1 & x^{(2)}_2 & \dots & x^{(2)}_n \\
+    1 & x^{(1)}_1 & x^{(1)}_2 & \cdots & x^{(1)}_n \\
+    1 & x^{(2)}_1 & x^{(2)}_2 & \cdots & x^{(2)}_n \\
     \vdots & \vdots & \vdots & \ddots & \vdots \\
-    1 & x^{(N)}_1 & x^{(N)}_2 & \dots & x^{(N)}_n
+    1 & x^{(N)}_1 & x^{(N)}_2 & \cdots & x^{(N)}_n
 \end{bmatrix} \to
 \boldsymbol{X}=\begin{bmatrix}
-    1 & x_1 & x_1^2 & \dots & x_1^n \\
-    1 & x_2 & x_2^2 & \dots & x_2^n \\
+    1 & x_1 & x_1^2 & \cdots & x_1^n \\
+    1 & x_2 & x_2^2 & \cdots & x_2^n \\
     \vdots & \vdots & \vdots & \ddots & \vdots \\
-    1 & x_N & x_N^2 & \dots & x_N^n
+    1 & x_N & x_N^2 & \cdots & x_N^n
 \end{bmatrix}
 $$
 
@@ -387,7 +387,7 @@ Fisher 线性判别，即通过给定的训练数据，确定投影方向 $W$ �
 
 算法步骤：
 
-（1）假设有 $N$ 个样本 $\boldsymbol{x}_1,\dots\boldsymbol{x}_N\in\mathbb{R}^n$ ，对应的标签为 $y_1,\dots,y_N$ 。
+（1）假设有 $N$ 个样本 $\boldsymbol{x}_1,\cdots\boldsymbol{x}_N\in\mathbb{R}^n$ ，对应的标签为 $y_1,\cdots,y_N$ 。
 
 （2）其中 $N_1$ 个属于类别 $\omega_1$ ，$N_2$ 个属于类别 $\omega_2$ ，满足 $N_1+N_2=N$ 。
 
@@ -421,7 +421,7 @@ SVM 的特点：是小样本条件下的统计学习方法；具备严格的数�
 
 ### 3.4.1 线性可分问题
 
-类似于感知机问题，我们有训练样本 $\{(\boldsymbol{x}_i,y_i)\},i=1,\dots N$ ，假设有一个超平面 $\boldsymbol{w}^T\boldsymbol{x}+b=0$ ，能够将样本分开，则：对于类别 $y_i=1$ 有 $\boldsymbol{w}^T\boldsymbol{x}_i+b>0$ ，对于类别 $y_i=-1$ 有 $\boldsymbol{w}^T\boldsymbol{x}_i+b<0$ 。因此正确分类的点满足 $y_i(\boldsymbol{w}^T\boldsymbol{x}_i+b)>0$ ，误分类的点满足 $y_i(\boldsymbol{w}^T\boldsymbol{x}_i+b)\leqslant 0$ 。
+类似于感知机问题，我们有训练样本 $\{(\boldsymbol{x}_i,y_i)\},i=1,\cdots N$ ，假设有一个超平面 $\boldsymbol{w}^T\boldsymbol{x}+b=0$ ，能够将样本分开，则：对于类别 $y_i=1$ 有 $\boldsymbol{w}^T\boldsymbol{x}_i+b>0$ ，对于类别 $y_i=-1$ 有 $\boldsymbol{w}^T\boldsymbol{x}_i+b<0$ 。因此正确分类的点满足 $y_i(\boldsymbol{w}^T\boldsymbol{x}_i+b)>0$ ，误分类的点满足 $y_i(\boldsymbol{w}^T\boldsymbol{x}_i+b)\leqslant 0$ 。
 
 对于最大间隔超平面点（支持向量），有 $\boldsymbol{w}^T\boldsymbol{x}_i+b=\pm1,\;y_i(\boldsymbol{w}^T\boldsymbol{x}_i+b)=1$ （此处右边原本为任意实数 $r$ 但是可以通过放缩取1）。因此，正确分类的点均满足 $y_i(\boldsymbol{w}^T\boldsymbol{x}_i+b)\geqslant 1$ 。
 
@@ -429,7 +429,7 @@ SVM 的特点：是小样本条件下的统计学习方法；具备严格的数�
 
 优化函数：
 $$
-\max \dfrac{2}{\|\boldsymbol{w}\|} \iff \min \dfrac{1}{2}\|\boldsymbol{w}\|^2 \quad \text{s.t.} \; y_i(\boldsymbol{w}^T\boldsymbol{x}_i+b)\geqslant 1,\; i=1,\dots,N
+\max \dfrac{2}{\|\boldsymbol{w}\|} \iff \min \dfrac{1}{2}\|\boldsymbol{w}\|^2 \quad \text{s.t.} \; y_i(\boldsymbol{w}^T\boldsymbol{x}_i+b)\geqslant 1,\; i=1,\cdots,N
 $$
 
 为有线性约束的优化问题，Lagrange 函数为（满足 KKT 条件下）：

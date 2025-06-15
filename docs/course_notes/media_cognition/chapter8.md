@@ -5,9 +5,9 @@
 模式 Pattern
 
 1. 模式(认知心理学)：由若干元素或成分按一定关系形成的某种刺激结构。
-2. 模式(机器学习)：人们在一定条件环境下，根据一定需要对自然事物的一种抽象的分类概念。模式集合记为 $\Omega=\omega_1,\dots\omega_C$ 。
+2. 模式(机器学习)：人们在一定条件环境下，根据一定需要对自然事物的一种抽象的分类概念。模式集合记为 $\Omega=\omega_1,\cdots, \omega_C$ 。
 
-样本/对象 (sample, object) ：自然界的具体事物，具有一定的类别特性，是抽象模式的具体体现。样本的观测量记为 $\boldsymbol{x}=[x_1,\dots x_N]^T$ 。
+样本/对象 (sample, object) ：自然界的具体事物，具有一定的类别特性，是抽象模式的具体体现。样本的观测量记为 $\boldsymbol{x}=[x_1,\cdots, x_N]^T$ 。
 
 模式识别：寻求样本观测量与类别属性的联系 $g(\boldsymbol{x})=\omega_i$ 。
 
@@ -43,11 +43,11 @@ $$
 
 主成分分析 PCA (Principal Component Analysis)：[Principal component analysis - Wikipedia](https://en.wikipedia.org/wiki/Principal_component_analysis)。
 
-输入数据： $n$ 个 $p$ 维的样本 $\boldsymbol{x}_i\in \mathbb{R}^p$， $i=1,\dots,n$ 。
+输入数据： $n$ 个 $p$ 维的样本 $\boldsymbol{x}_i\in \mathbb{R}^p$， $i=1,\cdots,n$ 。
 
 目标：寻找最优(方差保留)的 $k$ 个投影方向并进行特征变换降维。
 
-（1）计算样本点 $\boldsymbol{x}_1,\dots\boldsymbol{x}_n$ 的均值和协方差 $\boldsymbol{\mu},\boldsymbol{\Sigma}$ 。
+（1）计算样本点 $\boldsymbol{x}_1,\cdots\boldsymbol{x}_n$ 的均值和协方差 $\boldsymbol{\mu},\boldsymbol{\Sigma}$ 。
 
 $$
 \boldsymbol{\mu}=\frac{1}{n}\sum_{i=1}^n\boldsymbol{x}_i \\
@@ -58,15 +58,15 @@ $$
 
 （2）对协方差矩阵 $\boldsymbol{\Sigma}$ 进行特征值分解。
 
-（3）选取前 $k$ 个特征值最大的特征向量 $\boldsymbol{v}_1,\dots,\boldsymbol{v}_k$ 。
+（3）选取前 $k$ 个特征值最大的特征向量 $\boldsymbol{v}_1,\cdots,\boldsymbol{v}_k$ 。
 
-（4）将样本点投影到由 $\boldsymbol{v}_1,\dots,\boldsymbol{v}_k$ 张成的子空间上，得到降维后的样本点 $\boldsymbol{z}_i=\boldsymbol{V}^T(\boldsymbol{x}_i-\boldsymbol{\mu})$ 。
+（4）将样本点投影到由 $\boldsymbol{v}_1,\cdots,\boldsymbol{v}_k$ 张成的子空间上，得到降维后的样本点 $\boldsymbol{z}_i=\boldsymbol{V}^T(\boldsymbol{x}_i-\boldsymbol{\mu})$ 。
 
 （5）重建： $k$ 维投影子空间内的某个向量 $\boldsymbol{z}$ ，可以重构原始空间的向量 $\tilde{\boldsymbol{x}}=\boldsymbol{V}\boldsymbol{z}+\boldsymbol{\mu}$ 。
 
 应用案例：基于 PCA 变换的人脸识别。
 
-PCA 的几何意义：样本 $\boldsymbol{x}_i,\dots\boldsymbol{x}_n$ 在 $p$ 维空间中形成一个椭球形云团，散度矩阵/协方差矩阵的特征向量即为椭球状云团的主轴。PCA 提取云团散度最大的主轴方向进行特征降维。
+PCA 的几何意义：样本 $\boldsymbol{x}_i,\cdots\boldsymbol{x}_n$ 在 $p$ 维空间中形成一个椭球形云团，散度矩阵/协方差矩阵的特征向量即为椭球状云团的主轴。PCA 提取云团散度最大的主轴方向进行特征降维。
 
 PCA 的优缺点分析：
 
@@ -196,7 +196,7 @@ g_1(\boldsymbol{x})-g_2(\boldsymbol{x}) >0 \implies \boldsymbol{x} \in \omega_1 
 g_1(\boldsymbol{x})-g_2(\boldsymbol{x}) <0 \implies \boldsymbol{x} \in \omega_2
 $$
 
-假设 **各类先验概率相等** $p(\omega_i)=\dfrac{1}{c},\;i=1,\dots c$ ，协方差矩阵的三种情况：
+假设 **各类先验概率相等** $p(\omega_i)=\dfrac{1}{c},\;i=1,\cdots c$ ，协方差矩阵的三种情况：
 
 1. $\boldsymbol{\Sigma}_i = \sigma^2 \boldsymbol{I}$ 最小欧氏距离分类器。协方差矩阵为单位阵的倍数。
 2. $\boldsymbol{\Sigma}_i = \boldsymbol{\Sigma}$ 最小马氏距离分类器。所有类别的协方差矩阵相等。
@@ -206,11 +206,11 @@ $$
 
 #### 协方差矩阵相等且为对角阵
 
-假设 样本的特征向量的各个分量独立且具有相同的方差 $\sigma^2$ ，则协方差矩阵为 $\boldsymbol{\Sigma}_i = \sigma^2 \boldsymbol{I},\;i=1,\dots c$ 。
+假设 样本的特征向量的各个分量独立且具有相同的方差 $\sigma^2$ ，则协方差矩阵为 $\boldsymbol{\Sigma}_i = \sigma^2 \boldsymbol{I},\;i=1,\cdots c$ 。
 
-此时，有 $\| \boldsymbol{\Sigma}_i \|=\sigma^{2d},\; \boldsymbol{\Sigma}_i^{-1}=\dfrac{1}{\sigma^2}\boldsymbol{I},\;i-1,\dots c$ 。
+此时，有 $\| \boldsymbol{\Sigma}_i \|=\sigma^{2d},\; \boldsymbol{\Sigma}_i^{-1}=\dfrac{1}{\sigma^2}\boldsymbol{I},\;i-1,\cdots c$ 。
 
-（1）条件： $\boldsymbol{\Sigma}_i = \sigma^2 \boldsymbol{I},\;p(\omega_i)=\dfrac{1}{c},\;i=1,\dots c$ 即各类先验概率都相等时，为 **最小欧氏距离分类器** 。
+（1）条件： $\boldsymbol{\Sigma}_i = \sigma^2 \boldsymbol{I},\;p(\omega_i)=\dfrac{1}{c},\;i=1,\cdots c$ 即各类先验概率都相等时，为 **最小欧氏距离分类器** 。
 
 我们 **忽略所有与类别无关的常数项** ，只剩下带协方差矩阵的那一项，得到判别函数：
 
@@ -223,7 +223,7 @@ $$
 判决规则：每个样本 以它到 每类样本均值 的 欧式距离平方的最小值 确定其分类，即：
 
 $$
-\|\boldsymbol{x} - \boldsymbol{\mu}_i\|^2 = \min_{j=1,\dots,c} \|\boldsymbol{x} - \boldsymbol{\mu}_j\|^2 \implies \boldsymbol{x} \in \omega_i
+\|\boldsymbol{x} - \boldsymbol{\mu}_i\|^2 = \min_{j=1,\cdots,c} \|\boldsymbol{x} - \boldsymbol{\mu}_j\|^2 \implies \boldsymbol{x} \in \omega_i
 $$
 
 各类 $d$ 维球状分布，判决超平面 垂直于 连接两类中心（类别均值向量）的连线。
@@ -245,9 +245,9 @@ $$
 
 #### 协方差矩阵相等
 
-假设 各类协方差矩阵相等，但不再是前面特殊的对角阵形式，即： $\boldsymbol{\Sigma}_i = \boldsymbol{\Sigma},\;i=1,\dots c$ 。
+假设 各类协方差矩阵相等，但不再是前面特殊的对角阵形式，即： $\boldsymbol{\Sigma}_i = \boldsymbol{\Sigma},\;i=1,\cdots c$ 。
 
-（3） 条件： $\boldsymbol{\Sigma}_i = \boldsymbol{\Sigma},\;p(\omega_i)=\dfrac{1}{c},\;i=1,\dots c$ 即各类先验概率都相等时，为 **最小马氏距离分类器** 。
+（3） 条件： $\boldsymbol{\Sigma}_i = \boldsymbol{\Sigma},\;p(\omega_i)=\dfrac{1}{c},\;i=1,\cdots c$ 即各类先验概率都相等时，为 **最小马氏距离分类器** 。
 
 > 马氏距离(Mahalanobis distance) $d_M(\boldsymbol{x},\boldsymbol{\mu}_i) = \sqrt{(\boldsymbol{x} - \boldsymbol{\mu}_i)^T \boldsymbol{\Sigma}_i^{-1} (\boldsymbol{x} - \boldsymbol{\mu}_i)}$ 。
 
@@ -295,7 +295,7 @@ $$
 频率学派和贝叶斯学派：
 
 - 相同点：**最大似然函数**在频率学派和贝叶斯学派都具有重要的作用，其思想是认为已观测数据的概率分布是最大概率，最大概率对应的模型就是需要找的模型，“存在即合理”。
-- 不同点：频率学派认为模型是一成不变的，即**模型参数是常数**，常使用的参数估计方法为 **极大似然估计 MLA** ；贝叶斯学派认为模型是一直在变的，当获取新的信息后，模型也相应的在改变，即**模型参数是变量**，用概率去描述模型参数的不确定性，常使用的参数估计方法为 **最大后验概率估计 MLA** 。
+- 不同点：频率学派认为模型是一成不变的，即**模型参数是常数**，常使用的参数估计方法为 **极大似然估计 MLE** ；贝叶斯学派认为模型是一直在变的，当获取新的信息后，模型也相应的在改变，即**模型参数是变量**，用概率去描述模型参数的不确定性，常使用的参数估计方法为 **最大后验概率估计 MAP** 。
 
 ### 8.4.1 MLE
 
@@ -319,7 +319,7 @@ $$
 \hat{\boldsymbol{\Sigma}} = \hat{\boldsymbol{\theta}}_2 = \frac{1}{n} \sum_{k=1}^{n} (\boldsymbol{x}_k - \hat{\boldsymbol{\mu}})(\boldsymbol{x}_k - \hat{\boldsymbol{\mu}})^T
 $$
 
-无偏估计样本协方差矩阵：
+无偏估计样本 的 协方差矩阵：
 
 $$
 C = \frac{1}{n-1} \sum_{k=1}^{n} (x_k - \hat{\mu})(x_k - \hat{\mu})^T
@@ -385,7 +385,7 @@ EM 算法 应用于 混合高斯模型参数估计：
 
 （1）初始化 $K$ 个高斯分布参数 $\boldsymbol{\mu}_k, \boldsymbol{\Sigma_k}$，初始化 $\pi_k$ 并保证 $\displaystyle\sum_{k=1}^{K} \pi_k = 1$
 
-（2）依据目前的高斯分布参数，对样本 $\boldsymbol{x}$ 的类别隐藏变量 $\boldsymbol{Z}_{nk}$ 求 **期望** ，则 $\gamma(z_{nk})$ 表示第 $n$ 个样本 $\boldsymbol{x}_n$ 属于第 $k$ 类的概率：
+（2）依据目前的高斯分布参数，对样本 $\boldsymbol{x}$ 的类别隐藏变量 $z_{nk}$ 求 **期望** ，则 $\gamma(z_{nk})$ 表示第 $n$ 个样本 $\boldsymbol{x}_n$ 属于第 $k$ 类的概率：
 
 $$
 \gamma(z_{nk}) = \frac{\pi_k \mathcal{N}(\boldsymbol{x}_n|\boldsymbol{\mu}_k, \boldsymbol{\Sigma}_k)}{\displaystyle\sum_{j=1}^{K} \pi_j \mathcal{N}(\boldsymbol{x}_n|\boldsymbol{\mu}_j, \boldsymbol{\Sigma}_j)}
@@ -436,7 +436,15 @@ $$
 
 观测符号集 $V=\{v_1,v_2,\cdots,v_M\}$ ，即有 $M$ 种不同的观测符号。
 
-观测集 $O=\{o_1,o_2,\cdots,o_T\},o_i\in V$ ，状态转移概率矩阵 $\boldsymbol{A}\in\mathbb{R}^{N\times N}$ ，观测概率矩阵 $\boldsymbol{B}\in\mathbb{R}^{N\times M}$ ，初始状态概率向量 $\boldsymbol{\pi}\in\mathbb{R}^{1\times N}$ 。
+观测集 $O=\{o_1,o_2,\cdots,o_T\},o_i\in V$ 。
+
+状态转移概率矩阵 $\boldsymbol{A}\in\mathbb{R}^{N\times N}$ ，其中 $a_{ij}$ ，表示从第 $i$ 个状态 $s_i$ 转移到第 $j$ 个状态 $s_j$ 的概率。
+
+观测概率矩阵 $\boldsymbol{B}\in\mathbb{R}^{N\times M}$ ，其中 $b_{ij}$ 表示在第 $i$ 个状态 $s_i$ 下，观测到第 $j$ 个符号 $v_j$ 的概率。
+
+初始状态概率向量 $\boldsymbol{\pi}\in\mathbb{R}^{1\times N}$ ，初始状态下位于第 $i$ 个状态 $s_i$ 的概率为 $\pi_i$ 。
+
+在齐次马尔科夫条件下，某一时刻 $t$ 的状态向量为 $\boldsymbol{\pi}\boldsymbol{A}^t$ 。
 
 HMM 的基本元素：用三元组 $\lambda = (\boldsymbol{\pi},\boldsymbol{A},\boldsymbol{B})$ 来描述：
 
@@ -473,15 +481,15 @@ HMM 的基本假设：
 
 HMM 的3个基本问题：
 
-1. **评估**问题：
+1. **评估** 问题：
     - 如何根据给定 $O = \{O_1, O_2, \cdots, O_T\}$和 $\lambda$ 计算 $P(O|\lambda)$ ？
     - 即：模型参数 $\lambda$ 已知，评估观测序列 $O$ 出现的概率。
-2. **解码**问题：
+2. **解码** 问题：
     - 如何根据给定的 $O,\,\lambda$ 计算最优路径 $Q^*$ ？
     - 即：模型参数 $\lambda$ 和观测序列 $O$ 已知，预测最可能出现的状态序列 $Q^*$ 。
-3. **学习**问题：
-    - 如何根据观测序列样本集合 $O_{\text{training}}$ 进行模型 $\lambda$ 的参数估计？
-    - 即：给定观测序列的集合，训练模型参数，使得 $P(O_{\text{training}}|\lambda)$ 最大化。
+3. **学习** 问题：
+    - 如何根据观测序列样本集合 $O_{\text{train}}$ 进行模型 $\lambda$ 的参数估计？
+    - 即：给定观测序列的集合，训练模型参数，使得 $P(O_{\text{train}}|\lambda)$ 最大化。
 
 #### 评估观测序列的概率
 
@@ -526,9 +534,9 @@ $$
 
 具体算法步骤：
 
-(Ⅰ) 初始化： $\boldsymbol{\alpha}^{(1)}_i = \boldsymbol{\pi}_i b_i(O_1) ,\; 1 \leqslant i \leqslant N$ ，表示在 $t=1$ 时刻由第 $i$ 个状态生成观测 $O_1$ 的概率。这样计算出的向量 $\boldsymbol{\alpha}^{(1)}$ ，相当于初态 $\boldsymbol{\pi}$ 和矩阵 $\boldsymbol{B}$ 的那一列向量进行 **逐元素相乘** $\boldsymbol{\alpha}^{(1)} = \boldsymbol{\pi} \odot \boldsymbol{B}[:, O_1]$ 。
+(Ⅰ) **初始化**： $\boldsymbol{\alpha}^{(1)}_i = \boldsymbol{\pi}_i b_i(O_1) ,\; 1 \leqslant i \leqslant N$ ，表示在 $t=1$ 时刻由第 $i$ 个状态生成观测 $O_1$ 的概率。这样计算出的向量 $\boldsymbol{\alpha}^{(1)}$ ，相当于初态 $\boldsymbol{\pi}$ 和 $\boldsymbol{B}(O_1)$ 列向量进行 **逐元素相乘** $\boldsymbol{\alpha}^{(1)} =\left( \boldsymbol{\pi}^T \odot \boldsymbol{B}[:,O_1] \right)$ 。
 
-(Ⅱ) 递归：对于 $t=1, \ldots, T-1$，计算：
+(Ⅱ) **递归**：对于 $t=1, \ldots, T-1$，计算：
 
 $$
 \boldsymbol{\alpha}^{(t+1)}_j = \left[ \sum_{i=1}^{N} \boldsymbol{\alpha}^{(t)}_i a_{ij} \right] b_j(O_{t+1}), \quad 1 \leqslant j \leqslant N,\; 1 \leqslant t \leqslant T-1
@@ -540,7 +548,7 @@ $$
 \boldsymbol{\alpha}^{(t+1)} = \left(\boldsymbol{A}^T\boldsymbol{\alpha}^{(t)} \right) \odot \boldsymbol{B}[:, O_{t+1}]
 $$
 
-(Ⅲ) 终止：计算观测序列的总概率 $P(O|\lambda) = \displaystyle\sum_{i=1}^{N} \boldsymbol{\alpha}^{(T)}_i$ ，即为前向向量 $\boldsymbol{\alpha}^{(T)}$ 所有元素之和。
+(Ⅲ) **终止**：计算观测序列的总概率 $P(O|\lambda) = \displaystyle\sum_{i=1}^{N} \boldsymbol{\alpha}^{(T)}_i$ ，即为前向向量 $\boldsymbol{\alpha}^{(T)}$ **所有元素之和** 。
 
 ---
 
@@ -554,24 +562,128 @@ $$
 
 $$
 \boldsymbol{\beta}^{(t)}_i = \sum_{j=1}^{N} \boxed{\color{blue}P(O_{t+2}, \cdots O_T| q_{t+1} = s_j, \lambda)} \cdot \boxed{\color{red}P(q_{t+1} = s_j | q_t = s_i, \lambda)} \cdot \boxed{\color{green}P(O_{t+1} | q_{t+1} = s_j, \lambda)} \\
-=\left[ \sum_{j=1}^{N} {\color{blue}\boldsymbol{\beta}^{(t+1)}_j} {\color{red}a_{ij}} \right] {\color{green}b_j(O_{t+1})},\;1 \leqslant j \leqslant N,\;1 \leqslant t \leqslant T-1
+= \sum_{j=1}^{N} {\color{blue}\boldsymbol{\beta}^{(t+1)}_j} {\color{red}a_{ij}} {\color{green}b_j(O_{t+1})},\;1 \leqslant j \leqslant N,\;1 \leqslant t \leqslant T-1
 $$
 
 上式中，<span style="color:blue">蓝色部分</span>即为后向变量 $\boldsymbol{\beta}^{(t+1)}_j$ ，<span style="color:red">红色部分</span>为状态转移概率 $a_{ij}$ （利用到**齐次马尔可夫性质**），<span style="color:green">绿色部分</span>为序列下一个观测值的观测概率 $b_j(O_{t+1})$ （利用到**观测序列的独立性**），也即观测概率矩阵 $\boldsymbol{B}$ 中第 $j$ 行、状态 $O_{t+1}$ 对应的那一列的元素。
 
 具体算法步骤：
 
-(Ⅰ) 初始化： $\bold{\beta}^{(T)}=\boldsymbol{1}^{N\times 1}$ ，初值全部为 $1$ 。
+(Ⅰ) **初始化**： $\boldsymbol{\beta}^{(T)}=\boldsymbol{1}^{N\times 1}$ ，初值全部为 $1$ 。
 
-(Ⅱ) 递归： $\boldsymbol{\beta}^{(t)}_i = \left[ \sum_{j=1}^{N} \boldsymbol{\beta}^{(t+1)}_j a_{ij} \right] b_i(O_{t+1}), \quad 1 \leqslant i \leqslant N,\; 1 \leqslant t \leqslant T-1$ 。相当于做矩阵运算
+(Ⅱ) **递归**： $\boldsymbol{\beta}^{(t)}_i = \displaystyle\sum_{j=1}^{N} \boldsymbol{\beta}^{(t+1)}_j a_{ij} b_j(O_{t+1}), \quad 1 \leqslant i \leqslant N,\; 1 \leqslant t \leqslant T-1$ 。相当于做矩阵运算：
 
-(Ⅲ) 终止： $P(O|\lambda) = \displaystyle\sum_{i=1}^{N} \boldsymbol{\pi}_i b_i(O_1) \boldsymbol{\beta}^{(1)}_i$ ，即为初始状态概率向量 $\boldsymbol{\pi}$ 和矩阵 $\boldsymbol{B}$ 的那一列向量与后向向量 $\boldsymbol{\beta}^{(1)}$ 进行 **逐元素相乘** 后的结果之和。
+$$\boldsymbol{\beta}^{(t)}=\boldsymbol{A}\left(\boldsymbol{\beta}^{(t+1)}\odot \boldsymbol{B}[:,O_{t+1}]\right)
+$$
+
+(Ⅲ) **终止**： $P(O|\lambda) = \displaystyle\sum_{i=1}^{N} \boldsymbol{\pi}_i b_i(O_1) \boldsymbol{\beta}^{(1)}_i$ ，相当于做了逐元素相乘 + 内积运算 $\boldsymbol{\pi}^T \left( \boldsymbol{\beta}^{(1)} \odot \boldsymbol{B}[:,O_1] \right)$ 。
+
+> 上面的矩阵运算简化形式经过编写 MATLAB 程序验证是正确的。
 
 #### 解码最佳状态序列
 
-Viterbi 算法的本质是动态规划。
+如何根据给定的 $O,\,\lambda$ 计算最优路径 $Q^*$ ？
+
+即：模型参数 $\lambda$ 和观测序列 $O$ 已知，预测最可能出现的状态序列 $Q^*$ 。
+
+联合似然概率最大化：每一时刻状态序列出现相应观测值的可能达到最大
+
+$$
+\max_{q_1, q_2, \cdots, q_T} P(q_1, q_2, \cdots, q_T, O_1, O_2, \cdots, O_T | \lambda)
+$$
+
+**Viterbi 算法**：**动态规划**
+
+思想：记录 $t$ 时刻出现状态 $i$ 的最大可能路径及其对应概率：
+
+$$
+\boldsymbol{\delta}^{(t)}_i = \max_{q_1, q_2, \cdots, q_{t-1}} P(q_1, q_2, \cdots, q_t = i, O_1, O_2, \cdots, O_t | \lambda)
+$$
+
+最大局部概率：$t$ 时刻出现状态 $i$ 的最大概率：
+
+记 $\boldsymbol{\varphi}^{(t)}_j$ 代表 $t$ 时刻为第 $j$ 个状态时，对应前一时刻 $t-1$ 的状态，与 $O_t$ 无关。
+
+具体算法步骤：
+
+(Ⅰ) **初始化**： $\boldsymbol{\delta}^{(1)}_i=\boldsymbol{\pi}_i b_i(O_1),\;\boldsymbol{\varphi}^{(1)}_i=\boldsymbol{0}^{N\times 1},\; 1\leqslant i \leqslant N$ 。
+
+其中第一步 相当于 做逐元素相乘操作 $\boldsymbol{\delta}^{(1)} =\left( \boldsymbol{\pi}^T \odot \boldsymbol{B}[:,O_1] \right)$ 。
+
+初始时刻，路径尚未开始，节点局部概率 为 初始时刻在状态 $i$ 发射观测符号 $O_1$ 的概率。
+
+(Ⅱ) **递归**：对于 $t=2,3,\cdots,T$，计算：
+
+$$
+\boldsymbol{\delta}^{(t)}_j = \max_{1\leq i \leq N} \left[ \boldsymbol{\delta}^{(t-1)}_i a_{ij} \right] b_j(O_t) ,\; 1\leqslant j \leqslant N \\
+\boldsymbol{\varphi}^{(t)}_j = \argmax_{1\leq i \leq N} \left[ \boldsymbol{\delta}^{(t-1)}_i a_{ij} \right] ,\; 1\leqslant j \leqslant N
+$$
+
+其中第一步 相当于**向量与矩阵逐元素相乘** $\boldsymbol{\delta}^{(t-1)}\boldsymbol{A}$ （把矩阵看作多个列向量，分别与同一个列向量主元素相乘，组成一个新的矩阵），然后 **每一列** 取最大值得到一个行向量 $\max\left( \boldsymbol{\delta}^{(t-1)}\boldsymbol{A} \right) \in\mathbb{R}^{1\times N}$ ，**取转置** 变为列向量 之后再和 $\boldsymbol{B}[:,O_t] \in\mathbb{R}^N$ 列向量 做逐元素相乘，得到 $\boldsymbol{\delta}^{(t)}$ 。因此简化为矩阵运算形式：
+
+$$
+\boldsymbol{\delta}^{(t)} = \left( \max \left(\boldsymbol{\delta}^{(t-1)}\boldsymbol{A} \right)^T \odot \boldsymbol{B}[:, O_t] \right)
+$$
+
+而 $\boldsymbol{\varphi}^{(t)}$ 就是在寻找矩阵 $\boldsymbol{\delta}^{(t-1)}\boldsymbol{A}$ 中每一列最大值时，那个最大值在其 **列向量** 中的索引。
+
+转移概率 $a_{ij}$ 与上一步的最大局部概率 $\boldsymbol{\delta}^{(t-1)}_i$ 相乘，记录其中最大的一个。
+
+如果最优路径在 $t$ 时刻到达节点 $j$ ，则从起始时刻到达到该节点的最优路径对应 $\boldsymbol{\delta}^{(t-1)}_i$ 和 $a_{ij}$ 乘积的最小值，并包含从 $1$ 到 $t-1$ 的到达节点 $i$ 的最优路径。
+
+(Ⅲ) **终止**： $P^*=\displaystyle\max_{1\leq i \leq N} \boldsymbol{\delta}^{(T)}_i ,\; q^*_T = \displaystyle\argmax_{1\leq i \leq N} \boldsymbol{\delta}^{(T)}_i$ ，即 $t=T$ 时刻的最大局部概率。
+
+(Ⅳ) **回溯**：从 $q^*_T$ 开始， $q^*_t=\boldsymbol{\varphi}_{t+1}(q^*_{t+1}),\;t=T-1,T-2,\cdots 1$ 向前回溯，得到最优路径 $Q^* = (\hat{q}_1, \hat{q}_2, \cdots, \hat{q}_T)$ 。
+
+$\boldsymbol{\delta}^{(T)}_i$ 对应最大值 即为 全局最优路径 $Q^*$ 出现的概率，即为联合似然概率最大值。 $q^*_T$ 为最优路径在 $T$ 时刻状态，结合 $\boldsymbol{\varphi}$ 从 $T-1$ 时刻反向推演到 $1$ 时刻可以获取最优路径。
 
 #### 学习模型参数问题
+
+如何根据观测序列样本集合 $O_{\text{train}}$ 进行模型 $\lambda=(\boldsymbol{\pi},\boldsymbol{A},\boldsymbol{B})$ 的参数估计？
+
+即：给定观测序列的集合，训练模型参数 $\lambda$ ，使得 $P(O_{\text{train}}|\lambda)$ 最大化。
+
+Baum-Welch 算法是一种 EM 算法，是一种从不完全数据（样本特征序列与隐含状态序列的对齐关系未知）求解模型参数的最大似然估计方法：
+
+(Ⅰ)初始化 HMM 参数 $\lambda_0$ ；
+
+(Ⅱ) E 步(Expectation)：利用给定的 HMM 参数求样本特征序列的状态对齐结果；
+
+(Ⅲ) M 步(Maximization)：根据上一步的状态对齐结果，利用最大似然估计更新 HMM 参数 $\lambda$ ；
+
+(Ⅳ) 重复 E 步、M 步，直到算法收敛： $\log P(O|\lambda_{t+1}) - \log P(O|\lambda_t) < \text{threshold}$ 。
+
+给定模型 $\lambda$ 和观测序列 $O$ 的条件下：
+
+首先利用前面定义过的 前向变量和后向变量：
+
+$\alpha_t(i) = P(O_1, \ldots, O_t, q_t = s_i | \lambda)$
+
+$\beta_t(i) = P(O_{t+1}, O_{t+2} \cdots O_T | q_t = s_i, \lambda)$
+
+定义从状态 $i$ 到 $j$ 的转移概率：
+
+$$
+\xi_t(i,j) = P(q_t = i, q_{t+1} = j | O, \lambda) \\
+= \frac{\boldsymbol{\alpha}_t(i) a_{ij} b_j(O_{t+1}) \boldsymbol{\beta}_{t+1}(j)} {\displaystyle\sum_{i=1}^{N} \displaystyle\sum_{j=1}^{N} \boldsymbol{\alpha}_t(i) a_{ij} b_j(O_{t+1}) \boldsymbol{\beta}_{t+1}(j)}
+$$
+
+$\gamma_t(i) = \displaystyle\sum_{j=1}^{N} \xi_t(i,j) = P(q_t = i | O, \lambda)$ 表示 $t$ 时刻处于状态 $s_i$ 的概率。
+
+$\displaystyle\sum_{t=1}^{T-1} \gamma_t(i)$ 表示整个过程中从状态 $s_i$ 转出的次数的预期。
+
+$\displaystyle\sum_{t=1}^{T-1} \xi_t(i,j)$ 表示整个过程中从状态 $s_i$ 跳转至状态 $s_j$ 的次数的预期。
+
+则 **模型参数的重估公式** 为：
+
+$$
+\hat{a}_{ij} = \frac{\text{expected count of transitions from } i \text{ to } j}{\text{expected count of stays at } i} = \frac{\displaystyle\sum_t \xi_t(i,j)}{\displaystyle\sum_t \displaystyle\sum_j \xi_t(i,j)} \\
+\hat{b}_j(k) = \frac{\text{expected number of times in state } j \text{ and observing } k}{\text{expected number of times in state } j} = \frac{\displaystyle\sum_{t, O_t = k} \gamma_t(j)}{\displaystyle\sum_t \gamma_t(j)}
+$$
+
+$\hat{\boldsymbol{\pi}}_i=\gamma_1(i)$ ，表示 $t=1$ 时刻处于第 $i$ 个状态 $s_i$ 的概率。
+
+> 直观理解：利用从状态 $i$ 转移到状态 $j$ 的频次作为 $a_{ij}$ 的估计值；利用从状态 $j$ 产生观测 $k$ 的频次作为 $b_{jk}$ 的估计值。
 
 ---
 
@@ -591,17 +703,17 @@ HMM 的应用：
 
 输入 → 传感器 → 分割器 → 特征提取器  → 分类器 → 后处理器 → 输出
 
-（1）传感器
+（1）**传感器**
 
 例如：摄像机、麦克风阵列传感器。
 
 因素：带宽、灵敏度、失真、信噪比、延迟等等。
 
-（2）分割器
+（2）**分割器**
 
 例如：传感器的感兴趣基元文本切割、脑电波的时长等等。关注部分与整体关系。
 
-（3）特征提取器
+（3）**特征提取器**
 
 类内一致性：来自同一类别的不同样本特征值相近。
 
@@ -609,13 +721,13 @@ HMM 的应用：
 
 例如：基于深度神经网络的特征表征学习。
 
-（4）分类器
+（4）**分类器**
 
 根据特征提取器提取的特征向量给被测试对象(样本)赋予类别标记。
 
 例如：贝叶斯决策(最小欧式/马氏距离分类器)、HMM。例如：SVM、感知器模型、Logistic 回归。
 
-（5）后处理器
+（5）**后处理器**
 
 根据上下文信息对分类进行调整。
 
@@ -635,44 +747,52 @@ HMM 的应用：
 
 错误率 为 分类错误的样本占样本总数的比例。假设 $N$ 个样本中有 $a$ 个样本分类错误，则 $E=a/N$ 。准确率 为 1减去错误率，即为： $1-a/N$ 。
 
-误差 (error):
+误差(error):
 
 学习器的实际预测输出 与 样本的真实输出之间的差异。分为：训练误差/经验误差(empirical error)、测试误差/泛化误差(generalization error)。
 
 分类结果的混淆矩阵：
 
-| 真实类别 \ 预测类别 | 正例 | 反例 |
-|:-------------------:|:----:|:----:|
-| 正例               | TP (真正例) | FN (假反例) |
-| 反例               | FP (假正例) | TN (真反例) |
+| 真实类别 $\bigg\backslash$ 预测类别 |    正例     |    反例     |
+| :---------------------------------: | :---------: | :---------: |
+|                正例                 | TP (真正例) | FN (假反例) |
+|                反例                 | FP (假正例) | TN (真反例) |
 
-召回率 Recall、精度 Precision：
+**召回率 Recall** 、**精确率 Precision** ：
 
 $$
 \text{Recall} = \frac{TP}{TP + FN}, \quad \text{Precision} = \frac{TP}{TP + FP}
 $$
 
-真阳性率 True Positive Rate、假阳性率 False Positive Rate：
+召回率是“实际为正例的样本中，有多少被预测为正例”，精确率是“预测为正例的样本中，实际有多少是真的正例”。
+
+> 希望召回率高相当于是“宁可错杀，不可放过”，希望精确率高相当于是“宁可漏判，不可错杀”。召回率衡量了发出去的样本中有多少被“召回”了，精度则描述了预测时有多“精准”。
+>
+> recision 和 recall 是不可兼得的。想要 recall 高，就要多预测，没那么自信的也预测为正样本，才能尽可能覆盖更多的原始正样本；而想要 precision 高，就要少预测，有十足把握才预测正样本，这样才能更精确。对于火灾这类问题而言，预测错的代价不高，而漏预测的代价很高，因此需要强调 recall，方法是降低预测正样本的阈值，使模型更倾向于预测正样本。
+
+**真阳性率 TPR** (True Positive Rate)、**假阳性率 FPR** (False Positive Rate)：
 
 $$
 \text{TPR} = \frac{TP}{TP + FN}, \quad \text{FPR} = \frac{FP}{TN + FP}
 $$
 
-ROC 曲线：
+**ROC 曲线** ：
 
 ROC (Receiver Operator Characteristic) 曲线，称为受试者工作特征曲线或接收者操作特性曲线，是以假阳性率 FPR 为横坐标，以真阳性率 TPR 为纵坐标，绘制的曲线。
 
-AUC (Area Under Curve) 是 ROC 曲线下的面积，表示分类器的性能。AUC 的值范围在 0 到 1 之间，值越大表示分类器性能越好。AUC 用于衡量模型对正类和负类的区分能力，即：从所有正类和负类中随机选一个，模型将正类排在前面的概率。特点：与具体阈值无关；适合二分类问题。
+**AUC 曲线** (Area Under Curve) 是 **ROC 曲线下的面积** ，表示分类器的性能。AUC 的值范围在 0 到 1 之间，值越大表示分类器性能越好。AUC 用于衡量模型对正类和负类的区分能力，即：从所有正类和负类中随机选一个，模型将正类排在前面的概率。特点：与具体阈值无关；适合二分类问题。
 
 > 思考一下什么样的 ROC 曲线代表高性能的模式识别系统？答：ROC 曲线越接近**左上角**越好，因为 FPR 越小越好， TPR 越大越好。
 
-Precision-Recall 曲线：
+**PR 曲线** ：
 
 PR (Precision-Recall) 曲线，是以召回率 recall 为横坐标，精度 precision 为纵坐标，绘制的曲线。
 
-AP (Average Precision) 是 PR 曲线下的面积。AP 用于衡量模型在不同 recall 水平下的平均准确率，即：所有召回水平下，精度的加权平均（更关注排序前段的准确性）。多用于目标检测（如 COCO）或信息检索，常和 mAP (mean AP) 配合使用（多个类别取平均）。
+**AP 曲线** (Average Precision) 是 **PR 曲线下的面积** 。AP 用于衡量模型在不同 recall 水平下的平均准确率，即：所有召回水平下，精度的加权平均（更关注排序前段的准确性）。多用于目标检测（如 COCO）或信息检索，常和 mAP (mean AP) 配合使用（多个类别取平均）。
 
-F-score：
+> 单词测试使用固定的阈值，计算出 recall 和 precision。多次测试使用不同的阈值，得到多组 precision 和 recall 值，就能绘制出 PR 曲线。
+
+**F-score** ：
 
 F1-score 是精度和召回率的调和平均数，综合考虑了精度和召回率的平衡。公式为：
 
@@ -683,7 +803,7 @@ $$
 
 F-score 最理想的数值是趋近于1，此时 precision 和 recall 都很高，接近于1。
 
-交叉验证方法 Cross Validation：
+**交叉验证** Cross Validation：
 
 1. 交叉验证是用来验证分类器的性能一种统计分析方法，将原始数据(dataset)进行分组，一部分做为训练集(training set)，另一部分做为验证集(validation set)。
 2. K-折交叉验证(K-fold Cross Validation)：将原始数据分成 $K$ 组(一般是均分)，将每个子集数据分别做一次验证集，其余的 $K-1$ 组子集数据作为训练集，这样得到 $K$ 个模型。把这 $K$ 个模型在最终验证集的分类准确率的平均数，作为分类器的性能指标。

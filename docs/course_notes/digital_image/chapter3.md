@@ -111,8 +111,8 @@
 
 原始直方图的灰度级概率密度函数 $p_s(s)$，希望得到规定直方图的灰度级概率密度函数 $p_u(u)$，步骤：
 
-1. 对原始直方图进行灰度均衡化：$t_k={EH}_s(s_k)=\displaystyle\sum_{i=0}^k p_s(s_i),k=0,\dots M-1$。
-2. 计算能使规定直方图均衡化的变换：$v_k={EH}_u(u_k)=\displaystyle\sum_{i=0}^k p_u(u_i),k=0,\dots N-1,N\leqslant M$。
+1. 对原始直方图进行灰度均衡化：$t_k={EH}_s(s_k)=\displaystyle\sum_{i=0}^k p_s(s_i),k=0,\cdots M-1$。
+2. 计算能使规定直方图均衡化的变换：$v_k={EH}_u(u_k)=\displaystyle\sum_{i=0}^k p_u(u_i),k=0,\cdots N-1,N\leqslant M$。
 3. 求规定直方图的反变换函数 $u={EH}_u^{-1}(v)$。
 4. 原始直方图中所得到灰度级 $t$ 代入反变换函数：$u={EH}_u^{-1}(t)={EH}_u^{-1}[{EH}_s(s)]$。需要找出 $t$ 与 $v$ 的近似值，两者近似相等时的 $s,u$ 对应，完成从 $s\to u$ 的变换。
 

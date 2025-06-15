@@ -97,7 +97,7 @@ $$
 
 训练方法：梯度下降
 
-神经网络全部参数 $\theta=\{\boldsymbol{W}_1,\dots,\boldsymbol{b}_1,\dots\}$ ，训练目标是学习获取使损失函数最小化的网络参数 $\theta^*$ ，参数更新规则为：
+神经网络全部参数 $\theta=\{\boldsymbol{W}_1,\cdots,\boldsymbol{b}_1,\cdots\}$ ，训练目标是学习获取使损失函数最小化的网络参数 $\theta^*$ ，参数更新规则为：
 
 $$
 w \leftarrow w - \eta \frac{\partial L}{\partial w},\quad b \leftarrow b - \eta \frac{\partial L}{\partial b} \\

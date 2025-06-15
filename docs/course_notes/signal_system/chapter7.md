@@ -16,7 +16,7 @@ $x(an)$ 波形压缩， $x\left(\dfrac{x}{n}\right)$​ 波形扩展，这时可
 
 1. 单位样值信号： $\delta(n)$ 。
 2. 单位阶跃序列： $u(n)$ 。
-3. 矩形序列： $R_N(n)=u(n)-u(n-N)$  ，有 $0 \sim N-1$ 的 $N$ 个值，或 $R_N(n-m)=u(n-m)-u(n-m-N)$ ，有  $m \sim m+N-1$ 的 $N$ 个值。
+3. 矩形序列： $R_N(n)=u(n)-u(n-N)$ ，有 $0 \sim N-1$ 的 $N$ 个值，或 $R_N(n-m)=u(n-m)-u(n-m-N)$ ，有 $m \sim m+N-1$ 的 $N$ 个值。
 4. 斜变序列： $x(n)=nu(n)$ ，显然有 $u(n)=x(n)-x(n-1)$ 。
 5. 指数序列： $x(n)=a_n u(n)$ 。​
 6. 正弦序列：$x(n)=\sin(n\omega_0)$ ，不一定有周期 $T$ ，但是有频率 $\omega_0$ 。

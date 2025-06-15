@@ -50,7 +50,7 @@ $$
 \end{bmatrix}
 $$
 
-我们希望将这组输入向量映射到一个嵌入空间，该空间能够捕捉更丰富的语义结构。假设输入向量 $\boldsymbol{x}_i$ 映射为输出向量 $\boldsymbol{y}_i$ ，则 $\boldsymbol{y}_i$ 应当取决于所有的输入向量 $\boldsymbol{x}_1,\dots\boldsymbol{x}_N$ ，才能捕捉输入之间的依赖关系。一个很自然的想法是将 $\boldsymbol{y}_i$ 定义为所有输入向量的线性组合：
+我们希望将这组输入向量映射到一个嵌入空间，该空间能够捕捉更丰富的语义结构。假设输入向量 $\boldsymbol{x}_i$ 映射为输出向量 $\boldsymbol{y}_i$ ，则 $\boldsymbol{y}_i$ 应当取决于所有的输入向量 $\boldsymbol{x}_1,\cdots\boldsymbol{x}_N$ ，才能捕捉输入之间的依赖关系。一个很自然的想法是将 $\boldsymbol{y}_i$ 定义为所有输入向量的线性组合：
 
 $$
 \boldsymbol{y}_i=\sum_{j=1}^N\alpha_{ij}\boldsymbol{x}_j
@@ -97,7 +97,7 @@ $$
 $$
 \alpha_{ij}=\dfrac{\boldsymbol{q}_i^T\boldsymbol{k}_j}{\sqrt{d}} \\
 \hat{\alpha}_{ij}=\text{softmax}\left(\dfrac{\boldsymbol{q}_i^T\boldsymbol{k}_j}{\sqrt{d}}\right) \\
-\boldsymbol{y}_i=\sum_{j=1}^N\hat{\alpha}_{ij}\boldsymbol{v}_j,\quad i,j=1,\dots,N
+\boldsymbol{y}_i=\sum_{j=1}^N\hat{\alpha}_{ij}\boldsymbol{v}_j,\quad i,j=1,\cdots,N
 $$
 
 ### 7.2.2 Multi-head Attention
@@ -122,7 +122,7 @@ $$
 \boldsymbol{H}^{(h)}=\text{softmax}\left(\dfrac{\boldsymbol{Q}^{(h)}\boldsymbol{K}^{(h)T}}{\sqrt{d}}\right)\boldsymbol{V}^{(h)},\quad\boldsymbol{H}^{(h)}\in\mathbb{R}^{N\times d}
 $$
 
-将所有 $H$ 个头的输出拼接成一个矩阵： $\boldsymbol{H}=[\boldsymbol{H}^{(1)},\dots \boldsymbol{H}^{(H)}]\in\mathbb{R}^{N\times Hd}$
+将所有 $H$ 个头的输出拼接成一个矩阵： $\boldsymbol{H}=[\boldsymbol{H}^{(1)},\cdots \boldsymbol{H}^{(H)}]\in\mathbb{R}^{N\times Hd}$
 
 使用一个维度为 $Hd\times d$ 的线性变换矩阵 $\boldsymbol{W}^{(o)}$ 对拼接后的矩阵变换，得到最终的多头注意力输出： $\boldsymbol{Y}=\boldsymbol{H}\boldsymbol{W}^{(o)}$ ，其中 $\boldsymbol{Y}\in\mathbb{R}^{N\times d}$ 与输入矩阵 $\boldsymbol{X}$ 维度相同。
 

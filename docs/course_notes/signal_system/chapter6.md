@@ -50,7 +50,7 @@ $$
 \overline{\epsilon^2}=\frac{1}{t_2-t_1} \int_{t_1}^{t_2}[f_1(t)-c_{12}f_2(t)]^2\,\mathrm{d}t
 $$
 
-方均误差最小（对  $c_{12}$ 的二阶导为0），有：
+方均误差最小（对 $c_{12}$ 的二阶导为0），有：
 
 $$
 c_{12}=\frac{\left\langle f_1(t),f_2(t) \right\rangle}{\left\langle f_2(t),f_2(t) \right\rangle}
