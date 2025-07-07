@@ -172,7 +172,9 @@ $$
 （8）Softmax 函数，可以看作为 Sigmoid 函数的扩展，适用于多分类任务。
 
 $$
-\text{softmax}(\boldsymbol{x})=\frac{\exp(x_i)}{\displaystyle\sum_{j=1}^n \exp(x_j)}
+\boldsymbol{x}=[x_1, \cdots, x_n]^T \in \mathbb{R}^n \\
+\text{softmax}(\boldsymbol{x}) = [\text{softmax}(x_1), \cdots, \text{softmax}(x_n)]^T \\
+\text{softmax}(x_i)=\frac{\exp(x_i)}{\displaystyle\sum_{j=1}^n \exp(x_j)}
 $$
 
 它将原始分数（也称为 logits）转换为表示概率分布的数值，且所有类别的概率之和等于1，因此适用于多类别分类问题，且类别之间互斥的场合，每个样本只属于一个类别。

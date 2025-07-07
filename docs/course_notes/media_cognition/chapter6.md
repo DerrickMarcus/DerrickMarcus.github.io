@@ -113,7 +113,7 @@ $$
 
 输出状态：$\boldsymbol{h}_t = \boldsymbol{o}_t \odot \tanh(\boldsymbol{c}_t)$。
 
-> 运算符 $\odot$ 表示哈达玛乘积，两个向量逐元素相乘。
+> 运算符 $\odot$ 表示 **哈达玛乘积**，两个向量逐元素相乘。
 
 单元详解：
 

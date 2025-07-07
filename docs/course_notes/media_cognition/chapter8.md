@@ -618,13 +618,13 @@ $$
 \varphi^{(t)}_j = \argmax_{1\leq i \leq N} \left[ \delta^{(t-1)}_i a_{ij} \right] ,\; 1\leqslant j \leqslant N
 $$
 
-其中第一步 相当于**向量与矩阵逐元素相乘** $\boldsymbol{\delta}^{(t-1)}\boldsymbol{A}$ （把矩阵看作多个列向量，分别与同一个列向量主元素相乘，组成一个新的矩阵），然后 **每一列** 取最大值得到一个行向量 $\max\left( \boldsymbol{\delta}^{(t-1)}\boldsymbol{A} \right) \in\mathbb{R}^{1\times N}$ ，**取转置** 变为列向量 之后再和 $\boldsymbol{B}[:,O_t] \in\mathbb{R}^N$ 列向量 做逐元素相乘，得到 $\boldsymbol{\delta}^{(t)}$ 。因此简化为矩阵运算形式：
+其中第一步 相当于**向量与矩阵逐元素相乘** $\boldsymbol{\delta}^{(t-1)}\odot\boldsymbol{A}$ （把矩阵看作多个列向量，分别与同一个列向量主元素相乘，组成一个新的矩阵），然后 **每一列** 取最大值得到一个行向量 $\max\left( \boldsymbol{\delta}^{(t-1)}\odot\boldsymbol{A} \right) \in\mathbb{R}^{1\times N}$ ，**取转置** 变为列向量 之后再和 $\boldsymbol{B}[:,O_t] \in\mathbb{R}^N$ 列向量 做逐元素相乘，得到 $\boldsymbol{\delta}^{(t)}$ 。因此简化为矩阵运算形式：
 
 $$
-\boldsymbol{\delta}^{(t)} = \left( \max \boldsymbol{\delta}^{(t-1)}\boldsymbol{A} \right)^T \odot \boldsymbol{B}[:, O_t]
+\boldsymbol{\delta}^{(t)} = \left( \max \boldsymbol{\delta}^{(t-1)}\odot\boldsymbol{A} \right)^T \odot \boldsymbol{B}[:, O_t]
 $$
 
-而 $\boldsymbol{\varphi}^{(t)}$ 就是在寻找矩阵 $\boldsymbol{\delta}^{(t-1)}\boldsymbol{A}$ 中每一列最大值时，那个最大值在其 **列向量** 中的索引。
+而 $\boldsymbol{\varphi}^{(t)}$ 就是在寻找矩阵 $\boldsymbol{\delta}^{(t-1)}\odot\boldsymbol{A}$ 中每一列最大值时，那个最大值在其 **列向量** 中的索引。
 
 转移概率 $a_{ij}$ 与上一步的最大局部概率 $\delta^{(t-1)}_i$ 相乘，记录其中最大的一个。
 
@@ -789,7 +789,7 @@ PR (Precision-Recall) 曲线，是以召回率 recall 为横坐标，精度 prec
 
 **AP 曲线** (Average Precision) 是 **PR 曲线下的面积**。AP 用于衡量模型在不同 recall 水平下的平均准确率，即：所有召回水平下，精度的加权平均（更关注排序前段的准确性）。多用于目标检测（如 COCO）或信息检索，常和 mAP (mean AP) 配合使用（多个类别取平均）。
 
-> 单词测试使用固定的阈值，计算出 recall 和 precision。多次测试使用不同的阈值，得到多组 precision 和 recall 值，就能绘制出 PR 曲线。
+> 单次测试使用固定的阈值，计算出 recall 和 precision。多次测试使用不同的阈值，得到多组 precision 和 recall 值，就能绘制出 PR 曲线。
 
 **F-score**：
 
@@ -805,7 +805,7 @@ F-score 最理想的数值是趋近于1，此时 precision 和 recall 都很高�
 **交叉验证** Cross Validation：
 
 1. 交叉验证是用来验证分类器的性能一种统计分析方法，将原始数据(dataset)进行分组，一部分做为训练集(training set)，另一部分做为验证集(validation set)。
-2. K-折交叉验证(K-fold Cross Validation)：将原始数据分成 $K$ 组(一般是均分)，将每个子集数据分别做一次验证集，其余的 $K-1$ 组子集数据作为训练集，这样得到 $K$ 个模型。把这 $K$ 个模型在最终验证集的分类准确率的平均数，作为分类器的性能指标。
-3. 留一法(Leave-One-Out)：每个样本单独作为验证集,其余的 $N-1$ 个样本作为训练集。
+2. K-折交叉验证(K-fold Cross Validation)：将原始数据分成 $K$ 组(一般是均分)，将每个子集数据分别做一次验证集，其余的 $(K-1)$ 组子集数据作为训练集，这样得到 $K$ 个模型。把这 $K$ 个模型在最终验证集的分类准确率的平均数，作为分类器的性能指标。
+3. 留一法(Leave-One-Out)：每个样本单独作为验证集,其余的 $(N-1)$ 个样本作为训练集。
 
 过拟合/欠拟合、生成式模型/鉴别式模型，前面已经讨论过，可见 [第3讲 - Machine Learning](./chapter3.md)。

@@ -181,16 +181,16 @@ Decoder 由 $N$ 个相同结构的解码器层 Decoder Layer 组成，每个 Dec
 
 ### 7.3.3 FFN
 
-前馈全连接模块(Feed-Forward Network)：
+前馈全连接模块 FFN (Feed-Forward Network)：
 
-全连接层——ReLU 激活层——全连接层，默认有偏置。
+全连接层——ReLU 激活层——全连接层，**默认有偏置**。
 
 ![202506132354071](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo-image/images/202506132354071.png)
 
 数学表示为：
 
 $$
-\text{FFN}(\boldsymbol{z})=\max(0, \boldsymbol{z}\boldsymbol{W}_1+\boldsymbol{b}_1)\boldsymbol{W}_2+\boldsymbol{b}_2
+\text{FFN}(\boldsymbol{z})=\max(\boldsymbol{0}, \boldsymbol{z}\boldsymbol{W}_1+\boldsymbol{b}_1)\boldsymbol{W}_2+\boldsymbol{b}_2
 $$
 
 ### 7.3.4 Positional Encoding
@@ -335,7 +335,7 @@ LLM 常用的预训练任务：语言建模（Language Modeling, LM），去噪�
 
 提示微调：仅在输入嵌入层中加入可训练的提示向量。
 
-为什么进行 **人类对齐？
+为什么进行 **人类对齐**？
 
 经过大规模的预训练和有监督指令微调，大语言模型具备了解决各种任务的通用能力和指令遵循能力。但是同时也可能生成有偏见的、冒犯的以及事实错误的文本内容。因此，在大语言模型的学习过程中，如何确保大语言模型的行为与人类价值观、人类真实意图和社会伦理相一致成为了一个关键研究问题，通常称这一研究问题为人类对齐。
 

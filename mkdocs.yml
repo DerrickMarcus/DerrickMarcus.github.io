@@ -82,6 +82,9 @@ theme:
     # - toc.integrate # 右侧toc集成到左侧
     - toc.follow # 右侧toc随页面而滚动
 
+draft_docs: |
+  drafts/**
+
 # Plugins
 plugins:
   - search:
@@ -268,6 +271,8 @@ nav:
       - Blog: blog/index.md
   - "📚 Course Notes":
       - Course Notes: course_notes/index.md
+      - Data and Algorithm:
+          - Data and Algorithm: course_notes/data_algorithm/index.md
       - Signals and Systems:
           - Signals and Systems: course_notes/signal_system/index.md
           - 05-傅里叶变换应用于通信系统: course_notes/signal_system/chapter5.md
@@ -372,6 +377,7 @@ nav:
           - SLAM: research/robot/slam.md
           - LIO-SAM: research/robot/liosam.md
           - Kalman Filter: research/robot/kalman_filter.md
+          - Kd-Tree: research/robot/kdtree.md
   - "💻 Computer Science Basic":
       - Computer Science Basic: computer_basic/index.md
       - "⚙️ Environment Configuration":

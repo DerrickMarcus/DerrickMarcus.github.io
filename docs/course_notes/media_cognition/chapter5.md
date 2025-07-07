@@ -61,7 +61,7 @@ $$
 
 卷积核中注入空洞，目标是增加感受野，同时不丢失分辨率（池化也能扩大感受野但是丢失分辨率），也能够减小计算量。相比正常的卷积，空洞卷积多出一个 dilation rate 参数，如 PyTorch 中 `torch.nn.Conv2d()` 的 `dilation` 参数。
 
-空洞卷积的 **感受野** 为 $K(D-1)+1$ ，其中 $K$ 为卷积核尺寸，$D$ 为空洞率。也就是说，一个尺寸 $K$ 的、空洞率为 $D$ 的卷积核，实际上等效于一个尺寸为 $(K-1)D+1$ 的卷积核。例如：
+空洞卷积的 **感受野** 为 $(K-1)D+1$ ，其中 $K$ 为卷积核尺寸，$D$ 为空洞率。也就是说，一个尺寸 $K$ 的、空洞率为 $D$ 的卷积核，实际上等效于一个尺寸为 $(K-1)D+1$ 的卷积核。例如：
 
 卷积核尺寸为 $5\times 5$ ，空洞率为 $4$ 的空洞卷积，其感受野为 $(5-1) \cdot 4 + 1 = 17$ ，等效于一个 $17\times 17$ 的卷积核。然后输出特征图的尺寸，仍然按照上面常规卷积的计算公式即可。
 
@@ -82,8 +82,8 @@ $$
 在感受野中引入了偏移量，而且偏移量是可学习参数，这样卷积核不再是传统的方形，而可以与物体的实际形状更贴近。
 
 $$
-y(\mathbf{p}_0) = \sum_{\mathbf{p}_n \in \mathcal{R}} \mathbf{w}(\mathbf{p}_n) \cdot \mathbf{x}(\mathbf{p}_0 + \mathbf{p}_n). \quad (1) \\
-y(\mathbf{p}_0) = \sum_{\mathbf{p}_n \in \mathcal{R}} \mathbf{w}(\mathbf{p}_n) \cdot \mathbf{x}(\mathbf{p}_0 + \mathbf{p}_n + \Delta\mathbf{p}_n). \quad (2)
+y(\mathbf{p}_0) = \sum_{\mathbf{p}_n \in \mathcal{R}} \mathbf{w}(\mathbf{p}_n) \cdot \mathbf{x}(\mathbf{p}_0 + \mathbf{p}_n) \quad (1) \\
+y(\mathbf{p}_0) = \sum_{\mathbf{p}_n \in \mathcal{R}} \mathbf{w}(\mathbf{p}_n) \cdot \mathbf{x}(\mathbf{p}_0 + \mathbf{p}_n + \Delta\mathbf{p}_n) \quad (2)
 $$
 
 其中 (1) 为传统卷积，(2) 为可变形卷积， $\Delta\mathbf{p}_n$ 为偏移量。

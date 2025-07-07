@@ -21,7 +21,7 @@ Create a vitrual environment:
 
 ```bash
 python -m venv blog_env
-source blog_env/bin/activate  # Linux/macOS
+source blog_env/bin/activate  # Linux / macOS
 blog_env\Scripts\activate  # Windows
 
 pip install -r requirements.txt
@@ -33,6 +33,6 @@ Build the site:
 mkdocs serve
 ```
 
-Then open your browser and visit `http://127.0.0.1:8000/` to view the site.
+Then open your browser and visit <http://127.0.0.1:8000/> to view the site.
 
-It is recommended to add a `.github/workflow/ci.yml` to use Github Actions to deploy the site.
+It is recommended to add a file `.github/workflow/ci.yml` to use Github Actions to deploy the site.
