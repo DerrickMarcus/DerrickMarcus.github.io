@@ -81,23 +81,25 @@ $$
 反变换：
 
 $$
-T^{-1} = \begin{bmatrix}
+\begin{align*}
+T^{-1} &= \begin{bmatrix}
 1 & 0 & -T_x \\
 0 & 1 & -T_y \\
 0 & 0 & 1
 \end{bmatrix}
 \\
-S^{-1} = \begin{bmatrix}
+S^{-1} &= \begin{bmatrix}
 1/S_x & 0 & 0 \\
 0 & 1/S_y & 0 \\
 0 & 0 & 1
 \end{bmatrix}
 \\
-R_{\gamma}^{-1} = \begin{bmatrix}
+R_{\gamma}^{-1} &= \begin{bmatrix}
 \cos(-\gamma) & \sin(-\gamma) & 0 \\
 -\sin(-\gamma) & \cos(-\gamma) & 0 \\
 0 & 0 & 1
 \end{bmatrix}
+\end{align*}
 $$
 
 变换的级联，$v'=R_\gamma[S(Tv)]=Av$ ，本质是若干矩阵相乘得到一个矩阵，注意级联的运算次序不可交换。
@@ -115,17 +117,19 @@ $$
 剪切变换，变换矩阵：
 
 $$
-\text{水平剪切}\quad\boldsymbol{J}_{\text{h}} = \begin{bmatrix}
+\begin{align*}
+\text{水平剪切}\quad\boldsymbol{J}_{\text{h}} &= \begin{bmatrix}
 1 & J_x & 0 \\
 0 & 1 & 0 \\
 0 & 0 & 1
 \end{bmatrix}\\
 \text{垂直剪切}\quad
-\boldsymbol{J}_{\text{v}} = \begin{bmatrix}
+\boldsymbol{J}_{\text{v}} &= \begin{bmatrix}
 1 & 0 & 0 \\
 J_y & 1 & 0 \\
 0 & 0 & 1
 \end{bmatrix}
+\end{align*}
 $$
 
 旋转变换的分解：
@@ -182,10 +186,11 @@ $$
 一般仿射变换：一个非奇异线性变换接一个平移变换。平面上的仿射变换有6个自由度。
 
 $$
+\begin{align*}
 \begin{bmatrix}
 x' \\ y' \\ 1
 \end{bmatrix}
-=
+&=
 \begin{bmatrix}
 a_{11} & a_{12} & t_x \\
 a_{21} & a_{22} & t_y \\
@@ -194,13 +199,14 @@ a_{21} & a_{22} & t_y \\
 \begin{bmatrix}
 x \\ y \\ 1
 \end{bmatrix}\\
-=\begin{bmatrix}
+&=\begin{bmatrix}
 \boldsymbol{A} & \boldsymbol{t} \\
 0^T & 1
 \end{bmatrix}
 \begin{bmatrix}
 x \\ y \\ 1
 \end{bmatrix}
+\end{align*}
 $$
 
 ![第十二周课件上课_82](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo-image/images/第十二周课件上课_82.png)
@@ -365,10 +371,12 @@ Harris 角点性质：
 桶形失真，枕形失真。
 
 $$
+\begin{align*}
 s \begin{bmatrix} u \\ v \\ 1 \end{bmatrix}
-= \begin{bmatrix} f_x & \gamma & u_0 \\ 0 & f_y & v_0 \\ 0 & 0 & 1 \end{bmatrix} \begin{bmatrix} R & t \end{bmatrix} \begin{bmatrix} X \\ Y \\ Z \\ 1 \end{bmatrix} \\
-=A \begin{bmatrix} r_1 & r_2 & r_3 & t \end{bmatrix} \begin{bmatrix} X \\ Y \\ 0 \\ 1 \end{bmatrix}
+&= \begin{bmatrix} f_x & \gamma & u_0 \\ 0 & f_y & v_0 \\ 0 & 0 & 1 \end{bmatrix} \begin{bmatrix} R & t \end{bmatrix} \begin{bmatrix} X \\ Y \\ Z \\ 1 \end{bmatrix} \\
+&=A \begin{bmatrix} r_1 & r_2 & r_3 & t \end{bmatrix} \begin{bmatrix} X \\ Y \\ 0 \\ 1 \end{bmatrix}
 =A \begin{bmatrix} r_1 & r_2 & t \end{bmatrix} \begin{bmatrix} X \\ Y \\ 1 \end{bmatrix}
+\end{align*}
 $$
 
 内参矩阵 $A:3\times 3$ ，描述从相机坐标系到像素坐标系的变换，自由度为5。只与**相机本身的几何/电子特性**相关，对同一个相机拍出的任何照片都恒定不变。

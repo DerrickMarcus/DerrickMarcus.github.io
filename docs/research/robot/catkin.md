@@ -1,10 +1,12 @@
 # CMake and Catkin
 
-CMake 是 C/C++ 开发中常用的编译工具链，在 ROS 中我们可以使用 catkin_make 工具，它集成了 CMake 且功能更加适用于 ROS 开发，语法与 CMake 相同，配置文件均为 CMakeLists.txt
+CMake 是 C/C++ 开发中常用的编译工具链，在 ROS 中我们可以使用 catkin_make 工具，它集成了 CMake 且功能更加适用于 ROS 开发，语法与 CMake 相同，配置文件均为 `CMakeLists.txt` 。
 
 语法规则如下：
 
-注意：有一些预定义的变量， `PROJECT_SOURCE_DIR` 表示源代码目录（包含 CMakeLists.txt 文件的目录，一般也就是项目的根目录），`PROJECT_BINARY_DIR` ，项目的构建目录，生成编译文件的位置，一般也就是 build/ 。`LIBRARY_OUTPUT_PATH` 是生成的库文件存放的位置。
+注意：有一些预定义的变量， `PROJECT_SOURCE_DIR` 表示源代码目录（包含 `CMakeLists.txt` 文件的目录，一般也就是项目的根目录），`PROJECT_BINARY_DIR` ，项目的构建目录，生成编译文件的位置，一般也就是 `build/` 。`LIBRARY_OUTPUT_PATH` 是生成的库文件存放的位置。
+
+`CMakeLists.txt` 文件示例：
 
 ```cmake
 # 指定最低版本 cmake
@@ -39,7 +41,6 @@ set(CMAKE_CXX_STANDARD 11) # 比如指定C++标准
 find_package(xxx REQUIRED)
 find_package(catkin REQUIRED COMPONENTS roscpp rospy std_msgs genmsg)
 
-# else
 # 编译选项
 add_compile_options(-std=c++20 -Wall -O2)
 # 使用变量存储源文件，适用于源文件特别多的时候
@@ -121,18 +122,18 @@ cmake -DCMAKE_BUILD_TYPE=Release ..
 
 # 使用构建文件进行编译
 make
-make MyExecutable # 指定目标名称
+make MyExecutable # 指定构建目标名称
 
 # 清理中间文件
 make clean
-rm -rf build/* # 或者这个
+rm -rf build/*
 ```
 
 对于 catkin，有一些额外的需要注意：
 
 预定义的变量：
 
-`${catkin_INCLUDE_DIRS}` ，包含已声明依赖软件包的包含（头文件）目录。在`find_package`命令中指定了软件包的组件后，会自动查找这些软件包的头文件路径，并将它们收集在变量中。
+`${catkin_INCLUDE_DIRS}` ，包含已声明依赖软件包的包含（头文件）目录。在 `find_package` 命令中指定了软件包的组件后，会自动查找这些软件包的头文件路径，并将它们收集在变量中。
 
 ```cmake
 include_directories(
@@ -140,7 +141,7 @@ include_directories(
 )
 ```
 
-${catkin_LIBRARIES} ，包含已声明依赖软件包的目标（库文件）路径。在`find_package`命令中指定了软件包的组件后，`catkin`会自动查找这些软件包的库文件路径，并将它们收集到变量中。
+`${catkin_LIBRARIES}` ，包含已声明依赖软件包的目标（库文件）路径。在 `find_package` 命令中指定了软件包的组件后，catkin 会自动查找这些软件包的库文件路径，并将它们收集到变量中。
 
 ```cmake
 target_link_libraries(your_executable

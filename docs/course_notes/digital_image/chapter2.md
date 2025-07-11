@@ -125,9 +125,11 @@ H 和 S 分量与人感受彩色的方式紧密相连（合称色度），I 分�
 从 RGB 转换到 HSI：
 
 $$
-I = \frac{1}{3} (R + G + B) \\
-S = 1 - \frac{3}{R + G + B} \min(R, G, B) \\
-H = \arccos \left( \frac{(R - G + R - B)/2}{\sqrt{(R - G)^2 + (R - B)(G - B)}} \right)
+\begin{align*}
+I &= \frac{1}{3} (R + G + B) \\
+S &= 1 - \frac{3}{R + G + B} \min(R, G, B) \\
+H &= \arccos \left( \frac{(R - G + R - B)/2}{\sqrt{(R - G)^2 + (R - B)(G - B)}} \right)
+\end{align*}
 $$
 
 从 HSI 转换到 RGB：
@@ -135,25 +137,31 @@ $$
 当 $H\in[0^\circ,120^\circ]$ ：
 
 $$
-B = I(1 - S) \\
-R = I \left[ 1 + \frac{S \cos H}{\cos(60^\circ - H)} \right] \\
-G = 3I - (B + R)
+\begin{align*}
+B &= I(1 - S) \\
+R &= I \left[ 1 + \frac{S \cos H}{\cos(60^\circ - H)} \right] \\
+G &= 3I - (B + R)
+\end{align*}
 $$
 
 当 $H\in[120^\circ,240^\circ]$ ：
 
 $$
-R = I(1 - S) \\
-G = I \left[ 1 + \frac{S \cos(H-120^\circ)}{\cos(180^\circ - H)} \right] \\
-B = 3I - (R + G)
+\begin{align*}
+R &= I(1 - S) \\
+G &= I \left[ 1 + \frac{S \cos(H-120^\circ)}{\cos(180^\circ - H)} \right] \\
+B &= 3I - (R + G)
+\end{align*}
 $$
 
 当 $H\in[240^\circ,360^\circ]$ ：
 
 $$
-G = I(1 - S) \\
-B = I \left[ 1 + \frac{S \cos(H - 240^\circ)}{\cos(300^\circ - H)} \right] \\
-R = 3I - (B + G)
+\begin{align*}
+G &= I(1 - S) \\
+B &= I \left[ 1 + \frac{S \cos(H - 240^\circ)}{\cos(300^\circ - H)} \right] \\
+R &= 3I - (B + G)
+\end{align*}
 $$
 
 注意，这里的 R,G,B 分量取值范围为常见的 [0, 1]，是对常见的256灰度级做归一化(除以255)，且相互独立，与前述色彩空间中色度系数 r,g,b 不同(因为它们具有相加为1的约束)。求解 H 和 S 时，只关心各分量之间的比例，可以将 RGB 归一化到 rgb 空间， $r=R/(R+G+B)$ 后得到颜色三角形，即为立方体三个相邻顶点连接的三角形，三角形上面的点满足 $r+g+b=1$ 。

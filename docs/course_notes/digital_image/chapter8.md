@@ -142,9 +142,11 @@ MPEG 帧的分类：
 一维和二维 DCT ：
 
 $$
-C(u) = a(u) \sum_{x=0}^{N-1} f(x) \cos\left[\frac{(2x+1)u\pi}{2N}\right]
+\begin{align*}
+C(u) &= a(u) \sum_{x=0}^{N-1} f(x) \cos\left[\frac{(2x+1)u\pi}{2N}\right]
 \\
-C(u, v) = a(u)a(v) \sum_{x=0}^{N-1} \sum_{y=0}^{N-1} f(x, y) \cos\left[\frac{(2x+1)u\pi}{2N}\right] \cos\left[\frac{(2y+1)v\pi}{2N}\right]
+C(u, v) &= a(u)a(v) \sum_{x=0}^{N-1} \sum_{y=0}^{N-1} f(x, y) \cos\left[\frac{(2x+1)u\pi}{2N}\right] \cos\left[\frac{(2y+1)v\pi}{2N}\right]
+\end{align*}
 $$
 
 一般情况下，对于同一图像，变换后舍弃部分系数再逆变换，均方误差：DFT > WHT > DCT 。

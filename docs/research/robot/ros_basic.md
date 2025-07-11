@@ -1,16 +1,12 @@
 # ROS Basic
 
-Ubuntu 20.04 Focal, ROS 1 Noetic.
-
-一些基本概念：
+常用工具：
 
 Rviz，3D 可视化工具，可以显示出机器人所处的环境、各种类型话题的消息等，如显示 3D 点云。
 
 TF，坐标变换系统。两种坐标系：固定坐标系（用于表示世界的参考坐标系），目标坐标系（相对于摄像机视角的参考坐标系）
 
 Gazebo，物理仿真工具，与实际环境对应，为机器人运动提供逼真的物理环境。
-
-SLAM(Simultaneous Localization and Mapping)，同步定位与建图。
 
 ## 工作空间
 
@@ -46,7 +42,7 @@ catkin_create_pkg <package_name> [depend1] [depend2] [depend3]
 # 查看软件包的依赖
 
 
-# 运行所有 ROS 命令之前，新开一个终端
+# 运行所有 ROS 命令之前，需要新开一个终端运行主节点
 roscore
 
 # else
@@ -98,7 +94,7 @@ launch 文件：
 - node：节点名称
 - type：节点的可执行文件名称
 - name：节点运行时的名称
-- output：“log | screen” (可选)日志发送目标，可以设置为 log 日志文件，或 screen 屏幕,默认是 log
+- output：“log | screen” (可选)日志发送目标，可以设置为 log 日志文件，或 screen 屏幕，默认是 log。
 - group：组，有命名空间特性
 - param / rosparam：参数
 - arg ：launch 文件内部局部变量
@@ -124,7 +120,7 @@ pkg 节点所在包的名称，type 可执行文件（节点）的名称，name 
 </node>
 ```
 
-name 参数名称，type 参数类型（double，str，int等），value 参数值。
+name 参数名称，type 参数类型（doubl, str, int 等），value 参数值。
 
 标签 rosparam，实现节点从参数服务器上 load，dump，delete YAML 文件：
 
@@ -145,7 +141,7 @@ command 功能类型，file 参数文件的路径，param 参数名称。
 <include file="$(find package_name)/launch_file_name">
 ```
 
-标签 remap，实现节点名称的重映射，原始名称-->新名称：
+标签 remap，实现节点名称的重映射，原始名称 → 新名称：
 
 ```xml
 <remap from="turtle1/cmd_vel" to="/cmd_vel" />
@@ -200,7 +196,7 @@ command 功能类型，file 参数文件的路径，param 参数名称。
 -->
 ```
 
-**launch文件启动之前，无需再执行`roscore`指令启动`rosmaster`，launch文件可以自启动rosmaster**
+注意：launch 文件启动之前，无需再执行 `roscore` 指令启动 rosmaster ，因为 launch 文件可以自启动 rosmaster。
 
 ## rqt 工具
 
@@ -258,7 +254,7 @@ rosed [package_name] [filename]
 
 package.xml 文件中的 `<depend>xxx</depend>` 标签。
 
-CMakeLists.txt 文件中的
+CMakeLists.txt 文件中：
 
 ```cmake
 find_package(catkin REQUIRED COMPONENTS
@@ -291,9 +287,8 @@ rosbag record -O xxx /turtle1/cmd_vel /turtle1/pose
 录制全部话题，或者选择其中一部分话题。
 
 ```bash
-rosbag info xxx.bag
-rosbag play xxx.bag
-rosbag play xxx.bag -r 4
+rosbag info xxx.bag # 查看数据包信息
+rosbag play xxx.bag # 播放数据包
+rosbag play xxx.bag -r 4 # 按照一定速率播放数据包
+rosbag filter ... # 可使用 python 语法执行一定操作，例如提取出包的某一段
 ```
-
-查看数据包信息，以及播放数据包、按照一定速率播放数据包。

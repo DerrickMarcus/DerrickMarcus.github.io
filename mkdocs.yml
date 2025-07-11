@@ -10,7 +10,7 @@ repo_name: DerrickMarcus.github.io
 edit_uri: edit/main/docs/
 
 # Copyright
-copyright: Copyright &copy; 2024 - 2025 Yanxu Chen
+copyright: Copyright &copy; 2024 - 2025 Derrick Marcus
 
 # Configuration
 theme:
@@ -234,7 +234,7 @@ markdown_extensions:
       clickable_checkbox: true
 
 extra_javascript:
-  - https://polyfill.io/v3/polyfill.min.js?features=es6 # latex 支持
+  - https://polyfill.io/v3/polyfill.min.js?features=es6 # latex
   - javascripts/katex.js
 
   - https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js
@@ -286,7 +286,7 @@ nav:
           - 1-概率论基础: course_notes/probability/chapter1.md
           - 2-一元随机变量: course_notes/probability/chapter2.md
           - 3-多元随机变量: course_notes/probability/chapter3.md
-          - 4-二阶矩过程与谱分析: course_notes/probability/chapter4.md
+          - 4-Second-order Process & Spectral Analysis: course_notes/probability/chapter4.md
           - 5-Gaussian Process: course_notes/probability/chapter5.md
           - 6-Markov Chain: course_notes/probability/chapter6.md
           - 7-Poisson Process: course_notes/probability/chapter7.md
@@ -374,10 +374,13 @@ nav:
           - ROS basic: research/robot/ros_basic.md
           - Gazebo: research/robot/gazebo.md
           - Catkin Tool: research/robot/catkin.md
-          - SLAM: research/robot/slam.md
+          - SLAM:
+              - SLAM: research/robot/slam/index.md
+              - Graph Optimization: research/robot/slam/graph_optimization.md
+              - Kalman Filter: research/robot/slam/kalman_filter.md
           - LIO-SAM: research/robot/liosam.md
-          - Kalman Filter: research/robot/kalman_filter.md
           - Kd-Tree: research/robot/kdtree.md
+          - Gaussian Splatting: research/robot/gaussian_splatting.md
   - "💻 Computer Science Basic":
       - Computer Science Basic: computer_basic/index.md
       - "⚙️ Environment Configuration":

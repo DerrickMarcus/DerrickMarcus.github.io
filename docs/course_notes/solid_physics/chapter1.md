@@ -90,31 +90,37 @@ $$
 简单立方：
 
 $$
-\vec{\alpha}_1=a\vec{i}
+\begin{align*}
+\vec{\alpha}_1&=a\vec{i}
 \\
-\vec{\alpha}_2=a\vec{j}
+\vec{\alpha}_2&=a\vec{j}
 \\
-\vec{\alpha}_3=a\vec{k}
+\vec{\alpha}_3&=a\vec{k}
+\end{align*}
 $$
 
 体心立方：体心指向三个的顶点，沿体对角线方向
 
 $$
-\vec{\alpha}_1=\frac a2(-\vec{i}+\vec{j}+\vec{k})
+\begin{align*}
+\vec{\alpha}_1&=\frac a2(-\vec{i}+\vec{j}+\vec{k})
 \\
-\vec{\alpha}_2=\frac a2(\vec{i}-\vec{j}+\vec{k})
+\vec{\alpha}_2&=\frac a2(\vec{i}-\vec{j}+\vec{k})
 \\
-\vec{\alpha}_3=\frac a2(\vec{i}+\vec{j}-\vec{k})
+\vec{\alpha}_3&=\frac a2(\vec{i}+\vec{j}-\vec{k})
+\end{align*}
 $$
 
 面心立方：顶点指向相邻的三个面心
 
 $$
-\vec{\alpha}_1=\frac a2(\vec{j}+\vec{k})
+\begin{align*}
+\vec{\alpha}_1&=\frac a2(\vec{j}+\vec{k})
 \\
-\vec{\alpha}_2=\frac a2(\vec{i}+\vec{k})
+\vec{\alpha}_2&=\frac a2(\vec{i}+\vec{k})
 \\
-\vec{\alpha}_3=\frac a2(\vec{i}+\vec{j})
+\vec{\alpha}_3&=\frac a2(\vec{i}+\vec{j})
+\end{align*}
 $$
 
 堆积比/致密度（packing ratio）：注意计算，体心立方中体对角线长为 $4r$ ，面心立方中面对角线长为 $4r$ ，六角密排中按照上下两个小正四面体计算。
@@ -186,11 +192,13 @@ $$
 倒格矢：满足关系 $\vec{G}_h \cdot \vec{R}_h=2\pi m$ 的矢量。有 $\vec{G}_h=h_1\vec{\beta}_1+h_2\vec{\beta}_2+h_3\vec{\beta}_3$。$\vec{G}_h$ 端点构成倒格子，且 $\vec{\alpha}_i\cdot \vec{\beta}_j=2\pi\delta_{ij}$。
 
 $$
-\vec{\beta}_1 = 2\pi \frac{\vec{\alpha}_2 \times \vec{\alpha}_3}{\vec{\alpha}_1 \cdot (\vec{\alpha}_2 \times \vec{\alpha}_3)}
+\begin{align*}
+\vec{\beta}_1 &= 2\pi \frac{\vec{\alpha}_2 \times \vec{\alpha}_3}{\vec{\alpha}_1 \cdot (\vec{\alpha}_2 \times \vec{\alpha}_3)}
 \\
-\vec{\beta}_2 = 2\pi \frac{\vec{\alpha}_3 \times \vec{\alpha}_1}{\vec{\alpha}_2 \cdot (\vec{\alpha}_3 \times \vec{\alpha}_1)}
+\vec{\beta}_2 &= 2\pi \frac{\vec{\alpha}_3 \times \vec{\alpha}_1}{\vec{\alpha}_2 \cdot (\vec{\alpha}_3 \times \vec{\alpha}_1)}
 \\
-\vec{\beta}_3 = 2\pi \frac{\vec{\alpha}_1 \times \vec{\alpha}_2}{\vec{\alpha}_3 \cdot (\vec{\alpha}_1 \times \vec{\alpha}_2)}
+\vec{\beta}_3 &= 2\pi \frac{\vec{\alpha}_1 \times \vec{\alpha}_2}{\vec{\alpha}_3 \cdot (\vec{\alpha}_1 \times \vec{\alpha}_2)}
+\end{align*}
 $$
 
 倒格子的物理意义：正格子的傅里叶变换，是晶格周期性在波矢空间的表达。
@@ -198,31 +206,37 @@ $$
 简单立方的倒格子——简单立方：
 
 $$
-\vec{\beta}_1=\frac{2\pi}{a}\vec{i}
+\begin{align*}
+\vec{\beta}_1&=\frac{2\pi}{a}\vec{i}
 \\
-\vec{\beta}_2=\frac{2\pi}{a}\vec{j}
+\vec{\beta}_2&=\frac{2\pi}{a}\vec{j}
 \\
-\vec{\beta}_3=\frac{2\pi}{a}\vec{k}
+\vec{\beta}_3&=\frac{2\pi}{a}\vec{k}
+\end{align*}
 $$
 
 体心立方的倒格子——面心立方：
 
 $$
-\vec{\beta}_1=\frac{2\pi}{a}(\vec{j}+\vec{k})
+\begin{align*}
+\vec{\beta}_1&=\frac{2\pi}{a}(\vec{j}+\vec{k})
 \\
-\vec{\beta}_2=\frac{2\pi}{a}(\vec{i}+\vec{k})
+\vec{\beta}_2&=\frac{2\pi}{a}(\vec{i}+\vec{k})
 \\
-\vec{\beta}_3=\frac{2\pi}{a}(\vec{i}+\vec{j})
+\vec{\beta}_3&=\frac{2\pi}{a}(\vec{i}+\vec{j})
+\end{align*}
 $$
 
 面心立方的倒格子——体心立方：
 
 $$
-\vec{\beta}_1=\frac{2\pi}{a}(-\vec{i}+\vec{j}+\vec{k})
+\begin{align*}
+\vec{\beta}_1&=\frac{2\pi}{a}(-\vec{i}+\vec{j}+\vec{k})
 \\
-\vec{\beta}_2=\frac{2\pi}{a}(\vec{i}-\vec{j}+\vec{k})
+\vec{\beta}_2&=\frac{2\pi}{a}(\vec{i}-\vec{j}+\vec{k})
 \\
-\vec{\beta}_3=\frac{2\pi}{a}(\vec{i}+\vec{j}-\vec{k})
+\vec{\beta}_3&=\frac{2\pi}{a}(\vec{i}+\vec{j}-\vec{k})
+\end{align*}
 $$
 
 倒格矢与晶面的关系：
