@@ -225,7 +225,7 @@ if __name__ == "__main__":
 
 ## Task 4
 
-使用最小平方法恢复图像，$\hat F(u,v)=\dfrac{H^*(u，v)}{|H(u,v)|^2+s|P(u,v)|^2}G(u,v)$ 。
+使用最小平方法恢复图像， $\hat F(u,v)=\dfrac{H^*(u，v)}{|H(u,v)|^2+s|P(u,v)|^2}G(u,v)$ 。
 
 运行文件 `task4.py` ，效果如下：
 

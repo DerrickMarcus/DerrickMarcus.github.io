@@ -211,7 +211,7 @@ RGB-IR 技术：一部分 G 替换为红外(IR)，即 R,G,B,IR 四种数量相�
 
 光通量(luminous flux)：单位时间通过某一面积的光辐射能，单位流明 $\text{lm}$ 。
 
-光强(luminous intensity)：点光源 Q 沿方向 r 的发光强度 I，定义为沿此方向上单位立体角内发出的光通量 $I=\dfrac{\mathrm{d}\Phi}{\mathrm{d}\Omega}$ ，单位坎德拉 $\text{cd}=\text{lm/sr}$。
+光强(luminous intensity)：点光源 Q 沿方向 r 的发光强度 I，定义为沿此方向上单位立体角内发出的光通量 $I=\dfrac{\mathrm{d}\Phi}{\mathrm{d}\Omega}$ ，单位坎德拉 $\text{cd}=\text{lm/sr}$ .
 
 亮度(brightness)：表示发光面明亮程度，指发光表面在指定方向的发光强度与垂直在指定方向的发光面的面积之比 $B=\dfrac{\mathrm{d}\Phi}{\mathrm{d}\Omega \mathrm{d}S \cos\theta}$ ，单位尼特 $\text{nit}=\text{cd/m}^2$ 。
 

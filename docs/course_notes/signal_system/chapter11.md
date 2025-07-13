@@ -2,7 +2,7 @@
 
 闭环增益表达式，负反馈 $\dfrac{A}{1+AF}$ ，正反馈 $\dfrac{A}{1-AF}$ 。
 
-深度负反馈 $AF\gg1\implies H\approx \dfrac{1}{F}$，环路增益仅由反馈系数决定。
+深度负反馈 $AF\gg1\implies H\approx \dfrac{1}{F}$ ，环路增益仅由反馈系数决定。
 
 负反馈的作用：
 

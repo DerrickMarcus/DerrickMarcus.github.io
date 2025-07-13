@@ -275,98 +275,98 @@ nav:
           - Data and Algorithm: course_notes/data_algorithm/index.md
       - Signals and Systems:
           - Signals and Systems: course_notes/signal_system/index.md
-          - 05-傅里叶变换应用于通信系统: course_notes/signal_system/chapter5.md
-          - 06-信号的矢量空间: course_notes/signal_system/chapter6.md
-          - 07-离散时间系统的时域分析: course_notes/signal_system/chapter7.md
-          - 08-z变换与离散时间系统z域分析: course_notes/signal_system/chapter8.md
-          - 11-反馈系统: course_notes/signal_system/chapter11.md
-          - 12-系统的状态变量分析: course_notes/signal_system/chapter12.md
+          - 05 傅里叶变换应用于通信系统: course_notes/signal_system/chapter5.md
+          - 06 信号的矢量空间: course_notes/signal_system/chapter6.md
+          - 07 离散时间系统的时域分析: course_notes/signal_system/chapter7.md
+          - 08 z变换与离散时间系统z域分析: course_notes/signal_system/chapter8.md
+          - 11 反馈系统: course_notes/signal_system/chapter11.md
+          - 12 系统的状态变量分析: course_notes/signal_system/chapter12.md
       - Probability and Stochastic Process:
           - Probability and Stochastic Process: course_notes/probability/index.md
-          - 1-概率论基础: course_notes/probability/chapter1.md
-          - 2-一元随机变量: course_notes/probability/chapter2.md
-          - 3-多元随机变量: course_notes/probability/chapter3.md
-          - 4-Second-order Process & Spectral Analysis: course_notes/probability/chapter4.md
-          - 5-Gaussian Process: course_notes/probability/chapter5.md
-          - 6-Markov Chain: course_notes/probability/chapter6.md
-          - 7-Poisson Process: course_notes/probability/chapter7.md
+          - 1 Probability Theory Basics: course_notes/probability/chapter1.md
+          - 2 Univariate Random Variable: course_notes/probability/chapter2.md
+          - 3 Multivariate Random Variable: course_notes/probability/chapter3.md
+          - 4 Second-order Process and Spectral Analysis: course_notes/probability/chapter4.md
+          - 5 Gaussian Process: course_notes/probability/chapter5.md
+          - 6 Markov Chain: course_notes/probability/chapter6.md
+          - 7 Poisson Process: course_notes/probability/chapter7.md
       - Media and Cognition:
           - Media and Cognition: course_notes/media_cognition/index.md
-          - 1-Artificial Intelligence: course_notes/media_cognition/chapter1.md
-          - 2-Cognition: course_notes/media_cognition/chapter2.md
-          - 3-Machine Learing: course_notes/media_cognition/chapter3.md
-          - 4-Deep Learing: course_notes/media_cognition/chapter4.md
-          - 5-CNN: course_notes/media_cognition/chapter5.md
-          - 6-RNN: course_notes/media_cognition/chapter6.md
-          - 7-Transformer: course_notes/media_cognition/chapter7.md
-          - 8-Bayes Decision: course_notes/media_cognition/chapter8.md
+          - 1 Artificial Intelligence: course_notes/media_cognition/chapter1.md
+          - 2 Cognition: course_notes/media_cognition/chapter2.md
+          - 3 Machine Learing: course_notes/media_cognition/chapter3.md
+          - 4 Deep Learing: course_notes/media_cognition/chapter4.md
+          - 5 CNN: course_notes/media_cognition/chapter5.md
+          - 6 RNN: course_notes/media_cognition/chapter6.md
+          - 7 Transformer: course_notes/media_cognition/chapter7.md
+          - 8 Bayes Decision: course_notes/media_cognition/chapter8.md
       - Foundation of Solid State Physics:
           - Foundation of Solid State Physics: course_notes/solid_physics/index.md
-          - 1-晶体的结构: course_notes/solid_physics/chapter1.md
-          - 2-固体的结合: course_notes/solid_physics/chapter2.md
-          - 3-固体电子论: course_notes/solid_physics/chapter3.md
-          - 4-固体的电特性: course_notes/solid_physics/chapter4.md
-          - 5-固体间接触的电特性: course_notes/solid_physics/chapter5.md
-          - 6-固体的磁特性: course_notes/solid_physics/chapter6.md
-          - 7-晶格振动和固体的热性质: course_notes/solid_physics/chapter7.md
-          - 8-超导: course_notes/solid_physics/chapter8.md
-          - 9-场与物质的相互作用: course_notes/solid_physics/chapter9.md
+          - 1 晶体的结构: course_notes/solid_physics/chapter1.md
+          - 2 固体的结合: course_notes/solid_physics/chapter2.md
+          - 3 固体电子论: course_notes/solid_physics/chapter3.md
+          - 4 固体的电特性: course_notes/solid_physics/chapter4.md
+          - 5 固体间接触的电特性: course_notes/solid_physics/chapter5.md
+          - 6 固体的磁特性: course_notes/solid_physics/chapter6.md
+          - 7 晶格振动和固体的热性质: course_notes/solid_physics/chapter7.md
+          - 8 超导: course_notes/solid_physics/chapter8.md
+          - 9 场与物质的相互作用: course_notes/solid_physics/chapter9.md
           - 课后测试题: course_notes/solid_physics/test.md
       - Digital Image Processing:
           - Digital Image Processing: course_notes/digital_image/index.md
-          - 1-图像处理概述: course_notes/digital_image/chapter1.md
-          - 2-图像信息与视觉感知: course_notes/digital_image/chapter2.md
-          - 3-空域图像增强: course_notes/digital_image/chapter3.md
-          - 4-频域图像增强: course_notes/digital_image/chapter4.md
-          - 5-图像分割: course_notes/digital_image/chapter5.md
-          - 6-图像复原: course_notes/digital_image/chapter6.md
-          - 7-图像校正和修补: course_notes/digital_image/chapter7.md
-          - 8-图像压缩编码: course_notes/digital_image/chapter8.md
-          - 9-图像3D成像: course_notes/digital_image/chapter9.md
+          - 1 图像处理概述: course_notes/digital_image/chapter1.md
+          - 2 图像信息与视觉感知: course_notes/digital_image/chapter2.md
+          - 3 空域图像增强: course_notes/digital_image/chapter3.md
+          - 4 频域图像增强: course_notes/digital_image/chapter4.md
+          - 5 图像分割: course_notes/digital_image/chapter5.md
+          - 6 图像复原: course_notes/digital_image/chapter6.md
+          - 7 图像校正和修补: course_notes/digital_image/chapter7.md
+          - 8 图像压缩编码: course_notes/digital_image/chapter8.md
+          - 9 图像3D成像: course_notes/digital_image/chapter9.md
       - Operating System:
           - Operating System: course_notes/operating_system/index.md
-          - 01-绪论(1): course_notes/operating_system/chapter1.md
-          - 02-绪论(2): course_notes/operating_system/chapter2.md
-          - 03-进程的描述与控制: course_notes/operating_system/chapter3.md
-          - 04-线程及其实现: course_notes/operating_system/chapter4.md
-          - 05-互斥和同步(1): course_notes/operating_system/chapter5.md
-          - 06-互斥和同步(2): course_notes/operating_system/chapter6.md
-          - 07-处理机调度&死锁: course_notes/operating_system/chapter7.md
-          - 08-存储器管理(1): course_notes/operating_system/chapter8.md
-          - 09-存储器管理(2): course_notes/operating_system/chapter9.md
-          - 10-存储器管理(3): course_notes/operating_system/chapter10.md
-          - 11-设备管理(1): course_notes/operating_system/chapter11.md
-          - 12-设备管理(2): course_notes/operating_system/chapter12.md
-          - 13-文件系统(1): course_notes/operating_system/chapter13.md
-          - 14-文件系统(2): course_notes/operating_system/chapter14.md
+          - 01 Introduction(1): course_notes/operating_system/chapter1.md
+          - 02 Introduction(2): course_notes/operating_system/chapter2.md
+          - 03 Process: course_notes/operating_system/chapter3.md
+          - 04 Thread: course_notes/operating_system/chapter4.md
+          - 05 Mutual Exclusion and Synchronization(1): course_notes/operating_system/chapter5.md
+          - 06 Mutual Exclusion and Synchronization(2): course_notes/operating_system/chapter6.md
+          - 07 Processor Scheduling and Deadlock: course_notes/operating_system/chapter7.md
+          - 08 Memory Management(1): course_notes/operating_system/chapter8.md
+          - 09 Memory Management(2): course_notes/operating_system/chapter9.md
+          - 10 Memory Management(3): course_notes/operating_system/chapter10.md
+          - 11 Device Management(1): course_notes/operating_system/chapter11.md
+          - 12 Device Management(2): course_notes/operating_system/chapter12.md
+          - 13 File Systems(1): course_notes/operating_system/chapter13.md
+          - 14 File Systems(2): course_notes/operating_system/chapter14.md
           - 知识总结(计算机系): course_notes/operating_system/review_cst.md
   - "📈 Course Labs":
       - Course Labs: course_labs/index.md
       - Data and Algorithm:
           - Data and Algorithm: course_labs/data_algorithm/index.md
-          - OJ-1-丢失的练习册: course_labs/data_algorithm/oj1.md
-          - OJ-2-军训排队: course_labs/data_algorithm/oj2.md
-          - OJ-3-比武: course_labs/data_algorithm/oj3.md
-          - OJ-4-缺损二叉树: course_labs/data_algorithm/oj4.md
-          - OJ-5-信息传递: course_labs/data_algorithm/oj5.md
-          - OJ-6-跳跳乐: course_labs/data_algorithm/oj6.md
-          - OJ-7-带限矩阵方程组求解: course_labs/data_algorithm/oj7.md
-          - OJ-8-缺失数据恢复: course_labs/data_algorithm/oj8.md
-          - OJ-9-小明的火车旅行计划: course_labs/data_algorithm/oj9.md
-          - OJ-10-张量相乘的最小开销问题: course_labs/data_algorithm/oj10.md
+          - OJ-1 丢失的练习册: course_labs/data_algorithm/oj1.md
+          - OJ-2 军训排队: course_labs/data_algorithm/oj2.md
+          - OJ-3 比武: course_labs/data_algorithm/oj3.md
+          - OJ-4 缺损二叉树: course_labs/data_algorithm/oj4.md
+          - OJ-5 信息传递: course_labs/data_algorithm/oj5.md
+          - OJ-6 跳跳乐: course_labs/data_algorithm/oj6.md
+          - OJ-7 带限矩阵方程组求解: course_labs/data_algorithm/oj7.md
+          - OJ-8 缺失数据恢复: course_labs/data_algorithm/oj8.md
+          - OJ-9 小明的火车旅行计划: course_labs/data_algorithm/oj9.md
+          - OJ-10 张量相乘的最小开销问题: course_labs/data_algorithm/oj10.md
       - Digital Image Processing:
           - Digital Image Processing: course_labs/digital_image/index.md
-          - Lab-1-课程概述: course_labs/digital_image/lab1.md
-          - Lab-2-彩色分量分解: course_labs/digital_image/lab2.md
-          - Lab-3-人脸蒙版提取: course_labs/digital_image/lab3.md
-          - Lab-4-灰度伽马变换: course_labs/digital_image/lab4.md
-          - Lab-5-直方图均衡化/规定化: course_labs/digital_image/lab5.md
-          - Lab-6-滤波去噪: course_labs/digital_image/lab6.md
-          - Lab-7-频域滤波: course_labs/digital_image/lab7.md
-          - Lab-8-边缘检测: course_labs/digital_image/lab8.md
-          - Lab-9-阈值分割&伪彩色增强: course_labs/digital_image/lab9.md
-          - Lab-12-图像复原: course_labs/digital_image/lab12.md
-          - Lab-13-图像仿射变换: course_labs/digital_image/lab13.md
+          - Lab-1 课程概述: course_labs/digital_image/lab1.md
+          - Lab-2 彩色分量分解: course_labs/digital_image/lab2.md
+          - Lab-3 人脸蒙版提取: course_labs/digital_image/lab3.md
+          - Lab-4 灰度伽马变换: course_labs/digital_image/lab4.md
+          - Lab-5 直方图均衡化/规定化: course_labs/digital_image/lab5.md
+          - Lab-6 滤波去噪: course_labs/digital_image/lab6.md
+          - Lab-7 频域滤波: course_labs/digital_image/lab7.md
+          - Lab-8 边缘检测: course_labs/digital_image/lab8.md
+          - Lab-9 阈值分割&伪彩色增强: course_labs/digital_image/lab9.md
+          - Lab-12 图像复原: course_labs/digital_image/lab12.md
+          - Lab-13 图像仿射变换: course_labs/digital_image/lab13.md
   - "🔬 Research":
       - Research: research/index.md
       - "🤖 Robot":

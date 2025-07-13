@@ -5,7 +5,25 @@
 
 ## 随机过程基本概念
 
+> 随机过程是概率论的一个自然延伸。
+>
+> 概率论研究的是随机现象和随机变量，随机变量是静态的、不随外部条件变化的。而随机过程研究的是随着某些参数（时间，空间，频率等）变化的随机现象和随机变量。随机过程可以看作是随机变量从有限维到无限维的自然延伸，是一组无穷多个、相互有关的随机变量[^1]。
+
+随机过程的定义：随机过程是一组依赖于参数 $t$ 的随机变量 $\{X(t),t\in T\}$ . $T$ 称为参数集/指标集，参数 $t$ 称为指标。
+
+根据参数集 $T$ 的性质，可以分为 离散时间随机过程 $\{X(n)\}$ 或 $\{X_n\}$ ，和 连续时间随机过程 $\{X(t)\}$ 或 $\{X_t\}$ .
+
 随机过程 $X(t)$ 可以理解为随时间变化的、随机变量的函数。当时间 $t$ 取定时，随机过程就是一个随机变量。
+
+<br>
+
+随机过程也可以看作是一个二元函数 $X(\omega,t):\varOmega\times T\to\mathbb{R}$ ，其中 $\varOmega$ 为样本空间， $T$ 为指标集。
+
+固定 $\omega$ ，则 $X(\omega,t)$ 随着 $t\in T$ 变化，表示随机过程的一次实现，称为一个**样本轨道**。
+
+固定一个时刻 $t$ ，表示一个一元随机变量 $X(t)$ ，任取 $n$ 个时刻 $t_1,\cdots,t_n$ 则 $(X(t_1),\cdots,X(t_n))$ 表示 $n$ 元随机变量。
+
+<br>
 
 与随机变量相比，随机过程多了时间的概念，自然我们感兴趣的是随机过程在不同时间点上随机变量之间的关系，也就是相关性。
 
@@ -65,10 +83,13 @@ $$
 若二阶矩过程 $\{X(t)\}$ 的均值为常数，且自相关函数仅与时间差 $\tau=t-s$ 有关，则为 宽平稳随机过程(WSS)。
 
 $$
-\mathrm{E}[X(t)]=\mu_X,\quad R_X(t,s)=R_X(t-s)=R_X(\tau)
+\begin{gather*}
+\mathrm{E}[X(t)]=\mu_X,\quad  R_X(t,s)=R_X(t-s)=R_X(\tau) \\
+R_X(\tau)=\mathrm{E}\left[X(t+\tau)\overline{X(t)}\right]
+\end{gather*}
 $$
 
-宽平稳的自相关函数具有共轭反对称性质 $R(\tau)=\overline{R(-\tau)}$ . 自相关函数在零点处取得最大值 $R(0)\geqslant |R(\tau)|,\; R(0)\geqslant \mu_X^2$ .
+宽平稳的自相关函数具有共轭反对称性质 $R_X(\tau)=\overline{R_X(-\tau)}$ . 自相关函数在零点处取得最大值 $R_X(0)\geqslant |R_X(\tau)|,\; R_X(0)\geqslant \mu_X^2$ .
 
 由此可推出，宽平稳过程的方差也为常数：
 
@@ -84,6 +105,8 @@ $$
 
 也具有共轭反对称性 $C_X(\tau)=\overline{C_X(\tau)}$ .
 
+<br>
+
 对于两个不同的随机过程，可定义 联合宽平稳： $\{X(t)\},\;\{Y(t)\}$ 的互相关函数只与时间差有关
 
 $$
@@ -95,10 +118,10 @@ $$
 ### 二阶矩过程的导数
 
 $$
-\begin{align*}
+\begin{gather*}
 \mathrm{E}[X'(t)]=\frac{\mathrm{d}}{\mathrm{d}t}\mathrm{E}[X(t)],\quad \mathrm{E}\left[X'(t)\overline{X(s)}\right]=\frac{\partial}{\partial t}R_X(t,s) \\
 \mathrm{E}\left[X(t)\overline{X'(s)}\right]=\frac{\partial}{\partial s}R_X(t,s),\quad \mathrm{E}\left[X'(t)\overline{X'(s)} \right]=\frac{\partial^2}{\partial t\partial s}R_X(t,s)
-\end{align*}
+\end{gather*}
 $$
 
 对于宽平稳过程，由于自相关函数只有一个变量，可以简写为：
@@ -107,7 +130,7 @@ $$
 \mathrm{E}\left[ X^{(m)}(t)\overline{X^{(n)}(s)} \right]=(-1)^n R_X^{(m+n)}(\tau),\quad \tau=t-s
 $$
 
-### 宽平稳过程的的谱分析
+## 宽平稳过程的的谱分析
 
 > 在之前的《信号与系统》课程中，我们研究的都是确定性信号。而真实信号都是随机的，不存在完全确定的信号。随机过程的目标是研究随机信号。
 
@@ -127,11 +150,60 @@ $$
 S_X(\omega)=\sum_{n=-\infty}^{+\infty}R_X[n]e^{-\mathrm{j}\omega n}
 $$
 
----
+<br>
 
-常见函数的谱密度：
+常见随机过程的自相关函数和谱密度：
 
-<!-- TODO -->
+<table>
+    <thead>
+        <tr>
+            <th>Autocorrelation Function</th>
+            <th>Power Spectral Density</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>$$R(\tau) = \mathrm{e}^{-\alpha|\tau|},\ \alpha > 0$$</td>
+            <td>$$S(\omega) = \frac{2\alpha}{\omega^2 + \alpha^2}$$</td>
+        </tr>
+        <tr>
+            <td>$$R(\tau)=\cos(\omega_0 \tau)$$</td>
+            <td>$$S(\omega)=\pi(\delta(\omega-\omega_0)+\delta(\omega+\omega_0))$$</td>
+        </tr>
+        <tr>
+            <td>$$R(\tau)=\dfrac{\sin(\omega_0\tau)}{\omega_0\tau}$$</td>
+            <td>$$S(\omega)=\begin{cases} \dfrac{\pi}{\omega_0},& |\omega|\leqslant\omega_0 \\ 0,& |\omega|>\omega_0
+                \end{cases}$$</td>
+        </tr>
+        <tr>
+            <td>$$R(\tau)=\begin{cases} 1-\frac{2|\tau|}{T}, & |\tau|\leqslant \frac{T}{2} \\ 0,
+                &|\tau|>\frac{T}{2}\end{cases}$$</td>
+            <td>$$S(\omega)=\dfrac{8\sin^2\left(\dfrac{\omega T}{4}\right)}{\omega^2T}$$</td>
+        </tr>
+        <tr>
+            <td>$$R(\tau)=\mathrm{e}^{-\alpha|\tau|}\cos(\omega_0\tau),\,\alpha>0$$</td>
+            <td>$$S(\omega)=\dfrac{\alpha}{(\omega-\omega_0)^2+\alpha^2}+\dfrac{\alpha}{(\omega+\omega_0)^2+\alpha^2}$$
+            </td>
+        </tr>
+        <tr>
+            <td>$$R(\tau)=\mathrm{e}^{-\alpha\tau^2},\,\alpha>0$$</td>
+            <td>$$S(\omega)=\sqrt{\dfrac{\pi}{\alpha}}\mathrm{e}^{-\omega^2/4\alpha}$$</td>
+        </tr>
+        <tr>
+            <td>$$R(\tau)=\mathrm{e}^{-\alpha\tau^2}\cos(\beta\tau),\,\alpha>0$$</td>
+            <td>$$S(\omega)=\dfrac{1}{2}\sqrt{\dfrac{\pi}{\alpha}}\left(\mathrm{e}^{-(\omega-\beta)^2/4\alpha}+\mathrm{e}^{-(\omega+\beta)^2/4\alpha}\right)$$
+            </td>
+        </tr>
+        <tr>
+            <td>$$R(\tau)=\dfrac{2\sin\left(\frac{\Delta\omega}{2}\tau\right)}{\pi\tau}\cos(\omega_0\tau)$$</td>
+            <td>$$S(\omega)=\begin{cases} 1,&\omega_0-\dfrac{\Delta\omega}{2}\leqslant |\omega| \leqslant
+                \omega_0+\dfrac{\Delta\omega}{2} \\ 0, & \text{else}\end{cases}$$</td>
+        </tr>
+    </tbody>
+</table>
+
+!!! tip
+    实际信号的功率谱密度为**正实数**，这样功率才有实际的物理意义。
 
 ### 白噪声
 
@@ -145,7 +217,21 @@ $$
 
 ### 宽平稳过程通过 LTI 系统
 
-款平稳过程通过 $\{X(t)\}$ 通过 冲激响应为 $h(t)$ 的 LTI 系统，输出为 $\{Y(t)\}$ 。
+宽平稳过程通过 $\{X(t)\}$ 通过 冲激响应为 $h(t)$ 的 LTI 系统，输出 $\{Y(t)\}$ 也是随机过程。
+
+经过推导有：
+
+$$
+\begin{gather*}
+R_Y(t,s)=\int_{-\infty}^{+\infty}h^*(-x)R_{YX}(t-s-x)\mathrm{d}x \\
+R_{YX}(v)=\mathrm{E}[Y(s+v)X^*(s)]=\int_{-\infty}^{+\infty}h(v-x)R_{X}(x)\mathrm{d}x
+\end{gather*}
+$$
+
+因此，当宽平稳过程通过线性时不变系统时：
+
+1. 输出与输入联合宽平稳。
+2. 输出也为宽平稳过程。
 
 $$
 \begin{align*}
@@ -154,10 +240,27 @@ S_Y(\omega)&=S_X(\omega)|H(\omega)|^2
 \end{align*}
 $$
 
-<!-- TODO：补充公式 -->
+<br>
 
-互谱密度 为 互相关函数的傅里叶变换：
+随机过程 $\{X(t)\},\;\{Y(t)\}$ 联合宽平稳，互谱密度 定义为 互相关函数的傅里叶变换：
 
 $$
 S_{XY}(\omega)=\int_{-\infty}^{+\infty}R_{XY}(\tau)e^{-\mathrm{j}\omega \tau}\mathrm{d}\tau
 $$
+
+如果 $\forall t,s$ 都有 $X(t),Y(s)$ 不相关，即互相关函数 $R_{XY}(\tau)=0,\;\forall \tau$ ，等价于 $S(\omega)=0,\;\forall \omega$ .
+
+若 $\{X(t)\},\;\{Y(t)\}$ 均为宽平稳且联合宽平稳，则 $\{Z(t)=X(t)+Y(t)\}$ 的自相关函数和谱密度为：
+
+$$
+\begin{align*}
+R_Z(t)&=\mathrm{E}\left[(X(t+\tau)+Y(t+\tau))\overline{(X(t)+Y(t))}\right] \\
+&=R_X(\tau)+R_{XY}(\tau)+R_{YX}(\tau)+R_Y(\tau) \\
+S_Z(\omega)&=S_X(\omega)+S_{XY}(\omega)+S_{YX}(\omega)+S_Y(\omega)
+\end{align*}
+$$
+
+!!! note
+    虽然 互相关函数 和 互谱密度 是傅里叶变换对的关系，但是 互谱密度 不具有描述随机信号随频率分布的意义。
+
+[^1]: 欧志坚，李刚. *概率论与随机过程*［M］. 北京：清华大学出版社，2022.

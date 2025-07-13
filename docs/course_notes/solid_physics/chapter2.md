@@ -2,7 +2,9 @@
 
 ## 2.1 固体结合的规律
 
-自由原子结合成晶体释放能量，称为结合能 $W$ ，晶体结合后稳定时内能最小值为 $U(r_0)=-W$ 。内能最小值点（负数）是原子相互作用力吸引力与排斥力的拐点，距离更小排斥，距离更大吸引。
+自由原子结合成晶体释放能量，称为结合能 $W$ ，晶体结合后稳定时内能最小值为 $U(r_0)=-W$ 。内能最小值点（负数）是原子相互作用力吸引力与排斥力的拐点，距离更小时呈现排斥力，距离更大时呈现吸引力。
+
+<br>
 
 <span style="color:red">重点</span>：对于 $U(r)=-\dfrac{\alpha}{r^m}+\dfrac{\beta}{r^n}$ 的题型：
 
@@ -23,9 +25,11 @@
 分子轨道理论：两个原子形成分子时，电子就在整个分子区域内运动而不限于一个原子，分子中价电子的运动状态就是分子轨道。可以用波函数定量描述。两个原子靠近时，波函数重叠，每个电子与两个原子核发生作用，总哈密顿量为：
 
 $$
-\hat{H}=-\frac{\hbar^2}{2m}\nabla_1^2-\frac{\hbar^2}{2m}\nabla_2^2+V_{A1}+V_{A2}+V_{B1}+V_{B2}+\cancel{V_{12}}
+\begin{align*}
+\hat{H} &= -\frac{\hbar^2}{2m}\nabla_1^2-\frac{\hbar^2}{2m}\nabla_2^2+V_{A1}+V_{A2}+V_{B1}+V_{B2}+\cancel{V_{12}}
 \\
-=(-\frac{\hbar^2}{2m}\nabla_1^2+V_1)+(-\frac{\hbar^2}{2m}\nabla_2^2+V_2)
+&= (-\frac{\hbar^2}{2m}\nabla_1^2+V_1)+(-\frac{\hbar^2}{2m}\nabla_2^2+V_2)
+\end{align*}
 $$
 
 忽略两个电子之间的相互作用，可分离哈密顿量，故分离波函数 $\psi(r_1,r_2)=\psi_1(r_1)\psi_2(r_2)$ ，简化为单电子波动方程。电子为两个原子共有，波函数解称为“分子轨道”。采用近似解法，分子轨道波函数看作属原子轨道波函数的线性组合(LCAO)。
@@ -33,20 +37,24 @@ $$
 波函数和对应能级：
 
 $$
-\psi_+=C_+(\phi_A+\lambda\phi_B),\;E_+=C_+^2(H_{aa}+\lambda H_{ab}+\lambda H_{ba}+\lambda^2 H_{bb})
+\begin{align*}
+\psi_+=C_+(\phi_A+\lambda\phi_B),\quad & E_+=C_+^2(H_{aa}+\lambda H_{ab}+\lambda H_{ba}+\lambda^2 H_{bb})
 \\
-\psi_-=C_-(\phi_A-\lambda\phi_B),\;E_-=C_-^2(H_{aa}-\lambda H_{ab}-\lambda H_{ba}+\lambda^2 H_{bb})
+\psi_-=C_-(\phi_A-\lambda\phi_B),\quad & E_-=C_-^2(H_{aa}-\lambda H_{ab}-\lambda H_{ba}+\lambda^2 H_{bb})
+\end{align*}
 $$
 
 电子在 A 原子轨道上的概率为 $P_A=\dfrac{1}{1+\lambda^2}$ ，在 B 原子轨道上概率为 $P_B=\dfrac{\lambda^2}{1+\lambda^2}$ ，**电离度**为 $f_i=\dfrac{P_A-P_B}{P_A+P_B}=\dfrac{1-\lambda^2}{1+\lambda^2}$ 。
 
 (1) 当 $\lambda=0,f_i=1,P_A=1,P_B=0$ ，B 原子的价电子完全转移到 A 原子，**形成离子键**。归一化系数 $C_+=C_-=1$ 。例如碱金属和卤族元素的化合物。
 
-(2) A,B 为全同原子，$\lambda=1,f_i=0,P_A=P_B=\dfrac12$ 。A,B 原子的价电子均匀分布，两个原子共享所有价电子，**形成共价键**。归一化系数 $C_+=C_-=\dfrac{1}{\sqrt{2}},H_{aa}=H_{bb},H_{ab}=H_{ba}$，能量 $E_+=\varepsilon_A+H_{ab},E_-=\varepsilon_A-H_{ab}$ 。例如两个氢原子结合成氢分子。
+(2) A,B 为全同原子， $\lambda=1,f_i=0,P_A=P_B=\dfrac12$ 。A,B 原子的价电子均匀分布，两个原子共享所有价电子，**形成共价键**。归一化系数 $C_+=C_-=\dfrac{1}{\sqrt{2}},H_{aa}=H_{bb},H_{ab}=H_{ba}$ ，能量 $E_+=\varepsilon_A+H_{ab},E_-=\varepsilon_A-H_{ab}$ 。例如两个氢原子结合成氢分子。
+
+<br>
 
 电离度在 $0\sim1$ 之间，在离子结合与共价结合之间，且电离度越大离子性越强。
 
-相互重叠电子波函数与两个原子核之间的库仑吸引，吸引力使得整个系统达到内能最低的平衡位置，所以 $H_{ab}=\displaystyle\int \phi_A^*\hat{H}\phi_B\mathrm{d}r<0$ 。$E_+=\varepsilon_A+H_{ab}$ 能量低，对应 $\psi_+$ 为成键态。$E_-=\varepsilon_A-H_{ab}$ 能量高，对应 $\psi_-$ 为反键态。
+相互重叠电子波函数与两个原子核之间的库仑吸引，吸引力使得整个系统达到内能最低的平衡位置，所以 $H_{ab}=\displaystyle\int \phi_A^*\hat{H}\phi_B\mathrm{d}r<0$ 。 $E_+=\varepsilon_A+H_{ab}$ 能量低，对应 $\psi_+$ 为成键态。 $E_-=\varepsilon_A-H_{ab}$ 能量高，对应 $\psi_-$ 为反键态。
 
 两原子轨道波函数相位相同时，两原子间电子云密度增加，分子能量降低，称为成键轨道；两原子轨道波函数相位相反时，两原子间电子云密度减小，分子能量升高，称为反键轨道。每个轨道可以容纳两个自旋方向相反的电子，电子优先占据能量低的成键轨道。
 
@@ -73,7 +81,7 @@ $$
 
 离子晶体，如 $\ce{NaCl,CsCl}$ 。
 
-原胞（含一正一负两个离子）的平均库仑能 $-\dfrac{\alpha q^2}{4\pi\varepsilon_0 r}$ ， $\alpha$ 为马德隆常数，只和晶格形式有关。典型数值 $\ce{NaCl}:1.747565,\ce{CsCl}:1.762675,\ce{ZnS}:1.6381$ 。一维晶格的马德隆常数为 $\alpha=2\ln2$。
+原胞（含一正一负两个离子）的平均库仑能 $-\dfrac{\alpha q^2}{4\pi\varepsilon_0 r}$ ， $\alpha$ 为马德隆常数，只和晶格形式有关。典型数值 $\ce{NaCl}:1.747565,\ce{CsCl}:1.762675,\ce{ZnS}:1.6381$ 。一维晶格的马德隆常数为 $\alpha=2\ln2$ .
 
 当两个离子相互接近到它们的电子云发生显著重叠时，会产生强烈的排斥作用——重叠排斥能。实际的离子晶体便是在邻近离子间的排斥作用增强到和库仑吸引作用相抵时达到平衡。 $\ce{NaCl}$ 中 $N$ 个原胞的系统内能： $U(r)=N\left(\dfrac{A}{r}+\dfrac{B}{r^n}\right)$ 。
 

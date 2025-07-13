@@ -80,7 +80,7 @@ F(\boldsymbol{x}) = \frac{1}{2} \sum_{(\boldsymbol{x}_i, \boldsymbol{x}_j) \in C
 \boldsymbol{x}^* = \arg\min_{\boldsymbol{x}} F(\boldsymbol{x})
 $$
 
-其中 $\boldsymbol{x} = \left[\boldsymbol{x}_1^T, \cdots, \boldsymbol{x}_n^T\right]^T \in \mathbb{R}^N$ 为全部参数组成的向量，$\boldsymbol{x}_k, k = 1, \cdots, n$ 表示一个参数块。$C$ 是全部参与求和的参数块组合，$\boldsymbol{e}_{ij}(\boldsymbol{x}_i, \boldsymbol{x}_j, \boldsymbol{z}_{ij}) \in \mathbb{R}^{M_{ij}}$ 称为误差函数，$\boldsymbol{\Omega}_{ij} \in \mathbb{R}^{M_{ij} \times M_{ij}}$ 称为信息矩阵，为对称正定矩阵。
+其中 $\boldsymbol{x} = \left[\boldsymbol{x}_1^T, \cdots, \boldsymbol{x}_n^T\right]^T \in \mathbb{R}^N$ 为全部参数组成的向量， $\boldsymbol{x}_k, k = 1, \cdots, n$ 表示一个参数块。 $C$ 是全部参与求和的参数块组合， $\boldsymbol{e}_{ij}(\boldsymbol{x}_i, \boldsymbol{x}_j, \boldsymbol{z}_{ij}) \in \mathbb{R}^{M_{ij}}$ 称为误差函数， $\boldsymbol{\Omega}_{ij} \in \mathbb{R}^{M_{ij} \times M_{ij}}$ 称为信息矩阵，为对称正定矩阵。
 
 注意，这里为方便推导，假定误差函数的自变量是两个参数块，但在实际情况下，误差函数自变量可以仅包含一个参数块，也可以包含更多的参数块，此时该问题的求解方式可以很方便地通过拓展下面的推导得到。
 
@@ -100,9 +100,9 @@ $$
 \boldsymbol{e}_{ij}(\boldsymbol{x}_i + \Delta \boldsymbol{x}_i, \boldsymbol{x}_j + \Delta \boldsymbol{x}_j) = \boldsymbol{e}_{ij}(\boldsymbol{x} + \Delta \boldsymbol{x}) \approx \boldsymbol{e}_{ij} + \boldsymbol{J}_{ij} \Delta \boldsymbol{x}
 $$
 
-其中 $\boldsymbol{e}_{ij} = \boldsymbol{e}_{ij}(\boldsymbol{x})$，$\boldsymbol{J}_{ij} = \displaystyle\lim_{\Delta x \to 0} \frac{\boldsymbol{e}_{ij}(\boldsymbol{x} + \Delta \boldsymbol{x}) - \boldsymbol{e}_{ij}(\boldsymbol{x})}{\Delta \boldsymbol{x}} \in \mathbb{R}^{M_{ij} \times N}$ .
+其中 $\boldsymbol{e}_{ij} = \boldsymbol{e}_{ij}(\boldsymbol{x})$ ， $\boldsymbol{J}_{ij} = \displaystyle\lim_{\Delta x \to 0} \frac{\boldsymbol{e}_{ij}(\boldsymbol{x} + \Delta \boldsymbol{x}) - \boldsymbol{e}_{ij}(\boldsymbol{x})}{\Delta \boldsymbol{x}} \in \mathbb{R}^{M_{ij} \times N}$ .
 
-考虑到参数 $\boldsymbol{x}$ 可能位于非欧式空间 $\text{Dom}(\boldsymbol{x})$，而摄动量 $\Delta \boldsymbol{x}$ 位于欧式空间 $\mathbb{R}^N$，故上式中的向量加法很可能导致 $\boldsymbol{x} + \Delta \boldsymbol{x} \notin \text{Dom}(\boldsymbol{x})$。例如四维变换矩阵 T 或者三维旋转矩阵 R 对加法并不封闭，两个变换阵之和不是变换阵，两个正交阵之和也不是正交阵。
+考虑到参数 $\boldsymbol{x}$ 可能位于非欧式空间 $\text{Dom}(\boldsymbol{x})$ ，而摄动量 $\Delta \boldsymbol{x}$ 位于欧式空间 $\mathbb{R}^N$ ，故上式中的向量加法很可能导致 $\boldsymbol{x} + \Delta \boldsymbol{x} \notin \text{Dom}(\boldsymbol{x})$ .例如四维变换矩阵 T 或者三维旋转矩阵 R 对加法并不封闭，两个变换阵之和不是变换阵，两个正交阵之和也不是正交阵。
 
 为解决该问题，可采用广义加法 $\oplus : \text{Dom}(\boldsymbol{x}) \times \mathbb{R}^N \rightarrow \text{Dom}(\boldsymbol{x})$ 将(7)改写为：
 
@@ -139,7 +139,7 @@ F(\boldsymbol{x} \oplus \Delta \boldsymbol{x}) &= \sum_{(\boldsymbol{x}_i, \bold
 \end{align*}
 $$
 
-其中 $\boldsymbol{b} = \displaystyle\sum_{(\boldsymbol{x}_i, \boldsymbol{x}_j) \in C} \boldsymbol{b}_{ij} \in \mathbb{R}^n$，$\boldsymbol{H} = \displaystyle\sum_{(\boldsymbol{x}_i, \boldsymbol{x}_j) \in C} \boldsymbol{H}_{ij} \in \mathbb{R}^{N \times N}$ .
+其中 $\boldsymbol{b} = \displaystyle\sum_{(\boldsymbol{x}_i, \boldsymbol{x}_j) \in C} \boldsymbol{b}_{ij} \in \mathbb{R}^n$ ， $\boldsymbol{H} = \displaystyle\sum_{(\boldsymbol{x}_i, \boldsymbol{x}_j) \in C} \boldsymbol{H}_{ij} \in \mathbb{R}^{N \times N}$ .
 
 实际上， $\boldsymbol{b}$ 等于 $F$ 在 $\boldsymbol{x}$ 点处的梯度，而采用 $\boldsymbol{H}$ 近似 $F$ 在 $\boldsymbol{x}$ 点处的 Hessian 矩阵：
 
@@ -174,7 +174,7 @@ $$
 1. 令 $k=0$ ，给定初始值 $\boldsymbol{x}_0,\;\lambda$ .
 2. 若 $k$ 达到最大迭代次数，则停止迭代；否则根据 $\boldsymbol{x}_k$ 求出当前的和 $\boldsymbol{b}_k$ .
 3. 令 $\Delta \boldsymbol{x}_k = -\lambda \boldsymbol{b}_k$ .
-4. 如果 $\Delta \boldsymbol{x}_k$ 足够小，则停止迭代；否则令 $\boldsymbol{x}_{k+1} = \boldsymbol{x}_k \oplus \Delta \boldsymbol{x}_k,\;k = k + 1$，返回第2步。
+4. 如果 $\Delta \boldsymbol{x}_k$ 足够小，则停止迭代；否则令 $\boldsymbol{x}_{k+1} = \boldsymbol{x}_k \oplus \Delta \boldsymbol{x}_k,\;k = k + 1$ ，返回第2步。
 
 ### 高斯牛顿法
 
@@ -193,15 +193,15 @@ $$
 1. 令 $k=0$ ，给定初始值 $\boldsymbol{x}_0$ .
 2. 若 $k$ 达到最大迭代次数，则停止迭代；否则根据 $\boldsymbol{x}_k$ 求出当前的 $\boldsymbol{H}_k,\;\boldsymbol{b}_k$ .
 3. 求解增量方程：$\boldsymbol{H}_k \Delta \boldsymbol{x}_k = -\boldsymbol{b}_k$ 。当 $\boldsymbol{H}$ 正定时，增量方程可以通过 Cholesky 分解高效求解；当 $\boldsymbol{H}$ 非正定时，可取 $\Delta \boldsymbol{x}_k = \Delta \boldsymbol{x}_{k-1}$ .
-4. 如果 $\Delta \boldsymbol{x}_k$ 足够小，则停止迭代；否则令 $\boldsymbol{x}_{k+1} = \boldsymbol{x}_k \oplus \Delta \boldsymbol{x}_k,\;k = k + 1$，返回第2步。
+4. 如果 $\Delta \boldsymbol{x}_k$ 足够小，则停止迭代；否则令 $\boldsymbol{x}_{k+1} = \boldsymbol{x}_k \oplus \Delta \boldsymbol{x}_k,\;k = k + 1$ ，返回第2步。
 
 ## 核函数
 
 > 引入核函数的原因，是因为 SLAM 中可能给出错误的边。由于变化、噪声等原因，机器人并不能确定它看到的某个路标，就一定是数据库中的某个路标。如果把一条原本不应该加到图中的边给加进去，优化算法试图调整这条边所连接的节点的估计值，使它们顺应这条边的约束。由于这个边的误差非常大，往往会抹平了其他正确边的影响，使优化算法专注于调整一个错误的值。
 
-注意到，当某条边的误差 $e_{ij}$ 很大时，$F_{ij}(\boldsymbol{x}) = \boldsymbol{e}_{ij}^T \boldsymbol{\Omega}_{ij} \boldsymbol{e}_{ij}$ 会很大，其梯度 $\nabla F_{ij}(\boldsymbol{x}) = \boldsymbol{J}_{ij}^T \boldsymbol{\Omega}_{ij} \boldsymbol{e}_{ij}$ 也会很大，而算法会根据梯度更大幅度地调整这条边所连接的节点的估计值，而掩盖这些节点与其他边的关系。
+注意到，当某条边的误差 $e_{ij}$ 很大时， $F_{ij}(\boldsymbol{x}) = \boldsymbol{e}_{ij}^T \boldsymbol{\Omega}_{ij} \boldsymbol{e}_{ij}$ 会很大，其梯度 $\nabla F_{ij}(\boldsymbol{x}) = \boldsymbol{J}_{ij}^T \boldsymbol{\Omega}_{ij} \boldsymbol{e}_{ij}$ 也会很大，而算法会根据梯度更大幅度地调整这条边所连接的节点的估计值，而掩盖这些节点与其他边的关系。
 
-可以定义核函数 $\rho(\cdot)$，在非线性最小二乘问题中用 $\rho(F_{ij}(\boldsymbol{x}))$ 代替 $F_{ij}(\boldsymbol{x})$ .
+可以定义核函数 $\rho(\cdot)$ ，在非线性最小二乘问题中用 $\rho(F_{ij}(\boldsymbol{x}))$ 代替 $F_{ij}(\boldsymbol{x})$ .
 
 最常用的核函数是 Huber 核函数，其定义为：
 

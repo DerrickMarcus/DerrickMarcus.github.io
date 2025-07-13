@@ -43,7 +43,7 @@ $$
 
 主成分分析 PCA (Principal Component Analysis)：[Principal component analysis - Wikipedia](https://en.wikipedia.org/wiki/Principal_component_analysis)。
 
-输入数据： $n$ 个 $p$ 维的样本 $\boldsymbol{x}_i\in \mathbb{R}^p$， $i=1,\cdots,n$ 。
+输入数据： $n$ 个 $p$ 维的样本 $\boldsymbol{x}_i\in \mathbb{R}^p$ ， $i=1,\cdots,n$ 。
 
 目标：寻找最优(方差保留)的 $k$ 个投影方向并进行特征变换降维。
 
@@ -376,9 +376,9 @@ $$
 
 期望最大值 **EM 算法**：
 
-给定一些观察数据 $\boldsymbol{x}$，假设 $\boldsymbol{x}$ 符合如下混合高斯分布： $p(x)=\displaystyle\sum_{k=1}^{K} \pi_k \mathcal{N}(\boldsymbol{x}|\boldsymbol{\mu}_k, \boldsymbol{\Sigma}_k)$ 。求混合高斯分布的参数 $\boldsymbol{\theta}=\{\pi_k,\boldsymbol{\mu}_k,\boldsymbol{\Sigma}_k\}$ 的最大似然估计。
+给定一些观察数据 $\boldsymbol{x}$ ，假设 $\boldsymbol{x}$ 符合如下混合高斯分布： $p(x)=\displaystyle\sum_{k=1}^{K} \pi_k \mathcal{N}(\boldsymbol{x}|\boldsymbol{\mu}_k, \boldsymbol{\Sigma}_k)$ 。求混合高斯分布的参数 $\boldsymbol{\theta}=\{\pi_k,\boldsymbol{\mu}_k,\boldsymbol{\Sigma}_k\}$ 的最大似然估计。
 
-（1）初始化 $K$ 个高斯分布参数 $\boldsymbol{\mu}_k, \boldsymbol{\Sigma_k}$，初始化 $\pi_k$ 并保证 $\displaystyle\sum_{k=1}^{K} \pi_k = 1$
+（1）初始化 $K$ 个高斯分布参数 $\boldsymbol{\mu}_k, \boldsymbol{\Sigma_k}$ ，初始化 $\pi_k$ 并保证 $\displaystyle\sum_{k=1}^{K} \pi_k = 1$
 
 （2）依据目前的高斯分布参数，对样本 $\boldsymbol{x}$ 的类别隐藏变量 $z_{nk}$ 求 **期望**，则 $\gamma(z_{nk})$ 表示第 $n$ 个样本 $\boldsymbol{x}_n$ 属于第 $k$ 类的概率：
 
@@ -412,7 +412,7 @@ $$
 
 则称序列 $Q$ 具有 Markov 性，为 Markov 链。
 
-若进一步满足 $P(q_{t+1} = s_k | q_t) = P(q_2 = s_k | q_1)$，则称序列 $Q$ 是齐次 Markov 链。
+若进一步满足 $P(q_{t+1} = s_k | q_t) = P(q_2 = s_k | q_1)$ ，则称序列 $Q$ 是齐次 Markov 链。
 
 齐次 Markov 链可以用状态转移概率矩阵 $\boldsymbol{A}$ 和初始概率 $\boldsymbol{\pi}$ 唯一确定表示：
 
@@ -473,7 +473,7 @@ $$
 HMM 的基本假设：
 
 1. 马尔可夫性： $P(q_{t+1} | q_t, \cdots, q_1) = P(q_{t+1} | q_t)$ 。
-2. 齐次性，状态转移概率与具体时刻无关： $P(q_{t+1} | q_t ) = P(q_{\tau+1} | q_{\tau })$，对任意 $t,\tau$ 成立。
+2. 齐次性，状态转移概率与具体时刻无关： $P(q_{t+1} | q_t ) = P(q_{\tau+1} | q_{\tau })$ ，对任意 $t,\tau$ 成立。
 3. 观测序列独立性： $P(O_1, \cdots, O_T | q_1, \cdots, q_T) = \prod_{t=1}^{T} P(O_t | q_t)$ 。
 
 HMM 的3个基本问题：
@@ -533,7 +533,7 @@ $$
 
 (Ⅰ) **初始化**： $\alpha^{(1)}_i = \pi_i b_i(O_1) ,\; 1 \leqslant i \leqslant N$ ，表示在 $t=1$ 时刻由第 $i$ 个状态生成观测 $O_1$ 的概率。这样计算出的向量 $\boldsymbol{\alpha}^{(1)}$ ，相当于初态 $\boldsymbol{\pi}$ 和 $\boldsymbol{B}(O_1)$ 列向量进行 **逐元素相乘** $\boldsymbol{\alpha}^{(1)} =\left( \boldsymbol{\pi}^T \odot \boldsymbol{B}[:,O_1] \right)$ 。
 
-(Ⅱ) **递归**：对于 $t=1, \cdots, T-1$，计算：
+(Ⅱ) **递归**：对于 $t=1, \cdots, T-1$ ，计算：
 
 $$
 \alpha^{(t+1)}_j = \left[ \sum_{i=1}^{N} \alpha^{(t)}_i a_{ij} \right] b_j(O_{t+1}), \quad 1 \leqslant j \leqslant N,\; 1 \leqslant t \leqslant T-1
@@ -611,7 +611,7 @@ $$
 
 初始时刻，路径尚未开始，节点局部概率 为 初始时刻在状态 $i$ 发射观测符号 $O_1$ 的概率。
 
-(Ⅱ) **递归**：对于 $t=2,3,\cdots,T$，计算：
+(Ⅱ) **递归**：对于 $t=2,3,\cdots,T$ ，计算：
 
 $$
 \delta^{(t)}_j = \max_{1\leq i \leq N} \left[ \delta^{(t-1)}_i a_{ij} \right] b_j(O_t) ,\; 1\leqslant j \leqslant N \\

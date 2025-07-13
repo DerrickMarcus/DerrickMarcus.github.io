@@ -33,13 +33,13 @@ $$
 
 上式中 $j$ 为第 $i$ 个样本 $x_i$ 的真实类别标签， $z_{i,k}$ 为输出的预测向量。
 
-假设有 $K$ 个类别，某样本输出 $K$ 维向量 $\mathbf{z}_i = [z_{i,1}, z_{i,2}, \cdots, z_{i,K}]^T$，则其属于第 $j$ 类的概率为 $\hat{y}_{i,j} = \exp(z_{i,j}) \bigg/ \displaystyle\sum_{k=1}^{K} \exp(z_{i,k})$；若样本的真实类别标签为第 $j$ 类，则 $\hat{y}_{i,j}$ 越大越接近于 1 则损失越小越接近于 0；反之损失越大。
+假设有 $K$ 个类别，某样本输出 $K$ 维向量 $\mathbf{z}_i = [z_{i,1}, z_{i,2}, \cdots, z_{i,K}]^T$ ，则其属于第 $j$ 类的概率为 $\hat{y}_{i,j} = \exp(z_{i,j}) \bigg/ \displaystyle\sum_{k=1}^{K} \exp(z_{i,k})$ ；若样本的真实类别标签为第 $j$ 类，则 $\hat{y}_{i,j}$ 越大越接近于 1 则损失越小越接近于 0；反之损失越大。
 
 回归问题中的损失函数：
 
-（1）均方损失 $L=\dfrac{1}{2} \displaystyle\sum_{i}\|y_i - \hat{y}_i\|^2,\;\hat{y}_i=h(\boldsymbol{x}_i)$，其中 $y_i$ 为真实值，$\hat{y}_i$ 为预测值。
+（1）均方损失 $L=\dfrac{1}{2} \displaystyle\sum_{i}\|y_i - \hat{y}_i\|^2,\;\hat{y}_i=h(\boldsymbol{x}_i)$ ，其中 $y_i$ 为真实值， $\hat{y}_i$ 为预测值。
 
-（2）L1 损失 $L=\displaystyle\sum_{i}\|y_i - \hat{y}_i\|$，其中 $y_i$ 为真实值，$\hat{y}_i$ 为预测值。
+（2）L1 损失 $L=\displaystyle\sum_{i}\|y_i - \hat{y}_i\|$ ，其中 $y_i$ 为真实值， $\hat{y}_i$ 为预测值。
 
 （3）Smooth-L1 损失：
 
@@ -56,7 +56,7 @@ $$
 
 在网络结构中，每个神经元有对应权重和偏置参数，所有神经元的权重和偏置定义为网络参数。
 
-若相邻两层的神经元的数量分别为 $n_1,n_2$ ，则两层神经元之间的网络，权重的参数量为 $n_1n_2$ ，偏置的参数量为 $n_2$ ，因此两层神经元之间的参数量为 $n_1n_2+n_2$。整个神经网络的参数量为所有层之间的参数量之和，有 $N$ 层则求和 $N-1$ 次。
+若相邻两层的神经元的数量分别为 $n_1,n_2$ ，则两层神经元之间的网络，权重的参数量为 $n_1n_2$ ，偏置的参数量为 $n_2$ ，因此两层神经元之间的参数量为 $n_1n_2+n_2$ .整个神经网络的参数量为所有层之间的参数量之和，有 $N$ 层则求和 $N-1$ 次。
 
 > 这很好理解，因为单层网络的输出形如 $\mathbb{R}^{n_1}\to\mathbb{R}^{n_2}:\;\boldsymbol{y}=\boldsymbol{w}^T\boldsymbol{x}+\boldsymbol{b},\;\boldsymbol{w}\in\mathbb{R}^{n_1\times n_2},\;\boldsymbol{b}\in\mathbb{R}^{n_2}$ 。
 
@@ -152,7 +152,7 @@ $$
 \text{Cross Entropy:} \quad L(\boldsymbol{y},\boldsymbol{t}) = -\sum_{i=1}^{N} t_i \log(y_i) ,\quad \frac{\partial L}{\partial \boldsymbol{y}} = -\frac{\boldsymbol{t}}{\boldsymbol{y}}
 $$
 
-上式中 $\boldsymbol{t}$ 为真实值，$\boldsymbol{y}$ 为预测值，它们做 **逐元素除法**。
+上式中 $\boldsymbol{t}$ 为真实值， $\boldsymbol{y}$ 为预测值，它们做 **逐元素除法**。
 
 > 如果完全按照上面的方法，那么链式求导 各项相乘的时候，很可能会出现维度不匹配的现象，很正常，这时候就需要随机应变了😂。另外，最好不要一步写到位，从后往前一步一步来，每一步使用添加合适的转置等方法，保证中间结果每一步都是对的。
 
