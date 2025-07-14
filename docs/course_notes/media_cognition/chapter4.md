@@ -35,6 +35,8 @@ $$
 
 假设有 $K$ 个类别，某样本输出 $K$ 维向量 $\mathbf{z}_i = [z_{i,1}, z_{i,2}, \cdots, z_{i,K}]^T$ ，则其属于第 $j$ 类的概率为 $\hat{y}_{i,j} = \exp(z_{i,j}) \bigg/ \displaystyle\sum_{k=1}^{K} \exp(z_{i,k})$ ；若样本的真实类别标签为第 $j$ 类，则 $\hat{y}_{i,j}$ 越大越接近于 1 则损失越小越接近于 0；反之损失越大。
 
+<br>
+
 回归问题中的损失函数：
 
 （1）均方损失 $L=\dfrac{1}{2} \displaystyle\sum_{i}\|y_i - \hat{y}_i\|^2,\;\hat{y}_i=h(\boldsymbol{x}_i)$ ，其中 $y_i$ 为真实值， $\hat{y}_i$ 为预测值。
@@ -56,9 +58,9 @@ $$
 
 在网络结构中，每个神经元有对应权重和偏置参数，所有神经元的权重和偏置定义为网络参数。
 
-若相邻两层的神经元的数量分别为 $n_1,n_2$ ，则两层神经元之间的网络，权重的参数量为 $n_1n_2$ ，偏置的参数量为 $n_2$ ，因此两层神经元之间的参数量为 $n_1n_2+n_2$ .整个神经网络的参数量为所有层之间的参数量之和，有 $N$ 层则求和 $N-1$ 次。
+若相邻两层的神经元的数量分别为 $n_1,n_2$ ，则两层神经元之间的网络，权重的参数量为 $n_1n_2$ ，偏置的参数量为 $n_2$ ，因此两层神经元之间的参数量为 $n_1n_2+n_2$ . 整个神经网络的参数量为所有层之间的参数量之和，有 $N$ 层则求和 $N-1$ 次。
 
-> 这很好理解，因为单层网络的输出形如 $\mathbb{R}^{n_1}\to\mathbb{R}^{n_2}:\;\boldsymbol{y}=\boldsymbol{w}^T\boldsymbol{x}+\boldsymbol{b},\;\boldsymbol{w}\in\mathbb{R}^{n_1\times n_2},\;\boldsymbol{b}\in\mathbb{R}^{n_2}$ 。
+> 这很好理解，因为单层网络的输出形如 $\mathbb{R}^{n_1}\to\mathbb{R}^{n_2}:\;\boldsymbol{y}=\boldsymbol{w}^T\boldsymbol{x}+\boldsymbol{b},\;\boldsymbol{w}\in\mathbb{R}^{n_1\times n_2},\;\boldsymbol{b}\in\mathbb{R}^{n_2}$ .
 
 ### 4.3.1 BP
 
@@ -83,6 +85,8 @@ $$
 $$
 
 > 与前面讨论的向量 $\boldsymbol{w}$ 不同，全连接层的权重 $\boldsymbol{W}$ 是一个二维矩阵，因此每一层的输出形如 $\boldsymbol{y}=\boldsymbol{W}\boldsymbol{x}+\boldsymbol{b}$ ，权重不需要做转置。
+
+<br>
 
 反向传播（递推表达式）：
 
@@ -109,9 +113,9 @@ $$
 
 有3种常见的求导：
 
-1. 激活函数求导： $\mathbb{R}^N \to \mathbb{R}^N$ 。
+1. 激活函数求导： $\mathbb{R}^N \to \mathbb{R}^N$ .
 2. 矩阵求导。
-3. Loss 求导： $\mathbb{R}^N \to \mathbb{R}$ 。
+3. Loss 求导： $\mathbb{R}^N \to \mathbb{R}$ .
 
 对于 **激活函数求导**，由于是对向量各个元素作用，因此需要使用 Hadamard 乘积（逐元素相乘），以 Sigmoid 函数为例：
 
@@ -140,9 +144,11 @@ $\text{trace}(\boldsymbol{A} + \boldsymbol{B}) = \text{trace}(\boldsymbol{A}) + 
 
 标量 对 矩阵/向量 求导： $\dfrac{\partial \mathbb{R}^{1\times 1}}{\partial \mathbb{R}^{m \times n}}\to \mathbb{R}^{m \times n}$ ，标量对任何矩阵/向量求导，结果的维度 都与 被求导的矩阵/向量 相同。
 
-向量 对 向量 求导： $\dfrac{\partial \mathbb{R}^{m\times 1}}{\partial \mathbb{R}^{n \times 1}}\to \mathbb{R}^{m \times n}$ 。
+向量 对 向量 求导： $\dfrac{\partial \mathbb{R}^{m\times 1}}{\partial \mathbb{R}^{n \times 1}}\to \mathbb{R}^{m \times n}$ .
 
-矩阵 对 矩阵 求导： $\dfrac{\partial \mathbb{R}^{m\times n}}{\partial \mathbb{R}^{p \times q}}\to \mathbb{R}^{mn \times pq}$ 。严格来讲“矩阵对矩阵”导数本质是 4 阶张量，但是经常 reshape 成二维矩阵。这种情况不常见。
+矩阵 对 矩阵 求导： $\dfrac{\partial \mathbb{R}^{m\times n}}{\partial \mathbb{R}^{p \times q}}\to \mathbb{R}^{mn \times pq}$ . 严格来讲“矩阵对矩阵”导数本质是 4 阶张量，但是经常 reshape 成二维矩阵。这种情况不常见。
+
+<br>
 
 对于 **Loss 求导**，本质是 标量 对 矩阵/向量 求导，我们只需要掌握 MSE 和交叉熵两种：
 
@@ -171,7 +177,7 @@ $$
 
 随机梯度下降 SGD (Stochastic Gradient Descent)，每次只用一个样本参与计算梯度： $\theta \leftarrow \theta - \eta \nabla_\theta L(\theta,x_i,y_i)$ ，优点是速度快，缺点是方差大，损失函数震荡严重。
 
-小批次梯度下降 Mini-batch Gradient Descent (M-SGD)，介于 BGD 和 SGD 之间，每次随机选取 $M$ 个样本参与计算梯度： $\theta \leftarrow \theta - \eta\left[\dfrac{1}{M}\displaystyle\sum_{i=1}^M\nabla_\theta L(\theta,x_i,y_i)\right]$ 。
+小批次梯度下降 Mini-batch Gradient Descent (M-SGD)，介于 BGD 和 SGD 之间，每次随机选取 $M$ 个样本参与计算梯度： $\theta \leftarrow \theta - \eta\left[\dfrac{1}{M}\displaystyle\sum_{i=1}^M\nabla_\theta L(\theta,x_i,y_i)\right]$ .
 
 3种方法的比较：
 
@@ -219,7 +225,7 @@ c_t = \sum_{j=1}^{t} \left( \nabla_\theta L(\theta_j) \right)^2 \\
 \theta_{t+1} = \theta_t - \eta \frac{\nabla_\theta L(\theta_t)}{\sqrt{c_t} + \varepsilon}
 $$
 
-不同参数的学习率依赖于 $c_t$ 。对低频参数做较大的更新，对高频参数做较小的更新，提升了 SGD 的鲁棒性，对于稀疏数据表现好。
+不同参数的学习率依赖于 $c_t$ . 对低频参数做较大的更新，对高频参数做较小的更新，提升了 SGD 的鲁棒性，对于稀疏数据表现好。
 
 （4）RMSprop: Root-Mean-Square Prop
 
@@ -230,7 +236,7 @@ s_t = \gamma s_{t-1} + (1 - \gamma) \left( \nabla_\theta L(\theta_t) \right)^2 \
 \theta_{t+1} = \theta_t - \eta \frac{\nabla_\theta L(\theta_t)}{\sqrt{s_t} + \varepsilon}
 $$
 
-保证各维度导数在一个量级，减少摆动。[Hinton](https://en.wikipedia.org/wiki/Geoffrey_Hinton) 建议 $\gamma=0.9,\mu=0.001$ 。
+保证各维度导数在一个量级，减少摆动。[Hinton](https://en.wikipedia.org/wiki/Geoffrey_Hinton) 建议 $\gamma=0.9,\mu=0.001$ .
 
 （5）Adam: Adaptive Moment Optimization
 
@@ -242,7 +248,7 @@ s_t = \beta_2 s_{t-1} + (1 - \beta_2) \left( \nabla_\theta L(\theta_t) \right)^2
 \theta_{t+1} = \theta_t - \eta \frac{v_t}{\sqrt{s_t} + \varepsilon}
 $$
 
-参数设置： $\beta_1 = 0.9$ ， $\beta_2$ 接近于 $1$ ，例如 $0.9999$ 。
+参数设置： $\beta_1 = 0.9$ ， $\beta_2$ 接近于 $1$ ，例如 $0.9999$ .
 
 ---
 

@@ -29,6 +29,8 @@
 
 输入词向量的方式：独热编码 one-hot，word2vec，词嵌入 word embedding 等。
 
+<br>
+
 RNN 的基本单元：
 
 $$
@@ -64,7 +66,9 @@ RNN 的优化学习方法：误差沿时间反传 BPTT (Backpropagation through 
 
 Truncated BPTT：实际上我们采用时间截断的 BPTT，误差仅在有限时间内反传。另外，时序数据通常包含多个较短的序列数据。
 
-RNN 容易出现梯度消失于梯度爆炸。对于长序列，计算梯度时（根据链式法则）有多项连乘，要么趋于0要么很大，导致梯度消失或梯度爆炸。解决方法：
+<br>
+
+RNN 容易出现梯度消失和梯度爆炸。对于长序列，计算梯度时（根据链式法则）有多项连乘，要么趋于0要么很大，导致梯度消失或梯度爆炸。解决方法：
 
 1. 梯度裁剪 gradient clipping：如果梯度超过阈值 $\boldsymbol{g}_{\text{clipped}}=\theta\dfrac{\boldsymbol{g}}{\|\boldsymbol{g}|} ,\;\text{if } \|\boldsymbol{g}\| > \theta$ ，否则正常梯度更新。
 2. 换 tanh 激活函数为 ReLU 函数。
@@ -129,13 +133,13 @@ $$
 
 ![202506132104521](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo-image/images/202506132104521.png)
 
-隐更新值：$\tilde{\boldsymbol{h}}_t = \tanh(\boldsymbol{W}_h \cdot [\boldsymbol{r}_t \odot \boldsymbol{h}_{t-1}, \boldsymbol{x}_t] + \boldsymbol{b}_h)$ 。
+隐更新值：$\tilde{\boldsymbol{h}}_t = \tanh(\boldsymbol{W}_h \cdot [\boldsymbol{r}_t \odot \boldsymbol{h}_{t-1}, \boldsymbol{x}_t] + \boldsymbol{b}_h)$ .
 
-隐含单元：$\boldsymbol{h}_t = \boldsymbol{u}_t \odot \boldsymbol{h}_{t-1} + (1 - \boldsymbol{u}_t) \odot \tilde{\boldsymbol{h}}_t$ 。
+隐含单元：$\boldsymbol{h}_t = \boldsymbol{u}_t \odot \boldsymbol{h}_{t-1} + (1 - \boldsymbol{u}_t) \odot \tilde{\boldsymbol{h}}_t$ .
 
-更新门：$\boldsymbol{u}_t = \sigma(\boldsymbol{W}_u \cdot [\boldsymbol{h}_{t-1}, \boldsymbol{x}_t] + \boldsymbol{b}_u)$ 。
+更新门：$\boldsymbol{u}_t = \sigma(\boldsymbol{W}_u \cdot [\boldsymbol{h}_{t-1}, \boldsymbol{x}_t] + \boldsymbol{b}_u)$ .
 
-重置门：$\boldsymbol{r}_t = \sigma(\boldsymbol{W}_r \cdot [\boldsymbol{h}_{t-1}, \boldsymbol{x}_t] + \boldsymbol{b}_r)$ 。
+重置门：$\boldsymbol{r}_t = \sigma(\boldsymbol{W}_r \cdot [\boldsymbol{h}_{t-1}, \boldsymbol{x}_t] + \boldsymbol{b}_r)$ .
 
 比较 LSTM 和 GRU：大部分情况下是 LSTM 效果好，但 GRU 参数少。
 

@@ -52,7 +52,7 @@ JCL 由一组作业控制卡片，或作业控制语句，或作业控制操作�
 
 ---
 
-POSIX：可移植操作系统接口 Portable Operating System Interface。POSIX 定义一套跨操作系统的通用接口标准，确保软件在不同系统上的可移植性。它仅定义接口功能，但不规定实现方式，这些接口可以是系统调用，也可以是库函数，甚至是用户态模拟。例如 POSIX 定义的 `fork()` 功能是“创建子进程”，在 Linux 中对应系统调用 `sys_fork()`，而在 Windows 中需通过 `CreateProcess()` 等多个 API 组合实现，无直接对应的系统调用。
+POSIX：可移植操作系统接口 Portable Operating System Interface。POSIX 定义一套跨操作系统的通用接口标准，确保软件在不同系统上的可移植性。它仅定义接口功能，但不规定实现方式，这些接口可以是系统调用，也可以是库函数，甚至是用户态模拟。例如 POSIX 定义的 `fork()` 功能是“创建子进程”，在 Linux 中对应系统调用 `sys_fork()` ，而在 Windows 中需通过 `CreateProcess()` 等多个 API 组合实现，无直接对应的系统调用。
 
 其过程调用 Call 包括 `fork(), waitpid(), open(), write(), mkdir(), kill()` 等。UNIX 和 Windows 都支持 POSIX 标准。POSIX 标准单义了构造系统所必须提供的一套过程，但是并没有规定它们是系统调用还是普通的库函数调用或者其他形式，因此 POSIX 过程调用映射到系统调用并不是一一对应的。
 

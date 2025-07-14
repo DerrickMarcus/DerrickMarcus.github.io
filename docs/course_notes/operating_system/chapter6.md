@@ -7,8 +7,8 @@
 消息传递原语：
 
 ```c
-send(destination, &message)
-receive(source, &message)
+send(destination, &message);
+receive(source, &message);
 ```
 
 它们是系统调用而不是语言成分消息传递。
@@ -54,8 +54,8 @@ Linux 的共享内存机制：系统调用 `mmap()` ，POSIX 共享内存，Syst
 通信原语：
 
 ```c
-send(destination, message)
-receive(source, message)
+send(destination, message);
+receive(source, message);
 ```
 
 操作系统在内存中开辟若干个消息缓冲区，用以存放消息，并且负责管理消息缓冲区以及消息的传递。每当一个发送进程向另一个接收进程发送消息时，便申请一个消息缓冲区，并把已经准备好的消息送到缓冲区，然后把这个缓冲区插入到接收进程的消息队列中，最后通知接收进程。接收进程收到发送进程发来的通知后，从本进程的消息队列中摘下消息缓冲区，取出需要的信息，然后把缓冲区还给系统。
@@ -80,6 +80,6 @@ Linux 支持两种消息队列：POSIX 消息队列，System V 消息队列。
 
 在 Linux 中，通过将两个 file 结构指向同一个临时的 VFS 索引节点，而 VFS 索引节点又指向同一个物理页而实现管道。例如：
 
-1. 通过 pipe 系统调用创建无名管道，得到两个文件描述符，分别用于写和读。`int pipe(int fildes[2])` ，文件描述符 `fildes[0]` 为读端，`fildes[1]` 为写端。通过系统调用 write 和 read 进行管道的写和读。
+1. 通过 pipe 系统调用创建无名管道，得到两个文件描述符，分别用于写和读。 `int pipe(int fildes[2])` ，文件描述符 `fildes[0]` 为读端， `fildes[1]` 为写端。通过系统调用 write 和 read 进行管道的写和读。
 2. 进程间双向通信，需要两个管道。
 3. 只适用于父子进程之间或父进程安排的各个子进程之间。

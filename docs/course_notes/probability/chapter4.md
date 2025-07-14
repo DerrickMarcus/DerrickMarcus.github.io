@@ -9,7 +9,7 @@
 >
 > 概率论研究的是随机现象和随机变量，随机变量是静态的、不随外部条件变化的。而随机过程研究的是随着某些参数（时间，空间，频率等）变化的随机现象和随机变量。随机过程可以看作是随机变量从有限维到无限维的自然延伸，是一组无穷多个、相互有关的随机变量[^1]。
 
-随机过程的定义：随机过程是一组依赖于参数 $t$ 的随机变量 $\{X(t),t\in T\}$ . $T$ 称为参数集/指标集，参数 $t$ 称为指标。
+随机过程的定义：随机过程是一组依赖于参数 $t$ 的随机变量 $\{X(t),t\in T\}$ .  $T$ 称为参数集/指标集，参数 $t$ 称为指标。
 
 根据参数集 $T$ 的性质，可以分为 离散时间随机过程 $\{X(n)\}$ 或 $\{X_n\}$ ，和 连续时间随机过程 $\{X(t)\}$ 或 $\{X_t\}$ .
 
@@ -31,11 +31,11 @@
 
 自相关函数 $R_X(t,s)=\mathrm{E}\left[ X(t) \overline{X(s)} \right]$ .
 
-自协方差函数 $C_X(t,s)=\mathrm{E}\left[ \left(X(t)-\mu_X(t)\right)\overline{\left(X(s)-\mu_X(s)\right)} \right]=R_X(t,s)-\mu_X(t)\overline{\mu_X(s)}$ . 若为 **0均值** 随机过程，则 $C_X(t,s)=R_X(t,s)$ .
+自协方差函数 $C_X(t,s)=\mathrm{E}\left[ \left(X(t)-\mu_X(t)\right)\overline{\left(X(s)-\mu_X(s)\right)} \right]=R_X(t,s)-\mu_X(t)\overline{\mu_X(s)}$ .  若为 **0均值** 随机过程，则 $C_X(t,s)=R_X(t,s)$ .
 
 互相关函数 $R_{XY}(t,s)=\mathrm{E}\left[ X(t) \overline{Y(s)} \right]$ .
 
-互协方差函数 $C_{XY}(t,s)=\mathrm{E}\left[ \left(X(t)-\mu_X(t)\right)\overline{\left(Y(s)-\mu_Y(s)\right)} \right]=R_{XY}(t,s)-\mu_X(t)\overline{\mu_Y(s)}$ . 若为 **0均值** 随机过程，则 $C_{XY}(t,s)=R_{XY}(t,s)$ .
+互协方差函数 $C_{XY}(t,s)=\mathrm{E}\left[ \left(X(t)-\mu_X(t)\right)\overline{\left(Y(s)-\mu_Y(s)\right)} \right]=R_{XY}(t,s)-\mu_X(t)\overline{\mu_Y(s)}$ .  若为 **0均值** 随机过程，则 $C_{XY}(t,s)=R_{XY}(t,s)$ .
 
 上式均具有共轭性质，例如 $R_{XY}(t,s)=\overline{R_{YX}(s,t)}$ .
 
@@ -49,7 +49,7 @@
 
 独立 $f_{X(t)Y(s)}(x,y)=f_{X(t)}(x)f_{Y(s)}(y)$ .
 
-不相关 $R_{XY}(t,s)=\mathrm{E}\left[ X(t) \overline{Y(s)} \right]=\mathrm{E}[X(t)]\mathrm{E}[\overline{Y(s)}]=\mu_X(t)\overline{\mu_Y(s)}$ . or $C_{XY}(t,s)=\rho_{XY}(t,s)=0$ .
+不相关 $R_{XY}(t,s)=\mathrm{E}\left[ X(t) \overline{Y(s)} \right]=\mathrm{E}[X(t)]\mathrm{E}[\overline{Y(s)}]=\mu_X(t)\overline{\mu_Y(s)}$ .  or $C_{XY}(t,s)=\rho_{XY}(t,s)=0$ .
 
 ## 二阶矩过程
 
@@ -89,7 +89,7 @@ R_X(\tau)=\mathrm{E}\left[X(t+\tau)\overline{X(t)}\right]
 \end{gather*}
 $$
 
-宽平稳的自相关函数具有共轭反对称性质 $R_X(\tau)=\overline{R_X(-\tau)}$ . 自相关函数在零点处取得最大值 $R_X(0)\geqslant |R_X(\tau)|,\; R_X(0)\geqslant \mu_X^2$ .
+宽平稳的自相关函数具有共轭反对称性质 $R_X(\tau)=\overline{R_X(-\tau)}$ .  自相关函数在零点处取得最大值 $R_X(0)\geqslant |R_X(\tau)|,\; R_X(0)\geqslant \mu_X^2$ .
 
 由此可推出，宽平稳过程的方差也为常数：
 
@@ -217,7 +217,7 @@ $$
 
 ### 宽平稳过程通过 LTI 系统
 
-宽平稳过程通过 $\{X(t)\}$ 通过 冲激响应为 $h(t)$ 的 LTI 系统，输出 $\{Y(t)\}$ 也是随机过程。
+宽平稳过程 $\{X(t)\}$ 通过 冲激响应为 $h(t)$ 的 LTI 系统，输出 $\{Y(t)\}$ 也是随机过程。
 
 经过推导有：
 
@@ -230,8 +230,8 @@ $$
 
 因此，当宽平稳过程通过线性时不变系统时：
 
-1. 输出与输入联合宽平稳。
-2. 输出也为宽平稳过程。
+1. 输出与输入 联合宽平稳。
+2. 输出 也为宽平稳过程。
 
 $$
 \begin{align*}

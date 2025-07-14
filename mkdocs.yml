@@ -339,7 +339,7 @@ nav:
           - 12 Device Management(2): course_notes/operating_system/chapter12.md
           - 13 File Systems(1): course_notes/operating_system/chapter13.md
           - 14 File Systems(2): course_notes/operating_system/chapter14.md
-          - 知识总结(计算机系): course_notes/operating_system/review_cst.md
+          - 15 Course Summary: course_notes/operating_system/review.md
   - "📈 Course Labs":
       - Course Labs: course_labs/index.md
       - Data and Algorithm:

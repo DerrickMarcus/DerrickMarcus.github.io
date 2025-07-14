@@ -14,12 +14,12 @@
 
 处理思路：
 
-1. 读取灰度图片 `image` 之后，首先遍历每一个像素，统计每个灰度值出现的次数，得到原图像的统计直方图 `hist`。
-2. 统计直方图归一化，除以总像素个数，得到像素值的概率密度函数 `pdf`。
-3. 将概率密度函数累加得到累积分布函数 `cdf`，乘以最大灰度级 255，得到原灰度值映射到的新灰度值关系 `pixel_new`。
-4. 根据 `pixel_new` 生成均衡化后的图像 `image_equalized`，并遍历像素得到统计直方图。
+1. 读取灰度图片 `image` 之后，首先遍历每一个像素，统计每个灰度值出现的次数，得到原图像的统计直方图 `hist` 。
+2. 统计直方图归一化，除以总像素个数，得到像素值的概率密度函数 `pdf` 。
+3. 将概率密度函数累加得到累积分布函数 `cdf` ，乘以最大灰度级 255，得到原灰度值映射到的新灰度值关系 `pixel_new` 。
+4. 根据 `pixel_new` 生成均衡化后的图像 `image_equalized` ，并遍历像素得到统计直方图。
 
-源代码文件见 `./task1/main.py`，运行结果如下：
+源代码文件见 `./task1/main.py` ，运行结果如下：
 
 ![img1_compare](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/img1_compare.png)
 
@@ -29,13 +29,13 @@
 
 ## 规定化
 
-处理思路：由于输入为彩色图片，需要对 RGB 三个通道分别进行规定化，共用一个函数 `channel_specification()`。
+处理思路：由于输入为彩色图片，需要对 RGB 三个通道分别进行规定化，共用一个函数 `channel_specification()` 。
 
-在 `channel_specification()` 函数中，首先调用 `compute_cdf()` 函数，其中计算 cdf 的方法与 task1 均衡化相同。得到原图像和模板图像的直方图累积分布函数，然后建立两个累积分布函数的映射关系 `mappping`：对于原图像 cdf 中的每一个值，找到在模板图像 cdf 中与它最接近的值，其对应的灰度级就是规定化之后的灰度级，再根据 `mapping` 逐像素构建规定化之后的图像。
+在 `channel_specification()` 函数中，首先调用 `compute_cdf()` 函数计算累积分布直方图 CDF，其中计算 CDF 的方法与 task1 均衡化相同。得到原图像和模板图像的直方图累积分布函数，然后建立两个累积分布函数的映射关系 `mappping` ：对于原图像 CDF 中的每一个值，找到在模板图像 CDF 中与它最接近的值，其对应的灰度级就是规定化之后的灰度级，再根据 `mapping` 逐像素构建规定化之后的图像。
 
 在 `histogram_specification` 中，将原图像和模板图像拆分为 R,G,B 三个通道，对每个通道进行规定化处理，再拼接起来得到规定化之后的图像。
 
-源代码文件见 `./task2/main.py`，运行结果如下：
+源代码文件见 `./task2/main.py` ，运行结果如下：
 
 ![img1_compare](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/img1_compare.jpg)
 

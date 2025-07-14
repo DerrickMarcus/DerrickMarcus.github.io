@@ -34,7 +34,7 @@ sudo apt-get install -y ros-noetic-robot-state-publisher
 
 在 Ubuntu 20.04 + ROS Noetic 中直接编译会报错，这时需要对文件做出修改：
 
-对文件 `./src/LIO-SAM/CMakeLists.txt` 中的 Line 5，将 `-std=c++11` 改为 `-std=c++14`：
+对文件 `./src/LIO-SAM/CMakeLists.txt` 中的 Line 5，将 `-std=c++11` 改为 `-std=c++14` ：
 
 ```cmake
 # set(CMAKE_CXX_FLAGS "-std=c++11")
@@ -122,7 +122,7 @@ savePCDDirectory: "/robot_ws/src/pcd_maps/"
 sudo apt install pcl-tools
 ```
 
-完成建图之后，使用 pcl_viewer 查看 .pcd(Point Cloud Data) 格式文件：
+完成建图之后，使用 pcl_viewer 查看 .pcd (Point Cloud Data) 格式文件：
 
 ```bash
 pcl_viewer xxx.pcd
@@ -140,7 +140,7 @@ pcl_viewer xxx.pcd
 
 1. 先运行 `scout_gazebo` 节点，其中包含运动控制的 Python 代码，控制机器车在世界中行驶一圈（LIO-SAM 中有回环因子，如果走到曾经到过的地方可以校正误差，结果更精确）。
 2. 机器车上的激光雷达传感器将点云数据发布到 `/velodyne_points` 话题，IMU 传感器将 IMU 数据发布到 `/imu/data` 话题，这两个话题对于建图已经足够，GPS 数据非必须。
-3. 使用 `rosbag record` 录制上述 `/velodyne_points, /imu/data` 话题，得到数据集 `.bag` 。
+3. 使用 `rosbag record` 录制上述 `/velodyne_points, /imu/data` 话题，得到数据集 `.bag` 文件。
 4. 仿真结束后，运行 `lio_sam` 包，播放数据集，LIO-SAM 的节点自动根据点云数据和 IMU 数据完成建图，并保存为 `.pcd` 文件，包括全局地图、边缘角落地图。
 
 Rviz 中的建图效果如下：

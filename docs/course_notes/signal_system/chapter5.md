@@ -53,7 +53,7 @@ $$
 
 ### SC-AM（抑制载波调幅）
 
-调制信号（基带信号） $g(t)$ ，频谱 $G(\omega)$ 占据有限频带 $-\omega_m\sim \omega_m$ 。
+调制信号（基带信号） $g(t)$ ，频谱 $G(\omega)$ 占据有限频带 $-\omega_m\sim \omega_m$ .
 
 已调信号 $f(t)=g(t)\cos(\omega_0t)$ ，把 $g(t)$ 频谱搬移到 $\pm\omega_0$ 上，且分成两部分，各占1/2。
 
@@ -65,7 +65,7 @@ g_0(t) = f(t)\cos(\omega_0 t)=g(t)\cos^2(\omega_0 t)=\frac{1}{2}g(t)(1+\cos(2\om
 G_0(\omega) = \frac{1}{2}G(\omega)+\frac{1}{4}[G(\omega+2\omega_0)+G(\omega-2\omega_0)]
 $$
 
-注意：$f(t)$ 的频域 $F(\omega)=\frac{1}{2}G(\omega-\omega_0)+\frac{1}{2}G(\omega+\omega_0)$ 不含载波的频谱 $\delta(\omega)$ 。
+注意：$f(t)$ 的频域 $F(\omega)=\frac{1}{2}G(\omega-\omega_0)+\frac{1}{2}G(\omega+\omega_0)$ 不含载波的频谱 $\delta(\omega)$ .
 
 缺点：解调使用的本地载波需要与发送端相同，接收机较为复杂。
 
@@ -107,9 +107,9 @@ $$
 
 ### FM，PM（调频与调相）
 
-FM（调频），直接作用于相位： $f(t)=A\cos(\omega_c t+g(t))$ 。
+FM（调频），直接作用于相位： $f(t)=A\cos(\omega_c t+g(t))$ .
 
-PM（调相），直接作用于频率： $f(t)=A\cos(\omega_c t+\int_{-\infty}^{t}g(\tau)\,\mathrm{d}\tau)$ 。
+PM（调相），直接作用于频率： $f(t)=A\cos(\omega_c t+\int_{-\infty}^{t}g(\tau)\,\mathrm{d}\tau)$ .
 
 本质都是调相。
 
@@ -127,7 +127,7 @@ PM（调相），直接作用于频率： $f(t)=A\cos(\omega_c t+\int_{-\infty}^
 
 1. 冲激抽样信号恢复连续时间信号（常规）：时域抽样——频域周期延拓——低通滤波器——恢复。
 2. 零阶抽样保持：脉冲信号 $p(t)$ 对信号 $f(t)$ 抽样时，保持样本值到下一次抽样为止，抽样输出信号 $f_s(t)$ 呈阶梯形状。
-3. 一阶抽样保持：使用一个冲激响应为三角型脉冲的 LTI 系统，使得由抽样信号 $f_s(t)$ 经过该系统形成的三角脉冲叠加恢复出 $f(t)$ 。
+3. 一阶抽样保持：使用一个冲激响应为三角型脉冲的 LTI 系统，使得由抽样信号 $f_s(t)$ 经过该系统形成的三角脉冲叠加恢复出 $f(t)$ .
 
 零阶抽样保持和一阶抽样保持都是对第一种方法的逼近。
 

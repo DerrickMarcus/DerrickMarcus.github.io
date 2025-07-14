@@ -2,7 +2,7 @@
 
 ## 1. Install Anaconda/Miniconda
 
-Anaconda 和 Miniconda 均内置python，搭配conda包管理。
+Anaconda 和 Miniconda 均内置 python，搭配 conda 包管理。
 
 Anaconda 自带科学计算常用库（如 numpy, scipy），有图形化管理界面。
 
@@ -31,7 +31,7 @@ E:\miniconda3\Scripts
 E:\miniconda3\Library\bin
 ```
 
-安装完成之后，“开始”界面一般会出现**Anaconda Prompt**，打开后自动进入base环境，请保持base环境纯净，不安装任何库，平时使用请创建不同的conda虚拟环境满足不同需要。
+安装完成之后，Windows “开始”界面一般会出现 **Anaconda Prompt**，打开后自动进入 base 环境，请保持 base 环境纯净，不安装任何库，平时使用请创建不同的 conda 虚拟环境满足不同需要。
 
 首先编辑conda配置文件，命令行输入（注意有点号）：
 
@@ -69,7 +69,7 @@ pip config set global.timeout 6000
 
 这个步骤也可以直接创建配置文件来实现：
 
-一般情况下，进入目录`C:\Users\ASUS\AppData\Roaming\pip`，然后创建txt文件，输入以下内容：
+一般情况下，进入目录 `C:\Users\ASUS\AppData\Roaming\pip` ，然后创建 txt 文本文件，输入以下内容：
 
 ```text
 [global]
@@ -78,9 +78,9 @@ index-url = https://pypi.tuna.tsinghua.edu.cn/simple
 trusted-host = pypi.tuna.tsinghua.edu.cn
 ```
 
-保存文件，重命名并修改扩展名，最后命名为**pip.ini**。
+保存文件，重命名并修改扩展名，最后命名为 `pip.ini` 。
 
-仍在上述Anaconda Prompt，conda常用环境命令如下：
+仍在上述 Anaconda Prompt，conda 常用命令如下：
 
 ```bash
 conda create -n test python=3.9 # 指定python版本，-n等同于--name
@@ -95,13 +95,13 @@ conda update conda # 更新conda
 conda update Anaconda
 ```
 
-**注意：除了使用 conda 创建环境以外，后续建议使用 pip 安装和更新软件包，避免 pip 和 conda 混用。**
+注意：除了使用 conda 创建环境以外，后续建议使用 pip 安装和更新软件包，尽量避免 pip 和 conda 混用。
 
 ## 2. Configure VS Code
 
 下载插件：python，jupyter（必需），ruff（可选）。
 
-打开设置，转到**setting.json**，添加如下配置（注意修改路径为自己的python路径）：
+打开设置，转到 `setting.json` ，添加如下配置（注意修改路径为自己的 python 路径）：
 
 ```json
   //python解释器和设置
@@ -134,20 +134,20 @@ conda update Anaconda
 
 下载安装过程略（注意添加环境变量）。
 
-新建python项目，选择添加本地解释器——Conda环境，在conda可执行文件中选择：（对照自己的路径）
+新建 python 项目，选择添加本地解释器 Conda 环境，在 conda 可执行文件中选择：（对照自己的路径）
 
 ```text
 E:\miniconda3\Scripts\conda.exe
 ```
 
-然后加载，你会看到base环境和自己创建的各种环境，选择一个即可，然后就可以开始愉快地运行和调试了。
+然后加载，你会看到 base 环境和自己创建的各种环境，选择一个即可，然后就可以运行和调试。
 
 ## 4. Else
 
-血泪教训：又遇到无论如何包都会下载到base环境的问题，无法指向虚拟环境，目前的解决办法是：
+血泪教训：又遇到无论如何包都会下载到 base 环境的问题，无法指向虚拟环境，目前的解决办法是：
 
 ```bash
 conda create -n test python=3.9 # 指定python版本，-n等同于--name
 ```
 
-也就是一定要在创建虚拟环境时指定python的版本号，否则创建好的环境会和 base 环境混在一起。
+也就是一定要在创建虚拟环境时指定 python 的版本号，否则创建好的环境会和 base 环境混在一起。

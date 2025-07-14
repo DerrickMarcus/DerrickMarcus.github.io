@@ -42,13 +42,13 @@ $$
 \frac{1}{N} \exp\left(-\mathrm{j} 2\pi \frac{ux+vy}{N}\right) = \frac{1}{\sqrt{N}} \exp\left(-\mathrm{j} 2\pi \frac{ux}{N}\right) \cdot \frac{1}{\sqrt{N}} \exp\left(-\mathrm{j} 2\pi \frac{vy}{N}\right)
 $$
 
-平移定理： $f(x-a,y-b)\iff F(u,v)\exp(-\mathrm{j}2\pi \dfrac{au+bv}{N})$ 。
+平移定理： $f(x-a,y-b)\iff F(u,v)\exp(-\mathrm{j}2\pi \dfrac{au+bv}{N})$ .
 
 旋转定理：$f(x,y)$ 旋转角度 $\theta_0$ ， $F(u,v)$ 也转过相同角度。 $F(u,v)$ 旋转角度 $\theta_0$ ， $f(x,y)$ 也转过相同角度。
 
-尺度定理：$f(ax,by)\iff \dfrac{1}{|ab|}F(\dfrac{u}{a},\dfrac{v}{b})$ 。
+尺度定理：$f(ax,by)\iff \dfrac{1}{|ab|}F(\dfrac{u}{a},\dfrac{v}{b})$ .
 
-卷积定理：$f(x,y)*g(x,y)\iff F(u,v)G(u,v),f(x,y)g(x,y)\iff F(u,v)*G(u,v)$ 。
+卷积定理：$f(x,y)*g(x,y)\iff F(u,v)G(u,v),f(x,y)g(x,y)\iff F(u,v)*G(u,v)$ .
 
 普通 FT 的计算复杂度为 $N^2$ ，FFT 的复杂度为 $N\log_2 N$ ，当 $N$ 较大时，FFT 可节省可观的计算量。
 
@@ -103,7 +103,7 @@ n 阶巴特沃斯高通滤波器、n 阶切比雪夫高通滤波器，只需将�
 
 高通滤波之后图像背景的平均强度减小到接近黑色，因为大多数图像中高频分量都是很弱的。解决办法是把一定比例的原始图像加到过滤后的结果中去。
 
-高频加强：在高通滤波器函数前乘以一个常数，再加一个偏移，使零频率不被滤掉，传递函数为 $H_{hfe}(u,v)=a+bH_{hp}(u,v)$ ，其中 $b>a\geqslant 0$ ，a 一般取 $0.25\sim0.5$ ，b 一般取 $1.5\sim2.0$ 。
+高频加强：在高通滤波器函数前乘以一个常数，再加一个偏移，使零频率不被滤掉，传递函数为 $H_{hfe}(u,v)=a+bH_{hp}(u,v)$ ，其中 $b>a\geqslant 0$ ，a 一般取 $0.25\sim0.5$ ，b 一般取 $1.5\sim2.0$ .
 
 ## 4.3 带通和带阻滤波
 
@@ -113,17 +113,17 @@ $$
 H(u,v) = \frac{1}{1 + \left( \dfrac{D(u,v)W}{D^2(u,v) - D_0^2} \right)^{2n}}
 $$
 
-带通滤波器：可提取周期性噪声。直接用“1减去一个带阻滤波器”： $H_{bp}(u,v)=1-H_{br}(u,v)$ 。
+带通滤波器：可提取周期性噪声。直接用“1减去一个带阻滤波器”： $H_{bp}(u,v)=1-H_{br}(u,v)$ .
 
 ## 4.4 同态滤波
 
-基于亮度成像模型： $f(x,y)=i(x,y)\cdot r(x,y)$ 。 $i(x,y)$ 为照度成分，特点是变化缓慢，对应低频分量； $r(x,y)$ 为反射成分，高频成分丰富。同态滤波同时压缩亮度范围和增强对比度。
+基于亮度成像模型： $f(x,y)=i(x,y)\cdot r(x,y)$ .  $i(x,y)$ 为照度成分，特点是变化缓慢，对应低频分量； $r(x,y)$ 为反射成分，高频成分丰富。同态滤波同时压缩亮度范围和增强对比度。
 
 算法步骤：利用频域增强思路将乘性转换为加性，处理后再转换回来。
 
 1. 两边取对数： $\ln f(x, y) = \ln i(x, y) + \ln r(x, y)$
 2. 两边取傅氏变换： $F(u, v) = I(u, v) + R(u, v)$
-3. 用一个频域函数 $H(u, v)$ 处理 $F(u, v)$ ： $H(u, v)F(u, v) = H(u, v)I(u, v) + H(u, v)R(u, v)$ 。其中滤波器 $H(u,v)$ 为一个**高通滤波器**，但是不能完全滤除低频成分，而是适当压制。
+3. 用一个频域函数 $H(u, v)$ 处理 $F(u, v)$ ： $H(u, v)F(u, v) = H(u, v)I(u, v) + H(u, v)R(u, v)$ . 其中滤波器 $H(u,v)$ 为一个**高通滤波器**，但是不能完全滤除低频成分，而是适当压制。
 4. 反变换到空域： $h_f(x, y) = h_i(x, y) + h_r(x, y)$
 5. 两边取指数： $g(x, y) = \exp|h_f(x, y)| = \exp|h_i(x, y)| \cdot \exp|h_r(x, y)|$
 

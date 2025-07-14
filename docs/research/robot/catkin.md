@@ -4,7 +4,7 @@ CMake 是 C/C++ 开发中常用的编译工具链，在 ROS 中我们可以使�
 
 语法规则如下：
 
-注意：有一些预定义的变量， `PROJECT_SOURCE_DIR` 表示源代码目录（包含 `CMakeLists.txt` 文件的目录，一般也就是项目的根目录），`PROJECT_BINARY_DIR` ，项目的构建目录，生成编译文件的位置，一般也就是 `build/` 。`LIBRARY_OUTPUT_PATH` 是生成的库文件存放的位置。
+注意：有一些预定义的变量， `PROJECT_SOURCE_DIR` 表示源代码目录（包含 `CMakeLists.txt` 文件的目录，一般也就是项目的根目录）， `PROJECT_BINARY_DIR` ，项目的构建目录，生成编译文件的位置，一般也就是 `build/` 。 `LIBRARY_OUTPUT_PATH` 是生成的库文件存放的位置。
 
 `CMakeLists.txt` 文件示例：
 

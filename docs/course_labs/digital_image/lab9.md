@@ -305,5 +305,4 @@ def main(img_path):
 if __name__ == "__main__":
     main("./digital_image_hw9_img21.jpg")
     main("./digital_image_hw9_img22.jpg")
-
 ```

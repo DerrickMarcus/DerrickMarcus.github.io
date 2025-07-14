@@ -16,7 +16,7 @@ $$
 
 ![img](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/2023-11-23-230031.png)
 
-![img](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/2023-11-26-140122.png)由 $m$ 个列向量构成。现在给定非奇异矩阵 $A$ 和矩阵 $Z$ ，求解矩阵 $X$ 。
+![img](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/2023-11-26-140122.png)由 $m$ 个列向量构成。现在给定非奇异矩阵 $A$ 和矩阵 $Z$ ，求解矩阵 $X$ .
 
 ## Input
 
@@ -110,9 +110,9 @@ $$
 \beta_i=b_i-a_i\gamma_{i-1},\;\gamma_i=\frac{c_i}{\beta_i}
 $$
 
-因此只需将数组 `b[n]` 替换为 `β[n]`，将数组 `c[n-1]` 替换为 `γ[n-1]`，即可求出 LU 分解。
+因此只需将数组 `b[n]` 替换为 `β[n]` ，将数组 `c[n-1]` 替换为 `γ[n-1]` ，即可求出 LU 分解。
 
-先通过前向回代，求解 $Ly=z$ ，再通过后向回代，求解：$Ux=y$ 。
+先通过前向回代，求解 $Ly=z$ ，再通过后向回代，求解 $Ux=y$ .
 
 上述方法参见教程：[三对角矩阵的LU分解](https://blog.csdn.net/Giannis_34/article/details/107872239 "CSDN博客：追赶法求三对角矩阵、LU分解")
 

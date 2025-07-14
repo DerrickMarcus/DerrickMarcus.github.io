@@ -57,11 +57,11 @@ npm config get prefix
 npm config get cache
 ```
 
-然后进行系统环境变量设置，打开“查看高级系统设置——环境变量，在下方系统变量中新建变量 NODE_PATH，变量值为：`E:\Program Files\nodejs\node_global\node_modules` 。
+然后进行系统环境变量设置，打开“查看高级系统设置——环境变量，在下方系统变量中新建变量 NODE_PATH，变量值为： `E:\Program Files\nodejs\node_global\node_modules` 。
 
-在 `PATH` 中，新建项 `%NODE_PATH%`，顺便把C盘下默认 `AppData\Roaming\npm` 修改为 `E:\Program Files\nodejs\node_global`（如果有）。
+在 `PATH` 中，新建项 `%NODE_PATH%` ，顺便把C盘下默认 `AppData\Roaming\npm` 修改为 `E:\Program Files\nodejs\node_global` （如果有）。
 
-创建好后，`E:\Program Files\nodejs\node_global` 目录下应该会出现文件夹 `node_modules` ，如果没有，手动创建即可。
+创建好后， `E:\Program Files\nodejs\node_global` 目录下应该会出现文件夹 `node_modules` ，如果没有，手动创建即可。
 
 ## 3. Test
 
@@ -71,7 +71,7 @@ npm config get cache
 npm install -g express  // -g代表全局安装
 ```
 
-若安装失败，可能是因为没有使用管理员身份打开 cmd，或者可以修改一下文件夹`node_global`和`node_cache`的权限：
+若安装失败，可能是因为没有使用管理员身份打开 cmd，或者可以修改一下文件夹 `node_global` 和 `node_cache` 的权限：
 
 右键点击对应文件夹——【属性】——【安全】——【编辑】——勾选所有权限——【确定】。
 

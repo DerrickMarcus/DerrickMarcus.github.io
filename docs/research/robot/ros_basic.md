@@ -53,17 +53,13 @@ rosls
 
 工作空间目录：
 
-src 源代码
+1. `src/` 源代码
+2. `build/` 编译空间
+3. `devel/` 开发空间
 
-build 编译空间
+某个软件包的目录结构：`CMakeLists.txt, package.xml, scripts/, msg/, srv/, include/, src/, launch/, urdf/, config/, meshes/` .
 
-devel 开发空间
-
-某个软件包的目录结构：
-
-CMakeLists.txt, package.xml, scripts/ , msg/ , srv/ , include/ , src/ , launch/ , urdf/ , config/ , meshes/
-
-PS: 如果找不到软件包，用 `source devel/setup.bash` 而非 `source devel/local_setup.bash` 。
+PS：如果输入某些命令，报错找不到软件包，用 `source devel/setup.bash` 而非 `source devel/local_setup.bash` 。
 
 ## ROS 节点
 
@@ -80,7 +76,7 @@ rosnode info <node_name>
 rosrun [package_name] [node_name]
 ```
 
-运行多个节点，基于 .launch 文件：
+运行多个节点，基于 `.launch`` 文件：
 
 ```bash
 roslaunch [package] [filename.launch]
@@ -108,9 +104,9 @@ launch 文件：
 <node pkg="package_name" type="executable_node" name="node_name" args="$()" respawn="true" output="sceen">
 ```
 
-pkg 节点所在包的名称，type 可执行文件（节点）的名称，name 节点运行时的名称，args 传递命令行设置的参数，respawn 是否自动重启，output 是否将节点输出到屏幕。
+`pkg` 节点所在包的名称， `type` 可执行文件（节点）的名称， `name` 节点运行时的名称， `args` 传递命令行设置的参数， `respawn` 是否自动重启， `output` 是否将节点输出到屏幕。
 
-标签 param，改变程序变量的参数值：
+标签 `param` ，改变程序变量的参数值：
 
 ```xml
 <param name="param_name" type="param_type" value="param_value" />
@@ -120,9 +116,9 @@ pkg 节点所在包的名称，type 可执行文件（节点）的名称，name 
 </node>
 ```
 
-name 参数名称，type 参数类型（doubl, str, int 等），value 参数值。
+`name` 参数名称， `type` 参数类型（doubl, str, int 等）， `value` 参数值。
 
-标签 rosparam，实现节点从参数服务器上 load，dump，delete YAML 文件：
+标签 `rosparam` ，实现节点从参数服务器上 load，dump，delete YAML 文件：
 
 ```xml
 <!-- 加载package_name功能包下的example.yaml文件 -->
@@ -133,15 +129,15 @@ name 参数名称，type 参数类型（doubl, str, int 等），value 参数值
 <rosparam command="delete" param="xxx/param">
 ```
 
-command 功能类型，file 参数文件的路径，param 参数名称。
+`command` 功能类型， `file` 参数文件的路径， `param` 参数名称。
 
-标签 include，导入其他 launch 文件：
+标签 `include` ，导入其他 `.launch` 文件：
 
 ```xml
 <include file="$(find package_name)/launch_file_name">
 ```
 
-标签 remap，实现节点名称的重映射，原始名称 → 新名称：
+标签 `remap` ，实现节点名称的重映射，原始名称 → 新名称：
 
 ```xml
 <remap from="turtle1/cmd_vel" to="/cmd_vel" />
@@ -151,7 +147,7 @@ command 功能类型，file 参数文件的路径，param 参数名称。
 </node>
 ```
 
-标签 arg，表示启动参数：
+标签 `arg` ，表示启动参数：
 
 ```xml
 <arg name="arg_name" default="arg_default" />
@@ -165,7 +161,7 @@ command 功能类型，file 参数文件的路径，param 参数名称。
 | ----- | -------------------------------------- |
 | param | 运行时的参数，参数会存储在参数服务器中 |
 
-标签 group，可以实现将一组配置应用到组内的所有节点，它也具有命名空间特点，可以将不同的节点放入不同的 namespace。
+标签 `group` ，可以实现将一组配置应用到组内的所有节点，它也具有命名空间特点，可以将不同的节点放入不同的 `namespace` 。
 
 ```xml
 <!-- 用法1 -->
@@ -196,7 +192,7 @@ command 功能类型，file 参数文件的路径，param 参数名称。
 -->
 ```
 
-注意：launch 文件启动之前，无需再执行 `roscore` 指令启动 rosmaster ，因为 launch 文件可以自启动 rosmaster。
+注意： `.launch` 文件启动之前，无需再执行 `roscore` 指令启动 rosmaster ，因为 `.launch` 文件可以自启动 rosmaster。
 
 ## rqt 工具
 
@@ -275,7 +271,7 @@ rosdep install --from-path src --ignore-src -r -y
 
 ## 录制数据包
 
-.bag 文件可以保存 ROS 系统运行过程中产生的话题和服务数据，并播放出来供其他系统使用。
+`.bag` 文件可以保存 ROS 系统运行过程中产生的话题和服务数据，并播放出来供其他系统使用。
 
 开始录制数据：
 

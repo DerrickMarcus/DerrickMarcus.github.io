@@ -56,7 +56,7 @@ $$
 \end{align*}
 $$
 
-得到 $x_0=0,\;x_1=1.07,\;l_0=1.93$ 。
+得到 $x_0=0,\;x_1=1.07,\;l_0=1.93$ .
 
 考虑到实际传感器的精度有差别，我们应该更倾向于相信精度更高的传感器，因此可以对不同传感器数据的信任程度赋予不同的权重。例如假设编码器的数据很准确，测量与路标距离的信息误差较大，那么可以赋给编码器数据更高的权重10，其他保持不变，残差变为：
 
@@ -64,7 +64,7 @@ $$
 c = \sum_{i=1}^{4} f_i^2 = x_0^2 + 10(x_1 - x_0 - 1)^2 + (x_2 - x_1 + 0.8)^2 + (x_2 - x_0)^2
 $$
 
-得到 $x_0=0,\;x_1=1.01,\;l_0=1.9$ 。显然这里估计出来的位姿 $x_1$ 比之间的结果更加接近编码器的测距 1m。这里不同边的权重就是边的 **信息矩阵**。
+得到 $x_0=0,\;x_1=1.01,\;l_0=1.9$ . 显然这里估计出来的位姿 $x_1$ 比之间的结果更加接近编码器的测距 1m。这里不同边的权重就是边的 **信息矩阵**。
 
 ## 理论推导
 
@@ -102,7 +102,7 @@ $$
 
 其中 $\boldsymbol{e}_{ij} = \boldsymbol{e}_{ij}(\boldsymbol{x})$ ， $\boldsymbol{J}_{ij} = \displaystyle\lim_{\Delta x \to 0} \frac{\boldsymbol{e}_{ij}(\boldsymbol{x} + \Delta \boldsymbol{x}) - \boldsymbol{e}_{ij}(\boldsymbol{x})}{\Delta \boldsymbol{x}} \in \mathbb{R}^{M_{ij} \times N}$ .
 
-考虑到参数 $\boldsymbol{x}$ 可能位于非欧式空间 $\text{Dom}(\boldsymbol{x})$ ，而摄动量 $\Delta \boldsymbol{x}$ 位于欧式空间 $\mathbb{R}^N$ ，故上式中的向量加法很可能导致 $\boldsymbol{x} + \Delta \boldsymbol{x} \notin \text{Dom}(\boldsymbol{x})$ .例如四维变换矩阵 T 或者三维旋转矩阵 R 对加法并不封闭，两个变换阵之和不是变换阵，两个正交阵之和也不是正交阵。
+考虑到参数 $\boldsymbol{x}$ 可能位于非欧式空间 $\text{Dom}(\boldsymbol{x})$ ，而摄动量 $\Delta \boldsymbol{x}$ 位于欧式空间 $\mathbb{R}^N$ ，故上式中的向量加法很可能导致 $\boldsymbol{x} + \Delta \boldsymbol{x} \notin \text{Dom}(\boldsymbol{x})$ . 例如四维变换矩阵 T 或者三维旋转矩阵 R 对加法并不封闭，两个变换阵之和不是变换阵，两个正交阵之和也不是正交阵。
 
 为解决该问题，可采用广义加法 $\oplus : \text{Dom}(\boldsymbol{x}) \times \mathbb{R}^N \rightarrow \text{Dom}(\boldsymbol{x})$ 将(7)改写为：
 
@@ -192,7 +192,7 @@ $$
 
 1. 令 $k=0$ ，给定初始值 $\boldsymbol{x}_0$ .
 2. 若 $k$ 达到最大迭代次数，则停止迭代；否则根据 $\boldsymbol{x}_k$ 求出当前的 $\boldsymbol{H}_k,\;\boldsymbol{b}_k$ .
-3. 求解增量方程：$\boldsymbol{H}_k \Delta \boldsymbol{x}_k = -\boldsymbol{b}_k$ 。当 $\boldsymbol{H}$ 正定时，增量方程可以通过 Cholesky 分解高效求解；当 $\boldsymbol{H}$ 非正定时，可取 $\Delta \boldsymbol{x}_k = \Delta \boldsymbol{x}_{k-1}$ .
+3. 求解增量方程：$\boldsymbol{H}_k \Delta \boldsymbol{x}_k = -\boldsymbol{b}_k$ . 当 $\boldsymbol{H}$ 正定时，增量方程可以通过 Cholesky 分解高效求解；当 $\boldsymbol{H}$ 非正定时，可取 $\Delta \boldsymbol{x}_k = \Delta \boldsymbol{x}_{k-1}$ .
 4. 如果 $\Delta \boldsymbol{x}_k$ 足够小，则停止迭代；否则令 $\boldsymbol{x}_{k+1} = \boldsymbol{x}_k \oplus \Delta \boldsymbol{x}_k,\;k = k + 1$ ，返回第2步。
 
 ## 核函数
