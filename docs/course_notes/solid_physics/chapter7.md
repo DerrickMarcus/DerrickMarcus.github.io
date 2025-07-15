@@ -338,8 +338,7 @@ $$
 $$
 \begin{align*}
 C_V(T) &= 9N k_B \left( \frac{T}{\Theta_D} \right)^3
-\int_0^{\Theta_D/T} \frac{ \xi^4 \mathrm{e}^{\xi} }{ (\mathrm{e}^{\xi} - 1)^2 } \mathrm{d}\xi
-\\
+\int_0^{\Theta_D/T} \frac{ \xi^4 \mathrm{e}^{\xi} }{ (\mathrm{e}^{\xi} - 1)^2 } \mathrm{d}\xi \\
 &\approx 9N k_B \left( \frac{T}{\Theta_D} \right)^3 \int_0^{\Theta_D/T} \xi^2 \mathrm{d}\xi
 = 9N k_B \left( \frac{T}{\Theta_D} \right)^3\cdot \frac{1}{3} \left( \frac{\Theta_D}{T} \right)^3 = 3N k_B
 \end{align*}
@@ -350,8 +349,7 @@ $$
 $$
 \begin{align*}
 C_V \left( \frac{T}{\Theta_D} \right) &\to
-9N k_B \left( \frac{T}{\Theta_D} \right)^3 \int_0^{\infty} \frac{ \xi^4 \mathrm{e}^{\xi} }{ (\mathrm{e}^{\xi} - 1)^2 } \mathrm{d}\xi
-\\
+9N k_B \left( \frac{T}{\Theta_D} \right)^3 \int_0^{\infty} \frac{ \xi^4 \mathrm{e}^{\xi} }{ (\mathrm{e}^{\xi} - 1)^2 } \mathrm{d}\xi \\
 &= 9N k_B \left( \frac{T}{\Theta_D} \right)^3 \cdot \frac{4\pi^4}{15}
 = \frac{12\pi^4}{5} N k_B \left( \frac{T}{\Theta_D} \right)^3 \quad (T \to 0\text{ K})
 \end{align*}

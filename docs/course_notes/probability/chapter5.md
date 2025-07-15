@@ -1,8 +1,9 @@
 # Chapter 5 Gaussian Process
 
-> 高斯过程是随机过程中较为简单的一种，只需要均值和协方差就可以完全确定，性质简单、易于研究，且实际生活中很多问题都可以使用高斯过程建模，不仅可以大大简化分析问题，也具有较好的适用性。
->
-> 高斯过程的特征函数中，自变量没有选取 $\boldsymbol{t}$ ，是因为随机过程的参数已经占用了 $t$ ，为避免混淆，自变量选取为 $\boldsymbol{\omega}$ ，但注意不是频域的常见频率表示 $\omega$ ，这里的 $\boldsymbol{\omega}$ 反而具有时域的意义。
+!!! abstract "本章概述"
+    高斯过程是随机过程中较为简单的一种，只需要均值和协方差就可以完全确定，性质简单、易于研究，且实际生活中很多问题都可以使用高斯过程建模，不仅可以大大简化分析问题，也具有较好的适用性。
+
+    高斯过程的特征函数中，自变量没有选取 $\boldsymbol{t}$ ，是因为随机过程的参数已经占用了 $t$ ，为避免混淆，自变量选取为 $\boldsymbol{\omega}$ ，但注意不是频域的常见频率表示 $\omega$ ，这里的 $\boldsymbol{\omega}$ 反而具有时域的意义。
 
 高斯过程的定义：随机过程 $\{X(t)\}$ 满足 $\forall n,\;\forall t_1,\cdots,t_n\in T$ ，随机向量 $\left(X(t_1),X(t_2)\cdots,X(t_n)\right)^T$ 均服从 $n$ 元高斯分布，则 $\{X(t)\}$ 为 高斯过程。
 
@@ -13,18 +14,21 @@
 服从 $n$ 元高斯分布的随机向量 $\boldsymbol{X}=\left(X_1,X_2\cdots,X_n\right)^T$ 的概率密度函数 PDF 为：
 
 $$
-f_{\boldsymbol{X}}(\boldsymbol{x})=\frac{1}{(2\pi)^{n/2}\sqrt{|\boldsymbol{\Sigma}|}}\exp\left(-\frac{1}{2}(\boldsymbol{x}-\boldsymbol{\mu})^T\boldsymbol{\Sigma}^{-1}(\boldsymbol{x}-\boldsymbol{\mu})\right)
+\begin{align*}
+f_{\boldsymbol{X}}(\boldsymbol{x})&=\frac{1}{(2\pi)^{n/2}\sqrt{|\boldsymbol{\Sigma}|}}\exp\left(-\frac{1}{2}(\boldsymbol{x}-\boldsymbol{\mu})^T\boldsymbol{\Sigma}^{-1}(\boldsymbol{x}-\boldsymbol{\mu})\right) \\
+\boldsymbol{x}&=(x_1,\cdots,x_n)^T,\quad \boldsymbol{\mu}\in\mathbb{R}^n,\quad \boldsymbol{\Sigma}\in\mathbb{R}^{n\times n}
+\end{align*}
 $$
 
 均值和协方差矩阵：
 
 $$
 \begin{gather*}
-\boldsymbol{\mu}=\mathrm{E}[\boldsymbol{X}]=\begin{pmatrix}
-\mathrm{E}[X_1] \\ \vdots \\ \mathrm{E}[X_n]
+\boldsymbol{\mu}=\mathrm{E}(\boldsymbol{X})=\begin{pmatrix}
+\mathrm{E}(X_1) \\ \vdots \\ \mathrm{E}(X_n)
 \end{pmatrix},\quad
-\boldsymbol{\Sigma}=\mathrm{Cov(\boldsymbol{X})}=\mathrm{E}\left[ (\boldsymbol{X}-\boldsymbol{\mu})(\boldsymbol{X}-\boldsymbol{\mu})^T \right] \\
-\mu_i=\mathrm{E}[X_i],\quad \sigma_{ij}=\mathrm{E}[(X_i-\mu_i)(X_j-\mu_j)]
+\boldsymbol{\Sigma}=\mathrm{Cov(\boldsymbol{X})}=\mathrm{E}\left( (\boldsymbol{X}-\boldsymbol{\mu})(\boldsymbol{X}-\boldsymbol{\mu})^T \right) \\
+\mu_i=\mathrm{E}(X_i),\quad \sigma_{ij}=\mathrm{E}\left((X_i-\mu_i)(X_j-\mu_j)\right)
 \end{gather*}
 $$
 
@@ -32,7 +36,7 @@ $$
 
 $$
 \phi:\mathbb{R}^n\to \mathbb{C},\quad
-\phi_{\boldsymbol{X}}(\boldsymbol{\omega})=\mathrm{E}[\mathrm{e}^{\mathrm{j}\boldsymbol{\omega}^T\boldsymbol{X}}]=\exp\left(\mathrm{j}\boldsymbol{\omega}^T\boldsymbol{\mu}-\frac{1}{2}\boldsymbol{\omega}^T\boldsymbol{\Sigma}\boldsymbol{\omega}\right)
+\phi_{\boldsymbol{X}}(\boldsymbol{\omega})=\mathrm{E}(\mathrm{e}^{\mathrm{j}\boldsymbol{\omega}^T\boldsymbol{X}})=\exp\left(\mathrm{j}\boldsymbol{\omega}^T\boldsymbol{\mu}-\frac{1}{2}\boldsymbol{\omega}^T\boldsymbol{\Sigma}\boldsymbol{\omega}\right)
 $$
 
 其中 $\boldsymbol{X}=\left(X_1,X_2\cdots,X_n\right)^T$ 各分量相互独立的 充要条件 为 协方差矩阵 $\boldsymbol{\Sigma}$ 是对角阵（非对角线位置为0），此时各分量解耦，特征函数可写为求积形式：
@@ -47,28 +51,41 @@ $$
 \phi_{\boldsymbol{A}\boldsymbol{X}+\boldsymbol{b}}(\boldsymbol{\omega})=\mathrm{e}^{\mathrm{j}\boldsymbol{\omega}^T\boldsymbol{b}}\phi_{\boldsymbol{X}}(\boldsymbol{A}^T\boldsymbol{\omega})
 $$
 
-如果存在高阶矩 $\mathrm{E}[X_1^{k_1}X_2^{k_2}\cdots X_n^{k_n}]<+\infty$ ，则：
+多元高斯分布的高阶矩由 均值向量 和 协方差矩阵 决定。
+
+事实上，如果随机向量 $\boldsymbol{X}\in\mathbb{R}^n$ 的特征函数满足 $\phi_{\boldsymbol{X}}(\boldsymbol{\omega})=\exp\left(\mathrm{j}\boldsymbol{\omega}^T\boldsymbol{\mu}-\frac{1}{2}\boldsymbol{\omega}^T\boldsymbol{\Sigma}\boldsymbol{\omega}\right)$ 的形式，其中 $\boldsymbol{\mu}\in\mathbb{R}^n$ 且 $\boldsymbol{\Sigma}$ 非负定，那么 $\boldsymbol{X}$ 一定是 $n$ 元高斯向量。
+
+如果存在高阶矩 $\mathrm{E}\left(X_1^{k_1}X_2^{k_2}\cdots X_n^{k_n}\right)<+\infty$ ，则：
 
 $$
-\mathrm{E}[X_1^{k_1}X_2^{k_2}\cdots X_n^{k_n}]=(-\mathrm{j})^{k_1+\cdots+k_n}\frac{\partial^{k_1+\cdots+k_n} \phi_{\boldsymbol{X}}(\omega)}{\partial \omega_1^{k_1}\cdots \partial \omega_n^{k_n}}\bigg|_{\boldsymbol{\omega}=\boldsymbol{0}}
+\mathrm{E}\left(X_1^{k_1}X_2^{k_2}\cdots X_n^{k_n}\right)=(-\mathrm{j})^{k_1+\cdots+k_n}\frac{\partial^{k_1+\cdots+k_n} \phi_{\boldsymbol{X}}(\omega)}{\partial \omega_1^{k_1}\cdots \partial \omega_n^{k_n}}\bigg|_{\boldsymbol{\omega}=\boldsymbol{0}}
 $$
 
 特别地，对于 <span style="color:red">零均值4维高斯分布</span> $\boldsymbol{X}=(X_1,X_2,X_3,X_4)^T$ 有：
 
 $$
-\mathrm{E}[X_1X_2X_3X_4]=\mathrm{E}[X_1X_2]\cdot\mathrm{E}[X_3X_4]+\mathrm{E}[X_1X_3]\cdot\mathrm{E}[X_2X_4]+\mathrm{E}[X_1X_4]\cdot\mathrm{E}[X_2X_3]
+\mathrm{E}(X_1X_2X_3X_4)=\mathrm{E}(X_1X_2)\cdot\mathrm{E}(X_3X_4)+\mathrm{E}(X_1X_3)\cdot\mathrm{E}(X_2X_4)+\mathrm{E}(X_1X_4)\cdot\mathrm{E}(X_2X_3)
 $$
 
 与三角函数有关的特征函数计算技巧：
 
 $$
 \begin{gather*}
-\mathrm{E}[\cos X]=\frac{1}{2}\mathrm{E}[\mathrm{e}^{\mathrm{j}X}+\mathrm{e}^{-\mathrm{j}X}]=\frac{\phi_X(1)+\phi_X(-1)}{2} \\
-\mathrm{E}[\sin X]=\frac{1}{2\mathrm{j}}\mathrm{E}[\mathrm{e}^{\mathrm{j}X}-\mathrm{e}^{-\mathrm{j}X}]=\frac{\phi_X(1)-\phi_X(-1)}{2\mathrm{j}}
+\mathrm{E}(\cos X)=\frac{1}{2}\mathrm{E}\left(\mathrm{e}^{\mathrm{j}X}+\mathrm{e}^{-\mathrm{j}X}\right)=\frac{\phi_X(1)+\phi_X(-1)}{2} \\
+\mathrm{E}(\sin X)=\frac{1}{2\mathrm{j}}\mathrm{E}\left(\mathrm{e}^{\mathrm{j}X}-\mathrm{e}^{-\mathrm{j}X}\right)=\frac{\phi_X(1)-\phi_X(-1)}{2\mathrm{j}}
 \end{gather*}
 $$
 
-## 高斯过程的边缘分布
+## 线性变换
+
+对于 $n$ 元高斯随机变量 $\boldsymbol{X} \sim \mathcal{N}(\boldsymbol{\mu}, \boldsymbol{\Sigma})$ ，其线性变换 $\boldsymbol{Y} = \boldsymbol{A}\boldsymbol{X} + \boldsymbol{b}$ 仍服从高斯分布，且均值为 $\boldsymbol{A}\boldsymbol{\mu} + \boldsymbol{b}$ ，协方差矩阵为 $\boldsymbol{A}\boldsymbol{\Sigma} \boldsymbol{A}^T$ .
+
+$$
+\boldsymbol{\mu}_Y=\boldsymbol{A}\boldsymbol{\mu}_X + \boldsymbol{b},\quad
+\boldsymbol{\Sigma}_Y=\boldsymbol{A}\boldsymbol{\Sigma}_X \boldsymbol{A}^T
+$$
+
+## 边缘分布
 
 联合高斯分布 $\boldsymbol{}{X}=(X_1, X_2, \dots, X_n)^T$ ，其边缘分布仍为高斯分布，且均值和协方差矩阵对应原分布中的相应位置上的值。例如：
 
@@ -94,7 +111,7 @@ X_4
 \end{pmatrix}
 $$
 
-则
+则：
 
 $$
 \begin{pmatrix}
@@ -112,11 +129,24 @@ X_3
 \end{pmatrix}
 $$
 
-## 高斯过程的线性变换
+## 独立性
 
-对于 $n$ 元高斯随机变量 $\boldsymbol{X} \sim \mathcal{N}(\boldsymbol{\mu}, \boldsymbol{\Sigma})$ ，其线性变换 $\boldsymbol{Y} = \boldsymbol{A}\boldsymbol{X} + \boldsymbol{b}$ 仍服从高斯分布，且均值为 $\boldsymbol{A}\boldsymbol{\mu} + \boldsymbol{b}$ ，协方差矩阵为 $\boldsymbol{A}\boldsymbol{\Sigma} \boldsymbol{A}^T$ .
+设 $\boldsymbol{X}=(\boldsymbol{X}_1,\boldsymbol{X}_2)^T$ 服从 $n$ 元高斯分布，均值为 $\boldsymbol{\mu}=(\boldsymbol{\mu}_1,\boldsymbol{\mu}_2)^T$ ，协方差矩阵为：
 
-## 高斯过程的条件分布
+$$
+\boldsymbol{\Sigma}=\begin{pmatrix}
+\boldsymbol{\Sigma}_1 & \boldsymbol{\Sigma}_{12} \\
+\boldsymbol{\Sigma}_{21} & \boldsymbol{\Sigma}_2
+\end{pmatrix}
+$$
+
+则 $\boldsymbol{X}$ 的两个子向量 $\boldsymbol{X}_1,\boldsymbol{X}_2$ 相互独立的 充要条件为 $\boldsymbol{\Sigma}_{12}=\boldsymbol{0}$ .
+
+推论： $n$ 元高斯向量 $\boldsymbol{X}=(X_1,\cdots,X_n)^T$ 各个分量相互独立 的充要条件为 各分量之间协方差为 $\sigma_{ij}=0$ .
+
+## 条件分布
+
+先说结论：多元高斯的任意两个分量之间的条件分布也是高斯分布。
 
 对于 $n$ 元高斯随机变量 $\boldsymbol{X} \sim \mathcal{N}(\boldsymbol{\mu}, \boldsymbol{\Sigma})$ ，将其分为两个子向量 $\boldsymbol{X}_1,\boldsymbol{X}_2$ ：
 
@@ -133,7 +163,7 @@ $$
 \end{pmatrix}
 $$
 
-则条件分布仍为联合高斯分布 $\boldsymbol{X}_1|\boldsymbol{X}_1\sim\mathcal{N}(\boldsymbol{\mu}_{1|2},\boldsymbol{\Sigma}_{1|2})$ ，其均值和协方差分别为：
+则条件分布仍为联合高斯分布 $\boldsymbol{X}_1|\boldsymbol{X}_2\sim\mathcal{N}(\boldsymbol{\mu}_{1|2},\boldsymbol{\Sigma}_{1|2})$ ，其均值和协方差分别为：
 
 $$
 \boldsymbol{\mu}_{1|2}=\boldsymbol{\mu}_1+\boldsymbol{\Sigma}_{12}\boldsymbol{\Sigma}_2^{-1}(\boldsymbol{X}_2-\boldsymbol{\mu}_2),\quad \boldsymbol{\Sigma}_{1|2}=\boldsymbol{\Sigma}_1-\boldsymbol{\Sigma}_{12}\boldsymbol{\Sigma}_2^{-1}\boldsymbol{\Sigma}_{21}

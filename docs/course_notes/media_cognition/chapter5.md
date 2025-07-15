@@ -80,8 +80,10 @@ $$
 在感受野中引入了偏移量，而且偏移量是可学习参数，这样卷积核不再是传统的方形，而可以与物体的实际形状更贴近。
 
 $$
-y(\mathbf{p}_0) = \sum_{\mathbf{p}_n \in \mathcal{R}} \mathbf{w}(\mathbf{p}_n) \cdot \mathbf{x}(\mathbf{p}_0 + \mathbf{p}_n) \quad (1) \\
-y(\mathbf{p}_0) = \sum_{\mathbf{p}_n \in \mathcal{R}} \mathbf{w}(\mathbf{p}_n) \cdot \mathbf{x}(\mathbf{p}_0 + \mathbf{p}_n + \Delta\mathbf{p}_n) \quad (2)
+\begin{align}
+y(\mathbf{p}_0) &= \sum_{\mathbf{p}_n \in \mathcal{R}} \mathbf{w}(\mathbf{p}_n) \cdot \mathbf{x}(\mathbf{p}_0 + \mathbf{p}_n) \\
+y(\mathbf{p}_0) &= \sum_{\mathbf{p}_n \in \mathcal{R}} \mathbf{w}(\mathbf{p}_n) \cdot \mathbf{x}(\mathbf{p}_0 + \mathbf{p}_n + \Delta\mathbf{p}_n)
+\end{align}
 $$
 
 其中 (1) 为传统卷积，(2) 为可变形卷积， $\Delta\mathbf{p}_n$ 为偏移量。

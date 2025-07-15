@@ -382,8 +382,6 @@ $$
 
 ![202506092101233](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo-image/images/202506092101233.png)
 
-<br>
-
 ### 总结
 
 肖特基接触：（金属费米能级不变，半导体费米能级与金属对齐）

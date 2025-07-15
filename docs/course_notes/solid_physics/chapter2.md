@@ -26,8 +26,7 @@
 
 $$
 \begin{align*}
-\hat{H} &= -\frac{\hbar^2}{2m}\nabla_1^2-\frac{\hbar^2}{2m}\nabla_2^2+V_{A1}+V_{A2}+V_{B1}+V_{B2}+\cancel{V_{12}}
-\\
+\hat{H} &= -\frac{\hbar^2}{2m}\nabla_1^2-\frac{\hbar^2}{2m}\nabla_2^2+V_{A1}+V_{A2}+V_{B1}+V_{B2}+\cancel{V_{12}} \\
 &= (-\frac{\hbar^2}{2m}\nabla_1^2+V_1)+(-\frac{\hbar^2}{2m}\nabla_2^2+V_2)
 \end{align*}
 $$
@@ -38,8 +37,7 @@ $$
 
 $$
 \begin{align*}
-\psi_+=C_+(\phi_A+\lambda\phi_B),\quad & E_+=C_+^2(H_{aa}+\lambda H_{ab}+\lambda H_{ba}+\lambda^2 H_{bb})
-\\
+\psi_+=C_+(\phi_A+\lambda\phi_B),\quad & E_+=C_+^2(H_{aa}+\lambda H_{ab}+\lambda H_{ba}+\lambda^2 H_{bb}) \\
 \psi_-=C_-(\phi_A-\lambda\phi_B),\quad & E_-=C_-^2(H_{aa}-\lambda H_{ab}-\lambda H_{ba}+\lambda^2 H_{bb})
 \end{align*}
 $$

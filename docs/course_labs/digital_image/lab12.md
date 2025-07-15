@@ -108,7 +108,7 @@ def cls_filter(image, H_degrade, s=0.01):
 
 $$
 M(u,v)=\begin{cases}\
-k, & H(u,v)<d\\
+k, & H(u,v)<d \\
 \dfrac{1}{H(u,v)}, & \text{else}
 \end{cases}
 $$

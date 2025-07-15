@@ -29,7 +29,7 @@ $$
 
 PW 准则不允许 $|H(\mathrm{j}\omega)|$ 在某一频带内恒为0（理想滤波器不可能实现），但允许在一些不连续的点为0。
 
-对数函数 $\ln()$ 限制了 $|H(\mathrm{j}\omega)|\to 0$ 的衰减速度。
+对数函数 $\ln(\cdot)$ 限制了 $|H(\mathrm{j}\omega)|\to 0$ 的衰减速度。
 
 PW 准则不是物理可实现的充分条件，因为对相频特性 $\varphi(\omega)$ 没有要求。如果已知一个满足 PW 准则的 $|H(\mathrm{j}\omega)|$ ，可以搭配一个适当的相频特性函数 $\varphi(\omega)$ ，使系统物理可实现。
 
@@ -40,9 +40,10 @@ PW 准则不是物理可实现的充分条件，因为对相频特性 $\varphi(\
 对于一个因果稳定的系统，将系统函数分解实部虚部 $H(\mathrm{j}\omega) = R(\omega) + \mathrm{j}X(\omega)$ ，实部与虚部的关系为：
 
 $$
-R(\omega) = \frac{1}{\pi} \int_{-\infty}^{\infty} \frac{X(\lambda)}{\omega-\lambda}\,\mathrm{d}\lambda
-\\
-X(\omega) = -\frac{1}{\pi} \int_{-\infty}^{\infty} \frac{R(\lambda)}{\omega-\lambda}\,\mathrm{d}\lambda
+\begin{align*}
+R(\omega) &= \frac{1}{\pi} \int_{-\infty}^{\infty} \frac{X(\lambda)}{\omega-\lambda}\,\mathrm{d}\lambda \\
+X(\omega) &= -\frac{1}{\pi} \int_{-\infty}^{\infty} \frac{R(\lambda)}{\omega-\lambda}\,\mathrm{d}\lambda
+\end{align*}\\
 $$
 
 实部是虚部的 Hilbert 变换，虚部是实部的 Hilbert 逆变换。实部与虚部相互约束，二者可以互相确定，两者不能任意给定。
@@ -55,17 +56,18 @@ $$
 
 调制信号（基带信号） $g(t)$ ，频谱 $G(\omega)$ 占据有限频带 $-\omega_m\sim \omega_m$ .
 
-已调信号 $f(t)=g(t)\cos(\omega_0t)$ ，把 $g(t)$ 频谱搬移到 $\pm\omega_0$ 上，且分成两部分，各占1/2。
+已调信号 $f(t)=g(t)\cos(\omega_0t)$ ，把 $g(t)$ 频谱搬移到 $\pm\omega_0$ 上，且分成两部分，各占 $\dfrac{1}{2}$ .
 
 解调：从已调信号 $f(t)$ 恢复出基带信号 $g(t)$ 需要用本地载波 $\cos(\omega_0t)$ ，使频谱 $F(\omega)$ 左右移动，经过低通滤波器（带宽大于 $\omega_m$ ，小于 $2\omega_0-\omega_m$）之后取出 $G(\omega)$ ，但能量变为原来的一半。
 
 $$
-g_0(t) = f(t)\cos(\omega_0 t)=g(t)\cos^2(\omega_0 t)=\frac{1}{2}g(t)(1+\cos(2\omega_0 t))
-\\
-G_0(\omega) = \frac{1}{2}G(\omega)+\frac{1}{4}[G(\omega+2\omega_0)+G(\omega-2\omega_0)]
+\begin{align*}
+g_0(t) &= f(t)\cos(\omega_0 t)=g(t)\cos^2(\omega_0 t)=\frac{1}{2}g(t)(1+\cos(2\omega_0 t)) \\
+G_0(\omega) &= \frac{1}{2}G(\omega)+\frac{1}{4}[G(\omega+2\omega_0)+G(\omega-2\omega_0)]
+\end{align*}
 $$
 
-注意：$f(t)$ 的频域 $F(\omega)=\frac{1}{2}G(\omega-\omega_0)+\frac{1}{2}G(\omega+\omega_0)$ 不含载波的频谱 $\delta(\omega)$ .
+注意：$f(t)$ 的频域 $F(\omega)=\dfrac{1}{2}G(\omega-\omega_0)+\dfrac{1}{2}G(\omega+\omega_0)$ 不含载波的频谱 $\delta(\omega)$ .
 
 缺点：解调使用的本地载波需要与发送端相同，接收机较为复杂。
 
@@ -79,7 +81,7 @@ $$
 f(t)=[A+g(t)]\cos(\omega_0 t)
 $$
 
-其中 $K=1/A$ 为调制深度。
+其中 $K=\dfrac{1}{A}$ 为调制深度。
 
 当 $A$ 足够大时， $f(t)$ 的波形包络就是 $A+g(t)$​ ，使用包络检测器（二极管、电容、电阻）即可恢复。
 
@@ -109,7 +111,7 @@ $$
 
 FM（调频），直接作用于相位： $f(t)=A\cos(\omega_c t+g(t))$ .
 
-PM（调相），直接作用于频率： $f(t)=A\cos(\omega_c t+\int_{-\infty}^{t}g(\tau)\,\mathrm{d}\tau)$ .
+PM（调相），直接作用于频率： $f(t)=A\cos(\omega_c t+\displaystyle\int_{-\infty}^{t}g(\tau)\,\mathrm{d}\tau)$ .
 
 本质都是调相。
 

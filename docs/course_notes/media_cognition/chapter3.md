@@ -170,9 +170,11 @@ $$
 （8）Softmax 函数，可以看作为 Sigmoid 函数的扩展，适用于多分类任务。
 
 $$
-\boldsymbol{x}=[x_1, \cdots, x_n]^T \in \mathbb{R}^n \\
-\text{softmax}(\boldsymbol{x}) = [\text{softmax}(x_1), \cdots, \text{softmax}(x_n)]^T \\
-\text{softmax}(x_i)=\frac{\exp(x_i)}{\displaystyle\sum_{j=1}^n \exp(x_j)}
+\begin{align*}
+\boldsymbol{x} &= [x_1, \cdots, x_n]^T \in \mathbb{R}^n \\
+\text{softmax}(\boldsymbol{x}) &= [\text{softmax}(x_1), \cdots, \text{softmax}(x_n)]^T \\
+\text{softmax}(x_i) &= \frac{\exp(x_i)}{\displaystyle\sum_{j=1}^n \exp(x_j)}
+\end{align*}
 $$
 
 它将原始分数（也称为 logits）转换为表示概率分布的数值，且所有类别的概率之和等于1，因此适用于多类别分类问题，且类别之间互斥的场合，每个样本只属于一个类别。
@@ -270,14 +272,16 @@ $$
 将偏置 $b$ 添加到权重中，得到增广向量：
 
 $$
-\boldsymbol{x}=\begin{bmatrix}
+\begin{gather*}
+\boldsymbol{x}=\begin{pmatrix}
 1 \\ \boldsymbol{x}
-\end{bmatrix}, \quad
-\boldsymbol{w}=\begin{bmatrix}
+\end{pmatrix}, \quad
+\boldsymbol{w}=\begin{pmatrix}
 b \\ \boldsymbol{w}
-\end{bmatrix} \\
+\end{pmatrix} \\
 L(\boldsymbol{X},\boldsymbol{y},\boldsymbol{w}) = \frac{1}{n}\|\boldsymbol{y} - \boldsymbol{X}\boldsymbol{w}\|^2 \\
 \frac{\partial L}{\partial \boldsymbol{w}} = -\frac{2}{N}(\boldsymbol{y} - \boldsymbol{X}\boldsymbol{w})^T\boldsymbol{X}
+\end{gather*}
 $$
 
 （1）损失函数是凸函数，由梯度为0，**直接得到闭式解**：
@@ -299,26 +303,26 @@ $$
 与线性回归几乎相同，只需把特征向量上各个维度的值，改为同一个 $x$ 的幂次即可：
 
 $$
-\begin{gather*}
-\boldsymbol{x}=\begin{bmatrix}
+\begin{align*}
+\boldsymbol{x}=\begin{pmatrix}
     1 \\ x_1 \\ x_2 \\ \cdots \\ x_n
-\end{bmatrix} \to
-\boldsymbol{x} =\begin{bmatrix}
+\end{pmatrix} &\to
+\boldsymbol{x} =\begin{pmatrix}
     1 \\ x \\ x^2 \\ \cdots \\ x^n
-\end{bmatrix} \\
-\boldsymbol{X} =\begin{bmatrix}
+\end{pmatrix} \\
+\boldsymbol{X} =\begin{pmatrix}
     1 & x^{(1)}_1 & x^{(1)}_2 & \cdots & x^{(1)}_n \\
     1 & x^{(2)}_1 & x^{(2)}_2 & \cdots & x^{(2)}_n \\
     \vdots & \vdots & \vdots & \ddots & \vdots \\
     1 & x^{(N)}_1 & x^{(N)}_2 & \cdots & x^{(N)}_n
-\end{bmatrix} \to
-\boldsymbol{X}=\begin{bmatrix}
+\end{pmatrix} &\to
+\boldsymbol{X}=\begin{pmatrix}
     1 & x_1 & x_1^2 & \cdots & x_1^n \\
     1 & x_2 & x_2^2 & \cdots & x_2^n \\
     \vdots & \vdots & \vdots & \ddots & \vdots \\
     1 & x_N & x_N^2 & \cdots & x_N^n
-\end{bmatrix}
-\end{gather*}
+\end{pmatrix}
+\end{align*}
 $$
 
 ### 3.3.3 Logistic Regression
@@ -348,11 +352,13 @@ $$
 考虑单个损失函数项：
 
 $$
-L_i=-y_i\log(h(\boldsymbol{x}_i)) - (1-y_i)\log(1-h(\boldsymbol{x}_i)) \\
-=\begin{cases}
--\log(h(\boldsymbol{x}_i)) & y_i=1 \\
--\log(1-h(\boldsymbol{x}_i)) & y_i=0
+\begin{align*}
+L_i &= -y_i\log(h(\boldsymbol{x}_i)) - (1-y_i)\log(1-h(\boldsymbol{x}_i)) \\
+&=\begin{cases}
+-\log(h(\boldsymbol{x}_i)), & y_i=1 \\
+-\log(1-h(\boldsymbol{x}_i)), & y_i=0
 \end{cases}
+\end{align*}
 $$
 
 上式表明 $\boldsymbol{w}^T\boldsymbol{x}+b$ 越接近真实标签（实际是 $h(\boldsymbol{x})$ 接近真实标签），损失函数越小、越接近0。
@@ -360,10 +366,12 @@ $$
 优化方法：梯度下降
 
 $$
-\frac{\partial L}{\partial \boldsymbol{w}} = \sum_{i=1}^N \left(h(\boldsymbol{x}_i)-y_i\right)\boldsymbol{x}_i ,\quad
-\frac{\partial L}{\partial b} = \sum_{i=1}^N \left(h(\boldsymbol{x}_i)-y_i\right) \\
-\boldsymbol{w} \leftarrow \boldsymbol{w} - \eta\frac{\partial L}{\partial \boldsymbol{w}} ,\quad
-b \leftarrow b - \eta\frac{\partial L}{\partial b}
+\begin{align*}
+\frac{\partial L}{\partial \boldsymbol{w}} &= \sum_{i=1}^N \left(h(\boldsymbol{x}_i)-y_i\right)\boldsymbol{x}_i ,&\quad
+\frac{\partial L}{\partial b} &= \sum_{i=1}^N \left(h(\boldsymbol{x}_i)-y_i\right) \\
+\boldsymbol{w} &\leftarrow \boldsymbol{w} - \eta\frac{\partial L}{\partial \boldsymbol{w}} ,&\quad
+b &\leftarrow b - \eta\frac{\partial L}{\partial b}
+\end{align*}
 $$
 
 由于模型的输出范围为 $h(\boldsymbol{x})\in(0,1)$ ，且 $\boldsymbol{w}^T\boldsymbol{x}+b>0 \Leftrightarrow h(\boldsymbol{x})>0.5$ ，因此可以 $0.5$ 为分类基准，这也符合我们的的直观认知。
@@ -435,16 +443,21 @@ $$
 求解其最小值：
 
 $$
+\begin{gather*}
 \min_{\boldsymbol{w},b}L(\boldsymbol{w}, b, \boldsymbol{\alpha}) \\
 \frac{\partial L}{\partial \boldsymbol{w}}=0 \implies \boldsymbol{w} = \sum_{i=1}^{N} \alpha_i y_i \boldsymbol{x}_i \\
 \frac{\partial L}{\partial b}=0 \implies \sum_{i=1}^{N} \alpha_i y_i = 0
+\end{gather*}
 $$
 
 由于为凸问题，且满足 KKT 条件，可交换求解次序，原优化问题等价于：
 
 $$
-\max_{\boldsymbol{\alpha}}(\min_{\boldsymbol{w},b} L(\boldsymbol{w}, b, \boldsymbol{\alpha})) \\
-=\max_{\boldsymbol{\alpha}} \left( \sum_{i=1}^{n} \alpha_i -\frac{1}{2} \sum_{i=1}^{n} \sum_{j=1}^{n} \alpha_i \alpha_j y_i y_j (\boldsymbol{x}_i^T \boldsymbol{x}_j) \right) ,\quad \text{s.t.}\; \alpha_i \geqslant 0,\; \sum_{i=1}^{n} \alpha_i y_i = 0
+\begin{gather*}
+\max_{\boldsymbol{\alpha}}(\min_{\boldsymbol{w},b} L(\boldsymbol{w}, b, \boldsymbol{\alpha}))
+=\max_{\boldsymbol{\alpha}} \left( \sum_{i=1}^{n} \alpha_i -\frac{1}{2} \sum_{i=1}^{n} \sum_{j=1}^{n} \alpha_i \alpha_j y_i y_j (\boldsymbol{x}_i^T \boldsymbol{x}_j) \right) \\
+\text{s.t.}\; \alpha_i \geqslant 0,\; \sum_{i=1}^{n} \alpha_i y_i = 0
+\end{gather*}
 $$
 
 对于上式采用序列最小优化算法 SMO (sequential minimal optimization)可得到最优解 $\boldsymbol{\alpha}$ .
@@ -497,11 +510,15 @@ $$
 Lagrange 函数和优化问题为：
 
 $$
+\begin{gather*}
 L(\boldsymbol{w}, b, \boldsymbol{\alpha}, \boldsymbol{\xi}) = \frac{1}{2}\|\boldsymbol{w}\|^2 + C\sum_{i=1}^{N}\xi_i - \sum_{i=1}^{N} \alpha_i (y_i(\boldsymbol{w}^T\boldsymbol{x}_i+b) - 1 + \xi_i) - \sum_{i=1}^{N} \beta_i \xi_i \\
-\boxed{\min L(\boldsymbol{w}, b, \boldsymbol{\alpha}, \boldsymbol{\xi}) \quad \text{s.t.}\; \alpha\geqslant 0,\beta_i\geqslant 0} \\
-\frac{\partial L}{\partial \boldsymbol{w}}=0 \implies \boldsymbol{w} = \sum_{i=1}^{N} \alpha_i y_i \boldsymbol{x}_i \\
-\frac{\partial L}{\partial b}=0 \implies \sum_{i=1}^{N} \alpha_i y_i = 0 \\
-\frac{\partial L}{\partial \xi_i}=0 \implies C-\alpha_i-\beta_i = 0
+\boxed{\min L(\boldsymbol{w}, b, \boldsymbol{\alpha}, \boldsymbol{\xi}) \quad \text{s.t.}\; \alpha\geqslant 0,\beta_i\geqslant 0}
+\end{gather*} \\
+\begin{align*}
+\frac{\partial L}{\partial \boldsymbol{w}}=0 &\implies \boldsymbol{w} = \sum_{i=1}^{N} \alpha_i y_i \boldsymbol{x}_i \\
+\frac{\partial L}{\partial b}=0 &\implies \sum_{i=1}^{N} \alpha_i y_i = 0 \\
+\frac{\partial L}{\partial \xi_i}=0 &\implies C-\alpha_i-\beta_i = 0
+\end{align*}
 $$
 
 类似于线性可分问题，得到等价的对偶问题：
@@ -518,8 +535,10 @@ $$
 处理思路：使用 **核函数** (kernel function) $K$ ，将样本映射到高维空间使之线性可分。
 
 $$
-\boldsymbol{x}_i\in\mathbb{R}^n \rightarrow \varphi(\boldsymbol{x}_i)\in\mathbb{R}^d,\quad d \gg n \\
-\boldsymbol{x}_i^T\boldsymbol{x}_j \rightarrow \varphi(\boldsymbol{x}_i)^T\varphi(\boldsymbol{x}_j)=K(\boldsymbol{x}_i,\boldsymbol{x}_j)
+\begin{align*}
+\boldsymbol{x}_i\in\mathbb{R}^n &\rightarrow \varphi(\boldsymbol{x}_i)\in\mathbb{R}^d,\quad d \gg n \\
+\boldsymbol{x}_i^T\boldsymbol{x}_j &\rightarrow \varphi(\boldsymbol{x}_i)^T\varphi(\boldsymbol{x}_j)=K(\boldsymbol{x}_i,\boldsymbol{x}_j)
+\end{align*}
 $$
 
 !!! question "为什么使用核函数 $K$ ，而不是直接使用映射函数 $\varphi$ ？"
@@ -542,8 +561,10 @@ $$
 上面二者的区别在于 **是否扩充为所有不超过** $d$ **阶的有序单项式**，例如当 $p=d=2$ 时：
 
 $$
-\text{case 1: }\varphi(\boldsymbol{x})=[x_1^2,x_2^2,x_1x_2,x_2x_1,\sqrt{2}x_1,\sqrt{2}x_2,1]^T \\
-\text{case 2: }\varphi(\boldsymbol{x})=[x_1^2,x_2^2,x_1x_2,x_2x_1]^T
+\begin{align*}
+\text{case 1: }\varphi(\boldsymbol{x})&=[x_1^2,x_2^2,x_1x_2,x_2x_1,\sqrt{2}x_1,\sqrt{2}x_2,1]^T \\
+\text{case 2: }\varphi(\boldsymbol{x})&=[x_1^2,x_2^2,x_1x_2,x_2x_1]^T
+\end{align*}
 $$
 
 （3）高斯核函数： $K(\boldsymbol{x}_i,\boldsymbol{x}_j)=\exp\left(-\dfrac{\|\boldsymbol{x}_i-\boldsymbol{x}_j\|^2}{2\sigma^2}\right)$ ， $\sigma$ 为高斯核的宽度。
@@ -560,10 +581,12 @@ $$
 非线性分类的决策函数：
 
 $$
+\begin{gather*}
 f(\boldsymbol{x};\boldsymbol{\alpha},b)=\boldsymbol{w}^T\varphi(\boldsymbol{x})+b
 =\boxed{\sum_{\boldsymbol{x}_i\in\text{SV}} \alpha_i^* y_i K(\boldsymbol{x}_i,\boldsymbol{x}) + b} \\
 \boldsymbol{w}^* = \sum_{i=1}^{N} \alpha_i^* y_i \varphi(\boldsymbol{x}_i), \quad
 b^* = y_j - \sum_{i=1}^{N} \alpha_i^* y_i K(\boldsymbol{x}_i,\boldsymbol{x}_j),\; \boldsymbol{x}_j\in\text{SV}
+\end{gather*}
 $$
 
 决策判别的超平面即为 $\boldsymbol{w}^T\varphi(\boldsymbol{x})+b=0$ .
@@ -576,11 +599,11 @@ Mercer 定理：有效核函数的充要条件为 核矩阵（核函数矩阵形
 
 $$
 K =
-\begin{bmatrix}
+\begin{pmatrix}
 K(\boldsymbol{x}_1, \boldsymbol{x}_1) & \cdots & K(\boldsymbol{x}_1, \boldsymbol{x}_n) \\
 \vdots & \ddots & \vdots \\
 K(\boldsymbol{x}_n, \boldsymbol{x}_1) & \cdots & K(\boldsymbol{x}_n, \boldsymbol{x}_n)
-\end{bmatrix}
+\end{pmatrix}
 $$
 
 对称性：对于任意 $\boldsymbol{x}_i$ 和 $\boldsymbol{x}_j$ ，有 $K(\boldsymbol{x}_i, \boldsymbol{x}_j) = K(\boldsymbol{x}_j, \boldsymbol{x}_i)$ .

@@ -23,7 +23,7 @@ $x(an)$ 波形压缩， $x\left(\dfrac{x}{n}\right)$​ 波形扩展，这时可
 
 与连续信号类似， $\delta(n),\ u(n),\ nu(n)$ 仍然有差分关系： $\delta(n)=u(n)-u(n-1),\ u(n)=nu(n)-(n-1)u(n-1)$ .
 
-系统方框图中： $1/E$ 代表单位延时。
+系统方框图中 $\dfrac{1}{E}$ 代表单位延时。
 
 ![2024春信号与系统20第十八讲7.1-7.7_20](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/ch7_img3.png)
 
@@ -42,7 +42,7 @@ $x(an)$ 波形压缩， $x\left(\dfrac{x}{n}\right)$​ 波形扩展，这时可
 1. 迭代法。
 2. 时域分解法，齐次解 + 特解，对应自由响应 + 强迫响应。
 3. 求零输入响应 + 零状态响应，用求齐次解的方法（激励置为0）得到零输入响应，用卷积和（或边界条件全置0）求零状态响应。
-4. z 变换法（下一章）。
+4. $z$ 变换法（下一章）。
 
 ![2024春信号与系统20第十八讲7.1-7.7_32](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/ch7_img4.png)
 
@@ -54,7 +54,7 @@ $x(an)$ 波形压缩， $x\left(\dfrac{x}{n}\right)$​ 波形扩展，这时可
 
 单位样值响应 $h(n)$ ：因为只在0处去非0值可以通过迭代求出。
 
-对于离散的 LTI 系统：因果 $\iff h(n)=h(n)u(n)$ 单边，稳定 $\iff \sum_{m=-\infty}^{\infty}|h(n)|\leqslant M$​ 绝对可和。
+对于离散的 LTI 系统：（1）因果 $\iff h(n)=h(n)u(n)$ 单边；（2）稳定 $\iff \displaystyle\sum_{m=-\infty}^{\infty}|h(n)|\leqslant M$​ 绝对可和。
 
 利用单位样值响应+卷积和求系统响应：
 

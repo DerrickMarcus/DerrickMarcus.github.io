@@ -25,13 +25,12 @@ $$
 内积性质的例子：
 
 $$
-\left\langle x,y \right\rangle = \int_{-\infty}^{\infty} x(t)y^*(t)\,\mathrm{d}t
-\\
-\left\langle x,y \right\rangle = \left\langle y,x \right\rangle ^*
-\\
-\left\langle x,x \right\rangle = ||x||_2^2
-\\
-|\left\langle x,y \right\rangle|^2 \leqslant \left\langle x,x \right\rangle \cdot \left\langle y,y \right\rangle
+\begin{align*}
+\left\langle x,y \right\rangle &= \int_{-\infty}^{\infty} x(t)y^*(t)\,\mathrm{d}t \\
+\left\langle x,y \right\rangle &= \left\langle y,x \right\rangle ^* \\
+\left\langle x,x \right\rangle &= ||x||_2^2 \\
+|\left\langle x,y \right\rangle|^2 &\leqslant \left\langle x,x \right\rangle \cdot \left\langle y,y \right\rangle
+\end{align*}
 $$
 
 ## 2. 正交函数分解
@@ -42,12 +41,12 @@ $$
 c=\frac{\left\langle x,y \right\rangle}{\left\langle y,y \right\rangle}
 $$
 
-推广到函数，在区间 $t_1<t<t_2$ 内用 $f_2(t)$ 近似表示 $f_1(t)$ ：$f_1(t)\approx c_{12}f_2(t)$​
+推广到函数，在区间 $t_1<t<t_2$ 内用 $f_2(t)$ 近似表示 $f_1(t)$ ，也即 $f_1(t)\approx c_{12}f_2(t)$​ .
 
 方均误差（误差的方均值）：
 
 $$
-\overline{\epsilon^2}=\frac{1}{t_2-t_1} \int_{t_1}^{t_2}[f_1(t)-c_{12}f_2(t)]^2\,\mathrm{d}t
+\overline{\varepsilon^2}=\frac{1}{t_2-t_1} \int_{t_1}^{t_2}[f_1(t)-c_{12}f_2(t)]^2\,\mathrm{d}t
 $$
 
 方均误差最小（对 $c_{12}$ 的二阶导为0），有：
@@ -87,20 +86,22 @@ $$
 对于能量信号，能量有限：
 
 $$
-E = \int_{-\infty}^{\infty} |f(t)|^2\,\mathrm{d}t
-\\
-= \int_{-\infty}^{\infty} f^2(t)\,\mathrm{d}t\quad(\text{real\ variable})
+\begin{align*}
+E &= \int_{-\infty}^{\infty} |f(t)|^2\,\mathrm{d}t \\
+&= \int_{-\infty}^{\infty} f^2(t)\,\mathrm{d}t\quad(\text{real\ variable})
+\end{align*}
 $$
 
 对于功率信号，能量无限，平均功率有限：
 
 $$
-P = \lim_{T\to\infty} \int_{-T/2}^{T/2}|f(t)|^2 \,\mathrm{d}t
-\\
-= \lim_{T\to\infty} \int_{-T/2}^{T/2} f^2(t) \,\mathrm{d}t\quad(\text{real\ variable})
+\begin{align*}
+P &= \lim_{T\to\infty} \int_{-T/2}^{T/2}|f(t)|^2 \,\mathrm{d}t \\
+&= \lim_{T\to\infty} \int_{-T/2}^{T/2} f^2(t) \,\mathrm{d}t\quad(\text{real\ variable})
+\end{align*}
 $$
 
-有些信号既不属于能量信号，也不属于功率信号，比如 $f(t)=e^t$​ 。
+有些信号既不属于能量信号，也不属于功率信号，比如 $f(t)=\mathrm{e}^t$​ 。
 
 对于能量信号，有相关系数（类似于矢量的夹角）：
 
@@ -115,26 +116,28 @@ $$
 对于能量信号：
 
 $$
-R_{12}(\tau) = \int_{-\infty}^{\infty} f_1(t)f_2^*(t-\tau)\,\mathrm{d}t
-= \int_{-\infty}^{\infty} f_1(t+\tau)f_2^*(t)\,\mathrm{d}t
-\\
-R(\tau) = \int_{-\infty}^{\infty} f(t)f^*(t-\tau)\,\mathrm{d}t
+\begin{align*}
+R_{12}(\tau) &= \int_{-\infty}^{\infty} f_1(t)f_2^*(t-\tau)\,\mathrm{d}t
+= \int_{-\infty}^{\infty} f_1(t+\tau)f_2^*(t)\,\mathrm{d}t \\
+R(\tau) &= \int_{-\infty}^{\infty} f(t)f^*(t-\tau)\,\mathrm{d}t
 = \int_{-\infty}^{\infty} f(t+\tau)f^*(t)\,\mathrm{d}t
+\end{align*}
 $$
 
 对于功率信号：
 
 $$
-R_{12}(\tau) = \lim_{T\to\infty} \int_{-T/2}^{T/2} f_1(t)f_2^*(t-\tau) \,\mathrm{d}t
-=\lim_{T\to\infty} \int_{-T/2}^{T/2} f_1(t+\tau)f_2^*(t-) \,\mathrm{d}t
-\\
-R(\tau) = \lim_{T\to\infty} \int_{-T/2}^{T/2} f(t)f^*(t-\tau) \,\mathrm{d}t
+\begin{align*}
+R_{12}(\tau) &= \lim_{T\to\infty} \int_{-T/2}^{T/2} f_1(t)f_2^*(t-\tau) \,\mathrm{d}t
+=\lim_{T\to\infty} \int_{-T/2}^{T/2} f_1(t+\tau)f_2^*(t) \,\mathrm{d}t \\
+R(\tau) &= \lim_{T\to\infty} \int_{-T/2}^{T/2} f(t)f^*(t-\tau) \,\mathrm{d}t
 =\lim_{T\to\infty} \int_{-T/2}^{T/2} f(t+\tau)f^*(t) \,\mathrm{d}t
+\end{align*}
 $$
 
-性质：共轭反对称 $R_{12}(\tau)=R_{21}^*(-\tau),\quad R(\tau)=R^*(-\tau)$ .
+性质：共轭反对称 $R_{12}(\tau)=R_{21}^*(-\tau),\; R(\tau)=R^*(-\tau)$ .
 
-特别地，对于实函数有： $R_{12}(\tau)=R_{21}(-\tau),\quad R(\tau)=R(-\tau)$ ，自相关函数为偶函数。
+特别地，对于实函数有： $R_{12}(\tau)=R_{21}(-\tau),\; R(\tau)=R(-\tau)$ ，自相关函数为偶函数。
 
 周期信号的自相关函数也为周期函数，且周期相同。
 
@@ -145,8 +148,7 @@ $$
 相关与卷积的关系：卷积要“反褶 + 移位 + 积分”，相关仅为“移位 + 积分”，不用反褶。
 
 $$
-R_{12}(\tau) = f_1(t)*f_2(t)
-\\
+R_{12}(\tau) = f_1(t)*f_2(t) \\
 R(\tau) = f(t)*f(-t)
 $$
 
@@ -157,8 +159,7 @@ $$
 若有 $\mathscr{F}[f_1(t)]=F_1(\omega),\mathscr{F}[f_2(t)]=F_2(\omega)$ ，则有：
 
 $$
-\mathscr{F}[R_{12}(\tau)] = F_1(\omega)\cdot F_2^*(\omega)
-\\
+\mathscr{F}[R_{12}(\tau)] = F_1(\omega)\cdot F_2^*(\omega) \\
 \mathscr{F}[R(\tau)] = F(\omega)\cdot F^*(\omega)=|F(\omega)|^2
 $$
 
@@ -177,12 +178,12 @@ $$
 定义能量谱密度/能谱，反映了单位带宽内的能量：
 
 $$
-\mathscr{E}(\omega) = |F(\omega)|^2
-\\
-\mathscr{E}(\omega) = \mathscr{F}[R(\tau)]
-\\
-E = \frac{1}{2\pi} \int_{-\infty}^{\infty}\mathscr{E}(\omega)\,\mathrm{d}\omega
+\begin{align*}
+\mathscr{E}(\omega) &= |F(\omega)|^2 \\
+\mathscr{E}(\omega) &= \mathscr{F}[R(\tau)] \\
+E &= \frac{1}{2\pi} \int_{-\infty}^{\infty}\mathscr{E}(\omega)\,\mathrm{d}\omega
 =\int_{-\infty}^{\infty}\mathscr{E}_1(\omega)\,\mathrm{d}\omega
+\end{align*}
 $$
 
 自相关函数和能谱函数是一对 Fourier 变换对。
@@ -190,11 +191,11 @@ $$
 功率谱：
 
 $$
-\mathscr{P}(\omega) = \lim_{T\to\infty}\frac{|F_T(\omega)|^2}{T}
-\\
-\mathscr{P}(\omega) = \mathscr{F}[R(\tau)]
-\\
-P = \frac{1}{2\pi}\int_{-\infty}^{\infty}\mathscr{P}(\omega)\,\mathrm{d}\omega
+\begin{align*}
+\mathscr{P}(\omega) &= \lim_{T\to\infty}\frac{|F_T(\omega)|^2}{T} \\
+\mathscr{P}(\omega) &= \mathscr{F}[R(\tau)] \\
+P &= \frac{1}{2\pi}\int_{-\infty}^{\infty}\mathscr{P}(\omega)\,\mathrm{d}\omega
+\end{align*}
 $$
 
 自相关函数和功率谱函数是一对 Fourier 变换对。（维纳-欣钦关系）
@@ -215,12 +216,12 @@ $$
 
 使有用信号 $s(t)$ 增强，抑制噪声 $n(t)$ . 信号和噪声同时进入滤波器，如果在某段时间内信号 $s(t)$ 存在，滤波器的输出在相应的瞬间出现强大的峰值。
 
-有用信号 $s(t)$ 持续时间有限，为 $0 \sim T$ ，则匹配滤波器的冲激响应为 $h(t)=ks(t_m-t)$
+有用信号 $s(t)$ 持续时间有限，为 $0 \sim T$ ，则匹配滤波器的冲激响应为 $h(t)=ks(t_m-t)$ .
 
-考虑到系统因果可实现（$t_m\geqslant T$）+ 观察时间 $t_m$ 尽可能小（$t_m=T$） + 取系数 $k$ 为1，得到：$h(t)=s(T-t)$ .
+考虑到：系统因果可实现要求 $t_m\geqslant T$ ，且观察时间 $t_m$ 尽可能小，因此取 $t_m=T$ ，取系数 $k$ 为1，得到：$h(t)=s(T-t)$ .
 
 输出为 $s_o(t)=s(t)*h(t)=s(t)*s(T-t)=R_{ss}(t_T)$ .
 
-匹配滤波器相当于对 $s(t)$ 进行自相关运算，在 $t=T$ 的时刻取得自相关函数的峰值，峰值大小等于信号 $s(t)$​ 的能量 E，且仅与能量有关，与波形无关。
+匹配滤波器相当于对 $s(t)$ 进行自相关运算，在 $t=T$ 的时刻取得自相关函数的峰值，峰值大小等于信号 $s(t)$​ 的能量 $E$ ，且仅与能量有关，与波形无关。
 
 自相关函数的峰值在原点取到： $R_{ss}(0)\geqslant R_{ss}(\tau)$ ，并且等于信号的能量，有时差之后取值会减少。

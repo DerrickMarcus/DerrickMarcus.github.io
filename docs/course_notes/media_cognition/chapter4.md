@@ -60,7 +60,7 @@ $$
 
 若相邻两层的神经元的数量分别为 $n_1,n_2$ ，则两层神经元之间的网络，权重的参数量为 $n_1n_2$ ，偏置的参数量为 $n_2$ ，因此两层神经元之间的参数量为 $n_1n_2+n_2$ . 整个神经网络的参数量为所有层之间的参数量之和，有 $N$ 层则求和 $N-1$ 次。
 
-> 这很好理解，因为单层网络的输出形如 $\mathbb{R}^{n_1}\to\mathbb{R}^{n_2}:\;\boldsymbol{y}=\boldsymbol{w}^T\boldsymbol{x}+\boldsymbol{b},\;\boldsymbol{w}\in\mathbb{R}^{n_1\times n_2},\;\boldsymbol{b}\in\mathbb{R}^{n_2}$ .
+> 这一点很容易理解，因为单层网络的输出形如 $\mathbb{R}^{n_1}\to\mathbb{R}^{n_2}:\;\boldsymbol{y}=\boldsymbol{w}^T\boldsymbol{x}+\boldsymbol{b},\;\boldsymbol{w}\in\mathbb{R}^{n_1\times n_2},\;\boldsymbol{b}\in\mathbb{R}^{n_2}$ .
 
 ### 4.3.1 BP
 
@@ -80,8 +80,10 @@ Back Propagation (BP) 学习算法
 前向传播：
 
 $$
-\boldsymbol{z}^{(l)} = \boldsymbol{W}^{(l)}\boldsymbol{a}^{(l-1)} + \boldsymbol{b}^{(l)},\quad \boldsymbol{a}^{(l)} = f(\boldsymbol{z}^{(l)}) \\
-\frac{\partial \boldsymbol{z}^{(l)}}{\partial \boldsymbol{W}^{(l)}} = \boldsymbol{a}^{(l-1)},\quad \frac{\partial \boldsymbol{z}^{(l)}}{\partial \boldsymbol{b}^{(l)}} = 1
+\begin{align*}
+\boldsymbol{z}^{(l)} &= \boldsymbol{W}^{(l)}\boldsymbol{a}^{(l-1)} + \boldsymbol{b}^{(l)},&\quad \boldsymbol{a}^{(l)} &= f(\boldsymbol{z}^{(l)}) \\
+\frac{\partial \boldsymbol{z}^{(l)}}{\partial \boldsymbol{W}^{(l)}} &= \boldsymbol{a}^{(l-1)},&\quad \frac{\partial \boldsymbol{z}^{(l)}}{\partial \boldsymbol{b}^{(l)}} &= 1
+\end{align*}
 $$
 
 > 与前面讨论的向量 $\boldsymbol{w}$ 不同，全连接层的权重 $\boldsymbol{W}$ 是一个二维矩阵，因此每一层的输出形如 $\boldsymbol{y}=\boldsymbol{W}\boldsymbol{x}+\boldsymbol{b}$ ，权重不需要做转置。
@@ -91,8 +93,10 @@ $$
 反向传播（递推表达式）：
 
 $$
+\begin{gather*}
 \frac{\partial L}{\partial \boldsymbol{z}^{(l)}}=\delta^{(l)} = (\boldsymbol{W}^{(l+1)})^T \odot f'(\boldsymbol{z}^{(l)}) \delta^{(l+1)} \\
 \frac{\partial L}{\partial \boldsymbol{W}^{(l)}} = \delta^{(l)}(\boldsymbol{a}^{(l-1)})^T,\quad \frac{\partial L}{\partial \boldsymbol{b}^{(l)}} = \delta^{(l)}
+\end{gather*}
 $$
 
 则损失函数 对 第 $l$ 层权重矩阵 $\boldsymbol{W}^{(l)}$ 中第 $(i,j)$ 个权重 $\boldsymbol{W}_{ij}^{(l)}$ 的梯度为：
@@ -120,27 +124,25 @@ $$
 对于 **激活函数求导**，由于是对向量各个元素作用，因此需要使用 Hadamard 乘积（逐元素相乘），以 Sigmoid 函数为例：
 
 $$
-\sigma'(x) = \frac{e^{-x}}{(1 + e^{-x})^2} = \sigma(x)(1 - \sigma(x)),\quad x\in\mathbb{R} \\
-\frac{\partial \sigma(\boldsymbol{x})}{\partial \boldsymbol{x}} = \sigma(\boldsymbol{x}) \odot (1 - \sigma(\boldsymbol{x})) ,\quad \boldsymbol{x}\in\mathbb{R}^N
+\begin{align*}
+\sigma'(x) &= \frac{e^{-x}}{(1 + e^{-x})^2} = \sigma(x)(1 - \sigma(x)),\quad x\in\mathbb{R} \\
+\frac{\partial \sigma(\boldsymbol{x})}{\partial \boldsymbol{x}} &= \sigma(\boldsymbol{x}) \odot (1 - \sigma(\boldsymbol{x})) ,\quad \boldsymbol{x}\in\mathbb{R}^N
+\end{align*}
 $$
 
 对于 **矩阵/向量求导**，有以下常用公式：
 
-$\dfrac{\partial \boldsymbol{W} \boldsymbol{x}}{\partial \boldsymbol{W}} = \boldsymbol{x}^T ,\quad \dfrac{\partial \boldsymbol{W} \boldsymbol{x}}{\partial \boldsymbol{x}} = \boldsymbol{W}^T$
-
-$\dfrac{\partial L}{\partial \boldsymbol{W}} = \dfrac{\partial L}{\partial (\boldsymbol{W}\boldsymbol{x})} \boldsymbol{x}^T ,\quad \dfrac{\partial L}{\partial \boldsymbol{x}}=\boldsymbol{W}^T \dfrac{\partial L}{\partial (\boldsymbol{W}\boldsymbol{x})}$
-
-$\|\boldsymbol{A}\|_2^2 = \text{trace}(\boldsymbol{A}^T \boldsymbol{A})$
-
-$\dfrac{\partial \,\text{trace}(\boldsymbol{A}^T \boldsymbol{B})}{\partial \boldsymbol{A}} = \boldsymbol{B} ,\quad \dfrac{\partial \,\text{trace}(\boldsymbol{A} \boldsymbol{B})}{\partial \boldsymbol{B}} = \boldsymbol{A}^T$
-
-$\text{trace}(\boldsymbol{A} \boldsymbol{B} \boldsymbol{C}) = \text{trace}(\boldsymbol{C} \boldsymbol{A} \boldsymbol{B}) = \text{trace}(\boldsymbol{B} \boldsymbol{C} \boldsymbol{A})$
-
-$\text{trace}(\boldsymbol{A}) = \text{trace}(\boldsymbol{A}^T)$
-
-$\text{trace}(\boldsymbol{A} + \boldsymbol{B}) = \text{trace}(\boldsymbol{A}) + \text{trace}(\boldsymbol{B})$
-
-> 一个可能用到的小技巧：导数和被导数可以同时转置。
+$$
+\begin{gather*}
+\dfrac{\partial \boldsymbol{W} \boldsymbol{x}}{\partial \boldsymbol{W}} = \boldsymbol{x}^T ,\quad \dfrac{\partial \boldsymbol{W} \boldsymbol{x}}{\partial \boldsymbol{x}} = \boldsymbol{W}^T \\
+\dfrac{\partial L}{\partial \boldsymbol{W}} = \dfrac{\partial L}{\partial (\boldsymbol{W}\boldsymbol{x})} \boldsymbol{x}^T ,\quad \dfrac{\partial L}{\partial \boldsymbol{x}}=\boldsymbol{W}^T \dfrac{\partial L}{\partial (\boldsymbol{W}\boldsymbol{x})} \\
+\|\boldsymbol{A}\|_2^2 = \text{trace}(\boldsymbol{A}^T \boldsymbol{A}) \\
+\dfrac{\partial \,\text{trace}(\boldsymbol{A}^T \boldsymbol{B})}{\partial \boldsymbol{A}} = \boldsymbol{B} ,\quad \dfrac{\partial \,\text{trace}(\boldsymbol{A} \boldsymbol{B})}{\partial \boldsymbol{B}} = \boldsymbol{A}^T \\
+\text{trace}(\boldsymbol{A} \boldsymbol{B} \boldsymbol{C}) = \text{trace}(\boldsymbol{C} \boldsymbol{A} \boldsymbol{B}) = \text{trace}(\boldsymbol{B} \boldsymbol{C} \boldsymbol{A}) \\
+\text{trace}(\boldsymbol{A}) = \text{trace}(\boldsymbol{A}^T) \\
+\text{trace}(\boldsymbol{A} + \boldsymbol{B}) = \text{trace}(\boldsymbol{A}) + \text{trace}(\boldsymbol{B})
+\end{gather*}
+$$
 
 标量 对 矩阵/向量 求导： $\dfrac{\partial \mathbb{R}^{1\times 1}}{\partial \mathbb{R}^{m \times n}}\to \mathbb{R}^{m \times n}$ ，标量对任何矩阵/向量求导，结果的维度 都与 被求导的矩阵/向量 相同。
 
@@ -148,19 +150,25 @@ $\text{trace}(\boldsymbol{A} + \boldsymbol{B}) = \text{trace}(\boldsymbol{A}) + 
 
 矩阵 对 矩阵 求导： $\dfrac{\partial \mathbb{R}^{m\times n}}{\partial \mathbb{R}^{p \times q}}\to \mathbb{R}^{mn \times pq}$ . 严格来讲“矩阵对矩阵”导数本质是 4 阶张量，但是经常 reshape 成二维矩阵。这种情况不常见。
 
+!!! tip
+    导数和被导数可以同时转置。
+
 <br>
 
 对于 **Loss 求导**，本质是 标量 对 矩阵/向量 求导，我们只需要掌握 MSE 和交叉熵两种：
 
 $$
-\text{MSE:} \quad L(\boldsymbol{y},\boldsymbol{t}) = \frac{1}{2} \|\boldsymbol{y}-\boldsymbol{t}\|^2 ,\quad
+\begin{align*}
+\text{MSE:} \quad L(\boldsymbol{y},\boldsymbol{t}) &= \frac{1}{2} \|\boldsymbol{y}-\boldsymbol{t}\|^2 ,\quad
 \frac{\partial \|\boldsymbol{y}-\boldsymbol{t}\|^2}{\partial \boldsymbol{y}} = 2(\boldsymbol{y}-\boldsymbol{t}) \\
-\text{Cross Entropy:} \quad L(\boldsymbol{y},\boldsymbol{t}) = -\sum_{i=1}^{N} t_i \log(y_i) ,\quad \frac{\partial L}{\partial \boldsymbol{y}} = -\frac{\boldsymbol{t}}{\boldsymbol{y}}
+\text{Cross Entropy:} \quad L(\boldsymbol{y},\boldsymbol{t}) &= -\sum_{i=1}^{N} t_i \log(y_i) ,\quad \frac{\partial L}{\partial \boldsymbol{y}} = -\frac{\boldsymbol{t}}{\boldsymbol{y}}
+\end{align*}
 $$
 
 上式中 $\boldsymbol{t}$ 为真实值， $\boldsymbol{y}$ 为预测值，它们做 **逐元素除法**。
 
-> 如果完全按照上面的方法，那么链式求导 各项相乘的时候，很可能会出现维度不匹配的现象，很正常，这时候就需要随机应变了😂。另外，最好不要一步写到位，从后往前一步一步来，每一步使用添加合适的转置等方法，保证中间结果每一步都是对的。
+!!! bug "注意"
+    如果完全按照上面的方法，那么链式求导 各项相乘的时候，很可能会出现维度不匹配的现象，很正常，这时候就需要随机应变了😂。另外，最好不要一步写到位，从后往前一步一步来，每一步使用添加合适的转置等方法，保证中间结果每一步都是对的。
 
 ---
 
@@ -169,7 +177,7 @@ $$
 神经网络全部参数 $\theta=\{\boldsymbol{W}_1,\cdots,\boldsymbol{b}_1,\cdots\}$ ，训练目标是学习获取使损失函数最小化的网络参数 $\theta^*$ ，参数更新规则为：
 
 $$
-w \leftarrow w - \eta \frac{\partial L}{\partial w},\quad b \leftarrow b - \eta \frac{\partial L}{\partial b} \\
+w \leftarrow w - \eta \frac{\partial L}{\partial w},\quad b \leftarrow b - \eta \frac{\partial L}{\partial b} ,\quad
 \theta \leftarrow \theta - \eta \nabla_\theta L(\theta)
 $$
 
@@ -212,8 +220,10 @@ $$
 在损失函数中加入正则化项（增加对较大系数的惩罚项），防止过拟合。常用的正则化方法有 L1 正则化和 L2 正则化。例如 L2 正则化：
 
 $$
-\tilde{L}(w)=L(w) + \frac{1}{2}\lambda \|w\|^2 \\
-w \leftarrow w - \eta \left(\frac{\partial L}{\partial w} + \lambda w\right)
+\begin{align*}
+\tilde{L}(w)&=L(w) + \frac{1}{2}\lambda \|w\|^2 \\
+w &\leftarrow w - \eta \left(\frac{\partial L}{\partial w} + \lambda w\right)
+\end{align*}
 $$
 
 （3）AdaGrad: Adaptive Gradient
@@ -221,8 +231,10 @@ $$
 利用梯度平方累加和的平方根。不同的参数使用不同的学习率：
 
 $$
-c_t = \sum_{j=1}^{t} \left( \nabla_\theta L(\theta_j) \right)^2 \\
-\theta_{t+1} = \theta_t - \eta \frac{\nabla_\theta L(\theta_t)}{\sqrt{c_t} + \varepsilon}
+\begin{align*}
+c_t &= \sum_{j=1}^{t} \left( \nabla_\theta L(\theta_j) \right)^2 \\
+\theta_{t+1} &= \theta_t - \eta \frac{\nabla_\theta L(\theta_t)}{\sqrt{c_t} + \varepsilon}
+\end{align*}
 $$
 
 不同参数的学习率依赖于 $c_t$ . 对低频参数做较大的更新，对高频参数做较小的更新，提升了 SGD 的鲁棒性，对于稀疏数据表现好。
@@ -232,8 +244,10 @@ $$
 与 AdaGrad 思想类似，利用梯度平方加权取倒数对梯度进行加权。定义 RMS 梯度：
 
 $$
-s_t = \gamma s_{t-1} + (1 - \gamma) \left( \nabla_\theta L(\theta_t) \right)^2 \\
-\theta_{t+1} = \theta_t - \eta \frac{\nabla_\theta L(\theta_t)}{\sqrt{s_t} + \varepsilon}
+\begin{align*}
+s_t &= \gamma s_{t-1} + (1 - \gamma) \left( \nabla_\theta L(\theta_t) \right)^2 \\
+\theta_{t+1} &= \theta_t - \eta \frac{\nabla_\theta L(\theta_t)}{\sqrt{s_t} + \varepsilon}
+\end{align*}
 $$
 
 保证各维度导数在一个量级，减少摆动。[Hinton](https://en.wikipedia.org/wiki/Geoffrey_Hinton) 建议 $\gamma=0.9,\mu=0.001$ .
@@ -243,9 +257,11 @@ $$
 Adam 是 RMSprop 和 Momentum 的结合。计算梯度和梯度平方的平滑平均，利用梯度的一阶矩和二阶矩的指数加权平均。这也是目前主流的优化器。
 
 $$
-v_t = \beta_1 v_{t-1} + (1 - \beta_1) \nabla_\theta L(\theta_t) \\
-s_t = \beta_2 s_{t-1} + (1 - \beta_2) \left( \nabla_\theta L(\theta_t) \right)^2 \\
-\theta_{t+1} = \theta_t - \eta \frac{v_t}{\sqrt{s_t} + \varepsilon}
+\begin{align*}
+v_t &= \beta_1 v_{t-1} + (1 - \beta_1) \nabla_\theta L(\theta_t) \\
+s_t &= \beta_2 s_{t-1} + (1 - \beta_2) \left( \nabla_\theta L(\theta_t) \right)^2 \\
+\theta_{t+1} &= \theta_t - \eta \frac{v_t}{\sqrt{s_t} + \varepsilon}
+\end{align*}
 $$
 
 参数设置： $\beta_1 = 0.9$ ， $\beta_2$ 接近于 $1$ ，例如 $0.9999$ .
@@ -281,8 +297,10 @@ $$
 以 Sigmoid 函数为例：
 
 $$
+\begin{gather*}
 \sigma'(z) = \frac{e^{-z}}{(1 + e^{-z})^2} = \sigma(z)(1 - \sigma(z)) \in \left(0, \frac{1}{4}\right] \\
 \frac{\partial L}{\partial b_1}\leqslant \left(\frac{1}{4}\right)^n w_2 w_3 \cdots w_n \frac{\partial L}{\partial b_n}
+\end{gather*}
 $$
 
 随着网络深度的加深，幂指数项很快趋于0，梯度衰减非常严重，梯度消失导致无法继续训练。
@@ -299,8 +317,8 @@ $$
 梯度爆炸问题
 
 $$
-\frac{\partial L}{\partial b_1} = \sigma'(b_1) w_2 \sigma'(b_2) w_3 \cdots \sigma'(b_{N-1}) w_N \frac{\partial L}{\partial b_N} \\
-\text{when }  \left| w_j \sigma'(b_j)\right| > 1 \implies \frac{\partial L}{\partial b_1} \gg 1
+\frac{\partial L}{\partial b_1} = \sigma'(b_1) w_2 \sigma'(b_2) w_3 \cdots \sigma'(b_{N-1}) w_N \frac{\partial L}{\partial b_N},\quad
+\text{if }  \left| w_j \sigma'(b_j)\right| > 1 \text{ then }\frac{\partial L}{\partial b_1} \gg 1
 $$
 
 如何缓解梯度爆炸：

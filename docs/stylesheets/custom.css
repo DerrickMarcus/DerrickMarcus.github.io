@@ -36,7 +36,7 @@
 }
 
 :root {
-    --md-text-font: "LXGW WenKai GB Screen", "Source Han Serif SC", sans-serif;
+    --md-text-font: "Source Han Serif SC", "LXGW WenKai GB Screen", sans-serif;
     --md-code-font: "Fira Code Variable", "Noto Sans SC Variable", monospace;
 }
 
@@ -224,14 +224,14 @@
 
 /* 表格字体大小 */
 
-.md-typeset table:not([class]) {
+/* .md-typeset table:not([class]) {
     font-size: .7rem;
-}
+} */
 
 /* 链接下划线 */
-/* .md-typeset a {
+.md-typeset a {
     text-decoration-line: underline;
-} */
+}
 
 .md-copyright a,
 .index-item-wrapper a {
@@ -336,4 +336,45 @@ html {
     vertical-align: -0.125em;
     margin-right: 0.25em;
     fill: currentColor;
+}
+
+/* 表格宽度铺满、内容居中、字体适中 */
+.md-typeset table {
+    width: 100%;
+    text-align: center;
+    table-layout: fixed;
+    font-size: 0.7rem;
+    border-collapse: collapse;
+    margin: 1em 0;
+}
+
+/* Markdown 表格 */
+/* .md-typeset table:not([class]) {
+    width: 100%;
+    table-layout: fixed;
+    font-size: 0.7rem;
+    border-collapse: collapse;
+    margin: 1em 0;
+} */
+
+.md-typeset th,
+.md-typeset td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* 处理 Katex 中块级公式溢出的问题 */
+.katex-display {
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0.5em 0;
+    text-align: center;
+    white-space: normal;
+    word-break: break-word;
+}
+
+/* 强制 math 行高适中 */
+.katex {
+    font-size: 1em;
+    line-height: 1.4;
 }

@@ -34,24 +34,30 @@
 RNN 的基本单元：
 
 $$
-\boldsymbol{h}_t = f(\boldsymbol{h}_{t-1}, \boldsymbol{x}_t;\theta_f) \\
-\hat{\boldsymbol{y}}_t = g(\boldsymbol{h}_t;\theta_g)
+\begin{align*}
+\boldsymbol{h}_t &= f(\boldsymbol{h}_{t-1}, \boldsymbol{x}_t;\theta_f) \\
+\hat{\boldsymbol{y}}_t &= g(\boldsymbol{h}_t;\theta_g)
+\end{align*}
 $$
 
 通过 $\theta_f,\theta_g$ 实现 **时序参数共享**：
 
 $$
+\begin{gather*}
 \boldsymbol{h}_1 = f\left(\boldsymbol{h}_0, \boldsymbol{x}_1; \theta_f\right), \ \hat{\boldsymbol{y}}_1 = g\left(\boldsymbol{h}_1; \theta_g\right) \\
 \boldsymbol{h}_2 = f\left(\boldsymbol{h}_1, \boldsymbol{x}_2; \theta_f\right), \ \hat{\boldsymbol{y}}_2 = g\left(\boldsymbol{h}_2; \theta_g\right) \\
 \cdots
+\end{gather*}
 $$
 
 最常见的形式为：
 
 $$
-\boldsymbol{h}_t = \tanh(\boldsymbol{W}_{hh}\boldsymbol{h}_{t-1} + \boldsymbol{W}_{xh}\boldsymbol{x}_t + \boldsymbol{b}_h) \\
-\hat{\boldsymbol{y}}_t = \boldsymbol{W}_{hy}\boldsymbol{h}_t + \boldsymbol{b}_y \\
-\boldsymbol{o}_t = \text{softmax}(\hat{\boldsymbol{y}}_t)
+\begin{align*}
+\boldsymbol{h}_t &= \tanh(\boldsymbol{W}_{hh}\boldsymbol{h}_{t-1} + \boldsymbol{W}_{xh}\boldsymbol{x}_t + \boldsymbol{b}_h) \\
+\hat{\boldsymbol{y}}_t &= \boldsymbol{W}_{hy}\boldsymbol{h}_t + \boldsymbol{b}_y \\
+\boldsymbol{o}_t &= \text{softmax}(\hat{\boldsymbol{y}}_t)
+\end{align*}
 $$
 
 ![202506132051256](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo-image/images/202506132051256.png)

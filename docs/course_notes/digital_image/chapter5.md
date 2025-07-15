@@ -61,17 +61,17 @@ Robert 算子 $|\nabla f| \approx |z9-z5|+|z8-z6|$ . 定位比较精确，但由
 Sobel 算子，有 x 和 y 两个方向模板（这里 x 方向为竖直方向），能够较好地抑制噪声。
 
 $$
-\begin{bmatrix}
+\begin{pmatrix}
 -1 & -2 & -1 \\
 0 & 0 & 0 \\
 1 & 2 & 1
-\end{bmatrix}
+\end{pmatrix}
 \text{and}
-\begin{bmatrix}
+\begin{pmatrix}
 -1 & 0 & 1 \\
 -2 & 0 & 2 \\
 -1 & 0 & 1
-\end{bmatrix}
+\end{pmatrix}
 $$
 
 二阶梯度算子：
@@ -81,11 +81,11 @@ Laplace 算子。对噪声敏感，常产生双像素宽的边缘，很少直接
 使用 Laplace 算子检测孤立点，模板：
 
 $$
-\begin{bmatrix}
+\begin{pmatrix}
 1 & 1 & 1 \\
 1 & -8 & 1 \\
 1 & 1 & 1
-\end{bmatrix}
+\end{pmatrix}
 $$
 
 若某点处该模板的响应的绝对值超过阈值 T，则认为此时模板中心位置为孤立点。将孤立点标注为1，其余点标注为0，得到二值化输出图像。

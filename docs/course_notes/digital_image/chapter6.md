@@ -153,11 +153,11 @@ $$
 也可写成图像 $f(x,y)$ 与模板 $p(x,y)$ 卷积的结果：
 
 $$
-p(x, y)=\begin{bmatrix}
+p(x, y)=\begin{pmatrix}
 0 & -1 & 0 \\
 -1 & 4 & -1 \\
 0 & -1 & 0
-\end{bmatrix}
+\end{pmatrix}
 $$
 
 最终推导得到：

@@ -91,10 +91,8 @@ $$
 
 $$
 \begin{align*}
-\vec{\alpha}_1&=a\vec{i}
-\\
-\vec{\alpha}_2&=a\vec{j}
-\\
+\vec{\alpha}_1&=a\vec{i} \\
+\vec{\alpha}_2&=a\vec{j} \\
 \vec{\alpha}_3&=a\vec{k}
 \end{align*}
 $$
@@ -103,10 +101,8 @@ $$
 
 $$
 \begin{align*}
-\vec{\alpha}_1&=\frac a2(-\vec{i}+\vec{j}+\vec{k})
-\\
-\vec{\alpha}_2&=\frac a2(\vec{i}-\vec{j}+\vec{k})
-\\
+\vec{\alpha}_1&=\frac a2(-\vec{i}+\vec{j}+\vec{k}) \\
+\vec{\alpha}_2&=\frac a2(\vec{i}-\vec{j}+\vec{k}) \\
 \vec{\alpha}_3&=\frac a2(\vec{i}+\vec{j}-\vec{k})
 \end{align*}
 $$
@@ -115,10 +111,8 @@ $$
 
 $$
 \begin{align*}
-\vec{\alpha}_1&=\frac a2(\vec{j}+\vec{k})
-\\
-\vec{\alpha}_2&=\frac a2(\vec{i}+\vec{k})
-\\
+\vec{\alpha}_1&=\frac a2(\vec{j}+\vec{k}) \\
+\vec{\alpha}_2&=\frac a2(\vec{i}+\vec{k}) \\
 \vec{\alpha}_3&=\frac a2(\vec{i}+\vec{j})
 \end{align*}
 $$
@@ -193,10 +187,8 @@ $$
 
 $$
 \begin{align*}
-\vec{\beta}_1 &= 2\pi \frac{\vec{\alpha}_2 \times \vec{\alpha}_3}{\vec{\alpha}_1 \cdot (\vec{\alpha}_2 \times \vec{\alpha}_3)}
-\\
-\vec{\beta}_2 &= 2\pi \frac{\vec{\alpha}_3 \times \vec{\alpha}_1}{\vec{\alpha}_2 \cdot (\vec{\alpha}_3 \times \vec{\alpha}_1)}
-\\
+\vec{\beta}_1 &= 2\pi \frac{\vec{\alpha}_2 \times \vec{\alpha}_3}{\vec{\alpha}_1 \cdot (\vec{\alpha}_2 \times \vec{\alpha}_3)} \\
+\vec{\beta}_2 &= 2\pi \frac{\vec{\alpha}_3 \times \vec{\alpha}_1}{\vec{\alpha}_2 \cdot (\vec{\alpha}_3 \times \vec{\alpha}_1)} \\
 \vec{\beta}_3 &= 2\pi \frac{\vec{\alpha}_1 \times \vec{\alpha}_2}{\vec{\alpha}_3 \cdot (\vec{\alpha}_1 \times \vec{\alpha}_2)}
 \end{align*}
 $$
@@ -207,10 +199,8 @@ $$
 
 $$
 \begin{align*}
-\vec{\beta}_1&=\frac{2\pi}{a}\vec{i}
-\\
-\vec{\beta}_2&=\frac{2\pi}{a}\vec{j}
-\\
+\vec{\beta}_1&=\frac{2\pi}{a}\vec{i} \\
+\vec{\beta}_2&=\frac{2\pi}{a}\vec{j} \\
 \vec{\beta}_3&=\frac{2\pi}{a}\vec{k}
 \end{align*}
 $$
@@ -219,10 +209,8 @@ $$
 
 $$
 \begin{align*}
-\vec{\beta}_1&=\frac{2\pi}{a}(\vec{j}+\vec{k})
-\\
-\vec{\beta}_2&=\frac{2\pi}{a}(\vec{i}+\vec{k})
-\\
+\vec{\beta}_1&=\frac{2\pi}{a}(\vec{j}+\vec{k}) \\
+\vec{\beta}_2&=\frac{2\pi}{a}(\vec{i}+\vec{k}) \\
 \vec{\beta}_3&=\frac{2\pi}{a}(\vec{i}+\vec{j})
 \end{align*}
 $$
@@ -231,10 +219,8 @@ $$
 
 $$
 \begin{align*}
-\vec{\beta}_1&=\frac{2\pi}{a}(-\vec{i}+\vec{j}+\vec{k})
-\\
-\vec{\beta}_2&=\frac{2\pi}{a}(\vec{i}-\vec{j}+\vec{k})
-\\
+\vec{\beta}_1&=\frac{2\pi}{a}(-\vec{i}+\vec{j}+\vec{k}) \\
+\vec{\beta}_2&=\frac{2\pi}{a}(\vec{i}-\vec{j}+\vec{k}) \\
 \vec{\beta}_3&=\frac{2\pi}{a}(\vec{i}+\vec{j}-\vec{k})
 \end{align*}
 $$

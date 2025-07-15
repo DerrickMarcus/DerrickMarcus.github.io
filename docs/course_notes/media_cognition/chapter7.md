@@ -47,9 +47,9 @@ Transformer 处理文本数据的第一步是将 token 转换为 embedding 嵌�
 假设序列的长度为 $N$ ，相当于 $N$ 个输入向量 $\boldsymbol{x}_i$ 组成矩阵 $\boldsymbol{X}\in \mathbb{R}^{N\times d}$ ，其中第 $i$ 行为 $\boldsymbol{x}_i^T\in \mathbb{R}^d$ 即为第 $i$ 个输入向量。
 
 $$
-\boldsymbol{X}=\begin{bmatrix}
+\boldsymbol{X}=\begin{pmatrix}
 \boldsymbol{x}_1^T \\ \vdots \\ \boldsymbol{x}_N^T
-\end{bmatrix}
+\end{pmatrix}
 $$
 
 我们希望将这组输入向量映射到一个嵌入空间，该空间能够捕捉更丰富的语义结构。假设输入向量 $\boldsymbol{x}_i$ 映射为输出向量 $\boldsymbol{y}_i$ ，则 $\boldsymbol{y}_i$ 应当取决于所有的输入向量 $\boldsymbol{x}_1,\cdots\boldsymbol{x}_N$ ，才能捕捉输入之间的依赖关系。一个很自然的想法是将 $\boldsymbol{y}_i$ 定义为所有输入向量的线性组合：
@@ -68,15 +68,15 @@ $$
 
 $$
 \begin{gather*}
-\boldsymbol{Q}=\boldsymbol{X}\boldsymbol{W}^{(q)}= \begin{bmatrix}
+\boldsymbol{Q}=\boldsymbol{X}\boldsymbol{W}^{(q)}= \begin{pmatrix}
 \boldsymbol{q}_1^T \\ \vdots \\ \boldsymbol{q}_N^T
-\end{bmatrix},
-\boldsymbol{K}=\boldsymbol{X}\boldsymbol{W}^{(k)}= \begin{bmatrix}
+\end{pmatrix},\;
+\boldsymbol{K}=\boldsymbol{X}\boldsymbol{W}^{(k)}= \begin{pmatrix}
 \boldsymbol{k}_1^T \\ \vdots \\ \boldsymbol{k}_N^T
-\end{bmatrix},
-\boldsymbol{V}=\boldsymbol{X}\boldsymbol{W}^{(v)}= \begin{bmatrix}
+\end{pmatrix},\;
+\boldsymbol{V}=\boldsymbol{X}\boldsymbol{W}^{(v)}= \begin{pmatrix}
 \boldsymbol{v}_1^T \\ \vdots \\ \boldsymbol{v}_N^T
-\end{bmatrix} \\
+\end{pmatrix} \\
 \boldsymbol{Q},\boldsymbol{K},\boldsymbol{V}\in \mathbb{R}^{N\times d},\quad
 \boldsymbol{W}^{(q)},\boldsymbol{W}^{(k)},\boldsymbol{W}^{(v)}\in \mathbb{R}^{d\times d}
 \end{gather*}
@@ -101,9 +101,11 @@ $$
 单个注意力系数：
 
 $$
-\alpha_{ij}=\dfrac{\boldsymbol{q}_i^T\boldsymbol{k}_j}{\sqrt{d}} \\
-\hat{\alpha}_{ij}=\text{softmax}\left(\dfrac{\boldsymbol{q}_i^T\boldsymbol{k}_j}{\sqrt{d}}\right) \\
-\boldsymbol{y}_i=\sum_{j=1}^N\hat{\alpha}_{ij}\boldsymbol{v}_j,\quad i,j=1,\cdots,N
+\begin{align*}
+\alpha_{ij}&=\dfrac{\boldsymbol{q}_i^T\boldsymbol{k}_j}{\sqrt{d}} \\
+\hat{\alpha}_{ij}&=\text{softmax}\left(\dfrac{\boldsymbol{q}_i^T\boldsymbol{k}_j}{\sqrt{d}}\right) \\
+\boldsymbol{y}_i&=\sum_{j=1}^N\hat{\alpha}_{ij}\boldsymbol{v}_j,\quad i,j=1,\cdots,N
+\end{align*}
 $$
 
 ### 7.2.2 Multi-head Attention

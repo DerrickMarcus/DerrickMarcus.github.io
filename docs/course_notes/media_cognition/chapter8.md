@@ -50,8 +50,10 @@ $$
 （1）计算样本点 $\boldsymbol{x}_1,\cdots\boldsymbol{x}_n$ 的均值和协方差 $\boldsymbol{\mu},\boldsymbol{\Sigma}$ .
 
 $$
+\begin{gather*}
 \boldsymbol{\mu}=\frac{1}{n}\sum_{i=1}^n\boldsymbol{x}_i \\
 \boldsymbol{\Sigma}=\mathbb{E}[(\boldsymbol{x}-\boldsymbol{\mu})(\boldsymbol{x}-\boldsymbol{\mu})^T] =\frac{1}{n}\sum_{i=1}^n(\boldsymbol{x}_i-\boldsymbol{\mu})(\boldsymbol{x}_i-\boldsymbol{\mu})^T
+\end{gather*}
 $$
 
 上面求协方差时使用了 **去中心化** $\boldsymbol{x}_i=\boldsymbol{x}_i-\boldsymbol{\mu}$ ,也即变为**零均值**。如果是 **无偏估计** ，则 **散度矩阵/样本协方差矩阵** 变为 $\boldsymbol{\Sigma}=\dfrac{1}{n-1}\displaystyle\sum_{i=1}^n(\boldsymbol{x}_i-\boldsymbol{\mu})(\boldsymbol{x}_i-\boldsymbol{\mu})^T$ . 但实际上，该系数并不会对后面求特征向量造成影响，只是特征值进行了缩放。
@@ -84,8 +86,10 @@ t-SNE (t-distributed stochastic neighbor embedding)
 高维空间: 以数据点在 $x_i$ 为中心的高斯分布中所占概率密度为标准选择近邻：
 
 $$
-p_{j|i} = \frac{\exp\left(-\|x_i - x_j\|^2 / 2\sigma_i^2\right)}{\displaystyle\sum_{k \neq i} \exp\left(-\|x_i - x_k\|^2 / 2\sigma_i^2\right)} \\
-p_{ij} = \frac{p_{i|j} + p_{j|i}}{2N}
+\begin{align*}
+p_{j|i} &= \frac{\exp\left(-\|x_i - x_j\|^2 / 2\sigma_i^2\right)}{\displaystyle\sum_{k \neq i} \exp\left(-\|x_i - x_k\|^2 / 2\sigma_i^2\right)} \\
+p_{ij} &= \frac{p_{i|j} + p_{j|i}}{2N}
+\end{align*}
 $$
 
 低维空间: 以 t 分布替代高斯分布表达距离：
@@ -169,8 +173,10 @@ $$
 假设 类条件概率密度函数 为正态分布：
 
 $$
+\begin{gather*}
 \boldsymbol{x}|\omega_i \sim \mathcal{N}(\boldsymbol{\mu}_i, \boldsymbol{\Sigma}_i) \\
 p(\boldsymbol{x}|\omega_i) = \frac{1}{(2\pi)^{d/2}\sqrt{|\boldsymbol{\Sigma}_i|}} \exp \left\{ -\frac{1}{2} (\boldsymbol{x} - \boldsymbol{\mu}_i)^T \boldsymbol{\Sigma}_i^{-1} (\boldsymbol{x} - \boldsymbol{\mu}_i) \right\}
+\end{gather*}
 $$
 
 其中 $\boldsymbol{\mu}_i$ 是类别 $\omega_i$ 的均值向量， $\boldsymbol{\Sigma}_i$ 是类别 $\omega_i$ 的协方差矩阵。
@@ -192,8 +198,10 @@ $$
 对于常见的 **二分类问题**，分类判别边界为 $g_1(\boldsymbol{x})-g_2(\boldsymbol{x})=0$ ，即：
 
 $$
-g_1(\boldsymbol{x})-g_2(\boldsymbol{x}) >0 \implies \boldsymbol{x} \in \omega_1 \\
-g_1(\boldsymbol{x})-g_2(\boldsymbol{x}) <0 \implies \boldsymbol{x} \in \omega_2
+\begin{align*}
+g_1(\boldsymbol{x})-g_2(\boldsymbol{x}) >0 &\implies \boldsymbol{x} \in \omega_1 \\
+g_1(\boldsymbol{x})-g_2(\boldsymbol{x}) <0 &\implies \boldsymbol{x} \in \omega_2
+\end{align*}
 $$
 
 假设 **各类先验概率相等** $p(\omega_i)=\dfrac{1}{c},\;i=1,\cdots c$ ，协方差矩阵的三种情况：
@@ -237,10 +245,12 @@ $$
 忽略与类别无关的常数项，得到判别函数——**线性判别函数** LDF (Linear Discriminant Function)：
 
 $$
-g_i(\boldsymbol{x}) = -\frac{\|\boldsymbol{x} - \boldsymbol{\mu}_i\|^2}{2\sigma^2} + \ln p(\omega_i) \\
-= -\frac{1}{2\sigma^2} \left(\cancel{\color{red}{\boldsymbol{x}^T\boldsymbol{x}}} - 2\boldsymbol{\mu}_i^T \boldsymbol{x} + \boldsymbol{\mu}_i^T\boldsymbol{\mu}_i \right) + \ln p(\omega_i) \\
-\Rightarrow \boxed{\boldsymbol{w}_i^T \boldsymbol{x} + b_i} \\
-\boldsymbol{w}_i = \frac{1}{\sigma^2} \boldsymbol{\mu}_i, \quad b_i = -\frac{1}{2\sigma^2} \boldsymbol{\mu}_i^T\boldsymbol{\mu}_i + \ln p(\omega_i)
+\begin{align*}
+g_i(\boldsymbol{x}) &= -\frac{\|\boldsymbol{x} - \boldsymbol{\mu}_i\|^2}{2\sigma^2} + \ln p(\omega_i) \\
+&= -\frac{1}{2\sigma^2} \left(\cancel{\color{red}{\boldsymbol{x}^T\boldsymbol{x}}} - 2\boldsymbol{\mu}_i^T \boldsymbol{x} + \boldsymbol{\mu}_i^T\boldsymbol{\mu}_i \right) + \ln p(\omega_i) \\
+&=\boxed{\boldsymbol{w}_i^T \boldsymbol{x} + b_i} \\
+\boldsymbol{w}_i &= \frac{1}{\sigma^2} \boldsymbol{\mu}_i, \quad b_i = -\frac{1}{2\sigma^2} \boldsymbol{\mu}_i^T\boldsymbol{\mu}_i + \ln p(\omega_i)
+\end{align*}
 $$
 
 判别函数为线性函数，决策面为超平面，决策面向先验概率小的类偏移。
@@ -268,10 +278,12 @@ $$
 （4）条件： $\boldsymbol{\Sigma}_i = \boldsymbol{\Sigma},\;p(\omega_i)\neq p(\omega_j)$ 即各类的先验概率未知，仍然为 **线性分类器**。
 
 $$
-g_i(\boldsymbol{x}) = -\frac{1}{2} (\boldsymbol{x} - \boldsymbol{\mu}_i)^T \boldsymbol{\Sigma}^{-1} (\boldsymbol{x} - \boldsymbol{\mu}_i) + \ln p(\omega_i) \\
-=-\frac{1}{2}\left(\cancel{\color{red}{\boldsymbol{x}^T\boldsymbol{\Sigma}^{-1}\boldsymbol{x}}} - 2\boldsymbol{\mu}_i^T \boldsymbol{\Sigma}^{-1} \boldsymbol{x} + \boldsymbol{\mu}_i^T\boldsymbol{\Sigma}^{-1}\boldsymbol{\mu}_i \right) \boldsymbol{\Sigma}^{-1} + \ln p(\omega_i) \\
-=\boxed{\boldsymbol{w}_i^T \boldsymbol{x} + b_i} \\
-\boldsymbol{w}_i = \boldsymbol{\Sigma}^{-1} \boldsymbol{\mu}_i, \quad b_i = -\frac{1}{2} \boldsymbol{\mu}_i^T \boldsymbol{\Sigma}^{-1} \boldsymbol{\mu}_i + \ln p(\omega_i)
+\begin{align*}
+g_i(\boldsymbol{x}) &= -\frac{1}{2} (\boldsymbol{x} - \boldsymbol{\mu}_i)^T \boldsymbol{\Sigma}^{-1} (\boldsymbol{x} - \boldsymbol{\mu}_i) + \ln p(\omega_i) \\
+&=-\frac{1}{2}\left(\cancel{\color{red}{\boldsymbol{x}^T\boldsymbol{\Sigma}^{-1}\boldsymbol{x}}} - 2\boldsymbol{\mu}_i^T \boldsymbol{\Sigma}^{-1} \boldsymbol{x} + \boldsymbol{\mu}_i^T\boldsymbol{\Sigma}^{-1}\boldsymbol{\mu}_i \right) \boldsymbol{\Sigma}^{-1} + \ln p(\omega_i) \\
+&=\boxed{\boldsymbol{w}_i^T \boldsymbol{x} + b_i} \\
+\boldsymbol{w}_i &= \boldsymbol{\Sigma}^{-1} \boldsymbol{\mu}_i, \quad b_i = -\frac{1}{2} \boldsymbol{\mu}_i^T \boldsymbol{\Sigma}^{-1} \boldsymbol{\mu}_i + \ln p(\omega_i)
+\end{align*}
 $$
 
 判别函数为线性函数，决策面为超平面，决策面向先验概率小的类偏移。
@@ -287,9 +299,11 @@ $$
 忽略与判别函数无关的常数项，得到判别函数——**二次判别函数** QDF (Quadratic Discriminant Function)
 
 $$
-g_i(x)=-\frac{1}{2} (\boldsymbol{x} - \boldsymbol{\mu}_i)^T \boldsymbol{\Sigma}_i^{-1} (\boldsymbol{x} - \boldsymbol{\mu}_i) + \ln p(\omega_i) - \frac{1}{2}\ln|\boldsymbol{\Sigma}_i| \\
-=\boxed{\boldsymbol{x}^T\boldsymbol{W}_i\boldsymbol{x} + \boldsymbol{w}_i^T\boldsymbol{x} + b_i} \\
-\boldsymbol{W}_i = -\frac{1}{2} \boldsymbol{\Sigma}_i^{-1}, \quad \boldsymbol{w}_i = \boldsymbol{\Sigma}_i^{-1} \boldsymbol{\mu}_i, \quad b_i = -\frac{1}{2} \boldsymbol{\mu}_i^T \boldsymbol{\Sigma}_i^{-1} \boldsymbol{\mu}_i + \ln p(\omega_i) - \frac{1}{2}\ln|\boldsymbol{\Sigma}_i|
+\begin{align*}
+g_i(x)&=-\frac{1}{2} (\boldsymbol{x} - \boldsymbol{\mu}_i)^T \boldsymbol{\Sigma}_i^{-1} (\boldsymbol{x} - \boldsymbol{\mu}_i) + \ln p(\omega_i) - \frac{1}{2}\ln|\boldsymbol{\Sigma}_i| \\
+&=\boxed{\boldsymbol{x}^T\boldsymbol{W}_i\boldsymbol{x} + \boldsymbol{w}_i^T\boldsymbol{x} + b_i} \\
+\boldsymbol{W}_i &= -\frac{1}{2} \boldsymbol{\Sigma}_i^{-1}, \quad \boldsymbol{w}_i = \boldsymbol{\Sigma}_i^{-1} \boldsymbol{\mu}_i, \quad b_i = -\frac{1}{2} \boldsymbol{\mu}_i^T \boldsymbol{\Sigma}_i^{-1} \boldsymbol{\mu}_i + \ln p(\omega_i) - \frac{1}{2}\ln|\boldsymbol{\Sigma}_i|
+\end{align*}
 $$
 
 判别函数是关于 $\boldsymbol{x}$ 的二次型，决策面为二次超曲面，可能是超球面、超椭球面、超抛物面、超双曲线或超平面。
@@ -312,8 +326,10 @@ $$
 最大似然估计：
 
 $$
-l(\theta) \equiv \ln p(D|\theta) = \sum_{i=1}^{n} \ln p(x_i|\theta) \\
-\hat{\theta} = \arg \max_{\theta} l(\theta)
+\begin{align*}
+l(\theta) &\equiv \ln p(D|\theta) = \sum_{i=1}^{n} \ln p(x_i|\theta) \\
+\hat{\theta} &= \arg \max_{\theta} l(\theta)
+\end{align*}
 $$
 
 其中 $\theta$ 是模型参数，为标量或向量，具体取决于模型。 $D$ 是观测数据， $x_i$ 是第 $i$ 个观测样本。
@@ -321,8 +337,10 @@ $$
 高斯分布假设的最大似然估计：
 
 $$
-\hat{\boldsymbol{\mu}} = \hat{\boldsymbol{\theta}}_1 = \frac{1}{n} \sum_{k=1}^{n} \boldsymbol{x}_k \\
-\hat{\boldsymbol{\Sigma}} = \hat{\boldsymbol{\theta}}_2 = \frac{1}{n} \sum_{k=1}^{n} (\boldsymbol{x}_k - \hat{\boldsymbol{\mu}})(\boldsymbol{x}_k - \hat{\boldsymbol{\mu}})^T
+\begin{align*}
+\hat{\boldsymbol{\mu}} &= \hat{\boldsymbol{\theta}}_1 = \frac{1}{n} \sum_{k=1}^{n} \boldsymbol{x}_k \\
+\hat{\boldsymbol{\Sigma}} &= \hat{\boldsymbol{\theta}}_2 = \frac{1}{n} \sum_{k=1}^{n} (\boldsymbol{x}_k - \hat{\boldsymbol{\mu}})(\boldsymbol{x}_k - \hat{\boldsymbol{\mu}})^T
+\end{align*}
 $$
 
 无偏估计样本 的 协方差矩阵：
@@ -344,15 +362,19 @@ $$
 最大后验估计：
 
 $$
-l(\theta) = \ln p(D|\theta) = \sum_{i=1}^{n} \ln p(\boldsymbol{x}_i|\theta) \\
-\hat{\theta} = \arg \max_{\theta} l(\theta) + \ln p(\theta)
+\begin{align*}
+l(\theta) &= \ln p(D|\theta) = \sum_{i=1}^{n} \ln p(\boldsymbol{x}_i|\theta) \\
+\hat{\theta} &= \arg \max_{\theta} l(\theta) + \ln p(\theta)
+\end{align*}
 $$
 
 高斯分布假设的最大后验估计（均值未知）：
 
 $$
-\boldsymbol{\mu}_n = \boldsymbol{\Sigma}_0 \left( \frac{1}{n} \boldsymbol{\Sigma} + \boldsymbol{\Sigma}_0 \right)^{-1} \left( \frac{1}{n} \sum_{k=1}^{n} \boldsymbol{x}_k \right) + \frac{1}{n} \boldsymbol{\Sigma} \left( \frac{1}{n} \boldsymbol{\Sigma} + \boldsymbol{\Sigma}_0 \right)^{-1} \boldsymbol{\mu}_0 \\
-\boldsymbol{\Sigma}_n = \boldsymbol{\Sigma}_0 \left( \frac{1}{n} \boldsymbol{\Sigma} + \boldsymbol{\Sigma}_0 \right)^{-1} \frac{1}{n} \boldsymbol{\Sigma}
+\begin{align*}
+\boldsymbol{\mu}_n &= \boldsymbol{\Sigma}_0 \left( \frac{1}{n} \boldsymbol{\Sigma} + \boldsymbol{\Sigma}_0 \right)^{-1} \left( \frac{1}{n} \sum_{k=1}^{n} \boldsymbol{x}_k \right) + \frac{1}{n} \boldsymbol{\Sigma} \left( \frac{1}{n} \boldsymbol{\Sigma} + \boldsymbol{\Sigma}_0 \right)^{-1} \boldsymbol{\mu}_0 \\
+\boldsymbol{\Sigma}_n &= \boldsymbol{\Sigma}_0 \left( \frac{1}{n} \boldsymbol{\Sigma} + \boldsymbol{\Sigma}_0 \right)^{-1} \frac{1}{n} \boldsymbol{\Sigma}
+\end{align*}
 $$
 
 其中 $\boldsymbol{\mu}_0$ 是先验均值向量， $\boldsymbol{\Sigma}_0$ 是先验协方差矩阵， $\boldsymbol{\Sigma}$ 是样本协方差矩阵。计算得出的 $\boldsymbol{\mu}_n,\;\boldsymbol{\Sigma}_n$ 分别是后验均值向量和后验协方差矩阵。
@@ -397,9 +419,11 @@ $$
 （3）对高斯分布参数 求最大似然估计：
 
 $$
-\boldsymbol{\mu}_k^{\text{new}} = \frac{1}{N_k} \sum_{n=1}^{N} \gamma(z_{nk}) \boldsymbol{x}_n \\
-\boldsymbol{\Sigma}_k^{\text{new}} = \frac{1}{N_k} \sum_{n=1}^{N} \gamma(z_{nk})(\boldsymbol{x}_n - \boldsymbol{\mu}_k^{\text{new}})(\boldsymbol{x}_n - \boldsymbol{\mu}_k^{\text{new}})^T \\
-\pi_k^{\text{new}} = \frac{N_k}{N} ,\quad N_k = \sum_{n=1}^{N} \gamma(z_{nk})
+\begin{align*}
+\boldsymbol{\mu}_k^{\text{new}} &= \frac{1}{N_k} \sum_{n=1}^{N} \gamma(z_{nk}) \boldsymbol{x}_n \\
+\boldsymbol{\Sigma}_k^{\text{new}} &= \frac{1}{N_k} \sum_{n=1}^{N} \gamma(z_{nk})(\boldsymbol{x}_n - \boldsymbol{\mu}_k^{\text{new}})(\boldsymbol{x}_n - \boldsymbol{\mu}_k^{\text{new}})^T \\
+\pi_k^{\text{new}} &= \frac{N_k}{N} ,\quad N_k = \sum_{n=1}^{N} \gamma(z_{nk})
+\end{align*}
 $$
 
 （4）迭代计算第2、3步，直到满足参数收敛条件或停止条件。
@@ -425,9 +449,11 @@ $$
 齐次 Markov 链可以用状态转移概率矩阵 $\boldsymbol{A}$ 和初始概率 $\boldsymbol{\pi}$ 唯一确定表示：
 
 $$
+\begin{gather*}
 \boldsymbol{A} = \{a_{ij}\} \\
-a_{ij} = p(q_{t+1} = s_j | q_t = s_i), \quad a_{ij} \geqslant 0, \quad \sum_{j=1}^{N} a_{ij} = 1, \forall i \\
+a_{ij} = p(q_{t+1} = s_j | q_t = s_i), \quad a_{ij} \geqslant 0, \quad \sum_{j=1}^{N} a_{ij} = 1,\;\forall i \\
 \pi_i = P(q_1 = s_i), \quad \sum_{i=1}^{N} \pi_i = 1
+\end{gather*}
 $$
 
 隐含马尔可夫模型 HMM 是一个双重随机过程：
@@ -454,19 +480,19 @@ $$
 HMM 的基本元素：用三元组 $\lambda = (\boldsymbol{\pi},\boldsymbol{A},\boldsymbol{B})$ 来描述：
 
 $$
-\boldsymbol{A} = \begin{bmatrix}
+\boldsymbol{A} = \begin{pmatrix}
 a_{11} & a_{12} & \cdots & a_{1N} \\
 a_{21} & a_{22} & \cdots & a_{2N} \\
 \vdots & \vdots & \ddots & \vdots \\
 a_{N1} & a_{N2} & \cdots & a_{NN}
-\end{bmatrix} ,\;
-\boldsymbol{B} = \begin{bmatrix}
+\end{pmatrix} ,\;
+\boldsymbol{B} = \begin{pmatrix}
 b_{11} & b_{12} & \cdots & b_{1M} \\
 b_{21} & b_{22} & \cdots & b_{2M} \\
 \vdots & \vdots & \ddots & \vdots \\
 b_{N1} & b_{N2} & \cdots & b_{NM}
-\end{bmatrix} ,\;
-\boldsymbol{\pi} = [\pi_1, \cdots, \pi_N]
+\end{pmatrix} ,\;
+\boldsymbol{\pi} = (\pi_1, \cdots, \pi_N)
 $$
 
 !!! note
@@ -510,15 +536,15 @@ HMM 的3个基本问题：
 
 直接计算可能的状态序列及相应观测值概率。
 
-$P(O|\lambda) = \displaystyle\sum_{Q} P(O,Q|\lambda) = \displaystyle\sum_{Q} P(O|Q,\lambda)P(Q|\lambda)$
-
-$P(O|Q,\lambda) = \displaystyle\prod_{t=1}^{T} P(O_t|q_t, \lambda) = b_{q_1}(O_1) \cdots b_{q_T}(O_T)$
-
-$P(Q|\lambda) = \pi_{q_1} a_{q_1q_2} \cdots a_{q_{T-1}q_T}$
-
-$P(O,Q|\lambda) = P(O|Q,\lambda)P(Q|\lambda)$
-
-$P(O|\lambda) = \displaystyle\sum_{Q} P(O|Q,\lambda)P(Q|\lambda) = \displaystyle\sum_{q_1,\cdots,q_T} \pi_{q_1} b_{q_1}(O_1) a_{q_1q_2} b_{q_2}(O_2) \cdots a_{q_{T-1}q_T} b_{q_T}(O_T)$
+$$
+\begin{align*}
+P(O|\lambda) &= \displaystyle\sum_{Q} P(O,Q|\lambda) = \displaystyle\sum_{Q} P(O|Q,\lambda)P(Q|\lambda) \\
+P(O|Q,\lambda) &= \displaystyle\prod_{t=1}^{T} P(O_t|q_t, \lambda) = b_{q_1}(O_1) \cdots b_{q_T}(O_T) \\
+P(Q|\lambda) &= \pi_{q_1} a_{q_1q_2} \cdots a_{q_{T-1}q_T} \\
+P(O,Q|\lambda) &= P(O|Q,\lambda)P(Q|\lambda) \\
+P(O|\lambda) &= \displaystyle\sum_{Q} P(O|Q,\lambda)P(Q|\lambda) = \displaystyle\sum_{q_1,\cdots,q_T} \pi_{q_1} b_{q_1}(O_1) a_{q_1q_2} b_{q_2}(O_2) \cdots a_{q_{T-1}q_T} b_{q_T}(O_T)
+\end{align*}
+$$
 
 计算复杂度为 $O(TN^T)$ .
 
@@ -533,8 +559,10 @@ $P(O|\lambda) = \displaystyle\sum_{Q} P(O|Q,\lambda)P(Q|\lambda) = \displaystyle
 同理 $\alpha^{(t+1)}_j = P(O_1, \cdots O_{t+1}, q_{t+1} = s_j | \lambda)$ 表示 $t+1$ 时刻由第 $j$ 个状态 $s_j$ 生成观测 $O_{t+1}$ 且前时刻序列为 $O_1, \cdots, O_t$ 的概率。
 
 $$
-\alpha^{(t+1)}_j = \sum_{i=1}^{N} \boxed{\color{blue}P(O_1, \cdots O_t, q_t = s_i | \lambda)} \cdot \boxed{\color{red}P(q_{t+1} = s_j | q_t = s_i, \lambda)} \cdot \boxed{\color{green}P(O_{t+1} | q_{t+1} = s_j, \lambda)} \\
-=\left[ \sum_{i=1}^{N} {\color{blue}\alpha^{(t)}_i} {\color{red}a_{ij}} \right] {\color{green}b_j(O_{t+1})},\;1 \leqslant j \leqslant N,\;1 \leqslant t \leqslant T-1
+\begin{align*}
+\alpha^{(t+1)}_j &= \sum_{i=1}^{N} \boxed{\color{blue}P(O_1, \cdots O_t, q_t = s_i | \lambda)} \cdot \boxed{\color{red}P(q_{t+1} = s_j | q_t = s_i, \lambda)} \cdot \boxed{\color{green}P(O_{t+1} | q_{t+1} = s_j, \lambda)} \\
+&=\left[ \sum_{i=1}^{N} {\color{blue}\alpha^{(t)}_i} {\color{red}a_{ij}} \right] {\color{green}b_j(O_{t+1})},\;1 \leqslant j \leqslant N,\;1 \leqslant t \leqslant T-1
+\end{align*}
 $$
 
 上式中，<span style="color:blue">蓝色部分</span>即为前向变量 $\alpha^{(t)}_i$ ，<span style="color:red">红色部分</span>为状态转移概率 $a_{ij}$ （利用到**齐次马尔可夫性质**），<span style="color:green">绿色部分</span>为序列下一个观测值的观测概率 $b_j(O_{t+1})$ （利用到**观测序列的独立性**），也即观测概率矩阵 $\boldsymbol{B}$ 中第 $j$ 行、状态 $O_{t+1}$ 对应的那一列的元素。
@@ -568,8 +596,10 @@ $$
 同理有 $\beta^{(t+1)}_j = P(O_{t+2}, \cdots, O_T | q_{t+1} = s_j, \lambda), 1\leqslant t \leqslant T-1$ 表示 $t+1$ 时刻由第 $j$ 个状态 $s_j$ 生成观测序列 $O_{t+2}, \cdots, O_T$ 的概率。
 
 $$
-\beta^{(t)}_i = \sum_{j=1}^{N} \boxed{\color{blue}P(O_{t+2}, \cdots O_T| q_{t+1} = s_j, \lambda)} \cdot \boxed{\color{red}P(q_{t+1} = s_j | q_t = s_i, \lambda)} \cdot \boxed{\color{green}P(O_{t+1} | q_{t+1} = s_j, \lambda)} \\
-= \sum_{j=1}^{N} {\color{blue}\beta^{(t+1)}_j} {\color{red}a_{ij}} {\color{green}b_j(O_{t+1})},\;1 \leqslant j \leqslant N,\;1 \leqslant t \leqslant T-1
+\begin{align*}
+\beta^{(t)}_i &= \sum_{j=1}^{N} \boxed{\color{blue}P(O_{t+2}, \cdots O_T| q_{t+1} = s_j, \lambda)} \cdot \boxed{\color{red}P(q_{t+1} = s_j | q_t = s_i, \lambda)} \cdot \boxed{\color{green}P(O_{t+1} | q_{t+1} = s_j, \lambda)} \\
+&= \sum_{j=1}^{N} {\color{blue}\beta^{(t+1)}_j} {\color{red}a_{ij}} {\color{green}b_j(O_{t+1})},\;1 \leqslant j \leqslant N,\;1 \leqslant t \leqslant T-1
+\end{align*}
 $$
 
 上式中，<span style="color:blue">蓝色部分</span>即为后向变量 $\beta^{(t+1)}_j$ ，<span style="color:red">红色部分</span>为状态转移概率 $a_{ij}$ （利用到**齐次马尔可夫性质**），<span style="color:green">绿色部分</span>为序列下一个观测值的观测概率 $b_j(O_{t+1})$ （利用到**观测序列的独立性**），也即观测概率矩阵 $\boldsymbol{B}$ 中第 $j$ 行、状态 $O_{t+1}$ 对应的那一列的元素。
@@ -626,8 +656,10 @@ $$
 (Ⅱ) **递归**：对于 $t=2,3,\cdots,T$ ，计算：
 
 $$
-\delta^{(t)}_j = \max_{1\leq i \leq N} \left[ \delta^{(t-1)}_i a_{ij} \right] b_j(O_t) ,\; 1\leqslant j \leqslant N \\
-\varphi^{(t)}_j = \argmax_{1\leq i \leq N} \left[ \delta^{(t-1)}_i a_{ij} \right] ,\; 1\leqslant j \leqslant N
+\begin{align*}
+\delta^{(t)}_j &= \max_{1\leq i \leq N} \left[ \delta^{(t-1)}_i a_{ij} \right] b_j(O_t) ,\; 1\leqslant j \leqslant N \\
+\varphi^{(t)}_j &= \argmax_{1\leq i \leq N} \left[ \delta^{(t-1)}_i a_{ij} \right] ,\; 1\leqslant j \leqslant N
+\end{align*}
 $$
 
 其中第一步 相当于**向量与矩阵逐元素相乘** $\boldsymbol{\delta}^{(t-1)}\odot\boldsymbol{A}$ （把矩阵看作多个列向量，分别与同一个列向量主元素相乘，组成一个新的矩阵），然后 **每一列** 取最大值得到一个行向量 $\max\left( \boldsymbol{\delta}^{(t-1)}\odot\boldsymbol{A} \right) \in\mathbb{R}^{1\times N}$ ，**取转置** 变为列向量 之后再和 $\boldsymbol{B}[:,O_t] \in\mathbb{R}^N$ 列向量 做逐元素相乘，得到 $\boldsymbol{\delta}^{(t)}$ . 因此简化为矩阵运算形式：
@@ -670,14 +702,15 @@ Baum-Welch 算法是一种 EM 算法，是一种从不完全数据（样本特�
 
 首先利用前面定义过的 前向变量和后向变量：
 
-$\alpha_t(i) = P(O_1, \cdots, O_t, q_t = s_i | \lambda)$
-
-$\beta_t(i) = P(O_{t+1}, O_{t+2} \cdots O_T | q_t = s_i, \lambda)$
+$$
+\alpha_t(i) = P(O_1, \cdots, O_t, q_t = s_i | \lambda),\quad
+\beta_t(i) = P(O_{t+1}, O_{t+2} \cdots O_T | q_t = s_i, \lambda)
+$$
 
 定义从状态 $i$ 到 $j$ 的转移概率：
 
 $$
-\xi_t(i,j) = P(q_t = i, q_{t+1} = j | O, \lambda) \\
+\xi_t(i,j) = P(q_t = i, q_{t+1} = j | O, \lambda)
 = \frac{\alpha_t(i) a_{ij} b_j(O_{t+1}) \beta_{t+1}(j)} {\displaystyle\sum_{i=1}^{N} \displaystyle\sum_{j=1}^{N} \alpha_t(i) a_{ij} b_j(O_{t+1})\beta_{t+1}(j)}
 $$
 
@@ -690,8 +723,10 @@ $\displaystyle\sum_{t=1}^{T-1} \xi_t(i,j)$ 表示整个过程中从状态 $s_i$ 
 则 **模型参数的重估公式** 为：
 
 $$
-\hat{a}_{ij} = \frac{\text{expected count of transitions from } i \text{ to } j}{\text{expected count of stays at } i} = \frac{\displaystyle\sum_t \xi_t(i,j)}{\displaystyle\sum_t \displaystyle\sum_j \xi_t(i,j)} \\
-\hat{b}_j(k) = \frac{\text{expected number of times in state } j \text{ and observing } k}{\text{expected number of times in state } j} = \frac{\displaystyle\sum_{t, O_t = k} \gamma_t(j)}{\displaystyle\sum_t \gamma_t(j)}
+\begin{align*}
+\hat{a}_{ij} &= \frac{\text{expected count of transitions from } i \text{ to } j}{\text{expected count of stays at } i} = \frac{\displaystyle\sum_t \xi_t(i,j)}{\displaystyle\sum_t \displaystyle\sum_j \xi_t(i,j)} \\
+\hat{b}_j(k) &= \frac{\text{expected number of times in state } j \text{ and observing } k}{\text{expected number of times in state } j} = \frac{\displaystyle\sum_{t, O_t = k} \gamma_t(j)}{\displaystyle\sum_t \gamma_t(j)}
+\end{align*}
 $$
 
 $\hat{\pi}_i=\gamma_1(i)$ ，表示 $t=1$ 时刻处于第 $i$ 个状态 $s_i$ 的概率。
@@ -820,8 +855,10 @@ PR (Precision-Recall) 曲线，是以召回率 recall 为横坐标，精度 prec
 F1-score 是精度和召回率的调和平均数，综合考虑了精度和召回率的平衡。公式为：
 
 $$
-F_1 = 2 \cdot \frac{PR}{P+R} = 2 \cdot \frac{TP}{2TP + FP + FN} \\
-F_\beta = (1+\beta^2) \cdot \frac{PR}{(\beta^2) P + R}
+\begin{align*}
+F_1 &= 2 \cdot \frac{PR}{P+R} = 2 \cdot \frac{TP}{2TP + FP + FN} \\
+F_\beta &= (1+\beta^2) \cdot \frac{PR}{(\beta^2) P + R}
+\end{align*}
 $$
 
 F-score 最理想的数值是趋近于1，此时 precision 和 recall 都很高，接近于1。

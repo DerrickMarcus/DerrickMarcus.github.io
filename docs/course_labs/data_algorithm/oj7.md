@@ -78,29 +78,29 @@ $$
 （2）对矩阵 $A$ 进行 LU 分解：
 
 $$
-\begin{bmatrix}
+\begin{pmatrix}
 b_1 & c_1 \\
 a_2 & b_2 & c_2\\
 & \ddots & \ddots & \ddots\\
 & & a_{n-1} & b_{n-1} & c_{n-1}\\
 & & & a_n & b_n
-\end{bmatrix}
+\end{pmatrix}
 =\\
-\begin{bmatrix}
+\begin{pmatrix}
 \beta_1\\
 a_2 & \beta_2\\
 & \ddots & \ddots\\
 & & a_{n-1} & \beta_{n-1}\\
 & & & a_n & \beta_n
-\end{bmatrix}
+\end{pmatrix}
 
-\begin{bmatrix}
+\begin{pmatrix}
 1 & \gamma_1 \\
 & 1 & \gamma_2\\
 & & \ddots & \ddots\\
 & & & 1 & \gamma_{n-1}\\
 & & & & 1
-\end{bmatrix}
+\end{pmatrix}
 $$
 
 递推公式为：

@@ -209,25 +209,25 @@
 基于梯度的锐化滤波：梯度算子（一阶微分），X 和 Y 方向两种差分模板。
 
 $$
-\begin{bmatrix}
+\begin{pmatrix}
 -1 & 0 & 1 \\
 -1 & 0 & 1 \\
 -1 & 0 & 1 \\
-\end{bmatrix}
+\end{pmatrix}
 \text{and}
-\begin{bmatrix}
+\begin{pmatrix}
 1 & 1 & 1 \\
 0 & 0 & 0 \\
 -1 & -1 & -1 \\
-\end{bmatrix}
+\end{pmatrix}
 $$
 
 $$
-\begin{bmatrix}
+\begin{pmatrix}
 z1 & z2 & z3 \\
 z4 & z5 & z6 \\
 z7 & z8 & z9 \\
-\end{bmatrix}
+\end{pmatrix}
 $$
 
 实际滤波中只取梯度矢量的模： $|\nabla f|=\sqrt{G_x^2+G_y^2}\approx |G_x|+|G_y|=|z8-z5|+|z6-z5|$ . 取模操作导致梯度算子是非线性的。
@@ -241,17 +241,17 @@ Robert 交叉差分 $|\nabla f| \approx |z9-z5|+|z8-z6|$ .
 基于二阶微分：拉普拉斯算子，4-邻域或8-邻域（系数之和均为0）：
 
 $$
-\begin{bmatrix}
+\begin{pmatrix}
 0 & -1 & 0 \\
 -1 & 4 & -1 \\
 0 & -1 & 0
-\end{bmatrix}
+\end{pmatrix}
 \text{or}
-\begin{bmatrix}
+\begin{pmatrix}
 -1 & -1 & -1 \\
 -1 & 8 & -1 \\
 -1 & -1 & -1
-\end{bmatrix}
+\end{pmatrix}
 $$
 
 拉普拉斯算子可增强图像中的灰度不连续边缘，减弱灰度值缓慢变化区域的对比度，将结果叠加到原始图像上，得到锐化后的图像。

@@ -75,8 +75,7 @@ $$
 SLAM 问题可以表述为一个 非线性最小二乘问题：
 
 $$
-F(\boldsymbol{x}) = \frac{1}{2} \sum_{(\boldsymbol{x}_i, \boldsymbol{x}_j) \in C} \boldsymbol{e}_{ij}(\boldsymbol{x}_i, \boldsymbol{x}_j, \boldsymbol{z}_{ij})^T \boldsymbol{\Omega}_{ij} \boldsymbol{e}_{ij}(\boldsymbol{x}_i, \boldsymbol{x}_j, \boldsymbol{z}_{ij})
-\\
+F(\boldsymbol{x}) = \frac{1}{2} \sum_{(\boldsymbol{x}_i, \boldsymbol{x}_j) \in C} \boldsymbol{e}_{ij}(\boldsymbol{x}_i, \boldsymbol{x}_j, \boldsymbol{z}_{ij})^T \boldsymbol{\Omega}_{ij} \boldsymbol{e}_{ij}(\boldsymbol{x}_i, \boldsymbol{x}_j, \boldsymbol{z}_{ij}) \\
 \boldsymbol{x}^* = \arg\min_{\boldsymbol{x}} F(\boldsymbol{x})
 $$
 
