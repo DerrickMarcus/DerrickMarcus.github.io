@@ -52,7 +52,7 @@ $$
 $$
 \begin{gather*}
 \boldsymbol{\mu}=\frac{1}{n}\sum_{i=1}^n\boldsymbol{x}_i \\
-\boldsymbol{\Sigma}=\mathbb{E}[(\boldsymbol{x}-\boldsymbol{\mu})(\boldsymbol{x}-\boldsymbol{\mu})^T] =\frac{1}{n}\sum_{i=1}^n(\boldsymbol{x}_i-\boldsymbol{\mu})(\boldsymbol{x}_i-\boldsymbol{\mu})^T
+\boldsymbol{\Sigma}=\mathbb{E}\left[(\boldsymbol{x}-\boldsymbol{\mu})(\boldsymbol{x}-\boldsymbol{\mu})^T\right] =\frac{1}{n}\sum_{i=1}^n(\boldsymbol{x}_i-\boldsymbol{\mu})(\boldsymbol{x}_i-\boldsymbol{\mu})^T
 \end{gather*}
 $$
 
@@ -175,7 +175,7 @@ $$
 $$
 \begin{gather*}
 \boldsymbol{x}|\omega_i \sim \mathcal{N}(\boldsymbol{\mu}_i, \boldsymbol{\Sigma}_i) \\
-p(\boldsymbol{x}|\omega_i) = \frac{1}{(2\pi)^{d/2}\sqrt{|\boldsymbol{\Sigma}_i|}} \exp \left\{ -\frac{1}{2} (\boldsymbol{x} - \boldsymbol{\mu}_i)^T \boldsymbol{\Sigma}_i^{-1} (\boldsymbol{x} - \boldsymbol{\mu}_i) \right\}
+p(\boldsymbol{x}|\omega_i) = \frac{1}{(2\pi)^{d/2}\sqrt{|\boldsymbol{\Sigma}_i|}} \exp \left( -\frac{1}{2} (\boldsymbol{x} - \boldsymbol{\mu}_i)^T \boldsymbol{\Sigma}_i^{-1} (\boldsymbol{x} - \boldsymbol{\mu}_i) \right)
 \end{gather*}
 $$
 
@@ -204,7 +204,7 @@ g_1(\boldsymbol{x})-g_2(\boldsymbol{x}) <0 &\implies \boldsymbol{x} \in \omega_2
 \end{align*}
 $$
 
-假设 **各类先验概率相等** $p(\omega_i)=\dfrac{1}{c},\;i=1,\cdots c$ ，协方差矩阵的三种情况：
+假设 **各类先验概率相等** $p(\omega_i)=\dfrac{1}{c},\;i=1,\cdots, c$ ，协方差矩阵的三种情况：
 
 1. $\boldsymbol{\Sigma}_i = \sigma^2 \boldsymbol{I}$ 最小欧氏距离分类器。协方差矩阵为单位阵的倍数。
 2. $\boldsymbol{\Sigma}_i = \boldsymbol{\Sigma}$ 最小马氏距离分类器。所有类别的协方差矩阵相等。
@@ -216,11 +216,11 @@ $$
 
 #### 协方差矩阵相等且为对角阵
 
-假设 样本的特征向量的各个分量独立且具有相同的方差 $\sigma^2$ ，则协方差矩阵为 $\boldsymbol{\Sigma}_i = \sigma^2 \boldsymbol{I},\;i=1,\cdots c$ .
+假设 样本的特征向量的各个分量独立且具有相同的方差 $\sigma^2$ ，则协方差矩阵为 $\boldsymbol{\Sigma}_i = \sigma^2 \boldsymbol{I},\;i=1,\cdots, c$ .
 
-此时，有 $\| \boldsymbol{\Sigma}_i \|=\sigma^{2d},\; \boldsymbol{\Sigma}_i^{-1}=\dfrac{1}{\sigma^2}\boldsymbol{I},\;i-1,\cdots c$ .
+此时，有 $\| \boldsymbol{\Sigma}_i \|=\sigma^{2d},\; \boldsymbol{\Sigma}_i^{-1}=\dfrac{1}{\sigma^2}\boldsymbol{I},\;i-1,\cdots, c$ .
 
-（1）条件： $\boldsymbol{\Sigma}_i = \sigma^2 \boldsymbol{I},\;p(\omega_i)=\dfrac{1}{c},\;i=1,\cdots c$ 即各类先验概率都相等时，为 **最小欧氏距离分类器**。
+（1）条件： $\boldsymbol{\Sigma}_i = \sigma^2 \boldsymbol{I},\;p(\omega_i)=\dfrac{1}{c},\;i=1,\cdots, c$ 即各类先验概率都相等时，为 **最小欧氏距离分类器**。
 
 我们 **忽略所有与类别无关的常数项**，只剩下带协方差矩阵的那一项，得到判别函数：
 
@@ -247,7 +247,7 @@ $$
 $$
 \begin{align*}
 g_i(\boldsymbol{x}) &= -\frac{\|\boldsymbol{x} - \boldsymbol{\mu}_i\|^2}{2\sigma^2} + \ln p(\omega_i) \\
-&= -\frac{1}{2\sigma^2} \left(\cancel{\color{red}{\boldsymbol{x}^T\boldsymbol{x}}} - 2\boldsymbol{\mu}_i^T \boldsymbol{x} + \boldsymbol{\mu}_i^T\boldsymbol{\mu}_i \right) + \ln p(\omega_i) \\
+&= -\frac{1}{2\sigma^2} \left(\bcancel{\color{red}{\boldsymbol{x}^T\boldsymbol{x}}} - 2\boldsymbol{\mu}_i^T \boldsymbol{x} + \boldsymbol{\mu}_i^T\boldsymbol{\mu}_i \right) + \ln p(\omega_i) \\
 &=\boxed{\boldsymbol{w}_i^T \boldsymbol{x} + b_i} \\
 \boldsymbol{w}_i &= \frac{1}{\sigma^2} \boldsymbol{\mu}_i, \quad b_i = -\frac{1}{2\sigma^2} \boldsymbol{\mu}_i^T\boldsymbol{\mu}_i + \ln p(\omega_i)
 \end{align*}
@@ -259,9 +259,9 @@ $$
 
 #### 协方差矩阵相等
 
-假设 各类协方差矩阵相等，但不再是前面特殊的对角阵形式，即： $\boldsymbol{\Sigma}_i = \boldsymbol{\Sigma},\;i=1,\cdots c$ .
+假设 各类协方差矩阵相等，但不再是前面特殊的对角阵形式，即： $\boldsymbol{\Sigma}_i = \boldsymbol{\Sigma},\;i=1,\cdots, c$ .
 
-（3） 条件： $\boldsymbol{\Sigma}_i = \boldsymbol{\Sigma},\;p(\omega_i)=\dfrac{1}{c},\;i=1,\cdots c$ 即各类先验概率都相等时，为 **最小马氏距离分类器**。
+（3） 条件： $\boldsymbol{\Sigma}_i = \boldsymbol{\Sigma},\;p(\omega_i)=\dfrac{1}{c},\;i=1,\cdots, c$ 即各类先验概率都相等时，为 **最小马氏距离分类器**。
 
 > 马氏距离(Mahalanobis distance) $d_M(\boldsymbol{x},\boldsymbol{\mu}_i) = \sqrt{(\boldsymbol{x} - \boldsymbol{\mu}_i)^T \boldsymbol{\Sigma}_i^{-1} (\boldsymbol{x} - \boldsymbol{\mu}_i)}$ .
 
@@ -280,7 +280,7 @@ $$
 $$
 \begin{align*}
 g_i(\boldsymbol{x}) &= -\frac{1}{2} (\boldsymbol{x} - \boldsymbol{\mu}_i)^T \boldsymbol{\Sigma}^{-1} (\boldsymbol{x} - \boldsymbol{\mu}_i) + \ln p(\omega_i) \\
-&=-\frac{1}{2}\left(\cancel{\color{red}{\boldsymbol{x}^T\boldsymbol{\Sigma}^{-1}\boldsymbol{x}}} - 2\boldsymbol{\mu}_i^T \boldsymbol{\Sigma}^{-1} \boldsymbol{x} + \boldsymbol{\mu}_i^T\boldsymbol{\Sigma}^{-1}\boldsymbol{\mu}_i \right) \boldsymbol{\Sigma}^{-1} + \ln p(\omega_i) \\
+&=-\frac{1}{2}\left(\bcancel{\color{red}{\boldsymbol{x}^T\boldsymbol{\Sigma}^{-1}\boldsymbol{x}}} - 2\boldsymbol{\mu}_i^T \boldsymbol{\Sigma}^{-1} \boldsymbol{x} + \boldsymbol{\mu}_i^T\boldsymbol{\Sigma}^{-1}\boldsymbol{\mu}_i \right) \boldsymbol{\Sigma}^{-1} + \ln p(\omega_i) \\
 &=\boxed{\boldsymbol{w}_i^T \boldsymbol{x} + b_i} \\
 \boldsymbol{w}_i &= \boldsymbol{\Sigma}^{-1} \boldsymbol{\mu}_i, \quad b_i = -\frac{1}{2} \boldsymbol{\mu}_i^T \boldsymbol{\Sigma}^{-1} \boldsymbol{\mu}_i + \ln p(\omega_i)
 \end{align*}
@@ -521,8 +521,6 @@ HMM 的3个基本问题：
 3. **学习** 问题：
     - 如何根据观测序列样本集合 $O_{\text{train}}$ 进行模型 $\lambda$ 的参数估计？
     - 即：给定观测序列的集合，训练模型参数，使得 $P(O_{\text{train}}|\lambda)$ 最大化。
-
----
 
 #### 评估观测序列的概率
 
@@ -871,4 +869,4 @@ F-score 最理想的数值是趋近于1，此时 precision 和 recall 都很高�
 2. K-折交叉验证(K-fold Cross Validation)：将原始数据分成 $K$ 组(一般是均分)，将每个子集数据分别做一次验证集，其余的 $(K-1)$ 组子集数据作为训练集，这样得到 $K$ 个模型。把这 $K$ 个模型在最终验证集的分类准确率的平均数，作为分类器的性能指标。
 3. 留一法(Leave-One-Out)：每个样本单独作为验证集,其余的 $(N-1)$ 个样本作为训练集。
 
-过拟合/欠拟合、生成式模型/鉴别式模型，前面已经讨论过，可见 [第3讲 - Machine Learning](./chapter3.md)。
+关于过拟合/欠拟合、生成式模型/鉴别式模型，前面已经讨论过，可见 [第3讲 - Machine Learning](./chapter3.md)。

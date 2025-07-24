@@ -1,4 +1,4 @@
-# Chapter 6 Markov Chain
+# Chapter 6 Markov Chain 马尔可夫链
 
 !!! abstract "本章概述"
     Markov 性质最重要的特点是 “已知现在，则未来与过去无关”。

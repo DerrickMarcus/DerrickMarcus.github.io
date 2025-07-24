@@ -1,4 +1,4 @@
-# Chapter 5 Gaussian Process
+# Chapter 5 Gaussian Process 高斯过程
 
 !!! abstract "本章概述"
     高斯过程是随机过程中较为简单的一种，只需要均值和协方差就可以完全确定，性质简单、易于研究，且实际生活中很多问题都可以使用高斯过程建模，不仅可以大大简化分析问题，也具有较好的适用性。
@@ -61,7 +61,7 @@ $$
 \mathrm{E}\left(X_1^{k_1}X_2^{k_2}\cdots X_n^{k_n}\right)=(-\mathrm{j})^{k_1+\cdots+k_n}\frac{\partial^{k_1+\cdots+k_n} \phi_{\boldsymbol{X}}(\omega)}{\partial \omega_1^{k_1}\cdots \partial \omega_n^{k_n}}\bigg|_{\boldsymbol{\omega}=\boldsymbol{0}}
 $$
 
-特别地，对于 <span style="color:red">零均值4维高斯分布</span> $\boldsymbol{X}=(X_1,X_2,X_3,X_4)^T$ 有：
+特别地，对于 <span style="color:red">零均值4维高斯分布</span> $\boldsymbol{X}=(X_1,X_2,X_3,X_4)^T$ ，四阶混合矩有：
 
 $$
 \mathrm{E}(X_1X_2X_3X_4)=\mathrm{E}(X_1X_2)\cdot\mathrm{E}(X_3X_4)+\mathrm{E}(X_1X_3)\cdot\mathrm{E}(X_2X_4)+\mathrm{E}(X_1X_4)\cdot\mathrm{E}(X_2X_3)
@@ -70,15 +70,15 @@ $$
 与三角函数有关的特征函数计算技巧：
 
 $$
-\begin{gather*}
-\mathrm{E}(\cos X)=\frac{1}{2}\mathrm{E}\left(\mathrm{e}^{\mathrm{j}X}+\mathrm{e}^{-\mathrm{j}X}\right)=\frac{\phi_X(1)+\phi_X(-1)}{2} \\
-\mathrm{E}(\sin X)=\frac{1}{2\mathrm{j}}\mathrm{E}\left(\mathrm{e}^{\mathrm{j}X}-\mathrm{e}^{-\mathrm{j}X}\right)=\frac{\phi_X(1)-\phi_X(-1)}{2\mathrm{j}}
-\end{gather*}
+\begin{align*}
+\mathrm{E}(\cos X)&=\frac{1}{2}\mathrm{E}\left(\mathrm{e}^{\mathrm{j}X}+\mathrm{e}^{-\mathrm{j}X}\right)=\frac{\phi_X(1)+\phi_X(-1)}{2} \\
+\mathrm{E}(\sin X)&=\frac{1}{2\mathrm{j}}\mathrm{E}\left(\mathrm{e}^{\mathrm{j}X}-\mathrm{e}^{-\mathrm{j}X}\right)=\frac{\phi_X(1)-\phi_X(-1)}{2\mathrm{j}}
+\end{align*}
 $$
 
 ## 线性变换
 
-对于 $n$ 元高斯随机变量 $\boldsymbol{X} \sim \mathcal{N}(\boldsymbol{\mu}, \boldsymbol{\Sigma})$ ，其线性变换 $\boldsymbol{Y} = \boldsymbol{A}\boldsymbol{X} + \boldsymbol{b}$ 仍服从高斯分布，且均值为 $\boldsymbol{A}\boldsymbol{\mu} + \boldsymbol{b}$ ，协方差矩阵为 $\boldsymbol{A}\boldsymbol{\Sigma} \boldsymbol{A}^T$ .
+对于 $n$ 元高斯随机变量 $\boldsymbol{X} \sim \mathcal{N}(\boldsymbol{\mu}, \boldsymbol{\Sigma})$ ，其线性变换 $\boldsymbol{Y} = \boldsymbol{A}\boldsymbol{X} + \boldsymbol{b}\sim\mathcal{N}\left(\boldsymbol{A}\boldsymbol{\mu} + \boldsymbol{b},\boldsymbol{A}\boldsymbol{\Sigma} \boldsymbol{A}^T\right)$ 仍为多元高斯分布，且均值为 $\boldsymbol{A}\boldsymbol{\mu} + \boldsymbol{b}$ ，协方差矩阵为 $\boldsymbol{A}\boldsymbol{\Sigma} \boldsymbol{A}^T$ .
 
 $$
 \boldsymbol{\mu}_Y=\boldsymbol{A}\boldsymbol{\mu}_X + \boldsymbol{b},\quad
@@ -131,6 +131,8 @@ $$
 
 ## 独立性
 
+重要结论：对于高斯变量，“不相关” 等价于 “独立”。
+
 设 $\boldsymbol{X}=(\boldsymbol{X}_1,\boldsymbol{X}_2)^T$ 服从 $n$ 元高斯分布，均值为 $\boldsymbol{\mu}=(\boldsymbol{\mu}_1,\boldsymbol{\mu}_2)^T$ ，协方差矩阵为：
 
 $$
@@ -140,7 +142,7 @@ $$
 \end{pmatrix}
 $$
 
-则 $\boldsymbol{X}$ 的两个子向量 $\boldsymbol{X}_1,\boldsymbol{X}_2$ 相互独立的 充要条件为 $\boldsymbol{\Sigma}_{12}=\boldsymbol{0}$ .
+则 $\boldsymbol{X}$ 的两个子向量 $\boldsymbol{X}_1,\boldsymbol{X}_2$ 相互独立的 充要条件为 $\boldsymbol{\Sigma}_{12}=\boldsymbol{0}$ 零矩阵。
 
 推论： $n$ 元高斯向量 $\boldsymbol{X}=(X_1,\cdots,X_n)^T$ 各个分量相互独立 的充要条件为 各分量之间协方差为 $\sigma_{ij}=0$ .
 
@@ -163,7 +165,7 @@ $$
 \end{pmatrix}
 $$
 
-则条件分布仍为联合高斯分布 $\boldsymbol{X}_1|\boldsymbol{X}_2\sim\mathcal{N}(\boldsymbol{\mu}_{1|2},\boldsymbol{\Sigma}_{1|2})$ ，其均值和协方差分别为：
+则条件分布仍为联合高斯分布 $\boldsymbol{X}_1|\boldsymbol{X}_2\sim\mathcal{N}(\boldsymbol{\mu}_{1|2},\boldsymbol{\Sigma}_{1|2})$ ，其 条件均值 和 条件协方差 分别为：
 
 $$
 \boldsymbol{\mu}_{1|2}=\boldsymbol{\mu}_1+\boldsymbol{\Sigma}_{12}\boldsymbol{\Sigma}_2^{-1}(\boldsymbol{X}_2-\boldsymbol{\mu}_2),\quad \boldsymbol{\Sigma}_{1|2}=\boldsymbol{\Sigma}_1-\boldsymbol{\Sigma}_{12}\boldsymbol{\Sigma}_2^{-1}\boldsymbol{\Sigma}_{21}

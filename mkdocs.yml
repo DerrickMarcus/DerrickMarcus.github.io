@@ -374,6 +374,7 @@ nav:
           - ROS basic: research/robot/ros_basic.md
           - Gazebo: research/robot/gazebo.md
           - Catkin Tool: research/robot/catkin.md
+          - Geometric Transformation: research/robot/geometric_transformation.md
           - SLAM:
               - SLAM: research/robot/slam/index.md
               - Graph Optimization: research/robot/slam/graph_optimization.md

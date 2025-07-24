@@ -1,4 +1,4 @@
-# Chapter 4 Second-order Processes and Spectral Analysis
+# Chapter 4 Second-order Processes and Spectral Analysis 二阶矩过程和谱分析
 
 !!! abstract "本章概述"
     本章讨论的主要内容为随机过程的基本概念和数字特征，二阶矩过程的性质（均方极限，均方连续，均方可导），随机过程的平稳性分析、相关性，宽平稳过程的谱分析等。
