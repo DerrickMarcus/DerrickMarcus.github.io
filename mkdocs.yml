@@ -38,10 +38,13 @@ theme:
         icon: material/weather-night
         name: Switch to system preference
 
-  # See font in docs/stylesheets/custom.css
+  # See fonts in docs/stylesheets/custom.css
   # font:
   #   text: '"Source Han Serif", "LXGW WenKai GB Screen", sans-serif'
   #   code: '"Fira Code", "Source Han Sans", monospace'
+  # font:
+  #   text: Roboto
+  #   code: Fira Code
 
   favicon: https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo-image/images/2001.jpg # logo on the browser tab
   logo: https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo-image/images/2001.jpg # logo on the top left of the site
@@ -266,10 +269,10 @@ extra_css:
 
 # Page tree
 nav:
-  - "🏠 Home": index.md
-  - "📝 Blog":
+  - "Home": index.md
+  - "Blog":
       - Blog: blog/index.md
-  - "📚 Course Notes":
+  - "Course Notes":
       - Course Notes: course_notes/index.md
       - Data and Algorithm:
           - Data and Algorithm: course_notes/data_algorithm/index.md
@@ -340,7 +343,7 @@ nav:
           - 13 File Systems(1): course_notes/operating_system/chapter13.md
           - 14 File Systems(2): course_notes/operating_system/chapter14.md
           - 15 Course Summary: course_notes/operating_system/review.md
-  - "📈 Course Labs":
+  - "Course Labs":
       - Course Labs: course_labs/index.md
       - Data and Algorithm:
           - Data and Algorithm: course_labs/data_algorithm/index.md
@@ -367,9 +370,9 @@ nav:
           - Lab-9 阈值分割&伪彩色增强: course_labs/digital_image/lab9.md
           - Lab-12 图像复原: course_labs/digital_image/lab12.md
           - Lab-13 图像仿射变换: course_labs/digital_image/lab13.md
-  - "🔬 Research":
+  - "Research":
       - Research: research/index.md
-      - "🤖 Robot":
+      - "Robot":
           - Robot: research/robot/index.md
           - ROS basic: research/robot/ros_basic.md
           - Gazebo: research/robot/gazebo.md
@@ -382,16 +385,16 @@ nav:
           - LIO-SAM: research/robot/liosam.md
           - Kd-Tree: research/robot/kdtree.md
           - Gaussian Splatting: research/robot/gaussian_splatting.md
-  - "💻 Computer Science Basic":
+  - "Computer Science Basic":
       - Computer Science Basic: computer_basic/index.md
-      - "⚙️ Environment Configuration":
+      - "Environment Configuration":
           - Environment Configuration: computer_basic/environment/index.md
           - Python: computer_basic/environment/python.md
           - JavaScript: computer_basic/environment/javascript.md
           - Ubuntu: computer_basic/environment/ubuntu.md
-  - "🗃️ Else":
+  - "Else":
       - Else: else/index.md
-      - "🚅 Railway":
+      - "Railway":
           - Railway: else/railway/index.md
           - CR (Fuxing Train): else/railway/cr.md
           - CRH (Hexie Train): else/railway/crh.md
@@ -401,9 +404,9 @@ nav:
           - Train Number: else/railway/train_number.md
           - Journey Record: else/railway/journey.md
           - Diary: else/railway/diary.md
-      - "📖 Readings":
+      - "Readings":
           - Readings: else/readings/index.md
           - 你是勇士: else/readings/read1.md
           - 一组诗: else/readings/read2.md
-  - "🥳 About":
+  - "About":
       - About: about/index.md

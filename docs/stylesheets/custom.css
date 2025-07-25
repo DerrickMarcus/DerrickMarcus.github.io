@@ -36,7 +36,8 @@
 }
 
 :root {
-    --md-text-font: "Source Han Serif SC", "LXGW WenKai GB Screen", sans-serif;
+    /* --md-text-font: "Source Han Serif SC", "LXGW WenKai GB Screen", sans-serif; */
+    --md-text-font: Roboto;
     --md-code-font: "Fira Code Variable", "Noto Sans SC Variable", monospace;
 }
 
