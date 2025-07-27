@@ -230,9 +230,9 @@
 } */
 
 /* 链接下划线 */
-.md-typeset a {
+/* .md-typeset a {
     text-decoration-line: underline;
-}
+} */
 
 .md-copyright a,
 .index-item-wrapper a {
