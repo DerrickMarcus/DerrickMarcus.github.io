@@ -1,4 +1,4 @@
-# OJ5：信息传递
+# OJ 5 信息传递
 
 ## Description
 

@@ -1,4 +1,4 @@
-# 数字图像处理 第4周作业
+# Week 4 Assignment
 
 ![202506121150091](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo-image/images/202506121150091.png)
 

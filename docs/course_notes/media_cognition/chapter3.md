@@ -1,4 +1,4 @@
-# 第3讲 机器学习
+# 3 Machine Learning 机器学习
 
 ## 3.1 Introduction
 

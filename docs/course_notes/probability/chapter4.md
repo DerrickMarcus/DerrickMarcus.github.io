@@ -1,4 +1,4 @@
-# Chapter 4 Second-order Processes and Spectral Analysis 二阶矩过程和谱分析
+# 4 二阶矩过程和谱分析
 
 !!! abstract "本章概述"
     本章讨论的主要内容为随机过程的基本概念和数字特征，二阶矩过程的性质（均方极限，均方连续，均方可导），随机过程的平稳性分析、相关性，宽平稳过程的谱分析等。
@@ -19,7 +19,7 @@
 
 （随机过程的二元函数观） 随机过程也可以看作是一个二元函数 $X(\omega,t):\varOmega\times T\to\mathbb{R}$ ，其中 $\varOmega$ 为样本空间， $T$ 为指标集。
 
-固定 $\omega$ ，则 $X(\omega,t)$ 随着 $t\in T$ 变化，表示随机过程的一次实现，称为一个**样本轨道**。
+固定 $\omega$ ，则 $X(\omega,t)$ 随着 $t\in T$ 变化，表示随机过程的一次实现，称为一个 **样本轨道**。
 
 固定一个时刻 $t$ ，表示一个一元随机变量 $X(t)$ ，任取 $n$ 个时刻 $t_1,\cdots,t_n$ 则 $(X(t_1),\cdots,X(t_n))$ 表示 $n$ 元随机变量。
 
@@ -42,7 +42,7 @@ $$
 F_{X(t_1),\cdots,X(t_n)}(x_1,\cdots,x_n)=P(X(t_1)\leqslant x_1,\cdots,X(t_n)\leqslant x_n)
 $$
 
-的全体称为随机过程的有限维分布族，可以看作是随机过程的累积分布函数 CDF，通过求导可以得到概率密度函数 PDF（连续情况）。
+的全体 称为 随机过程的有限维分布族，可以看作是随机过程的累积分布函数 CDF，通过求导可以得到概率密度函数 PDF（连续情况）。
 
 如果各个变量独立，等价于 PDF 或 CDF 可分解：
 
@@ -193,7 +193,7 @@ $$
     由于宽平稳过程的均值为常数，我们通常令 $X(t)-\mu_X$ 为新的 $X(t)$ ，变为零均值，且不改变其他信息，更方便研究。之后我们的讨论的大多都是 零均值宽平稳随机过程。
 
 !!! note
-    多数宽平稳过程都不是严平稳的，但 高斯过程 是个例外。宽平稳的高斯过程 一定是 严平稳的，因为高斯过程的任意有限维分布函数仅由 均值和协方差函数 决定。
+    多数宽平稳过程都不是严平稳的，但 高斯过程 是个例外。**宽平稳的高斯过程 一定是 严平稳的**，因为高斯过程的任意有限维分布函数仅由 均值和协方差函数 决定。
 
     有关高斯过程的讨论将在 [Chapter 5 Gaussian Process](./chapter5.md) 中进行。
 
@@ -203,7 +203,7 @@ $$
 
 若 $r_X(\tau)=\pm 1$ ，代表 $X(t+\tau),X(t)$ 完全线性相关（正相关，负相关）；若 $r_X(\tau)=0$ 则 $X(t+\tau),X(t)$ 线性不相关。
 
-为衡量 当时间差 $\tau$ 达到多大时  $X(t+\tau),X(t)$ 的相关程度可以忽略，引入相关时间 $\tau_0=\displaystyle\int_0^{+\infty}r_X(\tau)\mathrm{d}\tau$ .
+为衡量 当时间差 $\tau$ 达到多大时， $X(t+\tau),X(t)$ 的相关程度可以忽略，引入相关时间 $\tau_0=\displaystyle\int_0^{+\infty}r_X(\tau)\mathrm{d}\tau$ .
 
 若 $\tau_0$ 较小，说明 $r_X(\tau)$ 随时间增大而迅速衰减，可认为该过程随时间起伏变化剧烈。
 
@@ -213,23 +213,47 @@ $$
 
 宽平稳由于具有时间相关性，时间差可以作为一个独立的变量拿出来，进行谱分析。不满足宽平稳的过程不具有谱。
 
-宽平稳过程的谱密度函数，定义为 自相关函数的傅里叶变换：
+宽平稳过程的谱密度函数，定义为 自相关函数的傅里叶变换（**维纳-欣钦定理**）：
 
 $$
-S_X(\omega)=\int_{-\infty}^{+\infty}R_X(\tau)e^{-\mathrm{j}\omega \tau}\mathrm{d}\tau
+\begin{align*}
+S_X(\omega)&=\int_{-\infty}^{+\infty}R_X(\tau)\mathrm{e}^{-\mathrm{j}\omega \tau}\mathrm{d}\tau \\
+S_X(\omega)&=|X(\omega)|^2\geqslant 0  \\
+R_X(\tau)&=\frac{1}{2\pi}\int_{-\infty}^{+\infty}S_X(\omega)\mathrm{e}^{\mathrm{j}\omega \tau}\mathrm{d}\omega
+\end{align*}
 $$
 
-上式可由 **维纳-欣钦定理** 得出。
+以频率 $f$ 为变量的形式：
+
+$$
+\begin{align*}
+S_X(f)&=\int_{-\infty}^{+\infty}R_X(\tau)\mathrm{e}^{-\mathrm{j}2\pi f \tau}\mathrm{d}\tau \\
+R_X(\tau)&=\int_{-\infty}^{+\infty}S_X(f)\mathrm{e}^{\mathrm{j}2\pi f \tau}\mathrm{d}f
+\end{align*}
+$$
+
+$R_X(0)=\dfrac{1}{2\pi}\displaystyle\int_{-\infty}^{+\infty}S_X(\omega)\mathrm{d}\omega=\displaystyle\int_{-\infty}^{+\infty}S_X(f)\mathrm{d}f$ 称为 随机过程 $X(t)$ 的 **功率**。
 
 !!! tip
-    显然，功率谱密度为**正实数**，这样功率才有实际的物理意义。功率谱密度表示随机过程在不同角频率上的平均功率。
+    显然，功率谱密度为 **正实数**，具有实际的物理意义。功率谱密度表示随机过程在不同角频率上的平均功率。
 
-    对于宽平稳的**实随机过程**，自相关函数和功率谱密度 均为偶函数。
+    对于宽平稳的 **实随机过程**，自相关函数和功率谱密度 均为偶函数。
+
+线谱过程：宽平稳的 $X(t)=\displaystyle\sum_{k=1}^n X_k\exp(\mathrm{j}\omega_k t)$ ， $n$ 为确定值，且 $\mathrm{E}(X_k)=0,\mathrm{Var}(X_k)=\sigma_k^2$ ，当 $i\neq j$ 时 $X_i,X_j$ 不相关。则有：
+
+$$
+\begin{align*}
+R_X(\tau)&=\sum_{k=1}^n\sigma_k^2 \exp(\mathrm{j}\omega_k\tau) \\
+S_X(\omega)&=2\pi \sum_{k=1}^n\sigma_k^2\delta(\omega-\omega_k)
+\end{align*}
+$$
+
+<br>
 
 对于离散随机过程，谱密度为 自相关函数的 DTFT ：
 
 $$
-S_X(\omega)=\sum_{n=-\infty}^{+\infty}R_X[n]e^{-\mathrm{j}\omega n}
+S_X(\omega)=\sum_{n=-\infty}^{+\infty}R_X[n]\mathrm{e}^{-\mathrm{j}\omega n}
 $$
 
 常见随机过程的自相关函数和谱密度：
@@ -322,10 +346,41 @@ $$
 若随机过程 $\{X(t)\},\{Y(t)\}$ 联合宽平稳，互谱密度 定义为 互相关函数的傅里叶变换：
 
 $$
-S_{XY}(\omega)=\int_{-\infty}^{+\infty}R_{XY}(\tau)e^{-\mathrm{j}\omega \tau}\mathrm{d}\tau
+\begin{align*}
+S_{XY}(\omega)&=\mathcal{F}[R_{XY}(\tau)]=\int_{-\infty}^{+\infty}R_{XY}(\tau)\mathrm{e}^{-\mathrm{j}\omega \tau}\mathrm{d}\tau \\
+S_{YX}(\omega)&=\mathcal{F}[R_{YX}(\tau)]=\int_{-\infty}^{+\infty}R_{YX}(\tau)\mathrm{e}^{-\mathrm{j}\omega \tau}\mathrm{d}\tau \\
+S_{XY}(\omega)&=\overline{S_{YX}(\omega)}
+\end{align*}
 $$
 
+总结：
+
+时域：
+
+$$
+\begin{gather*}
+X(t) \to \boxed{h(t)} \to Y(t) \\
+R_X(\tau) \to \boxed{h(t)} \to R_{YX}(\tau) \to \boxed{\overline{h(-t)}} \to R_Y(\tau) \\ \\
+Y(t)=h(t)*X(t) \\
+R_{YX}(\tau)=h(\tau)*R_X(\tau), \quad R_Y(\tau)=\overline{h(-\tau)}*h(\tau)*R_X(\tau)
+\end{gather*}
+$$
+
+频域：
+
+$$
+\begin{gather*}
+S_X(\omega) \to \boxed{H(\omega)} \to S_{YX}(\omega) \to \boxed{\overline{H(\omega)}} \to S_Y(\omega) \\ \\
+\hat{Y}(\omega)=H(\omega)\hat{X}(\omega) \\
+S_{YX}(\omega)=H(\omega)S_X(\omega), \quad S_Y(\omega)=|H(\omega)|^2S_X(\omega)
+\end{gather*}
+$$
+
+<br>
+
 如果 $\forall t,s$ 都有 $X(t),Y(s)$ 不相关，即互相关函数 $R_{XY}(\tau)=0,\;\forall \tau$ ，等价于 $S(\omega)=0,\;\forall \omega$ .
+
+<br>
 
 若 $\{X(t)\},\{Y(t)\}$ 均为宽平稳且联合宽平稳，则 $\{Z(t)=X(t)+Y(t)\}$ 的自相关函数和谱密度为：
 
@@ -363,19 +418,25 @@ $$
 
 ## 二阶矩过程的连续、导数和积分
 
-（均方收敛） 设 随机变量序列 $\{X_n,n\in\mathbb{N}\}$ 满足 $\mathrm{E}\left(|X_n|^2\right)<+\infty$ ，随机变量 $X$ 满足 $\mathrm{E}\left(|X|^2\right)<+\infty$ ，则 $\{X_n,n\in\mathbb{N}\}$ 均方收敛于 $X$ 记为 $X_n\stackrel{m.s.}{\longrightarrow}X$ .
+（均方极限/均方收敛）设 随机变量序列 $\{X_n,n\in\mathbb{N}\}$ 满足 $\mathrm{E}\left(|X_n|^2\right)<+\infty$ ，随机变量 $X$ 满足 $\mathrm{E}\left(|X|^2\right)<+\infty$ ，若 $\displaystyle\lim_{n\to+\infty}\mathrm{E}\left(|X_n-X|^2\right)=0$ ，称 $X_n$ 的均方极限为 $X$ ，也称 $\{X_n,n\in\mathbb{N}\}$ 均方收敛于 $X$ ，记为 $X_n\stackrel{m.s.}{\longrightarrow}X$ .
 
 （柯西准则） 设 随机变量序列 $\{X_n,n\in\mathbb{N}\}$ 满足 $\mathrm{E}\left(|X_n|^2\right)<+\infty$ ，随机变量 $X$ 满足 $\mathrm{E}\left(|X|^2\right)<+\infty$ ，则 $X_n\stackrel{m.s.}{\longrightarrow}X$ 的充要条件为 $\mathrm{E}\left(|X_n-X_m|^2\right)\to 0,\;m,n\to\infty$ .
 
 <br>
 
-（均方连续） 对于二阶矩过程 $\{X(t)\}$ ，若 $t\to t_0$ 时 $X(t)\stackrel{m.s.}{\longrightarrow}X(t_0)$ 也即 $\mathrm{E}\left(|X(t)-X(t_0)|^2\right)\to 0$ ，则 $\{X(t)\}$ 在 $t_0$ 点均方连续。
+（均方连续） 对于二阶矩过程 $\{X(t)\}$ ，若 $t\to t_0$ 时 $X(t)\stackrel{m.s.}{\longrightarrow}X(t_0)$ ，也即 $\mathrm{E}\left(|X(t)-X(t_0)|^2\right)\to 0$ ，则 $\{X(t)\}$ 在 $t_0$ 点均方连续。
+
+均方连续的性质可以完全由 自相关函数 确定，以下几个命题等价：
+
+1. $\forall t_0\in T,\;R_X(t,s)$ 在 $(t_0,t_0)$ 点连续。
+2. $X(t)$ 在 $T\times T$ 上连续。
+3. $X(t)$ 在 $\mathbb{R}$ 上均方连续。
 
 <br>
 
 （均方导数） 若 $\dfrac{X(t_0+h)-X(t_0)}{h}\stackrel{m.s.}{\longrightarrow}Y(t_0),\;t_0\in T,\;h\to 0$ ，则称 $X()$ 均方意义下的导数为 $Y(t)$ .
 
-（均方导数判定定理） 若 $\dfrac{\partial^2 R_X(t,s)}{\partial t\partial s}$ 在 $t_0$ 处**存在且连续**，则 $X(t)$ 在 $t_0$ 处存在均方导数。
+（均方导数判定定理） 若 $\dfrac{\partial^2 R_X(t,s)}{\partial t\partial s}$ 在 $(t_0,t_0)$ 处 **存在且连续**，则 $X(t)$ 在 $t_0$ 处存在均方导数。
 
 均方导数的性质：
 

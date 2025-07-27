@@ -1,4 +1,4 @@
-# 第7讲 Transformer 与大模型
+# 7 Transformer and LLM
 
 ## 7.1 Sequence Modeling
 

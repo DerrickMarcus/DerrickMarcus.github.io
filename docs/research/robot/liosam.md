@@ -1,6 +1,6 @@
 # Deploy LIO-SAM
 
-## Reproduce the project 复现项目
+## Reproduce the project
 
 LIO-SAM 项目地址：<https://github.com/TixiaoShan/LIO-SAM>
 
@@ -71,7 +71,7 @@ rosbag play bag_name -r 3 # 以3倍速率播放
 
 保存地图：在 `~/liosam_ws/src/LIO-SAM/config/params.yaml` 文件中修改 `savePCD` 为 `true` ，以及修改 `savePCDDirectory` 为想要保存地图的目录。
 
-## Run LIO-SAM in Gazebo 仿真环境中运行
+## Run LIO-SAM in Gazebo
 
 在没有硬件设备的情况下，我们也可以在 Gazebo 中仿真，模拟真实的环境，并通过录制 rosbag 包方便后期调试排查问题。
 
@@ -147,11 +147,11 @@ Rviz 中的建图效果如下：
 
 ![202505072333160](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo-image/images/202505072333160.png)
 
-边缘地图 `CornerMap.pcd` 。
+边缘地图 `CornerMap.pcd` ：
 
 ![202505080938008](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo-image/images/202505080938008.png)
 
-全局地图 `GlobalMap.pcd` 。
+全局地图 `GlobalMap.pcd` ：
 
 ![202505080940125](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo-image/images/202505080940125.png)
 

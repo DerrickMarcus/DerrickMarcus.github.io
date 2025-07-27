@@ -1,4 +1,4 @@
-# 第6讲 循环神经网络 RNN
+# 6 RNN 循环神经网络
 
 [Recurrent neural network - Wikipedia](https://en.wikipedia.org/wiki/Recurrent_neural_network)
 

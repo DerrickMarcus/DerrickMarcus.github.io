@@ -1,4 +1,4 @@
-# 数字图像处理 第7周作业
+# Week 7 Assignment
 
 ![202506121156377](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo-image/images/202506121156377.png)
 

@@ -1,4 +1,4 @@
-# Foundation of Solid State Physics
+# 固体物理基础
 
 2025年春季学期《固体物理基础》课程笔记。
 

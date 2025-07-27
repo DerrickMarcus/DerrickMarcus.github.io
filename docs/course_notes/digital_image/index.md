@@ -1,4 +1,4 @@
-# Digital Image Processing
+# 数字图像处理
 
 2025年春季学期《数字图像处理》课程笔记。
 

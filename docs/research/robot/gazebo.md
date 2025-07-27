@@ -47,7 +47,7 @@ roslaunch gazebo_ros empty_world.launch world_name:=/path/to/your/world_file.wor
 
 `roslaunch` 加载 `.world` 文件，等效于直接在终端或命令行中使用 `gazebo world_file.world` 命令。
 
-## xacro 文件
+## xacro
 
 概念
 Xacro 是 XML Macros 的缩写，Xacro 是一种 XML 宏语言，是可编程的 XML。

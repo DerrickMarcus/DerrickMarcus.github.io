@@ -1,4 +1,4 @@
-# OJ8：缺失数据恢复
+# OJ 8 缺失数据恢复
 
 ## Description
 

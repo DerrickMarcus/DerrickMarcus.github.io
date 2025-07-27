@@ -293,6 +293,8 @@ nav:
           - 5 Gaussian Process: course_notes/probability/chapter5.md
           - 6 Markov Chain: course_notes/probability/chapter6.md
           - 7 Poisson Process: course_notes/probability/chapter7.md
+      - Communication and Network:
+          - Communication and Network: course_notes/communication_network/index.md
       - Media and Cognition:
           - Media and Cognition: course_notes/media_cognition/index.md
           - 1 Artificial Intelligence: course_notes/media_cognition/chapter1.md
@@ -342,7 +344,7 @@ nav:
           - 12 Device Management(2): course_notes/operating_system/chapter12.md
           - 13 File Systems(1): course_notes/operating_system/chapter13.md
           - 14 File Systems(2): course_notes/operating_system/chapter14.md
-          - 15 Course Summary: course_notes/operating_system/review.md
+          - 15 Course Summary: course_notes/operating_system/chapter15.md
   - "Course Labs":
       - Course Labs: course_labs/index.md
       - Data and Algorithm:

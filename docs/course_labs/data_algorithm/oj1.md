@@ -1,4 +1,4 @@
-# OJ1：丢失的练习册
+# OJ 1 丢失的练习册
 
 ## Description
 

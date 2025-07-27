@@ -1,4 +1,4 @@
-# OJ2：军训排队
+# OJ 2军训排队
 
 ## Description
 

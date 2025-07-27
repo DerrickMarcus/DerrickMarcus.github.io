@@ -1,4 +1,4 @@
-# Media and Cognition
+# 媒体与认知
 
 2025年春季学期《媒体与认知》课程知识点总结。可用于半开卷考试 cheatsheet 制作。
 

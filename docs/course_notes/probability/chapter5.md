@@ -1,4 +1,4 @@
-# Chapter 5 Gaussian Process 高斯过程
+# 5 高斯过程
 
 !!! abstract "本章概述"
     高斯过程是随机过程中较为简单的一种，只需要均值和协方差就可以完全确定，性质简单、易于研究，且实际生活中很多问题都可以使用高斯过程建模，不仅可以大大简化分析问题，也具有较好的适用性。
@@ -11,7 +11,7 @@
 
 ## 多元高斯分布
 
-服从 $n$ 元高斯分布的随机向量 $\boldsymbol{X}=\left(X_1,X_2\cdots,X_n\right)^T$ 的概率密度函数 PDF 为：
+服从 $n$ 元高斯分布的随机向量 $\boldsymbol{X}=\left(X_1,X_2\cdots,X_n\right)^T\sim\mathcal{N}(\boldsymbol{\mu},\boldsymbol{\Sigma})$ ，概率密度函数(PDF)为：
 
 $$
 \begin{align*}
@@ -31,6 +31,8 @@ $$
 \mu_i=\mathrm{E}(X_i),\quad \sigma_{ij}=\mathrm{E}\left((X_i-\mu_i)(X_j-\mu_j)\right)
 \end{gather*}
 $$
+
+> 关于多元分布的特征函数，参考 [Chapter 3 Multivariate Random Variable 多元随机变量](./chapter3.md)
 
 高斯向量 $\boldsymbol{X}=\left(X_1,X_2\cdots,X_n\right)^T$ 的特征函数（概率密度函数的傅里叶反变换）：
 
@@ -53,9 +55,9 @@ $$
 
 多元高斯分布的高阶矩由 均值向量 和 协方差矩阵 决定。
 
-事实上，如果随机向量 $\boldsymbol{X}\in\mathbb{R}^n$ 的特征函数满足 $\phi_{\boldsymbol{X}}(\boldsymbol{\omega})=\exp\left(\mathrm{j}\boldsymbol{\omega}^T\boldsymbol{\mu}-\frac{1}{2}\boldsymbol{\omega}^T\boldsymbol{\Sigma}\boldsymbol{\omega}\right)$ 的形式，其中 $\boldsymbol{\mu}\in\mathbb{R}^n$ 且 $\boldsymbol{\Sigma}$ 非负定，那么 $\boldsymbol{X}$ 一定是 $n$ 元高斯向量。
+事实上，如果随机向量 $\boldsymbol{X}\in\mathbb{R}^n$ 的特征函数满足 $\phi_{\boldsymbol{X}}(\boldsymbol{\omega})=\exp\left(\mathrm{j}\boldsymbol{\omega}^T\boldsymbol{\mu}-\frac{1}{2}\boldsymbol{\omega}^T\boldsymbol{\Sigma}\boldsymbol{\omega}\right)$ 的形式，其中 $\boldsymbol{\mu}\in\mathbb{R}^n$ 且 $\boldsymbol{\Sigma}$ 非负定，那么 $\boldsymbol{X}$ **一定是** $n$ **元高斯向量**。
 
-如果存在高阶矩 $\mathrm{E}\left(X_1^{k_1}X_2^{k_2}\cdots X_n^{k_n}\right)<+\infty$ ，则：
+如果存在 **高阶混合矩** $\mathrm{E}\left(X_1^{k_1}X_2^{k_2}\cdots X_n^{k_n}\right)<+\infty$ ，则：
 
 $$
 \mathrm{E}\left(X_1^{k_1}X_2^{k_2}\cdots X_n^{k_n}\right)=(-\mathrm{j})^{k_1+\cdots+k_n}\frac{\partial^{k_1+\cdots+k_n} \phi_{\boldsymbol{X}}(\omega)}{\partial \omega_1^{k_1}\cdots \partial \omega_n^{k_n}}\bigg|_{\boldsymbol{\omega}=\boldsymbol{0}}
@@ -131,7 +133,7 @@ $$
 
 ## 独立性
 
-重要结论：对于高斯变量，“不相关” 等价于 “独立”。
+重要结论：**对于高斯变量，“不相关” 等价于 “独立”**。
 
 设 $\boldsymbol{X}=(\boldsymbol{X}_1,\boldsymbol{X}_2)^T$ 服从 $n$ 元高斯分布，均值为 $\boldsymbol{\mu}=(\boldsymbol{\mu}_1,\boldsymbol{\mu}_2)^T$ ，协方差矩阵为：
 
@@ -142,9 +144,9 @@ $$
 \end{pmatrix}
 $$
 
-则 $\boldsymbol{X}$ 的两个子向量 $\boldsymbol{X}_1,\boldsymbol{X}_2$ 相互独立的 充要条件为 $\boldsymbol{\Sigma}_{12}=\boldsymbol{0}$ 零矩阵。
+则 $\boldsymbol{X}$ 的两个子向量 $\boldsymbol{X}_1,\boldsymbol{X}_2$ 相互独立的 充要条件为 $\boldsymbol{\Sigma}_{12}=\boldsymbol{0}$ 零矩阵，此时 $\boldsymbol{\Sigma}$ 为分块对角阵。
 
-推论： $n$ 元高斯向量 $\boldsymbol{X}=(X_1,\cdots,X_n)^T$ 各个分量相互独立 的充要条件为 各分量之间协方差为 $\sigma_{ij}=0$ .
+推论： $n$ 元高斯向量 $\boldsymbol{X}=(X_1,\cdots,X_n)^T$ 各个分量相互独立 的充要条件为 各分量之间协方差为 $\sigma_{ij}=0$ ，即 $\boldsymbol{\Sigma}$ 为对角阵。
 
 ## 条件分布
 
@@ -171,7 +173,7 @@ $$
 \boldsymbol{\mu}_{1|2}=\boldsymbol{\mu}_1+\boldsymbol{\Sigma}_{12}\boldsymbol{\Sigma}_2^{-1}(\boldsymbol{X}_2-\boldsymbol{\mu}_2),\quad \boldsymbol{\Sigma}_{1|2}=\boldsymbol{\Sigma}_1-\boldsymbol{\Sigma}_{12}\boldsymbol{\Sigma}_2^{-1}\boldsymbol{\Sigma}_{21}
 $$
 
-注意到 条件均值 $\boldsymbol{\mu}_{1|2}$ 与条件取值 $\boldsymbol{X}_2$ 呈线性关系，而 条件协方差矩阵 $\boldsymbol{\Sigma}_{1|2}$ 与条件取值 $\boldsymbol{X}_2$ 无关。对于联合高斯分布来说，一部分取值的固定不会影响其余部分的不确定性，但这在其他分布中不一定成立。
+注意到 条件均值 $\boldsymbol{\mu}_{1|2}$ 与条件取值 $\boldsymbol{X}_2$ 呈线性关系，而 条件协方差矩阵 $\boldsymbol{\Sigma}_{1|2}$ **与条件取值** $\boldsymbol{X}_2$ **无关**。对于联合高斯分布来说，一部分取值的固定不会影响其余部分的不确定性，但这在其他分布中不一定成立。
 
 <br>
 
@@ -185,3 +187,13 @@ $$
 $$
 
 其中 $\rho_{XY}$ 为 $X,Y$ 的相关系数， $\mathrm{Cov}(X, Y)$ 为 $X,Y$ 的协方差， $\rho_{XY}=\dfrac{\mathrm{Cov}(X, Y)}{\sqrt{\mathrm{Var}(X)\mathrm{Var}(Y)}}$ .
+
+---
+
+补充内容：Price 定理
+
+二元高斯分布 $(X_1,X_2)\sim\mathcal{N}(0,0,\sigma_1^2,\sigma_2^2,\rho)$ ，且 $g(x,y)$ 为一非线性函数，则：
+
+$$
+\frac{\partial\mathrm{E}(g(X_1,X_2))}{\partial \rho}=\sigma_1 \sigma_2 \mathrm{E}\left( \frac{\partial^2g(X_1,X_2)}{\partial X_1 \partial X_2} \right)
+$$

@@ -1,1 +1,1 @@
-# Chapter 1 Probability Theory Basics 概率论基础
+# 1 概率论基础

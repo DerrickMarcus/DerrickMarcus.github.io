@@ -1,4 +1,4 @@
-# 第4讲 深度学习
+# 4 Deep Learning 深度学习
 
 ## 4.1 Introduction
 

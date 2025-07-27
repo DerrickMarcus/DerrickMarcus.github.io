@@ -8,7 +8,7 @@ TF，坐标变换系统。两种坐标系：固定坐标系（用于表示世界
 
 Gazebo，物理仿真工具，与实际环境对应，为机器人运动提供逼真的物理环境。
 
-## 工作空间
+## Workspace
 
 创建工作空间：
 
@@ -61,7 +61,7 @@ rosls
 
 PS：如果输入某些命令，报错找不到软件包，用 `source devel/setup.bash` 而非 `source devel/local_setup.bash` 。
 
-## ROS 节点
+## ROS Node
 
 查看节点：
 
@@ -82,7 +82,7 @@ rosrun [package_name] [node_name]
 roslaunch [package] [filename.launch]
 ```
 
-## launch 文件的结构
+## .launch File
 
 launch 文件：
 
@@ -194,7 +194,7 @@ launch 文件：
 
 注意： `.launch` 文件启动之前，无需再执行 `roscore` 指令启动 rosmaster ，因为 `.launch` 文件可以自启动 rosmaster。
 
-## rqt 工具
+## rqt
 
 使用 rqt_graph 查看节点状态图：
 
@@ -204,7 +204,7 @@ rqt
 rqt_graph
 ```
 
-## 话题、服务、参数
+## Topic, servics and parameter
 
 关于话题的命令：
 
@@ -260,7 +260,7 @@ find_package(catkin REQUIRED COMPONENTS
 )
 ```
 
-## rosdep 工具
+## rosdep
 
 使用 rosdep 检查是否满足依赖，以及安装未依赖的包：
 
@@ -269,7 +269,7 @@ rosdep check --from-path src --ignore-src -r -y
 rosdep install --from-path src --ignore-src -r -y
 ```
 
-## 录制数据包
+## rosbag
 
 `.bag` 文件可以保存 ROS 系统运行过程中产生的话题和服务数据，并播放出来供其他系统使用。
 

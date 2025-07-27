@@ -1,4 +1,4 @@
-# OJ3：比武
+# OJ 3 比武
 
 ## Description
 

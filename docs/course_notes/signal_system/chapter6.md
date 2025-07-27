@@ -1,6 +1,6 @@
-# 第6章 信号的矢量空间
+# 6 信号的矢量空间
 
-## 1. 基本概念
+## 6.1 基本概念
 
 1-范数：信号的作用强度（信号作用对时间的累积）
 
@@ -33,7 +33,7 @@ $$
 \end{align*}
 $$
 
-## 2. 正交函数分解
+## 6.2 正交函数分解
 
 对于两个矢量 $x,y$ ，用 $cy$ 逼近 $x$ ，误差最小的为：
 
@@ -69,7 +69,7 @@ c_{12}=\frac{\left\langle f_1(t),f_2(t) \right\rangle}{\left\langle f_2(t),f_2(t
 =\frac{\int_{t_1}^{t_2} f_1(t)f_2^*(t)\,\mathrm{d}t}{\int_{t_1}^{t_2} f_2(t)f_2^*(t)\,\mathrm{d}t}
 $$
 
-## 3. 完备正交函数集、帕塞瓦尔定理
+## 6.3 完备正交函数集、帕塞瓦尔定理
 
 帕塞瓦尔方程：
 
@@ -79,7 +79,7 @@ $$
 
 一个信号的功率等于它在完备正交函数集中各分量的功率之和。这体现了正交函数的范数不变性 / 内积不变性。
 
-## 4. 相关
+## 6.4 相关
 
 ### 功率信号与能量信号
 
@@ -156,11 +156,11 @@ $$
 
 ### 相关定理
 
-若有 $\mathscr{F}[f_1(t)]=F_1(\omega),\mathscr{F}[f_2(t)]=F_2(\omega)$ ，则有：
+若有 $\mathcal{F}[f_1(t)]=F_1(\omega),\mathcal{F}[f_2(t)]=F_2(\omega)$ ，则有：
 
 $$
-\mathscr{F}[R_{12}(\tau)] = F_1(\omega)\cdot F_2^*(\omega) \\
-\mathscr{F}[R(\tau)] = F(\omega)\cdot F^*(\omega)=|F(\omega)|^2
+\mathcal{F}[R_{12}(\tau)] = F_1(\omega)\cdot F_2^*(\omega) \\
+\mathcal{F}[R(\tau)] = F(\omega)\cdot F^*(\omega)=|F(\omega)|^2
 $$
 
 若 $f_2(t)$ 为实偶函数， $F_2(\omega)$​ 为实函数，则与卷积定理结果相同。
@@ -179,10 +179,10 @@ $$
 
 $$
 \begin{align*}
-\mathscr{E}(\omega) &= |F(\omega)|^2 \\
-\mathscr{E}(\omega) &= \mathscr{F}[R(\tau)] \\
-E &= \frac{1}{2\pi} \int_{-\infty}^{\infty}\mathscr{E}(\omega)\,\mathrm{d}\omega
-=\int_{-\infty}^{\infty}\mathscr{E}_1(\omega)\,\mathrm{d}\omega
+\mathcal{E}(\omega) &= |F(\omega)|^2 \\
+\mathcal{E}(\omega) &= \mathcal{F}[R(\tau)] \\
+E &= \frac{1}{2\pi} \int_{-\infty}^{\infty}\mathcal{E}(\omega)\,\mathrm{d}\omega
+=\int_{-\infty}^{\infty}\mathcal{E}_1(\omega)\,\mathrm{d}\omega
 \end{align*}
 $$
 
@@ -192,9 +192,9 @@ $$
 
 $$
 \begin{align*}
-\mathscr{P}(\omega) &= \lim_{T\to\infty}\frac{|F_T(\omega)|^2}{T} \\
-\mathscr{P}(\omega) &= \mathscr{F}[R(\tau)] \\
-P &= \frac{1}{2\pi}\int_{-\infty}^{\infty}\mathscr{P}(\omega)\,\mathrm{d}\omega
+\mathcal{P}(\omega) &= \lim_{T\to\infty}\frac{|F_T(\omega)|^2}{T} \\
+\mathcal{P}(\omega) &= \mathcal{F}[R(\tau)] \\
+P &= \frac{1}{2\pi}\int_{-\infty}^{\infty}\mathcal{P}(\omega)\,\mathrm{d}\omega
 \end{align*}
 $$
 
@@ -206,13 +206,13 @@ $$
 
 在频域，我们有：
 
-能量信号： $\mathscr{E}_r(\omega)=|H(\mathrm{j}\omega)|^2 \cdot \mathscr{E}_e(\omega)$
+能量信号： $\mathcal{E}_r(\omega)=|H(\mathrm{j}\omega)|^2 \cdot \mathcal{E}_e(\omega)$
 
-功率信号： $\mathscr{P}_r(\omega)=|H(\mathrm{j}\omega)|^2 \cdot \mathscr{P}_e(\omega)$
+功率信号： $\mathcal{P}_r(\omega)=|H(\mathrm{j}\omega)|^2 \cdot \mathcal{P}_e(\omega)$
 
 变换到时域，二者共同有： $R_r(\tau)=R_e(\tau)*R_h(\tau)$
 
-## 5. 匹配滤波器
+## 6.5 匹配滤波器
 
 使有用信号 $s(t)$ 增强，抑制噪声 $n(t)$ . 信号和噪声同时进入滤波器，如果在某段时间内信号 $s(t)$ 存在，滤波器的输出在相应的瞬间出现强大的峰值。
 

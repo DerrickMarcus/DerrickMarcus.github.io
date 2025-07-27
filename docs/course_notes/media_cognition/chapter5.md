@@ -1,4 +1,4 @@
-# 第5讲 卷积神经网络 CNN
+# 5 CNN 卷积神经网络
 
 [Convolutional neural network - Wikipedia](https://en.wikipedia.org/wiki/Convolutional_neural_network)
 

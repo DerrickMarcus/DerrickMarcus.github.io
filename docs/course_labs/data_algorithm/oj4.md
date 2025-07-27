@@ -1,4 +1,4 @@
-# OJ4：缺损二叉树
+# OJ 4 缺损二叉树
 
 ## Description
 

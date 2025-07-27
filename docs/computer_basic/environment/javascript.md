@@ -1,4 +1,4 @@
-# JavaScript environment in Windows
+# JavaScript on Windows
 
 ## 1. Install Node.js
 

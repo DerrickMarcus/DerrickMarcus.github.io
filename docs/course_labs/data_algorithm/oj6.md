@@ -1,4 +1,4 @@
-# OJ6：跳跳乐
+# OJ 6 跳跳乐
 
 ## Description
 
