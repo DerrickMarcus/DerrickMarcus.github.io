@@ -90,11 +90,7 @@ draft_docs: |
 
 # Plugins
 plugins:
-  - search:
-      lang:
-        - zh
-        - en
-      separator: '[\s\u200b\-_,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+  - search
   - meta
   - blog:
       blog_dir: blog
@@ -184,17 +180,17 @@ extra:
 markdown_extensions:
   - def_list
   - attr_list
-  - md_in_html # 允许Markdown中使用HTML
+  - md_in_html # 允许 Markdown 中使用 HTML
   - sane_lists
   - footnotes
   - admonition
   - tables
   - toc:
-      permalink: "⚓" # 各标题生成各自链接
-      toc_depth: 6
-      slugify: !!python/object/apply:pymdownx.slugs.slugify {
-          kwds: { case: lower },
-        } # enable Unicode link
+      permalink: true # 各标题生成各自链接
+      # toc_depth: 6
+      # slugify: !!python/object/apply:pymdownx.slugs.slugify {
+      #     kwds: { case: lower },
+      #   } # enable Unicode link
   - pymdownx.arithmatex:
       generic: true
   - pymdownx.highlight:
@@ -238,15 +234,15 @@ markdown_extensions:
 
 extra_javascript:
   - https://polyfill.io/v3/polyfill.min.js?features=es6 # latex
-  - javascripts/katex.js
+  # - javascripts/katex.js
 
-  - https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js
-  - https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/auto-render.min.js
-  - https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/mhchem.min.js
+  # - https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js
+  # - https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/auto-render.min.js
+  # - https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/mhchem.min.js
 
-  # - javascripts/mathjax.js
+  - javascripts/mathjax.js
 
-  # - https://cdn.jsdelivr.net/npm/mathjax@latest/es5/tex-mml-chtml.js
+  - https://cdn.jsdelivr.net/npm/mathjax@latest/es5/tex-mml-chtml.js
   # - https://cdn.jsdelivr.net/npm/mathjax@latest/es5/tex-chtml.js
   # - https://cdn.jsdelivr.net/npm/mathjax@latest/es5/tex-chtml-full.js
   # - https://cdn.jsdelivr.net/npm/mathjax@latest/es5/tex-svg-full.js
@@ -265,7 +261,7 @@ extra_css:
 
   - stylesheets/custom.css
 
-  - https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css
+  # - https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css
 
 # Page tree
 nav:
@@ -380,6 +376,7 @@ nav:
           - Gazebo: research/robot/gazebo.md
           - Catkin Tool: research/robot/catkin.md
           - Geometric Transformation: research/robot/geometric_transformation.md
+          - Camera Calibration: research/robot/camera_calibration.md
           - SLAM:
               - SLAM: research/robot/slam/index.md
               - Graph Optimization: research/robot/slam/graph_optimization.md

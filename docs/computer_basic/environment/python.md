@@ -1,6 +1,6 @@
 # Python on Windows
 
-## 1. Install Anaconda/Miniconda
+## 1 Install Anaconda/Miniconda
 
 Anaconda 和 Miniconda 均内置 python，搭配 conda 包管理。
 
@@ -97,7 +97,7 @@ conda update Anaconda
 
 注意：除了使用 conda 创建环境以外，后续建议使用 pip 安装和更新软件包，尽量避免 pip 和 conda 混用。
 
-## 2. Configure VS Code
+## 2 Configure VS Code
 
 下载插件：python，jupyter（必需），ruff（可选）。
 
@@ -130,7 +130,7 @@ conda update Anaconda
   },
 ```
 
-## 3. Configure PyCharm
+## 3 Configure PyCharm
 
 下载安装过程略（注意添加环境变量）。
 
@@ -142,7 +142,7 @@ E:\miniconda3\Scripts\conda.exe
 
 然后加载，你会看到 base 环境和自己创建的各种环境，选择一个即可，然后就可以运行和调试。
 
-## 4. Else
+## 4 Else
 
 血泪教训：又遇到无论如何包都会下载到 base 环境的问题，无法指向虚拟环境，目前的解决办法是：
 

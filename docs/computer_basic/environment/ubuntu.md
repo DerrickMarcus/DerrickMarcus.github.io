@@ -3,7 +3,7 @@
 !!! Tip
     Before installing any package or software, please think twice. It is recommended to keep the system clean and away from redundant packages.
 
-## 1. Change the mirror source
+## 1 Change the mirror source
 
 In China mainland, using the default Ubuntu source is very slow. It is recommended to change it to Tsinghua University source.
 
@@ -44,7 +44,7 @@ sudo apt update
 sudo apt upgrade
 ```
 
-## 2. Install vmware tools
+## 2 Install vmware tools
 
 Run:
 
@@ -53,7 +53,7 @@ sudo apt install open-vm-tools
 sudo apt install open-vm-tools-desktop
 ```
 
-## 3. Configure the proxy
+## 3 Configure the proxy
 
 ### 3.1 Using Clash Verge Rev
 
@@ -88,7 +88,7 @@ cd clash
 ./cfw
 ```
 
-## 4. Install Chinese input method
+## 4 Install Chinese input method
 
 Run:
 
@@ -98,7 +98,7 @@ sudo apt install ibus-libpinyin
 
 Then open Settings → Region & Language, add and choose `Chinese-Intelligent Pinyin` .
 
-## 5. Install VS Code
+## 5 Install VS Code
 
 Go to <https://code.visualstudio.com/> and download the latest version of `code_*.deb` . Then Run:
 

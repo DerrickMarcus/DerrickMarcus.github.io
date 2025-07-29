@@ -1,6 +1,6 @@
 # JavaScript on Windows
 
-## 1. Install Node.js
+## 1 Install Node.js
 
 访问官网：[Node.js — Download Node.js® (nodejs.org)](https://nodejs.org/en/download)。
 
@@ -29,7 +29,7 @@ npm -v
 
 若能正确输出版本号，即为安装成功。
 
-## 2. Configure system environment variable
+## 2 Configure system environment variable
 
 文件资源管理器中，打开刚才的安装目录：
 
@@ -63,7 +63,7 @@ npm config get cache
 
 创建好后， `E:\Program Files\nodejs\node_global` 目录下应该会出现文件夹 `node_modules` ，如果没有，手动创建即可。
 
-## 3. Test
+## 3 Test
 
 全局安装一个最常用的 express 模块进行测试。命令行输入：
 
@@ -75,7 +75,7 @@ npm install -g express  // -g代表全局安装
 
 右键点击对应文件夹——【属性】——【安全】——【编辑】——勾选所有权限——【确定】。
 
-## 4. Configure Taobao Mirror
+## 4 Configure Taobao Mirror
 
 ```bash
 npm config set registry https://registry.npmmirror.com/
@@ -99,7 +99,7 @@ npm install -g cnpm --registry=https://registry.npmmirror.com
 cnpm -v
 ```
 
-## 5. Configure VS Code
+## 5 Configure VS Code
 
 下载插件 Code Runner（By Jun Han）。
 

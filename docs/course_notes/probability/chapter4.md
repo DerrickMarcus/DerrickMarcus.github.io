@@ -195,7 +195,7 @@ $$
 !!! note
     多数宽平稳过程都不是严平稳的，但 高斯过程 是个例外。**宽平稳的高斯过程 一定是 严平稳的**，因为高斯过程的任意有限维分布函数仅由 均值和协方差函数 决定。
 
-    有关高斯过程的讨论将在 [Chapter 5 Gaussian Process](./chapter5.md) 中进行。
+    有关高斯过程的讨论将在 [Chapter 5 Gaussian Process 高斯过程](./chapter5.md) 中进行。
 
 ### 相关系数与相关时间
 
@@ -248,8 +248,6 @@ S_X(\omega)&=2\pi \sum_{k=1}^n\sigma_k^2\delta(\omega-\omega_k)
 \end{align*}
 $$
 
-<br>
-
 对于离散随机过程，谱密度为 自相关函数的 DTFT ：
 
 $$
@@ -267,41 +265,101 @@ $$
     </thead>
     <tbody>
         <tr>
-            <td>$$R(\tau) = \mathrm{e}^{-\alpha|\tau|},\ \alpha > 0$$</td>
-            <td>$$S(\omega) = \frac{2\alpha}{\omega^2 + \alpha^2}$$</td>
-        </tr>
-        <tr>
-            <td>$$R(\tau)=\cos(\omega_0 \tau)$$</td>
-            <td>$$S(\omega)=\pi(\delta(\omega-\omega_0)+\delta(\omega+\omega_0))$$</td>
-        </tr>
-        <tr>
-            <td>$$R(\tau)=\dfrac{\sin(\omega_0\tau)}{\omega_0\tau}$$</td>
-            <td>$$S(\omega)=\begin{cases} \dfrac{\pi}{\omega_0},& |\omega|\leqslant\omega_0 \\ 0,& |\omega|>\omega_0
-                \end{cases}$$</td>
-        </tr>
-        <tr>
-            <td>$$R(\tau)=\begin{cases} 1-\frac{2|\tau|}{T}, & |\tau|\leqslant \frac{T}{2} \\ 0,
-                &|\tau|>\frac{T}{2}\end{cases}$$</td>
-            <td>$$S(\omega)=\dfrac{8\sin^2\left(\dfrac{\omega T}{4}\right)}{\omega^2T}$$</td>
-        </tr>
-        <tr>
-            <td>$$R(\tau)=\mathrm{e}^{-\alpha|\tau|}\cos(\omega_0\tau),\,\alpha>0$$</td>
-            <td>$$S(\omega)=\dfrac{\alpha}{(\omega-\omega_0)^2+\alpha^2}+\dfrac{\alpha}{(\omega+\omega_0)^2+\alpha^2}$$
+            <td>
+            $$
+            R(\tau) = \mathrm{e}^{-\alpha|\tau|},\;\alpha > 0
+            $$
+            </td>
+            <td>
+            $$
+            S(\omega) = \frac{2\alpha}{\omega^2 + \alpha^2}
+            $$
             </td>
         </tr>
         <tr>
-            <td>$$R(\tau)=\mathrm{e}^{-\alpha\tau^2},\,\alpha>0$$</td>
-            <td>$$S(\omega)=\sqrt{\dfrac{\pi}{\alpha}}\mathrm{e}^{-\omega^2/4\alpha}$$</td>
-        </tr>
-        <tr>
-            <td>$$R(\tau)=\mathrm{e}^{-\alpha\tau^2}\cos(\beta\tau),\,\alpha>0$$</td>
-            <td>$$S(\omega)=\dfrac{1}{2}\sqrt{\dfrac{\pi}{\alpha}}\left(\mathrm{e}^{-(\omega-\beta)^2/4\alpha}+\mathrm{e}^{-(\omega+\beta)^2/4\alpha}\right)$$
+            <td>
+            $$
+            R(\tau)=\cos(\omega_0 \tau)
+            $$
+            </td>
+            <td>
+            $$
+            S(\omega)=\pi(\delta(\omega-\omega_0)+\delta(\omega+\omega_0))
+            $$
             </td>
         </tr>
         <tr>
-            <td>$$R(\tau)=\dfrac{2\sin\left(\frac{\Delta\omega}{2}\tau\right)}{\pi\tau}\cos(\omega_0\tau)$$</td>
-            <td>$$S(\omega)=\begin{cases} 1,&\omega_0-\dfrac{\Delta\omega}{2}\leqslant |\omega| \leqslant
-                \omega_0+\dfrac{\Delta\omega}{2} \\ 0, & \text{else}\end{cases}$$</td>
+            <td>
+            $$
+            R(\tau)=\dfrac{\sin(\omega_0\tau)}{\omega_0\tau}
+            $$
+            </td>
+            <td>
+            $$
+            S(\omega)=\begin{cases} \dfrac{\pi}{\omega_0},& |\omega|\leqslant\omega_0 \\ 0,& |\omega|>\omega_0 \end{cases}
+            $$
+            </td>
+        </tr>
+        <tr>
+            <td>
+            $$R(\tau)=\begin{cases} 1-\frac{2|\tau|}{T}, & |\tau|\leqslant \frac{T}{2} \\ 0,
+                &|\tau|>\frac{T}{2}\end{cases}
+            $$
+            </td>
+            <td>
+            $$
+            S(\omega)=\dfrac{8\sin^2\left(\dfrac{\omega T}{4}\right)}{\omega^2T}
+            $$
+            </td>
+        </tr>
+        <tr>
+            <td>
+            $$
+            R(\tau)=\mathrm{e}^{-\alpha|\tau|}\cos(\omega_0\tau),\,\alpha>0
+            $$
+            </td>
+            <td>
+            $$
+            S(\omega)=\dfrac{\alpha}{(\omega-\omega_0)^2+\alpha^2}+\dfrac{\alpha}{(\omega+\omega_0)^2+\alpha^2}
+            $$
+            </td>
+        </tr>
+        <tr>
+            <td>
+            $$
+            R(\tau)=\mathrm{e}^{-\alpha\tau^2},\,\alpha>0
+            $$
+            </td>
+            <td>
+            $$
+            S(\omega)=\sqrt{\dfrac{\pi}{\alpha}}\mathrm{e}^{-\omega^2/4\alpha}
+            $$
+            </td>
+        </tr>
+        <tr>
+            <td>
+            $$
+            R(\tau)=\mathrm{e}^{-\alpha\tau^2}\cos(\beta\tau),\,\alpha>0
+            $$
+            </td>
+            <td>
+            $$
+            S(\omega)=\dfrac{1}{2}\sqrt{\dfrac{\pi}{\alpha}}\left(\mathrm{e}^{-(\omega-\beta)^2/4\alpha}+\mathrm{e}^{-(\omega+\beta)^2/4\alpha}\right)
+            $$
+            </td>
+        </tr>
+        <tr>
+            <td>
+            $$
+            R(\tau)=\dfrac{2\sin\left(\frac{\Delta\omega}{2}\tau\right)}{\pi\tau}\cos(\omega_0\tau)
+            $$
+            </td>
+            <td>
+            $$
+            S(\omega)=\begin{cases} 1,&\omega_0-\dfrac{\Delta\omega}{2}\leqslant |\omega| \leqslant
+                \omega_0+\dfrac{\Delta\omega}{2} \\ 0, & \text{else}\end{cases}
+            $$
+            </td>
         </tr>
     </tbody>
 </table>
@@ -376,8 +434,6 @@ S_{YX}(\omega)=H(\omega)S_X(\omega), \quad S_Y(\omega)=|H(\omega)|^2S_X(\omega)
 \end{gather*}
 $$
 
-<br>
-
 如果 $\forall t,s$ 都有 $X(t),Y(s)$ 不相关，即互相关函数 $R_{XY}(\tau)=0,\;\forall \tau$ ，等价于 $S(\omega)=0,\;\forall \omega$ .
 
 <br>
@@ -414,7 +470,7 @@ $$
 增量过程的一个典型例子是 随机游走。
 
 !!! note
-    泊松过程是典型的增量过程，有关讨论将在 [Chapter 7 Poisson Process](./chapter7.md) 中进行。
+    泊松过程是典型的增量过程，具体讨论参考 [Chapter 7 Poisson Process 泊松过程](./chapter7.md)。
 
 ## 二阶矩过程的连续、导数和积分
 

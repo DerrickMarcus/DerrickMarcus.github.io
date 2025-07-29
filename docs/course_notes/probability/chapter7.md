@@ -53,9 +53,9 @@ $$
 
 相邻事件发生的间隔为 $T_n=S_n-S_{n-1},\;n=1,2,\cdots$ .
 
-根据关系 $P(S_n\leqslant t)=P(N(t)\geqslant n)$ ，得到 $S_n$ 的累积分布函数(CDF)为 $F_{S_n}=P(S_n<t)=P(N(t)\geqslant n)=\displaystyle\sum_{k=n}^{+\infty}\frac{(\lambda t)^k}{k!}\mathrm{e}^{-\lambda t}$ ，求导得到 $f_{S_n}(t)=\dfrac{\mathrm{d}}{\mathrm{d}t}F_{S_n}(t)=\dfrac{(\lambda t)^{n-1}}{(n-1)!}\lambda\mathrm{e}^{-\lambda t}$ ，服从 $n$ 阶 $\Gamma$ 分布。
+根据关系 $P(S_n\leqslant t)=P(N(t)\geqslant n)$ ，得到 $S_n$ 的累积分布函数(CDF)为 $F_{S_n}=P(S_n<t)=P(N(t)\geqslant n)=\displaystyle\sum_{k=n}^{+\infty}\frac{(\lambda t)^k}{k!}\mathrm{e}^{-\lambda t}$ ，求导得到 $f_{S_n}(t)=\dfrac{\mathrm{d}}{\mathrm{d}t}F_{S_n}(t)=\dfrac{(\lambda t)^{n-1}}{(n-1)!}\lambda\mathrm{e}^{-\lambda t}$ ，服从 $n$ 阶 $\Gamma$ 分布。当 $n=1$ 时退化为 指数分布 $S_1\sim\exp(\lambda)$ . 当 $n$ 较大时接近高斯分布。
 
-当 $n=1$ 时退化为 指数分布 $S_1\sim\exp(\lambda)$ . 当 $n$ 较大时接近高斯分布。数字特征为：
+数字特征为：
 
 $$
 \mathrm{E}(S_n)=\frac{n}{\lambda},\quad \mathrm{Var}(S_n)=\frac{n}{\lambda^2}
@@ -105,12 +105,12 @@ $$
 强度参数不是常数，而是**关于时间** $t$ **的函数** $\lambda\to\lambda(t)$ .
 
 $$
-P(N(t_0+t)-N(t_0)=n)=\frac{\left(\displaystyle\int_{t_0}^{t_0+t}\lambda(u)\mathrm{d}u\right)^n}{n!}\exp\left(-\int_{t_0}^{t_0+t}\lambda(u)\mathrm{d}u\right)
+P(N(t_0+t)-N(t_0)=n)=\frac{\left(\int_{t_0}^{t_0+t}\lambda(u)\mathrm{d}u\right)^n}{n!}\exp\left(-\int_{t_0}^{t_0+t}\lambda(u)\mathrm{d}u\right)
 $$
 
-或者写为 $N(t_0+t)-N(t_0)\sim\text{Poisson}\left(\displaystyle\int_{t_0}^{t_0+t}\lambda(u)\mathrm{d}u\right)\sim\text{Poisson}(\bar{\lambda}t)$ .
+或者写为 $N(t_0+t)-N(t_0)\sim\text{Poisson}\left(\int_{t_0}^{t_0+t}\lambda(u)\mathrm{d}u\right)\sim\text{Poisson}(\bar{\lambda}t)$ .
 
-可见，非齐次泊松过程使用 $[t_0,t_0+t]$ 时间段内的积分 $\displaystyle\int_{t_0}^{t_0+t}\lambda(u)\mathrm{d}u$ 替代了齐次泊松过程的线性表达式 $\lambda t$ . 我们仍然可以使用这段时间内的平均强度参数来刻画 $\bar{\lambda}=\dfrac{\int_{t_0}^{t_0+t}\lambda(u)\mathrm{d}u}{t}$ . 如果 $\lambda(t)\equiv\lambda$ ，则显然 非齐次泊松过程 退化为 齐次泊松过程。
+可见，非齐次泊松过程使用 $[t_0,t_0+t]$ 时间段内的积分 $\int_{t_0}^{t_0+t}\lambda(u)\mathrm{d}u$ 替代了齐次泊松过程的线性表达式 $\lambda t$ . 我们仍然可以使用这段时间内的平均强度参数来刻画 $\bar{\lambda}=\dfrac{\int_{t_0}^{t_0+t}\lambda(u)\mathrm{d}u}{t}$ . 如果 $\lambda(t)\equiv\lambda$ ，则显然 非齐次泊松过程 退化为 齐次泊松过程。
 
 均值、方差、矩母函数分别为：
 
@@ -201,6 +201,6 @@ G_{N(t)}(z)&=\mathrm{E}\left(z^{N_1(t)-N_2(t)}\right)=\mathrm{E}\left(z^{N_1(t)}
 \end{align*}
 $$
 
-可令 $N(t)=\displaystyle\sum_{n=1}^{M(t)}Y_n,\;M(t)\sim\text{Poisson}((\lambda_1+\lambda_2)t)$ ， $Y_n\sim\begin{pmatrix}1 & -1 \\ \dfrac{\lambda_1}{\lambda_1+\lambda_2} & \dfrac{\lambda_2}{\lambda_1+\lambda_2}\end{pmatrix}$ 为 **独立同分布的伯努利分布**，其矩母函数恰好为 $G_Y(z)=\mathrm{E}(z^{Y})=\dfrac{\lambda_1 z+\lambda_2 z^{-1}}{\lambda_1+\lambda_2}$ .
+可令 $N(t)=\displaystyle\sum_{n=1}^{M(t)}Y_n,\;M(t)\sim\text{Poisson}((\lambda_1+\lambda_2)t)$ ， $Y_n\sim\begin{pmatrix}1 & -1 \\ \frac{\lambda_1}{\lambda_1+\lambda_2} & \frac{\lambda_2}{\lambda_1+\lambda_2}\end{pmatrix}$ 为 **独立同分布的伯努利分布**，其矩母函数恰好为 $G_Y(z)=\mathrm{E}(z^{Y})=\dfrac{\lambda_1 z+\lambda_2 z^{-1}}{\lambda_1+\lambda_2}$ .
 
 [^1]: 这是 2024年12月24日星期二下午 16 时 52 分左右，清华大学第六教学楼 6A016 教室内电子系本科生核心课《概率论与随机过程（2）》结课时，授课教师张颢在下课前的课程总结和对同学们的勉励。
