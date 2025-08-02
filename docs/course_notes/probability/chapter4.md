@@ -7,7 +7,7 @@
 
 > 随机过程是概率论的一个自然延伸。
 >
-> 概率论研究的是随机现象和随机变量，随机变量是静态的、不随外部条件变化的。而随机过程研究的是随着某些参数（时间，空间，频率等）变化的随机现象和随机变量。随机过程可以看作是随机变量从有限维到无限维的自然延伸，是一组无穷多个、相互有关的随机变量[^1]。
+> 概率论研究的是随机现象和随机变量，随机变量是静态的、不随外部条件变化的。而随机过程研究的是随着某些参数（时间，空间，频率等）变化的随机现象和随机变量。随机过程可以看作是随机变量从有限维到无限维的自然延伸，是一组无穷多个、相互有关的随机变量。[^1]
 
 （随机过程的定义） 随机过程是一组依赖于参数 $t$ 的随机变量 $\{X(t),t\in T\}$ .  $T$ 称为参数集/指标集，参数 $t$ 称为指标。
 
@@ -257,7 +257,7 @@ $$
 常见随机过程的自相关函数和谱密度：
 
 <table class="md-typeset">
-    <thead>
+    <thead style="font-weight:bold;">
         <tr>
             <th>Autocorrelation Function</th>
             <th>Power Spectral Density</th>
@@ -265,101 +265,101 @@ $$
     </thead>
     <tbody>
         <tr>
-            <td>
+            <td><span class="arithmatex">
             $$
             R(\tau) = \mathrm{e}^{-\alpha|\tau|},\;\alpha > 0
             $$
-            </td>
-            <td>
+            </span></td>
+            <td><span class="arithmatex">
             $$
             S(\omega) = \frac{2\alpha}{\omega^2 + \alpha^2}
             $$
-            </td>
+            </span></td>
         </tr>
         <tr>
-            <td>
+            <td><span class="arithmatex">
             $$
             R(\tau)=\cos(\omega_0 \tau)
             $$
-            </td>
-            <td>
+            </span></td>
+            <td><span class="arithmatex">
             $$
             S(\omega)=\pi(\delta(\omega-\omega_0)+\delta(\omega+\omega_0))
             $$
-            </td>
+            </span></td>
         </tr>
         <tr>
-            <td>
+            <td><span class="arithmatex">
             $$
             R(\tau)=\dfrac{\sin(\omega_0\tau)}{\omega_0\tau}
             $$
-            </td>
-            <td>
+            </span></td>
+            <td><span class="arithmatex">
             $$
             S(\omega)=\begin{cases} \dfrac{\pi}{\omega_0},& |\omega|\leqslant\omega_0 \\ 0,& |\omega|>\omega_0 \end{cases}
             $$
-            </td>
+            </span></td>
         </tr>
         <tr>
-            <td>
+            <td><span class="arithmatex">
             $$R(\tau)=\begin{cases} 1-\frac{2|\tau|}{T}, & |\tau|\leqslant \frac{T}{2} \\ 0,
                 &|\tau|>\frac{T}{2}\end{cases}
             $$
-            </td>
-            <td>
+            </span></td>
+            <td><span class="arithmatex">
             $$
             S(\omega)=\dfrac{8\sin^2\left(\dfrac{\omega T}{4}\right)}{\omega^2T}
             $$
-            </td>
+            </span></td>
         </tr>
         <tr>
-            <td>
+            <td><span class="arithmatex">
             $$
             R(\tau)=\mathrm{e}^{-\alpha|\tau|}\cos(\omega_0\tau),\,\alpha>0
             $$
-            </td>
-            <td>
+            </span></td>
+            <td><span class="arithmatex">
             $$
             S(\omega)=\dfrac{\alpha}{(\omega-\omega_0)^2+\alpha^2}+\dfrac{\alpha}{(\omega+\omega_0)^2+\alpha^2}
             $$
-            </td>
+            </span></td>
         </tr>
         <tr>
-            <td>
+            <td><span class="arithmatex">
             $$
             R(\tau)=\mathrm{e}^{-\alpha\tau^2},\,\alpha>0
             $$
-            </td>
-            <td>
+            </span></td>
+            <td><span class="arithmatex">
             $$
             S(\omega)=\sqrt{\dfrac{\pi}{\alpha}}\mathrm{e}^{-\omega^2/4\alpha}
             $$
-            </td>
+            </span></td>
         </tr>
         <tr>
-            <td>
+            <td><span class="arithmatex">
             $$
             R(\tau)=\mathrm{e}^{-\alpha\tau^2}\cos(\beta\tau),\,\alpha>0
             $$
-            </td>
-            <td>
+            </span></td>
+            <td><span class="arithmatex">
             $$
             S(\omega)=\dfrac{1}{2}\sqrt{\dfrac{\pi}{\alpha}}\left(\mathrm{e}^{-(\omega-\beta)^2/4\alpha}+\mathrm{e}^{-(\omega+\beta)^2/4\alpha}\right)
             $$
-            </td>
+            </span></td>
         </tr>
         <tr>
-            <td>
+            <td><span class="arithmatex">
             $$
             R(\tau)=\dfrac{2\sin\left(\frac{\Delta\omega}{2}\tau\right)}{\pi\tau}\cos(\omega_0\tau)
             $$
-            </td>
-            <td>
+            </span></td>
+            <td><span class="arithmatex">
             $$
             S(\omega)=\begin{cases} 1,&\omega_0-\dfrac{\Delta\omega}{2}\leqslant |\omega| \leqslant
                 \omega_0+\dfrac{\Delta\omega}{2} \\ 0, & \text{else}\end{cases}
             $$
-            </td>
+            </span></td>
         </tr>
     </tbody>
 </table>

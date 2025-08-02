@@ -343,7 +343,7 @@ html {
 .md-typeset table {
     width: 100%;
     text-align: center;
-    table-layout: fixed;
+    table-layout: auto;
     font-size: 0.7rem;
     border-collapse: collapse;
     margin: 1em 0;

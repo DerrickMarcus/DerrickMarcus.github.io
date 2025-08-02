@@ -242,10 +242,10 @@ extra_javascript:
 
   - javascripts/mathjax.js
 
-  - https://cdn.jsdelivr.net/npm/mathjax@latest/es5/tex-mml-chtml.js
-  # - https://cdn.jsdelivr.net/npm/mathjax@latest/es5/tex-chtml.js
-  # - https://cdn.jsdelivr.net/npm/mathjax@latest/es5/tex-chtml-full.js
-  # - https://cdn.jsdelivr.net/npm/mathjax@latest/es5/tex-svg-full.js
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+  # - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js
+  # - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js
+  # - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg-full.js
 
   # anmie
   - https://cdn.jsdelivr.net/npm/animejs@latest/lib/anime.min.js

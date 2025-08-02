@@ -513,7 +513,10 @@ $$
 \begin{gather*}
 L(\boldsymbol{w}, b, \boldsymbol{\alpha}, \boldsymbol{\xi}) = \frac{1}{2}\|\boldsymbol{w}\|^2 + C\sum_{i=1}^{N}\xi_i - \sum_{i=1}^{N} \alpha_i (y_i(\boldsymbol{w}^T\boldsymbol{x}_i+b) - 1 + \xi_i) - \sum_{i=1}^{N} \beta_i \xi_i \\
 \boxed{\min L(\boldsymbol{w}, b, \boldsymbol{\alpha}, \boldsymbol{\xi}) \quad \text{s.t.}\; \alpha\geqslant 0,\beta_i\geqslant 0}
-\end{gather*} \\
+\end{gather*}
+$$
+
+$$
 \begin{align*}
 \frac{\partial L}{\partial \boldsymbol{w}}=0 &\implies \boldsymbol{w} = \sum_{i=1}^{N} \alpha_i y_i \boldsymbol{x}_i \\
 \frac{\partial L}{\partial b}=0 &\implies \sum_{i=1}^{N} \alpha_i y_i = 0 \\
