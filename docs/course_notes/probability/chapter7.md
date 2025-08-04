@@ -12,7 +12,7 @@
 3. $\{N(t)\}$ 是 平稳增量过程。由此可推出 $P(N(t_0+t)-N(t_0)=n)=P(N(t)=n)$ .
 4. 稀疏性： $P(N(t+\Delta t)-N(t)-1)=\lambda\Delta t+o(\Delta t),\;P(N(t+\Delta t)-N(t)\geqslant 2)=o(t)$ ，即一小短时间内事件几乎不可能发生多次。
 
-称该过程为 齐次泊松过程/泊松过程， $\lambda>0$ 为 **强度参数**。
+称该过程为 齐次泊松过程/泊松过程， $\lambda>0$ 为**强度参数**。
 
 !!! note
     回顾满足泊松分布的随机变量 $X\sim\text{Poisson}(\lambda)$ ，概率分布为 $P(X=k)=\dfrac{\lambda^k}{k!}\mathrm{e}^{-\lambda}$ .
@@ -45,11 +45,11 @@ G_{N(t)}(z)&=\mathrm{E}\left(z^{N(t)}\right)=\exp[\lambda t(z-1)]
 $$
 
 !!! Tip
-    泊松过程的 **矩母函数** 非常重要，不同类型泊松过程的矩母函数形式不同，可作为我们判断泊松过程类型的依据。
+    泊松过程的**矩母函数**非常重要，不同类型泊松过程的矩母函数形式不同，可作为我们判断泊松过程类型的依据。
 
 ### 事件时间问题
 
-将泊松过程计数事件的 **发生时刻** 记为 $S_n,\;n=0,1,2,\cdots$ ，且 $S_0=0$ .
+将泊松过程计数事件的**发生时刻**记为 $S_n,\;n=0,1,2,\cdots$ ，且 $S_0=0$ .
 
 相邻事件发生的间隔为 $T_n=S_n-S_{n-1},\;n=1,2,\cdots$ .
 
@@ -67,7 +67,7 @@ $$
 \mathrm{E}(T_i)=\frac{n}{\lambda},\quad \mathrm{Var}(T_i)=\dfrac{n}{\lambda^2}
 $$
 
-各事件发生事件间隔 $T_n$ 是 **独立同分布** 的指数分布 $T_n\sim\exp(\lambda)$ ，意味着每件事发生相隔平均时间为 $\dfrac{1}{\lambda}$ ，也说明了 $\lambda$ 代表强度参数的含义。这也是“泊松过程是独立增量过程”的体现。另外，由于指数分布具有 **无记忆性**，从某一时刻开始计时，到下一次时间发生的时间间隔，与之前事件的发生时刻无关。例如：到公交站等待下一辆车到达的事件，与之前的车的到达时间无关。
+各事件发生事件间隔 $T_n$ 是**独立同分布**的指数分布 $T_n\sim\exp(\lambda)$ ，意味着每件事发生相隔平均时间为 $\dfrac{1}{\lambda}$ ，也说明了 $\lambda$ 代表强度参数的含义。这也是“泊松过程是独立增量过程”的体现。另外，由于指数分布具有**无记忆性**，从某一时刻开始计时，到下一次时间发生的时间间隔，与之前事件的发生时刻无关。例如：到公交站等待下一辆车到达的事件，与之前的车的到达时间无关。
 
 ---
 
@@ -89,7 +89,7 @@ $$
 
 ---
 
-若有两个独立的泊松过程 $A\sim\text{Poisson}(\mu t),\;B\sim\text{Poisson}(\lambda t)$ ，则 $A$ 相邻事件的发生间隔之内， $B$ 过程事件的发生次数服从 **几何分布**。在 $A$ 过程发生的相邻时间 $T$ 内， $B$ 发生 $L$ 次的概率为：
+若有两个独立的泊松过程 $A\sim\text{Poisson}(\mu t),\;B\sim\text{Poisson}(\lambda t)$ ，则 $A$ 相邻事件的发生间隔之内， $B$ 过程事件的发生次数服从**几何分布**。在 $A$ 过程发生的相邻时间 $T$ 内， $B$ 发生 $L$ 次的概率为：
 
 $$
 \begin{gather*}
@@ -163,7 +163,7 @@ $$
 
 不是平稳增量，也不是独立增量。
 
-在复合泊松过程的基础上考虑时间的影响，每个事件发生的贡献会随时间推移而发生变化。设齐次泊松过程 $N(t)\sim\text{Poisson}(\lambda t)$ 各个事件的发生时间为 $S_k,\;k=1,2,\cdots$ ，用 $X_k(t,S_k)$ 表示在 $t$ 时刻第 $k$ 个事件的贡献值，假设所有 $X_k$ 都是 **独立同分布的**，即 **每个事件的贡献随时间的变化相同**（方便讨论和分析），可将 $X(t,S_k)$ 视为一个随机过程。令 $Y(t)=\displaystyle\sum_{k=1}^{N(t)}X(t,S_k)$ ，称为过滤泊松过程。
+在复合泊松过程的基础上考虑时间的影响，每个事件发生的贡献会随时间推移而发生变化。设齐次泊松过程 $N(t)\sim\text{Poisson}(\lambda t)$ 各个事件的发生时间为 $S_k,\;k=1,2,\cdots$ ，用 $X_k(t,S_k)$ 表示在 $t$ 时刻第 $k$ 个事件的贡献值，假设所有 $X_k$ 都是**独立同分布的**，即**每个事件的贡献随时间的变化相同**（方便讨论和分析），可将 $X(t,S_k)$ 视为一个随机过程。令 $Y(t)=\displaystyle\sum_{k=1}^{N(t)}X(t,S_k)$ ，称为过滤泊松过程。
 
 均值和方差为：
 
@@ -171,13 +171,13 @@ $$
 \mathrm{E}(Y(t))=\lambda\int_{0}^t\mathrm{E}(X(t,s))\mathrm{d}s,\quad \mathrm{Var}(Y(t))=\lambda\int_{0}^t\mathrm{E}^2(X(t,s))\mathrm{d}s
 $$
 
-（1）若 $X(t,s)$ 为 **连续型随机过程**，则令 $X(t)$ 的 **特征函数** 为 $B_{X(t,s)}(\omega)=\mathrm{E}[\exp(\mathrm{j}\omega X(t,s))]$ ，则 $Y(t)$ 的 **特征函数** 为：
+（1）若 $X(t,s)$ 为**连续型随机过程**，则令 $X(t)$ 的**特征函数**为 $B_{X(t,s)}(\omega)=\mathrm{E}[\exp(\mathrm{j}\omega X(t,s))]$ ，则 $Y(t)$ 的**特征函数**为：
 
 $$
 \phi_{Y(t)}(\omega)=\exp\left[\lambda\int_0^t(B_{X(t,s)}(\omega)-1)\mathrm{d}s\right]
 $$
 
-（2）若 $X(t,s)$ 为 **离散型随机过程**，则令 $X(t)$ 的 **矩母函数** 为 $B_X(t,s)(z)=\mathrm{E}\left(z^{X(t,s)}\right)$ ，则 $Y(t)$ 的 **矩母函数** 为：
+（2）若 $X(t,s)$ 为**离散型随机过程**，则令 $X(t)$ 的**矩母函数**为 $B_X(t,s)(z)=\mathrm{E}\left(z^{X(t,s)}\right)$ ，则 $Y(t)$ 的**矩母函数**为：
 
 $$
 G_{Y(t)}(z)=\exp\left[\lambda\int_0^t(B_{X(t,s)}(z)-1)\mathrm{d}s\right]
@@ -189,7 +189,7 @@ $$
 
 同样，独立的泊松过程也具有可加性：$X_i(t)\sim\text{Poisson}(\lambda_i t)\implies \sum X_i(t)\sim\text{Poisson}\left(\sum\lambda_i t\right)$ .
 
-两个独立泊松过程的 **差值** 为 复合泊松过程， $N(t)=N_1(t)-N_2(t)$ ：
+两个独立泊松过程的**差值**为 复合泊松过程， $N(t)=N_1(t)-N_2(t)$ ：
 
 $$
 \begin{align*}
@@ -201,6 +201,6 @@ G_{N(t)}(z)&=\mathrm{E}\left(z^{N_1(t)-N_2(t)}\right)=\mathrm{E}\left(z^{N_1(t)}
 \end{align*}
 $$
 
-可令 $N(t)=\displaystyle\sum_{n=1}^{M(t)}Y_n,\;M(t)\sim\text{Poisson}((\lambda_1+\lambda_2)t)$ ， $Y_n\sim\begin{pmatrix}1 & -1 \\ \frac{\lambda_1}{\lambda_1+\lambda_2} & \frac{\lambda_2}{\lambda_1+\lambda_2}\end{pmatrix}$ 为 **独立同分布的伯努利分布**，其矩母函数恰好为 $G_Y(z)=\mathrm{E}(z^{Y})=\dfrac{\lambda_1 z+\lambda_2 z^{-1}}{\lambda_1+\lambda_2}$ .
+可令 $N(t)=\displaystyle\sum_{n=1}^{M(t)}Y_n,\;M(t)\sim\text{Poisson}((\lambda_1+\lambda_2)t)$ ， $Y_n\sim\begin{pmatrix}1 & -1 \\ \frac{\lambda_1}{\lambda_1+\lambda_2} & \frac{\lambda_2}{\lambda_1+\lambda_2}\end{pmatrix}$ 为**独立同分布的伯努利分布**，其矩母函数恰好为 $G_Y(z)=\mathrm{E}(z^{Y})=\dfrac{\lambda_1 z+\lambda_2 z^{-1}}{\lambda_1+\lambda_2}$ .
 
 [^1]: 这是 2024年12月24日星期二下午 16 时 52 分左右，清华大学第六教学楼 6A016 教室内电子系本科生核心课《概率论与随机过程（2）》结课时，授课教师张颢在下课前的课程总结和对同学们的勉励。

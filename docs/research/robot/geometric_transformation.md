@@ -20,7 +20,7 @@ B_x \cdot A_z & B_y \cdot A_z & B_z \cdot A_z
 \end{pmatrix},\quad \mathbf{t}=\overrightarrow{AB}
 $$
 
-其中 ${}^A_B\mathbf{R}$ 为 **正交矩阵**，满足 ${}^A_B\mathbf{R}^T={}^A_B\mathbf{R}^{-1}={}^B_A\mathbf{R}$ .
+其中 ${}^A_B\mathbf{R}$ 为**正交矩阵**，满足 ${}^A_B\mathbf{R}^T={}^A_B\mathbf{R}^{-1}={}^B_A\mathbf{R}$ .
 
 从 $B$ 坐标系变换到 $A$ 坐标系的 齐次坐标变换矩阵  为：
 
@@ -109,7 +109,7 @@ view(3);
 
 ### 欧拉角
 
-考虑一个坐标系绕着 **某一坐标轴** 旋转任意角度 $\beta$ （右手定则，大拇指指向坐标轴正方向，则四指方向为旋转正方向）得到的旋转矩阵：
+考虑一个坐标系绕着**某一坐标轴**旋转任意角度 $\beta$ （右手定则，大拇指指向坐标轴正方向，则四指方向为旋转正方向）得到的旋转矩阵：
 
 $$
 \mathbf{R}_x(\beta)=\begin{pmatrix}
@@ -139,11 +139,11 @@ zxy, zyx, zyz, zxz
 
 同时，还需要考虑旋转时的参考坐标系：
 
-（1）绕着一个固定的坐标系的坐标轴进行旋转，称为 **固定角欧拉角** 或 **固定轴旋转**；
+（1）绕着一个固定的坐标系的坐标轴进行旋转，称为**固定角欧拉角**或**固定轴旋转**；
 
 这种情况比较简单，以 “绕固定轴以 **XYZ** 顺序旋转欧拉角 $\gamma,\beta,\alpha$ ” 的情况为例，总的旋转矩阵为 $\mathbf{R}_{xyz}(\gamma,\beta,\alpha)=\mathbf{R}_z(\alpha)\cdot\mathbf{R}_y(\beta)\cdot\mathbf{R}_x(\gamma)$ .
 
-（2）每次旋转都以自身坐标轴为轴进行旋转，称为 **非固定旋转轴的欧拉角**。
+（2）每次旋转都以自身坐标轴为轴进行旋转，称为**非固定旋转轴的欧拉角**。
 
 假设坐标系 $A$ 按照 **XYZ** 的顺序 旋转 $\gamma,\beta,\alpha$ 角度之后变为坐标系 $B$ （中间两步的结果分别为 $B',B''$ ），则 $B\to A$ 的位姿变换为 ${}^A_B\mathbf{R}={}^A_{B'}\mathbf{R}\cdot{}^{B'}_{B''}\mathbf{R}\cdot{}^{B''}_{B}\mathbf{R}=\mathbf{R}_x(\gamma)\cdot\mathbf{R}_y(\beta)\cdot\mathbf{R}_z(\alpha)$ .
 
@@ -232,7 +232,7 @@ x \\ y \\ z \\ w
 \end{pmatrix}
 $$
 
-这里的向量乘法是 **四元数乘法**，具体规则为：
+这里的向量乘法是**四元数乘法**，具体规则为：
 
 $$
 \begin{pmatrix}

@@ -315,7 +315,7 @@ C_V=3lN k_B \left( \frac{\theta_E}{T} \right)^2
 \cdot \frac{ \mathrm{e}^{\theta_E / T} }{ \left( \mathrm{e}^{\theta_E / T} - 1 \right)^2 }
 $$
 
-其中 $\theta_E =\dfrac{\hbar\omega_0}{k_B}$ 为 **爱因斯坦温度**。
+其中 $\theta_E =\dfrac{\hbar\omega_0}{k_B}$ 为**爱因斯坦温度**。
 
 高温近似时， $C_V = 3lN k_B \left( \dfrac{\theta_E}{T} \right)^2\cdot \dfrac{ \mathrm{e}^{\theta_E / T} }{ \left( \mathrm{e}^{\theta_E / T} - 1 \right)^2 }= 3lN k_B$ ，与经典理论吻合。
 
@@ -334,7 +334,7 @@ C_V(T) = 9N k_B \left( \frac{T}{\Theta_D} \right)^3
 \int_0^{\Theta_D / T} \frac{ \xi^4 \mathrm{e}^{\xi} }{ \left( \mathrm{e}^{\xi} - 1 \right)^2 } \, \mathrm{d}\xi ,\quad\xi=\frac{\hbar\omega}{k_BT}
 $$
 
-其中 $\Theta_D=\dfrac{\hbar\omega_m}{k_B}$ 为 **德拜温度**，参数 $\omega_m$ 是晶体中最高的格波频率（截止频率），物理含义是：假设频率 $\omega$ 大于某个值 $\omega_m$ 的短波实际上不存在，而小于 $\omega_m$ 的振动都用弹性波近似。由上式可知，<span style="color:red">晶体的热容特征完全可以由德拜温度确定</span>。
+其中 $\Theta_D=\dfrac{\hbar\omega_m}{k_B}$ 为**德拜温度**，参数 $\omega_m$ 是晶体中最高的格波频率（截止频率），物理含义是：假设频率 $\omega$ 大于某个值 $\omega_m$ 的短波实际上不存在，而小于 $\omega_m$ 的振动都用弹性波近似。由上式可知，<span style="color:red">晶体的热容特征完全可以由德拜温度确定</span>。
 
 高温极限：
 

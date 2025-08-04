@@ -19,7 +19,7 @@
 
 （随机过程的二元函数观） 随机过程也可以看作是一个二元函数 $X(\omega,t):\varOmega\times T\to\mathbb{R}$ ，其中 $\varOmega$ 为样本空间， $T$ 为指标集。
 
-固定 $\omega$ ，则 $X(\omega,t)$ 随着 $t\in T$ 变化，表示随机过程的一次实现，称为一个 **样本轨道**。
+固定 $\omega$ ，则 $X(\omega,t)$ 随着 $t\in T$ 变化，表示随机过程的一次实现，称为一个**样本轨道**。
 
 固定一个时刻 $t$ ，表示一个一元随机变量 $X(t)$ ，任取 $n$ 个时刻 $t_1,\cdots,t_n$ 则 $(X(t_1),\cdots,X(t_n))$ 表示 $n$ 元随机变量。
 
@@ -67,11 +67,11 @@ $$
 
 自相关函数 $R_X(t,s)=\mathrm{E}\left[ X(t) \overline{X(s)} \right]$ .
 
-自协方差函数 $C_X(t,s)=\mathrm{E}\left[ \left(X(t)-\mu_X(t)\right)\overline{\left(X(s)-\mu_X(s)\right)} \right]=R_X(t,s)-\mu_X(t)\overline{\mu_X(s)}$ .  若为 **0均值** 随机过程，则 $C_X(t,s)=R_X(t,s)$ .
+自协方差函数 $C_X(t,s)=\mathrm{E}\left[ \left(X(t)-\mu_X(t)\right)\overline{\left(X(s)-\mu_X(s)\right)} \right]=R_X(t,s)-\mu_X(t)\overline{\mu_X(s)}$ .  若为**0均值**随机过程，则 $C_X(t,s)=R_X(t,s)$ .
 
 互相关函数 $R_{XY}(t,s)=\mathrm{E}\left[ X(t) \overline{Y(s)} \right]$ .
 
-互协方差函数 $C_{XY}(t,s)=\mathrm{E}\left[ \left(X(t)-\mu_X(t)\right)\overline{\left(Y(s)-\mu_Y(s)\right)} \right]=R_{XY}(t,s)-\mu_X(t)\overline{\mu_Y(s)}$ .  若为 **0均值** 随机过程，则 $C_{XY}(t,s)=R_{XY}(t,s)$ .
+互协方差函数 $C_{XY}(t,s)=\mathrm{E}\left[ \left(X(t)-\mu_X(t)\right)\overline{\left(Y(s)-\mu_Y(s)\right)} \right]=R_{XY}(t,s)-\mu_X(t)\overline{\mu_Y(s)}$ .  若为**0均值**随机过程，则 $C_{XY}(t,s)=R_{XY}(t,s)$ .
 
 上式均具有共轭性质，例如 $R_{XY}(t,s)=\overline{R_{YX}(s,t)}$ .
 
@@ -232,12 +232,12 @@ R_X(\tau)&=\int_{-\infty}^{+\infty}S_X(f)\mathrm{e}^{\mathrm{j}2\pi f \tau}\math
 \end{align*}
 $$
 
-$R_X(0)=\dfrac{1}{2\pi}\displaystyle\int_{-\infty}^{+\infty}S_X(\omega)\mathrm{d}\omega=\displaystyle\int_{-\infty}^{+\infty}S_X(f)\mathrm{d}f$ 称为 随机过程 $X(t)$ 的 **功率**。
+$R_X(0)=\dfrac{1}{2\pi}\displaystyle\int_{-\infty}^{+\infty}S_X(\omega)\mathrm{d}\omega=\displaystyle\int_{-\infty}^{+\infty}S_X(f)\mathrm{d}f$ 称为 随机过程 $X(t)$ 的**功率**。
 
 !!! tip
-    显然，功率谱密度为 **正实数**，具有实际的物理意义。功率谱密度表示随机过程在不同角频率上的平均功率。
+    显然，功率谱密度为**正实数**，具有实际的物理意义。功率谱密度表示随机过程在不同角频率上的平均功率。
 
-    对于宽平稳的 **实随机过程**，自相关函数和功率谱密度 均为偶函数。
+    对于宽平稳的**实随机过程**，自相关函数和功率谱密度 均为偶函数。
 
 线谱过程：宽平稳的 $X(t)=\displaystyle\sum_{k=1}^n X_k\exp(\mathrm{j}\omega_k t)$ ， $n$ 为确定值，且 $\mathrm{E}(X_k)=0,\mathrm{Var}(X_k)=\sigma_k^2$ ，当 $i\neq j$ 时 $X_i,X_j$ 不相关。则有：
 
@@ -372,7 +372,7 @@ $$
 S_X(\omega)=n_0,\quad R_X(\tau)=n_0\delta(\tau)
 $$
 
-白噪声的“白“描述的是频域特征，也就是随机过程的时间相关性。根据冲激函数的性质，不同时间得到的自相关函数值为0，也就是白噪声 **任意两个时刻都不相关**。这一性质与某一时刻的分布无关，因此白噪声可以有很多种，最常见的高斯白噪声，即一系列互不相关的高斯分布按时间排列。
+白噪声的“白“描述的是频域特征，也就是随机过程的时间相关性。根据冲激函数的性质，不同时间得到的自相关函数值为0，也就是白噪声**任意两个时刻都不相关**。这一性质与某一时刻的分布无关，因此白噪声可以有很多种，最常见的高斯白噪声，即一系列互不相关的高斯分布按时间排列。
 
 理想的白噪声不存在，因为实际信号带宽不可能无限大。实际应用中，在我们感兴趣的频率范围内，谱密度为常数的信号就可以认为是白噪声。
 
@@ -492,7 +492,7 @@ $$
 
 （均方导数） 若 $\dfrac{X(t_0+h)-X(t_0)}{h}\stackrel{m.s.}{\longrightarrow}Y(t_0),\;t_0\in T,\;h\to 0$ ，则称 $X()$ 均方意义下的导数为 $Y(t)$ .
 
-（均方导数判定定理） 若 $\dfrac{\partial^2 R_X(t,s)}{\partial t\partial s}$ 在 $(t_0,t_0)$ 处 **存在且连续**，则 $X(t)$ 在 $t_0$ 处存在均方导数。
+（均方导数判定定理） 若 $\dfrac{\partial^2 R_X(t,s)}{\partial t\partial s}$ 在 $(t_0,t_0)$ 处**存在且连续**，则 $X(t)$ 在 $t_0$ 处存在均方导数。
 
 均方导数的性质：
 

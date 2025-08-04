@@ -108,7 +108,7 @@ X_C \\ Y_C \\ Z_C
 \end{pmatrix}
 $$
 
-令 $f_x=\dfrac{f}{d_x},\;f_y=\dfrac{f}{d_y}$ ，代表将物理尺寸的焦距 $f$ 转换为以像素为单位的焦距。同时考虑到图像可能产生偏斜，用 $\gamma$ 表示像素纵向边界相比于 $y$ 轴的倾斜因子，则相机的 **内参 Intrinsic** 可以表示为：
+令 $f_x=\dfrac{f}{d_x},\;f_y=\dfrac{f}{d_y}$ ，代表将物理尺寸的焦距 $f$ 转换为以像素为单位的焦距。同时考虑到图像可能产生偏斜，用 $\gamma$ 表示像素纵向边界相比于 $y$ 轴的倾斜因子，则相机的**内参 Intrinsic**可以表示为：
 
 $$
 \mathbf{K}=\begin{pmatrix}
@@ -122,7 +122,7 @@ $$
 
 ## Extrinsics
 
-前文提到的 `World -> Camera` 的变换中的旋转矩阵和平移向量就是相机的 **外参 Extrinsinc**： $[\mathbf{R}\;|\;\mathbf{t}]\in \mathbb{R}^{3\times 4}$ . 外参描述的是相机和外部世界的坐标变换关系，因此 外参是不断改变的，每一张照片的外参都不同。
+前文提到的 `World -> Camera` 的变换中的旋转矩阵和平移向量就是相机的**外参 Extrinsinc**： $[\mathbf{R}\;|\;\mathbf{t}]\in \mathbb{R}^{3\times 4}$ . 外参描述的是相机和外部世界的坐标变换关系，因此 外参是不断改变的，每一张照片的外参都不同。
 
 已知相机的内参和外参，就可以写出 `World -> Pixel` 的变换关系：
 
@@ -157,9 +157,9 @@ $$
 
 ## Distortion
 
-透镜的畸变主要分为径向畸变和切向畸变。
+透镜的畸变主要分为**径向畸变**和**切向畸变**。
 
-径向畸变是由于透镜形状的制造工艺导致，且越向透镜边缘移动径向畸变越严重。径向畸变有两种类型：桶形畸变和枕形畸变。
+径向畸变是由于透镜形状的制造工艺导致，且越向透镜边缘移动径向畸变越严重。径向畸变有两种类型：**桶形畸变**和**枕形畸变**。
 
 通常使用 $r=0$ 处的泰勒展开描述径向畸变，其中 $r$ 为该点到成像中心的距离。矫正后的坐标为：
 
@@ -183,7 +183,7 @@ $$
 
 ## Calibration
 
-相机内参标定方法参考 **张正友棋盘格标定法**，论文链接 [Flexible camera calibration by viewing a plane from unknown orientations](https://ieeexplore.ieee.org/document/791289)。
+相机内参标定方法参考**张正友棋盘格标定法**，论文链接 [Flexible camera calibration by viewing a plane from unknown orientations](https://ieeexplore.ieee.org/document/791289)。
 
 张氏标定法 只考虑径向畸变，不考虑切向畸变，默认 $p_1=p_2=0$ .
 
@@ -206,7 +206,7 @@ X_W \\ Y_W \\ 1
 \end{pmatrix}
 $$
 
-称 $\mathbf{H}=\mathbf{K}\; [\mathbf{r}_1\quad \mathbf{r}_2\quad \mathbf{t}]\in\mathbb{R}^{3\times 3}$ 为单映性矩阵，**具有 8 个自由度**。这是因为 $\mathbf{H}$ 描述的是 **齐次坐标** 下两个平面之间的投影变换，对 $\mathbf{H}$ 乘以任意一个非零常数 $\lambda\neq 0$ 不会改变投影后的归一化像素坐标，也即 $\mathbf{H}$ 和 $\lambda\mathbf{H}$ 表示的是同一个投影变换。因此齐次像素坐标 $[u,v,1]^T$ 前面的尺度因子 $s=Z_C$ 不需要考虑。这种性质称为 **尺度不确定性**。
+称 $\mathbf{H}=\mathbf{K}\; [\mathbf{r}_1\quad \mathbf{r}_2\quad \mathbf{t}]\in\mathbb{R}^{3\times 3}$ 为单映性矩阵，**具有 8 个自由度**。这是因为 $\mathbf{H}$ 描述的是**齐次坐标** 下两个平面之间的投影变换，对 $\mathbf{H}$ 乘以任意一个非零常数 $\lambda\neq 0$ 不会改变投影后的归一化像素坐标，也即 $\mathbf{H}$ 和 $\lambda\mathbf{H}$ 表示的是同一个投影变换。因此齐次像素坐标 $[u,v,1]^T$ 前面的尺度因子 $s=Z_C$ 不需要考虑。这种性质称为**尺度不确定性**。
 
 我们通常设定 $h_{33}=1\text{ or } \|\mathbf{H}\|^2=1$ 消除尺度不确定性，由此 $\mathbf{H}$ 只有 8 个自由度。
 
@@ -252,7 +252,7 @@ h_{21}X_W+h_{22}Y_W+h_{23}-h_{31}vX_W-h_{32}vY_W-v=0 \\
 \end{align*}
 $$
 
-因此每个特征点可以提供 2 个这样的关于 $[h_{11},h_{12},\cdots,h_{32}]^T\in\mathbb{R}^{8}$ 的线性方程。理论上 **至少需要 4 个特征点**，就可以得到一个形如 $\mathbf{A}_{8\times 8}\cdot[h_{11},h_{12},\cdots,h_{32}]^T=\mathbf{b}_{8\times 1}$ 的非齐次线性方程组，可唯一确定一个单映性矩阵 $\mathbf{H}$ . 考虑到真实场景中噪声和计算误差等因素，实际使用的棋盘格的格点数远多于4，得到一个超定方程组，使用优化方法求解，得到较为精确的近似解。
+因此每个特征点可以提供 2 个这样的关于 $[h_{11},h_{12},\cdots,h_{32}]^T\in\mathbb{R}^{8}$ 的线性方程。理论上**至少需要 4 个特征点**，就可以得到一个形如 $\mathbf{A}_{8\times 8}\cdot[h_{11},h_{12},\cdots,h_{32}]^T=\mathbf{b}_{8\times 1}$ 的非齐次线性方程组，可唯一确定一个单映性矩阵 $\mathbf{H}$ . 考虑到真实场景中噪声和计算误差等因素，实际使用的棋盘格的格点数远多于4，得到一个超定方程组，使用优化方法求解，得到较为精确的近似解。
 
 一张图像上的所有特征点对应一个单映性矩阵 $\mathbf{H}$ .
 
@@ -285,7 +285,7 @@ b_{31} & b_{32} & b_{33}
 \end{pmatrix}
 $$
 
-显然 $\mathbf{B}$ 为对称矩阵，其有用元素只有 6 个（对角线的一侧）。之前得到的约束式 $\mathbf{h}_i^T\mathbf{B}\mathbf{h}_j=0\text{ or }1,\;i,j=1,2$ 展开可以得到关于 $[b_{11},b_{12},b_{13},b_{22},b_{23},b_{33}]$ 的齐次线性方程组。**至少需要 3 张图片**，可以求解出矩阵 $\mathbf{B}$ （带有比例因子）。根据矩阵 $\mathbf{B}$ 进一步求解内参：
+显然 $\mathbf{B}$ 为对称矩阵，其有用元素只有 6 个（对角线的一侧）。之前得到的约束式 $\mathbf{h}_i^T\mathbf{B}\mathbf{h}_j=0\text{ or }1,\;i,j=1,2$ 展开可以得到关于 $[b_{11},b_{12},b_{13},b_{22},b_{23},b_{33}]$ 的齐次线性方程组。因此**至少需要 3 张图片**，可以求解出矩阵 $\mathbf{B}$ （带有比例因子）。根据矩阵 $\mathbf{B}$ 进一步求解内参：
 
 $$
 \begin{cases}
@@ -316,7 +316,7 @@ $$
 \sum_{i=1}^{n} \sum_{j=1}^{m} \left\| x_{ij} - x'(M, k_1, k_2, R_i, t_i, X_j) \right\|^2
 $$
 
-另一种说法：每一个单映性矩阵 $\mathbf{H}$ 可以得到关于内参矩阵 $\mathbf{K}$ 的 2 个线性约束方程，而内参矩阵 $\mathbf{K}$ 有 5 个未知数，因此需要至少 3 组不同的单映性矩阵 $\mathbf{H}$ 也就是 **至少 3 张不同位姿的图片**，能够求得内参矩阵 $\mathbf{K}$ .
+另一种说法：每一个单映性矩阵 $\mathbf{H}$ 可以得到关于内参矩阵 $\mathbf{K}$ 的 2 个线性约束方程，而内参矩阵 $\mathbf{K}$ 有 5 个未知数，因此需要**至少 3 组不同的单映性矩阵** $\mathbf{H}$ ，也就是**至少 3 张不同位姿的图片**，能够求得内参矩阵 $\mathbf{K}$ .
 
 最后根据 $\mathbf{K},\mathbf{H}$ 求出外参：
 
@@ -456,9 +456,9 @@ if __name__ == "__main__":
 
 现在有一台机器人 SLAM 设备，传感器为激光雷达 LiDAR 和相机 Camera。相机的内参矩阵 $\mathbf{K}$ 和 `LiDAR -> Camera` 的外参矩阵 ${}^C_L\mathbf{T}$ 已经标定好，LiDAR 相对于世界坐标系的位姿 pose （因为以 LiDAR 中心为系统的原点）可以由 SLAM 节点发布的消息获取，记为 ${}^W_L\mathbf{T}$ 。现在对相机拍摄到的图片进行 YOLO 物体识别，假设只识别 bottle 这一类，且一段时间内图像中只出现同一个 bottle，我们需要对识别到的 bottle 物体在图像中位置的变化，估算出 bottle 在世界坐标系中的坐标 $(X_W,Y_W,Z_W)$ . 其中 bottle 物体在图像中的位置定义为 YOLO 检测框的中心像素坐标 $(u,v)$ .
 
-首先，我们应求出 世界坐标系到相机坐标系 `World -> Camera` 的变换 ${}^C_W\mathbf{T}={}^C_L\mathbf{T}{}^L_W\mathbf{T}={}^C_L\mathbf{T}\left({}^W_L\mathbf{T}\right)^{-1}$ . 取出其中的旋转矩阵和平移向量 $\mathbf{R},\mathbf{t}$ .
+首先，我们应求出世界坐标系到相机坐标系 `World -> Camera` 的变换 ${}^C_W\mathbf{T}={}^C_L\mathbf{T}{}^L_W\mathbf{T}={}^C_L\mathbf{T}\left({}^W_L\mathbf{T}\right)^{-1}$ . 取出其中的旋转矩阵和平移向量 $\mathbf{R},\mathbf{t}$ .
 
-注意这里的世界坐标系并不是选定的棋盘格，而是由 SLAM 节点决定的，我们不能默认 $Z_W=0$ . 计算 世界坐标系到像素坐标系 `World -> Pixel` 的变换：
+注意这里的世界坐标系并不是选定的棋盘格，而是由 SLAM 节点决定的，我们不能默认 $Z_W=0$ . 计算世界坐标系到像素坐标系 `World -> Pixel` 的变换：
 
 $$
 Z_C\begin{pmatrix}
@@ -497,7 +497,7 @@ a_{14}-ua_{34} \\ a_{24}-va_{34}
 \end{pmatrix}=\mathbf{0}
 $$
 
-可以写为 $\mathbf{M}\mathbf{p}=\mathbf{b},\;\mathbf{M}\in\mathbb{R}^{2\times 3},\;\mathbf{b}\in\mathbb{R}^2$ 的形式。这是一个欠定方程。因此只有一帧图像和位姿的情况下，无法确定物体的真实坐标，只能确定物体所在的方向。这也就是单目相机无法得到深度信息的原因。
+可以写为 $\mathbf{M}\mathbf{p}=\mathbf{b},\;\mathbf{M}\in\mathbb{R}^{2\times 3},\;\mathbf{b}\in\mathbb{R}^2$ 的形式。这是一个欠定方程。因此只有一帧图像和位姿的情况下，无法确定物体的真实坐标，只能确定物体所在的方向。这也就是**单目相机无法测量深度信息**的原因。
 
 如果有多帧图像和位姿，也就是有 $N$ 个 $\mathbf{M},\mathbf{b}$ ，记为  $\mathbf{M}_1,\cdots,\mathbf{M}_N,\mathbf{b}_1,\cdots,\mathbf{b}_N$ ，我们就可以写出很多个这样的方程组竖向堆叠，合成为一个：
 
@@ -527,7 +527,7 @@ a_{14}-ua_{34} \\ a_{24}-va_{34} \\ a'_{14}-u'a'_{34} \\ a'_{24}-v'a'_{34}
 \end{pmatrix}=\mathbf{0}
 $$
 
-此时又得到一个超定方程。它的意义是三维空间中有若干条形如 $Ax+By+Cz+D=0$ 的直线，理论上它们交于同一点即 $(X_W,Y_W,Z_W)$ . 但是由于误差和噪声的影响，这些直线不会交于一点，而是会有很多交点。我们可以使用优化方法求近似解，例如最常见的最小二乘法。
+此时又得到一个超定方程。它的意义是：三维空间中有若干条形如 $Ax+By+Cz+D=0$ 的直线，理论上它们交于同一点即 $(X_W,Y_W,Z_W)$ . 但是由于误差和噪声的影响，这些直线不会交于一点，而是会有很多交点。我们可以使用优化方法求近似解，例如最常见的最小二乘法。
 
 求得坐标 $(X_W,Y_W,Z_W)$ 之后，我们就可以通过发布消息、Rviz 显示来可视化识别目标物体和机器人的相对位置，此时我们还需要将其转换到 LiDAR 坐标系： ${}^LP={}^L_W\mathbf{T}\cdot(X_W,Y_W,Z_W)^T$ .
 
@@ -601,7 +601,7 @@ geometry_msgs/TwistWithCovariance twist
   float64[36] covariance
 ```
 
-```py title="function msg_to_trans"
+```py
 def odom_to_transformation(msg: Odometry):
     # 平移向量
     t = np.array([
@@ -625,7 +625,7 @@ def odom_to_transformation(msg: Odometry):
 
     return T
 
-T_lidar_world = msg_to_trans(msg)
+T_lidar_world = odom_to_transformation(msg)
 ```
 
 由此我们可以得到 ${}^W_L\mathbf{T}$ 记为变量 `T_lidar_world` . 而 `LiDAR -> Camera` 的外参矩阵 ${}^C_L\mathbf{T}$ 和相机内参 $\mathbf{K}$ 为测量值，我们将内参和外参矩阵写入 `.yaml` 配置文件，通过 `.launch` 文件参数读取传入节点，然后直接构造：
@@ -685,11 +685,206 @@ Xw, *_ = np.linalg.lstsq(M_ls, b_ls, rcond=None)
 
 写出完整代码：
 
-```py
-# TODO
+```py title="yolo_detector.py"
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+from collections import deque
+
+import cv2
+import message_filters
+import numpy as np
+import rospy
+import tf.transformations
+from cv_bridge import CvBridge
+from nav_msgs.msg import Odometry
+from sensor_msgs.msg import Image
+from ultralytics import YOLO
+
+
+def odom_to_transformation(msg: Odometry):
+    R = tf.transformations.quaternion_matrix(
+        [
+            msg.pose.pose.orientation.x,
+            msg.pose.pose.orientation.y,
+            msg.pose.pose.orientation.z,
+            msg.pose.pose.orientation.w,
+        ]
+    )
+    T = np.eye(4)
+    T[:3, :3] = R[:3, :3]
+    T[:3, 3] = [
+        msg.pose.pose.position.x,
+        msg.pose.pose.position.y,
+        msg.pose.pose.position.z,
+    ]
+    return T
+
+
+def generate_coefficients(u, v, A):
+    # Mp=b
+    M = np.array(
+        [
+            [A[0, 0] - u * A[2, 0], A[0, 1] - u * A[2, 1], A[0, 2] - u * A[2, 2]],
+            [A[1, 0] - v * A[2, 1], A[1, 1] - v * A[2, 1], A[1, 2] - v * A[2, 2]],
+        ],
+        dtype=np.float64,
+    )
+    b = -np.array([A[0, 3] - u * A[2, 3], A[1, 3] - v * A[2, 3]], dtype=np.float64)
+    return M, b
+
+
+class YoloDetector:
+    def __init__(self):
+        rospy.init_node("yolo_detector", anonymous=False)
+
+        img_sub_topic = rospy.get_param("~img_sub_topic", "/usb_cam/image_raw")
+        odom_sub_topic = rospy.get_param("~odom_sub_topic", "/Odometry")
+        img_pub_topic = rospy.get_param("~img_pub_topic", "/usb_cam/image_detected")
+
+        self.img_pub = rospy.Publisher(img_pub_topic, Image, queue_size=3)
+
+        self.K = np.array(rospy.get_param("~camera_intrinsics"), dtype=np.float64)
+        self.T_lidar_camera = np.array(
+            rospy.get_param("~lidar_camera_extrinsics"), dtype=np.float64
+        )
+
+        model_path = rospy.get_param("~model_path", "yolov8n.pt")
+        self.model = YOLO(model_path)
+        self.model.fuse()
+        self.model.to("cuda")
+        self.model.half()
+
+        self.conf = rospy.get_param("~conf", 0.5)
+        self.iou = rospy.get_param("~iou", 0.5)
+        self.show_window = rospy.get_param("~show_window", True)
+
+        self.deque = deque(maxlen=rospy.get_param("~deque_size", 3))
+
+        self.last_T = None
+        self.thres_distance = rospy.get_param("~thres_distance", 1)
+        self.thres_angle = rospy.get_param("~thres_angle", 1)
+
+        img_sub = message_filters.Subscriber(img_sub_topic, Image)
+        odom_sub = message_filters.Subscriber(odom_sub_topic, Odometry)
+        sync = message_filters.ApproximateTimeSynchronizer(
+            [img_sub, odom_sub], queue_size=10, slop=rospy.get_param("~time_sync_slop", 0.1)
+        )
+        sync.registerCallback(self.sync_callback)
+
+        self.bridge = CvBridge()
+
+        rospy.spin()
+
+    def sync_callback(self, img_msg: Image, odom_msg: Odometry):
+        cv_img = self.bridge.imgmsg_to_cv2(img_msg, "bgr8")
+        if cv_img is None or cv_img.size == 0:
+            rospy.logwarn("Receive empty image!")
+            return
+
+        # 只检测 person，且最多检测一个
+        results = self.model.predict(
+            cv_img,
+            conf=self.conf,
+            iou=self.iou,
+            classes=[0],
+            max_det=1,
+            verbose=False,
+        )[0]
+        if len(results.boxes) == 0:
+            rospy.logwarn("No objects detected.")
+            return
+        else:
+            for box in results.boxes:
+                rospy.loginfo(f"--- {box.cls.item()}, {box.conf.item()}, {box.xyxy.tolist()}.")
+
+        # 发布带检测框的图像
+        annotated = results.plot()
+        if self.show_window:
+            cv2.imshow("YOLO Detection", annotated)
+            cv2.waitKey(1)
+        img_pub_msg = self.bridge.cv2_to_imgmsg(annotated, encoding="bgr8")
+        img_pub_msg.header = img_msg.header
+        self.img_pub.publish(img_pub_msg)
+
+        # 获取中心像素坐标 (u,v)
+        box = results.boxes[0]
+        u, v, _, _ = box.xywh[0].cpu().numpy()
+        u, v = int(np.round(u)), int(np.round(v))
+
+        T_lidar_world = odom_to_transformation(odom_msg)
+        T_world_camera = self.T_lidar_camera @ np.linalg.inv(T_lidar_world)
+
+        if self.last_T is not None:
+            d_T = np.linalg.inv(self.last_T) @ T_world_camera
+            d_distance = np.linalg.norm(d_T[:3, 3])
+            d_R = d_T[:3, :3]
+            d_angle = np.arccos(np.clip((np.trace(d_R) - 1) / 2, -1.0, 1.0)) * 180 / np.pi
+            if d_distance < self.thres_distance and d_angle < self.thres_angle:
+                rospy.logwarn("Skip frame: camera motion too small")
+                return
+
+        A = self.K @ T_world_camera[:3, :]
+        self.deque.append((u, v, A))
+        self.last_T = T_world_camera.copy()
+        rospy.loginfo(f"Add matrix (u, v, A):\n(u, v): {(u, v)}\nA: {A}")
+
+        # 最小二乘求解方程
+        if len(self.deque) == self.deque.maxlen:
+            M_list, b_list = zip(
+                *(generate_coefficients(u, v, A) for (u, v, A) in self.deque)
+            )
+            M_ls = np.vstack(M_list)
+            b_ls = np.hstack(b_list)
+            rospy.loginfo(f"Solving MX=b:\nM: {M_ls},\nb: {b_ls}")
+
+            Xw, *_ = np.linalg.lstsq(M_ls, b_ls, rcond=None)
+            Xc = T_world_camera[:3, :3] @ Xw + T_world_camera[:3, 3]
+            distance = np.linalg.norm(Xc)
+            rospy.loginfo(f"Detected person in Camera Frame: {Xc}")
+            rospy.loginfo(f"Direction: {'forward' if Xc[2] > 0 else 'backforward'}, {'right' if Xc[0] > 0 else 'left'}, {'down' if Xc[1] > 0 else 'up'}")
+            rospy.loginfo(f"Distance: {distance}")
+
+
+if __name__ == "__main__":
+    try:
+        YoloDetector()
+    except rospy.ROSInterruptException:
+        pass
 ```
 
-采集数据过程：
+```xml title="yolo_detector.launch"
+<launch>
+    <rosparam file="$(find RGBCloud)/scripts/yolo.yaml" command="load" ns="yolo_detector" />
+    <node pkg="RGBCloud" type="yolo_detector.py" name="yolo_detector" output="screen"></node>
+</launch>
+```
+
+```yaml title="yolo.yaml"
+camera_intrinsics:
+  - [840.355944, 0.000000, 1010.191645]
+  - [0.000000, 847.449955, 545.973811]
+  - [0.000000, 0.000000, 1.000000]
+lidar_camera_extrinsics:
+  - [9.99902524e-01, 1.39621803e-02, -8.67361738e-19, 0.00]
+  - [-2.60208521e-18, 1.66533454e-16, -1.00000000e+00, -0.055]
+  - [-1.39621803e-02, 9.99902524e-01, 1.66533454e-16, -0.06]
+  - [0.0, 0.0, 0.0, 1.0]
+model_path: yolov8n.pt
+img_sub_topic: /usb_cam/image_raw
+odom_sub_topic: /Odometry
+img_pub_topic: /yolo_detector/image_detected
+conf: 0.4
+iou: 0.5
+show_window: true
+deque_size: 4
+thres_distance: 2
+thres_angle: 2
+time_sync_slop: 0.075
+```
+
+---
+
+采集数据录制 rosbag 过程：
 
 ```bash
 # open livox driver
@@ -702,11 +897,15 @@ roslaunch usb_cam usb_cam.launch
 rosbag record /livox/imu /livox/lidar /usb_cam/image_raw -O xxx.bag
 ```
 
-测试：
+播放 rosbag 进行测试：
 
 ```bash
 # launch SLAM node
 roslaunch fast_lio mapping_mid360.launch use_visual:=false rviz:=false
+
+# open another terminal
 roslaunch rgbcloud yolo_detector.launch
+
+# open another terminal
 rosbag play xxx.bag
 ```

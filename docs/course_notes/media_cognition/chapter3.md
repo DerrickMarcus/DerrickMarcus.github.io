@@ -53,8 +53,8 @@ $$
 
 机器学习的2个经典模型：
 
-1. **生成式** 模型(Generative Model)：对概率分布 $p(\boldsymbol{x},\omega)$ 建模，利用贝叶斯公式 $p(\omega|\boldsymbol{x})=p(\boldsymbol{x}|\omega)p(\omega)/p(\boldsymbol{x})$ . 典型方法：贝叶斯估计，高斯混合模型 HMM，隐马尔可夫模型 HMM，生成对抗网络 GAN 等。
-2. **鉴别式** 模型(Discriminative Model)：直接用函数（而非概率）对 $p(\omega|\boldsymbol{x})$ 建模，**一般性能更好**。典型方法：线性判别分析 LDA，支持向量机 SVM，神经网络。
+1. **生成式**模型(Generative Model)：对概率分布 $p(\boldsymbol{x},\omega)$ 建模，利用贝叶斯公式 $p(\omega|\boldsymbol{x})=p(\boldsymbol{x}|\omega)p(\omega)/p(\boldsymbol{x})$ . 典型方法：贝叶斯估计，高斯混合模型 HMM，隐马尔可夫模型 HMM，生成对抗网络 GAN 等。
+2. **鉴别式**模型(Discriminative Model)：直接用函数（而非概率）对 $p(\omega|\boldsymbol{x})$ 建模，**一般性能更好**。典型方法：线性判别分析 LDA，支持向量机 SVM，神经网络。
 
 ## 3.2 Perceptron
 
@@ -62,7 +62,7 @@ $$
 
 神经网络又称多层感知机。神经网络之所以能够发挥强大的作用就是在感知机的结构上作了叠加设计，而支持向量机算法的基础即为感知机。
 
-感知机模型，是机器学习二分类问题中一个简单的模型。输入为样本的特征向量，输出为样本的类别代码，记为+1和-1。感知机对应于样本空间中的 **分类超平面**，属于 **鉴别式模型**。基于误分类样本点到分类界面距离的损失函数，利用梯度下降法，可对损失函数进行极小化。
+感知机模型，是机器学习二分类问题中一个简单的模型。输入为样本的特征向量，输出为样本的类别代码，记为+1和-1。感知机对应于样本空间中的**分类超平面**，属于**鉴别式模型**。基于误分类样本点到分类界面距离的损失函数，利用梯度下降法，可对损失函数进行极小化。
 
 激活函数：加入非线性因素，解决线性模型所不能解决的问题。如果没有非线性的激活函数，无论叠加多少层线性层，最终都等效于一个线性层。
 
@@ -230,7 +230,7 @@ $$
 
 说明：采用随机梯度下降法时，感知机每一轮学习，逐点计算 $\boldsymbol{w}^T\boldsymbol{x}_i+b$ ，对正确分类点不更新参数，对误分类点按更新公式更新参数，然后计算下一个点，直至没有误分类点或损失函数取得极小值，训练结束。
 
-上面是采用了 **随机梯度下降法 SGD** 求解（一般均采用，但容易收敛到局部最优）。如果采用 **批量梯度下降法 BGD**，则使用全部误分样本进行参数更新，即公式中的学习率后有求和符号。
+上面是采用了**随机梯度下降法 SGD** 求解（一般均采用，但容易收敛到局部最优）。如果采用**批量梯度下降法 BGD**，则使用全部误分样本进行参数更新，即公式中的学习率后有求和符号。
 
 <br>
 
@@ -394,19 +394,19 @@ Fisher 线性判别，即通过给定的训练数据，确定投影方向 $\bold
 
 （4）寻找使得类别之间区分度最大的投影向量 $\boldsymbol{w}$ . 具体方法为：
 
-计算 **均值**： $\boldsymbol{\mu}_i=\dfrac{1}{N_i}\displaystyle\sum_{y_j\in\omega_i}\boldsymbol{x}_j$ .
+计算**均值**： $\boldsymbol{\mu}_i=\dfrac{1}{N_i}\displaystyle\sum_{y_j\in\omega_i}\boldsymbol{x}_j$ .
 
-计算 **类内散度矩阵**： $\boldsymbol{S}_i=\displaystyle\sum_{y_j\in\omega_i}(\boldsymbol{x}_j-\boldsymbol{\mu}_i)(\boldsymbol{x}_j-\boldsymbol{\mu}_i)^T$ ，相加得到**总类内散度矩阵** $\boldsymbol{S}_\omega=\displaystyle\sum_i\boldsymbol{S}_i$ .
+计算**类内散度矩阵**： $\boldsymbol{S}_i=\displaystyle\sum_{y_j\in\omega_i}(\boldsymbol{x}_j-\boldsymbol{\mu}_i)(\boldsymbol{x}_j-\boldsymbol{\mu}_i)^T$ ，相加得到**总类内散度矩阵**为 $\boldsymbol{S}_\omega=\displaystyle\sum_i\boldsymbol{S}_i$ .
 
-计算 **总类间散度矩阵**： $\boldsymbol{S}_b=(\boldsymbol{\mu}_1-\boldsymbol{\mu}_2)(\boldsymbol{\mu}_1-\boldsymbol{\mu}_2)^T$ ，为对称矩阵。
+计算**总类间散度矩阵**： $\boldsymbol{S}_b=(\boldsymbol{\mu}_1-\boldsymbol{\mu}_2)(\boldsymbol{\mu}_1-\boldsymbol{\mu}_2)^T$ ，为对称矩阵。
 
 注：如果是多分类问题，则 $\boldsymbol{S}_b=\displaystyle\sum_i N_i(\boldsymbol{\mu}_i-\boldsymbol{\mu})(\boldsymbol{\mu}_i-\boldsymbol{\mu})^T$ .
 
-定义**准则函数** $\displaystyle\max_{\boldsymbol{w}}J(\boldsymbol{w})=\dfrac{\boldsymbol{w}^T\boldsymbol{S}_b\boldsymbol{w}}{{\boldsymbol{w}^T\boldsymbol{S}_\omega}\boldsymbol{w}}$ ，我们期望求它的 **最大值**。拉格朗日函数 $L(\boldsymbol{w},\lambda)=\boldsymbol{w}^T\boldsymbol{S}_b\boldsymbol{w}-\lambda(\boldsymbol{w}^T\boldsymbol{S}_\omega\boldsymbol{w}-1)$ .
+定义**准则函数**为 $\displaystyle\max_{\boldsymbol{w}}J(\boldsymbol{w})=\dfrac{\boldsymbol{w}^T\boldsymbol{S}_b\boldsymbol{w}}{{\boldsymbol{w}^T\boldsymbol{S}_\omega}\boldsymbol{w}}$ ，我们期望求它的**最大值**。拉格朗日函数 $L(\boldsymbol{w},\lambda)=\boldsymbol{w}^T\boldsymbol{S}_b\boldsymbol{w}-\lambda(\boldsymbol{w}^T\boldsymbol{S}_\omega\boldsymbol{w}-1)$ .
 
-通过推导得到 **投影向量** 为 $\boldsymbol{w}=\boldsymbol{S}_\omega^{-1}(\boldsymbol{\mu}_1-\boldsymbol{\mu}_2)$ .
+通过推导得到**投影向量**为 $\boldsymbol{w}=\boldsymbol{S}_\omega^{-1}(\boldsymbol{\mu}_1-\boldsymbol{\mu}_2)$ .
 
-**判定阈值** 为： $w_0=\dfrac{n_1\tilde{\mu}_1+n_2\tilde{\mu}_2}{n_1+n_2}$ ，即为投影后均值向量 $\tilde{\mu}_i=\boldsymbol{w}^T\boldsymbol{\mu}_i$ 的加权平均。将每一个样本 $\boldsymbol{x}_i$ 的投影值 $z_i=\boldsymbol{w}^T\boldsymbol{x}_i \gtrless w_0$ ，与阈值比较，得到类别。
+**判定阈值**为： $w_0=\dfrac{n_1\tilde{\mu}_1+n_2\tilde{\mu}_2}{n_1+n_2}$ ，即为投影后均值向量 $\tilde{\mu}_i=\boldsymbol{w}^T\boldsymbol{\mu}_i$ 的加权平均。将每一个样本 $\boldsymbol{x}_i$ 的投影值 $z_i=\boldsymbol{w}^T\boldsymbol{x}_i \gtrless w_0$ ，与阈值比较，得到类别。
 
 ## 3.4 SVM
 
@@ -416,7 +416,7 @@ Fisher 线性判别，即通过给定的训练数据，确定投影方向 $\bold
 
 SVM 的特点：是小样本条件下的统计学习方法；具备严格的数学理论基础和直观集合解释；在处理不均匀、离散、稀疏的数据时有明显优势；适用于适用于样本有限情况下的优化求解。
 
-目标：找到一个超平面，使得其能够尽可能得将两类数据正确的分开，且 **分开的两类数据点距离分类界面最远** 。构造约束条件下的优化问题（约束二次优化问题），求解最优分类器。
+目标：找到一个超平面，使得其能够尽可能得将两类数据正确的分开，且**分开的两类数据点距离分类界面最远**。构造约束条件下的优化问题（约束二次优化问题），求解最优分类器。
 
 通常由3三种典型问题：线性可分问题，近似线性可分问题，非线性分类问题。
 
@@ -474,9 +474,9 @@ $$
 
 由第一条和第三条可知， $\alpha_i>0 \Rightarrow y_i(\boldsymbol{w}^T\boldsymbol{x}_i+b)=1$ ，即 $\boldsymbol{x}_i$ 正好是支持向量。
 
-最优解 $\boldsymbol{\alpha}$ 满足 $\boldsymbol{w}^*=\displaystyle\sum_{i=1}^N \alpha_i^*y_i\boldsymbol{x}_i$ ，且 $\alpha_i$ 只在 $\boldsymbol{x}_1$ **是支持向量时非零**，由此得到 **权重的最优解**。这表明，<span style="color:red">最优分类面的权重系数向量由支持向量决定，是支持向量的线性组合</span>。
+最优解 $\boldsymbol{\alpha}$ 满足 $\boldsymbol{w}^*=\displaystyle\sum_{i=1}^N \alpha_i^*y_i\boldsymbol{x}_i$ ，且 $\alpha_i$ 只在 $\boldsymbol{x}_1$**是支持向量时非零**，由此得到**权重的最优解**。这表明，<span style="color:red">最优分类面的权重系数向量由支持向量决定，是支持向量的线性组合</span>。
 
-任选一个支持向量 $\boldsymbol{x}_j$ 带入 $y_j(\boldsymbol{w}^{*T}\boldsymbol{x}_j+b^*)=1$ 得到 **偏置的最优解**： $b^*= y_j -\boldsymbol{w}^{*T}\boldsymbol{x}_j$ .
+任选一个支持向量 $\boldsymbol{x}_j$ 带入 $y_j(\boldsymbol{w}^{*T}\boldsymbol{x}_j+b^*)=1$ 得到**偏置的最优解**： $b^*= y_j -\boldsymbol{w}^{*T}\boldsymbol{x}_j$ .
 
 最终有：
 
@@ -535,7 +535,7 @@ $$
 
 ### 3.4.3 非线性分类问题
 
-处理思路：使用 **核函数** (kernel function) $K$ ，将样本映射到高维空间使之线性可分。
+处理思路：使用**核函数**(kernel function) $K$ ，将样本映射到高维空间使之线性可分。
 
 $$
 \begin{align*}
@@ -561,7 +561,7 @@ $$
 
 齐次多项式核函数： $K_d(\boldsymbol{x}_i,\boldsymbol{x}_j)=(\boldsymbol{x}_i^T\boldsymbol{x}_j)^d$ ，其中 $d$ 为多项式的次数。
 
-上面二者的区别在于 **是否扩充为所有不超过** $d$ **阶的有序单项式**，例如当 $p=d=2$ 时：
+上面二者的区别在于**是否扩充为所有不超过** $d$ **阶的有序单项式**，例如当 $p=d=2$ 时：
 
 $$
 \begin{align*}

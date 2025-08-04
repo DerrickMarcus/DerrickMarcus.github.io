@@ -60,9 +60,9 @@ $$
 
 上式中的 $\alpha_{ij}$ 称为注意力系数，表示输入向量 $\boldsymbol{x}_j$ 对输出向量 $\boldsymbol{y}_i$ 的贡献程度。注意力系数应满足2个约束条件： $\alpha_{ij}\geqslant 0, \displaystyle\sum_{j=1}^N\alpha_{ij}=1$ .
 
-如何计算注意力系数？我们引入 **查询 Query、键 Key、值 Value** 的概念。想象我们在搜索引擎中搜索一部想看的电影，那么 Key 就相当于每部电影的特征，例如类型、主演、年份等，Query 就相当于观影偏好，例如“我想看一部漫威的科幻电影”，而 Value 就相当于最后搜引擎返回的结果。
+如何计算注意力系数？我们引入**查询 Query、键 Key、值 Value** 的概念。想象我们在搜索引擎中搜索一部想看的电影，那么 Key 就相当于每部电影的特征，例如类型、主演、年份等，Query 就相当于观影偏好，例如“我想看一部漫威的科幻电影”，而 Value 就相当于最后搜引擎返回的结果。
 
-引入 **点积自注意力机制**，用点积衡量 Query $\boldsymbol{x}_j$ 和 Key $\boldsymbol{x}_i$ 之间的相似度：
+引入**点积自注意力机制**，用点积衡量 Query $\boldsymbol{x}_j$ 和 Key $\boldsymbol{x}_i$ 之间的相似度：
 
 除此之外，当前从输入向量到输出向量的转换时固定的，我们希望网络能够对输入向量的某些特征给予更多关注，因此通过引入一个可学习的权重矩阵 $\boldsymbol{W}$ ，定义出各自具有线性独立变换的 Query、Key、Value 矩阵（**我们常常设定它们的维度相同**）：
 
@@ -82,11 +82,11 @@ $$
 \end{gather*}
 $$
 
-上面的3个权重矩阵 $\boldsymbol{W}^{(q)},\boldsymbol{W}^{(k)},\boldsymbol{W}^{(v)}$ 即为最后 Transformer 架构所需要训练的可学习参数。并且通过权重矩阵 $\boldsymbol{W}$ 所有输入数据可以实现实现 **参数共享** 。
+上面的3个权重矩阵 $\boldsymbol{W}^{(q)},\boldsymbol{W}^{(k)},\boldsymbol{W}^{(v)}$ 即为最后 Transformer 架构所需要训练的可学习参数。并且通过权重矩阵 $\boldsymbol{W}$ 所有输入数据可以实现实现**参数共享** 。
 
 计算注意力分数 $\boldsymbol{S}=\boldsymbol{Q}\boldsymbol{K}^T \in \mathbb{R}^{N\times N}$ .
 
-**注意力系数矩阵** $\boldsymbol{A}=\text{softmax}\left(\dfrac{\boldsymbol{Q}\boldsymbol{K}^T}{\sqrt{d}}\right) \in\mathbb{R}^{N\times N}$ . 这里我们使用了 **点积缩放** 并做 Softmax 归一化，优化数值稳定性，否则点积计算的范围会随维度增加而增加，会导致之后的注意权重分布与 token 向量的维度有很强的关联。注意 该矩阵是 **每个行向量做 Softmax 运算**。
+**注意力系数矩阵** $\boldsymbol{A}=\text{softmax}\left(\dfrac{\boldsymbol{Q}\boldsymbol{K}^T}{\sqrt{d}}\right) \in\mathbb{R}^{N\times N}$ . 这里我们使用了**点积缩放**并做 Softmax 归一化，优化数值稳定性，否则点积计算的范围会随维度增加而增加，会导致之后的注意权重分布与 token 向量的维度有很强的关联。注意 该矩阵是**每个行向量做 Softmax 运算**。
 
 最后把注意力系数作用在 Value 上： $\boldsymbol{Y}=\boldsymbol{A}\boldsymbol{V}=\text{softmax}\left(\dfrac{\boldsymbol{Q}\boldsymbol{K}^T}{\sqrt{d}}\right)\boldsymbol{V} ,\;\boldsymbol{Y}\in\mathbb{R}^{N\times d}$ ，相当于返回搜索结果。
 
@@ -136,7 +136,7 @@ $$
 
 > 输出矩阵 $\boldsymbol{Y}$ 的计算复杂度为 $O(HN^2d)$ .
 
-MLA (Multi-Head Latent Attention)：Deepseek-V2 提出的一种注意力架构，通过将 **键** 和 **值** 联合压缩为一个潜在向量，降低计算复杂度，也提高了全局信息提取的效率。
+MLA (Multi-Head Latent Attention)：Deepseek-V2 提出的一种注意力架构，通过将**键**和**值**联合压缩为一个潜在向量，降低计算复杂度，也提高了全局信息提取的效率。
 
 ## 7.3 Transformer
 
@@ -169,7 +169,7 @@ Encoder 由 $N$ 个相同结构的编码器层 Encoder Layer 组成，每个 Enc
     - 两个线性层 + ReLU 激活函数，增强非线性建模能力。
     - 残差连接 + Layer Normalization。
 
-Encoder 是由多头自注意力模块和 FFN 模块交替堆叠而成的，且不同的 Encoder Layer 之间 **参数不共享**，提高模型的表达能力，使得不同层可以学习到不同层次的特征。
+Encoder 是由多头自注意力模块和 FFN 模块交替堆叠而成的，且不同的 Encoder Layer 之间**参数不共享**，提高模型的表达能力，使得不同层可以学习到不同层次的特征。
 
 ### 7.3.2 Decoder
 
@@ -353,7 +353,7 @@ LLM 常用的预训练任务：语言建模（Language Modeling, LM），去噪�
 
 <br>
 
-为什么进行 **人类对齐**？
+为什么进行**人类对齐**？
 
 经过大规模的预训练和有监督指令微调，大语言模型具备了解决各种任务的通用能力和指令遵循能力。但是同时也可能生成有偏见的、冒犯的以及事实错误的文本内容。因此，在大语言模型的学习过程中，如何确保大语言模型的行为与人类价值观、人类真实意图和社会伦理相一致成为了一个关键研究问题，通常称这一研究问题为人类对齐。
 

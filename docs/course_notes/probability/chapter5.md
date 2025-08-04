@@ -57,7 +57,7 @@ $$
 
 事实上，如果随机向量 $\boldsymbol{X}\in\mathbb{R}^n$ 的特征函数满足 $\phi_{\boldsymbol{X}}(\boldsymbol{\omega})=\exp\left(\mathrm{j}\boldsymbol{\omega}^T\boldsymbol{\mu}-\frac{1}{2}\boldsymbol{\omega}^T\boldsymbol{\Sigma}\boldsymbol{\omega}\right)$ 的形式，其中 $\boldsymbol{\mu}\in\mathbb{R}^n$ 且 $\boldsymbol{\Sigma}$ 非负定，那么 $\boldsymbol{X}$ **一定是** $n$ **元高斯向量**。
 
-如果存在 **高阶混合矩** $\mathrm{E}\left(X_1^{k_1}X_2^{k_2}\cdots X_n^{k_n}\right)<+\infty$ ，则：
+如果存在**高阶混合矩** $\mathrm{E}\left(X_1^{k_1}X_2^{k_2}\cdots X_n^{k_n}\right)<+\infty$ ，则：
 
 $$
 \mathrm{E}\left(X_1^{k_1}X_2^{k_2}\cdots X_n^{k_n}\right)=(-\mathrm{j})^{k_1+\cdots+k_n}\frac{\partial^{k_1+\cdots+k_n} \phi_{\boldsymbol{X}}(\omega)}{\partial \omega_1^{k_1}\cdots \partial \omega_n^{k_n}}\bigg|_{\boldsymbol{\omega}=\boldsymbol{0}}

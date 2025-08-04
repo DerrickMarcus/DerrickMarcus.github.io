@@ -56,7 +56,7 @@ $$
 \end{gather*}
 $$
 
-上面求协方差时使用了 **去中心化** $\boldsymbol{x}_i=\boldsymbol{x}_i-\boldsymbol{\mu}$ ,也即变为**零均值**。如果是 **无偏估计** ，则 **散度矩阵/样本协方差矩阵** 变为 $\boldsymbol{\Sigma}=\dfrac{1}{n-1}\displaystyle\sum_{i=1}^n(\boldsymbol{x}_i-\boldsymbol{\mu})(\boldsymbol{x}_i-\boldsymbol{\mu})^T$ . 但实际上，该系数并不会对后面求特征向量造成影响，只是特征值进行了缩放。
+上面求协方差时使用了**去中心化** $\boldsymbol{x}_i=\boldsymbol{x}_i-\boldsymbol{\mu}$ ,也即变为**零均值**。如果是**无偏估计**，则**散度矩阵/样本协方差矩阵**变为 $\boldsymbol{\Sigma}=\dfrac{1}{n-1}\displaystyle\sum_{i=1}^n(\boldsymbol{x}_i-\boldsymbol{\mu})(\boldsymbol{x}_i-\boldsymbol{\mu})^T$ . 但实际上，该系数并不会对后面求特征向量造成影响，只是特征值进行了缩放。
 
 > 关于前面的系数是 1/n 还是 1/(n-1) ，区分不同的场景：最大似然估计的数学推导出来前面是 1/n，这是符合最大似然估计优化原理的理论推导结果。但是在实际用的时候，发现就是这个理论推导的估计有问题，所以重新定义了样本协方差矩阵，前面是 1/(n-1)。简化理解，就是 1/n 是理论推导，1/(n-1) 是实际使用。
 
@@ -74,7 +74,7 @@ PCA 的几何意义：样本 $\boldsymbol{x}_i,\cdots\boldsymbol{x}_n$ 在 $p$ �
 
 PCA 的优缺点分析：
 
-1. 优点：采用样本协方差矩阵的特征向量作为变换的基向量，与样本的统计特性完全匹配。PCA 在 **最小均方误差准则** 下是最佳变换。
+1. 优点：采用样本协方差矩阵的特征向量作为变换的基向量，与样本的统计特性完全匹配。PCA 在**最小均方误差准则**下是最佳变换。
 2. 缺点：变换矩阵随样本数据而异，无快速算法（散度最大不一定最利于区分样本类别）。
 
 应用案例：基于 PCA 变换的人脸识别。
@@ -130,7 +130,7 @@ $$
 P(A,B) = P(A|B)P(B) = P(B|A)P(A)
 $$
 
-假设 $A_1$ 和 $A_2$ 是互斥的两个事件，且 $A_1 \cup A_2 = S$ ，事件 $B$ 发生的概率（边际概率）为 **全概率公式**:
+假设 $A_1$ 和 $A_2$ 是互斥的两个事件，且 $A_1 \cup A_2 = S$ ，事件 $B$ 发生的概率（边际概率）为**全概率公式**:
 
 $$
 P(B) = P(B|A_1)P(A_1) + P(B|A_2)P(A_2)
@@ -195,7 +195,7 @@ $$
 
 找到所有 $g_i(\boldsymbol{x})$ 的最大值，则判别为类别 $\omega_i$ . 两个类之间的分类判别边界为 $g_i(\boldsymbol{x}) = g_j(\boldsymbol{x})$ .
 
-对于常见的 **二分类问题**，分类判别边界为 $g_1(\boldsymbol{x})-g_2(\boldsymbol{x})=0$ ，即：
+对于常见的**二分类问题**，分类判别边界为 $g_1(\boldsymbol{x})-g_2(\boldsymbol{x})=0$ ，即：
 
 $$
 \begin{align*}
@@ -204,7 +204,7 @@ g_1(\boldsymbol{x})-g_2(\boldsymbol{x}) <0 &\implies \boldsymbol{x} \in \omega_2
 \end{align*}
 $$
 
-假设 **各类先验概率相等** $p(\omega_i)=\dfrac{1}{c},\;i=1,\cdots, c$ ，协方差矩阵的三种情况：
+假设**各类先验概率相等** $p(\omega_i)=\dfrac{1}{c},\;i=1,\cdots, c$ ，协方差矩阵的三种情况：
 
 1. $\boldsymbol{\Sigma}_i = \sigma^2 \boldsymbol{I}$ 最小欧氏距离分类器。协方差矩阵为单位阵的倍数。
 2. $\boldsymbol{\Sigma}_i = \boldsymbol{\Sigma}$ 最小马氏距离分类器。所有类别的协方差矩阵相等。
@@ -220,9 +220,9 @@ $$
 
 此时，有 $\| \boldsymbol{\Sigma}_i \|=\sigma^{2d},\; \boldsymbol{\Sigma}_i^{-1}=\dfrac{1}{\sigma^2}\boldsymbol{I},\;i-1,\cdots, c$ .
 
-（1）条件： $\boldsymbol{\Sigma}_i = \sigma^2 \boldsymbol{I},\;p(\omega_i)=\dfrac{1}{c},\;i=1,\cdots, c$ 即各类先验概率都相等时，为 **最小欧氏距离分类器**。
+（1）条件： $\boldsymbol{\Sigma}_i = \sigma^2 \boldsymbol{I},\;p(\omega_i)=\dfrac{1}{c},\;i=1,\cdots, c$ 即各类先验概率都相等时，为**最小欧氏距离分类器**。
 
-我们 **忽略所有与类别无关的常数项**，只剩下带协方差矩阵的那一项，得到判别函数：
+我们**忽略所有与类别无关的常数项**，只剩下带协方差矩阵的那一项，得到判别函数：
 
 $$
 g_i(\boldsymbol{x}) = -\frac{\|\boldsymbol{x} - \boldsymbol{\mu}_i\|^2}{2\sigma^2}
@@ -240,7 +240,7 @@ $$
 
 > 可看作模板匹配：每个类有一个典型样本(即均值向量)，称为模板；而待分类样本 $\boldsymbol{x}$ 只需按欧氏距离计算与哪个模板最相似(欧氏距离最短)即可作决定。
 
-（2）条件： $\boldsymbol{\Sigma}_i = \sigma^2 \boldsymbol{I},\;p(\omega_i)\neq p(\omega_j)$ 即 各类的先验概率未知，为 **线性分类器**。
+（2）条件： $\boldsymbol{\Sigma}_i = \sigma^2 \boldsymbol{I},\;p(\omega_i)\neq p(\omega_j)$ 即 各类的先验概率未知，为**线性分类器**。
 
 忽略与类别无关的常数项，得到判别函数——**线性判别函数** LDF (Linear Discriminant Function)：
 
@@ -261,7 +261,7 @@ $$
 
 假设 各类协方差矩阵相等，但不再是前面特殊的对角阵形式，即： $\boldsymbol{\Sigma}_i = \boldsymbol{\Sigma},\;i=1,\cdots, c$ .
 
-（3） 条件： $\boldsymbol{\Sigma}_i = \boldsymbol{\Sigma},\;p(\omega_i)=\dfrac{1}{c},\;i=1,\cdots, c$ 即各类先验概率都相等时，为 **最小马氏距离分类器**。
+（3） 条件： $\boldsymbol{\Sigma}_i = \boldsymbol{\Sigma},\;p(\omega_i)=\dfrac{1}{c},\;i=1,\cdots, c$ 即各类先验概率都相等时，为**最小马氏距离分类器**。
 
 > 马氏距离(Mahalanobis distance) $d_M(\boldsymbol{x},\boldsymbol{\mu}_i) = \sqrt{(\boldsymbol{x} - \boldsymbol{\mu}_i)^T \boldsymbol{\Sigma}_i^{-1} (\boldsymbol{x} - \boldsymbol{\mu}_i)}$ .
 
@@ -275,7 +275,7 @@ $$
 
 各类 $d$ 维椭球状分布，判决超平面通过两类中心的中点，但未必垂直于连接两类中心的连线。
 
-（4）条件： $\boldsymbol{\Sigma}_i = \boldsymbol{\Sigma},\;p(\omega_i)\neq p(\omega_j)$ 即各类的先验概率未知，仍然为 **线性分类器**。
+（4）条件： $\boldsymbol{\Sigma}_i = \boldsymbol{\Sigma},\;p(\omega_i)\neq p(\omega_j)$ 即各类的先验概率未知，仍然为**线性分类器**。
 
 $$
 \begin{align*}
@@ -314,14 +314,14 @@ $$
 
 频率学派和贝叶斯学派：
 
-- 相同点：**最大似然函数** 在频率学派和贝叶斯学派都具有重要的作用，其思想是认为已观测数据的概率分布是最大概率，最大概率对应的模型就是需要找的模型，“存在即合理”。
-- 不同点：频率学派认为模型是一成不变的，即 **模型参数是常数**，常使用的参数估计方法为 **极大似然估计 MLE**；贝叶斯学派认为模型是一直在变的，当获取新的信息后，模型也相应的在改变，即 **模型参数是变量**，用概率去描述模型参数的不确定性，常使用的参数估计方法为 **最大后验概率估计 MAP**。
+- 相同点：**最大似然函数**在频率学派和贝叶斯学派都具有重要的作用，其思想是认为已观测数据的概率分布是最大概率，最大概率对应的模型就是需要找的模型，“存在即合理”。
+- 不同点：频率学派认为模型是一成不变的，即**模型参数是常数**，常使用的参数估计方法为**极大似然估计 MLE**；贝叶斯学派认为模型是一直在变的，当获取新的信息后，模型也相应的在改变，即**模型参数是变量**，用概率去描述模型参数的不确定性，常使用的参数估计方法为**最大后验概率估计 MAP**。
 
 ### 8.4.1 MLE
 
 最大似然估计 MLE (Maximum Likelihood Estimation)：已知随机变量属于某种概率分布的前提下，利用随机变量的观测值，估计出分布的一些参数值。即：“模型已定，参数未知”。
 
-关键假设：样本值是 **独立同分布** 的。
+关键假设：样本值是**独立同分布**的。
 
 最大似然估计：
 
@@ -398,11 +398,11 @@ $$
 p(\boldsymbol{x}|\boldsymbol{\theta}) = \sum_{i=1}^{K} p(\boldsymbol{x}|\omega_i,\boldsymbol{\theta}_i)p(\omega_i) = \sum_{i=1}^{K} \pi_i \mathcal{N}(\boldsymbol{x}|\boldsymbol{\mu}_i, \boldsymbol{\Sigma}_i)
 $$
 
-混合高斯分布一共有 $K$ 个分布，并且对于每个观察到的 $\boldsymbol{x}$ ，如果我们同时还知道它属于 $1\sim K$ 中的哪一种分布，则我们可以根据 **最大似然估计** 求出每个参数。观察数据 $\boldsymbol{x}$ 属于哪个高斯分布是未知的，这时需要采用 EM 算法。
+混合高斯分布一共有 $K$ 个分布，并且对于每个观察到的 $\boldsymbol{x}$ ，如果我们同时还知道它属于 $1\sim K$ 中的哪一种分布，则我们可以根据**最大似然估计**求出每个参数。观察数据 $\boldsymbol{x}$ 属于哪个高斯分布是未知的，这时需要采用 EM 算法。
 
 <br>
 
-**EM 算法** 应用于 **混合高斯模型参数估计**
+**EM 算法**应用于**混合高斯模型参数估计**
 
 期望最大值 **EM 算法**：
 
@@ -410,7 +410,7 @@ $$
 
 （1）初始化 $K$ 个高斯分布参数 $\boldsymbol{\mu}_k, \boldsymbol{\Sigma_k}$ ，初始化 $\pi_k$ 并保证 $\displaystyle\sum_{k=1}^{K} \pi_k = 1$
 
-（2）依据目前的高斯分布参数，对样本 $\boldsymbol{x}$ 的类别隐藏变量 $z_{nk}$ 求 **期望**，则 $\gamma(z_{nk})$ 表示第 $n$ 个样本 $\boldsymbol{x}_n$ 属于第 $k$ 类的概率：
+（2）依据目前的高斯分布参数，对样本 $\boldsymbol{x}$ 的类别隐藏变量 $z_{nk}$ 求**期望**，则 $\gamma(z_{nk})$ 表示第 $n$ 个样本 $\boldsymbol{x}_n$ 属于第 $k$ 类的概率：
 
 $$
 \gamma(z_{nk}) = \frac{\pi_k \mathcal{N}(\boldsymbol{x}_n|\boldsymbol{\mu}_k, \boldsymbol{\Sigma}_k)}{\displaystyle\sum_{j=1}^{K} \pi_j \mathcal{N}(\boldsymbol{x}_n|\boldsymbol{\mu}_j, \boldsymbol{\Sigma}_j)}
@@ -496,7 +496,7 @@ b_{N1} & b_{N2} & \cdots & b_{NM}
 $$
 
 !!! note
-    注意 $\boldsymbol{\pi}$ 是 **行向量**！矩阵 $\boldsymbol{A},\,\boldsymbol{B}$ 均满足 **行和为1**。
+    注意 $\boldsymbol{\pi}$ 是**行向量**！矩阵 $\boldsymbol{A},\,\boldsymbol{B}$ 均满足**行和为1**。
 
 |        参数        |             含义             |          实例          |
 | :----------------: | :--------------------------: | :--------------------: |
@@ -512,13 +512,13 @@ HMM 的基本假设：
 
 HMM 的3个基本问题：
 
-1. **评估** 问题：
+1. **评估**问题：
     - 如何根据给定 $O = \{O_1, O_2, \cdots, O_T\}$和 $\lambda$ 计算 $P(O|\lambda)$ ？
     - 即：模型参数 $\lambda$ 已知，评估观测序列 $O$ 出现的概率。
-2. **解码** 问题：
+2. **解码**问题：
     - 如何根据给定的 $O,\,\lambda$ 计算最优路径 $Q^*$ ？
     - 即：模型参数 $\lambda$ 和观测序列 $O$ 已知，预测最可能出现的状态序列 $Q^*$ .
-3. **学习** 问题：
+3. **学习**问题：
     - 如何根据观测序列样本集合 $O_{\text{train}}$ 进行模型 $\lambda$ 的参数估计？
     - 即：给定观测序列的集合，训练模型参数，使得 $P(O_{\text{train}}|\lambda)$ 最大化。
 
@@ -550,7 +550,7 @@ $$
 
 （2）前向计算法
 
-定义 **前向变量**：$\alpha_t(i) = P(O_1, \cdots O_t, q_t = s_i | \lambda) ,\; 1\leqslant i \leqslant N,\,1 \leqslant t \leqslant T$ . 表示 $t$ 时刻由第 $i$ 个状态 $s_i$ 生成观测 $O_t$ 且前时刻序列为 $O_1, \cdots, O_{t-1}$ 的概率。这里 $\boldsymbol{\alpha}\in\mathbb{R}^{N}$ 是一个列向量，它的下表 $t$ 代表时刻，括号里的 $i$ 代表元素的位置索引。
+定义**前向变量**：$\alpha_t(i) = P(O_1, \cdots O_t, q_t = s_i | \lambda) ,\; 1\leqslant i \leqslant N,\,1 \leqslant t \leqslant T$ . 表示 $t$ 时刻由第 $i$ 个状态 $s_i$ 生成观测 $O_t$ 且前时刻序列为 $O_1, \cdots, O_{t-1}$ 的概率。这里 $\boldsymbol{\alpha}\in\mathbb{R}^{N}$ 是一个列向量，它的下表 $t$ 代表时刻，括号里的 $i$ 代表元素的位置索引。
 
 > 我认为更规范更合理的表达方式是 $\boldsymbol{\alpha}^{(t)}\in\mathbb{R}^{N}$ ，每一个前向变量表示为 $\alpha^{(t)}_i \in \mathbb{R}$ .
 
@@ -567,7 +567,7 @@ $$
 
 具体算法步骤：
 
-(Ⅰ) **初始化**： $\alpha^{(1)}_i = \pi_i b_i(O_1) ,\; 1 \leqslant i \leqslant N$ ，表示在 $t=1$ 时刻由第 $i$ 个状态生成观测 $O_1$ 的概率。这样计算出的向量 $\boldsymbol{\alpha}^{(1)}$ ，相当于初态 $\boldsymbol{\pi}$ 和 $\boldsymbol{B}(O_1)$ 列向量进行 **逐元素相乘** $\boldsymbol{\alpha}^{(1)} =\left( \boldsymbol{\pi}^T \odot \boldsymbol{B}[:,O_1] \right)$ .
+(Ⅰ) **初始化**： $\alpha^{(1)}_i = \pi_i b_i(O_1) ,\; 1 \leqslant i \leqslant N$ ，表示在 $t=1$ 时刻由第 $i$ 个状态生成观测 $O_1$ 的概率。这样计算出的向量 $\boldsymbol{\alpha}^{(1)}$ ，相当于初态 $\boldsymbol{\pi}$ 和 $\boldsymbol{B}(O_1)$ 列向量进行**逐元素相乘** $\boldsymbol{\alpha}^{(1)} =\left( \boldsymbol{\pi}^T \odot \boldsymbol{B}[:,O_1] \right)$ .
 
 (Ⅱ) **递归**：对于 $t=1, \cdots, T-1$ ，计算：
 
@@ -589,7 +589,7 @@ $$
 
 > 类似于前向计算法，我们还将后向向量写成 $\boldsymbol{\beta}^{(t)}$ 的形式，与课件中不同。
 
-定义 **后向变量**：$\beta^{(t)}_i = P(O_{t+1}, \cdots, O_T | q_t = s_i, \lambda) ,\; 1\leqslant i \leqslant N,\,1 \leqslant t \leqslant T$ . 表示 $t$ 时刻由第 $i$ 个状态 $s_i$ 生成观测序列 $O_{t+1}, \cdots, O_T$ 的概率。
+定义**后向变量**：$\beta^{(t)}_i = P(O_{t+1}, \cdots, O_T | q_t = s_i, \lambda) ,\; 1\leqslant i \leqslant N,\,1 \leqslant t \leqslant T$ . 表示 $t$ 时刻由第 $i$ 个状态 $s_i$ 生成观测序列 $O_{t+1}, \cdots, O_T$ 的概率。
 
 同理有 $\beta^{(t+1)}_j = P(O_{t+2}, \cdots, O_T | q_{t+1} = s_j, \lambda), 1\leqslant t \leqslant T-1$ 表示 $t+1$ 时刻由第 $j$ 个状态 $s_j$ 生成观测序列 $O_{t+2}, \cdots, O_T$ 的概率。
 
@@ -633,9 +633,9 @@ $$
 \max_{q_1, q_2, \cdots, q_T} P(q_1, q_2, \cdots, q_T, O_1, O_2, \cdots, O_T | \lambda)
 $$
 
-我们使用 **Viterbi 算法**：**动态规划**
+我们使用 **Viterbi 算法**，一种**动态规划**。
 
-思想：记录 $t$ 时刻出现状态 $i$ 的最大可能路径及其对应概率，称为 **最大局部概率**：
+思想：记录 $t$ 时刻出现状态 $i$ 的最大可能路径及其对应概率，称为**最大局部概率**：
 
 $$
 \delta^{(t)}_i = \max_{q_1, q_2, \cdots, q_{t-1}} P(q_1, q_2, \cdots, q_t = i, O_1, O_2, \cdots, O_t | \lambda)
@@ -660,13 +660,13 @@ $$
 \end{align*}
 $$
 
-其中第一步 相当于**向量与矩阵逐元素相乘** $\boldsymbol{\delta}^{(t-1)}\odot\boldsymbol{A}$ （把矩阵看作多个列向量，分别与同一个列向量主元素相乘，组成一个新的矩阵），然后 **每一列** 取最大值得到一个行向量 $\max\left( \boldsymbol{\delta}^{(t-1)}\odot\boldsymbol{A} \right) \in\mathbb{R}^{1\times N}$ ，**取转置** 变为列向量 之后再和 $\boldsymbol{B}[:,O_t] \in\mathbb{R}^N$ 列向量 做逐元素相乘，得到 $\boldsymbol{\delta}^{(t)}$ . 因此简化为矩阵运算形式：
+其中第一步 相当于**向量与矩阵逐元素相乘** $\boldsymbol{\delta}^{(t-1)}\odot\boldsymbol{A}$ （把矩阵看作多个列向量，分别与同一个列向量主元素相乘，组成一个新的矩阵），然后**每一列**取最大值得到一个行向量 $\max\left( \boldsymbol{\delta}^{(t-1)}\odot\boldsymbol{A} \right) \in\mathbb{R}^{1\times N}$ ，**取转置**变为列向量 之后再和 $\boldsymbol{B}[:,O_t] \in\mathbb{R}^N$ 列向量 做逐元素相乘，得到 $\boldsymbol{\delta}^{(t)}$ . 因此简化为矩阵运算形式：
 
 $$
 \boldsymbol{\delta}^{(t)} = \left( \max \boldsymbol{\delta}^{(t-1)}\odot\boldsymbol{A} \right)^T \odot \boldsymbol{B}[:, O_t]
 $$
 
-而 $\boldsymbol{\varphi}^{(t)}$ 就是在寻找矩阵 $\boldsymbol{\delta}^{(t-1)}\odot\boldsymbol{A}$ 中每一列最大值时，那个最大值在其 **列向量** 中的索引。
+而 $\boldsymbol{\varphi}^{(t)}$ 就是在寻找矩阵 $\boldsymbol{\delta}^{(t-1)}\odot\boldsymbol{A}$ 中每一列最大值时，那个最大值在其**列向量**中的索引。
 
 转移概率 $a_{ij}$ 与上一步的最大局部概率 $\delta^{(t-1)}_i$ 相乘，记录其中最大的一个。
 
@@ -718,7 +718,7 @@ $\displaystyle\sum_{t=1}^{T-1} \gamma_t(i)$ 表示整个过程中从状态 $s_i$
 
 $\displaystyle\sum_{t=1}^{T-1} \xi_t(i,j)$ 表示整个过程中从状态 $s_i$ 跳转至状态 $s_j$ 的次数的预期。
 
-则 **模型参数的重估公式** 为：
+则**模型参数的重估公式**为：
 
 $$
 \begin{align*}
@@ -832,9 +832,9 @@ $$
 
 ROC (Receiver Operator Characteristic) 曲线，称为受试者工作特征曲线或接收者操作特性曲线，是以假阳性率 FPR 为横坐标，以真阳性率 TPR 为纵坐标，绘制的曲线。
 
-**AUC 曲线** (Area Under Curve) 是 **ROC 曲线下的面积**，表示分类器的性能。AUC 的值范围在 0 到 1 之间，值越大表示分类器性能越好。AUC 用于衡量模型对正类和负类的区分能力，即：从所有正类和负类中随机选一个，模型将正类排在前面的概率。特点：与具体阈值无关；适合二分类问题。
+**AUC 曲线**(Area Under Curve) 是 **ROC 曲线下的面积**，表示分类器的性能。AUC 的值范围在 0 到 1 之间，值越大表示分类器性能越好。AUC 用于衡量模型对正类和负类的区分能力，即：从所有正类和负类中随机选一个，模型将正类排在前面的概率。特点：与具体阈值无关；适合二分类问题。
 
-> 思考一下什么样的 ROC 曲线代表高性能的模式识别系统？答：ROC 曲线越接近 **左上角** 越好，因为 FPR 越小越好， TPR 越大越好。
+> 思考一下什么样的 ROC 曲线代表高性能的模式识别系统？答：ROC 曲线越接近**左上角**越好，因为 FPR 越小越好， TPR 越大越好。
 
 <br>
 
@@ -842,7 +842,7 @@ ROC (Receiver Operator Characteristic) 曲线，称为受试者工作特征曲�
 
 PR (Precision-Recall) 曲线，是以召回率 recall 为横坐标，精度 precision 为纵坐标，绘制的曲线。
 
-**AP 曲线** (Average Precision) 是 **PR 曲线下的面积**。AP 用于衡量模型在不同 recall 水平下的平均准确率，即：所有召回水平下，精度的加权平均（更关注排序前段的准确性）。多用于目标检测（如 COCO）或信息检索，常和 mAP (mean AP) 配合使用（多个类别取平均）。
+**AP 曲线**(Average Precision) 是 **PR 曲线下的面积**。AP 用于衡量模型在不同 recall 水平下的平均准确率，即：所有召回水平下，精度的加权平均（更关注排序前段的准确性）。多用于目标检测（如 COCO）或信息检索，常和 mAP (mean AP) 配合使用（多个类别取平均）。
 
 > 单次测试使用固定的阈值，计算出 recall 和 precision。多次测试使用不同的阈值，得到多组 precision 和 recall 值，就能绘制出 PR 曲线。
 

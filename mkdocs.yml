@@ -291,6 +291,10 @@ nav:
           - 7 Poisson Process: course_notes/probability/chapter7.md
       - Communication and Network:
           - Communication and Network: course_notes/communication_network/index.md
+          - 1 信息论基础: course_notes/communication_network/chapter1.md
+          - 2 模拟信源的数字化: course_notes/communication_network/chapter2.md
+          - 3 电平信道: course_notes/communication_network/chapter3.md
+          - 4 波形信道: course_notes/communication_network/chapter4.md
       - Media and Cognition:
           - Media and Cognition: course_notes/media_cognition/index.md
           - 1 Artificial Intelligence: course_notes/media_cognition/chapter1.md
