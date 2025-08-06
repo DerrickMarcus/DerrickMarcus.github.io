@@ -1,8 +1,18 @@
 # Information Theory 信息论
 
+!!! abstract
+    重点掌握：
+    1. 给定随机变量的分布，计算熵、联合熵、条件熵。
+    2. 给定信源编码，计算平均码长。
+    3. 链式法则的应用。
+    4. 给定信道，计算互信息和信道容量。
+    5. 典型 DMC 的信道容量的计算。
+    6. 微分熵的计算。
+    7. 用香农公式计算高斯信道的容量。
+
 信息论的基本模型：
 
-信源 —— 信源编码 —— 信道编码 —— 信道 —— 信道译码 —— 信源译码 —— 信宿
+<div style="text-align: center;">信源 — 信源编码 — 信道编码 — 信道 — 信道译码 — 信源译码 — 信宿</div>
 
 信源/信宿：人或机器，信息的产生和使用者。信源产生随机过程。
 
@@ -34,9 +44,9 @@ $$
 1. 定长码： $f(x_i)\neq f(x_j),\quad \forall i\neq j$ .
 2. 变长码： $\forall i\neq j,\quad f(x_i)$ 不是 $f(x_j)$ 的前缀。
 
-平均码长 $\hat{l}=\displaystyle\sum_{i=1}^N p_il_i$ . 在可解码条件下，我们希望**平均码长越小越好**，这样在表达信源 $X$ 的时候需要使用的 bit 数最少，压缩效率最高。
+平均码长 $\bar{l}=\displaystyle\sum_{i=1}^N p_il_i$ . 在可解码条件下，我们希望**平均码长越小越好**，这样在表达信源 $X$ 的时候需要使用的 bit 数最少，压缩效率最高。
 
-信息论告诉我们，DMS 的最小码长为 $\hat{l}_{\min}=-\displaystyle\sum_{i=1}^N p_i\log_2 p_i$ .
+信息论告诉我们，DMS 的最小码长为 $\bar{l}_{\min}=-\displaystyle\sum_{i=1}^N p_i\log_2 p_i$ .
 
 ## 熵
 
@@ -258,7 +268,7 @@ $$
 p_X(x) &= \frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{(x-\mu)^2}{2\sigma^2}} \\
 h(X) &= -\int_{-\infty}^{\infty} p_X(x) \log_2 p_X(x) \mathrm{d}x \\
 &= -\int_{-\infty}^{\infty} \frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{(x-\mu)^2}{2\sigma^2}} \log_2 \left[\frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}\right] \mathrm{d}x \\
-&= -\int_{-\infty}^{\infty} \frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{x^2}{2\sigma^2}} \log_2 \left[\frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{x^2}{2\sigma^2}}\right] \mathrm{d}x \qquad \boxed{\text{let } \tilde{p}_X(x)=\frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{x^2}{2\sigma^2}}\sim\mathcal{N}(0,\sigma^2)} \\
+&= -\int_{-\infty}^{\infty} \frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{x^2}{2\sigma^2}} \log_2 \left[\frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{x^2}{2\sigma^2}}\right] \mathrm{d}x \qquad \text{let } \tilde{p}_X(x)=\frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{x^2}{2\sigma^2}}\sim\mathcal{N}(0,\sigma^2) \\
 &= -\left[\int_{-\infty}^{\infty} \tilde{p}_X(x) \mathrm{d}x\right] \times \log_2 \frac{1}{\sqrt{2\pi\sigma^2}} + \frac{\log_2 e}{2\sigma^2} \int_{-\infty}^{\infty} \tilde{p}_X(x) x^2 \mathrm{d}x \\
 &= -1\times  \log_2 \frac{1}{\sqrt{2\pi\sigma^2}} + \frac{\log_2 e}{2\sigma^2}\times \mathbb{E}(X^2) \\
 &= \frac{1}{2} \log_2(2\pi\sigma^2) + \frac{1}{2} \log_2 e \\

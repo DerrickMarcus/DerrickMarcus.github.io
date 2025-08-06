@@ -156,7 +156,7 @@ $$
 均值为：
 
 $$
-\mathrm{E}(N(t))=\frac{\mathrm{d}}{\mathrm{d}z}G_{N(t)}(z)\Big|_{z=1}=\int_{0}^{+\infty}\lambda tf(\lambda)\mathrm{d}\lambda=\mathrm{E}(\Lambda)t
+\mathrm{E}(N(t))=\frac{\mathrm{d}}{\mathrm{d}z}G_{N(t)}(z)\bigg|_{z=1}=\int_{0}^{+\infty}\lambda tf(\lambda)\mathrm{d}\lambda=\mathrm{E}(\Lambda)t
 $$
 
 ## 过滤 Poisson 过程

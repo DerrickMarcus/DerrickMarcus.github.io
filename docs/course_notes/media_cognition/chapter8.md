@@ -233,7 +233,7 @@ $$
 判决规则：每个样本 以它到 每类样本均值 的 欧式距离平方的最小值 确定其分类，即：
 
 $$
-i = \argmin_{j=1,\cdots,c} \|\boldsymbol{x} - \boldsymbol{\mu}_j\|^2 \implies \boldsymbol{x} \in \omega_i
+i = \arg\min_{j=1,\cdots,c} \|\boldsymbol{x} - \boldsymbol{\mu}_j\|^2 \implies \boldsymbol{x} \in \omega_i
 $$
 
 各类 $d$ 维球状分布，判决超平面 垂直于 连接两类中心（类别均值向量）的连线。
@@ -656,7 +656,7 @@ $$
 $$
 \begin{align*}
 \delta^{(t)}_j &= \max_{1\leq i \leq N} \left[ \delta^{(t-1)}_i a_{ij} \right] b_j(O_t) ,\; 1\leqslant j \leqslant N \\
-\varphi^{(t)}_j &= \argmax_{1\leq i \leq N} \left[ \delta^{(t-1)}_i a_{ij} \right] ,\; 1\leqslant j \leqslant N
+\varphi^{(t)}_j &= \arg\max_{1\leq i \leq N}\left[ \delta^{(t-1)}_i a_{ij} \right] ,\; 1\leqslant j \leqslant N
 \end{align*}
 $$
 
@@ -672,7 +672,7 @@ $$
 
 如果最优路径在 $t$ 时刻到达节点 $j$ ，则从起始时刻到达到该节点的最优路径对应 $\delta^{(t-1)}_i$ 和 $a_{ij}$ 乘积的最小值，并包含从 $1$ 到 $t-1$ 的到达节点 $i$ 的最优路径。
 
-(Ⅲ) **终止**： $P^*=\displaystyle\max_{1\leq i \leq N} \delta^{(T)}_i ,\; q^*_T = \displaystyle\argmax_{1\leq i \leq N} \delta^{(T)}_i$ ，得到 $t=T$ 时刻的最大局部概率 $P^*$ 及其对应状态 $q^*_T$ .
+(Ⅲ) **终止**： $P^*=\displaystyle\max_{1\leq i \leq N} \delta^{(T)}_i ,\; q^*_T = \arg\max_{1\leq i \leq N} \delta^{(T)}_i$ ，得到 $t=T$ 时刻的最大局部概率 $P^*$ 及其对应状态 $q^*_T$ .
 
 (Ⅳ) **回溯**：从 $q^*_T$ 开始， $q^*_t=\boldsymbol{\varphi}_{t+1}(q^*_{t+1}),\;t=T-1,T-2,\cdots 1$ 向前回溯，得到最优路径 $Q^* = (q^*_1, \cdots, q^*_T)$ .
 

@@ -435,7 +435,7 @@ $$
 
 考虑扩散和漂移的总电流密度：
 
-一维：$J=en\mu_n E_x + ep\mu_p E_x + eD_n\dfrac{dn}{dx}-eD_p\dfrac{dp}{dx}$ .
+一维：$J=en\mu_n E_x + ep\mu_p E_x + eD_n\dfrac{\mathrm{d}n}{\mathrm{d}x}-eD_p\dfrac{\mathrm{d}p}{\mathrm{d}x}$ .
 
 三维：$J=en\mu_n E + ep\mu_p E + eD_n \nabla n - eD_p \nabla p$ .
 

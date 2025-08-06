@@ -12,12 +12,12 @@
 
 $$
 \begin{align*}
-\dot{\boldsymbol{\lambda}}(t)&=\boldsymbol{A\lambda}(t)+\boldsymbol{Be}(t) \\
-\boldsymbol{r}(t)&=\boldsymbol{C\lambda}(t)+\boldsymbol{De}(t)
+\dot{\mathbf{\lambda}}(t)&=\mathbf{A\lambda}(t)+\mathbf{Be}(t) \\
+\mathbf{r}(t)&=\mathbf{C\lambda}(t)+\mathbf{De}(t)
 \end{align*}
 $$
 
-对于 LTI 系统， $\boldsymbol{A},\boldsymbol{B},\boldsymbol{C},\boldsymbol{D}$ 矩阵是常数；对于时变系统 $\boldsymbol{A},\boldsymbol{B},\boldsymbol{C},\boldsymbol{D}$ 矩阵是时间的函数。
+对于 LTI 系统， $\mathbf{A},\mathbf{B},\mathbf{C},\mathbf{D}$ 矩阵是常数；对于时变系统 $\mathbf{A},\mathbf{B},\mathbf{C},\mathbf{D}$ 矩阵是时间的函数。
 
 <br>
 
@@ -25,7 +25,7 @@ $$
 
 （1）由电路图建立（电路课重点，非本课重点）。
 
-（2）由系统输入输出方程或信号流图建立状态方程。对于与给定的系统，流图的形式可以不同，状态变量的选择不唯一， $\boldsymbol{A},\boldsymbol{B},\boldsymbol{C},\boldsymbol{D}$ 矩阵也不唯一。
+（2）由系统输入输出方程或信号流图建立状态方程。对于与给定的系统，流图的形式可以不同，状态变量的选择不唯一， $\mathbf{A},\mathbf{B},\mathbf{C},\mathbf{D}$ 矩阵也不唯一。
 
 ![2024春信号与系统26第二十四讲12.1-12.3_15](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/ch12_img1.png)
 
@@ -57,8 +57,8 @@ $$
 
 $$
 \begin{align*}
-\boldsymbol{\lambda}(n+1)&=\boldsymbol{A\lambda}(n)+\boldsymbol{Bx}(n) \\
-\boldsymbol{y}(n)&=\boldsymbol{C\lambda}(n)+\boldsymbol{Dx}(n)
+\mathbf{\lambda}(n+1)&=\mathbf{A\lambda}(n)+\mathbf{Bx}(n) \\
+\mathbf{y}(n)&=\mathbf{C\lambda}(n)+\mathbf{Dx}(n)
 \end{align*}
 $$
 
@@ -80,7 +80,7 @@ $$
 
 ## 12.6 状态矢量的线性变换
 
-选择不同的状态矢量可以得到不同的 $\boldsymbol{A},\boldsymbol{B},\boldsymbol{C},\boldsymbol{D}$ 矩阵，各状态矢量之间存在某种约束，矩阵 $\boldsymbol{A},\boldsymbol{B},\boldsymbol{C},\boldsymbol{D}$ 之间存在某种变换关系。
+选择不同的状态矢量可以得到不同的 $\mathbf{A},\mathbf{B},\mathbf{C},\mathbf{D}$ 矩阵，各状态矢量之间存在某种约束，矩阵 $\mathbf{A},\mathbf{B},\mathbf{C},\mathbf{D}$ 之间存在某种变换关系。
 
 具体细节略。
 

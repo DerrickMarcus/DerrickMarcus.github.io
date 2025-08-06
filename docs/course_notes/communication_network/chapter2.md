@@ -1,5 +1,12 @@
 # 模拟信源的数字化
 
+!!! abstract
+    重点掌握：
+    1. 计算信源编码器的输出速率。
+    2. 计算量化的失真和信噪比。
+    3. 计算分层电平和重建电平。
+    4. 量化噪声和 bit 数的关系。
+
 ## 信源编码
 
 信源编码：将时间连续、幅值连续的模拟信源 $s(t)$ 映射为 bit 串： $s(t)\mapsto 01\cdots01$ .
@@ -33,19 +40,19 @@ $$
 最后通过一个带宽也为 $W$ 的理想低通滤波器，假设其增益为 $T_s=\dfrac{1}{f_s}$ ，输出的频谱为：
 
 $$
-S(f)=\frac{1}{f_s}\sum_k s(kT_s)e^{-\mathrm{j}2\pi kfT_s}\times \mathbb{1}_{|f|\leq W}
+S(f)=\frac{1}{f_s}\sum_k s(kT_s)e^{-\mathrm{j}2\pi kfT_s}\times \mathbb{I}_{|f|\leq W}
 $$
 
-其中 $\mathbb{1}_{|f|\leq W}$ 为**示性函数**，仅在对应区间内值为 $1$ ，区间外值为 $0$ . 再进行傅里叶反变换就能提取出原始信号，即**时域内插**公式：
+其中 $\mathbb{I}_{|f|\leq W}$ 为**示性函数**，仅在对应区间内值为 $1$ ，区间外值为 $0$ . 再进行傅里叶反变换就能提取出原始信号，即**时域内插**公式：
 
 $$
 \begin{align*}
 s(t) &= \mathcal{F}^{-1}[S(f)] \\
 &= \int_{-\infty}^{\infty} S(f) e^{\mathrm{j}2\pi ft} df \\
-&= \int_{-W}^{W} \frac{1}{f_s} \sum_k s(kT_s) e^{-j2\pi kfT_s} e^{j2\pi ft} \mathrm{d}f \\
-&= \frac{1}{f_s} \sum_k s(kT_s) \int_{-W}^{W} e^{j2\pi f(t-kT_s)} \mathrm{d}f \\
-&= \sum_k s(kT_s) \frac{\sin[2\pi W(t-kT_s)]}{\pi f_s (t-kT_s)} \\
-&= \sum_k s(kT_s) \frac{\sin[2\pi W(t-k/f_s)]}{\pi (t f_s - k)}
+&= \int_{-W}^{W} \frac{1}{f_s} \sum_k s(kT_s) e^{-\mathrm{j}2\pi kfT_s} e^{\mathrm{j}2\pi ft} \mathrm{d}f \\
+&= \frac{1}{f_s} \sum_k s(kT_s) \int_{-W}^{W} e^{\mathrm{j}2\pi f(t-kT_s)} \mathrm{d}f \\
+&= \sum_k s(kT_s) \frac{\sin(2\pi W(t-kT_s))}{\pi f_s (t-kT_s)} \\
+&= \sum_k s(kT_s) \frac{\sin(2\pi W(t-k/f_s))}{\pi (t f_s - k)}
 \end{align*}
 $$
 
@@ -55,7 +62,7 @@ $$
 s(t) = \sum_k s\left(\frac{k}{2W}\right) \frac{\sin(2\pi Wt - k\pi)}{(2\pi Wt - k\pi)}=\sum_k s\left(\frac{k}{2W}\right) \text{sinc}(2Wt - k)
 $$
 
-!!! note
+!!! question
     Q：最后为什么使用的是理想低通滤波器，而不是用某一频带范围的理想带通滤波器？抽样信号的频谱经过延拓之后在各个频带内不是完全一致的吗？
 
     A：多数情形下的原始信号（如音频、人声、模拟图像信号等）都是低频带限信号，使用低通滤波器可以直接还原原始信号。高频区域的某一个频带内，频谱确实与零频率附近的频谱形状相同，但是它只是原始信号的一个**调制副本**，如果不进行解调制，它本身相当于原始信号频谱在频率轴上的偏移，对应于时域用一个复指数信号调制，导致时域信号失真。因此，如果一定要使用带通滤波器的话，必须进行解调制，才能恢复处原始信号。使用低通滤波器的话，不仅物理容易实现，也不需要考虑中心频率（只需要考虑带宽），也省去了解调制的步骤。
@@ -91,7 +98,7 @@ $$
 
 $$
 \begin{align*}
-H(Q(X)) &= -\sum_{i=1}^{L} \mathrm{P}(Q(X) = y_i) \log_2 \mathrm{P}(Q(X) = y_i) \\
+H(Q(X)) &= -\sum_{i=1}^{L} \Pr(Q(X) = y_i) \log_2 \Pr(Q(X) = y_i) \\
 &= -\sum_{i=1}^{L} \int_{x_i}^{x_{i+1}} p(x) \mathrm{d}x \log_2 \int_{x_i}^{x_{i+1}} p(x) \mathrm{d}x
 \end{align*}
 $$
@@ -228,10 +235,10 @@ $$
 当量化 bit 数 $n$ 较大，区间数 $L$ 大到让任意量化区间 $I_i = (x_i, x_{i+1}]$ 中 $p(x)$ 近似均匀时，即：
 
 $$
-p(x) \approx \frac{\displaystyle\int_{x_i}^{x_{i+1}} p(x) dx}{\Delta_i}, \quad x \in I_i
+p(x) \approx \frac{\displaystyle\int_{x_i}^{x_{i+1}} p(x) \mathrm{d}x}{\Delta_i}, \quad x \in I_i
 $$
 
-记 $P_i = \displaystyle\int_{x_i}^{x_{i+1}} p(x) dx$ ，则：
+记 $P_i = \displaystyle\int_{x_i}^{x_{i+1}} p(x) \mathrm{d}x$ ，则：
 
 $$
 \begin{align*}

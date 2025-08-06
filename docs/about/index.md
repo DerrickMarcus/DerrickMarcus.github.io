@@ -1,4 +1,4 @@
-# About Me
+# About
 
 I am currently an undergraduate student in Tsinghua University, majoring EE in the Department of Electronic Engineering.
 
@@ -20,6 +20,7 @@ You can find me on [Github](https://github.com/DerrickMarcus) or [Bilibili](http
     - [x] Finish the notes of Foundation of Solid State Physics.
     - [x] Finish the notes of Operating System.
     - [x] Finish the notes of Media and Cognition.
+    - [x] Finish the notes of Communication and Network
     - [ ] Add the tutorial of Git and GitHub.
     - [ ] Finish the notes of Probability and Stochastic Process.
     - [ ] Finish the notes of Signals and Systems.
