@@ -198,7 +198,7 @@ $$
 
 通过符号函数，将大于 0 的分为 +1 类，小于 0 的分为 -1 类。
 
-分类界面即为 $\boldsymbol{w}^T\boldsymbol{x}+b=0$ ，误分类的点满足 $-y(\boldsymbol{w}^T\boldsymbol{x}+b)>0$ . 选择损失函数 $L(\boldsymbol{w},b)$ 为<span style="color:red">误分类点到超平面的总距离，越小越好</span>。得到优化问题（ $M$ 为误分类点集合）：
+分类界面即为 $\boldsymbol{w}^T\boldsymbol{x}+b=0$ ，误分类的点满足 $-y(\boldsymbol{w}^T\boldsymbol{x}+b)>0$ . 选择损失函数 $L(\boldsymbol{w},b)$ 为**误分类点到超平面的总距离，越小越好**。得到优化问题（ $M$ 为误分类点集合）：
 
 $$
 \min_{\boldsymbol{w},b} L(\boldsymbol{w},b) = \sum_{\boldsymbol{x}_i\in M} -y_i(\boldsymbol{w}^T\boldsymbol{x}_i+b)
@@ -234,7 +234,7 @@ $$
 
 <br>
 
-当训练数据集线性可分时，感知机学习算法是收敛的，例如二维平面的 and 函数、or 函数。对于线性不可分数据集，迭代过程振荡，例如<span style="color:red">单个感知机不能解决二维平面的异或函数</span>。
+当训练数据集线性可分时，感知机学习算法是收敛的，例如二维平面的 and 函数、or 函数。对于线性不可分数据集，迭代过程振荡，例如**单个感知机不能解决二维平面的异或函数**。
 
 感知机算法存在许多解，既依赖于初值，也依赖迭代过程中误分类点的**选择顺序**。
 
@@ -378,7 +378,7 @@ $$
 
 ### 3.3.4 Fisher LDA
 
-Fisher 线性分类器(LDA, Linear Discriminant Analysis)的基本思想：通过寻找一个投影方向（线性变换，线性组合），将高维问题降低到一维问题来解决，并且要求变换后的一维数据具有如下性质：同类样本尽可能聚集在一起，不同类的样本尽可能地远。Fisher 判别准则为：最小化类别重叠，得不同类均值投影分开大，而每个类的内部方差小。即：<span style="color:red">类间方差大，类内方差小</span>。
+Fisher 线性分类器(LDA, Linear Discriminant Analysis)的基本思想：通过寻找一个投影方向（线性变换，线性组合），将高维问题降低到一维问题来解决，并且要求变换后的一维数据具有如下性质：同类样本尽可能聚集在一起，不同类的样本尽可能地远。Fisher 判别准则为：最小化类别重叠，得不同类均值投影分开大，而每个类的内部方差小。即：**类间方差大，类内方差小**。
 
 Fisher 线性判别，即通过给定的训练数据，确定投影方向 $\boldsymbol{w}$ 和阈值 $w_0$ ，即确定线性判别函数，然后根据这个线性判别函数，对测试数据进行测试得到它的类别。
 
@@ -474,7 +474,7 @@ $$
 
 由第一条和第三条可知， $\alpha_i>0 \Rightarrow y_i(\boldsymbol{w}^T\boldsymbol{x}_i+b)=1$ ，即 $\boldsymbol{x}_i$ 正好是支持向量。
 
-最优解 $\boldsymbol{\alpha}$ 满足 $\boldsymbol{w}^*=\displaystyle\sum_{i=1}^N \alpha_i^*y_i\boldsymbol{x}_i$ ，且 $\alpha_i$ 只在 $\boldsymbol{x}_1$**是支持向量时非零**，由此得到**权重的最优解**。这表明，<span style="color:red">最优分类面的权重系数向量由支持向量决定，是支持向量的线性组合</span>。
+最优解 $\boldsymbol{\alpha}$ 满足 $\boldsymbol{w}^*=\displaystyle\sum_{i=1}^N \alpha_i^*y_i\boldsymbol{x}_i$ ，且 $\alpha_i$ 只在 $\boldsymbol{x}_1$**是支持向量时非零**，由此得到权重的最优解。这表明，**最优分类面的权重系数向量由支持向量决定，是支持向量的线性组合**。
 
 任选一个支持向量 $\boldsymbol{x}_j$ 带入 $y_j(\boldsymbol{w}^{*T}\boldsymbol{x}_j+b^*)=1$ 得到**偏置的最优解**： $b^*= y_j -\boldsymbol{w}^{*T}\boldsymbol{x}_j$ .
 

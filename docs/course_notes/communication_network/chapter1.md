@@ -114,7 +114,7 @@ $$
 H(XY)=H(X|Y)+H(Y)
 $$
 
-其物理意义是： $XY$ 的联合不确定度 = 观测 $Y$ 后 $X$ 残存的不确定度 + $Y$ 的不确定度。证明过程较容易。
+其物理意义是： $XY$ 的联合不确定度 = 观测 $Y$ 后 $X$ 残存的不确定度 + $Y$ 的不确定度。证明过程是纯数学推导，较容易。
 
 若 $X,Y$ **独立**，记为 $X\perp Y$ ，则 $p_{ij}=p_ip_j,\;p_{i|j}=p_i$ ，得到 $H(X|Y)=H(X),\;H(XY)=H(X)+H(Y)$ . 此时联合熵等于 $X,Y$ 各自熵的加和，由于 $X,Y$ 独立， $Y$ 的取值不会影响到 $X$ ，因此观测 $Y$ 不会降低 $X$ 的不确定度，也对应了 $H(X|Y)=H(X)$ 这个式子。
 
@@ -373,9 +373,9 @@ X(t) \longrightarrow\boxed{\mathrm{LPF}_W(f)}\longrightarrow & \oplus & \longrig
 \end{matrix}
 $$
 
-加性高斯白噪声AWGN $N(t)$ 的功率谱密度 $S_N(f)=\dfrac{n_0}{2}$ .
+加性高斯白噪声 AWGN $N(t)$ 的功率谱密度 $S_N(f)=\dfrac{n_0}{2}$ .
 
-由 Nyquist 准则（后面的章节会介绍），单位时间内最多可以使用高斯信道 $2W$ 次，即 $2W$ channel use / second，信道使用的间隔为 $T=\dfrac{1}{2W}$ .
+由 Nyquist 准则（后续章节 [4 波形信道](./chapter4.md) 会具体介绍），单位时间内最多可以使用高斯信道 $2W$ 次，即 $2W$ channel use / second，信道使用的间隔为 $T=\dfrac{1}{2W}$ .
 
 通信功率 $P$ 为单位时间内的能耗 $P=\dfrac{E_S}{T}\Rightarrow E_S=\dfrac{P}{2W}$ ，带入之前高斯信道推导得到的结论，得到大名鼎鼎的**香农公式**：
 
@@ -407,7 +407,7 @@ $$
 C = W \log_2 \mathrm{SNR} = \frac{W}{10} \log_2 (10\cdot \mathrm{SNR}_{\text{dB}}) = 0.33 W \cdot\mathrm{SNR}_{\text{dB}}
 $$
 
-容量 $C$ 与带宽 $W$ 呈线性关系。前沿应用：多天线通信 MIMO（等效提升  $W$ ），密集蜂窝网络（空间复用提升 $W$ ）。
+容量 $C$ 与带宽 $W$ 呈线性关系。前沿应用：多天线通信 MIMO（等效提升 $W$ ），密集蜂窝网络（空间复用提升 $W$ ）。
 
 ## 附录
 

@@ -6,7 +6,7 @@
 
 <br>
 
-<span style="color:red">重点</span>：对于 $U(r)=-\dfrac{\alpha}{r^m}+\dfrac{\beta}{r^n}$ 的题型：
+**重点**：对于 $U(r)=-\dfrac{\alpha}{r^m}+\dfrac{\beta}{r^n}$ 的题型：
 
 求解平衡距离，即求作用力，对能量函数求一阶导： $F(r)=-\dfrac{\partial U}{\partial r},F(r_0)=0$ .
 

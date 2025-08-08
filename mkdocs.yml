@@ -295,6 +295,7 @@ nav:
           - 2 模拟信源的数字化: course_notes/communication_network/chapter2.md
           - 3 电平信道: course_notes/communication_network/chapter3.md
           - 4 波形信道: course_notes/communication_network/chapter4.md
+          - 5 差错控制: course_notes/communication_network/chapter5.md
       - Media and Cognition:
           - Media and Cognition: course_notes/media_cognition/index.md
           - 1 Artificial Intelligence: course_notes/media_cognition/chapter1.md
@@ -395,6 +396,7 @@ nav:
           - Python: computer_basic/environment/python.md
           - JavaScript: computer_basic/environment/javascript.md
           - Ubuntu: computer_basic/environment/ubuntu.md
+      - Latex Math: computer_basic/latex_math.md
   - "Else":
       - Else: else/index.md
       - "Railway":

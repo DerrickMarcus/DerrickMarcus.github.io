@@ -230,7 +230,7 @@ $$
 
 其中，欧氏距离的平方： $\|\boldsymbol{x} - \boldsymbol{\mu}_i\|^2 = (\boldsymbol{x} - \boldsymbol{\mu}_i)^T(\boldsymbol{x} - \boldsymbol{\mu}_i)=\displaystyle\sum_{j=1}^d (x_j - \mu_{ij})^2$ .
 
-判决规则：每个样本 以它到 每类样本均值 的 欧式距离平方的最小值 确定其分类，即：
+判决规则：每个样本以它到每类样本均值的欧式距离平方的最小值确定其分类，即：
 
 $$
 i = \arg\min_{j=1,\cdots,c} \|\boldsymbol{x} - \boldsymbol{\mu}_j\|^2 \implies \boldsymbol{x} \in \omega_i
@@ -240,7 +240,7 @@ $$
 
 > 可看作模板匹配：每个类有一个典型样本(即均值向量)，称为模板；而待分类样本 $\boldsymbol{x}$ 只需按欧氏距离计算与哪个模板最相似(欧氏距离最短)即可作决定。
 
-（2）条件： $\boldsymbol{\Sigma}_i = \sigma^2 \boldsymbol{I},\;p(\omega_i)\neq p(\omega_j)$ 即 各类的先验概率未知，为**线性分类器**。
+（2）条件： $\boldsymbol{\Sigma}_i = \sigma^2 \boldsymbol{I},\;p(\omega_i)\neq p(\omega_j)$ 即各类的先验概率未知，为**线性分类器**。
 
 忽略与类别无关的常数项，得到判别函数——**线性判别函数** LDF (Linear Discriminant Function)：
 
@@ -265,7 +265,7 @@ $$
 
 > 马氏距离(Mahalanobis distance) $d_M(\boldsymbol{x},\boldsymbol{\mu}_i) = \sqrt{(\boldsymbol{x} - \boldsymbol{\mu}_i)^T \boldsymbol{\Sigma}_i^{-1} (\boldsymbol{x} - \boldsymbol{\mu}_i)}$ .
 
-判别函数为样本 $\boldsymbol{x}$ 到类均值 $\boldsymbol{\mu}_i$ 的马氏距离的平方 化简为：
+判别函数为样本 $\boldsymbol{x}$ 到类均值 $\boldsymbol{\mu}_i$ 的马氏距离的平方，化简为：
 
 $$
 g_i(\boldsymbol{x}) =-\frac{1}{2}d_M^2 = -\frac{1}{2} (\boldsymbol{x} - \boldsymbol{\mu}_i)^T \boldsymbol{\Sigma}^{-1} (\boldsymbol{x} - \boldsymbol{\mu}_i)
@@ -332,7 +332,7 @@ l(\theta) &\equiv \ln p(D|\theta) = \sum_{i=1}^{n} \ln p(x_i|\theta) \\
 \end{align*}
 $$
 
-其中 $\theta$ 是模型参数，为标量或向量，具体取决于模型。 $D$ 是观测数据， $x_i$ 是第 $i$ 个观测样本。
+其中 $\theta$ 是模型参数，为标量或向量，具体取决于模型。其中 $D$ 是观测数据， $x_i$ 是第 $i$ 个观测样本。
 
 高斯分布假设的最大似然估计：
 
@@ -343,7 +343,7 @@ $$
 \end{align*}
 $$
 
-无偏估计样本 的 协方差矩阵：
+无偏估计样本的协方差矩阵：
 
 $$
 C = \frac{1}{n-1} \sum_{k=1}^{n} (x_k - \hat{\mu})(x_k - \hat{\mu})^T
@@ -416,7 +416,7 @@ $$
 \gamma(z_{nk}) = \frac{\pi_k \mathcal{N}(\boldsymbol{x}_n|\boldsymbol{\mu}_k, \boldsymbol{\Sigma}_k)}{\displaystyle\sum_{j=1}^{K} \pi_j \mathcal{N}(\boldsymbol{x}_n|\boldsymbol{\mu}_j, \boldsymbol{\Sigma}_j)}
 $$
 
-（3）对高斯分布参数 求最大似然估计：
+（3）对高斯分布参数求最大似然估计：
 
 $$
 \begin{align*}
@@ -446,7 +446,7 @@ $$
 
 若进一步满足 $P(q_{t+1} = s_k | q_t) = P(q_2 = s_k | q_1)$ ，则称序列 $Q$ 是齐次 Markov 链。
 
-齐次 Markov 链可以用状态转移概率矩阵 $\boldsymbol{A}$ 和初始概率 $\boldsymbol{\pi}$ 唯一确定表示：
+齐次 Markov 链可以用**状态转移概率矩阵** $\boldsymbol{A}$ 和**初始概率** $\boldsymbol{\pi}$ 唯一确定表示：
 
 $$
 \begin{gather*}
@@ -563,7 +563,7 @@ $$
 \end{align*}
 $$
 
-上式中，<span style="color:blue">蓝色部分</span>即为前向变量 $\alpha^{(t)}_i$ ，<span style="color:red">红色部分</span>为状态转移概率 $a_{ij}$ （利用到**齐次马尔可夫性质**），<span style="color:green">绿色部分</span>为序列下一个观测值的观测概率 $b_j(O_{t+1})$ （利用到**观测序列的独立性**），也即观测概率矩阵 $\boldsymbol{B}$ 中第 $j$ 行、状态 $O_{t+1}$ 对应的那一列的元素。
+上式中，蓝色部分即为前向变量 $\alpha^{(t)}_i$ ，红色部分状态转移概率 $a_{ij}$ （利用到**齐次马尔可夫性质**），绿色部分为序列下一个观测值的观测概率 $b_j(O_{t+1})$ （利用到**观测序列的独立性**），也即观测概率矩阵 $\boldsymbol{B}$ 中第 $j$ 行、状态 $O_{t+1}$ 对应的那一列的元素。
 
 具体算法步骤：
 
@@ -600,7 +600,7 @@ $$
 \end{align*}
 $$
 
-上式中，<span style="color:blue">蓝色部分</span>即为后向变量 $\beta^{(t+1)}_j$ ，<span style="color:red">红色部分</span>为状态转移概率 $a_{ij}$ （利用到**齐次马尔可夫性质**），<span style="color:green">绿色部分</span>为序列下一个观测值的观测概率 $b_j(O_{t+1})$ （利用到**观测序列的独立性**），也即观测概率矩阵 $\boldsymbol{B}$ 中第 $j$ 行、状态 $O_{t+1}$ 对应的那一列的元素。
+上式中，蓝色部分即为后向变量 $\beta^{(t+1)}_j$ ，红色部分为状态转移概率 $a_{ij}$ （利用到**齐次马尔可夫性质**），绿色部分为序列下一个观测值的观测概率 $b_j(O_{t+1})$ （利用到**观测序列的独立性**），也即观测概率矩阵 $\boldsymbol{B}$ 中第 $j$ 行、状态 $O_{t+1}$ 对应的那一列的元素。
 
 具体算法步骤：
 
@@ -660,7 +660,7 @@ $$
 \end{align*}
 $$
 
-其中第一步 相当于**向量与矩阵逐元素相乘** $\boldsymbol{\delta}^{(t-1)}\odot\boldsymbol{A}$ （把矩阵看作多个列向量，分别与同一个列向量主元素相乘，组成一个新的矩阵），然后**每一列**取最大值得到一个行向量 $\max\left( \boldsymbol{\delta}^{(t-1)}\odot\boldsymbol{A} \right) \in\mathbb{R}^{1\times N}$ ，**取转置**变为列向量 之后再和 $\boldsymbol{B}[:,O_t] \in\mathbb{R}^N$ 列向量 做逐元素相乘，得到 $\boldsymbol{\delta}^{(t)}$ . 因此简化为矩阵运算形式：
+其中第一步相当于**向量与矩阵逐元素相乘** $\boldsymbol{\delta}^{(t-1)}\odot\boldsymbol{A}$ （把矩阵看作多个列向量，分别与同一个列向量主元素相乘，组成一个新的矩阵），然后**每一列**取最大值得到一个行向量 $\max\left( \boldsymbol{\delta}^{(t-1)}\odot\boldsymbol{A} \right) \in\mathbb{R}^{1\times N}$ ，**取转置**变为列向量之后再和 $\boldsymbol{B}[:,O_t] \in\mathbb{R}^N$ 列向量做逐元素相乘，得到 $\boldsymbol{\delta}^{(t)}$ . 因此简化为矩阵运算形式：
 
 $$
 \boldsymbol{\delta}^{(t)} = \left( \max \boldsymbol{\delta}^{(t-1)}\odot\boldsymbol{A} \right)^T \odot \boldsymbol{B}[:, O_t]
@@ -676,7 +676,7 @@ $$
 
 (Ⅳ) **回溯**：从 $q^*_T$ 开始， $q^*_t=\boldsymbol{\varphi}_{t+1}(q^*_{t+1}),\;t=T-1,T-2,\cdots 1$ 向前回溯，得到最优路径 $Q^* = (q^*_1, \cdots, q^*_T)$ .
 
-$\delta^{(T)}_i$ 对应最大值 即为 全局最优路径 $Q^*$ 出现的概率，即为联合似然概率最大值。 $q^*_T$ 为最优路径在 $T$ 时刻状态，结合 $\boldsymbol{\varphi}$ 从 $T-1$ 时刻反向推演到 $1$ 时刻可以获取最优路径。
+$\delta^{(T)}_i$ 对应最大值即为全局最优路径 $Q^*$ 出现的概率，即为联合似然概率最大值。 $q^*_T$ 为最优路径在 $T$ 时刻状态，结合 $\boldsymbol{\varphi}$ 从 $T-1$ 时刻反向推演到 $1$ 时刻可以获取最优路径。
 
 ---
 
@@ -688,7 +688,7 @@ $\delta^{(T)}_i$ 对应最大值 即为 全局最优路径 $Q^*$ 出现的概率
 
 Baum-Welch 算法是一种 EM 算法，是一种从不完全数据（样本特征序列与隐含状态序列的对齐关系未知）求解模型参数的最大似然估计方法：
 
-(Ⅰ)初始化 HMM 参数 $\lambda_0$ ；
+(Ⅰ) 初始化 HMM 参数 $\lambda_0$ ；
 
 (Ⅱ) E 步(Expectation)：利用给定的 HMM 参数求样本特征序列的状态对齐结果；
 
@@ -698,7 +698,7 @@ Baum-Welch 算法是一种 EM 算法，是一种从不完全数据（样本特�
 
 给定模型 $\lambda$ 和观测序列 $O$ 的条件下：
 
-首先利用前面定义过的 前向变量和后向变量：
+首先利用前面定义过的前向变量和后向变量：
 
 $$
 \alpha_t(i) = P(O_1, \cdots, O_t, q_t = s_i | \lambda),\quad
@@ -789,9 +789,9 @@ HMM 的应用：
 
 ### 8.5.2 系统性能评价
 
-错误率(error rate) 与 准确率(accuracy):
+错误率(error rate)与准确率(accuracy):
 
-错误率 为 分类错误的样本占样本总数的比例。假设 $N$ 个样本中有 $a$ 个样本分类错误，则 $E=a/N$ . 准确率 为 1减去错误率，即为： $1-a/N$ .
+错误率 为 分类错误的样本占样本总数的比例。假设 $N$ 个样本中有 $a$ 个样本分类错误，则 $E=a/N$ . 准确率 为“1减去错误率”，即 $1-a/N$ .
 
 <br>
 

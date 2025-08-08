@@ -1,9 +1,17 @@
 # 4 二阶矩过程和谱分析
 
-!!! abstract "本章概述"
+!!! abstract
     本章讨论的主要内容为随机过程的基本概念和数字特征，二阶矩过程的性质（均方极限，均方连续，均方可导），随机过程的平稳性分析、相关性，宽平稳过程的谱分析等。
 
-## 随机过程基本概念
+写在前面：当学习完信号与系统，并了解了一点随机过程后，我们应当对信号有一定的认识。以下内容摘自 [数字通信 第2章 数字通信的数学基础 - 西安电子科技大学](https://web.xidian.edu.cn/yjsun/files/20140410_170612.pdf)：
+
+> 信号就是一个以时间作为自变量的函数，例如 $x(t)$ ，或一个离散时间序列，例如 $\{x(n)\}$ ，其取值一般是实数或复数。如果是 $N$ 维函数，可表示为矢量函数 $[\mathbf{x}_1(t) ,\mathbf{x}_2(t) , \cdots , \mathbf{x}_N(t)]^T$ ，它在任一时刻都是一个 $N$ 维矢量。
+>
+> 如果 $x(t)$ 或 $\{x(n)\}$ 在任一时刻的值都是确知量，那么这个信号就是确知信号；如果 $x(t)$ 或 $\{x(n)\}$ 在任一时刻的值是随机变量或随机向量，那么这个信号就是随机信号；随机信号是一种随机过程，离散随机过程也称随机序列。
+>
+> 如果某个函数中的参数都是已知的，例如函数 $a \sin(\omega t + \varphi)$ 中 $a,\omega,\varphi$ 都已知，那么它所表示的信号就是确知信号。从一个随机过程中获取一个现实，例如记录得到的一段信号波形，也是一个确知信号，尽管它因各态历经性而可能隐含了该随机过程的一些统计特性。
+
+## 随机过程的基本概念
 
 > 随机过程是概率论的一个自然延伸。
 >
@@ -11,7 +19,7 @@
 
 （随机过程的定义） 随机过程是一组依赖于参数 $t$ 的随机变量 $\{X(t),t\in T\}$ .  $T$ 称为参数集/指标集，参数 $t$ 称为指标。
 
-根据参数集 $T$ 的性质，可以分为 离散时间随机过程 $\{X(n)\}$ 或 $\{X_n\}$ ，和 连续时间随机过程 $\{X(t)\}$ 或 $\{X_t\}$ .
+根据参数集 $T$ 的性质，可以分为离散时间随机过程 $\{X(n)\}$ 或 $\{X_n\}$ 和连续时间随机过程 $\{X(t)\}$ 或 $\{X_t\}$ .
 
 随机过程 $X(t)$ 可以理解为随时间变化的、随机变量的函数。当时间 $t$ 取定时，随机过程就是一个随机变量。
 
@@ -42,7 +50,7 @@ $$
 F_{X(t_1),\cdots,X(t_n)}(x_1,\cdots,x_n)=P(X(t_1)\leqslant x_1,\cdots,X(t_n)\leqslant x_n)
 $$
 
-的全体 称为 随机过程的有限维分布族，可以看作是随机过程的累积分布函数 CDF，通过求导可以得到概率密度函数 PDF（连续情况）。
+的全体称为随机过程的有限维分布族，可以看作是随机过程的累积分布函数 CDF，通过求导可以得到概率密度函数 PDF（连续情况）。
 
 如果各个变量独立，等价于 PDF 或 CDF 可分解：
 
@@ -87,7 +95,7 @@ $$
 
 <br>
 
-（向量随机过程） 同一参数集 $T$ 上的多个随机过程，可记为 向量随机过程 $\boldsymbol{X}(\omega,t):\varOmega\times T\to\mathbb{R}^d$ ，则有：
+（向量随机过程） 同一参数集 $T$ 上的多个随机过程，可记为向量随机过程 $\boldsymbol{X}(\omega,t):\varOmega\times T\to\mathbb{R}^d$ ，则有：
 
 $$
 \begin{gather*}
@@ -99,9 +107,9 @@ $$
 
 ## 二阶矩过程
 
-若 $\forall t\in T$ ，随机变量 $X(t)$ 的均值和方差都存在，则称 $X(t)$ 为 二阶矩过程。其等价定义是 $\mathrm{E}\left[|X(t)|^2\right]<+\infty$ 有限。常见随机过程均为二阶矩过程。
+若 $\forall t\in T$ ，随机变量 $X(t)$ 的均值和方差都存在，则称 $X(t)$ 为二阶矩过程。其等价定义是 $\mathrm{E}\left[|X(t)|^2\right]<+\infty$ 有限。常见随机过程均为二阶矩过程。
 
-根据定义，二阶矩过程的均值和方差都存在。通过内积空间和 Cauchy-Schwarz 不等式可以推导出，二阶矩过程的 自相关函数、自协方差函数、互相关函数、互协方差函数 等其他数字特征也都存在。
+根据定义，二阶矩过程的均值和方差都存在。通过内积空间和 Cauchy-Schwarz 不等式可以推导出，二阶矩过程的自相关函数、自协方差函数、互相关函数、互协方差函数等其他数字特征也都存在。
 
 二阶矩过程的自相关函数具有以下性质：
 
@@ -109,13 +117,13 @@ $$
 
 连续情形 $R_X(t,s)=R_X^*(s,t)$ .
 
-离散情形 采样得到的随机变量序列 $\boldsymbol{X}=[X(t_1),\cdots,X(t_n)]^T$ ，自相关矩阵 $\boldsymbol{R}_{\boldsymbol{X}}=\mathrm{E}\left(\boldsymbol{X}\boldsymbol{X}^H\right)$ 是共轭对称矩阵（Hermite 矩阵）。
+离散情形：采样得到的随机变量序列 $\boldsymbol{X}=[X(t_1),\cdots,X(t_n)]^T$ ，自相关矩阵 $\boldsymbol{R}_{\boldsymbol{X}}=\mathrm{E}\left(\boldsymbol{X}\boldsymbol{X}^H\right)$ 是共轭对称矩阵（Hermite 矩阵）。
 
 （2）非负定性
 
 自相关矩阵 $\boldsymbol{R}_{\boldsymbol{X}}=\mathrm{E}\left(\boldsymbol{X}\boldsymbol{X}^H\right)$ 是非负定矩阵。
 
-对于任意 $n$ 维确定性向量 $\boldsymbol{\alpha}=[\alpha_1,\cdots,\alpha_n]^T$ 和 采样得到的随机变量序列 $\boldsymbol{X}=[X(t_1),\cdots,X(t_n)]^T$ 有：
+对于任意 $n$ 维确定性向量 $\boldsymbol{\alpha}=[\alpha_1,\cdots,\alpha_n]^T$ 和采样得到的随机变量序列 $\boldsymbol{X}=[X(t_1),\cdots,X(t_n)]^T$ 有：
 
 $$
 \boldsymbol{\alpha}^H\boldsymbol{R}_{\boldsymbol{X}}\boldsymbol{\alpha}=\mathrm{E}\left(\boldsymbol{\alpha}^H\boldsymbol{X}\boldsymbol{X}^H\boldsymbol{\alpha}\right)=\mathrm{E}\left[\left(\sum_{i=1}^n\alpha_i^* X(t_i)\right)\left(\sum_{i=1}^n\alpha_i^* X(t_i)\right)^*\right]\geqslant 0
@@ -141,7 +149,7 @@ $$
 
 二维分布函数 $F_X(x_1,x_2;t_1,t_2)=F_X(x_1,x_2;t_1+\tau,t_2+\tau)=F(x_1,x_2;t_1-t_2,0)$ ，即严平稳过程的二维分布之和只和时间差有关（相对时间），与绝对时间无关。
 
-严平稳过程的 均值和方差为常数，自相关函数和协方差函数仅为时间差 $t_1-t_2$ 的函数。
+严平稳过程的均值和方差为常数，自相关函数和协方差函数仅为时间差 $t_1-t_2$ 的函数。
 
 严平稳过程通常是十分稳定的信号，多数性质都不随时间改变，例如功率谱密度为常数的白噪声信号。
 
@@ -156,7 +164,7 @@ $$
 >
 > 因此，严平稳过程必然满足宽平稳，但是宽平稳过程不一定是严平稳的。
 
-若二阶矩过程 $\{X(t)\}$ 的均值为常数，且自相关函数仅与时间差 $\tau=t-s$ 有关，则为 宽平稳随机过程(WSS)。
+若二阶矩过程 $\{X(t)\}$ 的均值为常数，且自相关函数仅与时间差 $\tau=t-s$ 有关，则为宽平稳随机过程(WSS)。
 
 $$
 \begin{gather*}
@@ -177,7 +185,7 @@ $$
 \sigma_X^2=[R_X(0)]^2-\mu_X^2=C_X(0)
 $$
 
-对于两个不同的随机过程，可定义 联合宽平稳： $\{X(t)\},\;\{Y(t)\}$ 的互相关函数只与时间差有关
+对于两个不同的随机过程，可定义联合宽平稳： $\{X(t)\},\;\{Y(t)\}$ 的互相关函数只与时间差有关
 
 $$
 R_{XY}(t,s)=R_{XY}(t+\tau,s+\tau),\quad \forall t,s,\tau \in T
@@ -193,17 +201,17 @@ $$
     由于宽平稳过程的均值为常数，我们通常令 $X(t)-\mu_X$ 为新的 $X(t)$ ，变为零均值，且不改变其他信息，更方便研究。之后我们的讨论的大多都是 零均值宽平稳随机过程。
 
 !!! note
-    多数宽平稳过程都不是严平稳的，但 高斯过程 是个例外。**宽平稳的高斯过程 一定是 严平稳的**，因为高斯过程的任意有限维分布函数仅由 均值和协方差函数 决定。
+    多数宽平稳过程都不是严平稳的，但高斯过程是个例外。**宽平稳的高斯过程一定是严平稳的**，因为高斯过程的任意有限维分布函数仅由均值和协方差函数决定。
 
     有关高斯过程的讨论将在 [Chapter 5 Gaussian Process 高斯过程](./chapter5.md) 中进行。
 
 ### 相关系数与相关时间
 
-为衡量相隔时间为 $\tau$ 的两个随机变量 $X(t+\tau),X(t)$ 之间的*线性相关程度*，引入相关系数（归一化协方差函数，标准协方差函数） $r_X(\tau)=\dfrac{C_X(\tau)}{C_X(0)}$ .
+为衡量相隔时间为 $\tau$ 的两个随机变量 $X(t+\tau),X(t)$ 之间的**线性相关程度**，引入相关系数（归一化协方差函数，标准协方差函数） $r_X(\tau)=\dfrac{C_X(\tau)}{C_X(0)}$ .
 
 若 $r_X(\tau)=\pm 1$ ，代表 $X(t+\tau),X(t)$ 完全线性相关（正相关，负相关）；若 $r_X(\tau)=0$ 则 $X(t+\tau),X(t)$ 线性不相关。
 
-为衡量 当时间差 $\tau$ 达到多大时， $X(t+\tau),X(t)$ 的相关程度可以忽略，引入相关时间 $\tau_0=\displaystyle\int_0^{+\infty}r_X(\tau)\mathrm{d}\tau$ .
+为衡量当时间差 $\tau$ 达到多大时， $X(t+\tau),X(t)$ 的相关程度可以忽略，引入相关时间 $\tau_0=\displaystyle\int_0^{+\infty}r_X(\tau)\mathrm{d}\tau$ .
 
 若 $\tau_0$ 较小，说明 $r_X(\tau)$ 随时间增大而迅速衰减，可认为该过程随时间起伏变化剧烈。
 
@@ -213,7 +221,7 @@ $$
 
 宽平稳由于具有时间相关性，时间差可以作为一个独立的变量拿出来，进行谱分析。不满足宽平稳的过程不具有谱。
 
-宽平稳过程的谱密度函数，定义为 自相关函数的傅里叶变换（**维纳-欣钦定理**）：
+宽平稳过程的谱密度函数，定义为自相关函数的傅里叶变换（**维纳-欣钦定理**）：
 
 $$
 \begin{align*}
@@ -237,7 +245,7 @@ $R_X(0)=\dfrac{1}{2\pi}\displaystyle\int_{-\infty}^{+\infty}S_X(\omega)\mathrm{d
 !!! tip
     显然，功率谱密度为**正实数**，具有实际的物理意义。功率谱密度表示随机过程在不同角频率上的平均功率。
 
-    对于宽平稳的**实随机过程**，自相关函数和功率谱密度 均为偶函数。
+    对于宽平稳的**实随机过程**，自相关函数和功率谱密度均为偶函数。
 
 线谱过程：宽平稳的 $X(t)=\displaystyle\sum_{k=1}^n X_k\exp(\mathrm{j}\omega_k t)$ ， $n$ 为确定值，且 $\mathrm{E}(X_k)=0,\mathrm{Var}(X_k)=\sigma_k^2$ ，当 $i\neq j$ 时 $X_i,X_j$ 不相关。则有：
 
@@ -248,7 +256,7 @@ S_X(\omega)&=2\pi \sum_{k=1}^n\sigma_k^2\delta(\omega-\omega_k)
 \end{align*}
 $$
 
-对于离散随机过程，谱密度为 自相关函数的 DTFT ：
+对于离散随机过程，谱密度为自相关函数的 DTFT ：
 
 $$
 S_X(\omega)=\sum_{n=-\infty}^{+\infty}R_X[n]\mathrm{e}^{-\mathrm{j}\omega n}
@@ -391,8 +399,8 @@ $$
 
 因此，当宽平稳过程通过线性时不变系统时：
 
-1. 输出与输入 联合宽平稳。
-2. 输出 也为宽平稳过程。
+1. 输出与输入联合宽平稳。
+2. 输出也为宽平稳过程。
 
 $$
 \begin{align*}
@@ -401,7 +409,7 @@ S_Y(\omega)&=S_X(\omega)|H(\omega)|^2
 \end{align*}
 $$
 
-若随机过程 $\{X(t)\},\{Y(t)\}$ 联合宽平稳，互谱密度 定义为 互相关函数的傅里叶变换：
+若随机过程 $\{X(t)\},\{Y(t)\}$ 联合宽平稳，互谱密度定义为互相关函数的傅里叶变换：
 
 $$
 \begin{align*}
@@ -449,40 +457,40 @@ S_Z(\omega)&=S_X(\omega)+S_{XY}(\omega)+S_{YX}(\omega)+S_Y(\omega)
 $$
 
 !!! note
-    虽然 互相关函数 和 互谱密度 是傅里叶变换对的关系，但是 互谱密度 不具有描述随机信号随频率分布的意义。
+    虽然互相关函数和互谱密度是傅里叶变换对的关系，但是互谱密度不具有描述随机信号随频率分布的意义。
 
 ## 增量过程
 
-增量过程是一种典型的 非平稳的二阶矩过程。
+增量过程是一种典型的非平稳的二阶矩过程。
 
 （正交增量过程） 若 $\forall t_1<t_2\leqslant t_3<t_4$ ，二阶矩过程 $\{X(t)\}$ 满足 $\mathrm{E}\left[(X(t_2)-X(t_1))\overline{(X(t_4)-X(t_3))}\right]=0$ ，称为 正交增量过程。
 
-（定理） 设 $\{X(t)\}$ 在起始时刻归0，即 $X(0)=0$ ，则 $\{X(t)\}$ 为正交增量过程的 充分必要条件为 自相关函数 $R_X(t,s)=F(\min\{t,s\})$ ，其中 $F(\cdot)$ 为单调不减函数。
+（定理） 设 $\{X(t)\}$ 在起始时刻归 0，即 $X(0)=0$ ，则 $\{X(t)\}$ 为正交增量过程的充分必要条件为自相关函数 $R_X(t,s)=F(\min\{t,s\})$ ，其中 $F(\cdot)$ 为单调不减函数。
 
 <br>
 
-（独立增量过程） 若 $\forall t_1<t_2\leqslant t_3<t_4$ ，二阶矩过程 $\{X(t)\}$ 满足 $X(t_2)-X(t_1)$ 和 $X(t_4)-X(t_3)$ 相互独立，称为 独立增量过程。
+（独立增量过程） 若 $\forall t_1<t_2\leqslant t_3<t_4$ ，二阶矩过程 $\{X(t)\}$ 满足 $X(t_2)-X(t_1)$ 和 $X(t_4)-X(t_3)$ 相互独立，称为独立增量过程。
 
 <br>
 
-（平稳增量过程） 若 $\forall t_1,t_2$ ，二阶矩过程 $\{X(t)\}$ 满足 $X(t_2)-X(t_1)$ 的概率分布仅仅取决于 $t_2-t_1$ ，称为 平稳增量过程。
+（平稳增量过程） 若 $\forall t_1,t_2$ ，二阶矩过程 $\{X(t)\}$ 满足 $X(t_2)-X(t_1)$ 的概率分布仅仅取决于 $t_2-t_1$ ，称为平稳增量过程。
 
-增量过程的一个典型例子是 随机游走。
+增量过程的一个典型例子是随机游走。
 
 !!! note
     泊松过程是典型的增量过程，具体讨论参考 [Chapter 7 Poisson Process 泊松过程](./chapter7.md)。
 
 ## 二阶矩过程的连续、导数和积分
 
-（均方极限/均方收敛）设 随机变量序列 $\{X_n,n\in\mathbb{N}\}$ 满足 $\mathrm{E}\left(|X_n|^2\right)<+\infty$ ，随机变量 $X$ 满足 $\mathrm{E}\left(|X|^2\right)<+\infty$ ，若 $\displaystyle\lim_{n\to+\infty}\mathrm{E}\left(|X_n-X|^2\right)=0$ ，称 $X_n$ 的均方极限为 $X$ ，也称 $\{X_n,n\in\mathbb{N}\}$ 均方收敛于 $X$ ，记为 $X_n\stackrel{m.s.}{\longrightarrow}X$ .
+（均方极限/均方收敛）设随机变量序列 $\{X_n,n\in\mathbb{N}\}$ 满足 $\mathrm{E}\left(|X_n|^2\right)<+\infty$ ，随机变量 $X$ 满足 $\mathrm{E}\left(|X|^2\right)<+\infty$ ，若 $\displaystyle\lim_{n\to+\infty}\mathrm{E}\left(|X_n-X|^2\right)=0$ ，称 $X_n$ 的均方极限为 $X$ ，也称 $\{X_n,n\in\mathbb{N}\}$ 均方收敛于 $X$ ，记为 $X_n\stackrel{m.s.}{\longrightarrow}X$ .
 
-（柯西准则） 设 随机变量序列 $\{X_n,n\in\mathbb{N}\}$ 满足 $\mathrm{E}\left(|X_n|^2\right)<+\infty$ ，随机变量 $X$ 满足 $\mathrm{E}\left(|X|^2\right)<+\infty$ ，则 $X_n\stackrel{m.s.}{\longrightarrow}X$ 的充要条件为 $\mathrm{E}\left(|X_n-X_m|^2\right)\to 0,\;m,n\to\infty$ .
+（柯西准则） 设随机变量序列 $\{X_n,n\in\mathbb{N}\}$ 满足 $\mathrm{E}\left(|X_n|^2\right)<+\infty$ ，随机变量 $X$ 满足 $\mathrm{E}\left(|X|^2\right)<+\infty$ ，则 $X_n\stackrel{m.s.}{\longrightarrow}X$ 的充要条件为 $\mathrm{E}\left(|X_n-X_m|^2\right)\to 0,\;m,n\to\infty$ .
 
 <br>
 
 （均方连续） 对于二阶矩过程 $\{X(t)\}$ ，若 $t\to t_0$ 时 $X(t)\stackrel{m.s.}{\longrightarrow}X(t_0)$ ，也即 $\mathrm{E}\left(|X(t)-X(t_0)|^2\right)\to 0$ ，则 $\{X(t)\}$ 在 $t_0$ 点均方连续。
 
-均方连续的性质可以完全由 自相关函数 确定，以下几个命题等价：
+均方连续的性质可以完全由自相关函数确定，以下几个命题等价：
 
 1. $\forall t_0\in T,\;R_X(t,s)$ 在 $(t_0,t_0)$ 点连续。
 2. $X(t)$ 在 $T\times T$ 上连续。

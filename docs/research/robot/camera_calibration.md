@@ -456,6 +456,8 @@ if __name__ == "__main__":
 
 现在有一台机器人 SLAM 设备，传感器为激光雷达 LiDAR 和相机 Camera。相机的内参矩阵 $\mathbf{K}$ 和 `LiDAR -> Camera` 的外参矩阵 ${}^C_L\mathbf{T}$ 已经标定好，LiDAR 相对于世界坐标系的位姿 pose （因为以 LiDAR 中心为系统的原点）可以由 SLAM 节点发布的消息获取，记为 ${}^W_L\mathbf{T}$ 。现在对相机拍摄到的图片进行 YOLO 物体识别，假设只识别 bottle 这一类，且一段时间内图像中只出现同一个 bottle，我们需要对识别到的 bottle 物体在图像中位置的变化，估算出 bottle 在世界坐标系中的坐标 $(X_W,Y_W,Z_W)$ . 其中 bottle 物体在图像中的位置定义为 YOLO 检测框的中心像素坐标 $(u,v)$ .
 
+### Analysis
+
 首先，我们应求出世界坐标系到相机坐标系 `World -> Camera` 的变换 ${}^C_W\mathbf{T}={}^C_L\mathbf{T}{}^L_W\mathbf{T}={}^C_L\mathbf{T}\left({}^W_L\mathbf{T}\right)^{-1}$ . 取出其中的旋转矩阵和平移向量 $\mathbf{R},\mathbf{t}$ .
 
 注意这里的世界坐标系并不是选定的棋盘格，而是由 SLAM 节点决定的，我们不能默认 $Z_W=0$ . 计算世界坐标系到像素坐标系 `World -> Pixel` 的变换：
@@ -531,9 +533,7 @@ $$
 
 求得坐标 $(X_W,Y_W,Z_W)$ 之后，我们就可以通过发布消息、Rviz 显示来可视化识别目标物体和机器人的相对位置，此时我们还需要将其转换到 LiDAR 坐标系： ${}^LP={}^L_W\mathbf{T}\cdot(X_W,Y_W,Z_W)^T$ .
 
----
-
-代码环节
+### Code
 
 首先，在 YOLO 识别到物体之后，我们获取其对应检测框的中心像素坐标，记为物体在像素坐标系 `Pixel` 下的坐标 $(u,v)$ ：
 
@@ -555,10 +555,10 @@ if len(results.boxes) == 1:
 
 我们需要从 SLAM 节点输出的里程计消息中提取出旋转矩阵和平移向量。假设我们订阅 `/Odometry` 话题，消息类型为 `nav_msgs/Odometry` ，其父坐标系为 `#!cpp header.frame_id = "mapFrame"` ，子坐标系为 `#!cpp header.child_frame_id = "base_link_frame"` 。说明该里程计给出的是 `base_link` （通常是机器人质心或者 LiDAR 中心）在世界坐标系中的位姿。
 
-由于我们需要用到同一时刻（或者接近同一时刻）的里程计和图像消息，因此我们使用 ROS 提供的 `message_filter` 模块，实现两个话题的同步。
+由于我们需要用到同一时刻（或者接近同一时刻）的里程计和图像消息，因此我们使用 ROS 提供的 `message_filters` 模块，实现两个话题的同步。
 
 ```py
-img_sub = message_filters.Subscriber(img_sub_topic, Image)
+img_sub = message_filters.Subscriber(img_sub_topic, CompressedImage)
 odom_sub = message_filters.Subscriber(odom_sub_topic, Odometry)
 sync = message_filters.ApproximateTimeSynchronizer(
     [img_sub, odom_sub], queue_size=10, slop=0.05
@@ -566,7 +566,7 @@ sync = message_filters.ApproximateTimeSynchronizer(
 sync.registerCallback(self.sync_callback)
 ```
 
-上面的 `#!py slop=0.05` 参数的含义是“当两个消息时间戳之差小于 `slop` 这个阈值时，认为两个消息为同一时间的消息，即判定消息同步”。在我使用的测试包中，话题 `/Odometry` 发布的里程计消息频率约 10Hz，话题 `usb_cam/image_raw` 发布的图像消息频率约为 20Hz。频率不同意味着一段时间内，两者的消息数量不同，且相机消息数量几乎是里程计消息的 2 倍。在进行消息同步时， `message_filter` 会把两路消息分别押入 2 个队列，然后从队首开始匹配，匹配成功则把这两条消息取出并调用回调函数。如果队列已满，最旧的消息会自动丢弃并压入新的消息。理论上会有一半的图像消息被丢弃。由于图像消息的周期约为 50ms，里程计消息的频率约为 100ms，则设置 slop 略大于 50ms 比较合适。
+上面的 `#!py slop=0.05` 参数的含义是“当两个消息时间戳之差小于 `slop` 这个阈值时，认为两个消息为同一时间的消息，即判定消息同步”。在我使用的测试包中，话题 `/Odometry` 发布的里程计消息频率约 10Hz，话题 `usb_cam/image_raw/compressed` 发布的图像消息频率约为 20Hz。频率不同意味着一段时间内，两者的消息数量不同，且相机消息数量几乎是里程计消息的 2 倍。在进行消息同步时， `message_filters` 会把两路消息分别押入 2 个队列，然后从队首开始匹配，匹配成功则把这两条消息取出并调用回调函数。如果队列已满，最旧的消息会自动丢弃并压入新的消息。理论上会有一半的图像消息被丢弃。由于图像消息的周期约为 50ms，里程计消息的频率约为 100ms，则设置 slop 略大于 50ms 比较合适。
 
 通过 `#!bash rosmsg info nav_msgs/Odometry` 可以看出，该消息类型存储的位置信息是三维坐标 $(x,y,z)$ ，而姿态信息通过四元数 $(x,y,z,w)$ 存储，我们需要将四元数转换为旋转矩阵。
 
@@ -632,20 +632,14 @@ T_lidar_world = odom_to_transformation(msg)
 
 ```yaml title="usb_cam.yaml"
 camera_intrinsics:
-  - [984.444138, 0.0,        956.120990]
-  - [0.0,        982.875802, 521.503842]
-  - [0.0,        0.0,        1.0]
+  - [984.444138, 0.000000, 956.120990]
+  - [0.000000, 982.875802, 521.503842]
+  - [0.000000, 0.000000, 1.000000]
 lidar_camera_extrinsics:
-  - [0.0, -1.0, 0.0,  0.0]
-  - [0.6, 0.0,  -0.8, -0.093094]
-  - [0.8, 0.0,  0.6,  -0.026592]
-```
-
-```xml title="yolo_detector.launch"
-<launch>
-  <rosparam file="$(find yolo_detector)/config/usb_cam.yaml" command="load" ns="~"/>
-  <node pkg="yolo_detector" type="yolo_detectoer.py" name="yolo_detector" />
-</launch>
+  - [0.0305422, -0.999457, -0.0123873, -0.0313723]
+  - [0.629366, 0.0288575, -0.776573, -0.0853413]
+  - [0.776509, 0.0159221, 0.629906, 0.00275532]
+  - [0.0, 0.0, 0.0, 1.0]
 ```
 
 ```py
@@ -664,7 +658,7 @@ def generate_coefficients(u, v, A):
     M = np.array(
         [
             [A[0, 0] - u * A[2, 0], A[0, 1] - u * A[2, 1], A[0, 2] - u * A[2, 2]],
-            [A[1, 0] - v * A[2, 1], A[1, 1] - v * A[2, 1], A[1, 2] - v * A[2, 2]],
+            [A[1, 0] - v * A[2, 0], A[1, 1] - v * A[2, 1], A[1, 2] - v * A[2, 2]],
         ],
         dtype=np.float64,
     )
@@ -683,10 +677,88 @@ b_ls = np.hstack(b_list)
 Xw, *_ = np.linalg.lstsq(M_ls, b_ls, rcond=None)
 ```
 
-写出完整代码：
+---
 
-```py title="yolo_detector.py"
-#!/usr/bin/env python3
+接下来，我们将从头构建一个 ROS 功能包，写入 python 代码并编译、构建。
+
+```bash
+cd ~/catkin_ws/src
+catkin_create_pkg yolo_detector rospy std_msgs nav_msgs sensor_msgs geometry_msgs tf message_filters cv_bridge
+```
+
+最终的文件结构如下：
+
+```text
+.
+|-- CMakeLists.txt
+|-- config/
+|   |-- Mid360_new.yaml
+|   |-- usb_cam.yml
+|   `-- yolo.yaml
+|-- launch/
+|   |-- mapping.launch
+|   |-- record.launch
+|   |-- test.launch
+|   |-- usb_cam.launch
+|   `-- yolo_detector.launch
+|-- package.xml
+|-- scripts/
+|   `-- run.py
+|-- setup.py
+`-- src/
+    `-- detector.py
+```
+
+首先编写 `./setup.py` 文件，使 Python 代码变为 Python 模块：
+
+```py title="setup.py"
+from distutils.core import setup
+from catkin_pkg.python_setup import generate_distutils_setup
+
+d = generate_distutils_setup(
+    packages=['yolo_detector'],
+    package_dir={'': 'src'}
+)
+
+setup(**d)
+```
+
+改动 `./CMakeLists.txt` 文件：
+
+```cmake title="CMakeLists.txt"
+cmake_minimum_required(VERSION 3.0.2)
+project(yolo_detector)
+
+find_package(catkin REQUIRED COMPONENTS
+  rospy
+  std_msgs
+  nav_msgs
+  sensor_msgs
+  geometry_msgs
+  tf
+  message_filters
+  cv_bridge
+)
+
+catkin_python_setup()
+
+catkin_package()
+
+include_directories(${catkin_INCLUDE_DIRS})
+
+catkin_install_python(
+  PROGRAMS scripts/run_detector.py
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
+
+install(DIRECTORY config launch
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+)
+```
+
+我们编写源代码 `detector.py` 放在 `./src/` 目录中，经过编译构建后成为可导入的 Python 模块：
+
+```py title="detector.py"
 # -*- coding: utf-8 -*-
 from collections import deque
 
@@ -697,7 +769,7 @@ import rospy
 import tf.transformations
 from cv_bridge import CvBridge
 from nav_msgs.msg import Odometry
-from sensor_msgs.msg import Image
+from sensor_msgs.msg import Image, CompressedImage
 from ultralytics import YOLO
 
 
@@ -725,7 +797,7 @@ def generate_coefficients(u, v, A):
     M = np.array(
         [
             [A[0, 0] - u * A[2, 0], A[0, 1] - u * A[2, 1], A[0, 2] - u * A[2, 2]],
-            [A[1, 0] - v * A[2, 1], A[1, 1] - v * A[2, 1], A[1, 2] - v * A[2, 2]],
+            [A[1, 0] - v * A[2, 0], A[1, 1] - v * A[2, 1], A[1, 2] - v * A[2, 2]],
         ],
         dtype=np.float64,
     )
@@ -737,7 +809,7 @@ class YoloDetector:
     def __init__(self):
         rospy.init_node("yolo_detector", anonymous=False)
 
-        img_sub_topic = rospy.get_param("~img_sub_topic", "/usb_cam/image_raw")
+        img_sub_topic = rospy.get_param("~img_sub_topic", "/usb_cam/image_raw/compressed")
         odom_sub_topic = rospy.get_param("~odom_sub_topic", "/Odometry")
         img_pub_topic = rospy.get_param("~img_pub_topic", "/usb_cam/image_detected")
 
@@ -764,10 +836,10 @@ class YoloDetector:
         self.thres_distance = rospy.get_param("~thres_distance", 1)
         self.thres_angle = rospy.get_param("~thres_angle", 1)
 
-        img_sub = message_filters.Subscriber(img_sub_topic, Image)
+        img_sub = message_filters.Subscriber(img_sub_topic, CompressedImage)
         odom_sub = message_filters.Subscriber(odom_sub_topic, Odometry)
         sync = message_filters.ApproximateTimeSynchronizer(
-            [img_sub, odom_sub], queue_size=10, slop=rospy.get_param("~time_sync_slop", 0.1)
+            [img_sub, odom_sub], queue_size=30, slop=rospy.get_param("~time_sync_slop", 0.1)
         )
         sync.registerCallback(self.sync_callback)
 
@@ -775,13 +847,13 @@ class YoloDetector:
 
         rospy.spin()
 
-    def sync_callback(self, img_msg: Image, odom_msg: Odometry):
-        cv_img = self.bridge.imgmsg_to_cv2(img_msg, "bgr8")
+    def sync_callback(self, img_msg: CompressedImage, odom_msg: Odometry):
+        cv_img = self.bridge.compressed_imgmsg_to_cv2(img_msg, "bgr8")
         if cv_img is None or cv_img.size == 0:
             rospy.logwarn("Receive empty image!")
             return
 
-        # 只检测 person，且最多检测一个
+        # detect at most one person
         results = self.model.predict(
             cv_img,
             conf=self.conf,
@@ -795,9 +867,9 @@ class YoloDetector:
             return
         else:
             for box in results.boxes:
-                rospy.loginfo(f"--- {box.cls.item()}, {box.conf.item()}, {box.xyxy.tolist()}.")
+                rospy.loginfo(f"YOLO result: {box.cls.item()}, {box.conf.item()}, {box.xyxy.tolist()}.")
 
-        # 发布带检测框的图像
+        # publish image with bounding box
         annotated = results.plot()
         if self.show_window:
             cv2.imshow("YOLO Detection", annotated)
@@ -806,7 +878,7 @@ class YoloDetector:
         img_pub_msg.header = img_msg.header
         self.img_pub.publish(img_pub_msg)
 
-        # 获取中心像素坐标 (u,v)
+        # get the center pixel coordinates (u,v)
         box = results.boxes[0]
         u, v, _, _ = box.xywh[0].cpu().numpy()
         u, v = int(np.round(u)), int(np.round(v))
@@ -826,52 +898,57 @@ class YoloDetector:
         A = self.K @ T_world_camera[:3, :]
         self.deque.append((u, v, A))
         self.last_T = T_world_camera.copy()
-        rospy.loginfo(f"Add matrix (u, v, A):\n(u, v): {(u, v)}\nA: {A}")
+        rospy.loginfo(f"Add matrix (u, v, A), (u, v): {(u, v)}")
 
-        # 最小二乘求解方程
+        # solve the equation
         if len(self.deque) == self.deque.maxlen:
             M_list, b_list = zip(
                 *(generate_coefficients(u, v, A) for (u, v, A) in self.deque)
             )
             M_ls = np.vstack(M_list)
             b_ls = np.hstack(b_list)
-            rospy.loginfo(f"Solving MX=b:\nM: {M_ls},\nb: {b_ls}")
+            # rospy.loginfo(f"Solving MX=b:\nM: {M_ls},\nb: {b_ls}")
+            rospy.loginfo("Solving MX=b")
 
             Xw, *_ = np.linalg.lstsq(M_ls, b_ls, rcond=None)
+            rospy.loginfo(f"Detected person in World Frame: {Xw}")
             Xc = T_world_camera[:3, :3] @ Xw + T_world_camera[:3, 3]
             distance = np.linalg.norm(Xc)
             rospy.loginfo(f"Detected person in Camera Frame: {Xc}")
             rospy.loginfo(f"Direction: {'forward' if Xc[2] > 0 else 'backforward'}, {'right' if Xc[0] > 0 else 'left'}, {'down' if Xc[1] > 0 else 'up'}")
             rospy.loginfo(f"Distance: {distance}")
+```
 
+然后在 `./scripts/` 目录下创建 `run.py` 脚本文件，作为节点的启动入口：
+
+```py title="run.py"
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+import rospy
+from yolo_detector.YoloDetector import YoloDetector
 
 if __name__ == "__main__":
     try:
         YoloDetector()
-    except rospy.ROSInterruptException:
-        pass
+    except rospy.ROSInterruptException as e:
+        rospy.logerr(e)
 ```
 
-```xml title="yolo_detector.launch"
-<launch>
-    <rosparam file="$(find RGBCloud)/scripts/yolo.yaml" command="load" ns="yolo_detector" />
-    <node pkg="RGBCloud" type="yolo_detector.py" name="yolo_detector" output="screen"></node>
-</launch>
-```
+在 `./config/` 目录下存放 `.yaml` 格式的配置文件，例如运行 YOLO 检测节点的配置文件 `./scripts/yolo.yaml` 文件：
 
 ```yaml title="yolo.yaml"
 camera_intrinsics:
-  - [840.355944, 0.000000, 1010.191645]
-  - [0.000000, 847.449955, 545.973811]
+  - [984.444138, 0.000000, 956.120990]
+  - [0.000000, 982.875802, 521.503842]
   - [0.000000, 0.000000, 1.000000]
 lidar_camera_extrinsics:
-  - [9.99902524e-01, 1.39621803e-02, -8.67361738e-19, 0.00]
-  - [-2.60208521e-18, 1.66533454e-16, -1.00000000e+00, -0.055]
-  - [-1.39621803e-02, 9.99902524e-01, 1.66533454e-16, -0.06]
+  - [0.0305422, -0.999457, -0.0123873, -0.0313723]
+  - [0.629366, 0.0288575, -0.776573, -0.0853413]
+  - [0.776509, 0.0159221, 0.629906, 0.00275532]
   - [0.0, 0.0, 0.0, 1.0]
 model_path: yolov8n.pt
-img_sub_topic: /usb_cam/image_raw
-odom_sub_topic: /Odometry
+img_sub_topic: /robot1/usb_cam/image_raw/compressed
+odom_sub_topic: /robot1/Odometry
 img_pub_topic: /yolo_detector/image_detected
 conf: 0.4
 iou: 0.5
@@ -879,33 +956,60 @@ show_window: true
 deque_size: 4
 thres_distance: 2
 thres_angle: 2
-time_sync_slop: 0.075
+time_sync_slop: 0.1
 ```
 
----
+在 `./launch/` 目录下存放用于启动节点的 `.launch` 文件，例如：
 
-采集数据录制 rosbag 过程：
+启动 YOLO 检测节点的 `yolo_detector.launch` ：
 
-```bash
-# open livox driver
-roslaunch livox_ros_driver2 rviz_MID360.launch
-
-# open usb camera
-roslaunch usb_cam usb_cam.launch
-
-# record rosbag
-rosbag record /livox/imu /livox/lidar /usb_cam/image_raw -O xxx.bag
+```xml title="yolo_detector.launch"
+<launch>
+    <rosparam file="$(find yolo_detector)/config/yolo.yaml" command="load" ns="yolo_detector" />
+    <node pkg="yolo_detector" type="yolo_detector.py" name="yolo_detector" output="screen"></node>
+</launch>
 ```
 
-播放 rosbag 进行测试：
+录制 LiDAR 和相机图像消息为 rosbag 包的 `record.launch` ：
+
+```xml title="record.launch"
+<launch>
+    <arg name="robot_id" default="robot1" />
+    <arg name="bag_path" default="/home/nvidia/Documents/yolo.bag" />
+
+    <!-- using relative path for topics -->
+    <arg name="imu_topic" default="livox/imu" />
+    <arg name="lidar_topic" default="livox/lidar" />
+    <arg name="image_topic" default="usb_cam/image_raw/compressed" />
+
+    <group ns="$(arg robot_id)">
+        <include file="$(find livox_ros_driver2)/launch/msg_MID360.launch">
+            <arg name="rviz_enable" value="false" />
+        </include>
+
+        <include file="$(find usb_cam)/launch/usb_cam.launch" />
+
+        <node name="rosbag_record" pkg="rosbag" type="record"
+        args="$(arg imu_topic) $(arg lidar_topic) $(arg image_topic) -O $(arg bag_path)"
+        output="screen" />
+    </group>
+
+</launch>
+```
+
+启动建图节点、启动 YOLO 节点、播放 rosbag 进行测试的 `test.launch` ：
+
+```xml title="test.launch"
+<launch>
+    <include file="$(find fast_lio_sam)/launch/mapping.launch" />
+    <include file="$(find yolo_detector)/launch/yolo_detector.launch" />
+</launch>
+```
+
+最后进行编译和构建：
 
 ```bash
-# launch SLAM node
-roslaunch fast_lio mapping_mid360.launch use_visual:=false rviz:=false
-
-# open another terminal
-roslaunch rgbcloud yolo_detector.launch
-
-# open another terminal
-rosbag play xxx.bag
+cd ~/catkin_ws
+catkin_make
+source devel/setup.bash
 ```

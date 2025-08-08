@@ -1,6 +1,6 @@
 # 6 马尔可夫过程
 
-!!! abstract "本章概述"
+!!! abstract
     本章主要讨论离散状态 Markov 过程，也就是 Markov 链。
 
     Markov 性质最重要的特点是 “已知现在，则未来与过去无关”。

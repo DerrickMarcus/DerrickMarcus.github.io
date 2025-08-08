@@ -206,7 +206,7 @@ $$
 
 梯度下降可能存在的问题：能找到局部最优，但是无法保证找到全局最优。因为可能遇到鞍点 (Saddle Point)。改进方法有：
 
-（1）动量 Momentum
+（1）**动量** Momentum
 
 避免随机梯度下降陷入局部最优。维护一个“状态变量” $\beta$ 记录之前的梯度，每次更新参数时不仅考虑当前的梯度，也考虑之前存下来的动量，从而帮助模型越过上面的局部最小值。
 
@@ -216,7 +216,7 @@ $$
 
 其中 $\beta_t$ 即为动量， $\mu\in[0,1]$ 为对应的常系数。参数中梯度方向不大的维度加速更新，同时减少在梯度方向变化大的维度上的更新幅度。
 
-（2）权重衰减 Weight Decay
+（2）**权重衰减** Weight Decay
 在损失函数中加入正则化项（增加对较大系数的惩罚项），防止过拟合。常用的正则化方法有 L1 正则化和 L2 正则化。例如 L2 正则化：
 
 $$
@@ -226,7 +226,7 @@ w &\leftarrow w - \eta \left(\frac{\partial L}{\partial w} + \lambda w\right)
 \end{align*}
 $$
 
-（3）AdaGrad: Adaptive Gradient
+（3）**AdaGrad**: Adaptive Gradient
 
 利用梯度平方累加和的平方根。不同的参数使用不同的学习率：
 
@@ -239,7 +239,7 @@ $$
 
 不同参数的学习率依赖于 $c_t$ . 对低频参数做较大的更新，对高频参数做较小的更新，提升了 SGD 的鲁棒性，对于稀疏数据表现好。
 
-（4）RMSprop: Root-Mean-Square Prop
+（4）**RMSprop**: Root-Mean-Square Prop
 
 与 AdaGrad 思想类似，利用梯度平方加权取倒数对梯度进行加权。定义 RMS 梯度：
 
@@ -252,7 +252,7 @@ $$
 
 保证各维度导数在一个量级，减少摆动。[Hinton](https://en.wikipedia.org/wiki/Geoffrey_Hinton) 建议 $\gamma=0.9,\mu=0.001$ .
 
-（5）Adam: Adaptive Moment Optimization
+（5）**Adam**: Adaptive Moment Optimization
 
 Adam 是 RMSprop 和 Momentum 的结合。计算梯度和梯度平方的平滑平均，利用梯度的一阶矩和二阶矩的指数加权平均。这也是目前主流的优化器。
 

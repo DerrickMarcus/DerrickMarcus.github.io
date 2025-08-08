@@ -8,11 +8,11 @@
 如果一个计数过程 $\{N(t)\}$ 满足：
 
 1. 在 $t=0$ 时刻计数归零，即 $N(0)=0$ .
-2. $\{N(t)\}$ 是 独立增量过程。
-3. $\{N(t)\}$ 是 平稳增量过程。由此可推出 $P(N(t_0+t)-N(t_0)=n)=P(N(t)=n)$ .
+2. $\{N(t)\}$ 是独立增量过程。
+3. $\{N(t)\}$ 是平稳增量过程。由此可推出 $P(N(t_0+t)-N(t_0)=n)=P(N(t)=n)$ .
 4. 稀疏性： $P(N(t+\Delta t)-N(t)-1)=\lambda\Delta t+o(\Delta t),\;P(N(t+\Delta t)-N(t)\geqslant 2)=o(t)$ ，即一小短时间内事件几乎不可能发生多次。
 
-称该过程为 齐次泊松过程/泊松过程， $\lambda>0$ 为**强度参数**。
+称该过程为齐次泊松过程/泊松过程， $\lambda>0$ 为**强度参数**。
 
 !!! note
     回顾满足泊松分布的随机变量 $X\sim\text{Poisson}(\lambda)$ ，概率分布为 $P(X=k)=\dfrac{\lambda^k}{k!}\mathrm{e}^{-\lambda}$ .
@@ -23,7 +23,7 @@
 
 <br>
 
-泊松过程的 数字特征：
+泊松过程的数字特征：
 
 $$
 \begin{align*}
@@ -33,9 +33,9 @@ C_N(t_1,t_2)&=\lambda\min(t_1,t_2)
 \end{align*}
 $$
 
-由上式也可以看出参数 $\lambda=\dfrac{\mathrm{E}(N(t))}{t}$ 表示单位时间内事件发生的平均次数，即代表了 强度/速率。
+由上式也可以看出参数 $\lambda=\dfrac{\mathrm{E}(N(t))}{t}$ 表示单位时间内事件发生的平均次数，即代表了强度/速率。
 
-泊松过程的 特征函数和矩母函数分别为：
+泊松过程的特征函数和矩母函数分别为：
 
 $$
 \begin{align*}
@@ -53,7 +53,7 @@ $$
 
 相邻事件发生的间隔为 $T_n=S_n-S_{n-1},\;n=1,2,\cdots$ .
 
-根据关系 $P(S_n\leqslant t)=P(N(t)\geqslant n)$ ，得到 $S_n$ 的累积分布函数(CDF)为 $F_{S_n}=P(S_n<t)=P(N(t)\geqslant n)=\displaystyle\sum_{k=n}^{+\infty}\frac{(\lambda t)^k}{k!}\mathrm{e}^{-\lambda t}$ ，求导得到 $f_{S_n}(t)=\dfrac{\mathrm{d}}{\mathrm{d}t}F_{S_n}(t)=\dfrac{(\lambda t)^{n-1}}{(n-1)!}\lambda\mathrm{e}^{-\lambda t}$ ，服从 $n$ 阶 $\Gamma$ 分布。当 $n=1$ 时退化为 指数分布 $S_1\sim\exp(\lambda)$ . 当 $n$ 较大时接近高斯分布。
+根据关系 $P(S_n\leqslant t)=P(N(t)\geqslant n)$ ，得到 $S_n$ 的累积分布函数(CDF)为 $F_{S_n}=P(S_n<t)=P(N(t)\geqslant n)=\displaystyle\sum_{k=n}^{+\infty}\frac{(\lambda t)^k}{k!}\mathrm{e}^{-\lambda t}$ ，求导得到 $f_{S_n}(t)=\dfrac{\mathrm{d}}{\mathrm{d}t}F_{S_n}(t)=\dfrac{(\lambda t)^{n-1}}{(n-1)!}\lambda\mathrm{e}^{-\lambda t}$ ，服从 $n$ 阶 $\Gamma$ 分布。当 $n=1$ 时退化为指数分布 $S_1\sim\exp(\lambda)$ . 当 $n$ 较大时接近高斯分布。
 
 数字特征为：
 
@@ -77,7 +77,7 @@ $$
 f_{S_1,\cdots,S_n}(u_1,\cdots,u_n|N(t)=n)=\frac{n!}{t^n},\quad 0\leqslant u_1<\cdots<u_n\leqslant t
 $$
 
-可见为**多元的均匀分布**。
+可见其为**多元的均匀分布**。
 
 如果不考虑事件发生的先后次序，记事件发生的事件为 $\{V_1,\cdots,V_n\}$ ，称 $\{S_1,\cdots,S_n\}$ 为 $\{V_1,\cdots,V_n\}$ 的**顺序统计量**，其概率密度为：
 
@@ -110,7 +110,7 @@ $$
 
 或者写为 $N(t_0+t)-N(t_0)\sim\text{Poisson}\left(\int_{t_0}^{t_0+t}\lambda(u)\mathrm{d}u\right)\sim\text{Poisson}(\bar{\lambda}t)$ .
 
-可见，非齐次泊松过程使用 $[t_0,t_0+t]$ 时间段内的积分 $\int_{t_0}^{t_0+t}\lambda(u)\mathrm{d}u$ 替代了齐次泊松过程的线性表达式 $\lambda t$ . 我们仍然可以使用这段时间内的平均强度参数来刻画 $\bar{\lambda}=\dfrac{\int_{t_0}^{t_0+t}\lambda(u)\mathrm{d}u}{t}$ . 如果 $\lambda(t)\equiv\lambda$ ，则显然 非齐次泊松过程 退化为 齐次泊松过程。
+可见，非齐次泊松过程使用 $[t_0,t_0+t]$ 时间段内的积分 $\int_{t_0}^{t_0+t}\lambda(u)\mathrm{d}u$ 替代了齐次泊松过程的线性表达式 $\lambda t$ . 我们仍然可以使用这段时间内的平均强度参数来刻画 $\bar{\lambda}=\dfrac{\int_{t_0}^{t_0+t}\lambda(u)\mathrm{d}u}{t}$ . 如果 $\lambda(t)\equiv\lambda$ ，则显然非齐次泊松过程退化为齐次泊松过程。
 
 均值、方差、矩母函数分别为：
 
@@ -141,7 +141,7 @@ G_{X(t)}(z)&=\exp[\lambda t(G_Y(z)-1)]
 
 平稳增量，但不是独立增量。
 
-泊松过程的强度参数为 非负的连续型的**随机变量** $\Lambda$ ，其概率密度函数为 $f(\Lambda)$ ，随机参数泊松过程的概率密度为：
+泊松过程的强度参数为非负的连续型的**随机变量** $\Lambda$ ，其概率密度函数为 $f(\Lambda)$ ，随机参数泊松过程的概率密度为：
 
 $$
 P(N(t)=n)=\int_{0}^{+\infty}\frac{(\lambda t)^n}{n!}\mathrm{e}^{-\lambda t}f(\lambda)\mathrm{d}\lambda
@@ -189,7 +189,7 @@ $$
 
 同样，独立的泊松过程也具有可加性：$X_i(t)\sim\text{Poisson}(\lambda_i t)\implies \sum X_i(t)\sim\text{Poisson}\left(\sum\lambda_i t\right)$ .
 
-两个独立泊松过程的**差值**为 复合泊松过程， $N(t)=N_1(t)-N_2(t)$ ：
+两个独立泊松过程的**差值**为复合泊松过程， $N(t)=N_1(t)-N_2(t)$ ：
 
 $$
 \begin{align*}

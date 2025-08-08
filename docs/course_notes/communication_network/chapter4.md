@@ -115,13 +115,13 @@ $$
 \mathrm{SNR}=\frac{\mathbb{E}(x^2)\left(\displaystyle\int_{-\infty}^{+\infty}p(t)g(t)\mathrm{d}t\right)^2}{\displaystyle\frac{n_0}{2} \int_{-\infty}^{\infty} g^2(t)\mathrm{d}t}
 $$
 
-对于任意的接收处理波形 $g(t)$ ，根据 Cauchy-Schwarz 不等式， $\displaystyle\left(\int_{-\infty}^{+\infty}p(t)g(t)\mathrm{d}t\right)^2\leqslant \int_{-\infty}^{\infty} p^2(t)\mathrm{d}t \cdot \int_{-\infty}^{\infty} g^2(t)\mathrm{d}t$ ，因此：
+根据 Cauchy-Schwarz 不等式， $\displaystyle\left(\int_{-\infty}^{+\infty}p(t)g(t)\mathrm{d}t\right)^2\leqslant \int_{-\infty}^{\infty} p^2(t)\mathrm{d}t \cdot \int_{-\infty}^{\infty} g^2(t)\mathrm{d}t$ 对于任意接收波形 $g(t)$ 成立，因此：
 
 $$
 \mathrm{SNR}_{\max}=\frac{\mathbb{E}(x^2)}{n_0/2}\int_{-\infty}^{+\infty}p^2(t)\mathrm{d}t
 $$
 
-信噪比取最大值时，即为**最佳接收**，取等条件为 $g(t)=\lambda p(t),\;\lambda\in\mathbb{R}$ ，即 $g(t),p(t)$ 的波形相同，仅有系数的区别，且这个系数会在接收端同时放缩信号和噪声的能量，因此不会影响信噪比。
+信噪比取最大值时，即为**最佳接收**，取等条件为 $g(t)=\lambda p(t),\;\lambda>0$ ，即 $g(t),p(t)$ 的波形相同，仅有系数的区别，且这个系数会在接收端同时放缩信号和噪声的能量，因此不会影响接收端的信噪比和差错概率。
 
 如果进行归一化，就有 $g(t)=p(t),\;\displaystyle\int_{-\infty}^{+\infty}p^2(t)\mathrm{d}t=1,\;\mathrm{SNR}=\dfrac{\mathbb{E}(x^2)}{n_0/2}$ .
 
@@ -170,7 +170,7 @@ $$
 $$
 \begin{gather*}
 x\delta(t) \longrightarrow \boxed{h(t)} \overset{t=T}{\longrightarrow} y \\
-h(t)=p(t)*p(T-t)，\quad H(f)=P(f)e^{-\mathrm{j}2\pi fT}P^*(f)=|P(f)|^2e^{-\mathrm{j}2\pi fT}
+h(t)=p(t)*p(T-t),\quad H(f)=P(f)e^{-\mathrm{j}2\pi fT}P^*(f)=|P(f)|^2e^{-\mathrm{j}2\pi fT}
 \end{gather*}
 $$
 
@@ -523,7 +523,7 @@ $$
 似乎相比于基带信号的 $\eta=\dfrac{2\log_2 M}{1+\alpha}$ ，载波的频谱效率减小了一半。
 
 !!! quote "对频谱效率 $\eta$ 折半的理解"
-    同样带宽下支持的 $R_s$ 虽然减半，但 $x_k = x_k^I + \mathrm{j}x_k^Q$ 包含 I,Q 两路符号。同样分路噪声 $\sigma^2 = \dfrac{n_0}{2}$ ，同样可靠性要求 $P_s, P_b$ 下，可同时传 I,Q两路符号，如一路 $M$ -QAM 等价两路 $\sqrt{M}$ -PAM，总的频谱效率不变。但若只用 $\cos(\cdot)$ 或 $\sin(\cdot)$ 一路，则确实会损失一半频谱效率。
+    同样带宽下支持的 $R_s$ 虽然减半，但 $x_k = x_k^I + \mathrm{j}x_k^Q$ 包含 I,Q 两路符号。同样分路噪声 $\sigma^2 = \dfrac{n_0}{2}$ ，同样可靠性要求 $P_s, P_b$ 下，可同时传 I,Q 两路符号，如一路 $M$ -QAM 等价两路 $\sqrt{M}$ -PAM，总的频谱效率不变。但若只用 $\cos(\cdot)$ 或 $\sin(\cdot)$ 一路，则确实会损失一半频谱效率。
 
 典型题型是：在升余弦滤波系统中，给定 bit 速率 $R_b$ 和带通范围 $[f_{\min},f_{\max}]$ ，求 $M,\alpha$ .
 

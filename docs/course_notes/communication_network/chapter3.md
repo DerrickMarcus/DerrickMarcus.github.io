@@ -13,7 +13,7 @@
 
 ![202508051036272](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo-image/images/202508051036272.png)
 
-类似互信息部分的讨论，我们使用条件概率 $p(y|x)$ 建模一个信道：
+类似互信息部分的讨论，我们使用条件概率 $p(y\mid x)$ 建模一个信道，在输入为 $x$ 的情况下观测 $y$ 值出现的概率：
 
 $$
 x_k \longrightarrow \boxed{p(y\mid x)} \longrightarrow y_k
@@ -78,7 +78,7 @@ $$
 
 无论发送的是 $A$ 还是 $-A$ ， $y$ 都分布于整个实轴。因此对于接收到的任意 $y$ ，极有可能是发送 $A$ 导致的，也有可能是发送 $-A$ 导致的，我们无法绝对准确地判断发送电平到底是哪一个。因此我们需要寻找一种判决准则，对接收电平强行判决其发送电平，并使得判决尽可能准确。
 
-根据贝叶斯决策理论，我们**执果索因**。 $y$ 是已知的，是观测值， $x$ 是未知的，是随机变量。条件于观测值 $y$ ，根据最大后验概率准则 MAP：
+根据贝叶斯决策理论，我们**执果索因**。 $y$ 是已知的，是观测值， $x$ 是未知的，是随机变量。条件于观测值 $y$ ，根据**最大后验概率准则 MAP**：
 
 1. 出现 $A$ 的条件概率更大，即 $\Pr(x=A\mid y)>\Pr(x=-A\mid y)$ ，则判决为 $\hat{x}=A$ .
 2. 出现 $-A$ 的条件概率更大，即 $\Pr(x=A\mid y)<\Pr(x=-A\mid y)$ ，则判决为 $\hat{x}=-A$ .
@@ -88,7 +88,7 @@ $$
 \iff p(y\mid A) \overset{\hat{x}=A}{\underset{\hat{x}=-A}{\gtrless}} p(y\mid -A)
 $$
 
-即为最大似然准则。带入得到：
+即为**最大似然准则**。带入得到：
 
 1. $y>0,\quad p(y\mid A)>p(y\mid -A)$ ，判决为 $\hat{x}=A$ .
 2. $y<0,\quad p(y\mid A)<p(y\mid -A)$ ，判决为 $\hat{x}=-A$ .
@@ -108,7 +108,9 @@ P_s&=p(A)p(y<0\mid A)+p(-A)p(y>0\mid -A) \\
 \end{align*}
 $$
 
-其中 $Q(u)=\displaystyle\int_u^{+\infty}\dfrac{1}{\sqrt{2\pi}}e^{-t^2/2}\mathrm{d}t$ 为高斯分布的“反向累积分布函数”，且是一个**减函数**。$Q(-\infty)\to1,\;Q(0)=\dfrac{1}{2},\;Q(+\infty)\to 0$ .
+其中 $Q(u)=\displaystyle\int_u^{+\infty}\dfrac{1}{\sqrt{2\pi}}e^{-t^2/2}\mathrm{d}t$ 是标准高斯分布 $\mathcal{N}(0,1)$ 的截尾误差函数。可以理解为高斯分布的“反向累积分布函数”，且是一个**减函数**：
+
+$Q(-\infty)\to1,\;Q(0)=\dfrac{1}{2},\;Q(+\infty)\to 0$ .
 
 可见，差错概率仅与发送电平到判决门限的距离、噪声方差有关。
 
@@ -203,7 +205,7 @@ $$
 对于格雷映射的编码：相邻符号对应的 bit 串只有一位不同，错到相邻电平时只会导致 1 个 bit 差错，而在信噪比较高时，噪声使得电平差错到非相邻电平的概率很小，可以忽略。因此得到**误 bit 率** $P_b\approx\dfrac{P_s}{\log_2M}$ . 注意这里是**约等于号**，因为我们忽略了差错到非相邻电平的极小概率事件。
 
 !!! tip
-    记忆口诀：一个电平符号对应 $\log_2M \geqslant 1$ bit，因此每 bit 能量小于每符号能量 $E_b\leqslant E_s$ . 传输一个电平符号的 $\log_2M$ 个 bit，即使符号判决错误，也仅仅差错了 1 个 bit，因此 $P_b<P_s$ .
+    记忆口诀：一个电平符号对应 $\log_2M \geqslant 1$ 个 bit，因此每 bit 能量小于每符号能量 $E_b\leqslant E_s$ . 传输一个电平符号的 $\log_2M$ 个 bit，即使符号判决错误，也仅仅差错了 1 个 bit，因此 $P_b<P_s$ .
 
 ## 复电平信道
 
@@ -217,7 +219,13 @@ x=x_I+\mathrm{j}x_Q \longrightarrow & \oplus & \longrightarrow y=x+z=(x_I+z_I)+\
 \end{matrix}
 $$
 
-复高斯噪声 $z\sim\mathcal{CN}(0,2\sigma^2)$ ，实部虚部为独立同分布的零均值高斯随机变量 $p(z_I,z_Q)=p(z_I)p(z_Q)=\dfrac{1}{2\pi\sigma^2}e^{-(z_I^2+z_Q^2)/2\sigma^2}$ . 如果输入电平 $x=x_I+\mathrm{j}x_Q$ 的 I,Q 两路（实部和虚部）正交独立，那么接收端的 $y=x+z=(x_I+z_I)+\mathrm{j}(x_Q+z_Q)$ 的 I,Q 两路也完全独立。
+复高斯噪声 $z\sim\mathcal{CN}(0,2\sigma^2)$ ，实部虚部为独立同分布的零均值高斯随机变量，其概率分布为：
+
+$$
+p(z_I,z_Q)=p(z_I)p(z_Q)=\dfrac{1}{2\pi\sigma^2}e^{-(z_I^2+z_Q^2)/2\sigma^2}
+$$
+
+如果输入电平 $x=x_I+\mathrm{j}x_Q$ 的 I,Q 两路（实部和虚部）正交独立，那么接收端的 $y=x+z=(x_I+z_I)+\mathrm{j}(x_Q+z_Q)$ 的 I,Q 两路也完全独立。
 
 !!! note
     这里的复数只是我们进行等效数学建模的手段，现实生活中不存在复数的物理量。
@@ -232,7 +240,7 @@ $$
 
 对于 $M$ 进制复电平传输，一共 $M$ 个点，每一路有 $L=\sqrt{M}\in\mathbb{N}$ 列。因此 $M$ 的取值一般为 4 的整数次幂（因为要保证是完全平方数） $4,16,64,\cdots$ .
 
-根据 I,Q 两路的独立性，复电平传输可等价为两路独立的 $L=\sqrt{M}$ 进制实数电平传输。
+根据 I,Q 两路的独立性，复电平传输可等价为两路独立的 $L=\sqrt{M}$ 进制实电平传输。
 
 分析差错概率时，接收端 $y$ 必须实部和虚部都判别正确，才算复电平 $x$ 判决正确，因此误符号率为两路电平误符号率的逻辑并集：
 
@@ -256,7 +264,7 @@ $$
 E_s=\mathrm{E}(|x|^2)=2\times \frac{(\sqrt{M})^2-1}{3}A^2=\frac{2(M-1)}{3}A^2 ,\quad E_b=\frac{E_s}{\log_2M}
 $$
 
-注意这里是 $M$ 而不是 $\sqrt{M}$ .
+注意这里对数中的是 $M$ 而不是 $\sqrt{M}$ .
 
 ---
 

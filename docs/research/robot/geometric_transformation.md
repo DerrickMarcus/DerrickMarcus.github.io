@@ -131,11 +131,10 @@ $$
 
 由此，旋转也可以表示为坐标系 先后分别绕 自身的各个坐标轴旋转一定的角度，例如分别绕着 $x,y,z$ 轴旋转 $\gamma,\alpha,\beta$ 角度，则旋转矩阵可以表示为 $\mathbf{R}=\mathbf{R}_z(\alpha)\mathbf{R}_y(\beta)\mathbf{R}_x(\gamma)$ . 但是由于矩阵乘法不具有交换性，因此不同的旋转顺序会得到不同的结果，例如一般情况下 $\mathbf{R}_z(\alpha)\mathbf{R}_y(\beta)\mathbf{R}_x(\gamma)\neq\mathbf{R}_x(\gamma)\mathbf{R}_y(\beta)\mathbf{R}_z(\alpha)$。对旋转顺序做排列组合，共有 $3\times2\times2=12$ 种顺序：
 
-```text
-xyz, xyx, xzy, xzx,
-yxz, yxy, yzx, yzy,
-zxy, zyx, zyz, zxz
-```
+!!! success ""
+    xyz, xyx, xzy, xzx,
+    yxz, yxy, yzx, yzy,
+    zxy, zyx, zyz, zxz
 
 同时，还需要考虑旋转时的参考坐标系：
 

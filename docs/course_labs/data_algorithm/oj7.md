@@ -93,7 +93,6 @@ a_2 & \beta_2\\
 & & a_{n-1} & \beta_{n-1}\\
 & & & a_n & \beta_n
 \end{pmatrix}
-
 \begin{pmatrix}
 1 & \gamma_1 \\
 & 1 & \gamma_2\\
@@ -110,7 +109,7 @@ $$
 \beta_i=b_i-a_i\gamma_{i-1},\;\gamma_i=\frac{c_i}{\beta_i}
 $$
 
-因此只需将数组 `b[n]` 替换为 `β[n]` ，将数组 `c[n-1]` 替换为 `γ[n-1]` ，即可求出 LU 分解。
+因此只需将数组 `b[n]` 替换为 `beta[n]` ，将数组 `c[n-1]` 替换为 `gamma[n-1]` ，即可求出 LU 分解。
 
 先通过前向回代，求解 $Ly=z$ ，再通过后向回代，求解 $Ux=y$ .
 
@@ -120,7 +119,7 @@ $$
 
 LU分解如下：
 
-![img](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/2023-11-23-230031.png)
+![2023-11-23-230031](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/2023-11-23-230031.png)
 
 ![oj7_solution1](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/oj7_solution1.png)
 
@@ -128,7 +127,7 @@ LU分解如下：
 
 ![oj7_solution3](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/oj7_solution3.png)
 
-上述的方法参见教程：[五对角追赶发求解线性方程组](https://blog.csdn.net/wxkhturfun/article/details/125023717)。
+上述的方法参见教程：[五对角追赶法求解线性方程组](https://blog.csdn.net/wxkhturfun/article/details/125023717)。
 
 ## Code
 

@@ -1,7 +1,7 @@
-# Gazebo Classic
+# Gazebo
 
 !!! warning
-    本文适用于 Gazebo Classic，搭配 ROS1 版本。新版 Gazebo 即 gz 请参考 <https://gazebosim.org/>
+    本文适用于 Gazebo Classic，搭配 ROS1 版本。新版 Gazebo(gz) 请参考 <https://gazebosim.org/>.
 
 Gazebo 使用 `.world` 扩展名来表示仿真场景的配置文件， `.world` 文件实际上是 XML 格式的文件，只不过它使用的是 SDF 格式进行描述。
 

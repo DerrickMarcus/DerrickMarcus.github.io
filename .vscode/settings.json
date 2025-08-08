@@ -12,6 +12,4 @@
         "tag:yaml.org,2002:python/object/apply:pymdownx.slugs.slugify mapping",
         "tag:yaml.org,2002:python/name:pymdownx.arithmatex.fence_mathjax_format"
     ],
-    "python-envs.pythonProjects": [],
-    "markdown.validate.enabled": true
 }

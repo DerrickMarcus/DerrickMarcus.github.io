@@ -58,7 +58,7 @@ Memory: 20000KB.
 
 ## Code
 
-动态规划：（未成功，最后两个测试点超时）
+动态规划：（未成功，最后两个测试点超时）。
 
 ```cpp
 #include <cstdio>
@@ -146,7 +146,7 @@ int main(int argc, const char* argv[])
 
 ```
 
-DFS：（未成功，几乎所有点超时）
+DFS：（未成功，几乎所有点超时）。
 
 ```cpp
 #include <cstdio>
@@ -248,7 +248,7 @@ int main(int argc, const char* argv[])
 
 ```
 
-复杂版蒙特卡洛法，未成功（6、7、9、10难通过）
+复杂版蒙特卡洛法，未成功（6、7、9、10难通过）。
 
 ```cpp
 #include <cstdio>
@@ -332,7 +332,7 @@ int main(int argc, const char* argv[])
 
 ```
 
-简单版蒙特卡洛，未成功（6、7、9、10未通过）
+简单版蒙特卡洛，未成功（6、7、9、10未通过）。
 
 ```cpp
 #include <cstdio>
@@ -431,7 +431,7 @@ int main(int argc, const char* argv[])
 
 ```
 
-递归算法，成功，时间性能较好：（从终点往起点找能通过，从起点往终点找10会超时）
+递归算法，成功，时间性能较好：（但是需要从终点往起点找能通过，因为从起点往终点找会超时）。
 
 ```cpp
 #include <cstdio>
