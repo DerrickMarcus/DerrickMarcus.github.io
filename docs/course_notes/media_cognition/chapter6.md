@@ -1,6 +1,6 @@
 # 6 RNN 循环神经网络
 
-[Recurrent neural network - Wikipedia](https://en.wikipedia.org/wiki/Recurrent_neural_network)
+See the definition and introduction on Wikipedia: [Recurrent neural network - Wikipedia](https://en.wikipedia.org/wiki/Recurrent_neural_network)
 
 ## 6.1 Sequence Modeling
 
@@ -105,7 +105,7 @@ $$
 
 ### 6.3.1 LSTM
 
-[Long short-term memory - Wikipedia](https://en.wikipedia.org/wiki/Long_short-term_memory)
+See the definition and introduction on Wikipedia: [Long short-term memory - Wikipedia](https://en.wikipedia.org/wiki/Long_short-term_memory)
 
 关键结构：3个门、2个状态。
 
@@ -133,7 +133,7 @@ $$
 
 ### 6.3.2 GRU
 
-[Gated recurrent unit - Wikipedia](https://en.wikipedia.org/wiki/Gated_recurrent_unit)
+See the definition and introduction on Wikipedia: [Gated recurrent unit - Wikipedia](https://en.wikipedia.org/wiki/Gated_recurrent_unit)
 
 门控循环单元 GRU (Gated Recurrent Unit)。
 

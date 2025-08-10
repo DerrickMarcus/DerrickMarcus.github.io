@@ -36,7 +36,7 @@ X_W \\ Y_W \\ Z_W \\ 1
 \end{pmatrix}
 $$
 
-通常也把 ${}^C_W\mathbf{T}=[\mathbf{R}\;|\;\mathbf{t}]\in\mathbb{R}^{3\times 4}$ 称为外参矩阵，后续会进一步介绍。
+通常也把 ${}^C_W\mathbf{T}=[\mathbf{R}\mid\mathbf{t}]\in\mathbb{R}^{3\times 4}$ 称为外参矩阵，后续会进一步介绍。
 
 ## Camera to Image
 
@@ -122,7 +122,7 @@ $$
 
 ## Extrinsics
 
-前文提到的 `World -> Camera` 的变换中的旋转矩阵和平移向量就是相机的**外参 Extrinsinc**： $[\mathbf{R}\;|\;\mathbf{t}]\in \mathbb{R}^{3\times 4}$ . 外参描述的是相机和外部世界的坐标变换关系，因此 外参是不断改变的，每一张照片的外参都不同。
+前文提到的 `World -> Camera` 的变换中的旋转矩阵和平移向量就是相机的**外参 Extrinsinc**： $[\mathbf{R}\mid\mathbf{t}]\in \mathbb{R}^{3\times 4}$ . 外参描述的是相机和外部世界的坐标变换关系，因此 外参是不断改变的，每一张照片的外参都不同。
 
 已知相机的内参和外参，就可以写出 `World -> Pixel` 的变换关系：
 
@@ -469,7 +469,7 @@ u \\ v \\ 1
 \mathbf{K}\left[\mathbf{R}\begin{pmatrix}
 X_W \\ Y_W \\ Z_W
 \end{pmatrix}+\mathbf{t}\right]=
-\mathbf{K}\;(\mathbf{R}\;|\;\mathbf{t})\begin{pmatrix}
+\mathbf{K}\;(\mathbf{R}\mid\mathbf{t})\begin{pmatrix}
 X_W \\ Y_W \\ Z_W \\ 1
 \end{pmatrix}=
 \mathbf{A}\begin{pmatrix}
@@ -477,7 +477,7 @@ X_W \\ Y_W \\ Z_W \\ 1
 \end{pmatrix}
 $$
 
-记 $\mathbf{A}=\mathbf{K}\;(\mathbf{R}\;|\;\mathbf{t})\in\mathbb{R}^{3\times 4}$ . 消去尺度因子 $Z_C$ ，得到：
+记 $\mathbf{A}=\mathbf{K}\;(\mathbf{R}\mid\mathbf{t})\in\mathbb{R}^{3\times 4}$ . 消去尺度因子 $Z_C$ ，得到：
 
 $$
 u=\frac{a_{11}X_W+a_{12}Y_W+a_{13}Z_W+a_{14}}{a_{31}X_W+a_{32}Y_W+a_{33}Z_W+a_{34}} ,\quad

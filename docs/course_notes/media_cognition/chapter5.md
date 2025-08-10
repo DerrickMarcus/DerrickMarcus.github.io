@@ -1,6 +1,6 @@
 # 5 CNN 卷积神经网络
 
-[Convolutional neural network - Wikipedia](https://en.wikipedia.org/wiki/Convolutional_neural_network)
+See the definition and introduction on Wikipedia: [Convolutional neural network - Wikipedia](https://en.wikipedia.org/wiki/Convolutional_neural_network)
 
 ## 5.1 Basic Unit
 

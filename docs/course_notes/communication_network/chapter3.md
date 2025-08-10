@@ -238,6 +238,8 @@ $$
 \mathcal{A}=\{x_I+\mathrm{j}x_Q|x_i,x_Q\in\{-(L-1)A,\cdots,-A,A,\cdots,(L-1)A\}\}
 $$
 
+![202508091511533](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo-image/images/202508091511533.png)
+
 对于 $M$ 进制复电平传输，一共 $M$ 个点，每一路有 $L=\sqrt{M}\in\mathbb{N}$ 列。因此 $M$ 的取值一般为 4 的整数次幂（因为要保证是完全平方数） $4,16,64,\cdots$ .
 
 根据 I,Q 两路的独立性，复电平传输可等价为两路独立的 $L=\sqrt{M}$ 进制实电平传输。
@@ -273,6 +275,8 @@ $$
 $$
 \mathcal{A}=\left\{A,Ae^{\mathrm{j}\theta},Ae^{\mathrm{j}2\theta},\cdots, Ae^{\mathrm{j}(M-1)\theta}\right\},\quad \theta=\frac{2\pi}{M}
 $$
+
+![202508091512321](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo-image/images/202508091512321.png)
 
 所有电平模长相等，辐角相差 $\dfrac{2\pi}{M}$ ，判决门限为相邻电平的**角平分线**，故复电平和判决门限的夹角为 $\dfrac{\pi}{M}$ .
 

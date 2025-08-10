@@ -2,7 +2,7 @@
 site_name: Blog of Derrick Marcus
 site_url: https://blog.yanxuchen.com
 site_author: Yanxu Chen
-site_description: Personal website.
+site_description: This is the website of Derrick Marcus for recording learning and blogs.
 
 # Repository
 repo_url: https://github.com/DerrickMarcus/DerrickMarcus.github.io
@@ -69,7 +69,7 @@ theme:
     - navigation.tracking # 滑动对应的标题时更新地址栏
     - navigation.top # 显示回到最上方的按钮
     - navigation.tabs # 一级目录融合至顶栏，只显示二级目录
-    - navigation.tabs.sticky
+    # - navigation.tabs.sticky
     - navigation.footer
 
     - content.code.annotate
@@ -85,8 +85,7 @@ theme:
     # - toc.integrate # 右侧toc集成到左侧
     - toc.follow # 右侧toc随页面而滚动
 
-draft_docs: |
-  drafts/**
+draft_docs: "drafts/**"
 
 # Plugins
 plugins:
@@ -118,9 +117,6 @@ plugins:
       repository: DerrickMarcus/DerrickMarcus.github.io
       branch: main
       token: !ENV [GITHUB_TOKEN, ""]
-  # - git-authors:
-  #     show_contribution: true
-  #     show_line_count: true
   - minify:
       minify_html: true
       minify_js: true
@@ -131,23 +127,8 @@ plugins:
   - tags
   - glightbox:
       width: 80%
-  # - statistics:
-  #     words_per_minute: 200
-  #     page_template: "page_template/page_statistics.html"
-  # - mkdocs-breadcrumbs-plugin:
-  #     delimiter: " > " # separator between sections
-  #     log_level: "WARNING" # "DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"
-  #     exclude_paths: # avoid generating index.md
-  #       - "docs/assets"
-  #       - "docs/javascripts"
-  #       - "docs/stylesheets"
-  #       - "docs/page_template"
-  #       - "docs/blog/posts"
-  #     additional_index_folders:
-  #       - temp_dir
-  #     generate_home_index: false
-  #     use_page_titles: true # use page title instead of path in breadcrumbs
-  #     home_text: "Home"
+      height: auto
+      loop: true
 
 # Additional configuration
 extra:
@@ -265,10 +246,10 @@ extra_css:
 
 # Page tree
 nav:
-  - "Home": index.md
-  - "Blog":
+  - Home: index.md
+  - Blog:
       - Blog: blog/index.md
-  - "Course Notes":
+  - Course Notes:
       - Course Notes: course_notes/index.md
       - Data and Algorithm:
           - Data and Algorithm: course_notes/data_algorithm/index.md
@@ -346,7 +327,7 @@ nav:
           - 13 File Systems(1): course_notes/operating_system/chapter13.md
           - 14 File Systems(2): course_notes/operating_system/chapter14.md
           - 15 Course Summary: course_notes/operating_system/chapter15.md
-  - "Course Labs":
+  - Course Labs:
       - Course Labs: course_labs/index.md
       - Data and Algorithm:
           - Data and Algorithm: course_labs/data_algorithm/index.md
@@ -373,33 +354,32 @@ nav:
           - Lab-9 阈值分割&伪彩色增强: course_labs/digital_image/lab9.md
           - Lab-12 图像复原: course_labs/digital_image/lab12.md
           - Lab-13 图像仿射变换: course_labs/digital_image/lab13.md
-  - "Research":
+  - Research:
       - Research: research/index.md
-      - "Robot":
+      - Robot:
           - Robot: research/robot/index.md
           - ROS basic: research/robot/ros_basic.md
           - Gazebo: research/robot/gazebo.md
           - Catkin Tool: research/robot/catkin.md
           - Geometric Transformation: research/robot/geometric_transformation.md
           - Camera Calibration: research/robot/camera_calibration.md
+          - LIO-SAM: research/robot/liosam.md
+          - Kd-Tree: research/robot/kdtree.md
+          - Gaussian Splatting: research/robot/gaussian_splatting.md
           - SLAM:
               - SLAM: research/robot/slam/index.md
               - Graph Optimization: research/robot/slam/graph_optimization.md
               - Kalman Filter: research/robot/slam/kalman_filter.md
-          - LIO-SAM: research/robot/liosam.md
-          - Kd-Tree: research/robot/kdtree.md
-          - Gaussian Splatting: research/robot/gaussian_splatting.md
-  - "Computer Science Basic":
-      - Computer Science Basic: computer_basic/index.md
-      - "Environment Configuration":
-          - Environment Configuration: computer_basic/environment/index.md
-          - Python: computer_basic/environment/python.md
-          - JavaScript: computer_basic/environment/javascript.md
-          - Ubuntu: computer_basic/environment/ubuntu.md
-      - Latex Math: computer_basic/latex_math.md
-  - "Else":
+  - Development Tools:
+      - Development Tools: dev_tools/index.md
+      - Environment Configuration:
+          - Environment Configuration: dev_tools/environment/index.md
+          - Ubuntu: dev_tools/environment/ubuntu.md
+          - Python: dev_tools/environment/python.md
+          - JavaScript: dev_tools/environment/javascript.md
+  - Else:
       - Else: else/index.md
-      - "Railway":
+      - Railway:
           - Railway: else/railway/index.md
           - CR (Fuxing Train): else/railway/cr.md
           - CRH (Hexie Train): else/railway/crh.md
@@ -409,9 +389,9 @@ nav:
           - Train Number: else/railway/train_number.md
           - Journey Record: else/railway/journey.md
           - Diary: else/railway/diary.md
-      - "Readings":
+      - Readings:
           - Readings: else/readings/index.md
           - 你是勇士: else/readings/read1.md
           - 一组诗: else/readings/read2.md
-  - "About":
+  - About:
       - About: about/index.md

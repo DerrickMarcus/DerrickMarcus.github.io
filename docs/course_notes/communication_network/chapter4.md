@@ -277,7 +277,7 @@ $$
 \mathrm{SNR}=\frac{E_s}{n_0/2}\int_{-\infty}^{+\infty}p^2(t)\mathrm{d}t
 $$
 
-## 矩形包络载波传输
+## 矩形包络载波传输 {#course_notes/communication_network/section-8}
 
 之前讨论的基带传输，其通信信号在 0 频率附近，带限于 $W$ （工程上常在kHz~MHz数量级）。
 
@@ -609,3 +609,152 @@ $$
 ![202508061450144](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo-image/images/202508061450144.png)
 
 ![202508061451629](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo-image/images/202508061451629.png)
+
+## 附录
+
+为了应付做题和考试，让我们研究一下**单路载波波形传输**的最一般情况：
+
+$$
+\begin{matrix}
+& & z(t) & & \\
+& & \downarrow & & \\
+x_k \longrightarrow \boxed{p(t)} \longrightarrow & \otimes & \longrightarrow \oplus \longrightarrow & \otimes & \longrightarrow \boxed{g(t)=\lambda p(-t)} \overset{t=kT}{\longrightarrow} y_k \\
+& \uparrow & & \uparrow & \\
+& \beta \cos(2\pi f_c t) & & \gamma\cos(2\pi f_c t) & \\
+\end{matrix}
+$$
+
+高斯白噪声 $z(t)\sim\mathcal{N}(0,\dfrac{n_0}{2})$ .
+
+其中，基带成形脉冲 $p(t)$ 可以是矩形波（对应矩形包络载波传输），也可以是带限波，例如升余弦系统的成形波，时域无限频域有限（对应带限载波传输），接收端最佳接收**匹配滤波** $g(t)=\lambda p(-t),\; \lambda>0$ 和成形波 $p(-t)$ 波形相同，仅有一个正系数的区别。
+
+上述 4 个波形 $p(t),\;g(t),\;\beta\cos(2\pi f_c t),\;\gamma\cos(2\pi f_c t)$ 的能量或者系数均不满足归一化，足以应对考试出现的各种情况。
+
+假设 $p(t)$ 的自相关函数为 $h(t)=p(t)*p(-t)$ ，功率谱为 $H(f)=\mathcal{F}[h(t)]=|P(f)|^2=S_P(f)$ ，则成形脉冲的能量为：
+
+$$
+\begin{align*}
+\int_{-\infty}^{+\infty} p^2(t)\mathrm{d}t&=h(0)=\int_{-\infty}^{+\infty}H(f)\mathrm{d}f=\lambda_1 \\
+\int_{-\infty}^{+\infty} g^2(t)\mathrm{d}t&=\lambda_2
+\end{align*}
+$$
+
+发射端信号为 $x(t)=x\cdot p(t)\cdot\beta\cos(2\pi f_c t)$ ，其能量为：
+
+$$
+E_s=\int_{-\infty}^{+\infty}x^2(t)\mathrm{d}t =\mathrm{E}(x^2)\beta^2\int_{-\infty}^{+\infty}\left[p(t)\cos(2\pi f_c t)\right]^2\mathrm{d}t
+$$
+
+接收端：
+
+$$
+\begin{align*}
+y&=\int_{-\infty}^{+\infty}[x\cdot p(t)\cdot \beta\cos(2\pi f_c t)+z(t)]\cdot g(t)\cdot \gamma\cos(2\pi f_c t)\mathrm{d}t \\
+&=x\int_{-\infty}^{+\infty}p(t)g(t)\cdot\beta\gamma\cos^2(2\pi f_c t)\mathrm{d}t+\int_{-\infty}^{+\infty}z(t)g(t)\cdot\gamma\cos(2\pi f_c t)\mathrm{d}t \\
+&=x\int_{-\infty}^{+\infty}p(t)g(t)\cdot\beta\gamma\cos^2(2\pi f_c t)\mathrm{d}t+z
+\end{align*}
+$$
+
+等效的电平噪声 $z$ 满足：
+
+$$
+\mathbb{E}(z^2)=\frac{n_0}{2}\int_{-\infty}^{+\infty}\left( g(t) \gamma\cos(2\pi f_c t) \right)^2 \mathrm{d}t
+$$
+
+（1） $p(t),g(t)$ 为**时域有限**的矩形波，在区间 $\mathbb{I}\{0\leqslant t<T\}$ 内，且 $f_cT\in\mathbb{N}^+$ ，我们把积分上下限变到 $[0,T]$ ，则该区间内 $p(t),g(t)$ 就是常数了，可以直接分离出来，积分很容易计算：
+
+$$
+\begin{align*}
+E_s &=\mathbb{E}(x^2)\beta^2\int_{-\infty}^{+\infty}\left[p(t)\cos(2\pi f_c t)\right]^2\mathrm{d}t \\
+&=\mathbb{E}(x^2)\beta^2 \int_{0}^{T}\left[p(t)\cos(2\pi f_c t)\right]^2\mathrm{d}t\\
+&=\mathbb{E}(x^2)\beta^2 \lambda_1 \int_{0}^{T}\cos^2(2\pi f_c t)\mathrm{d}t \\
+&=\mathbb{E}(x^2)\left(\lambda_1\beta^2\frac{T}{2}\right)
+\end{align*}
+$$
+
+同理可以得到：
+
+$$
+\mathbb{E}(z^2)=\frac{n_0}{2}\left( \lambda_2\gamma^2\frac{T}{2} \right),\quad z\sim\mathcal{N}\left(0,\frac{n_0}{2}\cdot \lambda_2\gamma^2\frac{T}{2}\right)
+$$
+
+等效电平信道：
+
+$$
+y=x\left(\sqrt{\lambda_1 \lambda_2}\beta\gamma \frac{T}{2}\right)+z
+$$
+
+接收端波形能量为：
+
+$$
+\mathbb{E}(x^2)\left(\int_{-\infty}^{+\infty}\left( p(t)g(t)\beta \gamma\cos^2(2\pi f_c t) \right)^2 \mathrm{d}t \right)^2=\mathbb{E}(x^2)\left(\lambda_1 \lambda_2 \beta^2 \gamma^2 \frac{T^2}{4}\right)
+$$
+
+因此接收端的信噪比为：
+
+$$
+\mathrm{SNR}=\frac{\mathbb{E}(x^2)\left(\lambda_1 \lambda_2 \beta^2 \gamma^2 \dfrac{T^2}{4}\right)}{\dfrac{n_0}{2}\cdot \lambda_2\gamma^2\dfrac{T}{2}}=\frac{\mathbb{E}(x^2)}{n_0/2}\cdot \left(\lambda_1 \beta^2 \frac{T}{2}\right)
+$$
+
+假设发送符号 $x$ 均匀分布，间距为 $2A$ ，则接收端的电平到判决门限的距离、等效噪声标准差变为：
+
+$$
+A'=A\cdot\left(\sqrt{\lambda_1 \lambda_2}\beta\gamma \frac{T}{2}\right),\quad \sigma'=\sqrt{\frac{n_0}{2}\cdot \lambda_2\gamma^2\frac{T}{2}}
+$$
+
+其实就相当于先对 $p(t),g(t)=\lambda p(-t)$ 进行归一化，然后将多出来的系数加到载波上 $\beta\to \beta',\;\gamma\to\gamma'$ . 之后的分析与前面的讨论[矩形包络载波传输](./chapter4.md#course_notes/communication_network/section-8)相同。
+
+---
+
+（2）$p(t),g(t)$ 为**时域无限、频域有限**的波，带限为 $|f|\leqslant W$ ，且载频 $f_c>W$ ，利用载波的频谱搬移特性，我们仍然可以求解积分：
+
+$$
+\begin{align*}
+E_s &=\mathbb{E}(x^2)\beta^2\int_{-\infty}^{+\infty}\left[p(t)\cos(2\pi f_c t)\right]^2\mathrm{d}t \\
+&=\mathbb{E}(x^2)\beta^2\int_{-\infty}^{+\infty}p^2(t)\cos^2(2\pi f_c t)\mathrm{d}t \\
+&=\mathbb{E}(x^2)\beta^2\int_{-\infty}^{+\infty}p^2(t)\frac{1+\cos(4\pi f_c t)}{2}\mathrm{d}t \\
+&=\mathbb{E}(x^2)\beta^2\int_{-\infty}^{+\infty}p^2(t)\frac{1}{2}\left(1+\frac{1}{2}e^{\mathrm{j}4\pi f_c t}+\frac{1}{2}e^{-\mathrm{j}4\pi f_c t}\right)\mathrm{d}t \\
+&=\mathbb{E}(x^2)\beta^2\left(\frac{\lambda_1}{2}+\frac{1}{2}\int_{-\infty}^{+\infty}p^2(t)e^{\mathrm{j}4\pi f_c t}\mathrm{d}t+\frac{1}{2}\int_{-\infty}^{+\infty}p^2(t)e^{-\mathrm{j}4\pi f_c t}\mathrm{d}t\right) \\
+&=\mathbb{E}(x^2)\beta^2\left(\frac{\lambda_1}{2}+\frac{1}{2}\mathcal{F}[p^2(t)](f)\big|_{f=2f_c}+\frac{1}{2}\mathcal{F}[p^2(t)](g)\big|_{f=-2f_c} \right) \\
+\end{align*}
+$$
+
+根据傅里叶变换“时域相乘，频域卷积”的性质，有 $\mathcal{F}[p^2(t)](f)=P(f)*P(f)$ . 由于 $P(f)$ 是基带频谱 $-W\sim W$ 的信号，经过卷积后 $P(f)*P(f)$ 为频谱范围 $-2W\sim 2W$ 的信号。然而我们有条件 $f_c>W \Rightarrow 2f_c>2W$ ，因此 $f=\pm 2f_c\notin [-2W,2W]$ ，不在 $P(f)*P(f)$ 频谱范围内，自然有 $\mathcal{F}[p^2(t)](2 f_c)=\mathcal{F}[p^2(t)](-2 f_c)=0$ . 因此我们得到：
+
+$$
+E_s=\mathbb{E}(x^2)\left(\frac{1}{2}\lambda_1\beta^2\right)
+$$
+
+这也就是为什么我们在设计带限载波传输方案的时候说过：
+
+> 带宽 $W$ 的理想低通对 $P^*(f)$ 无影响，或者说 $P^*(f)$ 本身就带限，相当于一个低通滤波器，也能成功滤掉 $\pm 2f_c$ 处的高频分量。
+
+同理可以得到：
+
+$$
+\mathbb{E}(z^2)=\frac{n_0}{2}\left(\frac{1}{2} \lambda_2\gamma^2 \right),\quad z\sim\mathcal{N}\left(0,\frac{n_0}{2}\cdot \frac{1}{2}\lambda_2\gamma^2\right)
+$$
+
+等效电平信道：
+
+$$
+y=x\left(\frac{1}{2}\beta\gamma \sqrt{\lambda_1 \lambda_2}\right)+z
+$$
+
+接收端波形能量为：
+
+$$
+\mathbb{E}(x^2)\left(\int_{-\infty}^{+\infty}\left( p(t)g(t)\beta \gamma\cos^2(2\pi f_c t) \right)^2 \mathrm{d}t \right)^2=\mathbb{E}(x^2)\left(\frac{1}{4}\lambda_1 \lambda_2 \beta^2 \gamma^2\right)
+$$
+
+因此接收端的信噪比为：
+
+$$
+\mathrm{SNR}=\frac{\mathbb{E}(x^2)\left(\dfrac{1}{4}\lambda_1 \lambda_2 \beta^2 \gamma^2 \right)}{\dfrac{n_0}{2}\cdot \dfrac{1}{2}\lambda_2\gamma^2}=\frac{\mathbb{E}(x^2)}{n_0/2}\cdot \left( \frac{1}{2}\lambda_1 \beta^2\right)
+$$
+
+假设发送符号 $x$ 均匀分布，间距为 $2A$ ，则接收端的电平到判决门限的距离、等效噪声标准差变为：
+
+$$
+A'=A\cdot\left(\frac{1}{2}\beta\gamma \sqrt{\lambda_1 \lambda_2}\right),\quad \sigma'=\sqrt{\frac{n_0}{2}\cdot\frac{1}{2} \lambda_2\gamma^2}
+$$
