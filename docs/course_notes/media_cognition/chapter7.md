@@ -243,7 +243,7 @@ $$
 
 **BERT**: Bidirectional Encoder Representations from Transformers (Google)
 
-架构：双向 Transformer，可以同时学习文本中的前后文信息。
+架构：双向 Transformer（双向 Encoder），可以同时学习文本中的前后文信息。
 
 预训练任务：遮挡语言模型(Masked Language Modeling)和下一句预测(Next Sentence Prediction)。前者通过在输入文本中随机遮挡一些词汇并预测被遮挡的词，帮助模型学会理解双向上下文（完形填空）；后者则让模型学会判断两个句子是否是连续的。
 
@@ -255,7 +255,7 @@ $$
 
 **GPT**: Generative Pre-trained Transformer (OpenAI)
 
-架构：从左到右的单向 Transformer 模型，主要关注当前词的左侧上下文。
+架构：从左到右的单向 Transformer 模型（Decoder-Only），主要关注当前词的左侧上下文。
 
 预训练任务：语言预测建模，从左到右的语言模型任务进行预训练。
 
@@ -301,7 +301,7 @@ SAM: Segment anything.
 
 <br>
 
-Tokenization：
+**Tokenization**：
 
 1. BPE(Byte Pair Encoder) 分词
     - 合并：从一组基本符号（例如字母表）开始，迭代地寻找语料库中的两个相邻词元，并将它们替换为新的词元。

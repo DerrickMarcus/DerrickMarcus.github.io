@@ -37,7 +37,7 @@ npm -v
 E:\Program Files\nodejs
 ```
 
-新建两个文件夹： node_global 和 node_cache
+新建两个目录： `node_global/` 和 `node_cache/` .
 
 创建完成后，以管理员身份打开cmd，输入下面两个命令：
 
@@ -101,7 +101,7 @@ cnpm -v
 
 ## 5 Configure VS Code
 
-下载插件 Code Runner（By Jun Han）。
+下载插件 Code Runner（Jun Han）。
 
 打开用户设置 Open User Settings(JSON)，添加配置：
 
@@ -111,4 +111,4 @@ cnpm -v
     },
 ```
 
-点击编辑器右上角的播放按钮，即可直接运行 javascript 文件。
+点击编辑器右上角的三角形播放按钮，即可直接运行 javascript 文件。

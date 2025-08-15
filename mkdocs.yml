@@ -359,6 +359,7 @@ nav:
       - Robot:
           - Robot: research/robot/index.md
           - ROS basic: research/robot/ros_basic.md
+          - ROS 2: research/robot/ros2.md
           - Gazebo: research/robot/gazebo.md
           - Catkin Tool: research/robot/catkin.md
           - Geometric Transformation: research/robot/geometric_transformation.md

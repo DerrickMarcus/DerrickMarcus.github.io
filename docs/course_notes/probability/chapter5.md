@@ -32,7 +32,7 @@ $$
 \end{gather*}
 $$
 
-> 关于多元分布的特征函数，参考 [Chapter 3 Multivariate Random Variable 多元随机变量](./chapter3.md)
+> 关于多元分布的特征函数，参考 [Chapter 3 Multivariate Random Variable 多元随机变量](./chapter3.md)。
 
 高斯向量 $\boldsymbol{X}=\left(X_1,X_2\cdots,X_n\right)^T$ 的特征函数（概率密度函数的傅里叶反变换）：
 

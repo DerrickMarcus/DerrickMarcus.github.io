@@ -402,7 +402,10 @@ Fisher 线性判别，即通过给定的训练数据，确定投影方向 $\bold
 
 注：如果是多分类问题，则 $\boldsymbol{S}_b=\displaystyle\sum_i N_i(\boldsymbol{\mu}_i-\boldsymbol{\mu})(\boldsymbol{\mu}_i-\boldsymbol{\mu})^T$ .
 
-定义**准则函数**为 $\displaystyle\max_{\boldsymbol{w}}J(\boldsymbol{w})=\dfrac{\boldsymbol{w}^T\boldsymbol{S}_b\boldsymbol{w}}{{\boldsymbol{w}^T\boldsymbol{S}_\omega}\boldsymbol{w}}$ ，我们期望求它的**最大值**。拉格朗日函数 $L(\boldsymbol{w},\lambda)=\boldsymbol{w}^T\boldsymbol{S}_b\boldsymbol{w}-\lambda(\boldsymbol{w}^T\boldsymbol{S}_\omega\boldsymbol{w}-1)$ .
+定义**准则函数**为 $\displaystyle\max_{\boldsymbol{w}}J(\boldsymbol{w})=\dfrac{\boldsymbol{w}^T\boldsymbol{S}_b\boldsymbol{w}}{{\boldsymbol{w}^T\boldsymbol{S}_\omega}\boldsymbol{w}}$ ，我们期望求它的**最大值**。拉格朗日函数为：
+
+$$L(\boldsymbol{w},\lambda)=\boldsymbol{w}^T\boldsymbol{S}_b\boldsymbol{w}-\lambda(\boldsymbol{w}^T\boldsymbol{S}_\omega\boldsymbol{w}-1)
+$$
 
 通过推导得到**投影向量**为 $\boldsymbol{w}=\boldsymbol{S}_\omega^{-1}(\boldsymbol{\mu}_1-\boldsymbol{\mu}_2)$ .
 
@@ -570,7 +573,7 @@ $$
 \end{align*}
 $$
 
-（3）高斯核函数： $K(\boldsymbol{x}_i,\boldsymbol{x}_j)=\exp\left(-\dfrac{\|\boldsymbol{x}_i-\boldsymbol{x}_j\|^2}{2\sigma^2}\right)$ ， $\sigma$ 为高斯核的宽度。
+（3）高斯核函数： $K(\boldsymbol{x}_i,\boldsymbol{x}_j)=\exp\left(-\dfrac{\|\boldsymbol{x}_i-\boldsymbol{x}_j\|^2}{2\sigma^2}\right)$ ，其中 $\sigma$ 为高斯核的宽度。
 
 （4）Sigmoid 核函数： $K(\boldsymbol{x}_i,\boldsymbol{x}_j)=\tanh(\beta_0 \boldsymbol{x}_i^T\boldsymbol{x}_j+\beta_1)$ ，其中 $\beta_0,\beta_1$ 为可调参数。
 

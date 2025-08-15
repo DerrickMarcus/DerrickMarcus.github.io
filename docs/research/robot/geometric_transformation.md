@@ -1,11 +1,11 @@
 # Geometric Transformation 几何变换
 
 !!! abstract
-    主要讨论 3D 坐标变换中的旋转矩阵和平移向量，以 激光雷达 LiDAR 到相机 Camera 的姿态变换 为例。
+    主要讨论 3D 坐标变换中的旋转矩阵和平移向量，以激光雷达 LiDAR 到相机 Camera 的姿态变换为例。
 
 ## 3D 位姿变换
 
-描述一个坐标系相对于另一个坐标系的位置和姿态（统称 位姿），分别使用平移向量和旋转矩阵描述。以坐标系 $A$ 为参考坐标系，坐标系 $B$ 的位姿用 旋转矩阵和平移矩阵 描述为：
+描述一个坐标系相对于另一个坐标系的位置和姿态（统称 位姿），分别使用平移向量和旋转矩阵描述。以坐标系 $A$ 为参考坐标系，坐标系 $B$ 的位姿用旋转矩阵和平移矩阵描述为：
 
 $$
 {}^A_B\mathbf{R}=\begin{pmatrix}
@@ -22,7 +22,7 @@ $$
 
 其中 ${}^A_B\mathbf{R}$ 为**正交矩阵**，满足 ${}^A_B\mathbf{R}^T={}^A_B\mathbf{R}^{-1}={}^B_A\mathbf{R}$ .
 
-从 $B$ 坐标系变换到 $A$ 坐标系的 齐次坐标变换矩阵  为：
+从 $B$ 坐标系变换到 $A$ 坐标系的齐次坐标变换矩阵  为：
 
 $$
 {}^A_B\mathbf{T}=\begin{pmatrix}
@@ -43,7 +43,7 @@ $$
 
 ---
 
-MATLAB 代码实现 激光雷达和相机 坐标变换可视化：
+MATLAB 代码实现激光雷达和相机坐标变换可视化：
 
 ```matlab
 % LiDAR --> Camera
@@ -129,7 +129,7 @@ $$
 \end{pmatrix}
 $$
 
-由此，旋转也可以表示为坐标系 先后分别绕 自身的各个坐标轴旋转一定的角度，例如分别绕着 $x,y,z$ 轴旋转 $\gamma,\alpha,\beta$ 角度，则旋转矩阵可以表示为 $\mathbf{R}=\mathbf{R}_z(\alpha)\mathbf{R}_y(\beta)\mathbf{R}_x(\gamma)$ . 但是由于矩阵乘法不具有交换性，因此不同的旋转顺序会得到不同的结果，例如一般情况下 $\mathbf{R}_z(\alpha)\mathbf{R}_y(\beta)\mathbf{R}_x(\gamma)\neq\mathbf{R}_x(\gamma)\mathbf{R}_y(\beta)\mathbf{R}_z(\alpha)$。对旋转顺序做排列组合，共有 $3\times2\times2=12$ 种顺序：
+由此，旋转也可以表示为坐标系 先后分别绕自身的各个坐标轴旋转一定的角度，例如分别绕着 $x,y,z$ 轴旋转 $\gamma,\alpha,\beta$ 角度，则旋转矩阵可以表示为 $\mathbf{R}=\mathbf{R}_z(\alpha)\mathbf{R}_y(\beta)\mathbf{R}_x(\gamma)$ . 但是由于矩阵乘法不具有交换性，因此不同的旋转顺序会得到不同的结果，例如一般情况下 $\mathbf{R}_z(\alpha)\mathbf{R}_y(\beta)\mathbf{R}_x(\gamma)\neq\mathbf{R}_x(\gamma)\mathbf{R}_y(\beta)\mathbf{R}_z(\alpha)$。对旋转顺序做排列组合，共有 $3\times2\times2=12$ 种顺序：
 
 !!! success ""
     xyz, xyx, xzy, xzx,
@@ -170,7 +170,7 @@ $$
 
 四元数的由1个实部和3个虚部组成 $q=w+x\cdot\vec{i}+y\cdot\vec{j}+z\cdot\vec{k}$ ，满足 $w^2+x^2+y^2+z^2=1$ .
 
-四元数 转 旋转矩阵：
+四元数转旋转矩阵：
 
 $$
 \mathbf{R} = \begin{pmatrix}
@@ -180,7 +180,7 @@ $$
 \end{pmatrix}
 $$
 
-旋转矩阵 转 四元数：
+旋转矩阵转四元数：
 
 $$
 \begin{align*}
@@ -207,7 +207,7 @@ $$
 \end{pmatrix}
 $$
 
-欧拉角 转 四元数：
+欧拉角转四元数：
 
 $$
 \begin{pmatrix}
