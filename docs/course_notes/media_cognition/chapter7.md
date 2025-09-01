@@ -81,7 +81,7 @@ $$
 \end{gather*}
 $$
 
-上面的3个权重矩阵 $\boldsymbol{W}^{(q)},\boldsymbol{W}^{(k)},\boldsymbol{W}^{(v)}$ 即为最后 Transformer 架构所需要训练的可学习参数。并且通过权重矩阵 $\boldsymbol{W}$ 所有输入数据可以实现实现**参数共享** 。
+上面的 3 个权重矩阵 $\boldsymbol{W}^{(q)},\boldsymbol{W}^{(k)},\boldsymbol{W}^{(v)}$ 即为最后 Transformer 架构所需要训练的可学习参数。并且通过权重矩阵 $\boldsymbol{W}$ 所有输入数据可以实现实现**参数共享** 。
 
 计算注意力分数 $\boldsymbol{S}=\boldsymbol{Q}\boldsymbol{K}^T \in \mathbb{R}^{N\times N}$ .
 
@@ -89,7 +89,7 @@ $$
 
 最后把注意力系数作用在 Value 上： $\boldsymbol{Y}=\boldsymbol{A}\boldsymbol{V}=\text{softmax}\left(\dfrac{\boldsymbol{Q}\boldsymbol{K}^T}{\sqrt{d}}\right)\boldsymbol{V} ,\;\boldsymbol{Y}\in\mathbb{R}^{N\times d}$ ，相当于返回搜索结果。
 
-输出矩阵 $\boldsymbol{Y}$ 的每一行 $\boldsymbol{y}_i^T$ 可以看成是 值矩阵 $\boldsymbol{V}$ 中各个行向量 $\boldsymbol{v}_j^T,\;j=1,\cdots N$ 以 注意力系数矩阵 $\boldsymbol{A}$ 中的一行为权重的线性组合。
+输出矩阵 $\boldsymbol{Y}$ 的每一行 $\boldsymbol{y}_i^T$ 可以看成是值矩阵 $\boldsymbol{V}$ 中各个行向量 $\boldsymbol{v}_j^T,\;j=1,\cdots N$ 以 注意力系数矩阵 $\boldsymbol{A}$ 中的一行为权重的线性组合。
 
 > 输出矩阵 $\boldsymbol{Y}$ 的计算复杂度为 $O(N^2d)$ .
 
@@ -109,7 +109,7 @@ $$
 
 ### 7.2.2 Multi-head Attention
 
-上述描述的注意力层称为 注意力头 (Attention Head)，可以允许输出向量关注输入向量中与数据相关的模式。然而多数情况下，输入数据中可能存在多种不同的相关模式，例如在 NLP 中，可能要同时关注时态、词汇关系等多种信息。因此我们可以**并行**使用多个注意力头，让模型从不同角度关注输入数据的不同模式。
+上述描述的注意力层称为注意力头 (Attention Head)，可以允许输出向量关注输入向量中与数据相关的模式。然而多数情况下，输入数据中可能存在多种不同的相关模式，例如在 NLP 中，可能要同时关注时态、词汇关系等多种信息。因此我们可以**并行**使用多个注意力头，让模型从不同角度关注输入数据的不同模式。
 
 多头注意力机制，使用多个独立的注意力头，每个头都有自己独立的 Q, K, V 矩阵。这些头的结构完全相同，但参数是独立的。
 
@@ -139,11 +139,11 @@ MLA (Multi-Head Latent Attention)：Deepseek-V2 提出的一种注意力架构�
 
 ## 7.3 Transformer
 
-Transformer 是完全由 注意力机制 构成的深度神经网络。注意力机制不仅能够捕获局部信息，还能建模长距离的上下文关系，获取更抽象更具全局性的特征。
+Transformer 是完全由注意力机制构成的深度神经网络。注意力机制不仅能够捕获局部信息，还能建模长距离的上下文关系，获取更抽象更具全局性的特征。
 
-Transformer 最初为 序列建模 而设计，应用于 NLP 领域。此外在 CV 领域也广泛应用，例如 Vision Transformer (ViT) 将图像划分为固定大小的 patch，将其序列化，用 Transformer 进行特征提取，替代 CNN 完成图像分类任务。
+Transformer 最初为序列建模 而设计，应用于 NLP 领域。此外在 CV 领域也广泛应用，例如 Vision Transformer (ViT) 将图像划分为固定大小的 patch，将其序列化，用 Transformer 进行特征提取，替代 CNN 完成图像分类任务。
 
-Transformer 由多个 编码器 Encoder 和 解码器 Decoder 组成。编码器和解码器都由多个相同结构的层堆叠而成，使用首尾相连的 多头注意力机制。
+Transformer 由多个编码器 Encoder 和解码器 Decoder 组成。编码器和解码器都由多个相同结构的层堆叠而成，使用首尾相连的 多头注意力机制。
 
 1. Encoder 负责对输入句子进行编码，将文本数据转换为一种抽象的表示形式，便于 Decoder 进行解码。
 2. Decoder 基于 Encoder 提供的上下文信息，逐步生成目标语言的输出文本。
@@ -162,7 +162,7 @@ Transformer 由多个 编码器 Encoder 和 解码器 Decoder 组成。编码器
 Encoder 由 $N$ 个相同结构的编码器层 Encoder Layer 组成，每个 Encoder Layer 包含2个子层：
 
 1. 多头自注意力机制层 Multi-head Self-attention
-    - 通过 多头注意力机制 和 位置编码 捕捉输入序列中各个 token 之间的依赖关系，捕捉局部和全局依赖关系。
+    - 通过多头注意力机制和位置编码捕捉输入序列中各个 token 之间的依赖关系，捕捉局部和全局依赖关系。
     - 残差连接 + Layer Normalization。
 2. 前馈全连接网络层 FFN
     - 两个线性层 + ReLU 激活函数，增强非线性建模能力。
@@ -172,7 +172,7 @@ Encoder 是由多头自注意力模块和 FFN 模块交替堆叠而成的，且�
 
 ### 7.3.2 Decoder
 
-> Decoder 是希望从 embedding中 解码出新的内容，因此需要用前面的内容作为输入，在模型结尾输出新的内容。其解码过程和 RNN 比较类似，每个输出的 $o$ 再次输入 Decoder，用于后续解码。虽然输出 embedding 的形状一致，但是实际有效输出的内容与输入的形状不同。同时，Decoder 需要添加 mask。GPT 是典型的 Decoder-Only 架构。
+> Decoder 是希望从 embedding中解码出新的内容，因此需要用前面的内容作为输入，在模型结尾输出新的内容。其解码过程和 RNN 比较类似，每个输出的 $o$ 再次输入 Decoder，用于后续解码。虽然输出 embedding 的形状一致，但是实际有效输出的内容与输入的形状不同。同时，Decoder 需要添加 mask。GPT 是典型的 Decoder-Only 架构。
 
 Decoder 由 $N$ 个相同结构的解码器层 Decoder Layer 组成，每个 Decoder Layer 包含3个子层：
 
@@ -243,9 +243,9 @@ $$
 
 **BERT**: Bidirectional Encoder Representations from Transformers (Google)
 
-架构：双向 Transformer（双向 Encoder），可以同时学习文本中的前后文信息。
+架构：双向 Transformer（Encoder-Only），可以同时学习文本中的前后文信息。
 
-预训练任务：遮挡语言模型(Masked Language Modeling)和下一句预测(Next Sentence Prediction)。前者通过在输入文本中随机遮挡一些词汇并预测被遮挡的词，帮助模型学会理解双向上下文（完形填空）；后者则让模型学会判断两个句子是否是连续的。
+预训练任务：遮挡语言模型（Masked Language Modeling）和下一句预测（Next Sentence Prediction）。前者通过在输入文本中随机遮挡一些词汇并预测被遮挡的词，帮助模型学会理解双向上下文（完形填空）；后者则让模型学会判断两个句子是否是连续的。
 
 优势：文本中的双向关系理解。
 

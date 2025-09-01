@@ -8,11 +8,11 @@
 
 根据 $n$ 个独立同分布观测样本确定预测函数 $f(\boldsymbol{x},\boldsymbol{w})$ ，在一组预测函数 $\{f(\boldsymbol{x},\boldsymbol{w})\}$ 中选择一个最优的函数 $f(\boldsymbol{x},\boldsymbol{w}_0)$ 对依赖关系进行估计，使预测的期望风险最小。
 
-机器学习的3个基本问题：
+机器学习的 3 个基本问题：
 
 1. 分类，输出为离散的类别标号。应用于图像分类，物体检测和识别，方法有支持向量机 SVM、卷积神经网络 CNN 等。属于监督学习。
 2. 回归，输出为连续变量。应用于预测、姿态估计，方法有 Fisher 线性回归、逻辑回归等。属于监督学习。
-3. 聚类（概率密度估计问题）。根据训练样本确定其概率分布。应用于聚类、异常检测。方法中，参数法有最大似然估计，非参数法有 K 近邻。属于监督学习。
+3. 聚类（概率密度估计问题）。根据训练样本确定其概率分布。应用于聚类、异常检测。方法中，参数法有最大似然估计，非参数法有 K 近邻。属于无监督学习。
 
 机器学习的一般模型：
 
@@ -51,10 +51,10 @@ $$
 
 ---
 
-机器学习的2个经典模型：
+机器学习的 2 个经典模型：
 
-1. **生成式**模型(Generative Model)：对概率分布 $p(\boldsymbol{x},\omega)$ 建模，利用贝叶斯公式 $p(\omega|\boldsymbol{x})=p(\boldsymbol{x}|\omega)p(\omega)/p(\boldsymbol{x})$ . 典型方法：贝叶斯估计，高斯混合模型 HMM，隐马尔可夫模型 HMM，生成对抗网络 GAN 等。
-2. **鉴别式**模型(Discriminative Model)：直接用函数（而非概率）对 $p(\omega|\boldsymbol{x})$ 建模，**一般性能更好**。典型方法：线性判别分析 LDA，支持向量机 SVM，神经网络。
+1. **生成式**模型(Generative Model)：对概率分布 $p(\boldsymbol{x},\omega)$ 建模，利用贝叶斯公式 $p(\omega|\boldsymbol{x})=p(\boldsymbol{x}|\omega)p(\omega)/p(\boldsymbol{x})$ . 给定类别，学习样本的分布，这样既能做分类又能生成数据。典型方法：朴素贝叶斯，高斯混合模型 GMM，隐马尔可夫模型 HMM，生成对抗网络 GAN 等。
+2. **鉴别式**模型(Discriminative Model)：直接用函数（而非概率）对 $p(\omega|\boldsymbol{x})$ 建模。只关心如何区分类别，不关心数据是怎么生成的。**一般性能更好**。典型方法：线性判别分析 LDA，支持向量机 SVM，神经网络。
 
 ## 3.2 Perceptron
 
@@ -103,7 +103,7 @@ $$
 f'(x)=\sigma(x)(1-\sigma(x)) = \frac{e^{-x}}{(e^{-x} + 1)^2}=\frac{e^x}{(e^x + 1)^2}
 $$
 
-特点：中心不为0，输出范围为 $(0, 1)$ ，适用于二分类问题。饱和区域可能梯度消失，通常应用于 DNN 的最后一层。
+特点：中心不为 0，输出范围为 $(0, 1)$ ，适用于二分类问题。饱和区域可能梯度消失，通常应用于 DNN 的最后一层。
 
 Sigmoid 激活函数多使用在二分类问题。对于大于二分类问题，如果类别之间存在相互关系使用 Sigmoid，反之使用 Softmax。
 
@@ -141,7 +141,7 @@ f'(x)=
 \end{cases}
 $$
 
-特点：中心不为 0，正值部分梯度有效传递，有效解决梯度消失问题，但是可能会有 dead neuron 问题（神经元死亡），负值部分输出为 0 导致梯度为 0，不会更新权重。
+特点：中心不为 0，正值部分梯度有效传递，有效解决梯度消失问题，但是可能会有 dead neuron 问题（神经元坏死），负值部分输出为 0 导致梯度为 0，不会更新权重。
 
 （6）LeakyReLU 函数：
 
@@ -210,13 +210,13 @@ $$
 \frac{\partial L(\boldsymbol{w},b)}{\partial \boldsymbol{w}} = -\sum_{\boldsymbol{x}_i\in M} y_i\boldsymbol{x}_i ,\quad \frac{\partial L(\boldsymbol{w},b)}{\partial b} = -\sum_{\boldsymbol{x}_i\in M} y_i
 $$
 
-若采用 随机梯度下降 SGD ，每次选取一个误分类点，更新权重与偏置：
+若采用随机梯度下降 SGD ，每次选取一个误分类点，更新权重与偏置：
 
 $$
 \boldsymbol{w} \leftarrow \boldsymbol{w}-\eta\frac{\partial L}{\partial \boldsymbol{w}} =\boldsymbol{w} + \eta y_i\boldsymbol{x}_i ,\quad b \leftarrow b-\eta\frac{\partial L}{\partial b}=b +\eta y_i
 $$
 
-如果采用 批量梯度下降 BGD，则使用全部误分点，更新权重与偏置：
+如果采用批量梯度下降 BGD，则使用全部误分点，更新权重与偏置：
 
 $$
 \boldsymbol{w} \leftarrow \boldsymbol{w} + \eta \sum_{\boldsymbol{x}_i\in M} y_i\boldsymbol{x}_i ,\quad b \leftarrow b + \eta \sum_{\boldsymbol{x}_i\in M} y_i
@@ -284,13 +284,13 @@ L(\boldsymbol{X},\boldsymbol{y},\boldsymbol{w}) = \frac{1}{n}\|\boldsymbol{y} - 
 \end{gather*}
 $$
 
-（1）损失函数是凸函数，由梯度为0，**直接得到闭式解**：
+（1）由于损失函数是凸函数，令梯度为0，**直接得到闭式解**：
 
 $$
 \boldsymbol{w}^* = (\boldsymbol{X}^T\boldsymbol{X})^{-1}\boldsymbol{X}^T\boldsymbol{y}
 $$
 
-（2）优化方法求解，梯度下降：
+（2）也可以使用优化方法求解，梯度下降：
 
 $$
 \boldsymbol{w}_t = \boldsymbol{w}_{t-1} - \eta\frac{\partial L}{\partial \boldsymbol{w}_{t-1}}
@@ -327,11 +327,11 @@ $$
 
 ### 3.3.3 Logistic Regression
 
-逻辑回归(Logistic Regression)也称逻辑回归分析，是一种广义线性回归分析模型，常用于目标检测、数据挖掘，疾病诊断等领域。实质上多用于分类任务。
+逻辑回归（Logistic Regression）也称逻辑回归分析，是一种广义线性回归分析模型，常用于目标检测、数据挖掘，疾病诊断等领域。实质上**多用于分类任务**。
 
 例如：以病情分析为例，因变量 $y$ 是否有病，值为“是”或“否”，而自变量可包括很多因素，如年龄、性别、饮食习惯、感染等。自变量既可以是连续，也可以是离散。
 
-逻辑回归模型也具有 $\boldsymbol{w}^T\boldsymbol{x}+b$ 的形式，其区别在于因变量不同，线性回归直接将 $w^Tx+b$ 作为因变量，而 logistic 回归则通过将 $\boldsymbol{w}^T\boldsymbol{x}+b$ 对应一个隐状态 $p=L(\boldsymbol{w}^T\boldsymbol{x}+b)$ ，根据 $p$ 值决定因变量值。虽然被称为回归，但其实际上是分类模型，常用于二分类，估计可能性大小。线性模型只返回实数，需要逻辑回归转换为概率。
+逻辑回归模型也具有 $\boldsymbol{w}^T\boldsymbol{x}+b$ 的形式，其区别在于因变量不同，线性回归直接将 $w^Tx+b$ 作为因变量，而 logistic 回归则通过将 $\boldsymbol{w}^T\boldsymbol{x}+b$ 对应一个隐状态 $p=L(\boldsymbol{w}^T\boldsymbol{x}+b)$ ，根据 $p$ 值决定因变量值。虽然被称为回归，但其**实际上是分类模型**，常用于二分类，估计可能性大小。线性模型只返回实数，需要逻辑回归转换为概率。
 
 类标签为 $y\in\{0,1\}$ ，逻辑回归模型为：
 
@@ -374,11 +374,11 @@ b &\leftarrow b - \eta\frac{\partial L}{\partial b}
 \end{align*}
 $$
 
-由于模型的输出范围为 $h(\boldsymbol{x})\in(0,1)$ ，且 $\boldsymbol{w}^T\boldsymbol{x}+b>0 \Leftrightarrow h(\boldsymbol{x})>0.5$ ，因此可以 $0.5$ 为分类基准，这也符合我们的的直观认知。
+由于模型的输出范围为 $h(\boldsymbol{x})\in(0,1)$ ，且 $\boldsymbol{w}^T\boldsymbol{x}+b>0 \Leftrightarrow h(\boldsymbol{x})>0.5$ ，因此可以 $0.5$ 为分类基准，这也符合我们的直观认知。
 
 ### 3.3.4 Fisher LDA
 
-Fisher 线性分类器(LDA, Linear Discriminant Analysis)的基本思想：通过寻找一个投影方向（线性变换，线性组合），将高维问题降低到一维问题来解决，并且要求变换后的一维数据具有如下性质：同类样本尽可能聚集在一起，不同类的样本尽可能地远。Fisher 判别准则为：最小化类别重叠，得不同类均值投影分开大，而每个类的内部方差小。即：**类间方差大，类内方差小**。
+Fisher 线性分类器（LDA, Linear Discriminant Analysis）的基本思想：通过寻找一个投影方向（线性变换，线性组合），将高维问题降低到一维问题来解决，并且要求变换后的一维数据具有如下性质：同类样本尽可能聚集在一起，不同类的样本尽可能地远。Fisher 判别准则为：最小化类别重叠，得不同类均值投影分开大，而每个类的内部方差小。即：**类间方差最大，类内方差最小**。
 
 Fisher 线性判别，即通过给定的训练数据，确定投影方向 $\boldsymbol{w}$ 和阈值 $w_0$ ，即确定线性判别函数，然后根据这个线性判别函数，对测试数据进行测试得到它的类别。
 
@@ -413,7 +413,7 @@ $$
 
 ## 3.4 SVM
 
-支持向量机 SVM(support vector machine)是一种基于统计学习理论的机器学习方法。
+支持向量机 SVM（support vector machine）是一种基于统计学习理论的机器学习方法。
 
 核心理念是分类间隔最大化，寻找一个置信度最大的分类面。对训练数据集找到几何间隔最大的超平面，以最大的置信度对训练数据进行分类。即不仅将正负实例分开，而且对难分的样本点（离超平面最近的点）也有足够大的置信度将其分开。这样超平面对未知的新样本似有较好的分类预测能力。
 
@@ -487,7 +487,7 @@ $$
 \boldsymbol{w}^*=\sum_{\boldsymbol{x}_i\in \text{SV}} \alpha_i^*y_i\boldsymbol{x}_i,\quad b^*=y_j-\boldsymbol{w}^{*T}\boldsymbol{x}_j,\;\boldsymbol{x}_j\in \text{SV}
 $$
 
-> 注意，最后得到的判决面系数 $\boldsymbol{w}^*,b^*$ 系数是固定的，不能任意缩放，由 支持向量满足 $y_j(\boldsymbol{w}^{*T}\boldsymbol{x}_j+b^*)=1$ 保证。
+> 注意，最后得到的判决面系数 $\boldsymbol{w}^*,b^*$ 系数是固定的，不能任意缩放，由支持向量满足 $y_j(\boldsymbol{w}^{*T}\boldsymbol{x}_j+b^*)=1$ 保证。
 
 ### 3.4.2 近似线性可分问题
 

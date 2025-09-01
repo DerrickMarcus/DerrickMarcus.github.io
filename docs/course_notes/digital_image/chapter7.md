@@ -319,7 +319,7 @@ R = \det M - k(\text{trace } M)^2=\lambda_1 \lambda_2-k(\lambda_1 + \lambda_2)^2
 \text{trace } M = \lambda_1 + \lambda_2
 $$
 
-$k$ 为经验常数，一般取 $0.04\sim0.06$ .  $R$ 只与 $M$ 的特征值有关：
+$k$ 为经验常数，一般取 $0.04\sim0.06$ . $R$ 只与 $M$ 的特征值有关：
 
 - 角点：$R$ 为大数值正数。
 - 边缘：$R$ 为大数值负数。

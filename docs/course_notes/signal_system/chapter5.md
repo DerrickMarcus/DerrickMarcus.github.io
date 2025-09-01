@@ -2,7 +2,7 @@
 
 ## 5.1 系统的物理可实现性与佩利-维纳准则
 
-时域判断：因果性
+时域判断：因果性，非因果信号不可实现。
 
 频域判断：
 
@@ -12,20 +12,20 @@ $$
 \int_{-\infty}^{\infty}|H(\mathrm{j}\omega)|^2\,\mathrm{d}\omega<\infty
 $$
 
-根据帕塞瓦尔定理：
+根据帕塞瓦尔定理（能量守恒，时域能量等于频域能量）：
 
 $$
 \int_{-\infty}^{\infty}|h(t)|^2\,\mathrm{d}t=
 \frac{1}{2\pi}\int_{-\infty}^{\infty}|H(\mathrm{j}\omega)|^2\,\mathrm{d}\omega
 $$
 
-佩利-维纳准则（必要不充分条件）：
+佩利-维纳准则（Paley-Wiener Theorem）是系统物理可实现的必要不充分条件：
 
 $$
 \int_{-\infty}^{\infty}\frac{|\ln|H(\mathrm{j}\omega)||}{1+\omega^2}\,\mathrm{d}\omega<\infty
 $$
 
-不满足 PW 准则的幅度函数，响应比冲激激励先出现，违反了因果性。
+不满足 PW 准则的幅度函数，响应比冲激激励先出现，违反了因果性，一定不可实现。但是满足 PW 准则的系统也不一定物理可实现。
 
 PW 准则不允许 $|H(\mathrm{j}\omega)|$ 在某一频带内恒为0（理想滤波器不可能实现），但允许在一些不连续的点为0。
 

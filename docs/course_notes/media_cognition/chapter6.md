@@ -97,7 +97,7 @@ RNN 容易出现梯度消失和梯度爆炸。对于长序列，计算梯度时�
 
 > 问题：在相关信息和预测词之间间隔不断增大时，RNN 会丧失学习到连接如此远的信息的能力。因此我们需要引入门控机制。
 
-使用 门控单元 gate 控制数据流动：
+使用门控单元 gate 控制数据流动：
 
 $$
 \text{gate} = \sigma(\boldsymbol{W}_{xg}\boldsymbol{x}_t + \boldsymbol{W}_{hg}h_{t-1} + b_g)

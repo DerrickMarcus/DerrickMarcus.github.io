@@ -144,18 +144,18 @@ $$
 \end{gather*}
 $$
 
-标量 对 矩阵/向量 求导： $\dfrac{\partial \mathbb{R}^{1\times 1}}{\partial \mathbb{R}^{m \times n}}\to \mathbb{R}^{m \times n}$ ，标量对任何矩阵/向量求导，结果的维度 都与 被求导的矩阵/向量 相同。
+标量对矩阵/向量 求导： $\dfrac{\partial \mathbb{R}^{1\times 1}}{\partial \mathbb{R}^{m \times n}}\to \mathbb{R}^{m \times n}$ ，标量对任何矩阵/向量求导，结果的维度都与被求导的矩阵/向量的维度相同。
 
-向量 对 向量 求导： $\dfrac{\partial \mathbb{R}^{m\times 1}}{\partial \mathbb{R}^{n \times 1}}\to \mathbb{R}^{m \times n}$ .
+向量对向量求导： $\dfrac{\partial \mathbb{R}^{m\times 1}}{\partial \mathbb{R}^{n \times 1}}\to \mathbb{R}^{m \times n}$ .
 
-矩阵 对 矩阵 求导： $\dfrac{\partial \mathbb{R}^{m\times n}}{\partial \mathbb{R}^{p \times q}}\to \mathbb{R}^{mn \times pq}$ . 严格来讲“矩阵对矩阵”导数本质是 4 阶张量，但是经常 reshape 成二维矩阵。这种情况不常见。
+矩阵对矩阵求导： $\dfrac{\partial \mathbb{R}^{m\times n}}{\partial \mathbb{R}^{p \times q}}\to \mathbb{R}^{mn \times pq}$ . 严格来讲“矩阵对矩阵”导数本质是 4 阶张量，但是经常 reshape 成二维矩阵。这种情况不常见。
 
 !!! tip
     导数和被导数可以同时转置。
 
 <br>
 
-对于 **Loss 求导**，本质是 标量 对 矩阵/向量 求导，我们只需要掌握 MSE 和交叉熵两种：
+对于 **Loss 求导**，本质是标量对矩阵/向量求导，我们只需要掌握 MSE 和交叉熵两种：
 
 $$
 \begin{align*}
@@ -270,7 +270,7 @@ $$
 
 参数初始化方法
 
-一般 偏置 初始化为0，而 权重 的初始化方法有：
+一般将偏置初始化为0，而权重的初始化方法有：
 
 随机初始化：权重初始化为0，标准差为 $\sigma$ ，则 $w_i^l \sim \mathcal{N}(0, \sigma^2)$
 
@@ -303,7 +303,7 @@ $$
 \end{gather*}
 $$
 
-随着网络深度的加深，幂指数项很快趋于0，梯度衰减非常严重，梯度消失导致无法继续训练。
+随着网络深度的加深，幂指数项很快趋于 0，梯度衰减非常严重，梯度消失导致无法继续训练。
 
 如何缓解梯度消失：
 
@@ -325,5 +325,5 @@ $$
 
 1. 重新设计网络模型/更换激活函数。
 2. RNN 中使用 ReLU 激活函数可减少梯度爆炸。
-3. 使用梯度截断(gradient clipping)。
+3. 使用梯度截断（gradient clipping）。
 4. 权重正则化，增加 L1/L2 正则惩罚项。

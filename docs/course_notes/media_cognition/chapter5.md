@@ -25,7 +25,7 @@ CNN 的基本单元：卷积层、池化层、激活函数、Batch Normalization
 
 > 默认情况下，我们使用的都是全通道卷积，即 卷积核通道数与输入数据通道数一致。
 
-当同时输入 $N$ 个样本，即 $\text{batch\_size}=N$ ，输入数据维度为 $N \times C_{in} \times H_{in} \times W_{in}$ ，卷积核数目 $C_{out}$ ，卷积步长 $\text{stride}=S$ ，填充 $\text{padding}=P$ 时，输出数据维度为： $N \times C_{out} \times H_{out} \times W_{out}$ ，其中：
+当同时输入 $N$ 个样本，即 `batch_size = N` ，输入数据维度为 $N \times C_{in} \times H_{in} \times W_{in}$ ，卷积核数目 $C_{out}$ ，卷积步长 `stride = S` ，填充 `padding = P` 时，输出数据维度为 $N \times C_{out} \times H_{out} \times W_{out}$ ，其中：
 
 $$
 H_{out}=\left \lfloor \frac{H_{in} - K_h + 2P}{S} + 1 \right \rfloor,\;

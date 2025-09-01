@@ -1,5 +1,5 @@
 # Project information
-site_name: Blog of Derrick Marcus
+site_name: Derrick Marcus
 site_url: https://blog.yanxuchen.com
 site_author: Yanxu Chen
 site_description: This is the website of Derrick Marcus for recording learning and blogs.
@@ -168,10 +168,6 @@ markdown_extensions:
   - tables
   - toc:
       permalink: true # 各标题生成各自链接
-      # toc_depth: 6
-      # slugify: !!python/object/apply:pymdownx.slugs.slugify {
-      #     kwds: { case: lower },
-      #   } # enable Unicode link
   - pymdownx.arithmatex:
       generic: true
   - pymdownx.highlight:

@@ -279,7 +279,7 @@ $$
 
 ## 8.8 离散时间傅里叶变换(DTFT)
 
-离散时间傅里叶变换(Discrete Time Fourier Transform)定义为：单位圆上的 $z$ 变换。注意与离散傅里叶变换 DFT 完全不同！
+离散时间傅里叶变换 DFT（Discrete Time Fourier Transform）定义为：单位圆上的 $z$ 变换。注意与离散傅里叶变换 DFT 完全不同！
 
 ### 定义和收敛条件
 
