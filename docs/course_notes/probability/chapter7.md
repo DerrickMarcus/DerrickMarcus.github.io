@@ -12,7 +12,7 @@
 3. $\{N(t)\}$ 是平稳增量过程。由此可推出 $P(N(t_0+t)-N(t_0)=n)=P(N(t)=n)$ .
 4. 稀疏性： $P(N(t+\Delta t)-N(t)-1)=\lambda\Delta t+o(\Delta t),\;P(N(t+\Delta t)-N(t)\geqslant 2)=o(t)$ ，即一小短时间内事件几乎不可能发生多次。
 
-称该过程为齐次泊松过程/泊松过程， $\lambda>0$ 为**强度参数**。
+称该过程为齐次泊松过程（简称为泊松过程）， $\lambda>0$ 称为**强度参数**。
 
 !!! note
     回顾满足泊松分布的随机变量 $X\sim\text{Poisson}(\lambda)$ ，概率分布为 $P(X=k)=\dfrac{\lambda^k}{k!}\mathrm{e}^{-\lambda}$ .
@@ -71,7 +71,7 @@ $$
 
 ---
 
-如果在已知 $[0,t]$ 内泊松过程发生了 $n$ 次的**条件**下，考虑等待时间 $S_1,\cdot,S_n$ 的**条件分布** $S_1,\cdots,S_n|N(t)=n$ 的概率密度为：
+如果在已知 $[0,t]$ 内泊松过程发生了 $n$ 次的**条件**下，考虑等待时间 $S_1,\cdots,S_n$ 的**条件分布** $S_1,\cdots,S_n|N(t)=n$ 的概率密度为：
 
 $$
 f_{S_1,\cdots,S_n}(u_1,\cdots,u_n|N(t)=n)=\frac{n!}{t^n},\quad 0\leqslant u_1<\cdots<u_n\leqslant t

@@ -19,19 +19,19 @@ $$
 \frac{1}{2\pi}\int_{-\infty}^{\infty}|H(\mathrm{j}\omega)|^2\,\mathrm{d}\omega
 $$
 
-佩利-维纳准则（Paley-Wiener Theorem）是系统物理可实现的必要不充分条件：
+佩利-维纳准则（Paley-Wiener Theorem）：
 
 $$
 \int_{-\infty}^{\infty}\frac{|\ln|H(\mathrm{j}\omega)||}{1+\omega^2}\,\mathrm{d}\omega<\infty
 $$
 
-不满足 PW 准则的幅度函数，响应比冲激激励先出现，违反了因果性，一定不可实现。但是满足 PW 准则的系统也不一定物理可实现。
+不满足 PW 准则的幅度函数，响应比冲激激励先出现，违反了因果性，一定不可实现。但是满足 PW 准则的系统也不一定物理可实现。因此 PW 准则是系统**物理可实现的必要不充分条件**。
 
-PW 准则不允许 $|H(\mathrm{j}\omega)|$ 在某一频带内恒为0（理想滤波器不可能实现），但允许在一些不连续的点为0。
+PW 准则不允许 $|H(\mathrm{j}\omega)|$ 在某一频带内恒为 0（理想滤波器不可能实现），但允许在一些不连续的点为 0。
 
 对数函数 $\ln(\cdot)$ 限制了 $|H(\mathrm{j}\omega)|\to 0$ 的衰减速度。
 
-PW 准则不是物理可实现的充分条件，因为对相频特性 $\varphi(\omega)$ 没有要求。如果已知一个满足 PW 准则的 $|H(\mathrm{j}\omega)|$ ，可以搭配一个适当的相频特性函数 $\varphi(\omega)$ ，使系统物理可实现。
+PW 准则不是物理可实现的充分条件，是因为对相频特性 $\varphi(\omega)$ 没有要求。如果已知一个满足 PW 准则的 $|H(\mathrm{j}\omega)|$ ，可以搭配一个适当的相频特性函数 $\varphi(\omega)$ ，使系统物理可实现。
 
 实际上只有多项式函数和双曲函数满足 PW 准则。
 
@@ -109,11 +109,11 @@ $$
 
 ### FM，PM（调频与调相）
 
-FM（调频），直接作用于相位： $f(t)=A\cos(\omega_c t+g(t))$ .
+FM（调频），直接作用于频率： $f(t)=A\cos(\omega_c t+\displaystyle\int_{-\infty}^{t}g(\tau)\,\mathrm{d}\tau)$ .
 
-PM（调相），直接作用于频率： $f(t)=A\cos(\omega_c t+\displaystyle\int_{-\infty}^{t}g(\tau)\,\mathrm{d}\tau)$ .
+PM（调相），直接作用于相位： $f(t)=A\cos(\omega_c t+g(t))$ .
 
-本质都是调相。
+本质都是调相。因为用 $g(t)$ 调频相当于用 $\displaystyle\int_{-\infty}^{t}g(\tau)\,\mathrm{d}\tau$ 调相；用 $g(t)$ 调相相当于 $g'(t)$ 调频。
 
 解调过程：对 $f(t)$ 求导，进行包络检波。
 

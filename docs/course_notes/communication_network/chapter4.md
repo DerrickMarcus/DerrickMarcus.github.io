@@ -129,7 +129,7 @@ $$
 
 ## 收发联合模型
 
-最佳接收时，我们不妨令 $g(t)=p(t)$ ，**接收端** $y=\displaystyle\int_{-\infty}^{+\infty}y(t)g(t)\mathrm{d}t$ ，可以使用“乘法器+积分器”实现.但是我们注意到这是一个相关操作，因此最常用的是“**相关 = 滤波 + 抽样**”，使用 $p(T-t)$ 作为滤波器：
+最佳接收时，我们不妨令 $g(t)=p(t)$ ，**接收端** $y=\displaystyle\int_{-\infty}^{+\infty}y(t)g(t)\mathrm{d}t$ ，可以使用“乘法器+积分器”实现。但是我们注意到这是一个相关操作，因此最常用的是“**相关 = 滤波 + 抽样**”，使用 $p(T-t)$ 作为滤波器：
 
 $$
 y(t)\longrightarrow\boxed{p(T-t)}\longrightarrow\tilde{y}(t)\overset{t=T}{\longrightarrow} y
@@ -610,7 +610,7 @@ $$
 
 ![202508061451629](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo-image/images/202508061451629.png)
 
-## 附录
+## 附录 1
 
 为了应付做题和考试，让我们研究一下**单路载波波形传输**的最一般情况：
 
@@ -758,3 +758,26 @@ $$
 $$
 A'=A\cdot\left(\frac{1}{2}\beta\gamma \sqrt{\lambda_1 \lambda_2}\right),\quad \sigma'=\sqrt{\frac{n_0}{2}\cdot\frac{1}{2} \lambda_2\gamma^2}
 $$
+
+## 附录 2
+
+We can understand the principles of I/Q signals from another perspective.
+
+In the real physical world, we can only transmit real-valued waveforms, like voltage or current. But we can use a complex number to represent the signal in order to simplify the analysis. We separate two mutually orthogonal components riding on the same carrier:
+
+- I (In-phase) — multiplied by the $\cos()$ carrier.
+- Q (Quadrature) — multiplied by the $\sin()$ carrier.
+
+The transmitted signal becomes:
+
+$$
+x(t)=I(t)\cos(2\pi f_c t)-Q(t)\sin(2\pi f_c t)
+$$
+
+It is equivalent to:
+
+$$
+x(t)=\mathcal{R}\{\left[I(t)+\mathrm{j}Q(t)\right]\mathrm{e}^{\mathrm{j}2\pi f_c t}\}
+$$
+
+so that the signal can be condensed into the complex envelope $I+\mathrm{j}Q$ .

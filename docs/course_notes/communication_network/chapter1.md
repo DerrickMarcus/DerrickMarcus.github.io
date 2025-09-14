@@ -375,7 +375,7 @@ $$
 
 加性高斯白噪声 AWGN $N(t)$ 的功率谱密度 $S_N(f)=\dfrac{n_0}{2}$ .
 
-由 Nyquist 准则（后续章节 [4 波形信道](./chapter4.md) 会具体介绍），单位时间内最多可以使用高斯信道 $2W$ 次，即 $2W$ channel use / second，信道使用的间隔为 $T=\dfrac{1}{2W}$ .
+由 Nyquist 准则（后续章节 [4 波形信道](./chapter4.md)会具体介绍），单位时间内最多可以使用高斯信道 $2W$ 次，即 $2W$ channel use / second，信道使用的间隔为 $T=\dfrac{1}{2W}$ .
 
 通信功率 $P$ 为单位时间内的能耗 $P=\dfrac{E_S}{T}\Rightarrow E_S=\dfrac{P}{2W}$ ，带入之前高斯信道推导得到的结论，得到大名鼎鼎的**香农公式**：
 
@@ -467,7 +467,7 @@ $H(x)_{\max}=\log_2 N$ ，取等条件为 $\forall i,\;p_i=\dfrac{1}{N}$ .
 !!! warning
     以下内容由 ChatGPT 5 生成。
 
-香农在 1948 年提出信息量（self-information）的概念，用来量化事件的“不确定性”。如果事件 $x_i$ 的概率是 $p_i$ ，信息量定义为 $I(x_i) $ .
+香农在 1948 年提出信息量（self-information）的概念，用来量化事件的“不确定性”。如果事件 $x_i$ 的概率是 $p_i$ ，信息量定义为 $I(x_i)$ .
 
 同时我们希望信息量有以下性质：
 

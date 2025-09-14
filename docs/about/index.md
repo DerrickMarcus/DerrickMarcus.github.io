@@ -22,7 +22,7 @@ You can find me on [Github](https://github.com/DerrickMarcus) or [Bilibili](http
     - [x] Finish the notes of Media and Cognition.
     - [x] Finish the notes of Communication and Network.
     - [ ] Add the tutorial of Git and GitHub.
-    - [ ] Finish the notes of Probability and Stochastic Process.
+    - [x] Finish the notes of Probability and Stochastic Process.
     - [ ] Finish the notes of Signals and Systems.
     - [ ] Add the notes of Digital Signal Processing.
     - [ ] Deploy my own Git server using Gitea and host it at the domain name `git.yanxuchen.com` .

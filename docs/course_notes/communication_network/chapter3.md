@@ -108,9 +108,7 @@ P_s&=p(A)p(y<0\mid A)+p(-A)p(y>0\mid -A) \\
 \end{align*}
 $$
 
-其中 $Q(u)=\displaystyle\int_u^{+\infty}\dfrac{1}{\sqrt{2\pi}}e^{-t^2/2}\mathrm{d}t$ 是标准高斯分布 $\mathcal{N}(0,1)$ 的截尾误差函数。可以理解为高斯分布的“反向累积分布函数”，且是一个**减函数**：
-
-$Q(-\infty)\to1,\;Q(0)=\dfrac{1}{2},\;Q(+\infty)\to 0$ .
+其中 $Q(u)=\displaystyle\int_u^{+\infty}\dfrac{1}{\sqrt{2\pi}}e^{-t^2/2}\mathrm{d}t$ 是标准高斯分布的截尾误差函数。可以理解为高斯分布的“反向累积分布函数”，且是一个**减函数**： $Q(-\infty)\to1,\;Q(0)=\dfrac{1}{2},\;Q(+\infty)\to 0$ .
 
 可见，差错概率仅与发送电平到判决门限的距离、噪声方差有关。
 

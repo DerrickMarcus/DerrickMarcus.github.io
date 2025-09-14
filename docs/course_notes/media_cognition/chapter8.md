@@ -4,10 +4,10 @@
 
 模式 Pattern
 
-1. 模式（认知心理学）：由若干元素或成分按一定关系形成的某种刺激结构。
-2. 模式（机器学习）：人们在一定条件环境下，根据一定需要对自然事物的一种抽象的分类概念。模式集合记为 $\Omega=\{\omega_1,\cdots, \omega_C\}$ .
+1. 模式（认知心理学领域）：由若干元素或成分按一定关系形成的某种刺激结构。
+2. 模式（机器学习领域）：人们在一定条件环境下，根据一定需要对自然事物的一种抽象的分类概念。模式集合记为 $\Omega=\{\omega_1,\cdots, \omega_C\}$ .
 
-样本/对象 (sample, object) ：自然界的具体事物，具有一定的类别特性，是抽象模式的具体体现。样本的观测量记为 $\boldsymbol{x}=[x_1,\cdots, x_N]^T$ .
+样本/对象（sample, object）：自然界的具体事物，具有一定的类别特性，是抽象模式的具体体现。样本的观测量记为 $\boldsymbol{x}=[x_1,\cdots, x_N]^T$ .
 
 模式识别：寻求样本观测量与类别属性的联系 $g(\boldsymbol{x})=\omega_i$ .
 
@@ -35,13 +35,13 @@ $$
 
 特征降维的意义：克服维数灾难；获取本质特征；节省存储空间；去除无用噪声；实现数据可视化。
 
-由原始特征产生出对分类识别最有效、数目最少的特征，需要保证：同类样本的不变性(Invariant)，异类样本的鉴别性(Discriminative)，对噪声的鲁棒性(Robust)。
+由原始特征产生出对分类识别最有效、数目最少的特征，需要保证：同类样本的不变性（Invariant），异类样本的鉴别性（Discriminative），对噪声的鲁棒性（Robust）。
 
 特征降维常见方法：特征选择，特征变换。
 
 ### 8.2.1 PCA
 
-主成分分析 PCA (Principal Component Analysis)：[Principal component analysis - Wikipedia](https://en.wikipedia.org/wiki/Principal_component_analysis)。
+主成分分析 PCA（Principal Component Analysis）：[Principal component analysis - Wikipedia](https://en.wikipedia.org/wiki/Principal_component_analysis)。
 
 输入数据： $n$ 个 $p$ 维的样本 $\boldsymbol{x}_i\in \mathbb{R}^p$ ， $i=1,\cdots,n$ .
 
@@ -81,7 +81,7 @@ PCA 的优缺点分析：
 
 ---
 
-t-SNE (t-distributed stochastic neighbor embedding)
+t-SNE（t-distributed stochastic neighbor embedding）
 
 高维空间: 以数据点在 $x_i$ 为中心的高斯分布中所占概率密度为标准选择近邻：
 
@@ -242,7 +242,7 @@ $$
 
 （2）条件： $\boldsymbol{\Sigma}_i = \sigma^2 \boldsymbol{I},\;p(\omega_i)\neq p(\omega_j)$ 即各类的先验概率未知，为**线性分类器**。
 
-忽略与类别无关的常数项，得到判别函数——**线性判别函数** LDF (Linear Discriminant Function)：
+忽略与类别无关的常数项，得到判别函数——**线性判别函数** LDF（Linear Discriminant Function）：
 
 $$
 \begin{align*}
@@ -296,7 +296,7 @@ $$
 
 （5）当 $\boldsymbol{\Sigma}_i \neq \boldsymbol{\Sigma}_j,\;i \neq j$ 各个类的协方差矩阵都不相同。
 
-忽略与判别函数无关的常数项，得到判别函数——**二次判别函数** QDF (Quadratic Discriminant Function)
+忽略与判别函数无关的常数项，得到判别函数——**二次判别函数** QDF（Quadratic Discriminant Function）
 
 $$
 \begin{align*}
@@ -319,7 +319,7 @@ $$
 
 ### 8.4.1 MLE
 
-最大似然估计 MLE (Maximum Likelihood Estimation)：已知随机变量属于某种概率分布的前提下，利用随机变量的观测值，估计出分布的一些参数值。即：“模型已定，参数未知”。
+最大似然估计 MLE（Maximum Likelihood Estimation）：已知随机变量属于某种概率分布的前提下，利用随机变量的观测值，估计出分布的一些参数值。即：“模型已定，参数未知”。
 
 关键假设：样本值是**独立同分布**的。
 
@@ -351,7 +351,7 @@ $$
 
 ### 8.4.2 MAP
 
-最大后验估计 MAP (Maximum A Posteriori Estimation)：给定模型形式和参数的先验分布，根据数据，找到在数据和先验下最可能的参数。
+最大后验估计 MAP（Maximum A Posteriori Estimation）：给定模型形式和参数的先验分布，根据数据，找到在数据和先验下最可能的参数。
 
 在给定数据样本的情况下，最大化模型参数的后验概率。根据已知样本，来通过调整模型参数使得模型能够产生该数据样本的概率最大，只不过对于模型参数有了一个先验假设，即模型参数可能满足某种分布，不再一味地依赖数据。参考自[极大似然估计与最大后验概率估计 - 知乎](https://zhuanlan.zhihu.com/p/40024110)。
 
@@ -591,7 +591,7 @@ $$
 
 定义**后向变量**：$\beta^{(t)}_i = P(O_{t+1}, \cdots, O_T | q_t = s_i, \lambda) ,\; 1\leqslant i \leqslant N,\,1 \leqslant t \leqslant T$ . 表示 $t$ 时刻由第 $i$ 个状态 $s_i$ 生成观测序列 $O_{t+1}, \cdots, O_T$ 的概率。
 
-同理有 $\beta^{(t+1)}_j = P(O_{t+2}, \cdots, O_T | q_{t+1} = s_j, \lambda), 1\leqslant t \leqslant T-1$ 表示 $t+1$ 时刻由第 $j$ 个状态 $s_j$ 生成观测序列 $O_{t+2}, \cdots, O_T$ 的概率。
+同理有 $\beta^{(t+1)}_j = P(O_{t+2}, \cdots, O_T | q_{t+1} = s_j, \lambda),\; 1\leqslant t \leqslant T-1$ 表示 $t+1$ 时刻由第 $j$ 个状态 $s_j$ 生成观测序列 $O_{t+2}, \cdots, O_T$ 的概率。
 
 $$
 \begin{align*}
@@ -633,7 +633,7 @@ $$
 \max_{q_1, q_2, \cdots, q_T} P(q_1, q_2, \cdots, q_T, O_1, O_2, \cdots, O_T | \lambda)
 $$
 
-我们使用 **Viterbi 算法**，一种**动态规划**。
+我们使用 **Viterbi 算法**，利用了**动态规划**的思想。
 
 思想：记录 $t$ 时刻出现状态 $i$ 的最大可能路径及其对应概率，称为**最大局部概率**：
 
@@ -789,15 +789,15 @@ HMM 的应用：
 
 ### 8.5.2 系统性能评价
 
-错误率(error rate)与准确率(accuracy):
+错误率（error rate）与准确率（accuracy）:
 
-错误率为分类错误的样本占样本总数的比例。假设 $N$ 个样本中有 $a$ 个样本分类错误，则 $E=a/N$ . 准确率 为“1减去错误率”，即 $1-a/N$ .
+错误率为分类错误的样本占样本总数的比例。假设 $N$ 个样本中有 $a$ 个样本分类错误，则 $E=a/N$ . 准确率为“1减去错误率”，即 $1-a/N$ .
 
 <br>
 
-误差(error):
+误差（error）:
 
-学习器的实际预测输出与样本的真实输出之间的差异。分为：训练误差/经验误差(empirical error)、测试误差/泛化误差(generalization error)。
+学习器的实际预测输出与样本的真实输出之间的差异。分为：训练误差/经验误差（empirical error）、测试误差/泛化误差（generalization error）。
 
 <br>
 
@@ -822,7 +822,7 @@ $$
 
 <br>
 
-**真阳性率 TPR** (True Positive Rate)，和召回率相同，代表在所有真实正样本中，模型正确预测为正的比例。**假阳性率 FPR** (False Positive Rate)，在所有真实负样本中，被误判为正的比例，也就是漏抓坏人的概率：
+**真阳性率 TPR**（True Positive Rate），和召回率相同，代表在所有真实正样本中，模型正确预测为正的比例。**假阳性率 FPR**（False Positive Rate），在所有真实负样本中，被误判为正的比例，也就是漏抓坏人的概率：
 
 $$
 \text{TPR} = \frac{TP}{TP + FN}, \quad \text{FPR} = \frac{FP}{TN + FP}
@@ -830,9 +830,9 @@ $$
 
 **ROC 曲线**：
 
-ROC (Receiver Operator Characteristic) 曲线，称为受试者工作特征曲线或接收者操作特性曲线，是以假阳性率 FPR 为横坐标，以真阳性率 TPR 为纵坐标，绘制的曲线。
+ROC（Receiver Operator Characteristic）曲线，称为受试者工作特征曲线或接收者操作特性曲线，是以假阳性率 FPR 为横坐标，以真阳性率 TPR 为纵坐标，绘制的曲线。
 
-**AUC 曲线**(Area Under Curve) 是 **ROC 曲线下的面积**，表示分类器的性能。AUC 的值范围在 0 到 1 之间，值越大表示分类器性能越好。AUC 用于衡量模型对正类和负类的区分能力，即：从所有正类和负类中随机选一个，模型将正类排在前面的概率。特点：与具体阈值无关；适合二分类问题。
+**AUC 曲线**（Area Under Curve）是 **ROC 曲线下的面积**，表示分类器的性能。AUC 的值范围在 0 到 1 之间，值越大表示分类器性能越好。AUC 用于衡量模型对正类和负类的区分能力，即：从所有正类和负类中随机选一个，模型将正类排在前面的概率。特点：与具体阈值无关；适合二分类问题。
 
 > 思考一下什么样的 ROC 曲线代表高性能的模式识别系统？答：ROC 曲线越接近**左上角**越好，因为 FPR 越小越好， TPR 越大越好。
 
@@ -840,9 +840,9 @@ ROC (Receiver Operator Characteristic) 曲线，称为受试者工作特征曲�
 
 **PR 曲线**：
 
-PR (Precision-Recall) 曲线，是以召回率 recall 为横坐标，精度 precision 为纵坐标，绘制的曲线。
+PR（Precision-Recall）曲线，是以召回率 recall 为横坐标，精度 precision 为纵坐标，绘制的曲线。
 
-**AP 曲线**(Average Precision) 是 **PR 曲线下的面积**。AP 用于衡量模型在不同 recall 水平下的平均准确率，即：所有召回水平下，精度的加权平均（更关注排序前段的准确性）。多用于目标检测（如 COCO）或信息检索，常和 mAP (mean AP) 配合使用（多个类别取平均）。
+**AP 曲线**（Average Precision）是 **PR 曲线下的面积**。AP 用于衡量模型在不同 recall 水平下的平均准确率，即：所有召回水平下，精度的加权平均（更关注排序前段的准确性）。多用于目标检测（如 COCO）或信息检索，常和 mAP（mean AP）配合使用（多个类别取平均）。
 
 > 单次测试使用固定的阈值，计算出 recall 和 precision。多次测试使用不同的阈值，得到多组 precision 和 recall 值，就能绘制出 PR 曲线。
 
@@ -859,14 +859,92 @@ F_\beta &= (1+\beta^2) \cdot \frac{PR}{(\beta^2) P + R}
 \end{align*}
 $$
 
-F-score 最理想的数值是趋近于1，此时 precision 和 recall 都很高，接近于1。
+F-score 最理想的数值是趋近于 1，此时 precision 和 recall 都很高，接近于1。
 
 <br>
 
 **交叉验证** Cross Validation：
 
-1. 交叉验证是用来验证分类器的性能一种统计分析方法，将原始数据(dataset)进行分组，一部分做为训练集(training set)，另一部分做为验证集(validation set)。
-2. K-折交叉验证(K-fold Cross Validation)：将原始数据分成 $K$ 组(一般是均分)，将每个子集数据分别做一次验证集，其余的 $(K-1)$ 组子集数据作为训练集，这样得到 $K$ 个模型。把这 $K$ 个模型在最终验证集的分类准确率的平均数，作为分类器的性能指标。
-3. 留一法(Leave-One-Out)：每个样本单独作为验证集,其余的 $(N-1)$ 个样本作为训练集。
+1. 交叉验证是用来验证分类器的性能一种统计分析方法，将原始数据（dataset）进行分组，一部分做为训练集（training set），另一部分做为验证集（validation set）。
+2. K-折交叉验证（K-fold Cross Validation）：将原始数据分成 $K$ 组(一般是均分)，将每个子集数据分别做一次验证集，其余的 $(K-1)$ 组子集数据作为训练集，这样得到 $K$ 个模型。把这 $K$ 个模型在最终验证集的分类准确率的平均数，作为分类器的性能指标。
+3. 留一法（Leave-One-Out）：每个样本单独作为验证集，其余的 $(N-1)$ 个样本作为训练集。
 
 关于过拟合/欠拟合、生成式模型/鉴别式模型，前面已经讨论过，可见 [3 Machine Learning](./chapter3.md)。
+
+---
+
+总结——八股文必备：
+
+**如何缓解过拟合**：
+
+1. 模型层面：
+    - 降低模型的复杂度。
+    - L1, L2 范数正则化（Regularization）。其中 L1 范数正则化会让大部分参数趋于0，变得稀疏，具有特征选择效果；L2 范数正则化会让权重均匀压缩，约束空间趋于圆形。
+    - 权重衰减（Weight Decay），直接在梯度下降更新参数的时候加入一个线性衰减项。
+    - Dropout，训练过程中随机丢弃部分神经元。
+    - 批归一化/层归一化（Bacth Norm, Layer Norm），通过标准化减少内部协变量偏移，提高泛化能力。
+    - 提前停止（Early Stopping），在验证集误差不再下降时，提前结束训练。
+2. 训练策略层面：
+    - 交叉验证。
+    - 合理划分训练集、验证集。
+    - 集成学习，例如随机森林（Bagging），Boosting（XGBoost）。
+    - 迁移学习（Transfer Learning），使用大规模数据预训练的模型，再微调，能减少因小数据集导致的过拟合。
+3. 数据集层面：数据增强（例如图像裁剪旋转、语言时间拉伸、文本同义词替换）、数据清洗、增加训练集、噪声注入。
+
+**如何缓解梯度消失**（Vanishing Gradient）：
+
+1. 更换激活函数，例如使用 ReLU 及其变体。
+2. 减小网络层数。
+3. 使用残差连接，使得梯度能更好回传。
+4. Batch Norm 或 Layer Norm。
+5. 合理的参数初始化，例如 Xavier 初始化、He 初始化。
+6. 合适的优化器。
+7. 分层预训练。
+8. 使用辅助损失函数。
+
+**如何缓解梯度爆炸**（Exploding Gradient）：
+
+1. 更换激活函数。
+2. 减小网络层数。
+3. 梯度裁剪。
+4. Batch Norm 或 Layer Norm。
+5. 合适的学习率。例如学习率衰减、预热。
+6. L2 正则化。
+7. 权重衰减。
+8. 合适的优化器。
+
+**模型中常见的超参数**：
+
+1. 模型结构方面：网络层数，网络宽度，激活函数，卷积核大小，池化方式，Dropout 比例
+2. 优化方面：优化器类型，学习率，批次大小 batch_size，权重衰减，动量参数。
+3. 训练方面：训练轮数（Epochs），损失函数，数据增强策略。
+
+**生成式模型和鉴别式模型**：
+
+1. 生成式（能生成图像、文本、语音等数据）：朴素贝叶斯（Naive Bayes），贝叶斯网络（Bayesian Networks），高斯混合模型 GMM，隐含马尔可夫模型 HMM，扩散模型 Diffusion Model，自回归生成式模型（例如 GPT），生成对抗网络（GAN, Generative Adversarial Network）。
+2. 鉴别式（分类和预测）：逻辑回归（二分类），支持向量机 SVM，条件随机场（CRF, Conditional Random Field），决策树/随机森林，感知机（Perceptron），大多数神经网络（CNN, RNN, LSTM, GRU），判别式 Transformer（例如 BERT）。
+
+**机器学习/深度学习的主要任务**：
+
+1. 监督学习：有标注数据，即输入输出配对。
+    - 分类，输出是离散值。
+    - 回归，输出是连续值。
+2. 无监督学习：无标签，只学习输入数据。
+    - 聚类，把样本分组。
+    - 降维，从高维数据中提取低维表示，例如 PCA、t-SNE。
+3. 半监督学习：少量有标签数据 + 大量无标签数据。
+4. 自监督学习：用数据本身构造监督信号。目前主流的预训练方法。
+5. 强化学习：通过与环境交互，学习最大化长期奖励的策略。
+
+**常见神经网络的用途**：
+
+1. CNN 多用于**图像分类**。因为图像的特点有：局部相关性，平移不变性和高维度。而 CNN 的优势为：卷积核能捕捉局部空间特征（边缘、角点、纹理），权重共享（同一个卷积核扫描整张图，减少参数，增强平移不变性），具有层次化特征（浅层学到边缘，深层学到复杂图案）。
+2. RNN 和 Transformer 多用于**文本/序列处理**。因为文本具有的特点：时序性，变长性，长期依赖性。
+    - RNN 的优势：递归结构有“记忆”，隐状态能传递历史信息；天然支持变长输入，逐步处理；改进型 LSTM/GRU 引入门控机制，解决梯度消失/爆炸问题，能捕捉长距离依赖。
+    - Transformer：自注意力机制（Self-Attention），每个位置都能直接和任意位置建立联系，可以高效建模长距离依赖；高度并行化，能在 GPU 上高效训练；可扩展性，可堆叠多层、扩展到大规模数据（GPT、BERT）。
+
+**常见的 Transformer 类型**：
+
+1. Encoder：得到整段输入的全局表示，一个 token 可以看到整个序列。用于分类、序列标注、检索。例如 **BERT**, RoBerta, ALBERT, Reformer, FlauBERT, CamemBERT, Electra, MobileBERT, Longformer.
+2. Decoder：每个 token 只能看到它左边的内容，输出是逐步生成的序列，一步步预测下一个 token。适合文本生成。例如 **GPT series**, Transformer-XL, XLNet, DialoGPT.
+3. Encoder-Decoder：输入和输出是两个不同序列，适合序列到序列任务。用于机器翻译、摘要生成、问答系统，例如原始 Transformer, **BART**, mBART, XLM, T5, XLM-RoBerta, Pegasus.
