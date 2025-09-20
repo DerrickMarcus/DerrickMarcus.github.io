@@ -87,7 +87,7 @@ npm config set registry https://registry.npmmirror.com/
 npm config get registry
 ```
 
-安装 cnpm（npm 是 node 官方的包管理器。cnpm 是个中国版的 npm，是淘宝定制的 cnpm (gzip 压缩支持) 命令行工具代替默认的 npm）。
+安装 cnpm。npm 是 node 官方的包管理器。cnpm 是个中国版的 npm，是淘宝定制的 cnpm (gzip 压缩支持) 命令行工具代替默认的 npm。
 
 ```bash
 npm install -g cnpm --registry=https://registry.npmmirror.com

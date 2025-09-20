@@ -372,6 +372,7 @@ nav:
           - Ubuntu: dev_tools/environment/ubuntu.md
           - Python: dev_tools/environment/python.md
           - JavaScript: dev_tools/environment/javascript.md
+      - Git: dev_tools/git.md
   - Else:
       - Else: else/index.md
       - Railway:
