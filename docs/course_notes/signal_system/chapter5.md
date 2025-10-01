@@ -46,7 +46,7 @@ X(\omega) &= -\frac{1}{\pi} \int_{-\infty}^{\infty} \frac{R(\lambda)}{\omega-\la
 \end{align*}\\
 $$
 
-实部是虚部的 Hilbert 变换，虚部是实部的 Hilbert 逆变换。实部与虚部相互约束，二者可以互相确定，两者不能任意给定。
+实部是虚部的 Hilbert 变换，虚部是实部的 Hilbert 逆变换。实部与虚部相互约束，二者可以互相确定，因此对于因果系统，实部和虚部不能都任意给定。
 
 另外，对于一个最小相移函数， $\ln|H(\mathrm{j}\omega)|$ 与 $\varphi(\omega)$ 也相互约束。
 
@@ -109,15 +109,13 @@ $$
 
 ### FM，PM（调频与调相）
 
-FM（调频），直接作用于频率： $f(t)=A\cos(\omega_c t+\displaystyle\int_{-\infty}^{t}g(\tau)\,\mathrm{d}\tau)$ .
+FM（调频），直接作用于频率： $f(t)=A\cos\left(\omega_c t+\displaystyle\int_{-\infty}^{t}g(\tau)\,\mathrm{d}\tau\right)$ .
 
 PM（调相），直接作用于相位： $f(t)=A\cos(\omega_c t+g(t))$ .
 
-本质都是调相。因为用 $g(t)$ 调频相当于用 $\displaystyle\int_{-\infty}^{t}g(\tau)\,\mathrm{d}\tau$ 调相；用 $g(t)$ 调相相当于 $g'(t)$ 调频。
+上述两种方法本质都是调相，因为用 $g(t)$ 调频相当于用 $\displaystyle\int_{-\infty}^{t}g(\tau)\,\mathrm{d}\tau$ 调相，用 $g(t)$ 调相相当于 $g'(t)$ 调频。
 
 解调过程：对 $f(t)$ 求导，进行包络检波。
-
-![2024春信号与系统16第十四讲5.5-5.7_35](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/ch5_img7.png)
 
 ### FDM（频分复用）
 

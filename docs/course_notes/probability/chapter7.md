@@ -19,7 +19,7 @@
 
 泊松过程的概率分布为 $P(N(t)=n)=\dfrac{(\lambda t)^n}{n!}\mathrm{e}^{-\lambda t},\quad t\geqslant 0,\;n=0,1,2,\cdots$ 。满足归一化条件 $\displaystyle\sum_{n=0}^{+\infty}P(N(t)=n)=1$ .
 
-如果固定时间 $t$ ，则随机变量 $N(t)$ 代表 $0\sim t$ 时间内计数次数，且满足泊松分布 $\sim\text{Poisson}(\lambda t)$ .
+如果固定时间 $t$ ，则随机变量 $N(t)$ 代表 $0\sim t$ 时间内计数次数，且满足泊松分布 $\text{Poisson}(\lambda t)$ .
 
 <br>
 
@@ -53,7 +53,7 @@ $$
 
 相邻事件发生的间隔为 $T_n=S_n-S_{n-1},\;n=1,2,\cdots$ .
 
-根据关系 $P(S_n\leqslant t)=P(N(t)\geqslant n)$ ，得到 $S_n$ 的累积分布函数(CDF)为 $F_{S_n}=P(S_n<t)=P(N(t)\geqslant n)=\displaystyle\sum_{k=n}^{+\infty}\frac{(\lambda t)^k}{k!}\mathrm{e}^{-\lambda t}$ ，求导得到 $f_{S_n}(t)=\dfrac{\mathrm{d}}{\mathrm{d}t}F_{S_n}(t)=\dfrac{(\lambda t)^{n-1}}{(n-1)!}\lambda\mathrm{e}^{-\lambda t}$ ，服从 $n$ 阶 $\Gamma$ 分布。当 $n=1$ 时退化为指数分布 $S_1\sim\exp(\lambda)$ . 当 $n$ 较大时接近高斯分布。
+根据关系 $P(S_n\leqslant t)=P(N(t)\geqslant n)$ ，得到 $S_n$ 的累积分布函数（CDF）为 $F_{S_n}=P(S_n<t)=P(N(t)\geqslant n)=\displaystyle\sum_{k=n}^{+\infty}\frac{(\lambda t)^k}{k!}\mathrm{e}^{-\lambda t}$ ，求导得到 $f_{S_n}(t)=\dfrac{\mathrm{d}}{\mathrm{d}t}F_{S_n}(t)=\dfrac{(\lambda t)^{n-1}}{(n-1)!}\lambda\mathrm{e}^{-\lambda t}$ ，服从 $n$ 阶 $\Gamma$ 分布。当 $n=1$ 时退化为指数分布 $S_1\sim\exp(\lambda)$ . 当 $n$ 较大时，接近高斯分布。
 
 数字特征为：
 
@@ -171,13 +171,13 @@ $$
 \mathrm{E}(Y(t))=\lambda\int_{0}^t\mathrm{E}(X(t,s))\mathrm{d}s,\quad \mathrm{Var}(Y(t))=\lambda\int_{0}^t\mathrm{E}^2(X(t,s))\mathrm{d}s
 $$
 
-（1）若 $X(t,s)$ 为**连续型随机过程**，则令 $X(t)$ 的**特征函数**为 $B_{X(t,s)}(\omega)=\mathrm{E}[\exp(\mathrm{j}\omega X(t,s))]$ ，则 $Y(t)$ 的**特征函数**为：
+（1）若 $X(t,s)$ 为**连续型**随机过程，令 $X(t)$ 的**特征函数**为 $B_{X(t,s)}(\omega)=\mathrm{E}[\exp(\mathrm{j}\omega X(t,s))]$ ，则 $Y(t)$ 的**特征函数**为：
 
 $$
 \phi_{Y(t)}(\omega)=\exp\left[\lambda\int_0^t(B_{X(t,s)}(\omega)-1)\mathrm{d}s\right]
 $$
 
-（2）若 $X(t,s)$ 为**离散型随机过程**，则令 $X(t)$ 的**矩母函数**为 $B_X(t,s)(z)=\mathrm{E}\left(z^{X(t,s)}\right)$ ，则 $Y(t)$ 的**矩母函数**为：
+（2）若 $X(t,s)$ 为**离散型**随机过程，令 $X(t)$ 的**矩母函数**为 $B_X(t,s)(z)=\mathrm{E}\left(z^{X(t,s)}\right)$ ，则 $Y(t)$ 的**矩母函数**为：
 
 $$
 G_{Y(t)}(z)=\exp\left[\lambda\int_0^t(B_{X(t,s)}(z)-1)\mathrm{d}s\right]
@@ -187,7 +187,7 @@ $$
 
 独立的泊松分布随机变量具有可加性： $X_i\sim\text{Poisson}(\lambda_i)\implies \sum X_i\sim\text{Poisson}\left(\sum\lambda_i\right)$ .
 
-同样，独立的泊松过程也具有可加性：$X_i(t)\sim\text{Poisson}(\lambda_i t)\implies \sum X_i(t)\sim\text{Poisson}\left(\sum\lambda_i t\right)$ .
+同样，独立的泊松过程也具有可加性： $X_i(t)\sim\text{Poisson}(\lambda_i t)\implies \sum X_i(t)\sim\text{Poisson}\left(\sum\lambda_i t\right)$ .
 
 两个独立泊松过程的**差值**为复合泊松过程， $N(t)=N_1(t)-N_2(t)$ ：
 

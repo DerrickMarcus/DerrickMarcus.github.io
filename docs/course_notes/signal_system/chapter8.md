@@ -2,7 +2,7 @@
 
 ## 8.1 z 变换的定义
 
-抽样信号的 Laplace 变换：
+抽样信号 $x(nT)$ 的 Laplace 变换：
 
 $$
 \begin{align*}
@@ -12,11 +12,46 @@ T&=1 \implies X(z)=\sum_{n=0}^{\infty} x(n)z^{-n}
 \end{align*}
 $$
 
-![2024春信号与系统22第二十讲8.1-8.5_06](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/ch8_img1.png)
+单边 z 变换，由 Laplace 变换引入：
 
-也可以由洛朗级数引出（~~又到了最喜欢的复变~~）。
+$$
+x_s(t) = x(t)\delta_T(t) = \sum_{n=0}^{\infty} x(nT)\delta(t-nT)\\
+X(s) = \mathcal{L} \{ x_s(t) \} = \sum_{n=0}^{\infty} x(nT)e^{-snT}
+$$
 
-![2024春信号与系统22第二十讲8.1-8.5_07](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/ch8_img2.png)
+定义 $z = e^{sT}$ ，有：
+
+$$
+X(z) = \sum_{n=0}^{\infty} x(nT)z^{-n}
+$$
+
+取 $T=1$ 得到：
+
+$$
+X(z) = \sum_{n=0}^{\infty} x(n)z^{-n} = \mathcal{Z} \{ x(n) \}
+$$
+
+单边 z 变换也可以由洛朗级数引出。若 $f(z)$ 在去掉圆心的圆盘 $D: 0 < |z - z_0| < R$ 内确定并且解析，那么 $z_0$ 称为 $f(z)$ 的孤立奇点。在 $D$ 内，$f(z)$ 有洛朗级数：
+
+$$
+f(z) = \sum_{n=-\infty}^{\infty} a_n(z - z_0)^n
+$$
+
+其中：
+
+$$
+a_n = \frac{1}{2\pi j} \oint_{C_\rho} \frac{f(\xi)}{(\xi - z_0)^{n+1}}d\xi, \quad n \in \mathbb{Z}
+$$
+
+$C_\rho$ 是圆 $|z - z_0| = \rho$ ，将 $z$ 变换定义为复变量 $z^{-1}$ 的幂级数
+
+$$
+\mathcal{Z} \{ x(n) \} = x(0) + \frac{x(1)}{z} + \frac{x(2)}{z^2} + \cdots = \sum_{n=0}^{\infty} x(n)z^{-n}
+$$
+
+即 $z_0 = 0$ 的洛朗级数。
+
+<br>
 
 单边 $z$ 变换：
 
@@ -30,24 +65,22 @@ $$
 X(z)=\mathcal{Z}[x(n)]=\sum_{n=-\infty}^{\infty} x(n)z^{-n}
 $$
 
-$z\in\mathbb{C}$ 为复变量。因果信号的单边与双边 $z$ 变换相同。
+自变量 $z\in\mathbb{C}$ 为复变量。因果信号的单边与双边 $z$ 变换结果相同。
 
 **查表：附录5 序列的 z 变换表。**
 
 ## 8.2 z 变换的收敛域(ROC)
 
-不同序列的 $z$ 变换可能相同。如 $a^nu(n),\;a^nu(-n-1)$ .
+不同序列的 $z$ 变换可能相同，如 $a^nu(n),\;a^nu(-n-1)$ .
 
 每一个 $z$ 变换式要标注 ROC。在 ROC 内 $z$ 变换函数解析，因此 ROC 内不会有极点。有理函数以 ROC 以极点为边界。
 
 收敛的充分条件是绝对可和： $\displaystyle\sum_{n=-\infty}^{\infty} x(n)z^{-n}<\infty$ ，回忆级数收敛的判定方法——比值判定和根植判定：
 
 $$
-\begin{align*}
-&\lim_{n\to\infty}\left|\frac{a_{n+1}}{a_n}\right|=\rho \\
-&\lim_{n\to\infty}
+\lim_{n\to\infty}\left|\frac{a_{n+1}}{a_n}\right|=\rho \quad \mathsf{or} \quad
+\lim_{n\to\infty}
 \left|\sqrt[n]{|a_n|}\right|=\rho
-\end{align*}
 $$
 
 $\rho<1$ 收敛， $\rho>1$ 发散， $\rho=1$ 不确定。
@@ -157,9 +190,9 @@ $$
 
 （7）时域卷积， $z$ 域相乘。一般情况下新序列 ROC 为二者 ROC 的重叠部分，但是有可能 ROC 边缘发生零极点相消，使 ROC 扩大。
 
-（8）序列相乘， $z$ 域卷积。（不要求）
+（8）序列相乘， $z$ 域卷积。
 
-（9）尺度变换性质，这个在郑版教材和件中均未提及。但是2020年期末考试中出过这样一道题： $x(2n+1)$ 的双边 $z$ 变换。
+（9）尺度变换性质，这个在郑君里教材《信号与系统》和课件中均未提及。但是2020年期末考试中出过这样一道题： $x(2n+1)$ 的双边 $z$ 变换。
 
 我们可以直接推导：
 
@@ -187,7 +220,7 @@ $$
 
 ![2024春信号与系统23第二十一讲8.6-8.8_04](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/ch8_img6.png)
 
-$z$ 平面与 $s$ 平面的映射关系：（ $T$ 为序列的时间间隔）
+$T$ 为序列的时间间隔，则 $z$ 平面与 $s$ 平面的映射关系为：
 
 $$
 \begin{align*}
@@ -211,7 +244,7 @@ $s$ 平面沿虚轴移动， $z$ 平面上绕单位圆周期旋转。每平移 $
 
 ## 8.6 利用 z 变换解差分方程
 
-幂级数展开（长除法）、卷积定理（分解为相乘形式，在时域卷积）、留数法（不用）。
+幂级数展开（长除法）、卷积定理（分解为相乘形式，在时域卷积）、留数法（太麻烦，实际中不用）。
 
 ## 8.7 离散系统的系统函数
 
@@ -251,7 +284,7 @@ $$
 
 ### z 域考察离散时间系统的因果性和稳定性
 
-系统稳定的充要条件是单位样值响应 $h(n)$ 绝对可和：
+系统稳定的**充要条件**是单位样值响应 $h(n)$ 绝对可和：
 
 $$
 \begin{gather*}
@@ -260,11 +293,11 @@ H(z)\big|_{z=1}=\sum_{n=-\infty}^{\infty}h(n)
 \end{gather*}
 $$
 
-因此**稳定系统的系统函数 ROC 包含单位圆在内**。
+因此稳定系统的系统函数收敛域必然**包含单位圆**，这是一个必要条件。
 
-系统因果的条件： $h(n)=h(n)u(n)$ ， $z$ 变换的 ROC 为圆外且包含无穷远点。
+系统因果的条件为 $h(n)=h(n)u(n)$ ，即 $z$ 变换的收敛域为圆外且包含无穷远点。
 
-综上，因果稳定的系统应该同时满足：
+综上，**因果稳定系统**的收敛域应该同时满足：
 
 $$
 \begin{cases}
@@ -275,11 +308,9 @@ $$
 
 这也限制了**所有极点都在单位圆内**。
 
-![2024春信号与系统23第二十一讲8.6-8.8_40](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/ch8_img11.png)
-
 ## 8.8 离散时间傅里叶变换(DTFT)
 
-离散时间傅里叶变换 DFT（Discrete Time Fourier Transform）定义为：单位圆上的 $z$ 变换。注意与离散傅里叶变换 DFT 完全不同！
+离散时间傅里叶变换 DTFT（Discrete Time Fourier Transform）定义为：单位圆上的 $z$ 变换。注意，DTFT 与离散傅里叶变换 DFT 完全不同，DFT 是对 DTFT 的有限均匀采样，它的时域和频域序列都是离散的、有限长的，适用于实际的数字系统存储和运算，有关 DFT 的学习将在《数字信号处理》进行。
 
 ### 定义和收敛条件
 
@@ -338,7 +369,7 @@ $$
 H(e^{\mathrm{j}\omega})=\sum_{n=-\infty}^{\infty} h(n)e^{-\mathrm{j}\omega n}
 $$
 
-离散时间系统特征函数为： $z^{n}=e^{\mathrm{j}\omega n}$ ，对复指数序列 / 正弦序列激励的**稳态响应**为：
+离散时间系统特征函数为： $z^{n}=e^{\mathrm{j}\omega n}$ ，对复指数序列/正弦序列激励的**稳态响应**为：
 
 $$
 \begin{align*}
@@ -355,7 +386,7 @@ $$
 
 判定频率响应特性，只需关注一个周期 $(0,\omega_s)$ 内的情况。
 
-如果为实系数， $|H(e^{\mathrm{j}\omega})|$ 为偶函数， $\varphi(\omega)$ 为奇函数，也只需要关注半个周期 $\left(0,\dfrac{\omega_s}{2}\right)$ 内的情况。 $0$ 和 $\omega_s$ 是最低频， $\dfrac{\omega_s}{2}$ 是最高频，以此来判断 低通/高通/带通/带阻/全通 的系统特性。
+如果为实系数， $|H(e^{\mathrm{j}\omega})|$ 为偶函数， $\varphi(\omega)$ 为奇函数，也只需要关注半个周期 $\left(0,\dfrac{\omega_s}{2}\right)$ 内的情况。 $0$ 和 $\omega_s$ 是最低数字频率， $\dfrac{\omega_s}{2}$ 是最高数字频率，以此来判断低通/高通/带通/带阻/全通的系统特性。
 
 ![2024春信号与系统24第二十二讲8.9-8.11_14](https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo_image/images/ch8_img13.png)
 
@@ -407,4 +438,4 @@ $$
 
 优点：简单，便于与模拟滤波器直接对应。
 
-缺点： $s$ 与 $z$ 的多值对应关系可能引起混叠，不能用于设计高通和带阻滤波器。
+缺点： $s$ 与 $z$ 的多值对应关系可能引起混叠，且只能设计低通滤波器，不能用于设计高通和带阻滤波器。

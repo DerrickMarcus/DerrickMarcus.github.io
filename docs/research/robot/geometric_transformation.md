@@ -5,7 +5,7 @@
 
 ## 3D 位姿变换
 
-描述一个坐标系相对于另一个坐标系的位置和姿态（统称位姿），分别使用平移向量和旋转矩阵描述。以坐标系 $A$ 为参考坐标系，坐标系 $B$ 的位姿用旋转矩阵和平移矩阵描述为：
+描述一个坐标系相对于另一个坐标系的位置和姿态（统称**位姿**），分别使用平移向量和旋转矩阵描述。以坐标系 $A$ 为参考坐标系，坐标系 $B$ 的位姿用旋转矩阵和平移矩阵描述：
 
 $$
 {}^A_B\mathbf{R}=\begin{pmatrix}
@@ -17,12 +17,15 @@ r_{31} & r_{32} & r_{33}
 B_x \cdot A_x & B_y \cdot A_x & B_z \cdot A_x \\
 B_x \cdot A_y & B_y \cdot A_y & B_z \cdot A_y \\
 B_x \cdot A_z & B_y \cdot A_z & B_z \cdot A_z
-\end{pmatrix},\quad \mathbf{t}=\overrightarrow{AB}
+\end{pmatrix},\quad
+{}^A_B\mathbf{t}=\overrightarrow{AB}=\begin{pmatrix}
+t_1 \\ t_2 \\ t_3
+\end{pmatrix}
 $$
 
 其中 ${}^A_B\mathbf{R}$ 为**正交矩阵**，满足 ${}^A_B\mathbf{R}^T={}^A_B\mathbf{R}^{-1}={}^B_A\mathbf{R}$ .
 
-从 $B$ 坐标系变换到 $A$ 坐标系的齐次坐标变换矩阵  为：
+从 $B$ 坐标系变换到 $A$ 坐标系的齐次坐标变换矩阵为：
 
 $$
 {}^A_B\mathbf{T}=\begin{pmatrix}
@@ -39,7 +42,7 @@ $$
 
 在坐标系 $B$ 中齐次坐标为 ${}^BP=[x,y,z,1]^T$ 的点，变换到坐标系 $A$ 之后坐标为 ${}^AP={}^A_B\mathbf{T}\cdot{}^BP$ .
 
-复合变换：从坐标系 $C$ 变换到坐标系 $A$ ，可以拆分为先从坐标系 $C$ 到坐标系 $B$ 的变换，再乘以从坐标系 $B$ 到坐标系 $A$ 的变换： ${}^A_C\mathbf{T}={}^A_B\mathbf{T}\cdot {}^B_C\mathbf{T}$ .
+复合变换：从坐标系 $C$ 变换到坐标系 $A$ ，可以拆分为先从“坐标系 $C$ 变换到坐标系 $B$ ”，再乘以从“坐标系 $B$ 变换到坐标系 $A$ ”，即： ${}^A_C\mathbf{T}={}^A_B\mathbf{T}\cdot {}^B_C\mathbf{T}$ .
 
 ---
 
@@ -129,28 +132,30 @@ $$
 \end{pmatrix}
 $$
 
-由此，旋转也可以表示为坐标系 先后分别绕自身的各个坐标轴旋转一定的角度，例如分别绕着 $x,y,z$ 轴旋转 $\gamma,\alpha,\beta$ 角度，则旋转矩阵可以表示为 $\mathbf{R}=\mathbf{R}_z(\alpha)\mathbf{R}_y(\beta)\mathbf{R}_x(\gamma)$ . 但是由于矩阵乘法不具有交换性，因此不同的旋转顺序会得到不同的结果，例如一般情况下 $\mathbf{R}_z(\alpha)\mathbf{R}_y(\beta)\mathbf{R}_x(\gamma)\neq\mathbf{R}_x(\gamma)\mathbf{R}_y(\beta)\mathbf{R}_z(\alpha)$。对旋转顺序做排列组合，共有 $3\times2\times2=12$ 种顺序：
+由此，旋转也可以表示为坐标系先后分别绕自身的各个坐标轴旋转一定的角度，例如分别绕着 $X,Y,Z$ 轴旋转 $\gamma,\alpha,\beta$ 角度，则旋转矩阵可以表示为 $\mathbf{R}=\mathbf{R}_z(\alpha)\mathbf{R}_y(\beta)\mathbf{R}_x(\gamma)$ . 但是由于矩阵乘法不具有交换性，因此不同的旋转顺序会得到不同的结果，例如一般情况下 $\mathbf{R}_z(\alpha)\mathbf{R}_y(\beta)\mathbf{R}_x(\gamma)\neq\mathbf{R}_x(\gamma)\mathbf{R}_y(\beta)\mathbf{R}_z(\alpha)$。对旋转顺序做排列组合，共有 $3\times2\times2=12$ 种顺序：
 
 !!! success ""
-    xyz, xyx, xzy, xzx,
-    yxz, yxy, yzx, yzy,
-    zxy, zyx, zyz, zxz
+    XYZ,    XYX,    XZY,    XZX,
+
+    YXZ,    YXY,    YZX,    YZY,
+
+    ZXY,    ZYX,    ZYZ,    ZXZ
 
 同时，还需要考虑旋转时的参考坐标系：
 
 （1）绕着一个固定的坐标系的坐标轴进行旋转，称为**固定角欧拉角**或**固定轴旋转**；
 
-这种情况比较简单，以 “绕固定轴以 **XYZ** 顺序旋转欧拉角 $\gamma,\beta,\alpha$ ” 的情况为例，总的旋转矩阵为 $\mathbf{R}_{xyz}(\gamma,\beta,\alpha)=\mathbf{R}_z(\alpha)\cdot\mathbf{R}_y(\beta)\cdot\mathbf{R}_x(\gamma)$ .
+这种情况比较简单，以“绕固定轴以 XYZ 顺序旋转欧拉角 $\gamma,\beta,\alpha$ ”的情况为例，总的旋转矩阵为 $\mathbf{R}_{xyz}(\gamma,\beta,\alpha)=\mathbf{R}_z(\alpha)\cdot\mathbf{R}_y(\beta)\cdot\mathbf{R}_x(\gamma)$ .
 
 （2）每次旋转都以自身坐标轴为轴进行旋转，称为**非固定旋转轴的欧拉角**。
 
-假设坐标系 $A$ 按照 **XYZ** 的顺序 旋转 $\gamma,\beta,\alpha$ 角度之后变为坐标系 $B$ （中间两步的结果分别为 $B',B''$ ），则 $B\to A$ 的位姿变换为 ${}^A_B\mathbf{R}={}^A_{B'}\mathbf{R}\cdot{}^{B'}_{B''}\mathbf{R}\cdot{}^{B''}_{B}\mathbf{R}=\mathbf{R}_x(\gamma)\cdot\mathbf{R}_y(\beta)\cdot\mathbf{R}_z(\alpha)$ .
+假设坐标系 $A$ 按照 XYZ 的顺序旋转 $\gamma,\beta,\alpha$ 角度之后变为坐标系 $B$ （中间两步的结果分别为 $B',B''$ ），则 $B\to A$ 的位姿变换为 ${}^A_B\mathbf{R}={}^A_{B'}\mathbf{R}\cdot{}^{B'}_{B''}\mathbf{R}\cdot{}^{B''}_{B}\mathbf{R}=\mathbf{R}_x(\gamma)\cdot\mathbf{R}_y(\beta)\cdot\mathbf{R}_z(\alpha)$ .
 
-可见，绕固定坐标轴 X-Y-Z 旋转 $(\gamma,\beta,\alpha)$ 和绕自身坐标轴 Z-Y-X 旋转 $(\alpha,\beta,\gamma)$ 的结果相同。
+可见，绕固定坐标轴 X-Y-Z 旋转 $(\gamma,\beta,\alpha)$ ，和绕自身坐标轴 Z-Y-X 旋转 $(\alpha,\beta,\gamma)$ 的结果相同。
 
 由此可见欧拉角有 $12\times2=24$ 种旋转方式。
 
-一般将绕 Z-Y-X 旋转的角度分别称为 Yaw-Pitch-Roll .
+一般将绕 Z-Y-X 旋转的角度分别称为 Yaw-Pitch-Roll。
 
 ### 轴角
 
@@ -231,7 +236,7 @@ x \\ y \\ z \\ w
 \end{pmatrix}
 $$
 
-这里的向量乘法是**四元数乘法**，具体规则为：
+这里的向量乘法是**四元数乘法**，四元数的乘法具有封闭性，即两个四元数相乘的结果也是一个四元数，具体规则为：
 
 $$
 \begin{pmatrix}

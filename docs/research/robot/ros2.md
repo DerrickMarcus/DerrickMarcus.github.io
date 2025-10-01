@@ -8,4 +8,4 @@
 
 ## ros2 launch
 
-ROS2 中 `launch` 启动文件可以使用 `.launch.py` 文件编写。
+ROS2 中的 launch 启动文件可以使用 Python 脚本编写，文件名后缀为 `.launch.py` 。
