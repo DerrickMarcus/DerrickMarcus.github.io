@@ -722,8 +722,8 @@ $\displaystyle\sum_{t=1}^{T-1} \xi_t(i,j)$ 表示整个过程中从状态 $s_i$ 
 
 $$
 \begin{align*}
-\hat{a}_{ij} &= \frac{\text{expected count of transitions from } i \text{ to } j}{\text{expected count of stays at } i} = \frac{\displaystyle\sum_t \xi_t(i,j)}{\displaystyle\sum_t \displaystyle\sum_j \xi_t(i,j)} \\
-\hat{b}_j(k) &= \frac{\text{expected number of times in state } j \text{ and observing } k}{\text{expected number of times in state } j} = \frac{\displaystyle\sum_{t, O_t = k} \gamma_t(j)}{\displaystyle\sum_t \gamma_t(j)}
+\hat{a}_{ij} &= \frac{\text{expected count of transitions from } i \text{ to } j}{\text{expected count of stays at } i} = \frac{\sum_t \xi_t(i,j)}{\sum_t \sum_j \xi_t(i,j)} \\
+\hat{b}_j(k) &= \frac{\text{expected number of times in state } j \text{ and observing } k}{\text{expected number of times in state } j} = \frac{\sum_{t, O_t = k} \gamma_t(j)}{\sum_t \gamma_t(j)}
 \end{align*}
 $$
 
