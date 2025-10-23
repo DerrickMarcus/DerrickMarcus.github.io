@@ -56,6 +56,9 @@
 
 ### 京沪高铁
 
+!!! note
+    本条目参考[百度百科](https://baike.baidu.com/item/%E4%BA%AC%E6%B2%AA%E9%AB%98%E9%80%9F%E9%93%81%E8%B7%AF/2558439)、[维基百科](https://zh.wikipedia.org/zh-cn/%E4%BA%AC%E6%B2%AA%E9%AB%98%E9%80%9F%E9%93%81%E8%B7%AF)。
+
 ### 京广高铁
 
 !!! note

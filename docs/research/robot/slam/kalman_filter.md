@@ -1,6 +1,6 @@
 # Kalman Filter 卡尔曼滤波
 
-## LKF 线性卡尔曼滤波
+## Linear Kalman Filter
 
 卡尔曼滤波不同于传统的具有频域选频特性的滤波器，它是一种时域的滤波器，更准取地说它是一种最优估计方法，可以根据已知的先验知识，预测下一个时刻的估计值。
 
@@ -106,18 +106,18 @@ $$
 滤波器的输入为：
 
 1. 初始化
-    - 初始状态 $\hat x_{0|0}$ .
-    - 初始状态方差 $p_{0|0}$ .
+    - 初始状态 $\hat x_{0|0}$
+    - 初始状态方差 $p_{0|0}$
     - > 初始化参数可以由其他的系统、过程（例如雷达的搜索模式）或基于经验和理论知识所得出的合理的猜测来获得。即使初始化参数不太准确，卡尔曼滤波器也能收敛到接近真值。
 2. 测量
     - > 每个滤波器采样周期都要进行测量。每次测量得到两个参数：
-    - 测量值 $z_n$ .
-    - 测量方差 $r_n$ .
+    - 测量值 $z_n$
+    - 测量方差 $r_n$
 
 滤波器的输出为：
 
-- 状态估计 $\hat x_{n|n}$ .
-- 状态估计方差 $p_{n|n}$ .
+- 状态估计 $\hat x_{n|n}$
+- 状态估计方差 $p_{n|n}$
 
 5个核心方程（以一维匀速运动为例）：
 
@@ -134,7 +134,7 @@ $$
 
 ### 一维 KF
 
-上述讨论的“一维无过程噪声 KF”中，我们没有考虑过程噪声。真实世界中，系统动力模型总是有不确定性的。比如我们想测量一个电阻的阻值，我们假设它是不变的，即阻值不随测量过程而改变，但实际上阻值会随着环境温度的改变而轻微改变。再比如用雷达追踪弹道导弹时，导弹动态模型的不确定性会包含一些随机的加减速。对于飞行器之类的目标，模型不确定性更大，因为飞行员随时可能进行机动。另一方面，当我们用 GPS 接收机计算一个固定物体的位置时，由于固定物体不会动，所以动态模型不确定性为0. 动态模型的不确定性称为过程噪声，也叫模型噪声、驱动噪声、动态噪声或系统噪声。过程噪声也会带来估计误差。
+上述讨论的“一维无过程噪声 KF”中，我们没有考虑过程噪声。真实世界中，系统动力模型总是有不确定性的。比如我们想测量一个电阻的阻值，我们假设它是不变的，即阻值不随测量过程而改变，但实际上阻值会随着环境温度的改变而轻微改变。再比如用雷达追踪弹道导弹时，导弹动态模型的不确定性会包含一些随机的加减速。对于飞行器之类的目标，模型不确定性更大，因为飞行员随时可能进行机动。另一方面，当我们用 GPS 接收机计算一个固定物体的位置时，由于固定物体不会动，所以动态模型不确定性为0。动态模型的不确定性称为过程噪声，也叫模型噪声、驱动噪声、动态噪声或系统噪声。过程噪声也会带来估计误差。
 
 过程噪声的方差使用 $q$ 表示。
 
@@ -282,7 +282,7 @@ $$
     \end{pmatrix}
     $$
 
-状态外插方程的推到需要用到线性系统的状态空间：
+状态外插方程的推导需要使用到线性系统的状态空间：
 
 $$
 \begin{align*}
@@ -598,15 +598,17 @@ $$
 
 ![KalmanFilterDiagram](https://kalmanfilter.net/img/summary/KalmanFilterDiagram.png)
 
-1. 预测阶段
+1. 初始化：输入初始时刻状态估计 $\hat{\boldsymbol{x}}_{0\mid 0}$ 和初始时刻协方差估计 $\boldsymbol{P}_{0\mid 0}$
+2. 预测阶段
     - 状态外插/转移/预测： $\hat{\boldsymbol{x}}_{n+1\mid n} = \boldsymbol{F}\hat{\boldsymbol{x}}_{n\mid n} + \boldsymbol{G}\boldsymbol{u}_n$
-    - 协方差外插/预测： $\boldsymbol{P}_{n+1\mid n} = \boldsymbol{F}\boldsymbol{P}_{n\mid n}\boldsymbol{F}^T + \boldsymbol{Q}$
-2. 更新阶段
+    - 协方差外插/预测： $\boldsymbol{P}_{n+1\mid n} = \boldsymbol{F}\boldsymbol{P}_{n\mid n}\boldsymbol{F}^T + \boldsymbol{Q}_n$
+3. 更新阶段
+    - > 上一时刻预测的 $\hat{\boldsymbol{x}}_{n+1|n}$ 即为这一时刻的 $\hat{\boldsymbol{x}}_{n|n-1}$ .
+    - 卡尔曼增益： $\boldsymbol{K}_n = \boldsymbol{P}_{n\mid n-1}\boldsymbol{H}^T\left(\boldsymbol{H}\boldsymbol{P}_{n\mid n-1}\boldsymbol{H}^T + \boldsymbol{R}_n\right)^{-1}$
     - 状态更新： $\hat{\boldsymbol{x}}_{n\mid n} = \hat{\boldsymbol{x}}_{n\mid n-1} + \boldsymbol{K}_n (\boldsymbol{z}_n - \boldsymbol{H}\hat{\boldsymbol{x}}_{n\mid n-1})$
     - 协方差更新： $\boldsymbol{P}_{n\mid n} = (\boldsymbol{I}-\boldsymbol{K}_n \boldsymbol{H})\boldsymbol{P}_{n\mid n-1}(\boldsymbol{I}-\boldsymbol{K}_n \boldsymbol{H})^T+ \boldsymbol{K}_n\boldsymbol{R}_n\boldsymbol{K}_n^T$
-    - 卡尔曼增益： $\boldsymbol{K}_n = \boldsymbol{P}_{n\mid n-1}\boldsymbol{H}^T\left(\boldsymbol{H}\boldsymbol{P}_{n\mid n-1}\boldsymbol{H}^T + \boldsymbol{R}_n\right)^{-1}$
-3. 辅助方程
-    - 测量方程： $\boldsymbol{z}_n = \boldsymbol{H}\boldsymbol{x}_n$
+4. 辅助方程
+    - 测量方程： $\boldsymbol{z}_n = \boldsymbol{H}\boldsymbol{x}_n+\boldsymbol{v}_n$
     - 测量协方差： $\boldsymbol{R}_n = \mathbb{E}\left(\boldsymbol{v}_n \boldsymbol{v}_n^T\right)$
     - 过程噪声协方差： $\boldsymbol{Q}_n = \mathbb{E}\left(\boldsymbol{w}_n \boldsymbol{w}_n^T\right)$
     - 估计协方差： $\boldsymbol{P}_{n\mid n} = \mathbb{E}\left(\boldsymbol{e}_n \boldsymbol{e}_n^T\right) = \mathbb{E}\left\{(\boldsymbol{x}_n-\hat{\boldsymbol{x}}_{n\mid n})(\boldsymbol{x}_n-\hat{\boldsymbol{x}}_{n\mid n})^T \right\}$
@@ -629,6 +631,57 @@ $$
 |  测量噪声向量  | $\boldsymbol{v}$ |  $n_z \times 1$  |
 |    观测矩阵    | $\boldsymbol{H}$ | $n_z \times n_x$ |
 |   卡尔曼增益   | $\boldsymbol{K}$ | $n_x \times n_z$ |
-|  离散时间变量  | $\boldsymbol{n}$ |       $k$        |
 
-## EKF 扩展卡尔曼滤波
+## Extended Kalman Filter
+
+先前我们讨论的普通卡尔曼滤波，是为**线性系统**设计的最优估计算法，它假设系统满足一下线性高斯模型：
+
+$$
+\begin{cases}
+\hat{\boldsymbol{x}}_{n+1|n}&=\boldsymbol{F}\hat{\boldsymbol{x}}_{n|n}+\boldsymbol{G}\boldsymbol{u}_n+\boldsymbol{\omega}_n \\
+\boldsymbol{z}_n &= \boldsymbol{H}\boldsymbol{x}_n+\boldsymbol{v}_n
+\end{cases}
+$$
+
+其中系统过程噪声 $\boldsymbol{w}$ 和测量噪声 $\boldsymbol{v}$ 均为高斯白噪声。由此，KF 可以递推计算出每一时刻状态的最优估计（最小方差意义下的最优）。
+
+现实系统往往是非线性的，例如机器人位姿计算中（涉及角度的三角函数）、惯性导航、传感器的非线性测量，需要使用扩展卡尔曼滤波 EKF 来处理。
+
+EKF 的核心思想是，用泰勒展开将非线性系统近似为局部线性系统（保留一阶项，忽略二阶以上的项），然后在每一个时刻应用普通卡尔曼滤波。
+
+非线性系统的模型为：
+
+$$
+\begin{cases}
+\boldsymbol{x}_n &=\boldsymbol{f}(\boldsymbol{x}_{n-1},\boldsymbol{u}_n)+\boldsymbol{\omega}_n,\quad \boldsymbol{\omega}\sim\mathcal{N}(0,\boldsymbol{Q}) \\
+\boldsymbol{z}_n &= \boldsymbol{h}(\boldsymbol{x}_n)+\boldsymbol{v}_n,\quad \boldsymbol{v}\sim\mathcal{N}(0,\boldsymbol{R})
+\end{cases}
+$$
+
+其中 $\boldsymbol{f}(\cdot)$ 为状态转移的非线性函数， $\boldsymbol{h}(\cdot)$ 为观测模型的非线性函数。噪声仍是高斯白噪声。
+
+计算估计点处的 Jacobian 矩阵：
+
+$$
+\boldsymbol{F}_n=\frac{\partial \boldsymbol{f}}{\partial \boldsymbol{x}}\bigg|_{\boldsymbol{x}=\hat{\boldsymbol{x}}_{n-1|n-1},\boldsymbol{u}=\boldsymbol{u}_n},\quad \boldsymbol{H}_n=\frac{\partial \boldsymbol{h}}{\partial \boldsymbol{x}}\bigg|_{\boldsymbol{x}=\hat{\boldsymbol{x}}_{n|n-1}}
+$$
+
+对噪声同样有：
+
+$$
+\boldsymbol{W}_n=\frac{\partial \boldsymbol{f}}{\partial \boldsymbol{\omega}},\quad
+\boldsymbol{V}_n=\frac{\partial \boldsymbol{h}}{\partial \boldsymbol{v}}
+$$
+
+则：
+
+Predict：
+
+1. 状态预测 $\hat{\boldsymbol{x}}_{n|n-1}=\boldsymbol{f}(\hat{\boldsymbol{x}}_{n-1|n-1},\boldsymbol{u}_n)$
+2. 协方差预测 $\boldsymbol{P}_{n|n-1}=\boldsymbol{F}_{n}\boldsymbol{P}_{n-1|n-1}\boldsymbol{F}_{n}^T+\boldsymbol{W}_n\boldsymbol{Q}_{n-1}\boldsymbol{W}_n^T$
+
+Update：
+
+1. 卡尔曼增益 $\boldsymbol{K}_n=\boldsymbol{P}_{n|n-1}\boldsymbol{H}_n^T\left(\boldsymbol{H}_n\boldsymbol{P}_{n|n-1}\boldsymbol{H}_n^T+\boldsymbol{V}_n\boldsymbol{R}_n\boldsymbol{V}_n^T \right)^{-1}$
+2. 状态更新 $\hat{\boldsymbol{x}}_{n|n}=\hat{\boldsymbol{x}}_{n|n-1}+\boldsymbol{K}_n\left( \boldsymbol{z}_n-\boldsymbol{h}(\hat{\boldsymbol{x}}_{n|n-1}) \right)$
+3. 协方差更新 $\boldsymbol{P}_{n|n} = (\boldsymbol{I}-\boldsymbol{K}_n \boldsymbol{H}_n)\boldsymbol{P}_{n|n-1}(\boldsymbol{I}-\boldsymbol{K}_n \boldsymbol{H}_n)^T+ \boldsymbol{K}_n\boldsymbol{R}_n\boldsymbol{K}_n^T$ ，简洁形式 $\boldsymbol{P}_{n|n} = (\boldsymbol{I}-\boldsymbol{K}_n \boldsymbol{H}_n)\boldsymbol{P}_{n|n-1}$

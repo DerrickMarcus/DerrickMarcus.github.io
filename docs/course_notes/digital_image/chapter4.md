@@ -42,11 +42,11 @@ $$
 \frac{1}{N} \exp\left(-\mathrm{j} 2\pi \frac{ux+vy}{N}\right) = \frac{1}{\sqrt{N}} \exp\left(-\mathrm{j} 2\pi \frac{ux}{N}\right) \cdot \frac{1}{\sqrt{N}} \exp\left(-\mathrm{j} 2\pi \frac{vy}{N}\right)
 $$
 
-平移定理： $f(x-a,y-b)\iff F(u,v)\exp(-\mathrm{j}2\pi \dfrac{au+bv}{N})$ .
+平移定理： $f(x-a,y-b)\iff F(u,v)\exp\left(-\mathrm{j}2\pi \dfrac{au+bv}{N}\right)$ .
 
 旋转定理：$f(x,y)$ 旋转角度 $\theta_0$ ， $F(u,v)$ 也转过相同角度。 $F(u,v)$ 旋转角度 $\theta_0$ ， $f(x,y)$ 也转过相同角度。
 
-尺度定理：$f(ax,by)\iff \dfrac{1}{|ab|}F(\dfrac{u}{a},\dfrac{v}{b})$ .
+尺度定理：$f(ax,by)\iff \dfrac{1}{|ab|}F\left(\dfrac{u}{a},\dfrac{v}{b}\right)$ .
 
 卷积定理：$f(x,y)*g(x,y)\iff F(u,v)G(u,v),f(x,y)g(x,y)\iff F(u,v)*G(u,v)$ .
 
