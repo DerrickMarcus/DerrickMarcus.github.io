@@ -638,14 +638,14 @@ $$
 
 $$
 \begin{cases}
-\hat{\boldsymbol{x}}_{n+1|n}&=\boldsymbol{F}\hat{\boldsymbol{x}}_{n|n}+\boldsymbol{G}\boldsymbol{u}_n+\boldsymbol{\omega}_n \\
+\boldsymbol{x}_n&=\boldsymbol{F}\boldsymbol{x}_{n-1}+\boldsymbol{G}\boldsymbol{u}_n+\boldsymbol{\omega}_n \\
 \boldsymbol{z}_n &= \boldsymbol{H}\boldsymbol{x}_n+\boldsymbol{v}_n
 \end{cases}
 $$
 
 其中系统过程噪声 $\boldsymbol{w}$ 和测量噪声 $\boldsymbol{v}$ 均为高斯白噪声。由此，KF 可以递推计算出每一时刻状态的最优估计（最小方差意义下的最优）。
 
-现实系统往往是非线性的，例如机器人位姿计算中（涉及角度的三角函数）、惯性导航、传感器的非线性测量，需要使用扩展卡尔曼滤波 EKF 来处理。
+现实系统往往是非线性的，例如机器人位姿计算、惯性导航、传感器的非线性测量，可能涉及到三角函数、平方、开方等非线性运算，因此需要使用扩展卡尔曼滤波 EKF 来处理。
 
 EKF 的核心思想是，用泰勒展开将非线性系统近似为局部线性系统（保留一阶项，忽略二阶以上的项），然后在每一个时刻应用普通卡尔曼滤波。
 
@@ -673,7 +673,7 @@ $$
 \boldsymbol{V}_n=\frac{\partial \boldsymbol{h}}{\partial \boldsymbol{v}}
 $$
 
-则：
+则扩展卡尔曼滤波的方程为：
 
 Predict：
 
@@ -685,3 +685,5 @@ Update：
 1. 卡尔曼增益 $\boldsymbol{K}_n=\boldsymbol{P}_{n|n-1}\boldsymbol{H}_n^T\left(\boldsymbol{H}_n\boldsymbol{P}_{n|n-1}\boldsymbol{H}_n^T+\boldsymbol{V}_n\boldsymbol{R}_n\boldsymbol{V}_n^T \right)^{-1}$
 2. 状态更新 $\hat{\boldsymbol{x}}_{n|n}=\hat{\boldsymbol{x}}_{n|n-1}+\boldsymbol{K}_n\left( \boldsymbol{z}_n-\boldsymbol{h}(\hat{\boldsymbol{x}}_{n|n-1}) \right)$
 3. 协方差更新 $\boldsymbol{P}_{n|n} = (\boldsymbol{I}-\boldsymbol{K}_n \boldsymbol{H}_n)\boldsymbol{P}_{n|n-1}(\boldsymbol{I}-\boldsymbol{K}_n \boldsymbol{H}_n)^T+ \boldsymbol{K}_n\boldsymbol{R}_n\boldsymbol{K}_n^T$ ，简洁形式 $\boldsymbol{P}_{n|n} = (\boldsymbol{I}-\boldsymbol{K}_n \boldsymbol{H}_n)\boldsymbol{P}_{n|n-1}$
+
+> EKF 相比于普通的 KF，适用范围更广，更贴近真实系统，滤波效果更好，但形式较为复杂，尤其是复杂函数可能难以写出显式导数和雅可比矩阵。
