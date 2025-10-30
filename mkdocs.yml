@@ -353,18 +353,19 @@ nav:
       - Robot:
           - Robot: research/robot/index.md
           - ROS basic: research/robot/ros_basic.md
-          - ROS 2: research/robot/ros2.md
           - Gazebo: research/robot/gazebo.md
           - Catkin Tool: research/robot/catkin.md
           - Geometric Transformation: research/robot/geometric_transformation.md
           - Camera Calibration: research/robot/camera_calibration.md
-          - LIO-SAM: research/robot/liosam.md
+          - Kalman Filter: research/robot/kalman_filter.md
           - Kd-Tree: research/robot/kdtree.md
+          - Target Detection: research/robot/object_detection.md
+          - Target Tracking: research/robot/object_tracking.md
           - Gaussian Splatting: research/robot/gaussian_splatting.md
           - SLAM:
               - SLAM: research/robot/slam/index.md
+              - LIO-SAM: research/robot/slam/liosam.md
               - Graph Optimization: research/robot/slam/graph_optimization.md
-              - Kalman Filter: research/robot/slam/kalman_filter.md
   - Development Tools:
       - Development Tools: dev_tools/index.md
       - Environment Configuration:

@@ -51,18 +51,36 @@ html {
     scroll-behavior: smooth;
 }
 
+/* 所有 Markdown 图片自动居中 */
+.md-typeset img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 /* 表格宽度铺满、内容居中、字体适中 */
-.md-typeset__table {
+.md-typeset__table table {
+    display: table !important;
+    margin: 1rem auto !important;
+    width: auto;
     max-width: 100%;
+    table-layout: auto;
+}
+
+@media (min-width: 768px) {
+    .md-typeset__table table {
+        max-width: 80%;
+    }
 }
 
 .md-typeset table {
-    width: 100% !important;
+    width: auto;
+    max-width: 100%;
     text-align: center;
-    table-layout: fixed;
+    table-layout: auto;
     /* font-size: 0.7rem; */
     border-collapse: collapse;
-    /* margin: 1em 0; */
+    margin: 1em auto;
     word-break: break-word;
 }
 
