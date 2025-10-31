@@ -359,8 +359,8 @@ nav:
           - Camera Calibration: research/robot/camera_calibration.md
           - Kalman Filter: research/robot/kalman_filter.md
           - Kd-Tree: research/robot/kdtree.md
-          - Target Detection: research/robot/object_detection.md
-          - Target Tracking: research/robot/object_tracking.md
+          - Object Detection: research/robot/object_detection.md
+          - Object Tracking: research/robot/object_tracking.md
           - Gaussian Splatting: research/robot/gaussian_splatting.md
           - SLAM:
               - SLAM: research/robot/slam/index.md

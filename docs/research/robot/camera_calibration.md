@@ -1,7 +1,7 @@
 # Camera Calibration
 
 !!! abstract
-    在之前《数字图像处理》课程章节 [7 图像校正和修补](../../course_notes/digital_image/chapter7.md)中我们简单介绍了相机成像原理和张正友相机内参标定方法。这里我们将进一步详细讨论。
+    在之前《数字图像处理》课程 [Digital Image Processing - 7 图像校正和修补](../../course_notes/digital_image/chapter7.md)中我们简单介绍了相机成像原理和张正友相机内参标定方法。这里我们将进一步详细讨论。
 
 首先明确4个概念：
 
@@ -454,7 +454,7 @@ if __name__ == "__main__":
 
 ## Practice
 
-现在有一台机器人 SLAM 设备，传感器为激光雷达 LiDAR 和相机 Camera。相机的内参矩阵 $\mathbf{K}$ 和 `LiDAR -> Camera` 的外参矩阵 ${}^C_L\mathbf{T}$ 已经标定好，LiDAR 相对于世界坐标系的位姿 pose （因为以 LiDAR 中心为系统的原点）可以由 SLAM 节点发布的消息获取，记为 ${}^W_L\mathbf{T}$ 。现在对相机拍摄到的图片进行 YOLO 物体识别，假设只识别 bottle 这一类，且一段时间内图像中只出现同一个 bottle，我们需要对识别到的 bottle 物体在图像中位置的变化，估算出 bottle 在世界坐标系中的坐标 $(X_W,Y_W,Z_W)$ 和在相机坐标系中的坐标 $(X_C,Y_C,Z_C)$ . 其中 bottle 物体在图像中的位置定义为 YOLO 检测框的中心像素坐标 $(u,v)$ .
+现在有一台机器人 SLAM 设备，传感器为激光雷达 LiDAR 和相机 Camera。相机的内参矩阵 $\mathbf{K}$ 和 `LiDAR -> Camera` 的外参矩阵 ${}^C_L\mathbf{T}$ 已经标定好，LiDAR 相对于世界坐标系的位姿 pose （因为以 LiDAR 中心为系统的原点）可以由 SLAM 节点发布的消息获取，记为 ${}^W_L\mathbf{T}$ 。现在对相机拍摄到的图片进行 YOLO 物体识别，假设只识别 bottle 这一类，且一段时间内图像中只出现同一个 bottle，我们需要对识别到的 bottle 物体在图像中位置的变化，估算出 bottle 在世界坐标系中的坐标 $(X_W,Y_W,Z_W)$ 和在相机坐标系中的坐标 $(X_C,Y_C,Z_C)$ . 其中 bottle 物体在图像中的位置定义为 YOLO 边界框的中心像素坐标 $(u,v)$ .
 
 ### Analysis
 
@@ -535,7 +535,7 @@ $$
 
 ### Code
 
-首先，在 YOLO 识别到物体之后，我们获取其对应检测框的中心像素坐标，记为物体在像素坐标系 `Pixel` 下的坐标 $(u,v)$ ：
+首先，在 YOLO 识别到物体之后，我们获取其对应边界框的中心像素坐标，记为物体在像素坐标系 `Pixel` 下的坐标 $(u,v)$ ：
 
 ```py
 results = self.model.predict(
