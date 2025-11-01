@@ -21,14 +21,15 @@ jobs:
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
       - uses: actions/setup-python@v5
         with:
-          python-version: 3.x
-      - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV
-      - uses: actions/cache@v4
-        with:
-          key: mkdocs-material-${{ env.cache_id }}
-          path: .cache
-          restore-keys: |
-            mkdocs-material-
-      - run: pip install -r requirements.txt
-      - run: pip cache purge
-      - run: mkdocs gh-deploy --force
+          python-version: "3.12"
+          cache: "pip"
+      - name: Install system deps for lxml
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libxml2-dev libxslt1-dev python3-dev build-essential
+
+      - name: Install Python deps
+        run: pip install -r requirements.txt
+
+      - name: Build & Deploy
+        run: mkdocs gh-deploy --force
