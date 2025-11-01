@@ -109,7 +109,7 @@ $$
 
 ### 7.2.2 Multi-head Attention
 
-上述描述的注意力层称为注意力头 (Attention Head)，可以允许输出向量关注输入向量中与数据相关的模式。然而多数情况下，输入数据中可能存在多种不同的相关模式，例如在 NLP 中，可能要同时关注时态、词汇关系等多种信息。因此我们可以**并行**使用多个注意力头，让模型从不同角度关注输入数据的不同模式。
+上述描述的注意力层称为注意力头（Attention Head），可以允许输出向量关注输入向量中与数据相关的模式。然而多数情况下，输入数据中可能存在多种不同的相关模式，例如在 NLP 中，可能要同时关注时态、词汇关系等多种信息。因此我们可以**并行**使用多个注意力头，让模型从不同角度关注输入数据的不同模式。
 
 多头注意力机制，使用多个独立的注意力头，每个头都有自己独立的 Q, K, V 矩阵。这些头的结构完全相同，但参数是独立的。
 
@@ -141,7 +141,7 @@ MLA (Multi-Head Latent Attention)：Deepseek-V2 提出的一种注意力架构�
 
 Transformer 是完全由注意力机制构成的深度神经网络。注意力机制不仅能够捕获局部信息，还能建模长距离的上下文关系，获取更抽象更具全局性的特征。
 
-Transformer 最初为序列建模 而设计，应用于 NLP 领域。此外在 CV 领域也广泛应用，例如 Vision Transformer (ViT) 将图像划分为固定大小的 **patch**，将其序列化，用 Transformer 进行特征提取，替代 CNN 完成图像分类任务。
+Transformer 最初为序列建模 而设计，应用于 NLP 领域。此外在 CV 领域也广泛应用，例如 Vision Transformer（ViT）将图像划分为固定大小的 **patch**，将其序列化，用 Transformer 进行特征提取，替代 CNN 完成图像分类任务。
 
 Transformer 由多个编码器 Encoder 和解码器 Decoder 组成。编码器和解码器都由多个相同结构的层堆叠而成，使用首尾相连的 多头注意力机制。
 
@@ -188,7 +188,7 @@ Decoder 由 $N$ 个相同结构的解码器层 Decoder Layer 组成，每个 Dec
 
 ### 7.3.3 FFN
 
-前馈全连接模块 FFN (Feed-Forward Network)：
+前馈全连接模块 FFN（Feed-Forward Network）：
 
 全连接层 —— ReLU 激活层 —— 全连接层，**默认有偏置**。
 
@@ -216,7 +216,7 @@ $$
 
 **偶数维度使用正弦函数，奇数维度使用余弦函数**。该 Sinusoidal 函数的核心是频率和维度的关系：低维频率较高，编码变化快，能够提供细粒度的位置信息；高维频率较低，编码变化慢，能够捕捉更长周期的位置信息。Sinusoidal 函数不仅能够表示绝对位置，还能通过位置之间的相对关系进行编码，使模型能够学习位置之间的相对关系。
 
-旋转位置编码 RoPE (Rotary Position Embedding)，对 Sinusoidal 的改进。
+旋转位置编码 RoPE（Rotary Position Embedding），对 Sinusoidal 的改进。
 
 ### 7.3.5 Layer Normalization
 
@@ -241,7 +241,7 @@ $$
 
 ### 7.4.1 LLM
 
-**BERT**: Bidirectional Encoder Representations from Transformers (Google)
+**BERT**: Bidirectional Encoder Representations from Transformers (From Google)
 
 架构：双向 Transformer（Encoder-Only），可以同时学习文本中的前后文信息。
 
@@ -253,7 +253,7 @@ $$
 
 <br>
 
-**GPT**: Generative Pre-trained Transformer (OpenAI)
+**GPT**: Generative Pre-trained Transformer (From OpenAI)
 
 架构：从左到右的单向 Transformer 模型（Decoder-Only），主要关注当前词的左侧上下文。
 
@@ -342,7 +342,7 @@ LLM 常用的预训练任务：语言建模（Language Modeling, LM），去噪�
 
 **指令微调** Instruction Tuning 是指使用自然语言形式的数据，对预训练后的大语言模型进行参数微调。
 
-**低秩适配** Low-Rank Adaptation (LoRA) 微调方法，预训练模型的参数矩阵上添加低秩分解矩阵，来近似每层的参数更新，从而减少所需训练的参数。
+**低秩适配** Low-Rank Adaptation（LoRA）微调方法，预训练模型的参数矩阵上添加低秩分解矩阵，来近似每层的参数更新，从而减少所需训练的参数。
 
 适配器微调 Adapter Tuning：在 Transformer 模型中引入小型神经网络模块（适配器），首先将原始特征压缩到较低维度，随后进行非线性变换，最后恢复到原始维度。适配器模块集成到 Transformer 架构的每一层中，原始的模型参数保持不变。
 
@@ -358,13 +358,13 @@ LLM 常用的预训练任务：语言建模（Language Modeling, LM），去噪�
 
 <br>
 
-基于人类反馈的强化学习 RLHF (Reinforcement Learning from Human Feedback)，3个阶段：
+基于人类反馈的强化学习 RLHF（Reinforcement Learning from Human Feedback），3个阶段：
 
 1. 指令微调 SFT。
 2. 奖励模型训练：使用人类反馈数据训练奖励模型，使用语言模型针对任务指令生成一定数量的候选输出，邀请标注员对于输出文本进行偏好标注，使用人工标注的偏好数据进行奖励模型的训练。
 3. 强化学习微调：语言模型对齐被转化为一个强化学习问题。
 
-强化学习 RL (Reinforcement Learning)
+强化学习 RL（Reinforcement Learning）
 
 1. 智能体(agent)与环境(environment)交互。
 2. 根据环境的状态(state)通过学习产生行动(action)的策略。
@@ -372,7 +372,7 @@ LLM 常用的预训练任务：语言建模（Language Modeling, LM），去噪�
 
 ---
 
-提示学习 (Prompt)
+提示学习（Prompt）
 
 提示，通常为包含特定任务信息的一组人工设计的输入或者可学习的特征向量，用于引导模型从输入文本或图像中提取特定任务所需要的信息。通过选择或生成合适的提示，引导模型适应多样化的输入和下游任务。
 

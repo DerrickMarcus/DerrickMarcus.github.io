@@ -100,13 +100,13 @@ $$
 
 Pytorch 中的池化层为 `torch.nn.MaxPool2d()` 和 `torch.nn.AvgPool2d()` 。
 
-无论输入特征图尺寸、池化核的大小、池化的步长为多少，**池化层的参数量都为0**。
+无论输入特征图尺寸、池化核的大小、池化的步长为多少，**池化层的参数量都为 0**。
 
 池化层的反向传播：考虑池化层时，对于最大值池化，误差会**回传到当初最大值**的 位置上，而其它位置对应误差都是 0；对于平均值池化，误差会**平均回传到原始的几个位置**上。
 
 ### 5.1.3 Dropout
 
-在训练过程中每次迭代时，将各层的输出节点以一定概率随机置为0。
+在训练过程中每次迭代时，将各层的输出节点以一定概率随机置为 0。
 
 训练阶段：根据 Bernoulli 分布随机生成随机数 $u$ ，并基于如下准则判断该节点参数是否更新：
 
@@ -142,24 +142,24 @@ Pytorch 中的 Batch Normalization 为 `torch.nn.BatchNorm2d()` 。
 
 LeNet: 卷积神经网络的开山之作
 
-- C1 卷积层: 核大小 5x5，输出特征图大小为 6x28x28;
-- S2 下采样层: 输出特征图大小为 6x14x14;
-- C3 卷积层: 局部组合，输出特征图大小为 16x10x10;
-- S4 下采样层: 提取得到16个 5x5 的特征图;
-- C5 卷积层: 卷积核大小为 1x1，提取120个特征图;
-- F6 是全连接层;
-- 输出层由径向基函数(Radial Basis Function, RBF)单元组成，每个 RBF 单元计算输入向量和参数向量之间的欧式距离。输入离参数向量越远，RBF 输出的越大。
+- C1 卷积层：核大小 5x5，输出特征图大小为 6x28x28；
+- S2 下采样层：输出特征图大小为 6x14x14；
+- C3 卷积层：局部组合，输出特征图大小为 16x10x10；
+- S4 下采样层：提取得到16个 5x5 的特征图；
+- C5 卷积层：卷积核大小为 1x1，提取120个特征图；
+- F6 是全连接层；
+- 输出层由径向基函数（Radial Basis Function, RBF）单元组成，每个 RBF 单元计算输入向量和参数向量之间的欧式距离。输入离参数向量越远，RBF 输出的越大。
 
 <br>
 
 AlexNet
 
-- 前五层的卷积层，剩余三层的全连接层；
-- ReLU 非线性激活函数；
-- 数据增强 (Data augmentation)；
-- Dropout；
-- 训练：双 GPU 并行，基于 ImageNet 百万量级数据；
-- 输入 RGB 三通道图像归一化大小为 227x227x3;
+- 前五层的卷积层，剩余三层的全连接层
+- ReLU 非线性激活函数
+- 数据增强（Data augmentation）
+- Dropout
+- 训练：双 GPU 并行，基于 ImageNet 百万量级数据
+- 输入 RGB 三通道图像归一化大小为 227x227x3
 
 <br>
 
@@ -192,7 +192,7 @@ Inception-Net
 ResNet(深度残差网络)
 
 - 针对问题：信息传递受阻；
-- 解决方案：普通浅层网络中引入“快捷连接”(shortcut connection), 转变成残差网络实现；
+- 解决方案：普通浅层网络中引入“快捷连接”（shortcut connection）, 转变成残差网络实现；
 - 残差网络将输入作为参照，学习输入与输出之间的残差函数，输出表示为残差函数与输入之和；
 - 残差函数更容易优化，提升网络的深度；
 - 典型结构包括 ResNet34, ResNet50, ResNet101, ResNet152 等。
@@ -210,7 +210,7 @@ DenseNet
 
 SENet：通道注意力机制
 
-SKNet(selective kernels)：卷积核选择。
+SKNet（selective kernels）：卷积核选择。
 
 MobileNet
 
@@ -235,8 +235,8 @@ ShuffleNet
 4. 在训练集上训练学习神经网络参数。
 5. 在测试集上测试神经网络性能。
 
-目标检测 object detection （属于**多任务学习** Multi-task learning）
+目标检测 object detection（属于**多任务学习** Multi-task learning）
 
 语义分割 semantic segmentation
 
-人脸认证/识别 face verification/recognition （属于**度量学习** Metric learning）
+人脸认证/识别 face verification/recognition（属于**度量学习** Metric learning）

@@ -2,19 +2,19 @@
 
 ## 4.1 Introduction
 
-浅层学习(Shallow Learning)：传统机器学习和信号处理仅含单层非线性变换，称为浅层学习结构。例如感知器模型，线性判别分析，支持向量机，隐马尔可夫模型，条件随机场。它们对复杂函数表示能力有限，对复杂分类问题性能受限。
+浅层学习（Shallow Learning）：传统机器学习和信号处理仅含单层非线性变换，称为浅层学习结构。例如感知器模型，线性判别分析，支持向量机，隐马尔可夫模型，条件随机场。它们对复杂函数表示能力有限，对复杂分类问题性能受限。
 
-深度学习(Deep Learning)：受大脑的分层结构启发，利用多个隐层的人工神经网络赋予特征学习能力；通过学习深层非线性网络结构，实现复杂函数的逼近，从数据中学习本质特征。
+深度学习（Deep Learning）：受大脑的分层结构启发，利用多个隐层的人工神经网络赋予特征学习能力；通过学习深层非线性网络结构，实现复杂函数的逼近，从数据中学习本质特征。
 
 深度学习强调模型结构的深度，通常有 5 层以上的隐层节点。深度学习通过**逐层特征变换**，将样本从原特征空间变换到新的特征空间，从而使分类预测更加容易；利用**大数据**来学习特征，实现对模式本质特征的自动学习。
 
-深度学习的发展历史：神经网络概念及人工神经元的数学模型(1943)，神经集合体假设(1949)，感知器模型 Perceptron (1957)，BP 神经网络算法，Neocognitron 模型(1980)，卷积神经网络 CNN，长短时记忆网络 LSTM (1997)，深度置信网络 DBN (2006)，自编码器 Auto encoder (2006)，生成式对抗网络 GAN (2014)，Self-attention & Transformer (2017)。
+深度学习的发展历史：神经网络概念及人工神经元的数学模型（1943），神经集合体假设（1949），感知器模型 Perceptron（1957），BP 神经网络算法，Neocognitron 模型（1980），卷积神经网络 CNN，长短时记忆网络 LSTM（1997），深度置信网络 DBN（2006），自编码器 Auto encoder（2006），生成式对抗网络 GAN（2014），Self-attention & Transformer（2017）。
 
 ## 4.2 人工神经元模型
 
 回顾机器学习中的感知机 Perception，感知机一种最简单形式的前馈神经网络，可应用于二元线性分类。逻辑回归 Logistic Regression 是解决二分类问题的机器学习方法，用于估计某种事物的可能性。
 
-人工神经元模型(neuron)：神经网络的基本单元
+人工神经元模型（neuron）：神经网络的基本单元
 
 1. 输入：接受外界或者前层输入。
 2. 连接：根据权重对输入加权。
@@ -23,7 +23,7 @@
 
 关于**激活函数**的总结，可见 [第3讲 机器学习-感知机-激活函数](./chapter3.md#course_notes/media_cognition/section-3.2.1)。
 
-损失函数(Loss Function)，衡量模型预测值和真实值之间的差异，以评价模型优劣。损失函数一般是非负的，有下界。
+损失函数（Loss Function），衡量模型预测值和真实值之间的差异，以评价模型优劣。损失函数一般是非负的，有下界。
 
 多分类问题中的损失函数：**Softmax 激活 + 负对数似然损失**
 
@@ -54,7 +54,7 @@ $$
 
 ## 4.3 FFN
 
-全连接前馈神经网络(Fully-connected FeedForward Networks, FFN)。
+全连接前馈神经网络（Fully-connected FeedForward Networks, FFN）。
 
 在网络结构中，每个神经元有对应权重和偏置参数，所有神经元的权重和偏置定义为网络参数。
 
@@ -64,7 +64,7 @@ $$
 
 ### 4.3.1 BP
 
-Back Propagation (BP) 学习算法
+Back Propagation（BP）学习算法
 
 最常用的神经网络的监督学习算法，其数学基础是**链式求导法则**。BP 学习算法由前向传播和误差反向传播组成：
 
@@ -115,7 +115,7 @@ $$
 \frac{\partial g(f(\boldsymbol{x}))}{\partial \boldsymbol{x}} = \frac{\partial g}{\partial f} \cdot \frac{\partial f}{\partial \boldsymbol{x}}
 $$
 
-有3种常见的求导：
+有 3 种常见的求导：
 
 1. 激活函数求导： $\mathbb{R}^N \to \mathbb{R}^N$ .
 2. 矩阵求导。
@@ -181,11 +181,11 @@ w \leftarrow w - \eta \frac{\partial L}{\partial w},\quad b \leftarrow b - \eta 
 \theta \leftarrow \theta - \eta \nabla_\theta L(\theta)
 $$
 
-批次梯度下降 BGD (Batch Gradient Descent)，所有样本都参与计算梯度： $\theta \leftarrow \theta - \eta \nabla_\theta L(\theta)$ ，缺点是速度慢，数据量大时内存不足。
+批次梯度下降 BGD（Batch Gradient Descent），所有样本都参与计算梯度： $\theta \leftarrow \theta - \eta \nabla_\theta L(\theta)$ ，缺点是速度慢，数据量大时内存不足。
 
-随机梯度下降 SGD (Stochastic Gradient Descent)，每次只用一个样本参与计算梯度： $\theta \leftarrow \theta - \eta \nabla_\theta L(\theta,x_i,y_i)$ ，优点是速度快，缺点是方差大，损失函数震荡严重。
+随机梯度下降 SGD（Stochastic Gradient Descent），每次只用一个样本参与计算梯度： $\theta \leftarrow \theta - \eta \nabla_\theta L(\theta,x_i,y_i)$ ，优点是速度快，缺点是方差大，损失函数震荡严重。
 
-小批次梯度下降 Mini-batch Gradient Descent (M-SGD)，介于 BGD 和 SGD 之间，每次随机选取 $M$ 个样本参与计算梯度： $\theta \leftarrow \theta - \eta\left[\dfrac{1}{M}\displaystyle\sum_{i=1}^M\nabla_\theta L(\theta,x_i,y_i)\right]$ .
+小批次梯度下降 Mini-batch Gradient Descent（M-SGD），介于 BGD 和 SGD 之间，每次随机选取 $M$ 个样本参与计算梯度： $\theta \leftarrow \theta - \eta\left[\dfrac{1}{M}\displaystyle\sum_{i=1}^M\nabla_\theta L(\theta,x_i,y_i)\right]$ .
 
 3种方法的比较：
 
@@ -204,7 +204,7 @@ $$
 
 ### 4.3.2 Optimization
 
-梯度下降可能存在的问题：能找到局部最优，但是无法保证找到全局最优。因为可能遇到鞍点 (Saddle Point)。改进方法有：
+梯度下降可能存在的问题：能找到局部最优，但是无法保证找到全局最优。因为可能遇到鞍点（Saddle Point）。改进方法有：
 
 （1）**动量** Momentum
 
@@ -271,9 +271,9 @@ $$
 
 参数初始化方法
 
-一般将偏置初始化为0，而权重的初始化方法有：
+一般将偏置初始化为 0，而权重的初始化方法有：
 
-随机初始化：权重初始化为0，标准差为 $\sigma$ ，则 $w_i^l \sim \mathcal{N}(0, \sigma^2)$
+随机初始化：权重初始化为 0，标准差为 $\sigma$ ，则 $w_i^l \sim \mathcal{N}(0, \sigma^2)$
 
 Xavier 初始化：
 

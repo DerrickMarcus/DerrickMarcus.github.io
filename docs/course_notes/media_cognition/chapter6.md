@@ -64,17 +64,17 @@ $$
 
 拓展：
 
-双向 RNN (Bidirectional RNN)。
+双向 RNN（Bidirectional RNN）。
 
-深度循环神经网络：多个 RNN 单元堆叠形成深度循环神经网络(deep RNN)，或称为多层 RNN(multi-layers RNN)。
+深度循环神经网络：多个 RNN 单元堆叠形成深度循环神经网络（deep RNN），或称为多层 RNN（multi-layers RNN）。
 
-RNN 的优化学习方法：误差沿时间反传 BPTT (Backpropagation through Time)。
+RNN 的优化学习方法：误差沿时间反传 BPTT（Backpropagation through Time）。
 
 Truncated BPTT：实际上我们采用时间截断的 BPTT，误差仅在有限时间内反传。另外，时序数据通常包含多个较短的序列数据。
 
 <br>
 
-RNN 容易出现梯度消失和梯度爆炸。对于长序列，计算梯度时（根据链式法则）有多项连乘，要么趋于0要么很大，导致梯度消失或梯度爆炸。解决方法：
+RNN 容易出现梯度消失和梯度爆炸。对于长序列，计算梯度时（根据链式法则）有多项连乘，要么趋于 0，要么很大，导致梯度消失或梯度爆炸。解决方法：
 
 1. 梯度裁剪 gradient clipping：如果梯度超过阈值 $\boldsymbol{g}_{\text{clipped}}=\theta\dfrac{\boldsymbol{g}}{\|\boldsymbol{g}|} ,\;\text{if } \|\boldsymbol{g}\| > \theta$ ，否则正常梯度更新。
 2. 换 tanh 激活函数为 ReLU 函数。

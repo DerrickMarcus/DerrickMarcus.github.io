@@ -82,7 +82,7 @@ rosrun [package_name] [node_name]
 roslaunch [package] [filename.launch]
 ```
 
-## .launch File
+## Launch File
 
 launch 文件：
 
@@ -204,7 +204,7 @@ rqt
 rqt_graph
 ```
 
-## Topic, servics and parameter
+## Topic/Service/Parameter
 
 关于话题的命令：
 

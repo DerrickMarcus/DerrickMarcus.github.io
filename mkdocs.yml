@@ -248,31 +248,24 @@ nav:
   - Course Notes:
       - Course Notes: course_notes/index.md
       - Signals and Systems:
-          - Signals and Systems: course_notes/signal_system/index.md
           - 05 傅里叶变换应用于通信系统: course_notes/signal_system/chapter5.md
           - 06 信号的矢量空间: course_notes/signal_system/chapter6.md
           - 07 离散时间系统的时域分析: course_notes/signal_system/chapter7.md
           - 08 z变换与离散时间系统z域分析: course_notes/signal_system/chapter8.md
           - 11 反馈系统: course_notes/signal_system/chapter11.md
           - 12 系统的状态变量分析: course_notes/signal_system/chapter12.md
-      - Probability and Stochastic Process:
-          - Probability and Stochastic Process: course_notes/probability/index.md
-          - 1 Probability Theory Basics: course_notes/probability/chapter1.md
-          - 2 Univariate Random Variable: course_notes/probability/chapter2.md
-          - 3 Multivariate Random Variable: course_notes/probability/chapter3.md
-          - 4 Second-order Process and Spectral Analysis: course_notes/probability/chapter4.md
-          - 5 Gaussian Process: course_notes/probability/chapter5.md
-          - 6 Markov Chain: course_notes/probability/chapter6.md
-          - 7 Poisson Process: course_notes/probability/chapter7.md
+      - Stochastic Process:
+          - 4 Second-order Process and Spectral Analysis: course_notes/stochastic_process/chapter4.md
+          - 5 Gaussian Process: course_notes/stochastic_process/chapter5.md
+          - 6 Markov Chain: course_notes/stochastic_process/chapter6.md
+          - 7 Poisson Process: course_notes/stochastic_process/chapter7.md
       - Communication and Network:
-          - Communication and Network: course_notes/communication_network/index.md
           - 1 信息论基础: course_notes/communication_network/chapter1.md
           - 2 模拟信源的数字化: course_notes/communication_network/chapter2.md
           - 3 电平信道: course_notes/communication_network/chapter3.md
           - 4 波形信道: course_notes/communication_network/chapter4.md
           - 5 差错控制: course_notes/communication_network/chapter5.md
       - Media and Cognition:
-          - Media and Cognition: course_notes/media_cognition/index.md
           - 1 Artificial Intelligence: course_notes/media_cognition/chapter1.md
           - 2 Cognition: course_notes/media_cognition/chapter2.md
           - 3 Machine Learing: course_notes/media_cognition/chapter3.md
@@ -282,7 +275,6 @@ nav:
           - 7 Transformer: course_notes/media_cognition/chapter7.md
           - 8 Bayes Decision: course_notes/media_cognition/chapter8.md
       - Foundation of Solid State Physics:
-          - Foundation of Solid State Physics: course_notes/solid_physics/index.md
           - 1 晶体的结构: course_notes/solid_physics/chapter1.md
           - 2 固体的结合: course_notes/solid_physics/chapter2.md
           - 3 固体电子论: course_notes/solid_physics/chapter3.md
@@ -294,7 +286,6 @@ nav:
           - 9 场与物质的相互作用: course_notes/solid_physics/chapter9.md
           - 课后测试题: course_notes/solid_physics/test.md
       - Digital Image Processing:
-          - Digital Image Processing: course_notes/digital_image/index.md
           - 1 图像处理概述: course_notes/digital_image/chapter1.md
           - 2 图像信息与视觉感知: course_notes/digital_image/chapter2.md
           - 3 空域图像增强: course_notes/digital_image/chapter3.md
@@ -305,7 +296,6 @@ nav:
           - 8 图像压缩编码: course_notes/digital_image/chapter8.md
           - 9 图像3D成像: course_notes/digital_image/chapter9.md
       - Operating System:
-          - Operating System: course_notes/operating_system/index.md
           - 01 Introduction(1): course_notes/operating_system/chapter1.md
           - 02 Introduction(2): course_notes/operating_system/chapter2.md
           - 03 Process: course_notes/operating_system/chapter3.md
@@ -324,52 +314,55 @@ nav:
   - Course Labs:
       - Course Labs: course_labs/index.md
       - Data and Algorithm:
-          - Data and Algorithm: course_labs/data_algorithm/index.md
-          - OJ-1 丢失的练习册: course_labs/data_algorithm/oj1.md
-          - OJ-2 军训排队: course_labs/data_algorithm/oj2.md
-          - OJ-3 比武: course_labs/data_algorithm/oj3.md
-          - OJ-4 缺损二叉树: course_labs/data_algorithm/oj4.md
-          - OJ-5 信息传递: course_labs/data_algorithm/oj5.md
-          - OJ-6 跳跳乐: course_labs/data_algorithm/oj6.md
-          - OJ-7 带限矩阵方程组求解: course_labs/data_algorithm/oj7.md
-          - OJ-8 缺失数据恢复: course_labs/data_algorithm/oj8.md
-          - OJ-9 小明的火车旅行计划: course_labs/data_algorithm/oj9.md
-          - OJ-10 张量相乘的最小开销问题: course_labs/data_algorithm/oj10.md
+          - 1 丢失的练习册: course_labs/data_algorithm/oj1.md
+          - 2 军训排队: course_labs/data_algorithm/oj2.md
+          - 3 比武: course_labs/data_algorithm/oj3.md
+          - 4 缺损二叉树: course_labs/data_algorithm/oj4.md
+          - 5 信息传递: course_labs/data_algorithm/oj5.md
+          - 6 跳跳乐: course_labs/data_algorithm/oj6.md
+          - 7 带限矩阵方程组求解: course_labs/data_algorithm/oj7.md
+          - 8 缺失数据恢复: course_labs/data_algorithm/oj8.md
+          - 9 小明的火车旅行计划: course_labs/data_algorithm/oj9.md
+          - 10 张量相乘的最小开销问题: course_labs/data_algorithm/oj10.md
       - Digital Image Processing:
-          - Digital Image Processing: course_labs/digital_image/index.md
-          - Lab-1 课程概述: course_labs/digital_image/lab1.md
-          - Lab-2 彩色分量分解: course_labs/digital_image/lab2.md
-          - Lab-3 人脸蒙版提取: course_labs/digital_image/lab3.md
-          - Lab-4 灰度伽马变换: course_labs/digital_image/lab4.md
-          - Lab-5 直方图均衡化/规定化: course_labs/digital_image/lab5.md
-          - Lab-6 滤波去噪: course_labs/digital_image/lab6.md
-          - Lab-7 频域滤波: course_labs/digital_image/lab7.md
-          - Lab-8 边缘检测: course_labs/digital_image/lab8.md
-          - Lab-9 阈值分割&伪彩色增强: course_labs/digital_image/lab9.md
-          - Lab-12 图像复原: course_labs/digital_image/lab12.md
-          - Lab-13 图像仿射变换: course_labs/digital_image/lab13.md
+          - 1 课程概述: course_labs/digital_image/lab1.md
+          - 2 彩色分量分解: course_labs/digital_image/lab2.md
+          - 3 人脸蒙版提取: course_labs/digital_image/lab3.md
+          - 4 灰度伽马变换: course_labs/digital_image/lab4.md
+          - 5 直方图均衡化/规定化: course_labs/digital_image/lab5.md
+          - 6 滤波去噪: course_labs/digital_image/lab6.md
+          - 7 频域滤波: course_labs/digital_image/lab7.md
+          - 8 边缘检测: course_labs/digital_image/lab8.md
+          - 9 阈值分割&伪彩色增强: course_labs/digital_image/lab9.md
+          - 12 图像复原: course_labs/digital_image/lab12.md
+          - 13 图像仿射变换: course_labs/digital_image/lab13.md
   - Research:
       - Research: research/index.md
-      - Robot:
-          - Robot: research/robot/index.md
-          - ROS basic: research/robot/ros_basic.md
-          - Gazebo: research/robot/gazebo.md
-          - Catkin Tool: research/robot/catkin.md
-          - Geometric Transformation: research/robot/geometric_transformation.md
-          - Camera Calibration: research/robot/camera_calibration.md
-          - Kalman Filter: research/robot/kalman_filter.md
-          - Kd-Tree: research/robot/kdtree.md
-          - Object Detection: research/robot/object_detection.md
-          - Object Tracking: research/robot/object_tracking.md
-          - Gaussian Splatting: research/robot/gaussian_splatting.md
-          - SLAM:
-              - SLAM: research/robot/slam/index.md
-              - LIO-SAM: research/robot/slam/liosam.md
-              - Graph Optimization: research/robot/slam/graph_optimization.md
+      - ROS:
+          - ROS Basic: research/ros/ros_basic.md
+          - Gazebo: research/ros/gazebo.md
+          - Catkin Tool: research/ros/catkin.md
+      - Kalman Filter: research/kalman_filter.md
+      - Geometric Transformation: research/geometric_transformation.md
+      - Camera Calibration: research/camera_calibration.md
+      - Kd-Tree: research/kdtree.md
+      - Object Detection: research/object_detection.md
+      - Gaussian Splatting: research/gaussian_splatting.md
+      - SLAM:
+          - SLAM: research/slam/index.md
+          - LIO-SAM: research/slam/liosam.md
+          - Graph Optimization: research/slam/graph_optimization.md
+      - Object Tracking:
+          - Object Tracking: research/object_tracking/index.md
+          - SORT: research/object_tracking/sort.md
+          - DeepSORT: research/object_tracking/deepsort.md
+          - ByteTrack: research/object_tracking/bytetrack.md
+          - BoT-SORT: research/object_tracking/botsort.md
+          - JDE: research/object_tracking/jde.md
+          - FairMOT: research/object_tracking/fairmot.md
   - Development Tools:
       - Development Tools: dev_tools/index.md
       - Environment Configuration:
-          - Environment Configuration: dev_tools/environment/index.md
           - Ubuntu: dev_tools/environment/ubuntu.md
           - Python: dev_tools/environment/python.md
           - JavaScript: dev_tools/environment/javascript.md
@@ -377,7 +370,6 @@ nav:
   - Else:
       - Else: else/index.md
       - Railway:
-          - Railway: else/railway/index.md
           - CR (Fuxing Train): else/railway/cr.md
           - CRH (Hexie Train): else/railway/crh.md
           - Railway Group: else/railway/group.md
@@ -387,7 +379,6 @@ nav:
           - Journey Record: else/railway/journey.md
           - Diary: else/railway/diary.md
       - Readings:
-          - Readings: else/readings/index.md
           - 你是勇士: else/readings/read1.md
           - 一组诗: else/readings/read2.md
   - About:

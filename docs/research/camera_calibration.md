@@ -1,7 +1,7 @@
 # Camera Calibration
 
 !!! abstract
-    在之前《数字图像处理》课程 [Digital Image Processing - 7 图像校正和修补](../../course_notes/digital_image/chapter7.md)中我们简单介绍了相机成像原理和张正友相机内参标定方法。这里我们将进一步详细讨论。
+    在之前《数字图像处理》课程 [Digital Image Processing - 7 图像校正和修补](../course_notes/digital_image/chapter7.md)中我们简单介绍了相机成像原理和张正友相机内参标定方法。这里我们将进一步详细讨论。
 
 首先明确4个概念：
 
@@ -12,7 +12,7 @@
 
 外参矩阵是一个三维齐次坐标变换矩阵，实现世界坐标系到相机坐标系的变换；内参矩阵考虑畸变系数，实现图像坐标系到像素坐标系的非线性映射。
 
-## World to Camera
+## 1. World to Camera
 
 相机标定时，通常以标定板的角点为世界坐标系原点。
 
@@ -38,7 +38,7 @@ $$
 
 通常也把 ${}^C_W\mathbf{T}=[\mathbf{R}\mid\mathbf{t}]\in\mathbb{R}^{3\times 4}$ 称为外参矩阵，后续会进一步介绍。
 
-## Camera to Image
+## 2. Camera to Image
 
 在相机坐标系中，物体 $P$ 点坐标为 $X_C,Y_C,Z_C$ ，其与原点的连线投射到成像平面（图像坐标系）上，坐标为 $(x,y,f)$ ，根据相似性：
 
@@ -62,7 +62,7 @@ X_C \\ Y_C \\ Z_C
 \end{pmatrix}
 $$
 
-## Image to Pixel
+## 3. Image to Pixel
 
 假设单个像素对应相机成像平面对应的实际物理尺寸为 $d_x,d_y$ （类比感受野），图像坐标 $(x, y)$ 和像素坐标 $(u, v)$ 间的转换关系如下：
 
@@ -91,7 +91,7 @@ $$
 
 一般由于工艺偏差 $d_x\neq d_y$ ，导致一个像素对应的感受野实际上是矩形而不是正方形。
 
-## Intrinsics
+## 4. Intrinsics
 
 根据 `Camera -> Image` 以及 `Image -> Pixel` 的变换关系，可以写出 `Camera -> Pixel` 的坐标变换关系：
 
@@ -120,7 +120,7 @@ $$
 
 相机的内参只由相机本身决定，且是固定不变的，不随物体的移动而改变。
 
-## Extrinsics
+## 5. Extrinsics
 
 前文提到的 `World -> Camera` 的变换中的旋转矩阵和平移向量就是相机的**外参 Extrinsinc**： $[\mathbf{R}\mid\mathbf{t}]\in \mathbb{R}^{3\times 4}$ . 外参描述的是相机和外部世界的坐标变换关系，因此外参是不断改变的，每一张照片的外参都不同。
 
@@ -155,7 +155,7 @@ $$
 
 实现直接从 世界坐标系到像素坐标的变换。
 
-## Distortion
+## 6. Distortion
 
 透镜的畸变主要分为**径向畸变**和**切向畸变**。
 
@@ -181,7 +181,7 @@ $$
 
 我们一共需要 $[k_1,k_2,k_3,p_1,p_2]$ 共 5 个畸变系数描述相机的畸变。一般对于质量较好的相机，切向畸变可以忽略，认为 $p_1=p_2=0$ .
 
-## Calibration
+## 7. Calibration
 
 相机内参标定方法参考**张正友棋盘格标定法**，论文链接 [Flexible camera calibration by viewing a plane from unknown orientations](https://ieeexplore.ieee.org/document/791289)。
 
@@ -329,7 +329,7 @@ $$
 \end{align*}
 $$
 
-## Toolbox
+## 8. Toolbox
 
 常见的内参标定方法：
 
@@ -452,7 +452,7 @@ if __name__ == "__main__":
     np.savez("src/calib_params.npz", camera_matrix=K, dist_coeffs=d)
 ```
 
-## Practice
+## 9. Practice
 
 现在有一台机器人 SLAM 设备，传感器为激光雷达 LiDAR 和相机 Camera。相机的内参矩阵 $\mathbf{K}$ 和 `LiDAR -> Camera` 的外参矩阵 ${}^C_L\mathbf{T}$ 已经标定好，LiDAR 相对于世界坐标系的位姿 pose （因为以 LiDAR 中心为系统的原点）可以由 SLAM 节点发布的消息获取，记为 ${}^W_L\mathbf{T}$ 。现在对相机拍摄到的图片进行 YOLO 物体识别，假设只识别 bottle 这一类，且一段时间内图像中只出现同一个 bottle，我们需要对识别到的 bottle 物体在图像中位置的变化，估算出 bottle 在世界坐标系中的坐标 $(X_W,Y_W,Z_W)$ 和在相机坐标系中的坐标 $(X_C,Y_C,Z_C)$ . 其中 bottle 物体在图像中的位置定义为 YOLO 边界框的中心像素坐标 $(u,v)$ .
 
