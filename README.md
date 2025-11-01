@@ -45,4 +45,4 @@ The code is under [MIT license](./LICENSE_CODE).
 
 ## Contact
 
-If you have any question or advice, please contact me by `blog@yanxuchen.com` .
+If you have any question or advice, welcome to contact me by `blog@yanxuchen.com` .
