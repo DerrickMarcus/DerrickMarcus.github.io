@@ -67,9 +67,7 @@ pip config set global.trusted-host pypi.tuna.tsinghua.edu.cn
 pip config set global.timeout 6000
 ```
 
-这个步骤也可以直接创建配置文件来实现：
-
-一般情况下，进入目录 `C:\Users\ASUS\AppData\Roaming\pip` ，然后创建 txt 文本文件，输入以下内容：
+这个步骤也可以直接创建配置文件来实现。用户级的配置文件为 `$env:APPDATA\pip\pip.ini` 。因此运行命令 `notepad $env:APPDATA\pip\pip.ini` ，或者直接进入目录 `C:\Users\ASUS\AppData\Roaming\pip` ，然后创建 txt 文本文件，输入以下内容：
 
 ```text
 [global]
@@ -105,7 +103,7 @@ conda update Anaconda
 
 ```json
   //python解释器和设置
-  "python.defaultInterpreterPath": "E:\\miniconda3\\envs\\py3901\\python.exe",
+  "python.defaultInterpreterPath": "E:\\miniconda3\\envs\\env1\\python.exe",
   "python.condaPath": "E:\\miniconda3\\Scripts\\conda.exe",
   "python.venvPath": "E:\\miniconda3\\envs",
   "python.venvFolders": ["envs", ".pyenv", ".direnv", ".env"],
@@ -144,10 +142,10 @@ E:\miniconda3\Scripts\conda.exe
 
 ## 4 Else
 
-血泪教训：又遇到无论如何包都会下载到 base 环境的问题，无法指向虚拟环境，目前的解决办法是：
+血泪教训：有时会遇到无论如何包都会下载到 base 环境的问题，无法指向虚拟环境，目前的解决办法是：
 
 ```bash
 conda create -n test python=3.9 # 指定python版本，-n等同于--name
 ```
 
-也就是一定要在创建虚拟环境时指定 python 的版本号，否则创建好的环境会和 base 环境混在一起。
+也就是一定要在创建虚拟环境时指定 Python 的版本号，否则创建好的环境会和 base 环境混在一起。

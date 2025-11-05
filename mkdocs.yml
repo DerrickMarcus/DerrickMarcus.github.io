@@ -357,6 +357,8 @@ nav:
           - SORT: research/object_tracking/sort.md
           - DeepSORT: research/object_tracking/deepsort.md
           - ByteTrack: research/object_tracking/bytetrack.md
+          - OC-SORT: research/object_tracking/ocsort.md
+          - StrongSORT: research/object_tracking/strongsort.md
           - BoT-SORT: research/object_tracking/botsort.md
           - JDE: research/object_tracking/jde.md
           - FairMOT: research/object_tracking/fairmot.md

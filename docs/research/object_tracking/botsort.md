@@ -4,7 +4,7 @@
 >
 > arXiv: <https://arxiv.org/abs/2206.14651>
 >
-> Code: <https://github.com/NirAharon/BoT-SORT>
+> <https://github.com/NirAharon/BoT-SORT>
 
 BoT-SORT 把运动信息（Kalman 预测 + IoU）与外观信息（ReID 特征）融合，同时显式做相机运动补偿（CMC），并把 Kalman Filter 的状态向量从传统的“中心+面积+纵横比”改为“中心 + 宽高”，集成到 ByteTrack 中，提出了 BoT-SORT 和 BoT-SORT-ReID 两种跟踪器。两者的主干相同：
 
@@ -144,6 +144,214 @@ $$
 - 如果外观相似且位置相近，则使用更小的那个距离。
 - 如果外观和位置有任何一个不可信，则把外观代价设为 1，相当于仅使用 IoU 位置距离，退化为纯 IoU 匹配。
 
----
+## Code Reprodution
 
-接下来介绍几个 Joint Detection and Embedding 思路的代表算法：JDE、FairMOT 等。
+### Installation
+
+Step 1. Setup the Python environment.
+
+```bash
+# venv
+cd ~/venv
+python3 -m venv botsort_env
+source ~/venv/botsort/bin/activate
+
+# conda
+conda create -n botsort_env python=3.7
+conda activate botsort_env
+```
+
+Step 2: Install `torch` and `torchvision` in from the [Pytorch](https://pytorch.org/get-started/locally/). The code was tested using `torch==1.11.0+cu113` and `torchvision==0.12.0+cu113` .
+
+```bash
+pip install torch==1.11.0+cu113 torchvision==0.12.0+cu113 --extra-index-url https://download.pytorch.org/whl/cu113
+```
+
+Step 3: Install BoT-SORT.
+
+```bash
+git clone https://github.com/NirAharon/BoT-SORT.git
+cd BoT-SORT
+pip3 install -r requirements.txt
+python3 setup.py develop
+```
+
+Step 4: Install [pycocotools](https://github.com/cocodataset/cocoapi).
+
+```bash
+pip3 install cython
+pip3 install 'git+https://github.com/cocodataset/cocoapi.git#subdirectory=PythonAPI'
+```
+
+Step 5: Others.
+
+```bash
+# Cython-bbox
+pip3 install cython_bbox
+
+# faiss cpu / gpu
+pip3 install faiss-cpu
+pip3 install faiss-gpu
+```
+
+You may need to change the version of `protobuf` to avoid version conflict:
+
+### Data Preparation
+
+This step prepares cropped person images (patches) from MOT17/MOT20 datasets, so that the FastReID pipeline can train an appearance (ReID) model for BoT-SORT(-ReID). This step *does not train anything*, it only builds the ReID training dataset.
+
+You can create a new folder as `<datasets_dir>` (like `datasets/` in the root directory). Then download [MOT17](https://motchallenge.net/data/MOT17/) and [MOT20](https://motchallenge.net/data/MOT20/) datasets from the [official website](https://motchallenge.net/), and put them in the following structure:
+
+```text
+<datasets_dir>
+      │
+      ├── MOT17
+      │      ├── train
+      │      └── test
+      │
+      └── MOT20
+             ├── train
+             └── test
+```
+
+Then generates detection patches for training ReID:
+
+```bash
+cd <BoT-SORT_dir>
+
+# For MOT17
+python3 fast_reid/datasets/generate_mot_patches.py --data_path <dataets_dir> --mot 17
+
+# For MOT20
+ python3 fast_reid/datasets/generate_mot_patches.py --data_path <dataets_dir> --mot 20
+```
+
+It will output the results into folder `fast_reid/datasets/` by default. You can also change this path by providing `--save-path` argument.
+
+### Models
+
+Creat a new folder `<BoT-SORT_dir>/pretrained` and place all the models that you download below to folder `<BoT-SORT_dir>/pretrained` .
+
+1. For **detector**, download the pretrained YOLOX weights from [ByteTrack](https://github.com/FoundationVision/ByteTrack) model zoo (MOT17/MOT20/ablation) `.pth.tar` . For multi-class MOT, use [YOLOX](https://github.com/Megvii-BaseDetection/YOLOX) or [YOLOv7](https://github.com/WongKinYiu/yolov7) weights trained on COCO (or any custom weights).
+
+???+ success "ByteTrack Model Zoo"
+    Ablation model trained on CrowdHuman and MOT17 half train, evaluated on MOT17 half val.
+
+    | Model                                                        | MOTA | IDF1 | IDs  | FPS  |
+    | ------------------------------------------------------------ | ---- | ---- | ---- | ---- |
+    | ByteTrack_ablation: [google](https://drive.google.com/file/d/1iqhM-6V_r1FpOlOzrdP_Ejshgk0DxOob/view?usp=sharing), [baidu(eeo8)](https://pan.baidu.com/s/1W5eRBnxc4x9V8gm7dgdEYg) | 76.6 | 79.3 | 159  | 29.6 |
+
+    MOT17 test model, trained on CrowdHuman, MOT17, Cityperson and ETHZ, evaluated on MOT17 train.
+
+    - Standard models
+
+    | Model                                                        | MOTA | IDF1 | IDs  | FPS  |
+    | ------------------------------------------------------------ | ---- | ---- | ---- | ---- |
+    | bytetrack_x_mot17: [google](https://drive.google.com/file/d/1P4mY0Yyd3PPTybgZkjMYhFri88nTmJX5/view?usp=sharing), [baidu(ic0i)](https://pan.baidu.com/s/1OJKrcQa_JP9zofC6ZtGBpw) | 90.0 | 83.3 | 422  | 29.6 |
+    | bytetrack_l_mot17: [google](https://drive.google.com/file/d/1XwfUuCBF4IgWBWK2H7oOhQgEj9Mrb3rz/view?usp=sharing), [baidu(1cml)](https://pan.baidu.com/s/1242adimKM6TYdeLU2qnuRA) | 88.7 | 80.7 | 460  | 43.7 |
+    | bytetrack_m_mot17: [google](https://drive.google.com/file/d/11Zb0NN_Uu7JwUd9e6Nk8o2_EUfxWqsun/view?usp=sharing), [baidu(u3m4)](https://pan.baidu.com/s/1fKemO1uZfvNSLzJfURO4TQ) | 87.0 | 80.1 | 477  | 54.1 |
+    | bytetrack_s_mot17: [google](https://drive.google.com/file/d/1uSmhXzyV1Zvb4TJJCzpsZOIcw7CCJLxj/view?usp=sharing), [baidu(qflm)](https://pan.baidu.com/s/1PiP1kQfgxAIrnGUbFP6Wfg) | 79.2 | 74.3 | 533  | 64.5 |
+
+    - Light models
+
+    | Model                                                        | MOTA | IDF1 | IDs  | Params(M) | FLOPs(G) |
+    | ------------------------------------------------------------ | ---- | ---- | ---- | --------- | -------- |
+    | bytetrack_nano_mot17: [google](https://drive.google.com/file/d/1AoN2AxzVwOLM0gJ15bcwqZUpFjlDV1dX/view?usp=sharing), [baidu(1ub8)](https://pan.baidu.com/s/1dMxqBPP7lFNRZ3kFgDmWdw) | 69.0 | 66.3 | 531  | 0.90      | 3.99     |
+    | bytetrack_tiny_mot17: [google](https://drive.google.com/file/d/1LFAl14sql2Q5Y9aNFsX_OqsnIzUD_1ju/view?usp=sharing), [baidu(cr8i)](https://pan.baidu.com/s/1jgIqisPSDw98HJh8hqhM5w) | 77.1 | 71.5 | 519  | 5.03      | 24.45    |
+
+    MOT20 test model, trained on CrowdHuman and MOT20, evaluated on MOT20 train.
+
+    | Model                                                        | MOTA | IDF1 | IDs  | FPS  |
+    | ------------------------------------------------------------ | ---- | ---- | ---- | ---- |
+    | bytetrack_x_mot20: [google](https://drive.google.com/file/d/1HX2_JpMOjOIj1Z9rJjoet9XNy_cCAs5U/view?usp=sharing), [baidu(3apd)](https://pan.baidu.com/s/1bowJJj0bAnbhEQ3_6_Am0A) | 93.4 | 89.3 | 1057 | 17.5 |
+
+2. For tracker, download the pretrained ReID model weights with extension `.pth` from [MOT17-SBS-S50](https://drive.google.com/file/d/1QZFWpoa80rqo7O-HXmlss8J8CnS7IUsN/view?usp=sharing), [MOT20-SBS-S50](https://drive.google.com/file/d/1KqPQyj6MFyftliBHEIER7m_OrGpcrJwi/view?usp=sharing).
+
+### Training
+
+You can modify the parameters in `fast_reid/configs/Base-SBS.yml` to adjust the batch size and learing rate, etc.
+
+Run these commands to train the ReID models:
+
+```bash
+cd <BoT-SORT_dir>
+
+# For training MOT17
+python3 fast_reid/tools/train_net.py --config-file ./fast_reid/configs/MOT17/sbs_S50.yml MODEL.DEVICE "cuda:0"
+
+# For training MOT20
+python3 fast_reid/tools/train_net.py --config-file ./fast_reid/configs/MOT20/sbs_S50.yml MODEL.DEVICE "cuda:0"
+```
+
+Then you will get the training results in folder `logs/` .
+
+Refer to [FastReID](https://github.com/JDAI-CV/fast-reid) repository for addition explanations and options.
+
+### Tracking(Test)
+
+In this part we run the BoT-SORT `tools/track.py` and generate CSV text files, so that you can submit the `.txt` files to [MOTChallange](https://motchallenge.net/) and get the results in the paper. Tracking parameters can also be tuned in `tools/track.py` .
+
+For the file format, one CSV text file contains one object instance per line. Each line contains 10 values `<frame>, <id>, <bb_left>, <bb_top>, <bb_width>, <bb_height>, <conf>, <x>, <y>, <z>` . The world coordinates `x, y, z` are ignored for the 2D challenge and can be filled with -1.
+
+(Post-processing, *optional*) After tracking, you can run `tools/interpolation.py` to perform temporal interpolation and smoothing on tracklets to bridge missed detections. This may improve IDF1/MOTA/HOTA a bit.
+
+1. Test on MOT17
+
+    ```bash
+    cd <BoT-SORT_dir>
+    python3 tools/track.py <dataets_dir/MOT17> --default-parameters --with-reid --benchmark "MOT17" --eval "test" --fp16 --fuse
+    python3 tools/interpolation.py --txt_path <path_to_track_result>
+    ```
+
+2. Test on MOT20
+
+    ```bash
+    cd <BoT-SORT_dir>
+    python3 tools/track.py <dataets_dir/MOT20> --default-parameters --with-reid --benchmark "MOT20" --eval "test" --fp16 --fuse
+    python3 tools/interpolation.py --txt_path <path_to_track_result>
+    ```
+
+3. Evaluation on MOT17 validation set (the second half of the train set). The final score is calculated locally, no need to submit to the MOTChallenge site.
+
+    ```bash
+    cd <BoT-SORT_dir>
+
+    # BoT-SORT
+    python3 tools/track.py <dataets_dir/MOT17> --default-parameters --benchmark "MOT17" --eval "val" --fp16 --fuse
+
+    # BoT-SORT-ReID
+    python3 tools/track.py <dataets_dir/MOT17> --default-parameters --with-reid --benchmark "MOT17" --eval "val" --fp16 --fuse
+    ```
+
+4. Other experiments. You can also ignore the `--default-parameters` and set the parameters by yourself. See all the available tracking parameters by running `#!bash python3 tools/track.py -h` .
+5. The commands above runs YOLOX as object detector by default. You can also use **YOLOv7** by running `#!bash python3 tools/track_yolov7.py` .
+
+For evaluating the train and validation sets, we recommend using the official MOTChallenge evaluation code from [TrackEval](https://github.com/JonathonLuiten/TrackEval).
+
+### Demo
+
+Demo with BoT-SORT(-ReID) based YOLOX and multi-class:
+
+```bash
+cd <BoT-SORT_dir>
+
+# Original example
+python3 tools/demo.py video --path <path_to_video> -f yolox/exps/example/mot/yolox_x_mix_det.py -c pretrained/bytetrack_x_mot17.pth.tar --with-reid --fuse-score --fp16 --fuse --save_result
+
+# Multi-class example
+python3 tools/mc_demo.py video --path <path_to_video> -f yolox/exps/example/mot/yolox_x_mix_det.py -c pretrained/bytetrack_x_mot17.pth.tar --with-reid --fuse-score --fp16 --fuse --save_result
+```
+
+Demo with BoT-SORT(-ReID) based YOLOv7 and multi-class:
+
+```bash
+cd <BoT-SORT_dir>
+python3 tools/mc_demo_yolov7.py --weights pretrained/yolov7-d6.pt --source <path_to_video/images> --fuse-score --agnostic-nms (--with-reid)
+```
+
+!!! note "Difference between *Tracking* and *Demo*"
+    In *Tracking*, `tools/tack.py` is a batch evaluation script on MOT dataset to provide metrics. Its input source is each image in `<datasets_dir/MOT17>` / `<datasets_dir/MOT20>`, and its output is MOTChallenge-format `.txt` files which can be submitted to the official site. This module is used to reproduce the project and validate the improvement.
+
+    In *Demo*, `tools/demo.py` is a simple script for demonstration to visualize the tracking results. Its input source is video or image stream, and its output is a video with boungding box and IDs.
+
+### Changing Detector to Other YOLO
