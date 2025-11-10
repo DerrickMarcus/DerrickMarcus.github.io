@@ -28,6 +28,8 @@ $$
 d^{(1)}(i,j)=(\mathbf{d}_j-\mathbf{y}_i)^T\mathbf{S}_i^{-1}(\mathbf{d}_j-\mathbf{y}_i)^T
 $$
 
+> 对于一个高斯分布 $x\sim\mathcal{N}(\mu,\Sigma)$ ，马氏距离的平方 $d^2=(x-\mu)^T\Sigma^{-1}(x-\mu)$ 服从自由度为 $N$ 的卡方分布 $d^2\sim\chi_N^2$ . 而 $\chi_4^2(0.95)=9.4877$ 的含义是自由度为 4 时如果观测来自于高斯分布，那么有 95% 的概率马氏距离的平方小于 9.4877。
+
 原文中是这么说的：
 
 > ... where we denote the projection of the $i$-th track distribution into measurement space by $(\boldsymbol{y}_i,\boldsymbol{S}_i)$ and the $j$-th bounding box detection by $\boldsymbol{d}_j$ . The Mahalanobis distance takes state estimation uncertainty into account by measuring how many standard deviations the detection is away from the mean track location.

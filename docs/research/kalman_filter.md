@@ -6,6 +6,8 @@
 
 ## 1. Linear Kalman Filter
 
+> The following content is referenced from: [KalmanFilter.NET](https://kalmanfilter.net).
+
 线性卡尔曼滤波假设系统是一个**线性时不变系统**。
 
 ### 一维无过程噪声 KF
@@ -14,9 +16,9 @@
 
 卡尔曼滤波的核心步骤是“测量、更新、预测”。它将测量值、当前状态估计和下一个状态预测都视为正态分布的随机变量。
 
-对随机变量进行估计时，称估计值和真值之间的差为“估计误差”。随着时间不断增长，估计误差不断下降最终收敛到0。实际中我们并不知道估计误差，因为真值是未知的，但是我们可以计算估计值的不确定性，也就是状态估计值的方差 $p$ .
+对随机变量进行估计时，称估计值和真值之间的差为“估计误差”。随着时间不断增长，估计误差不断下降最终收敛到 0。实际中我们并不知道估计误差，因为真值是未知的，但是我们可以计算估计值的不确定性，也就是状态估计值的方差 $p$ .
 
-对随机变量进行测量时，称测量值和真值之间的差为“测量误差”。测量误差是随机的，一般使用正态分布的方差 $\sigma^2$ 描述，对应的标准差 $\sigma$ 称为测量不确定性。记状态估计值的方差为 $r$ . 最常见的是测量设备，比如雷达的测量的不确定性。
+对随机变量进行测量时，称测量值和真值之间的差为“测量误差”。测量误差是随机的，一般使用正态分布的方差 $\sigma^2$ 描述，对应的标准差 $\sigma$ 称为测量不确定性。记测量值的方差为 $r$ . 最常见的是测量设备，比如雷达的测量的不确定性。
 
 ![Predict](https://kalmanfilter.net/img/OneD/Predict.png)
 
@@ -64,13 +66,13 @@ $$
 
 $$
 \frac{\mathrm{d}p_{n|n}}{\mathrm{d}\lambda}=2\lambda r_n-2(1-\lambda)p_{n|n-1}=0
-\implies \lambda=\frac{p_{n|n-1}}{p_{n,n-1}+r_n}
+\implies \lambda=\frac{p_{n|n-1}}{p_{n|n-1}+r_n}
 $$
 
 因此最优估计的公式，也即**卡尔曼增益方程**为：
 
 $$
-\hat x_{n|n} =\hat x_{n|n-1} + K_n (z_n-\hat x_{n|n-1}),\quad K_n=\frac{p_{n|n-1}}{p_{n,n-1}+r_n}
+\hat x_{n|n} =\hat x_{n|n-1} + K_n (z_n-\hat x_{n|n-1}),\quad K_n=\frac{p_{n|n-1}}{p_{n|n-1}+r_n}
 $$
 
 称这个权重 $K_n$ 为**卡尔曼增益**，它也是一个随时间更新的变量。卡尔曼增益越高，越相信测量值，代表了有多少测量值进入到最终的估计值。
@@ -79,22 +81,22 @@ $$
 
 $$
 \begin{align*}
-p_{n|n}&= \left(\frac{p_{n,n-1}}{p_{n,n-1}+r_n}\right)^2 r_n + \left(\frac{r_n}{p_{n,n-1}+r_n}\right)^2 p_{n,n-1}
+p_{n|n}&= \left(\frac{p_{n|n-1}}{p_{n|n-1}+r_n}\right)^2 r_n + \left(\frac{r_n}{p_{n|n-1}+r_n}\right)^2 p_{n|n-1}
 \\
-&= \frac{p_{n,n-1}^2 r_n}{(p_{n,n-1}+r_n)^2} + \frac{r_n^2 p_{n,n-1}}{(p_{n,n-1}+r_n)^2}
+&= \frac{p_{n|n-1}^2 r_n}{(p_{n|n-1}+r_n)^2} + \frac{r_n^2 p_{n|n-1}}{(p_{n|n-1}+r_n)^2}
 \\
-&= \frac{p_{n,n-1} r_n}{p_{n,n-1}+r_n} \left(\frac{p_{n,n-1}}{p_{n,n-1}+r_n} + \frac{r_n}{p_{n,n-1}+r_n}\right)
+&= \frac{p_{n|n-1} r_n}{p_{n|n-1}+r_n} \left(\frac{p_{n|n-1}}{p_{n|n-1}+r_n} + \frac{r_n}{p_{n|n-1}+r_n}\right)
 \\
-&= (1 - K_n) p_{n,n-1} (K_n + (1 - K_n))
+&= (1 - K_n) p_{n|n-1} (K_n + (1 - K_n))
 \\
-&= (1 - K_n) p_{n,n-1}
+&= (1 - K_n) p_{n|n-1}
 \end{align*}
 $$
 
 得到协方差更新方程：
 
 $$
-p_{n|n}=(1 - K_n) p_{n,n-1}
+p_{n|n}=(1 - K_n) p_{n|n-1}
 $$
 
 由方程可知 $1-K_n<1$ ，状态估计的方差是始终随着滤波器迭代而下降。当测量不确定性很高时，卡尔曼增益很低，几乎只依赖状态预测值，因此状态估计不确定性收敛的速度会较慢；相反当测量不确定性很低时，卡尔曼增益很高，几乎只依赖测量值，因此状态估计不确定性会快速收敛到0。
@@ -134,11 +136,9 @@ $$
 
 ### 一维 KF
 
-上述讨论的“一维无过程噪声 KF”中，我们没有考虑过程噪声。真实世界中，系统动力模型总是有不确定性的。比如我们想测量一个电阻的阻值，我们假设它是不变的，即阻值不随测量过程而改变，但实际上阻值会随着环境温度的改变而轻微改变。再比如用雷达追踪弹道导弹时，导弹动态模型的不确定性会包含一些随机的加减速。对于飞行器之类的目标，模型不确定性更大，因为飞行员随时可能进行机动。另一方面，当我们用 GPS 接收机计算一个固定物体的位置时，由于固定物体不会动，所以动态模型不确定性为0。动态模型的不确定性称为过程噪声，也叫模型噪声、驱动噪声、动态噪声或系统噪声。过程噪声也会带来估计误差。
+上述讨论的“一维无过程噪声 KF”中，我们没有考虑过程噪声。真实世界中，系统动力模型总是有不确定性的。比如我们想测量一个电阻的阻值，我们假设它是不变的，即阻值不随测量过程而改变，但实际上阻值会随着环境温度的改变而轻微改变。再比如用雷达追踪弹道导弹时，导弹动态模型的不确定性会包含一些随机的加减速。对于飞行器之类的目标，模型不确定性更大，因为飞行员随时可能进行机动。另一方面，当我们用 GPS 接收机计算一个固定物体的位置时，由于固定物体不会动，所以动态模型不确定性为 0。动态模型的不确定性称为过程噪声，也叫模型噪声、驱动噪声、动态噪声或系统噪声。过程噪声也会带来估计误差。
 
-过程噪声的方差使用 $q$ 表示。
-
-协方差外插方程中，还应该加上过程噪声的影响：
+过程噪声的方差使用 $q$ 表示。协方差外插方程中，还应该加上过程噪声的影响：
 
 $$
 p_{n|n-1}=p_{n-1|n-1}+q_{n-1}
@@ -594,7 +594,7 @@ $$
 !!! warning
     这个方程看起来要精炼很多并且容易记忆，并且在许多情况下没什么问题。但是，在计算卡尔曼增益时的一个小误差（浮点截尾误差）可能给结果带来巨大的偏差， $(\boldsymbol{I} - \boldsymbol{K}_n \boldsymbol{H})$ 的差可能因为浮点计算误差而使其结果不再是对称阵，因此这个方程在**数值计算上并不稳定**！
 
-#### 总结
+#### Summary
 
 ![KalmanFilterDiagram](https://kalmanfilter.net/img/summary/KalmanFilterDiagram.png)
 
@@ -602,8 +602,7 @@ $$
 2. 预测阶段
     - 状态外插/转移/预测： $\hat{\boldsymbol{x}}_{n+1\mid n} = \boldsymbol{F}\hat{\boldsymbol{x}}_{n\mid n} + \boldsymbol{G}\boldsymbol{u}_n$
     - 协方差外插/预测： $\boldsymbol{P}_{n+1\mid n} = \boldsymbol{F}\boldsymbol{P}_{n\mid n}\boldsymbol{F}^T + \boldsymbol{Q}_n$
-3. 更新阶段
-    - > 上一时刻预测的 $\hat{\boldsymbol{x}}_{n+1|n}$ 即为这一时刻的 $\hat{\boldsymbol{x}}_{n|n-1}$ .
+3. 更新阶段，上一时刻的预测（先验） $\hat{\boldsymbol{x}}_{n+1|n}$ 即为这一时刻的 $\hat{\boldsymbol{x}}_{n|n-1}$ .
     - 卡尔曼增益： $\boldsymbol{K}_n = \boldsymbol{P}_{n\mid n-1}\boldsymbol{H}^T\left(\boldsymbol{H}\boldsymbol{P}_{n\mid n-1}\boldsymbol{H}^T + \boldsymbol{R}_n\right)^{-1}$
     - 状态更新： $\hat{\boldsymbol{x}}_{n\mid n} = \hat{\boldsymbol{x}}_{n\mid n-1} + \boldsymbol{K}_n (\boldsymbol{z}_n - \boldsymbol{H}\hat{\boldsymbol{x}}_{n\mid n-1})$
     - 协方差更新： $\boldsymbol{P}_{n\mid n} = (\boldsymbol{I}-\boldsymbol{K}_n \boldsymbol{H})\boldsymbol{P}_{n\mid n-1}(\boldsymbol{I}-\boldsymbol{K}_n \boldsymbol{H})^T+ \boldsymbol{K}_n\boldsymbol{R}_n\boldsymbol{K}_n^T$
@@ -613,9 +612,9 @@ $$
     - 过程噪声协方差： $\boldsymbol{Q}_n = \mathbb{E}\left(\boldsymbol{w}_n \boldsymbol{w}_n^T\right)$
     - 估计协方差： $\boldsymbol{P}_{n\mid n} = \mathbb{E}\left(\boldsymbol{e}_n \boldsymbol{e}_n^T\right) = \mathbb{E}\left\{(\boldsymbol{x}_n-\hat{\boldsymbol{x}}_{n\mid n})(\boldsymbol{x}_n-\hat{\boldsymbol{x}}_{n\mid n})^T \right\}$
 
-符号汇总：
+> 在其他教科书或文献中，卡尔曼滤波中的预测值也写作 $\hat{\boldsymbol{x}}_k^-,\;\boldsymbol{P}_k^-$ ，估计值也写作 $\hat{\boldsymbol{x}}_{k},\;\boldsymbol{P}_k$ .
 
-> $n_x$ 为状态向量中状态的个数， $n_z$ 为测量到的状态数， $n_u$ 为输入向量中元素个数。
+符号汇总： $n_x$ 为状态向量中状态的个数， $n_z$ 为测量到的状态数， $n_u$ 为输入向量中元素个数。
 
 |      Name      |      Symbol      |    Dimension     |
 | :------------: | :--------------: | :--------------: |
@@ -632,6 +631,124 @@ $$
 |    观测矩阵    | $\boldsymbol{H}$ | $n_z \times n_x$ |
 |   卡尔曼增益   | $\boldsymbol{K}$ | $n_x \times n_z$ |
 
+### Code
+
+下面给出一个线性卡尔曼滤波的 Python 实现：
+
+```py
+from dataclasses import dataclass
+
+import numpy as np
+from scipy.linalg import cho_factor, cho_solve
+
+
+@dataclass
+class LinearGaussianModel:
+    """A linear Gaussian state-space model for Kalman filtering."""
+
+    state_transition: np.ndarray  # F
+    observation: np.ndarray  # H
+    process_noise_cov: np.ndarray  # Q
+    measure_noise_cov: np.ndarray  # R
+    control_input: np.ndarray | None = None  # B
+
+
+class KalmanFilter:
+    """A Kalman filter for linear Gaussian state-space models."""
+
+    def __init__(
+        self,
+        model: LinearGaussianModel,
+        init_state_mean: np.ndarray,
+        init_state_cov: np.ndarray,
+    ) -> None:
+        """Initialize the Kalman filter with the given model and initial state.
+
+        Args:
+            model (LinearGaussianModel): The linear Gaussian model.
+            init_state_mean (np.ndarray): Initial state mean.
+            init_state_cov (np.ndarray): Initial state covariance.
+        """
+        self.model = model
+        self.state_mean = init_state_mean.copy()
+        self.state_cov = init_state_cov.copy()
+
+    def predict(
+        self, control_vector: np.ndarray | None = None
+    ) -> tuple[np.ndarray, np.ndarray]:
+        """Perform the prediction step of the Kalman filter.
+
+        Args:
+            control_vector (np.ndarray | None, optional): Control vector. Defaults to None.
+
+        Returns:
+            tuple[np.ndarray, np.ndarray]: Predicted state mean and covariance.
+        """
+        F = self.model.state_transition
+        Q = self.model.process_noise_cov
+        B = self.model.control_input
+
+        # Predict the next state mean.
+        if B is not None and control_vector is not None:
+            self.state_mean = F @ self.state_mean + B @ control_vector
+        else:
+            self.state_mean = F @ self.state_mean
+
+        # Predict the next state covariance.
+        self.state_cov = F @ self.state_cov @ F.T + Q
+
+        return self.state_mean, self.state_cov
+
+    def project(self) -> tuple[np.ndarray, np.ndarray]:
+        """Project the current state into the observation space.
+
+        Returns:
+            tuple[np.ndarray, np.ndarray]: Projected mean and covariance.
+        """
+        H = self.model.observation
+        R = self.model.measure_noise_cov
+
+        # Projected mean and covariance in observation space.
+        projected_mean = H @ self.state_mean
+        projected_cov = H @ self.state_cov @ H.T + R
+
+        return projected_mean, projected_cov
+
+    def update(self, measurement: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
+        """Perform the update step of the Kalman filter with the given measurement.
+
+        Args:
+            measurement (np.ndarray): Measurement vector.
+
+        Returns:
+            tuple[np.ndarray, np.ndarray]: Updated state mean and covariance.
+        """
+        H = self.model.observation
+        R = self.model.measure_noise_cov
+
+        # Compute the Kalman gain.
+        # Use Cholesky decomposition for matrix inversion.
+        S = H @ self.state_cov @ H.T + R
+        K = cho_solve(
+            cho_factor(
+                S,
+                lower=True,
+                overwrite_a=True,
+                check_finite=False,
+            ),
+            H @ self.state_cov.T,
+            overwrite_b=True,
+            check_finite=False,
+        ).T
+
+        # Update the state mean and covariance.
+        self.state_mean = self.state_mean + K @ (measurement - H @ self.state_mean)
+        I_n = np.eye(self.state_cov.shape[0])
+        self.state_cov = (I_n - K @ H) @ self.state_cov @ (I_n - K @ H).T + K @ R @ K.T
+
+        return self.state_mean, self.state_cov
+```
+
 ## 2. Extended Kalman Filter
 
 先前我们讨论的普通卡尔曼滤波，是为**线性系统**设计的最优估计算法，它假设系统满足一下线性高斯模型：
@@ -645,7 +762,7 @@ $$
 
 其中系统过程噪声 $\boldsymbol{w}$ 和测量噪声 $\boldsymbol{v}$ 均为高斯白噪声。由此，KF 可以递推计算出每一时刻状态的最优估计（最小方差意义下的最优）。
 
-现实系统往往是非线性的，例如机器人位姿计算、惯性导航、传感器的非线性测量，可能涉及到三角函数、平方、开方等非线性运算，因此需要使用扩展卡尔曼滤波 EKF 来处理。
+现实系统往往是非线性的，例如机器人位姿计算、惯性导航、传感器的非线性测量，可能涉及到三角函数、平方、开方等非线性运算，因此需要使用扩展卡尔曼滤波（Extended Kalman Filter, EKF）来处理。
 
 EKF 的核心思想是，用泰勒展开将非线性系统近似为局部线性系统（保留一阶项，忽略二阶以上的项），然后在每一个时刻应用普通卡尔曼滤波。
 
@@ -687,3 +804,137 @@ Update：
 3. 协方差更新 $\boldsymbol{P}_{n|n} = (\boldsymbol{I}-\boldsymbol{K}_n \boldsymbol{H}_n)\boldsymbol{P}_{n|n-1}(\boldsymbol{I}-\boldsymbol{K}_n \boldsymbol{H}_n)^T+ \boldsymbol{K}_n\boldsymbol{R}_n\boldsymbol{K}_n^T$ ，简洁形式 $\boldsymbol{P}_{n|n} = (\boldsymbol{I}-\boldsymbol{K}_n \boldsymbol{H}_n)\boldsymbol{P}_{n|n-1}$
 
 > EKF 相比于普通的 KF，适用范围更广，更贴近真实系统，滤波效果更好，但形式较为复杂，尤其是复杂函数可能难以写出显式导数和雅可比矩阵。
+
+## 3. Unscented Kalman Filter
+
+> The following content is referenced from:
+>
+> [进一步理解无迹卡尔曼滤波（UKF）-腾讯云开发者社区-腾讯云](https://cloud.tencent.com.cn/developer/article/2581696)
+
+无迹卡尔曼滤波（Unscented Kalman Filter, UKF）同样是用于处理非线性问题的卡尔曼滤波变体。它的核心是使用**无迹变换**（Unscented Transformation, UT），相比于 EKF 的粗略线性化更加精确、鲁棒，相比于 EKF 推导雅可比矩阵也更容易实现。在 SLAM、目标跟踪、自动驾驶等领域，UKF 已经很大程度上取代了 EKF。
+
+EKF 通过对非线性函数做一阶泰勒展开，用雅可比矩阵近似，这会带来一系列问题。首先，线性化阶段了高阶项，对于高度非线性系统不够精确；其次，需要手动推导雅可比矩阵，复杂且易出错；最后，系统非线性较强时误差会累积。而 UKF 采取的思想，不是用一个粗略的线性函数近似非线性函数，而是在状态分布上选取一组确定性样本点（Sigma Points），这组点能够完全不捕获当前状态分布的均值和方差，把他们通过非线性函数传播和变换，映射到新的状态空间，再从变换后的点重新估计均值和方差。这样“采样—传播—重构”的过程就是无迹变换。这样能够实现不计算雅可比矩阵就能得到捕捉高精度的非线性信息。
+
+一般问题中我们都假设模型是满足高斯分布的，也就是一个云团“。EKF 的做法是只关注云团的中心点（均值），假设整个云团都沿着中心点的切线方向移动。UKF 的做法则是分为三部：
+
+1. 选点：根据当前高斯分布的均值和协方差，选择一组有代表性的点（Sigma Points）。这些点位于均值的不同方向上，距离的远近由协方差决定。
+2. 传播：每一个 Sigma Point 都经过非线性函数 $f(\cdot)$ 变换。该过程是精确传播。
+3. 重构：根据传播后的点重新计算出一个新的高斯分布。
+
+### UT
+
+首先需要确定 Sigma Point 的选择策略。对于一个满足多维高斯分布的状态向量 $\boldsymbol{x}\sim\mathcal{N}(\bar{\boldsymbol{x}},\boldsymbol{P})\in\mathbb{R}^n$ ，一共构造 $2n+1$ 个 Sigma Point。
+
+第 1 个点为状态向量的均值：
+
+$$
+\chi_0=\bar{\boldsymbol{x}}
+$$
+
+接下来的 $2n$ 个点沿着 $n$ 个维度各自的正负方向选取：
+
+$$
+\chi_i=\bar{\boldsymbol{x}}+\left[ \sqrt{(n+\lambda)\boldsymbol{P}} \right]_i,\quad \chi_{i+n}=\bar{\boldsymbol{x}}-\left[ \sqrt{(n+\lambda)\boldsymbol{P}} \right]_i,
+\quad i=1,\cdots,n
+$$
+
+然后计算各个 Sigma Point 的均值权重和协方差权重:
+
+$$
+\begin{align*}
+W_0^{(m)}&=\frac{\lambda}{n+\lambda},\quad W_0^{(c)}=\frac{\lambda}{n+\lambda}+(1-\alpha^2+\beta) \\
+W_i^{(m)}&=W_i^{(c)}=\frac{1}{2(n+\lambda)}, \quad i=1,\cdots,n
+\end{align*}
+$$
+
+其中 $\sqrt{\cdot}$ 表示矩阵平方根，通常是 Cholesky 分解 $P=L^TL,\;L=\sqrt{P}$ ， $[\cdot]_i$ 表示矩阵的第 $i$ 列。
+
+> 注：Cholesky 分解条件是被分解矩阵应为对称正定矩阵。若 $P$ 非正定可添加小的抖动项 $\varepsilon I$ .
+
+$\lambda$ 是一个缩放因子，用于控制 Sigma Point 采样的覆盖范围，通常定义为 $\lambda=\alpha(n+\kappa)-n$ ，其中散布度 $\alpha\in(0,1]$ 为主要缩放参数，一般取很小值如 $10^{-3}$ ， $\kappa$ 是次要缩放参数， $\beta$ 是关于分布的先验知识的参数，可以优化协方差计算精度，对于高斯分布 $\beta=2$ 是最优的。
+
+> 对于实际问题，一般使用高斯分布模型，参数通常设置为 $\alpha=10^{-3},\;\beta=2,\;\kappa=0$ .
+
+将每个 Sigma Point 送入非线性函数 $\mathcal{Y}_i=f(\chi_i)$ ，重建均值与方差：
+
+$$
+\bar{\boldsymbol{y}}=\sum_i W_i^{(m)}\mathcal{Y}_i,\quad
+\boldsymbol{P}_y=\sum_i W_i^{(c)}(\mathcal{Y}_i-\hat{\boldsymbol{y}})(\mathcal{Y}_i-\hat{\boldsymbol{y}})^T+\boldsymbol{R}
+$$
+
+### UKF
+
+对于不同时刻 $k$ ，状态 $\boldsymbol{x}_k$ 具有系统过程噪声 $\boldsymbol{w}_k\sim\mathcal{N}(\boldsymbol{0},\boldsymbol{Q}_k)$ ，观测量 $\boldsymbol{z}_k$ 具有观测噪声 $\boldsymbol{v}_k\sim\mathcal{N}(\boldsymbol{0},\boldsymbol{R}_k)$ ，构成非线性系统：
+
+$$
+\begin{cases}
+\boldsymbol{x}_k &= f(\boldsymbol{x}_{k-1},\boldsymbol{u}_{k-1})+\boldsymbol{w}_{k-1} \\
+\boldsymbol{z}_k &= h(\boldsymbol{x}_k)+\boldsymbol{v}_k
+\end{cases}
+$$
+
+UKF 的具体步骤为：
+
+（1）基于 $k-1$ 时刻的后验估计的均值和协方差 $\hat{\boldsymbol{x}}_{k-1|k-1},\;\boldsymbol{P}_{k-1|k-1}$ ，构造一组 Sigma Points $\boldsymbol{\chi}_{k-1}=[\chi_{k-1}^{(i)}]$ .
+
+$$
+\boldsymbol{\chi}_{k-1}=\left[\hat{\boldsymbol{x}}_{k-1|k-1},\quad \hat{\boldsymbol{x}}_{k-1|k-1}+\sqrt{(n+\lambda)\boldsymbol{P}_{k-1|k-1}},\quad \hat{\boldsymbol{x}}_{k-1|k-1}-\sqrt{(n+\lambda)\boldsymbol{P}_{k-1|k-1}} \right]
+$$
+
+通过状态转移函数 $f(\cdot)$ 传播 Sigma Points： $\chi_{k|k-1}^{(i)}=f\left(\chi_{k-1}^{(i)},\boldsymbol{u}_k\right)$ . 这一步不是近似，没有误差。
+
+（2）预测
+
+预测状态均值，对传播后的点加权求和：
+
+$$
+\hat{\boldsymbol{x}}_{k|k-1}=\sum_i W_i^{(m)}\chi_{k|k-1}^{(i)}
+$$
+
+预测状态协方差，对传播后的协方差加权求和并加上过程噪声：
+
+$$
+\boldsymbol{P}_{k|k-1}=\sum_i W_i^{(c)}\left(\chi_{k|k-1}^{(i)}-\hat{\boldsymbol{x}}_{k|k-1}\right) \left(\chi_{k|k-1}^{(i)}-\hat{\boldsymbol{x}}_{k|k-1}\right)^T+\boldsymbol{Q}_{k-1}
+$$
+
+（3）更新
+
+*Optional*：使用预测的先验分布 $\left(\hat{\boldsymbol{x}}_{k|k-1},\;\boldsymbol{P}_{k|k-1}\right)$ 重新生成一组 Sigma Points，一般会更加准确。
+
+实际的观测量为 $\boldsymbol{z}_k$ . 将 Sigma Points 通过观测模型传播 $\mathcal{Z}_k^{(i)}=h\left(\chi_{k|k-1}^{(i)}\right)$ .
+
+观测量的均值和协方差也是加权求和形式，分别为：
+
+$$
+\hat{\boldsymbol{z}}_k=\sum_i W_i^{(m)}\mathcal{Z}_k,\quad
+\boldsymbol{P}_{z}=\sum_i W_i^{(c)}\left(\mathcal{Z}_k^{(i)}-\hat{\boldsymbol{z}}_k\right) \left(\mathcal{Z}_k^{(i)}-\hat{\boldsymbol{z}}_k\right) ^T+\boldsymbol{R}_{k}
+$$
+
+状态量-观测量互协方差为：
+
+$$
+\boldsymbol{P}_{xz}=\sum_i W_i^{(c)}\left(\chi_{k|k-1}^{(i)}-\hat{\boldsymbol{x}}_{k|k-1}\right) \left(\mathcal{Z}_k^{(i)}-\hat{\boldsymbol{z}}_k\right)^T
+$$
+
+计算卡尔曼增益 $\boldsymbol{K}_k=\boldsymbol{P}_{xz}\boldsymbol{P}_z^{-1}$ .
+
+更新状态均值和协方差：
+
+$$
+\hat{\boldsymbol{x}}_{k|k-1}=\hat{\boldsymbol{x}}_{k-1|k-1}+\boldsymbol{K}(\boldsymbol{z}_k-\hat{\boldsymbol{z}}_k),\quad \boldsymbol{P}_{k|k}=\boldsymbol{P}_{k|k-1}-\boldsymbol{K}_k\boldsymbol{P}_z\boldsymbol{K}_k^T
+$$
+
+> 数值计算实现时， $\boldsymbol{P}_z^{-1}$ 尽量不直接求逆，而是使用 Cholesky 分解更快更稳定。
+
+---
+
+EKF、UKF 的对比：
+
+| 特性     | EKF                                                          | UKF                                                          |
+| -------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 核心方法 | 一阶泰勒展开（局部线性化）                                   | 无迹变换（采样逼近）                                         |
+| 精度     | 一阶精度，线性化误差大，特别是对于强非线性系统               | 二阶精度，能更准确地捕获非线性变换后的均值和协方差，精度高于 EKF |
+| 计算量   | 较低（但需要计算雅可比矩阵）                                 | 较高，需要传播 2L+1 个点，但对现代计算机通常可接受           |
+| 实现难度 | 数学推导复杂，需要手动推导并雅可比矩阵 $\boldsymbol{F,H}$，容易出错 | 实现简单，只需提供非线性函数 $f(\cdot),h(\cdot)$ 的黑箱实现，无需求导 |
+| 鲁棒性   | 对模型误差和强非线性敏感，容易发散                           | 更鲁棒，对非线性系统表现稳定，更不易发散                     |
+| 适用场景 | 非线性程度较低、比较平滑的系统                               | 强非线性系统（如剧烈机动的目标跟踪）                         |

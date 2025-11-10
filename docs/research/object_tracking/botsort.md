@@ -146,6 +146,12 @@ $$
 
 ## Code Reprodution
 
+> The following content is referenced from:
+>
+> [BoT-SORT实战：手把手教你实现BoT-SORT训练和测试 - 灰信网（软件开发博客聚合）](https://www.freesion.com/article/74862628185/)
+>
+> [BoT-SORT复现-CSDN博客](https://blog.csdn.net/Abstract_zhw/article/details/129062743)
+
 ### Installation
 
 Step 1. Setup the Python environment.
@@ -200,7 +206,7 @@ You may need to change the version of `protobuf` to avoid version conflict:
 
 This step prepares cropped person images (patches) from MOT17/MOT20 datasets, so that the FastReID pipeline can train an appearance (ReID) model for BoT-SORT(-ReID). This step *does not train anything*, it only builds the ReID training dataset.
 
-You can create a new folder as `<datasets_dir>` (like `datasets/` in the root directory). Then download [MOT17](https://motchallenge.net/data/MOT17/) and [MOT20](https://motchallenge.net/data/MOT20/) datasets from the [official website](https://motchallenge.net/), and put them in the following structure:
+You can create a new folder as `<datasets_dir>` (like `datasets/` in the root directory). Then go to [MOT17](https://motchallenge.net/data/MOT17/) and [MOT20](https://motchallenge.net/data/MOT20/) datasets, click the "*Get all data*" at the bottom of the page, and put the unzipped files in the following structure:
 
 ```text
 <datasets_dir>
@@ -223,7 +229,7 @@ cd <BoT-SORT_dir>
 python3 fast_reid/datasets/generate_mot_patches.py --data_path <dataets_dir> --mot 17
 
 # For MOT20
- python3 fast_reid/datasets/generate_mot_patches.py --data_path <dataets_dir> --mot 20
+python3 fast_reid/datasets/generate_mot_patches.py --data_path <dataets_dir> --mot 20
 ```
 
 It will output the results into folder `fast_reid/datasets/` by default. You can also change this path by providing `--save-path` argument.
@@ -265,9 +271,9 @@ Creat a new folder `<BoT-SORT_dir>/pretrained` and place all the models that you
     | ------------------------------------------------------------ | ---- | ---- | ---- | ---- |
     | bytetrack_x_mot20: [google](https://drive.google.com/file/d/1HX2_JpMOjOIj1Z9rJjoet9XNy_cCAs5U/view?usp=sharing), [baidu(3apd)](https://pan.baidu.com/s/1bowJJj0bAnbhEQ3_6_Am0A) | 93.4 | 89.3 | 1057 | 17.5 |
 
-2. For tracker, download the pretrained ReID model weights with extension `.pth` from [MOT17-SBS-S50](https://drive.google.com/file/d/1QZFWpoa80rqo7O-HXmlss8J8CnS7IUsN/view?usp=sharing), [MOT20-SBS-S50](https://drive.google.com/file/d/1KqPQyj6MFyftliBHEIER7m_OrGpcrJwi/view?usp=sharing).
+1. For **tracker**, download the pretrained ReID model weights `.pth` files, from [MOT17-SBS-S50](https://drive.google.com/file/d/1QZFWpoa80rqo7O-HXmlss8J8CnS7IUsN/view?usp=sharing), [MOT20-SBS-S50](https://drive.google.com/file/d/1KqPQyj6MFyftliBHEIER7m_OrGpcrJwi/view?usp=sharing).
 
-### Training
+### Training ReID
 
 You can modify the parameters in `fast_reid/configs/Base-SBS.yml` to adjust the batch size and learing rate, etc.
 
@@ -287,7 +293,7 @@ Then you will get the training results in folder `logs/` .
 
 Refer to [FastReID](https://github.com/JDAI-CV/fast-reid) repository for addition explanations and options.
 
-### Tracking(Test)
+### Tracking
 
 In this part we run the BoT-SORT `tools/track.py` and generate CSV text files, so that you can submit the `.txt` files to [MOTChallange](https://motchallenge.net/) and get the results in the paper. Tracking parameters can also be tuned in `tools/track.py` .
 
