@@ -342,7 +342,12 @@ nav:
           - ROS Basic: research/ros/ros_basic.md
           - Gazebo: research/ros/gazebo.md
           - Catkin Tool: research/ros/catkin.md
-      - Kalman Filter: research/kalman_filter.md
+      - Kalman Filter:
+          - LKF: research/kalman_filter/lkf.md
+          - EKF: research/kalman_filter/ekf.md
+          - IEKF: research/kalman_filter/iekf.md
+          - UKF: research/kalman_filter/ukf.md
+          - ESKF: research/kalman_filter/eskf.md
       - Geometric Transformation: research/geometric_transformation.md
       - Camera Calibration: research/camera_calibration.md
       - Kd-Tree: research/kdtree.md

@@ -53,7 +53,13 @@ $$
 
 相邻事件发生的间隔为 $T_n=S_n-S_{n-1},\;n=1,2,\cdots$ .
 
-根据关系 $P(S_n\leqslant t)=P(N(t)\geqslant n)$ ，得到 $S_n$ 的累积分布函数（CDF）为 $F_{S_n}=P(S_n<t)=P(N(t)\geqslant n)=\displaystyle\sum_{k=n}^{+\infty}\frac{(\lambda t)^k}{k!}\mathrm{e}^{-\lambda t}$ ，求导得到 $f_{S_n}(t)=\dfrac{\mathrm{d}}{\mathrm{d}t}F_{S_n}(t)=\dfrac{(\lambda t)^{n-1}}{(n-1)!}\lambda\mathrm{e}^{-\lambda t}$ ，服从 $n$ 阶 $\Gamma$ 分布。当 $n=1$ 时退化为指数分布 $S_1\sim\exp(\lambda)$ . 当 $n$ 较大时，接近高斯分布。
+根据关系 $P(S_n\leqslant t)=P(N(t)\geqslant n)$ ，得到 $S_n$ 的累积分布函数（CDF）为：
+
+$$
+F_{S_n}=P(S_n< t)=P(N(t)\geqslant n)=\displaystyle\sum_{k=n}^{+\infty}\frac{(\lambda t)^k}{k!}\mathrm{e}^{-\lambda t}
+$$
+
+求导得到 $f_{S_n}(t)=\dfrac{\mathrm{d}}{\mathrm{d}t}F_{S_n}(t)=\dfrac{(\lambda t)^{n-1}}{(n-1)!}\lambda\mathrm{e}^{-\lambda t}$ ，服从 $n$ 阶 $\Gamma$ 分布。当 $n=1$ 时退化为指数分布 $S_1\sim\exp(\lambda)$ . 当 $n$ 较大时，接近高斯分布。
 
 数字特征为：
 
@@ -71,10 +77,10 @@ $$
 
 ---
 
-如果在已知 $[0,t]$ 内泊松过程发生了 $n$ 次的**条件**下，考虑等待时间 $S_1,\cdots,S_n$ 的**条件分布** $S_1,\cdots,S_n|N(t)=n$ 的概率密度为：
+如果在已知 $[0,t]$ 内泊松过程发生了 $n$ 次的**条件**下，考虑等待时间 $S_1,\cdots,S_n$ 的**条件分布** $S_1,\cdots,S_n\mid N(t)=n$ 的概率密度为：
 
 $$
-f_{S_1,\cdots,S_n}(u_1,\cdots,u_n|N(t)=n)=\frac{n!}{t^n},\quad 0\leqslant u_1<\cdots<u_n\leqslant t
+f_{S_1,\cdots,S_n}(u_1,\cdots,u_n\mid N(t)=n)=\frac{n!}{t^n},\quad 0\leqslant u_1 <\cdots < u_n\leqslant t
 $$
 
 可见其为**多元的均匀分布**。
@@ -82,7 +88,7 @@ $$
 如果不考虑事件发生的先后次序，记事件发生的事件为 $\{V_1,\cdots,V_n\}$ ，称 $\{S_1,\cdots,S_n\}$ 为 $\{V_1,\cdots,V_n\}$ 的**顺序统计量**，其概率密度为：
 
 $$
-f_{V_1,\cdots,V_n}(v_1,\cdots,v_n|N(t)=n)=\frac{1}{t^n},\quad 0\leqslant v_i\leqslant t,\;i=1,\cdots,n
+f_{V_1,\cdots,V_n}(v_1,\cdots,v_n\mid N(t)=n)=\frac{1}{t^n},\quad 0\leqslant v_i\leqslant t,\;i=1,\cdots,n
 $$
 
 可见，由于 $\{S_1,\cdots,S_n\}$ 为 $\{V_1,\cdots,V_n\}$ 的一个特殊排列，因此 $\{S_1,\cdots,S_n\}$ 的概率密度为 $\{V_1,\cdots,V_n\}$ 的 $n!$ 倍。
@@ -93,7 +99,7 @@ $$
 
 $$
 \begin{gather*}
-P(L=k)=\int_{0}^{+\infty}[P(L=k|T=t)f_T(t)]\mathrm{d}t=\left(\frac{\mu}{\mu+\lambda}\right)\left(\frac{\lambda}{\mu+\lambda}\right)^k,\quad k=0,1,2,\cdots \\
+P(L=k)=\int_{0}^{+\infty}[P(L=k\mid T=t)f_T(t)]\mathrm{d}t=\left(\frac{\mu}{\mu+\lambda}\right)\left(\frac{\lambda}{\mu+\lambda}\right)^k,\quad k=0,1,2,\cdots \\
 \mathrm{E}(L)=\frac{\mu+\lambda}{\mu}
 \end{gather*}
 $$
@@ -135,7 +141,8 @@ $$
 \mathrm{E}(X(t))&=\lambda t\cdot\mathrm{E}(Y_n) \\
 \mathrm{Var}(X(t))&=\lambda t\cdot \mathrm{E}^2(Y_n) \\
 G_{X(t)}(z)&=\exp[\lambda t(G_Y(z)-1)]
-\end{align*}$$
+\end{align*}
+$$
 
 ## 随机参数 Poisson 过程
 

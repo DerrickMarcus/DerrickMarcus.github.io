@@ -11,7 +11,7 @@
 
 ## 多元高斯分布
 
-服从 $n$ 元高斯分布的随机向量 $\boldsymbol{X}=\left(X_1,X_2\cdots,X_n\right)^T\sim\mathcal{N}(\boldsymbol{\mu},\boldsymbol{\Sigma})$ ，概率密度函数(PDF)为：
+服从 $n$ 元高斯分布的随机向量 $\boldsymbol{X}=\left(X_1,X_2\cdots,X_n\right)^T\sim\mathcal{N}(\boldsymbol{\mu},\boldsymbol{\Sigma})$ ，概率密度函数 PDF 为：
 
 $$
 \begin{align*}
@@ -39,7 +39,7 @@ $$
 \phi_{\boldsymbol{X}}(\boldsymbol{\omega})=\mathrm{E}(\mathrm{e}^{\mathrm{j}\boldsymbol{\omega}^T\boldsymbol{X}})=\exp\left(\mathrm{j}\boldsymbol{\omega}^T\boldsymbol{\mu}-\frac{1}{2}\boldsymbol{\omega}^T\boldsymbol{\Sigma}\boldsymbol{\omega}\right)
 $$
 
-其中 $\boldsymbol{X}=\left(X_1,X_2\cdots,X_n\right)^T$ 各分量相互独立的**充要条件**为协方差矩阵 $\boldsymbol{\Sigma}$ 是对角阵（非对角线位置为0），此时各分量解耦，特征函数可写为求积形式：
+其中 $\boldsymbol{X}=\left(X_1,X_2\cdots,X_n\right)^T$ 各分量相互独立的**充要条件**为协方差矩阵 $\boldsymbol{\Sigma}$ 是对角阵（非对角线位置为 0），此时各分量解耦，特征函数可写为求积形式：
 
 $$
 \phi_{\boldsymbol{X}}(\boldsymbol{\omega})=\prod_{i=1}^n\phi_{X_i}(\omega_i)=\prod_{i=1}^n\exp\left(\mathrm{j}\mu_i\omega_i-\frac{1}{2}\sigma_i^2\omega_i^2\right)

@@ -1,24 +1,24 @@
-# Kalman Filter 卡尔曼滤波
+# Linear Kalman Filter
 
 卡尔曼滤波不同于传统的具有频域选频特性的滤波器，它是一种时域滤波器，更准取地说它是一种最优估计方法，可以根据已知的先验知识，预测下一个时刻的估计值。
 
 滤波的本质是加权，对应到卡尔曼滤波中，这个权重由**卡尔曼增益**决定，它融合的数据有两个：满足一定分布的先验状态估计值、满足一定分布的观测值。
 
-## 1. Linear Kalman Filter
+本节讨论的是线性卡尔曼滤波（Linear Kalman Filter, LKF），一般不加特殊说明时，卡尔曼滤波都是指线性卡尔曼滤波，也就是 KF = LKF。非线性的情况有其他的卡尔曼滤波变体，例如扩展卡尔曼滤波 EKF、无迹卡尔曼滤波 UKF 等。
+
+---
 
 > The following content is referenced from: [KalmanFilter.NET](https://kalmanfilter.net).
 
-线性卡尔曼滤波假设系统是一个**线性时不变系统**。
-
-### 一维无过程噪声 KF
+## 一维无过程噪声 KF
 
 ![KalmanFilterAlgorithm](https://kalmanfilter.net/img/OneD/KalmanFilterAlgorithm.png)
 
 卡尔曼滤波的核心步骤是“测量、更新、预测”。它将测量值、当前状态估计和下一个状态预测都视为正态分布的随机变量。
 
-对随机变量进行估计时，称估计值和真值之间的差为“估计误差”。随着时间不断增长，估计误差不断下降最终收敛到 0。实际中我们并不知道估计误差，因为真值是未知的，但是我们可以计算估计值的不确定性，也就是状态估计值的方差 $p$ .
+对随机变量进行估计时，称估计值和真值之间的差为“估计误差”。随着时间不断增长，估计误差不断下降最终收敛到 0。实际中我们并不知道估计误差，因为真值是未知的，但是我们可以计算估计值的不确定性，也就是**状态估计值的方差**为 $p$ .
 
-对随机变量进行测量时，称测量值和真值之间的差为“测量误差”。测量误差是随机的，一般使用正态分布的方差 $\sigma^2$ 描述，对应的标准差 $\sigma$ 称为测量不确定性。记测量值的方差为 $r$ . 最常见的是测量设备，比如雷达的测量的不确定性。
+对随机变量进行测量时，称测量值和真值之间的差为“测量误差”。测量误差是随机的，一般使用正态分布的方差 $\sigma^2$ 描述，对应的标准差 $\sigma$ 称为测量不确定性。记**测量值的方差**为 $r$ . 最常见的是测量设备，比如雷达的测量的不确定性。
 
 ![Predict](https://kalmanfilter.net/img/OneD/Predict.png)
 
@@ -134,7 +134,7 @@ $$
 - 状态转移/外插 Transition Equation： $\hat x_{n|n-1}=\hat x_{n-1|n-1}+\hat v_{n-1|n-1}\Delta t,\quad\hat v_{n|n-1}=\hat v_{n-1|n-1}$
 - 协方差转移/外插： $p_{n|n-1}^x=p_{n-1|n-1}^x+p_{n-1|n-1}^v \Delta t^2,\quad p_{n|n-1}^v=p_{n-1|n-1}^v$
 
-### 一维 KF
+## 一维 KF
 
 上述讨论的“一维无过程噪声 KF”中，我们没有考虑过程噪声。真实世界中，系统动力模型总是有不确定性的。比如我们想测量一个电阻的阻值，我们假设它是不变的，即阻值不随测量过程而改变，但实际上阻值会随着环境温度的改变而轻微改变。再比如用雷达追踪弹道导弹时，导弹动态模型的不确定性会包含一些随机的加减速。对于飞行器之类的目标，模型不确定性更大，因为飞行员随时可能进行机动。另一方面，当我们用 GPS 接收机计算一个固定物体的位置时，由于固定物体不会动，所以动态模型不确定性为 0。动态模型的不确定性称为过程噪声，也叫模型噪声、驱动噪声、动态噪声或系统噪声。过程噪声也会带来估计误差。
 
@@ -158,7 +158,7 @@ $$
 !!! note
     卡尔曼滤波方程是针对特定的简单问题的简单形式，重在理解卡尔曼滤波的基本原理和本质。卡尔曼滤波的一般形式在后续会以矩阵形式给出。
 
-### 多维 KF
+## 多维 KF
 
 现在我们将一维卡尔曼滤波扩展到多维卡尔曼滤波。例如在三维空间中，我们追踪一个目标的位置，可以考虑其坐标、速度、加速度等：
 
@@ -192,7 +192,20 @@ a_{z,n} = a_{z,n-1}
 \end{cases}
 $$
 
-#### 状态外插方程
+在卡尔曼滤波问题中，我们设定状态为 $\boldsymbol{x}_n$ ，控制输入为 $\boldsymbol{u}_n$ （可选），假设系统满足以下包含高斯白噪声的线性模型：
+
+$$
+\begin{cases}
+\boldsymbol{x}_n &=\boldsymbol{F}\boldsymbol{x}_{n-1}+\boldsymbol{G}\boldsymbol{u}_{n-1}+\boldsymbol{\omega}_{n-1} ,\quad &\boldsymbol{w}_{n-1}\sim\mathcal{N}(\boldsymbol{0},\boldsymbol{Q}_{n-1}) \\
+\boldsymbol{z}_n &= \boldsymbol{H}\boldsymbol{x}_n+\boldsymbol{v}_n ,\quad &\boldsymbol{v}_{n}\sim\mathcal{N}(\boldsymbol{0},\boldsymbol{R}_{n})
+\end{cases}
+$$
+
+其中系统过程噪声 $\boldsymbol{w}$ 和测量噪声 $\boldsymbol{v}$ 均为高斯白噪声。
+
+系统状态的真实值 $\boldsymbol{x}$ 是一个确定值，但是我们无法得知真实值，而是对状态给出一个估计值 $\hat{\boldsymbol{x}}$ （在已知观测数据时的后验估计），估计值和真实值之间的差异我们用高斯噪声描述估计值的不确定度，用协方差矩阵 $\boldsymbol{P}$ 表示。我们可以认为估计值是真实值叠加噪声后的数据，具有一定的不确定度，但是在数学上我们更习惯反过来（将高斯噪声移到等号另一边仍为高斯噪声），将真实值描述为围绕估计值波动的随机变量，以描述我们的对真实值的未知性。因此，在 $n$ 时刻，系统状态的估计为 $\boldsymbol{x}_n\sim\mathcal{N}\left(\hat{\boldsymbol{x}}_{n|n},\boldsymbol{P}_{n|n}\right)$ .
+
+### 状态外插方程
 
 状态外插方程，用矩阵形式描述为：
 
@@ -303,7 +316,7 @@ $$
 \boldsymbol{F}=\mathrm{e}^{\boldsymbol{A}\Delta t},\quad \boldsymbol{G}=\boldsymbol{B}\int_0^{\Delta t}\mathrm{e}^{\boldsymbol{A}\Delta t}\ \mathrm{d}t
 $$
 
-#### 协方差外插方程
+### 协方差外插方程
 
 先给出协方差外插方程的一般形式：
 
@@ -350,7 +363,7 @@ $$
 \boldsymbol{P}_{n+1|n}=\boldsymbol{F}\boldsymbol{P}_{n|n}\boldsymbol{F}^T+\boldsymbol{Q}
 $$
 
-#### 测量方程
+### 测量方程
 
 测量值 $z_n$ 代表系统的真实状态值和由测量设备引入的随机观测噪声 $v_n$ 的叠加。
 
@@ -367,7 +380,7 @@ $$
 - $\boldsymbol{v}_n:n_z\times 1$ 为测量的随机噪声向量。测量的协方差矩阵为 $\boldsymbol{R}_n=\mathbb{E}(\boldsymbol{v}_n\boldsymbol{v}_n^T)$ .
 - $\boldsymbol{H}:n_z\times n_x$ 为**观测矩阵**。以线性变换的形式，将系统状态变换到测量的输出。这是因为实际中我们的测量设备不是直接获取系统的状态，而是间接的，例如一个电子秤，系统状态是质量，但是仪器本身测量的是电流。
 
-#### 状态更新方程
+### 状态更新方程
 
 矩阵形式的状态更新方程：
 
@@ -435,7 +448,7 @@ $$
 
     那么卡尔曼增益 $\boldsymbol{K}_n$ 的维度应该是 $5 \times 3$。
 
-#### 协方差更新方程
+### 协方差更新方程
 
 矩阵形式的协方差更新方程为：
 
@@ -525,7 +538,7 @@ $$
 \end{align*}
 $$
 
-#### 卡尔曼增益
+### 卡尔曼增益
 
 矩阵形式的卡尔曼增益公式为：
 
@@ -568,7 +581,7 @@ $$
 
 > 事实上这里需要一个条件： $\boldsymbol{S}_n$ 是正定的，即 $\boldsymbol{S}_n\succ 0$ ，这样可以推出 $\boldsymbol{S}_n$ 可逆。另外， $\boldsymbol{S}_n$ 正定的一个充分条件是 $\boldsymbol{R}_n$ 正定。如果 $\boldsymbol{R}_n$ 非正定，情况会比较复杂，这里不做讨论。
 
-#### 简化的协方差更新方程
+### 简化的协方差更新方程
 
 我们可以推导出一个简化的协方差更新方程：
 
@@ -594,7 +607,7 @@ $$
 !!! warning
     这个方程看起来要精炼很多并且容易记忆，并且在许多情况下没什么问题。但是，在计算卡尔曼增益时的一个小误差（浮点截尾误差）可能给结果带来巨大的偏差， $(\boldsymbol{I} - \boldsymbol{K}_n \boldsymbol{H})$ 的差可能因为浮点计算误差而使其结果不再是对称阵，因此这个方程在**数值计算上并不稳定**！
 
-#### Summary
+### Summary
 
 ![KalmanFilterDiagram](https://kalmanfilter.net/img/summary/KalmanFilterDiagram.png)
 
@@ -605,13 +618,15 @@ $$
 3. 更新阶段，上一时刻的预测（先验） $\hat{\boldsymbol{x}}_{n+1|n}$ 即为这一时刻的 $\hat{\boldsymbol{x}}_{n|n-1}$ .
     - 卡尔曼增益： $\boldsymbol{K}_n = \boldsymbol{P}_{n\mid n-1}\boldsymbol{H}^T\left(\boldsymbol{H}\boldsymbol{P}_{n\mid n-1}\boldsymbol{H}^T + \boldsymbol{R}_n\right)^{-1}$
     - 状态更新： $\hat{\boldsymbol{x}}_{n\mid n} = \hat{\boldsymbol{x}}_{n\mid n-1} + \boldsymbol{K}_n (\boldsymbol{z}_n - \boldsymbol{H}\hat{\boldsymbol{x}}_{n\mid n-1})$
-    - 协方差更新： $\boldsymbol{P}_{n\mid n} = (\boldsymbol{I}-\boldsymbol{K}_n \boldsymbol{H})\boldsymbol{P}_{n\mid n-1}(\boldsymbol{I}-\boldsymbol{K}_n \boldsymbol{H})^T+ \boldsymbol{K}_n\boldsymbol{R}_n\boldsymbol{K}_n^T$
+    - 协方差更新（Joseph 形式）： $\boldsymbol{P}_{n\mid n} = (\boldsymbol{I}-\boldsymbol{K}_n \boldsymbol{H})\boldsymbol{P}_{n\mid n-1}(\boldsymbol{I}-\boldsymbol{K}_n \boldsymbol{H})^T+ \boldsymbol{K}_n\boldsymbol{R}_n\boldsymbol{K}_n^T$
 4. 辅助方程
     - 测量方程： $\boldsymbol{z}_n = \boldsymbol{H}\boldsymbol{x}_n+\boldsymbol{v}_n$
     - 测量协方差： $\boldsymbol{R}_n = \mathbb{E}\left(\boldsymbol{v}_n \boldsymbol{v}_n^T\right)$
     - 过程噪声协方差： $\boldsymbol{Q}_n = \mathbb{E}\left(\boldsymbol{w}_n \boldsymbol{w}_n^T\right)$
     - 估计协方差： $\boldsymbol{P}_{n\mid n} = \mathbb{E}\left(\boldsymbol{e}_n \boldsymbol{e}_n^T\right) = \mathbb{E}\left\{(\boldsymbol{x}_n-\hat{\boldsymbol{x}}_{n\mid n})(\boldsymbol{x}_n-\hat{\boldsymbol{x}}_{n\mid n})^T \right\}$
 
+> 数值计算实现时，求逆运算例如 $\left(\boldsymbol{H}\boldsymbol{P}_{n\mid n-1}\boldsymbol{H}^T + \boldsymbol{R}_n\right)^{-1}$ 尽量不直接求逆，而是使用 Cholesky 分解更快更稳定，后面介绍的 EKF、IEKF、UKF 等也是如此。
+>
 > 在其他教科书或文献中，卡尔曼滤波中的预测值也写作 $\hat{\boldsymbol{x}}_k^-,\;\boldsymbol{P}_k^-$ ，估计值也写作 $\hat{\boldsymbol{x}}_{k},\;\boldsymbol{P}_k$ .
 
 符号汇总： $n_x$ 为状态向量中状态的个数， $n_z$ 为测量到的状态数， $n_u$ 为输入向量中元素个数。
@@ -749,192 +764,81 @@ class KalmanFilter:
         return self.state_mean, self.state_cov
 ```
 
-## 2. Extended Kalman Filter
+## Appendix
 
-先前我们讨论的普通卡尔曼滤波，是为**线性系统**设计的最优估计算法，它假设系统满足一下线性高斯模型：
+卡尔曼滤波估计的目标是最小均方误差（Minimum Mean Square Error, MMSE）。在**线性高斯模型**（状态转移、观测都是线性的，先验分布和噪声均为高斯分布）的假设下，MMSE 可以等价于最大后验估计（Maximum A Posteriori, MAP），也就是说，卡尔曼滤波给出的估计既是最小均方误差解，也是最大后验解。下面来简单解释一下。
 
-$$
-\begin{cases}
-\boldsymbol{x}_n&=\boldsymbol{F}\boldsymbol{x}_{n-1}+\boldsymbol{G}\boldsymbol{u}_n+\boldsymbol{\omega}_n \\
-\boldsymbol{z}_n &= \boldsymbol{H}\boldsymbol{x}_n+\boldsymbol{v}_n
-\end{cases}
-$$
-
-其中系统过程噪声 $\boldsymbol{w}$ 和测量噪声 $\boldsymbol{v}$ 均为高斯白噪声。由此，KF 可以递推计算出每一时刻状态的最优估计（最小方差意义下的最优）。
-
-现实系统往往是非线性的，例如机器人位姿计算、惯性导航、传感器的非线性测量，可能涉及到三角函数、平方、开方等非线性运算，因此需要使用扩展卡尔曼滤波（Extended Kalman Filter, EKF）来处理。
-
-EKF 的核心思想是，用泰勒展开将非线性系统近似为局部线性系统（保留一阶项，忽略二阶以上的项），然后在每一个时刻应用普通卡尔曼滤波。
-
-非线性系统的模型为：
+MMSE 估计：给定观测 $z$ 后，选择一个估计 $\hat{x}$ 最小化条件期望的二次误差：
 
 $$
-\begin{cases}
-\boldsymbol{x}_n &=\boldsymbol{f}(\boldsymbol{x}_{n-1},\boldsymbol{u}_n)+\boldsymbol{\omega}_n,\quad \boldsymbol{\omega}\sim\mathcal{N}(0,\boldsymbol{Q}) \\
-\boldsymbol{z}_n &= \boldsymbol{h}(\boldsymbol{x}_n)+\boldsymbol{v}_n,\quad \boldsymbol{v}\sim\mathcal{N}(0,\boldsymbol{R})
-\end{cases}
+\hat{x}_{\text{MMSE}}=\arg\min_a\mathbb{E}(\|x-a\|^2\mid z)
 $$
 
-其中 $\boldsymbol{f}(\cdot)$ 为状态转移的非线性函数， $\boldsymbol{h}(\cdot)$ 为观测模型的非线性函数。噪声仍是高斯白噪声。
-
-计算估计点处的 Jacobian 矩阵：
+对任意分布，最小化平方损失的最佳点就是条件均值，因此：
 
 $$
-\boldsymbol{F}_n=\frac{\partial \boldsymbol{f}}{\partial \boldsymbol{x}}\bigg|_{\boldsymbol{x}=\hat{\boldsymbol{x}}_{n-1|n-1},\boldsymbol{u}=\boldsymbol{u}_n},\quad \boldsymbol{H}_n=\frac{\partial \boldsymbol{h}}{\partial \boldsymbol{x}}\bigg|_{\boldsymbol{x}=\hat{\boldsymbol{x}}_{n|n-1}}
+\hat{x}_{\text{MMSE}}=\mathbb{E}(x\mid z)
 $$
 
-对噪声同样有：
+MAP 估计：给定观测 $z$ 后，选择使后验概率密度最大的点（后验众数）：
 
 $$
-\boldsymbol{W}_n=\frac{\partial \boldsymbol{f}}{\partial \boldsymbol{\omega}},\quad
-\boldsymbol{V}_n=\frac{\partial \boldsymbol{h}}{\partial \boldsymbol{v}}
+\hat{x}_{\text{MAP}}=\arg\max_x p(x\mid z)=\arg\min_x (-\log p(x\mid z))
 $$
 
-则扩展卡尔曼滤波的方程为：
+若后验为高斯分布，概率密度最大值即为均值处，因此 $\hat{x}_{\text{MAP}}=\mu$ .
 
-Predict：
+因此，当后验分布为高斯分布，有 $\hat{x}_{\text{MMSE}}=\hat{x}_{\text{MAP}}$ .
 
-1. 状态预测 $\hat{\boldsymbol{x}}_{n|n-1}=\boldsymbol{f}(\hat{\boldsymbol{x}}_{n-1|n-1},\boldsymbol{u}_n)$
-2. 协方差预测 $\boldsymbol{P}_{n|n-1}=\boldsymbol{F}_{n}\boldsymbol{P}_{n-1|n-1}\boldsymbol{F}_{n}^T+\boldsymbol{W}_n\boldsymbol{Q}_{n-1}\boldsymbol{W}_n^T$
+对于单次观测，考虑最简单的的情形：先验分布为高斯分布 $x\sim\mathcal{N}(m,P)$ ，线性观测模型包含高斯噪声 $z=Hx+v,\;v\sim\mathcal{N}(0,R)$ .
 
-Update：
-
-1. 卡尔曼增益 $\boldsymbol{K}_n=\boldsymbol{P}_{n|n-1}\boldsymbol{H}_n^T\left(\boldsymbol{H}_n\boldsymbol{P}_{n|n-1}\boldsymbol{H}_n^T+\boldsymbol{V}_n\boldsymbol{R}_n\boldsymbol{V}_n^T \right)^{-1}$
-2. 状态更新 $\hat{\boldsymbol{x}}_{n|n}=\hat{\boldsymbol{x}}_{n|n-1}+\boldsymbol{K}_n\left( \boldsymbol{z}_n-\boldsymbol{h}(\hat{\boldsymbol{x}}_{n|n-1}) \right)$
-3. 协方差更新 $\boldsymbol{P}_{n|n} = (\boldsymbol{I}-\boldsymbol{K}_n \boldsymbol{H}_n)\boldsymbol{P}_{n|n-1}(\boldsymbol{I}-\boldsymbol{K}_n \boldsymbol{H}_n)^T+ \boldsymbol{K}_n\boldsymbol{R}_n\boldsymbol{K}_n^T$ ，简洁形式 $\boldsymbol{P}_{n|n} = (\boldsymbol{I}-\boldsymbol{K}_n \boldsymbol{H}_n)\boldsymbol{P}_{n|n-1}$
-
-> EKF 相比于普通的 KF，适用范围更广，更贴近真实系统，滤波效果更好，但形式较为复杂，尤其是复杂函数可能难以写出显式导数和雅可比矩阵。
-
-## 3. Unscented Kalman Filter
-
-> The following content is referenced from:
->
-> [进一步理解无迹卡尔曼滤波（UKF）-腾讯云开发者社区-腾讯云](https://cloud.tencent.com.cn/developer/article/2581696)
-
-无迹卡尔曼滤波（Unscented Kalman Filter, UKF）同样是用于处理非线性问题的卡尔曼滤波变体。它的核心是使用**无迹变换**（Unscented Transformation, UT），相比于 EKF 的粗略线性化更加精确、鲁棒，相比于 EKF 推导雅可比矩阵也更容易实现。在 SLAM、目标跟踪、自动驾驶等领域，UKF 已经很大程度上取代了 EKF。
-
-EKF 通过对非线性函数做一阶泰勒展开，用雅可比矩阵近似，这会带来一系列问题。首先，线性化阶段了高阶项，对于高度非线性系统不够精确；其次，需要手动推导雅可比矩阵，复杂且易出错；最后，系统非线性较强时误差会累积。而 UKF 采取的思想，不是用一个粗略的线性函数近似非线性函数，而是在状态分布上选取一组确定性样本点（Sigma Points），这组点能够完全不捕获当前状态分布的均值和方差，把他们通过非线性函数传播和变换，映射到新的状态空间，再从变换后的点重新估计均值和方差。这样“采样—传播—重构”的过程就是无迹变换。这样能够实现不计算雅可比矩阵就能得到捕捉高精度的非线性信息。
-
-一般问题中我们都假设模型是满足高斯分布的，也就是一个云团“。EKF 的做法是只关注云团的中心点（均值），假设整个云团都沿着中心点的切线方向移动。UKF 的做法则是分为三部：
-
-1. 选点：根据当前高斯分布的均值和协方差，选择一组有代表性的点（Sigma Points）。这些点位于均值的不同方向上，距离的远近由协方差决定。
-2. 传播：每一个 Sigma Point 都经过非线性函数 $f(\cdot)$ 变换。该过程是精确传播。
-3. 重构：根据传播后的点重新计算出一个新的高斯分布。
-
-### UT
-
-首先需要确定 Sigma Point 的选择策略。对于一个满足多维高斯分布的状态向量 $\boldsymbol{x}\sim\mathcal{N}(\bar{\boldsymbol{x}},\boldsymbol{P})\in\mathbb{R}^n$ ，一共构造 $2n+1$ 个 Sigma Point。
-
-第 1 个点为状态向量的均值：
+由 Bayes 定理，后验概率 $p(x\mid z)\propto p(z\mid x)\;p(x)$ ，写出他的概率分布：
 
 $$
-\chi_0=\bar{\boldsymbol{x}}
+-\log p(x\mid z)=\frac{1}{2}(x-m)^TP^{-1}(x-m)+\frac{1}{2}(z-Hx)^TR^{-1}(z-Hx)+C
 $$
 
-接下来的 $2n$ 个点沿着 $n$ 个维度各自的正负方向选取：
+这是关于 $x$ 的一个严格凸的二次型，配方可得后验分布仍是高斯分布 $x\mid z\sim\mathcal{N}(\mu,\Sigma)$ ，其中：
 
 $$
-\chi_i=\bar{\boldsymbol{x}}+\left[ \sqrt{(n+\lambda)\boldsymbol{P}} \right]_i,\quad \chi_{i+n}=\bar{\boldsymbol{x}}-\left[ \sqrt{(n+\lambda)\boldsymbol{P}} \right]_i,
-\quad i=1,\cdots,n
+\Sigma=(P^{-1}+H^TR^{-1}H)^{-1},\quad \mu=\Sigma(P^{-1}m+H^TR^{-1}z)
 $$
 
-然后计算各个 Sigma Point 的均值权重和协方差权重:
+因此，MMSE 等价于 MAP，解即为条件均值 $\mu$ .
+
+同时，上式也等价于带先验约束的最小二乘问题：
+
+$$
+\min_x \|x-m\|^2_{P^{-1}}+\|z-Hx\|^2_{R^{-1}}
+$$
+
+随着时间递推：
 
 $$
 \begin{align*}
-W_0^{(m)}&=\frac{\lambda}{n+\lambda},\quad W_0^{(c)}=\frac{\lambda}{n+\lambda}+(1-\alpha^2+\beta) \\
-W_i^{(m)}&=W_i^{(c)}=\frac{1}{2(n+\lambda)}, \quad i=1,\cdots,n
+x_k &= F_{k-1}x_{k-1} + w_{k-1}, \quad w_{k-1} \sim \mathcal{N}(0, Q_{k-1}) \\
+z_k &= H_k x_k + v_k, \quad v_k \sim \mathcal{N}(0, R_k)
 \end{align*}
 $$
 
-其中 $\sqrt{\cdot}$ 表示矩阵平方根，通常是 Cholesky 分解 $P=L^TL,\;L=\sqrt{P}$ ， $[\cdot]_i$ 表示矩阵的第 $i$ 列。
-
-> 注：Cholesky 分解条件是被分解矩阵应为对称正定矩阵。若 $P$ 非正定可添加小的抖动项 $\varepsilon I$ .
-
-$\lambda$ 是一个缩放因子，用于控制 Sigma Point 采样的覆盖范围，通常定义为 $\lambda=\alpha(n+\kappa)-n$ ，其中散布度 $\alpha\in(0,1]$ 为主要缩放参数，一般取很小值如 $10^{-3}$ ， $\kappa$ 是次要缩放参数， $\beta$ 是关于分布的先验知识的参数，可以优化协方差计算精度，对于高斯分布 $\beta=2$ 是最优的。
-
-> 对于实际问题，一般使用高斯分布模型，参数通常设置为 $\alpha=10^{-3},\;\beta=2,\;\kappa=0$ .
-
-将每个 Sigma Point 送入非线性函数 $\mathcal{Y}_i=f(\chi_i)$ ，重建均值与方差：
+若初始 $x_0 \sim \mathcal{N}(m_0, P_0)$ ，则在每一步预测：
 
 $$
-\bar{\boldsymbol{y}}=\sum_i W_i^{(m)}\mathcal{Y}_i,\quad
-\boldsymbol{P}_y=\sum_i W_i^{(c)}(\mathcal{Y}_i-\hat{\boldsymbol{y}})(\mathcal{Y}_i-\hat{\boldsymbol{y}})^T+\boldsymbol{R}
+\begin{align*}
+m_{k|k-1} &= F_{k-1} m_{k-1|k-1} \\
+P_{k|k-1} &= F_{k-1} P_{k-1|k-1} F_{k-1}^T + Q_{k-1}
+\end{align*}
 $$
 
-### UKF
-
-对于不同时刻 $k$ ，状态 $\boldsymbol{x}_k$ 具有系统过程噪声 $\boldsymbol{w}_k\sim\mathcal{N}(\boldsymbol{0},\boldsymbol{Q}_k)$ ，观测量 $\boldsymbol{z}_k$ 具有观测噪声 $\boldsymbol{v}_k\sim\mathcal{N}(\boldsymbol{0},\boldsymbol{R}_k)$ ，构成非线性系统：
+更新：
 
 $$
-\begin{cases}
-\boldsymbol{x}_k &= f(\boldsymbol{x}_{k-1},\boldsymbol{u}_{k-1})+\boldsymbol{w}_{k-1} \\
-\boldsymbol{z}_k &= h(\boldsymbol{x}_k)+\boldsymbol{v}_k
-\end{cases}
+\begin{align*}
+S_k &= H_k P_{k|k-1} H_k^T + R_k \\
+K_k &= P_{k|k-1} H_k^T S_k^{-1} \\
+m_{k|k} &= m_{k|k-1} + K_k (z_k - H_k m_{k|k-1}) \\
+P_{k|k} &= (I - K_k H_k) P_{k|k-1}
+\end{align*}
 $$
 
-UKF 的具体步骤为：
-
-（1）基于 $k-1$ 时刻的后验估计的均值和协方差 $\hat{\boldsymbol{x}}_{k-1|k-1},\;\boldsymbol{P}_{k-1|k-1}$ ，构造一组 Sigma Points $\boldsymbol{\chi}_{k-1}=[\chi_{k-1}^{(i)}]$ .
-
-$$
-\boldsymbol{\chi}_{k-1}=\left[\hat{\boldsymbol{x}}_{k-1|k-1},\quad \hat{\boldsymbol{x}}_{k-1|k-1}+\sqrt{(n+\lambda)\boldsymbol{P}_{k-1|k-1}},\quad \hat{\boldsymbol{x}}_{k-1|k-1}-\sqrt{(n+\lambda)\boldsymbol{P}_{k-1|k-1}} \right]
-$$
-
-通过状态转移函数 $f(\cdot)$ 传播 Sigma Points： $\chi_{k|k-1}^{(i)}=f\left(\chi_{k-1}^{(i)},\boldsymbol{u}_k\right)$ . 这一步不是近似，没有误差。
-
-（2）预测
-
-预测状态均值，对传播后的点加权求和：
-
-$$
-\hat{\boldsymbol{x}}_{k|k-1}=\sum_i W_i^{(m)}\chi_{k|k-1}^{(i)}
-$$
-
-预测状态协方差，对传播后的协方差加权求和并加上过程噪声：
-
-$$
-\boldsymbol{P}_{k|k-1}=\sum_i W_i^{(c)}\left(\chi_{k|k-1}^{(i)}-\hat{\boldsymbol{x}}_{k|k-1}\right) \left(\chi_{k|k-1}^{(i)}-\hat{\boldsymbol{x}}_{k|k-1}\right)^T+\boldsymbol{Q}_{k-1}
-$$
-
-（3）更新
-
-*Optional*：使用预测的先验分布 $\left(\hat{\boldsymbol{x}}_{k|k-1},\;\boldsymbol{P}_{k|k-1}\right)$ 重新生成一组 Sigma Points，一般会更加准确。
-
-实际的观测量为 $\boldsymbol{z}_k$ . 将 Sigma Points 通过观测模型传播 $\mathcal{Z}_k^{(i)}=h\left(\chi_{k|k-1}^{(i)}\right)$ .
-
-观测量的均值和协方差也是加权求和形式，分别为：
-
-$$
-\hat{\boldsymbol{z}}_k=\sum_i W_i^{(m)}\mathcal{Z}_k,\quad
-\boldsymbol{P}_{z}=\sum_i W_i^{(c)}\left(\mathcal{Z}_k^{(i)}-\hat{\boldsymbol{z}}_k\right) \left(\mathcal{Z}_k^{(i)}-\hat{\boldsymbol{z}}_k\right) ^T+\boldsymbol{R}_{k}
-$$
-
-状态量-观测量互协方差为：
-
-$$
-\boldsymbol{P}_{xz}=\sum_i W_i^{(c)}\left(\chi_{k|k-1}^{(i)}-\hat{\boldsymbol{x}}_{k|k-1}\right) \left(\mathcal{Z}_k^{(i)}-\hat{\boldsymbol{z}}_k\right)^T
-$$
-
-计算卡尔曼增益 $\boldsymbol{K}_k=\boldsymbol{P}_{xz}\boldsymbol{P}_z^{-1}$ .
-
-更新状态均值和协方差：
-
-$$
-\hat{\boldsymbol{x}}_{k|k-1}=\hat{\boldsymbol{x}}_{k-1|k-1}+\boldsymbol{K}(\boldsymbol{z}_k-\hat{\boldsymbol{z}}_k),\quad \boldsymbol{P}_{k|k}=\boldsymbol{P}_{k|k-1}-\boldsymbol{K}_k\boldsymbol{P}_z\boldsymbol{K}_k^T
-$$
-
-> 数值计算实现时， $\boldsymbol{P}_z^{-1}$ 尽量不直接求逆，而是使用 Cholesky 分解更快更稳定。
-
----
-
-EKF、UKF 的对比：
-
-| 特性     | EKF                                                          | UKF                                                          |
-| -------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 核心方法 | 一阶泰勒展开（局部线性化）                                   | 无迹变换（采样逼近）                                         |
-| 精度     | 一阶精度，线性化误差大，特别是对于强非线性系统               | 二阶精度，能更准确地捕获非线性变换后的均值和协方差，精度高于 EKF |
-| 计算量   | 较低（但需要计算雅可比矩阵）                                 | 较高，需要传播 2L+1 个点，但对现代计算机通常可接受           |
-| 实现难度 | 数学推导复杂，需要手动推导并雅可比矩阵 $\boldsymbol{F,H}$，容易出错 | 实现简单，只需提供非线性函数 $f(\cdot),h(\cdot)$ 的黑箱实现，无需求导 |
-| 鲁棒性   | 对模型误差和强非线性敏感，容易发散                           | 更鲁棒，对非线性系统表现稳定，更不易发散                     |
-| 适用场景 | 非线性程度较低、比较平滑的系统                               | 强非线性系统（如剧烈机动的目标跟踪）                         |
+用贝叶斯链式法则可以证明，在线性-高斯闭包下， $p(x_k \mid z_{1:k})$ 始终是高斯分布 $\mathcal{N}(m_{k|k}, P_{k|k})$ ，因此 MMSE 和 MAP 等价。
