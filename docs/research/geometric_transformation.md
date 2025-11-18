@@ -132,7 +132,7 @@ $$
 \end{pmatrix}
 $$
 
-由此，旋转也可以表示为坐标系先后分别绕自身的各个坐标轴旋转一定的角度，例如分别绕着 $X,Y,Z$ 轴旋转 $\gamma,\alpha,\beta$ 角度，则旋转矩阵可以表示为 $\mathbf{R}=\mathbf{R}_z(\alpha)\mathbf{R}_y(\beta)\mathbf{R}_x(\gamma)$ . 但是由于矩阵乘法不具有交换性，因此不同的旋转顺序会得到不同的结果，例如一般情况下 $\mathbf{R}_z(\alpha)\mathbf{R}_y(\beta)\mathbf{R}_x(\gamma)\neq\mathbf{R}_x(\gamma)\mathbf{R}_y(\beta)\mathbf{R}_z(\alpha)$。对旋转顺序做排列组合，共有 $3\times2\times2=12$ 种顺序：
+由此，旋转也可以表示为坐标系先后分别绕自身的各个坐标轴旋转一定的角度，例如分别绕着 X-Y-Z 轴旋转 $\gamma,\alpha,\beta$ 角度，则旋转矩阵可以表示为 $\mathbf{R}=\mathbf{R}_z(\alpha)\cdot\mathbf{R}_y(\beta)\cdot\mathbf{R}_x(\gamma)$ . 但是由于矩阵乘法不具有交换性，因此不同的旋转顺序会得到不同的结果，例如一般情况下 $\mathbf{R}_z(\alpha)\cdot\mathbf{R}_y(\beta)\cdot\mathbf{R}_x(\gamma)\neq\mathbf{R}_x(\gamma)\cdot\mathbf{R}_y(\beta)\cdot\mathbf{R}_z(\alpha)$。对旋转顺序做排列组合，共有 $3\times2\times2=12$ 种顺序：
 
 !!! success ""
     XYZ,    XYX,    XZY,    XZX,
@@ -145,11 +145,11 @@ $$
 
 （1）绕着一个固定的坐标系的坐标轴进行旋转，称为**固定角欧拉角**或**固定轴旋转**；
 
-这种情况比较简单，以“绕固定轴以 XYZ 顺序旋转欧拉角 $\gamma,\beta,\alpha$ ”的情况为例，总的旋转矩阵为 $\mathbf{R}_{xyz}(\gamma,\beta,\alpha)=\mathbf{R}_z(\alpha)\cdot\mathbf{R}_y(\beta)\cdot\mathbf{R}_x(\gamma)$ .
+这种情况比较简单，以“绕固定轴以 X-Y-Z 顺序旋转欧拉角 $(\gamma,\beta,\alpha)$ ”的情况为例，总的旋转矩阵为 $\mathbf{R}_{xyz}(\gamma,\beta,\alpha)=\mathbf{R}_z(\alpha)\cdot\mathbf{R}_y(\beta)\cdot\mathbf{R}_x(\gamma)$ .
 
 （2）每次旋转都以自身坐标轴为轴进行旋转，称为**非固定旋转轴的欧拉角**。
 
-假设坐标系 $A$ 按照 XYZ 的顺序旋转 $\gamma,\beta,\alpha$ 角度之后变为坐标系 $B$ （中间两步的结果分别为 $B',B''$ ），则 $B\to A$ 的位姿变换为 ${}^A_B\mathbf{R}={}^A_{B'}\mathbf{R}\cdot{}^{B'}_{B''}\mathbf{R}\cdot{}^{B''}_{B}\mathbf{R}=\mathbf{R}_x(\gamma)\cdot\mathbf{R}_y(\beta)\cdot\mathbf{R}_z(\alpha)$ .
+假设坐标系 $A$ 按照 X-Y-Z 的顺序旋转 $(\gamma,\beta,\alpha)$ 角度之后变为坐标系 $B$ （中间两步的结果分别为 $B',B''$ ），则 $B\to A$ 的位姿变换为 ${}^A_B\mathbf{R}={}^A_{B'}\mathbf{R}\cdot{}^{B'}_{B''}\mathbf{R}\cdot{}^{B''}_{B}\mathbf{R}=\mathbf{R}_x(\gamma)\cdot\mathbf{R}_y(\beta)\cdot\mathbf{R}_z(\alpha)$ .
 
 可见，绕固定坐标轴 X-Y-Z 旋转 $(\gamma,\beta,\alpha)$ ，和绕自身坐标轴 Z-Y-X 旋转 $(\alpha,\beta,\gamma)$ 的结果相同。
 
@@ -159,7 +159,7 @@ $$
 
 ### 轴角
 
-对于上述欧拉角的旋转，都是绕着坐标系的主轴 XYZ 旋转（无论是固定坐标系还是自身坐标系），但实际上，对于任何旋转，我们都可以找到一个**向量**，两个坐标系之间的变换仅绕着这个向量旋转得到。
+对于上述欧拉角的旋转，都是绕着坐标系的主轴 X-Y-Z 旋转（无论是固定坐标系还是自身坐标系），但实际上，对于任何旋转，我们都可以找到一个**向量**，两个坐标系之间的变换仅绕着这个向量旋转得到。
 
 假设初始时坐标系 $A,B$ 重合，坐标系 $B$ 绕着坐标系 $A$ 中的向量 ${}^AK=[k_x,k_y,k_z]^T$ 按照右手定则旋转 $\beta$ 角度。旋转之后， $B$ 相对于 $A$ 的位姿，或者说 $B\to A$ 的旋转矩阵为：
 
@@ -173,7 +173,7 @@ $$
 
 ### 四元数
 
-四元数的由1个实部和3个虚部组成 $q=w+x\cdot\vec{i}+y\cdot\vec{j}+z\cdot\vec{k}$ ，满足 $w^2+x^2+y^2+z^2=1$ .
+四元数的由 1 个实部和 3 个虚部组成 $q=w+x\cdot\vec{i}+y\cdot\vec{j}+z\cdot\vec{k}$ ，满足 $w^2+x^2+y^2+z^2=1$ .
 
 四元数转旋转矩阵：
 

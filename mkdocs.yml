@@ -367,6 +367,7 @@ nav:
           - BoT-SORT: research/object_tracking/botsort.md
           - JDE: research/object_tracking/jde.md
           - FairMOT: research/object_tracking/fairmot.md
+      - YOLO: research/yolo.md
   - Development Tools:
       - Development Tools: dev_tools/index.md
       - Environment Configuration:

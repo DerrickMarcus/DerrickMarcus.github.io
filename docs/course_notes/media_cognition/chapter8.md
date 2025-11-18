@@ -832,9 +832,9 @@ $$
 
 ROC（Receiver Operator Characteristic）曲线，称为受试者工作特征曲线或接收者操作特性曲线，是以假阳性率 FPR 为横坐标，以真阳性率 TPR 为纵坐标，绘制的曲线。
 
-**AUC 曲线**（Area Under Curve）是 **ROC 曲线下的面积**，表示分类器的性能。AUC 的值范围在 0 到 1 之间，值越大表示分类器性能越好。AUC 用于衡量模型对正类和负类的区分能力，即：从所有正类和负类中随机选一个，模型将正类排在前面的概率。特点：与具体阈值无关；适合二分类问题。
+**AUC**（Area Under Curve）是 **ROC 曲线下的面积**，表示分类器的性能。AUC 的值范围在 0 到 1 之间，值越大表示分类器性能越好。AUC 用于衡量模型对正类和负类的区分能力，即：从所有正类和负类中随机选一个，模型将正类排在前面的概率。特点：与具体阈值无关；适合二分类问题。
 
-> 思考一下什么样的 ROC 曲线代表高性能的模式识别系统？答：ROC 曲线越接近**左上角**越好，因为 FPR 越小越好， TPR 越大越好。
+> 什么样的 ROC 曲线代表高性能的模式识别系统？答：ROC 曲线越接近**左上角**越好，因为 FPR 越小越好，TPR 越大越好。
 
 <br>
 
@@ -842,7 +842,7 @@ ROC（Receiver Operator Characteristic）曲线，称为受试者工作特征曲
 
 PR（Precision-Recall）曲线，是以召回率 recall 为横坐标，精度 precision 为纵坐标，绘制的曲线。
 
-**AP 曲线**（Average Precision）是 **PR 曲线下的面积**。AP 用于衡量模型在不同 recall 水平下的平均准确率，即：所有召回水平下，精度的加权平均（更关注排序前段的准确性）。多用于目标检测（如 COCO）或信息检索，常和 mAP（mean AP）配合使用（多个类别取平均）。
+**AP**（Average Precision）是 **PR 曲线下的面积**，取值越大越好。AP 用于衡量模型在不同 recall 水平下的平均准确率，即：所有召回水平下，精度的加权平均（更关注排序前段的准确性）。多用于目标检测（如 COCO）或信息检索，常和 mAP（mean AP）配合使用（多个类别取平均）。
 
 > 单次测试使用固定的阈值，计算出 recall 和 precision。多次测试使用不同的阈值，得到多组 precision 和 recall 值，就能绘制出 PR 曲线。
 
@@ -859,7 +859,7 @@ F_\beta &= (1+\beta^2) \cdot \frac{PR}{(\beta^2) P + R}
 \end{align*}
 $$
 
-F-score 最理想的数值是趋近于 1，此时 precision 和 recall 都很高，接近于1。
+F-score 最理想的数值是趋近于 1，此时 precision 和 recall 都很高，接近于 1。
 
 <br>
 

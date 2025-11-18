@@ -247,7 +247,7 @@ Creat a new folder `<BoT-SORT_dir>/pretrained` and place all the models that you
     | ------------------------------------------------------------ | ---- | ---- | ---- | ---- |
     | ByteTrack_ablation: [google](https://drive.google.com/file/d/1iqhM-6V_r1FpOlOzrdP_Ejshgk0DxOob/view?usp=sharing), [baidu(eeo8)](https://pan.baidu.com/s/1W5eRBnxc4x9V8gm7dgdEYg) | 76.6 | 79.3 | 159  | 29.6 |
 
-    MOT17 test model, trained on CrowdHuman, MOT17, Cityperson and ETHZ, evaluated on MOT17 train.
+    **MOT17** test model, trained on CrowdHuman, MOT17, Cityperson and ETHZ, evaluated on MOT17 train.
 
     - Standard models
 
@@ -265,13 +265,13 @@ Creat a new folder `<BoT-SORT_dir>/pretrained` and place all the models that you
     | bytetrack_nano_mot17: [google](https://drive.google.com/file/d/1AoN2AxzVwOLM0gJ15bcwqZUpFjlDV1dX/view?usp=sharing), [baidu(1ub8)](https://pan.baidu.com/s/1dMxqBPP7lFNRZ3kFgDmWdw) | 69.0 | 66.3 | 531  | 0.90      | 3.99     |
     | bytetrack_tiny_mot17: [google](https://drive.google.com/file/d/1LFAl14sql2Q5Y9aNFsX_OqsnIzUD_1ju/view?usp=sharing), [baidu(cr8i)](https://pan.baidu.com/s/1jgIqisPSDw98HJh8hqhM5w) | 77.1 | 71.5 | 519  | 5.03      | 24.45    |
 
-    MOT20 test model, trained on CrowdHuman and MOT20, evaluated on MOT20 train.
+    **MOT20** test model, trained on CrowdHuman and MOT20, evaluated on MOT20 train.
 
     | Model                                                        | MOTA | IDF1 | IDs  | FPS  |
     | ------------------------------------------------------------ | ---- | ---- | ---- | ---- |
     | bytetrack_x_mot20: [google](https://drive.google.com/file/d/1HX2_JpMOjOIj1Z9rJjoet9XNy_cCAs5U/view?usp=sharing), [baidu(3apd)](https://pan.baidu.com/s/1bowJJj0bAnbhEQ3_6_Am0A) | 93.4 | 89.3 | 1057 | 17.5 |
 
-1. For **tracker**, download the pretrained ReID model weights `.pth` files, from [MOT17-SBS-S50](https://drive.google.com/file/d/1QZFWpoa80rqo7O-HXmlss8J8CnS7IUsN/view?usp=sharing), [MOT20-SBS-S50](https://drive.google.com/file/d/1KqPQyj6MFyftliBHEIER7m_OrGpcrJwi/view?usp=sharing).
+2. For **tracker**, download the pretrained ReID model weights `.pth` files, from [MOT17-SBS-S50](https://drive.google.com/file/d/1QZFWpoa80rqo7O-HXmlss8J8CnS7IUsN/view?usp=sharing), [MOT20-SBS-S50](https://drive.google.com/file/d/1KqPQyj6MFyftliBHEIER7m_OrGpcrJwi/view?usp=sharing).
 
 ### Training ReID
 
@@ -352,7 +352,7 @@ Demo with BoT-SORT(-ReID) based YOLOv7 and multi-class:
 
 ```bash
 cd <BoT-SORT_dir>
-python3 tools/mc_demo_yolov7.py --weights pretrained/yolov7-d6.pt --source <path_to_video/images> --fuse-score --agnostic-nms (--with-reid)
+python3 tools/mc_demo_yolov7.py --weights pretrained/yolov7-d6.pt --source <path_to_video/images> --fuse-score --agnostic-nms --with-reid
 ```
 
 !!! note "Difference between *Tracking* and *Demo*"
