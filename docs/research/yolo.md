@@ -1,10 +1,8 @@
 # YOLO
 
-Official site: <https://docs.ultralytics.com>
+Official Site: <https://docs.ultralytics.com>
 
-YOLO（You Only Look Once）是目标检测领域最流行的模型系列。
-·
-YOLO 系列是基于 CNN 的，但它在 CNN 的末端添加了特定的检测头（Detection Head）来输出边界框、类别和置信度，而普通的 CNN 通常只输出分类概率或分割图。不同版本的 YOLO 在网络结构上各有不同，但是都继承了以下几个特点：
+YOLO（You Only Look Once）是目标检测领域最流行的模型系列。YOLO 系列的模型是基于 CNN 的，但它在 CNN 的末端添加了特定的检测头（Detection Head）来输出边界框、类别和置信度，而普通的 CNN 通常只输出分类概率或分割图。不同版本的 YOLO 在网络结构上各有不同，但是都继承了以下几个特点：
 
 1. 单阶段（One-Stage）：定位和分类同步完成。它直接在特征图上回归边界框、目标置信度和类别概率，推理速度极快。
 2. 划分网格：将输入图像划分为 $S \times S$ 的网格。如果一个目标的中心落入某个网格，该网格就负责预测该目标。
@@ -47,9 +45,85 @@ YOLOv7
 
 首先，需要下载数据集，并按照 YOLO 格式进行标注。
 
-## YOLO Dataset Format
+### YOLO Dataset Format
 
-与 COCO 格式将所有标注信息存储在一个 JSON 文件中不同，YOLO 格式是将每张图片的标注信息存储在一个同名的 `.txt` 文件中，最后通过一个 YAML 文件描述类别、训练集测试集路径等信息。
+先说常见的 MS COCO 格式，COCO 格式是将所有图片和标注信息存储在一个 JSON 文件中，图片文件存放在单独的目录中，例如：
+
+```json
+{
+    "info": {
+        "description": "My Custom Dataset",
+        "url": "http://example.com",
+        "version": "1.0",
+        "year": 2025,
+        "contributor": "Gemini",
+        "date_created": "2025/11/19"
+    },
+    "licenses": [
+        {
+            "url": "http://creativecommons.org/licenses/by/2.0/",
+            "id": 1,
+            "name": "Attribution-NonCommercial-ShareAlike License"
+        }
+    ],
+    "images": [
+        {
+            "id": 1,
+            "license": 1,
+            "file_name": "000001.jpg",
+            "height": 480,
+            "width": 640,
+            "date_captured": "2025-11-19 12:00:00"
+        },
+        {
+            "id": 2,
+            "license": 1,
+            "file_name": "000002.jpg",
+            "height": 720,
+            "width": 1280,
+            "date_captured": "2025-11-19 12:05:00"
+        }
+    ],
+    "categories": [
+        {
+            "supercategory": "animal",
+            "id": 1,
+            "name": "cat"
+        },
+        {
+            "supercategory": "animal",
+            "id": 2,
+            "name": "dog"
+        }
+    ],
+    "annotations": [
+        {
+            "id": 101,
+            "image_id": 1,
+            "category_id": 1,
+            "segmentation": [
+                [100.0, 100.0, 150.0, 100.0, 150.0, 150.0, 100.0, 150.0]
+            ],
+            "area": 2500.0,
+            "bbox": [100.0, 100.0, 50.0, 50.0],
+            "iscrowd": 0
+        },
+        {
+            "id": 102,
+            "image_id": 1,
+            "category_id": 2,
+            "segmentation": [
+                [200.0, 200.0, 250.0, 200.0, 250.0, 250.0, 200.0, 250.0]
+            ],
+            "area": 2500.0,
+            "bbox": [200.0, 200.0, 50.0, 50.0],
+            "iscrowd": 0
+        }
+    ]
+}
+```
+
+与 COCO 格式不同，YOLO 格式是将每张图片的标注信息存储在一个同名的 `.txt` 文件中，最后通过一个 YAML 文件描述类别、训练集测试集路径等信息。
 
 图片与标注文件一一对应，例如：
 

@@ -140,7 +140,7 @@ E:\miniconda3\Scripts\conda.exe
 
 然后加载，你会看到 base 环境和自己创建的各种环境，选择一个即可，然后就可以运行和调试。
 
-## 4 Else
+## 4 Attention
 
 血泪教训：有时会遇到无论如何包都会下载到 base 环境的问题，无法指向虚拟环境，目前的解决办法是：
 
@@ -149,3 +149,13 @@ conda create -n test python=3.9 # 指定python版本，-n等同于--name
 ```
 
 也就是一定要在创建虚拟环境时指定 Python 的版本号，否则创建好的环境会和 base 环境混在一起。
+
+## 5 Else
+
+进行文件、目录路径操作时，建议使用 `#!py from pathlib import Path` ，替代 `#!py import os.path` 可避免 Windows 和 Linux 路径分隔符不同的问题。
+
+输出日志时，建议使用 `#!py from loguru import logger` 模块，替代 `#!py import logging` 或 `#!py print()` 函数，可方便控制日志级别和输出位置。
+
+进度条，可使用 `#!py from tqdm import tqdm` 模块，或 `#!py import rich`，替代手动打印百分比进度。
+
+获取日历日期、时刻时间，可使用 `#!py from datetime import datetime` 模块。获取时间戳、睡眠、计时，可使用 `#!py import time` 模块。

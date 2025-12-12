@@ -140,7 +140,7 @@ extra:
       link: https://space.bilibili.com/627449965
       name: Yanxu Chen on Bilibili
     - icon: fontawesome/regular/envelope
-      link: mailto:<blog@yanxuchen.com>
+      link: mailto:<contact@yanxuchen.com>
 
   analytics:
     provider: google
@@ -375,6 +375,7 @@ nav:
           - Python: dev_tools/environment/python.md
           - JavaScript: dev_tools/environment/javascript.md
       - Git: dev_tools/git.md
+      - tmux: dev_tools/tmux.md
   - Else:
       - Else: else/index.md
       - Railway:

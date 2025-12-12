@@ -99,7 +99,7 @@ $$
 \end{gather*}
 $$
 
-则损失函数 对 第 $l$ 层权重矩阵 $\boldsymbol{W}^{(l)}$ 中第 $(i,j)$ 个权重 $\boldsymbol{W}_{ij}^{(l)}$ 的梯度为：
+则损失函数对第 $l$ 层权重矩阵 $\boldsymbol{W}^{(l)}$ 中第 $(i,j)$ 个权重 $\boldsymbol{W}_{ij}^{(l)}$ 的梯度为：
 
 $$
 \frac{\partial L}{\partial \boldsymbol{W}_{ij}^{(l)}} = \frac{\partial L}{\partial z_i^{(l)}} \cdot \frac{\partial z_i^{(l)}}{\partial \boldsymbol{W}_{ij}^{(l)}} = \delta_i^{(l)} \cdot a_j^{(l-1)}
@@ -148,7 +148,7 @@ $$
 
 向量对向量求导： $\dfrac{\partial \mathbb{R}^{m\times 1}}{\partial \mathbb{R}^{n \times 1}}\to \mathbb{R}^{m \times n}$ .
 
-矩阵对矩阵求导： $\dfrac{\partial \mathbb{R}^{m\times n}}{\partial \mathbb{R}^{p \times q}}\to \mathbb{R}^{mn \times pq}$ . 严格来讲“矩阵对矩阵”导数本质是 4 阶张量，但是经常 reshape 成二维矩阵。这种情况不常见。
+矩阵对矩阵求导： $\dfrac{\partial \mathbb{R}^{m\times n}}{\partial \mathbb{R}^{p \times q}}\to \mathbb{R}^{mn \times pq}$ . 严格来讲“矩阵对矩阵”导数本质是 4 阶张量，但是经常被 reshape 成二维矩阵。这种情况不常见。
 
 !!! tip
     导数和被导数可以同时转置。
@@ -168,7 +168,7 @@ $$
 上式中 $\boldsymbol{t}$ 为真实值， $\boldsymbol{y}$ 为预测值，它们做**逐元素除法**。
 
 !!! danger "注意"
-    如果完全按照上面的方法，那么链式求导 各项相乘的时候，很可能会出现维度不匹配的现象，很正常，这时候就需要**随机应变**了。另外，最好不要一步写到位，从后往前一步一步来，每一步使用添加合适的转置等方法，保证中间结果每一步都是对的。
+    如果完全按照上面的方法，那么链式求导各项相乘的时候，很可能会出现维度不匹配的现象，这是正常现象，这时候就需要**随机应变**了。另外，最好不要一步写到位，从后往前一步一步来，每一步使用添加合适的转置等方法，保证中间结果每一步都是正确的。
 
 ---
 
@@ -181,13 +181,13 @@ w \leftarrow w - \eta \frac{\partial L}{\partial w},\quad b \leftarrow b - \eta 
 \theta \leftarrow \theta - \eta \nabla_\theta L(\theta)
 $$
 
-批次梯度下降 BGD（Batch Gradient Descent），所有样本都参与计算梯度： $\theta \leftarrow \theta - \eta \nabla_\theta L(\theta)$ ，缺点是速度慢，数据量大时内存不足。
+批次梯度下降 BGD（Batch Gradient Descent），所有样本都参与计算梯度： $\theta \leftarrow \theta - \eta \nabla_\theta L(\theta)$ ，缺点是速度慢，数据量大时容易导致内存不足。
 
 随机梯度下降 SGD（Stochastic Gradient Descent），每次只用一个样本参与计算梯度： $\theta \leftarrow \theta - \eta \nabla_\theta L(\theta,x_i,y_i)$ ，优点是速度快，缺点是方差大，损失函数震荡严重。
 
 小批次梯度下降 Mini-batch Gradient Descent（M-SGD），介于 BGD 和 SGD 之间，每次随机选取 $M$ 个样本参与计算梯度： $\theta \leftarrow \theta - \eta\left[\dfrac{1}{M}\displaystyle\sum_{i=1}^M\nabla_\theta L(\theta,x_i,y_i)\right]$ .
 
-3种方法的比较：
+3 种方法的比较：
 
 |      特性      |    BGD     |   SGD    |        M-SGD         |
 | :------------: | :--------: | :------: | :------------------: |

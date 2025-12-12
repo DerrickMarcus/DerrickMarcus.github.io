@@ -12,7 +12,7 @@ As you can see in the navigation bar, this website includes but is not limited t
 - Some shared knowledge or articles about personal interests.
 - ...
 
-Contact me: [blog [at] yanxuchen [dot] com](mailto:blog@yanxuchen.com).
+Contact me: [blog [at] yanxuchen [dot] com](mailto:contact@yanxuchen.com).
 
 <!-- <div class="ml3" style="text-align: center; font-family: Source Han Serif SC; font-size: 1.5em; color: #518FC1;">
     "The two most important days in your life are the day you are born and the day you find out why."  — Mark Twain
