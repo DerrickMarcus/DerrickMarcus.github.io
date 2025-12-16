@@ -8,7 +8,7 @@ Linux 下可直接通过 apt 安装：
 sudo apt install tmux
 ```
 
-## 基本命令
+## 1. Commands
 
 终端操作：这些命令是在普通 Shell中输入的，用于启动或管理 tmux 进程。
 
@@ -60,7 +60,7 @@ tmux rename-session -t <name> <new_name>
 | `Ctrl+B` + `[`        | 进入复制/滚动模式                      |
 | `Q`                   | 退出复制模式（无需前缀）               |
 
-## 配置
+## 2. Configs
 
 在 tmux 会话中。默认情况下鼠标滚轮滑动是选择历史命令，而非控制终端滑动来浏览终端输出历史。可以通过修改配置实现正常的鼠标滚动浏览。
 

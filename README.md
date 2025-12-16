@@ -27,6 +27,8 @@ blog_env\Scripts\activate  # Windows
 pip install -r requirements.txt
 ```
 
+> Note: this project has been migrated to use [uv](https://docs.astral.sh/uv/).
+
 Build the site:
 
 ```bash
@@ -36,6 +38,16 @@ mkdocs serve
 Then open your browser and visit <http://127.0.0.1:8000/> to view the site.
 
 It is recommended to add a file `.github/workflow/ci.yml` to use Github Actions to deploy the site.
+
+## Use Docker
+
+Create your `Dockerfile` and `docker-compose.yml` in the root directory of the project.
+
+Run the command:
+
+```bash
+docker compose -d --build
+```
 
 ## License
 

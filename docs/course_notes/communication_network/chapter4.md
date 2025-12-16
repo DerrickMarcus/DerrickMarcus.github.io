@@ -719,7 +719,11 @@ E_s &=\mathbb{E}(x^2)\beta^2\int_{-\infty}^{+\infty}\left[p(t)\cos(2\pi f_c t)\r
 \end{align*}
 $$
 
-根据傅里叶变换“时域相乘，频域卷积”的性质，有 $\mathcal{F}[p^2(t)](f)=P(f)*P(f)$ . 由于 $P(f)$ 是基带频谱 $-W\sim W$ 的信号，经过卷积后 $P(f)*P(f)$ 为频谱范围 $-2W\sim 2W$ 的信号。然而我们有条件 $f_c>W \Rightarrow 2f_c>2W$ ，因此 $f=\pm 2f_c\notin [-2W,2W]$ ，不在 $P(f)*P(f)$ 频谱范围内，自然有 $\mathcal{F}[p^2(t)](2 f_c)=\mathcal{F}[p^2(t)](-2 f_c)=0$ . 因此我们得到：
+根据傅里叶变换“时域相乘，频域卷积”的性质，有 $\mathcal{F}[p^2(t)](f)=P(f)*P(f)$ .
+
+由于 $P(f)$ 是基带频谱 $-W\sim W$ 的信号，经过卷积后 $P(f)*P(f)$ 为频谱范围 $-2W\sim 2W$ 的信号。
+
+然而我们有条件 $f_c>W \Rightarrow 2f_c>2W$ ，因此 $f=\pm 2f_c\notin [-2W,2W]$ ，不在 $P(f)*P(f)$ 频谱范围内，自然有 $\mathcal{F}[p^2(t)](2 f_c)=\mathcal{F}[p^2(t)](-2 f_c)=0$ . 因此我们得到：
 
 $$
 E_s=\mathbb{E}(x^2)\left(\frac{1}{2}\lambda_1\beta^2\right)

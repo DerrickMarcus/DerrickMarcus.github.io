@@ -1,6 +1,6 @@
 # Python on Windows
 
-## 1 Install Anaconda/Miniconda
+## 1. Install Anaconda/Miniconda
 
 Anaconda 和 Miniconda 均内置 python，搭配 conda 包管理。
 
@@ -95,7 +95,7 @@ conda update Anaconda
 
 注意：除了使用 conda 创建环境以外，后续建议使用 pip 安装和更新软件包，尽量避免 pip 和 conda 混用。
 
-## 2 Configure VS Code
+## 2. Configure VS Code
 
 下载插件：python，jupyter（必需），ruff（可选）。
 
@@ -128,7 +128,7 @@ conda update Anaconda
   },
 ```
 
-## 3 Configure PyCharm
+## 3. Configure PyCharm
 
 下载安装过程略（注意添加环境变量）。
 
@@ -140,17 +140,85 @@ E:\miniconda3\Scripts\conda.exe
 
 然后加载，你会看到 base 环境和自己创建的各种环境，选择一个即可，然后就可以运行和调试。
 
-## 4 Attention
+## 4. venv
 
-血泪教训：有时会遇到无论如何包都会下载到 base 环境的问题，无法指向虚拟环境，目前的解决办法是：
+在当前目录下创建虚拟环境：
 
 ```bash
-conda create -n test python=3.9 # 指定python版本，-n等同于--name
+python -m venv [env_name]
+python3 -m venv [env_name]
+
+# activate
+# linux bash
+source [env_name]/bin/activate
+# windows
+[env_name]/Scripts/activate
+
+# deactivate
+deactivate
+```
+
+## 5. Pipenv
+
+安装 pipenv：
+
+```bash
+pip install pipenv
+```
+
+更新 pipenv：
+
+```bash
+pip install --user --upgrade pipenv
+```
+
+使用：
+
+```bash
+# 创建虚拟环境
+pipenv --python 3.12
+pipenv install
+
+# 进入虚拟环境
+pipenv shell
+
+# 安装、卸载依赖包
+pipenv install xxx
+pip uninstall xxx
+pipenv graph
+
+# 删除虚拟环境
+pipenv -rm
+
+# 显示虚拟环境安装路径
+pipenv --venv
+
+# 查看可更新的包、更新包
+pipenv update --outdated
+pipenv update
+pipenv update xxx
+
+
+# 从 requirements 导入环境
+pipenv install -r path/to/requirements.txt
+
+# 导出 requirements
+pipenv lock -r
+pipenv lock -r --dev # 只到处开发用的包
+
+```
+
+## 6. Attention
+
+血泪教训：曾经遇到过无论如何包都会下载到 base 环境的问题，无法指向特定的虚拟环境，目前的解决办法是：
+
+```bash
+conda create -n test python=3.9 # 指定 python 版本，-n 等同于 --name
 ```
 
 也就是一定要在创建虚拟环境时指定 Python 的版本号，否则创建好的环境会和 base 环境混在一起。
 
-## 5 Else
+## 7. Else
 
 进行文件、目录路径操作时，建议使用 `#!py from pathlib import Path` ，替代 `#!py import os.path` 可避免 Windows 和 Linux 路径分隔符不同的问题。
 
