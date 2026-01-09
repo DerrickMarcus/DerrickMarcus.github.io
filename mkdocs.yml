@@ -10,7 +10,7 @@ repo_name: DerrickMarcus.github.io
 edit_uri: edit/main/docs/
 
 # Copyright
-copyright: Copyright &copy; 2024 - 2025 Derrick Marcus
+copyright: Copyright &copy; 2024 - 2026 Derrick Marcus
 
 # Configuration
 theme:
@@ -377,6 +377,7 @@ nav:
       - Git: dev_tools/git.md
       - tmux: dev_tools/tmux.md
       - uv: dev_tools/uv.md
+      - Typst: dev_tools/typst.md
   - Else:
       - Else: else/index.md
       - Railway:

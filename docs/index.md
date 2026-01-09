@@ -12,7 +12,7 @@ As you can see in the navigation bar, this website includes but is not limited t
 - Some shared knowledge or articles about personal interests.
 - ...
 
-Contact me: [blog [at] yanxuchen [dot] com](mailto:contact@yanxuchen.com).
+Contact me: [contact [at] yanxuchen [dot] com](mailto:contact@yanxuchen.com).
 
 <!-- <div class="ml3" style="text-align: center; font-family: Source Han Serif SC; font-size: 1.5em; color: #518FC1;">
     "The two most important days in your life are the day you are born and the day you find out why."  — Mark Twain
@@ -39,7 +39,7 @@ Contact me: [blog [at] yanxuchen [dot] com](mailto:contact@yanxuchen.com).
             alt="Author Avatar" style="width: 60%; height: auto;">
     </a>
     <p style="font-family: Source Han Serif SC; font-size: 1.2em;">
-        <strong>Derrick Rose was born on October 4, 1988, in Chicago, Illinois, USA. He was selected by his hometown Chicago Bulls as the 1st overall pick in the first round of the 2008 NBA Draft. He was named the NBA Rookie of the Year in 2009 and became the youngest player to win the NBA Most Valuable Player Award in 2011 at the age of 22 years and 7 months. On September 26, 2024, Rose announced his retirement.</strong>
+        Derrick Rose was born on October 4, 1988, in Chicago, Illinois, USA. He was selected by his hometown Chicago Bulls as the 1st overall pick in the first round of the 2008 NBA Draft. He was named the NBA Rookie of the Year in 2009 and became the youngest player to win the NBA Most Valuable Player Award in 2011 at the age of 22 years and 7 months. On September 26, 2024, Rose announced his retirement.
     </p>
     <a href="https://en.wikipedia.org/wiki/Derrick_Rose" style="text-align: center; display: block; margin: 0 auto;">
         <img class="site-author-image" src="https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo-image/images/rose5.jpg"

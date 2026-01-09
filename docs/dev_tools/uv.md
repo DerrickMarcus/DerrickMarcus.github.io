@@ -2,7 +2,7 @@
 
 uv 是一款的用 Rust 编写的极速 Python 包管理器，旨在统一 pip, pip-tools, poetry, virtualenv 的功能。uv 由 Astral 公司开发，它的另一款著名产品是 Ruff，一款用 Rust 编写的极速 Python 代码检查工具。
 
-## Installation
+## 1. Installation
 
 === "macOS"
 
@@ -46,7 +46,7 @@ uvx --version
 # output: uvx 0.9.17
 ```
 
-## 1. Managing projects
+## 2. Managing projects
 
 > Similar to `npm` in Node.js and `cargo` in Rust.
 
@@ -129,7 +129,7 @@ uv will automatically install all the dependencies according to `pyproject.toml,
     index-url = "https://pypi.tuna.tsinghua.edu.cn/simple"
     ```
 
-## 2. Managing Python
+## 3. Managing Python
 
 > To replace `pyenv` .
 
@@ -181,7 +181,7 @@ Set the version of Python in the project
 uv pin 3.12
 ```
 
-## 3. Running scripts
+## 4. Running scripts
 
 > To replace `pipx` .
 
@@ -206,7 +206,7 @@ uv run script.py
 
 uv will create a temporary and isolated environment to run the code, and delete it automatically when finished. It is very convenient for quick tests and experiments.
 
-## 4. Managing virtual environment
+## 5. Managing virtual environment
 
 > To replace `pip` .
 
@@ -234,3 +234,20 @@ Export the dependencies:
 ```bash
 uv pip freeze > requirements.txt
 ```
+
+!!! note " `uv add` vs. `uv pip install` "
+    1. `uv add <package>` (Project Mode)
+
+      - Purpose: Managing project dependencies.
+
+      - Action: Installs the package **AND** updates `pyproject.toml, uv.lock` .
+
+      - Use Case: Daily development on a specific project.
+
+    2. `uv pip install <package>` (Standard `pip install` )
+
+      - Purpose: Modifying an environment directly.
+
+      - Action Installs the package **WITHOUT** updating any project config files.
+
+      - Use Case: CI/CD pipelines, Dockerfiles, or quick ad-hoc scripts.
