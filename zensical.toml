@@ -1,0 +1,573 @@
+# ============================================================================
+#
+# The configuration produced by default is meant to highlight the features
+# that Zensical provides and to serve as a starting point for your own
+# projects.
+#
+# ============================================================================
+
+[project]
+
+# The site_name is shown in the page header and the browser window title
+#
+# Read more: https://zensical.org/docs/setup/basics/#site_name
+site_name = "Derrick Marcus"
+
+# The site_description is included in the HTML head and should contain a
+# meaningful description of the site content for use by search engines.
+#
+# Read more: https://zensical.org/docs/setup/basics/#site_description
+site_description = "This is the personal blog website of Derrick Marcus."
+
+# The site_author attribute. This is used in the HTML head element.
+#
+# Read more: https://zensical.org/docs/setup/basics/#site_author
+site_author = "Derrick Marcus"
+
+# The site_url is the canonical URL for your site. When building online
+# documentation you should set this.
+# Read more: https://zensical.org/docs/setup/basics/#site_url
+site_url = "https://blog.yanxuchen.com/"
+
+docs_dir = "docs"
+site_dir = "site"
+dev_addr = "localhost:8280"
+
+repo_url = "https://github.com/DerrickMarcus/DerrickMarcus.github.io"
+repo_name = "DerrickMarcus.github.io"
+
+edit_uri = "edit/main/docs/"
+
+# The copyright notice appears in the page footer and can contain an HTML
+# fragment.
+#
+# Read more: https://zensical.org/docs/setup/basics/#copyright
+copyright = """
+Copyright &copy; 2026 Derrick Marcus -
+<a href="#__consent">Change cookie settings</a>
+"""
+
+nav = [
+    { "Home" = "index.md" },
+    { "Blog" = "blog/index.md" },
+    { "Course" = [
+        { "Course" = "course/index.md" },
+        { "Signals and Systems" = [
+            { "5 傅里叶变换应用于通信系统" = "course/signal_system/lec_05.md" },
+            { "6 信号的矢量空间" = "course/signal_system/lec_06.md" },
+            { "7 离散时间系统时域分析" = "course/signal_system/lec_07.md" },
+            { "8 z变换与离散时间系统z域分析" = "course/signal_system/lec_08.md" },
+            { "11 反馈系统" = "course/signal_system/lec_11.md" },
+            { "12 系统状态变量分析" = "course/signal_system/lec_12.md" },
+        ] },
+        { "Stochastic Process" = [
+            { "1 Second-order Process and Spectral Analysis" = "course/stochastic_process/lec_01.md" },
+            { "2 Gaussian Process" = "course/stochastic_process/lec_02.md" },
+            { "3 Markov Chain" = "course/stochastic_process/lec_03.md" },
+            { "4 Poisson Process" = "course/stochastic_process/lec_04.md" },
+        ] },
+        { "Communication and Network" = [
+            { "1 信息论基础" = "course/communication_network/lec_01.md" },
+            { "2 模拟信源的数字化" = "course/communication_network/lec_02.md" },
+            { "3 电平信道" = "course/communication_network/lec_03.md" },
+            { "4 波形信道" = "course/communication_network/lec_04.md" },
+            { "5 差错控制" = "course/communication_network/lec_05.md" },
+        ] },
+        { "Media and Cognition" = [
+            { "1 Artificial Intelligence" = "course/media_cognition/lec_01.md" },
+            { "2 Cognition" = "course/media_cognition/lec_02.md" },
+            { "3 Machine Learning" = "course/media_cognition/lec_03.md" },
+            { "4 Deep Learning" = "course/media_cognition/lec_04.md" },
+            { "5 CNN" = "course/media_cognition/lec_05.md" },
+            { "6 RNN" = "course/media_cognition/lec_06.md" },
+            { "7 Transformer" = "course/media_cognition/lec_07.md" },
+            { "8 Bayes Decision" = "course/media_cognition/lec_08.md" },
+        ] },
+        { "Foundation of Solid State Physics" = [
+            { "1 晶体的结构" = "course/solid_physics/lec_01.md" },
+            { "2 固体的结合" = "course/solid_physics/lec_02.md" },
+            { "3 固体电子论" = "course/solid_physics/lec_03.md" },
+            { "4 固体的电特性" = "course/solid_physics/lec_04.md" },
+            { "5 固体间接触的电特性" = "course/solid_physics/lec_05.md" },
+            { "6 固体的磁特性" = "course/solid_physics/lec_06.md" },
+            { "7 晶格振动和固体的热性质" = "course/solid_physics/lec_07.md" },
+            { "课后练习题" = "course/solid_physics/exercise.md" },
+        ] },
+        { "Digital Image Processing" = [
+            { "1 图像处理概述" = "course/digital_image/lec_01.md" },
+            { "2 图像信息与视觉感知" = "course/digital_image/lec_02.md" },
+            { "3 空域图像增强" = "course/digital_image/lec_03.md" },
+            { "4 频域图像增强" = "course/digital_image/lec_04.md" },
+            { "5 图像分割" = "course/digital_image/lec_05.md" },
+            { "6 图像复原" = "course/digital_image/lec_06.md" },
+            { "7 图像校正和修补" = "course/digital_image/lec_07.md" },
+            { "8 图像压缩编码" = "course/digital_image/lec_08.md" },
+            { "9 图像3D成像" = "course/digital_image/lec_09.md" },
+        ] },
+        { "Operating System" = [
+            { "1 Introduction(1)" = "course/operating_system/lec_01.md" },
+            { "2 Introduction(2)" = "course/operating_system/lec_02.md" },
+            { "3 Process" = "course/operating_system/lec_03.md" },
+            { "4 Thread" = "course/operating_system/lec_04.md" },
+            { "5 Mutual Exclusion and Synchronization(1)" = "course/operating_system/lec_05.md" },
+            { "6 Mutual Exclusion and Synchronization(2)" = "course/operating_system/lec_06.md" },
+            { "7 Processor Scheduling and Deadlock" = "course/operating_system/lec_07.md" },
+            { "8 Memory Management(1)" = "course/operating_system/lec_08.md" },
+            { "9 Memory Management(2)" = "course/operating_system/lec_09.md" },
+            { "10 Memory Management(3)" = "course/operating_system/lec_10.md" },
+            { "11 Device Management(1)" = "course/operating_system/lec_11.md" },
+            { "12 Device Management(2)" = "course/operating_system/lec_12.md" },
+            { "13 File Systems(1)" = "course/operating_system/lec_13.md" },
+            { "14 File Systems(2)" = "course/operating_system/lec_14.md" },
+            { "15 Summary" = "course/operating_system/lec_15.md" },
+        ] },
+    ] },
+    { "Research" = [
+        { "Research" = "research/index.md" },
+        { "ROS" = [
+            { "ROS Basic" = "research/ros/ros_basic.md" },
+            { "Gazebo" = "research/ros/gazebo.md" },
+            { "Catkin Tool" = "research/ros/catkin.md" },
+        ] },
+        { "Kalman Filter" = [
+            { "LKF" = "research/kalman_filter/lkf.md" },
+            { "EKF" = "research/kalman_filter/ekf.md" },
+            { "IEKF" = "research/kalman_filter/iekf.md" },
+            { "UKF" = "research/kalman_filter/ukf.md" },
+            { "ESKF" = "research/kalman_filter/eskf.md" },
+        ] },
+        { "Geometric Transformation" = "research/geometric_transformation.md" },
+        { "Camera Calibration" = "research/camera_calibration.md" },
+        { "Kd-Tree" = "research/kdtree.md" },
+        { "Object Detection" = "research/object_detection.md" },
+        { "Gaussian Splatting" = "research/gaussian_splatting.md" },
+        { "SLAM" = [
+            { "SLAM" = "research/slam/index.md" },
+            { "LIO-SAM" = "research/slam/liosam.md" },
+            { "Graph Optimization" = "research/slam/graph_optimization.md" },
+        ] },
+        { "Object Tracking" = [
+            { "Object Tracking" = "research/object_tracking/index.md" },
+            { "SORT" = "research/object_tracking/sort.md" },
+            { "DeepSORT" = "research/object_tracking/deepsort.md" },
+            { "ByteTrack" = "research/object_tracking/bytetrack.md" },
+            { "OC-SORT" = "research/object_tracking/ocsort.md" },
+            { "StrongSORT" = "research/object_tracking/strongsort.md" },
+            { "BoT-SORT" = "research/object_tracking/botsort.md" },
+            { "JDE" = "research/object_tracking/jde.md" },
+            { "FairMOT" = "research/object_tracking/fairmot.md" },
+        ] },
+        { "YOLO" = "research/yolo.md" },
+    ] },
+    { "Tutorial" = [
+        { "Tutorial" = "tutorial/index.md" },
+        { "Environment Configuration" = [
+            { "Ubuntu" = "tutorial/environment/ubuntu.md" },
+            { "Python" = "tutorial/environment/python.md" },
+            { "JavaScript" = "tutorial/environment/javascript.md" },
+        ] },
+        { "Git" = "tutorial/git.md" },
+        { "tmux" = "tutorial/tmux.md" },
+        { "uv" = "tutorial/uv.md" },
+        { "Typst" = "tutorial/typst.md" },
+    ] },
+    { "Else" = [
+        { "Else" = "else/index.md" },
+        { "Railway" = [
+            { "CR (Fuxing Train)" = "else/railway/cr.md" },
+            { "CRH (Hexie Train)" = "else/railway/crh.md" },
+            { "Railway Group" = "else/railway/group.md" },
+            { "Railway Station" = "else/railway/station.md" },
+            { "Railway Line" = "else/railway/line.md" },
+            { "Train Number" = "else/railway/train_number.md" },
+            { "Journey Record" = "else/railway/journey.md" },
+            { "Diary" = "else/railway/diary.md" },
+        ] },
+        { "Readings" = [
+            { "你是勇士" = "else/readings/article_01.md" },
+            { "一组诗" = "else/readings/article_02.md" },
+        ] },
+    ] },
+    { "About" = "about/index.md" },
+]
+
+# Zensical supports both implicit navigation and explicitly defined navigation.
+# If you decide not to define a navigation here then Zensical will simply
+# derive the navigation structure from the directory structure of your
+# "docs_dir". The definition below demonstrates how a navigation structure
+# can be defined using TOML syntax.
+#
+# Read more: https://zensical.org/docs/setup/navigation/
+
+# With the "extra_css" option you can add your own CSS styling to customize
+# your Zensical project according to your needs. You can add any number of
+# CSS files.
+#
+# The path provided should be relative to the "docs_dir".
+#
+# Read more: https://zensical.org/docs/customization/#additional-css
+#
+extra_css = ["stylesheets/admonition_rose.css", "stylesheets/custom.css"]
+
+# With the `extra_javascript` option you can add your own JavaScript to your
+# project to customize the behavior according to your needs.
+#
+# The path provided should be relative to the "docs_dir".
+#
+# Read more: https://zensical.org/docs/customization/#additional-javascript
+extra_javascript = [
+    "javascripts/mathjax.js",
+    "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js",
+]
+
+# ----------------------------------------------------------------------------
+# Section for configuring theme options
+# ----------------------------------------------------------------------------
+[project.theme]
+
+# change this to "classic" to use the traditional Material for MkDocs look.
+variant = "modern"
+
+# Zensical allows you to override specific blocks, partials, or whole
+# templates as well as to define your own templates. To do this, uncomment
+# the custom_dir setting below and set it to a directory in which you
+# keep your template overrides.
+#
+# Read more:
+# - https://zensical.org/docs/customization/#extending-the-theme
+#
+custom_dir = "overrides"
+
+# With the "favicon" option you can set your own image to use as the icon
+# browsers will use in the browser title bar or tab bar. The path provided
+# must be relative to the "docs_dir".
+#
+# Read more:
+# - https://zensical.org/docs/setup/logo-and-icons/#favicon
+# - https://developer.mozilla.org/en-US/docs/Glossary/Favicon
+#
+favicon = "https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo-image/images/2001.jpg"
+logo = "https://cdn.jsdelivr.net/gh/DerrickMarcus/picgo-image/images/2001.jpg"
+homepage = "htps://www.yanxuchen.com"
+
+# Zensical supports more than 60 different languages. This means that the
+# labels and tooltips that Zensical's templates produce are translated.
+# The "language" option allows you to set the language used. This language
+# is also indicated in the HTML head element to help with accessibility
+# and guide search engines and translation tools.
+#
+# The default language is "en" (English). It is possible to create
+# sites with multiple languages and configure a language selector. See
+# the documentation for details.
+#
+# Read more:
+# - https://zensical.org/docs/setup/language/
+#
+language = "en"
+
+# Zensical provides a number of feature toggles that change the behavior
+# of the documentation site.
+features = [
+    # Zensical includes an announcement bar. This feature allows users to
+    # dismiss it then they have read the announcement.
+    # https://zensical.org/docs/setup/header/#announcement-bar
+    "announce.dismiss",
+
+    # If you have a repository configured and turn on this feature, Zensical
+    # will generate an edit button for the page. This works for common
+    # repository hosting services.
+    # https://zensical.org/docs/setup/repository/#code-actions
+    "content.action.edit",
+
+    # If you have a repository configured and turn on this feature, Zensical
+    # will generate a button that allows the user to view the Markdown
+    # code for the current page.
+    # https://zensical.org/docs/setup/repository/#code-actions
+    "content.action.view",
+
+    # Code annotations allow you to add an icon with a tooltip to your
+    # code blocks to provide explanations at crucial points.
+    # https://zensical.org/docs/authoring/code-blocks/#code-annotations
+    "content.code.annotate",
+
+    # This feature turns on a button in code blocks that allow users to
+    # copy the content to their clipboard without first selecting it.
+    # https://zensical.org/docs/authoring/code-blocks/#code-copy-button
+    "content.code.copy",
+
+    # Code blocks can include a button to allow for the selection of line
+    # ranges by the user.
+    # https://zensical.org/docs/authoring/code-blocks/#code-selection-button
+    "content.code.select",
+
+    # Zensical can render footnotes as inline tooltips, so the user can read
+    # the footnote without leaving the context of the document.
+    # https://zensical.org/docs/authoring/footnotes/#footnote-tooltips
+    "content.footnote.tooltips",
+
+    # If you have many content tabs that have the same titles (e.g., "Python",
+    # "JavaScript", "Cobol"), this feature causes all of them to switch to
+    # at the same time when the user chooses their language in one.
+    # https://zensical.org/docs/authoring/content-tabs/#linked-content-tabs
+    "content.tabs.link",
+
+    # TODO: not sure I understand this one? Is there a demo of this in the docs?
+    # https://zensical.org/docs/authoring/tooltips/#improved-tooltips
+    "content.tooltips",
+
+    # With this feature enabled, Zensical will automatically hide parts
+    # of the header when the user scrolls past a certain point.
+    # https://zensical.org/docs/setup/header/#automatic-hiding
+    # "header.autohide",
+
+    # Turn on this feature to expand all collapsible sections in the
+    # navigation sidebar by default.
+    # https://zensical.org/docs/setup/navigation/#navigation-expansion
+    # "navigation.expand",
+
+    # This feature turns on navigation elements in the footer that allow the
+    # user to navigate to a next or previous page.
+    # https://zensical.org/docs/setup/footer/#navigation
+    "navigation.footer",
+
+    # When section index pages are enabled, documents can be directly attached
+    # to sections, which is particularly useful for providing overview pages.
+    # https://zensical.org/docs/setup/navigation/#section-index-pages
+    "navigation.indexes",
+
+    # When instant navigation is enabled, clicks on all internal links will be
+    # intercepted and dispatched via XHR without fully reloading the page.
+    # https://zensical.org/docs/setup/navigation/#instant-navigation
+    "navigation.instant",
+
+    # With instant prefetching, your site will start to fetch a page once the
+    # user hovers over a link. This will reduce the perceived loading time
+    # for the user.
+    # https://zensical.org/docs/setup/navigation/#instant-prefetching
+    "navigation.instant.prefetch",
+
+    # In order to provide a better user experience on slow connections when
+    # using instant navigation, a progress indicator can be enabled.
+    # https://zensical.org/docs/setup/navigation/#progress-indicator
+    "navigation.instant.progress",
+
+    # When navigation paths are activated, a breadcrumb navigation is rendered
+    # above the title of each page
+    # https://zensical.org/docs/setup/navigation/#navigation-path
+    "navigation.path",
+
+    # When pruning is enabled, only the visible navigation items are included
+    # in the rendered HTML, reducing the size of the built site by 33% or more.
+    # https://zensical.org/docs/setup/navigation/#navigation-pruning
+    #"navigation.prune",
+
+    # When sections are enabled, top-level sections are rendered as groups in
+    # the sidebar for viewports above 1220px, but remain as-is on mobile.
+    # https://zensical.org/docs/setup/navigation/#navigation-sections
+    # "navigation.sections",
+
+    # When tabs are enabled, top-level sections are rendered in a menu layer
+    # below the header for viewports above 1220px, but remain as-is on mobile.
+    # https://zensical.org/docs/setup/navigation/#navigation-tabs
+    "navigation.tabs",
+
+    # When sticky tabs are enabled, navigation tabs will lock below the header
+    # and always remain visible when scrolling down.
+    # https://zensical.org/docs/setup/navigation/#sticky-navigation-tabs
+    # "navigation.tabs.sticky",
+
+    # A back-to-top button can be shown when the user, after scrolling down,
+    # starts to scroll up again.
+    # https://zensical.org/docs/setup/navigation/#back-to-top-button
+    "navigation.top",
+
+    # When anchor tracking is enabled, the URL in the address bar is
+    # automatically updated with the active anchor as highlighted in the table
+    # of contents.
+    # https://zensical.org/docs/setup/navigation/#anchor-tracking
+    "navigation.tracking",
+
+    # When search highlighting is enabled and a user clicks on a search result,
+    # Zensical will highlight all occurrences after following the link.
+    # https://zensical.org/docs/setup/search/#search-highlighting
+    "search.highlight",
+
+    # When anchor following for the table of contents is enabled, the sidebar
+    # is automatically scrolled so that the active anchor is always visible.
+    # https://zensical.org/docs/setup/navigation/#anchor-following
+    "toc.follow",
+
+    # When navigation integration for the table of contents is enabled, it is
+    # always rendered as part of the navigation sidebar on the left.
+    # https://zensical.org/docs/setup/navigation/#navigation-integration
+    # "toc.integrate",
+]
+
+# ----------------------------------------------------------------------------
+# In the "palette" subsection you can configure options for the color scheme.
+# You can configure different color # schemes, e.g., to turn on dark mode,
+# that the user can switch between. Each color scheme can be further
+# customized.
+#
+# Read more:
+# - https://zensical.org/docs/setup/colors/
+# ----------------------------------------------------------------------------
+# Palette toggle for automatic mode
+[[project.theme.palette]]
+media = "(prefers-color-scheme)"
+toggle.icon = "lucide/sun-moon"
+toggle.name = "Switch to light mode"
+
+# Palette toggle for light mode
+[[project.theme.palette]]
+media = "(prefers-color-scheme: light)"
+scheme = "default"
+toggle.icon = "lucide/sun"
+toggle.name = "Switch to dark mode"
+
+# Palette toggle for dark mode
+[[project.theme.palette]]
+media = "(prefers-color-scheme: dark)"
+scheme = "slate"
+toggle.icon = "lucide/moon"
+toggle.name = "Switch to system preference"
+
+# ----------------------------------------------------------------------------
+# In the "font" subsection you can configure the fonts used. By default, fonts
+# are loaded from Google Fonts, giving you a wide range of choices from a set
+# of suitably licensed fonts. There are options for a normal text font and for
+# a monospaced font used in code blocks.
+# ----------------------------------------------------------------------------
+[project.theme.font]
+text = "Inter"
+code = "Fira Code"
+
+# ----------------------------------------------------------------------------
+# You can configure your own logo to be shown in the header using the "logo"
+# option in the "icons" subsection. The logo can be a path to a file in your
+# "docs_dir" or it can be a path to an icon.
+#
+# Likewise, you can customize the logo used for the repository section of the
+# header. Zensical derives the default logo for this from the repository URL.
+# See below...
+#
+# There are other icons you can customize. See the documentation for details.
+#
+# Read more:
+# - https://zensical.org/docs/setup/logo-and-icons
+# - https://zensical.org/docs/authoring/icons-emojis/#search
+# ----------------------------------------------------------------------------
+[project.theme.icon]
+repo = "fontawesome/brands/git-alt"
+
+# ----------------------------------------------------------------------------
+# The "extra" section contains miscellaneous settings.
+# ----------------------------------------------------------------------------
+[[project.extra.social]]
+icon = "fontawesome/brands/github"
+link = "https://github.com/DerrickMarcus"
+name = "GitHub"
+
+[[project.extra.social]]
+icon = "fontawesome/brands/bilibili"
+link = "https://space.bilibili.com/627449965"
+name = "Bilibili"
+
+[[project.extra.social]]
+icon = "fontawesome/regular/envelope"
+link = "mailto:<contact@yanxuchen.com>"
+name = "Email"
+
+
+[project.extra.consent]
+title = "Cookie Notice"
+description = """
+    We use cookies to recognize your repeated visits and preferences, as well
+    as to measure the effectiveness of our documentation and whether users
+    find what they're searching for. With your consent, you're helping us to
+    make our documentation better.
+"""
+actions = ["accept", "reject", "manage"]
+
+[project.extra.analytics]
+provider = "google"
+property = "G-GRKG9RVNHS"
+
+[project.extra.analytics.feedback]
+title = "Was this page helpful?"
+
+[[project.extra.analytics.feedback.ratings]]
+icon = "material/emoticon-happy-outline"
+name = "This page was helpful"
+data = 1
+note = "Thanks for your feedback!"
+
+[[project.extra.analytics.feedback.ratings]]
+icon = "material/emoticon-sad-outline"
+name = "This page could be improved"
+data = 0
+note = """
+  Thanks for your feedback! Help us improve this page by
+  using our <a href="..." target="_blank" rel="noopener">feedback form</a>.
+"""
+
+[project.markdown_extensions.abbr]
+[project.markdown_extensions.admonition]
+[project.markdown_extensions.attr_list]
+
+[project.markdown_extensions.def_list]
+[project.markdown_extensions.footnotes]
+[project.markdown_extensions.md_in_html]
+
+[project.markdown_extensions.toc]
+permalink = true
+toc_depth = 3
+
+[project.markdown_extensions.toc.slugify]
+object = "pymdownx.slugs.slugify"
+kwds = { case = "lower" }
+
+[project.markdown_extensions.tables]
+
+[project.markdown_extensions.pymdownx.arithmatex]
+generic = true
+[project.markdown_extensions.pymdownx.betterem]
+# 若开启 smart_enable，只有空格包围的**才会被加粗，详见 https://github.com/zensical/zensical/issues/74
+# smart_enable = "all"
+[project.markdown_extensions.pymdownx.caret]
+[project.markdown_extensions.pymdownx.mark]
+[project.markdown_extensions.pymdownx.tilde]
+[project.markdown_extensions.pymdownx.details]
+
+[project.markdown_extensions.pymdownx.emoji]
+emoji_index = "zensical.extensions.emoji.twemoji"
+emoji_generator = "zensical.extensions.emoji.to_svg"
+
+[project.markdown_extensions.pymdownx.highlight]
+anchor_linenums = true
+pygments_lang_class = true
+auto_title = true
+linenums = true
+linenums_style = "pymdownx-inline"
+line_spans = "__span"
+
+[project.markdown_extensions.pymdownx.superfences]
+custom_fences = [
+    { name = "mermaid", class = "mermaid", format = "pymdownx.superfences.fence_code_format" },
+]
+
+[project.markdown_extensions.pymdownx.inlinehilite]
+[project.markdown_extensions.pymdownx.keys]
+[project.markdown_extensions.pymdownx.smartsymbols]
+[project.markdown_extensions.pymdownx.snippets]
+
+[project.markdown_extensions.pymdownx.tabbed]
+alternate_style = true
+combine_header_slug = true
+[project.markdown_extensions.pymdownx.tabbed.slugify]
+object = "pymdownx.slugs.slugify"
+kwds = { case = "lower" }
+
+[project.markdown_extensions.pymdownx.tasklist]
+custom_checkbox = true
+clickable_checkbox = true

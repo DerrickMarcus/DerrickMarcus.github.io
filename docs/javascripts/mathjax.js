@@ -6,7 +6,7 @@ window.MathJax = {
         processEnvironments: true,
         packages: {
             "[+]": [
-                /* 字体 / 符号 */
+                /* 字体，符号 */
                 "boldsymbol",   // \boldsymbol{}
                 "upgreek",      // 直立希腊字母 \upalpha
                 "gensymb",      // \degree, \ohm …
@@ -19,7 +19,7 @@ window.MathJax = {
                 "enclose",      // \enclose{circle}{x}
                 "extpfeil",     // \xRightarrow[下标]{上标}
 
-                /* 高阶数学 / 物理 */
+                /* 数学，物理 */
                 "physics",      // \dv, \pdv, \qty, \commutator …
                 "braket",       // \bra{}, \ket{}, \braket{}
                 "bussproofs",   // 自然演绎推理树
@@ -39,14 +39,15 @@ window.MathJax = {
         }
     },
     loader: {
-        load: [/* 字体 / 符号 */
+        load: [
+            /* 字体，符号 */
             "[tex]/boldsymbol", "[tex]/upgreek", "[tex]/gensymb",
 
             /* 结构布局 */
             "[tex]/mathtools", "[tex]/cases", "[tex]/bbox",
             "[tex]/cancel", "[tex]/enclose", "[tex]/extpfeil",
 
-            /* 高阶数学 / 物理 */
+            /* 高阶数学，物理 */
             "[tex]/physics", "[tex]/braket", "[tex]/bussproofs",
 
             /* 颜色 */

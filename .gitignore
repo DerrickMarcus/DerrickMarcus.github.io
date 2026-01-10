@@ -176,6 +176,8 @@ cython_debug/
 .pypirc
 
 # Custom ignores
-blog_env/
-.blog_env/
 docs/drafts/
+
+# zensical
+.cache
+site

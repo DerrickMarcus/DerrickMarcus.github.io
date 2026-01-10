@@ -1,7 +1,7 @@
 # Camera Calibration
 
 !!! abstract
-    在之前《数字图像处理》课程 [Digital Image Processing - 7 图像校正和修补](../course_notes/digital_image/chapter7.md)中我们简单介绍了相机成像原理和张正友相机内参标定方法。这里我们将进一步详细讨论。
+    在之前《数字图像处理》课程 [Digital Image Processing - 7 图像校正和修补](../course/digital_image/lec_07.md)中我们简单介绍了相机成像原理和张正友相机内参标定方法。这里我们将进一步详细讨论。
 
 首先明确4个概念：
 
