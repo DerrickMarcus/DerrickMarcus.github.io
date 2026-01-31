@@ -141,9 +141,9 @@ MLA (Multi-Head Latent Attention)：Deepseek-V2 提出的一种注意力架构�
 
 Transformer 是完全由注意力机制构成的深度神经网络。注意力机制不仅能够捕获局部信息，还能建模长距离的上下文关系，获取更抽象更具全局性的特征。
 
-Transformer 最初为序列建模 而设计，应用于 NLP 领域。此外在 CV 领域也广泛应用，例如 Vision Transformer（ViT）将图像划分为固定大小的 **patch**，将其序列化，用 Transformer 进行特征提取，替代 CNN 完成图像分类任务。
+Transformer 最初为序列建模而设计，应用于 NLP 领域。此外在 CV 领域也广泛应用，例如 Vision Transformer（ViT）将图像划分为固定大小的 **patch**，将其序列化，用 Transformer 进行特征提取，替代 CNN 完成图像分类任务。
 
-Transformer 由多个编码器 Encoder 和解码器 Decoder 组成。编码器和解码器都由多个相同结构的层堆叠而成，使用首尾相连的 多头注意力机制。
+Transformer 由多个编码器 Encoder 和解码器 Decoder 组成。编码器和解码器都由多个相同结构的层堆叠而成，使用首尾相连的多头注意力机制。
 
 1. Encoder 负责对输入句子进行编码，将文本数据转换为一种抽象的表示形式，便于 Decoder 进行解码。
 2. Decoder 基于 Encoder 提供的上下文信息，逐步生成目标语言的输出文本。
@@ -222,7 +222,7 @@ $$
 
 层归一化 Layer Normalization：
 
-与前面的 批次归一化 Batch Normalization 不同，层归一化 LN 对每一个样本向量计算在不同特征维度上的均值和方差，利用其在维度上进行归一化和尺度变换。
+与前面的批次归一化 Batch Normalization 不同，层归一化 LN 对每一个样本向量计算在不同特征维度上的均值和方差，利用其在维度上进行归一化和尺度变换。
 
 > 常见的归一化方法有：Batch Norm，对同一批次内数据计算均值和方差；Layer Norm，对每个样本的不同维度的特征计算均值和方差；Instance Norm，对每个样本的每个通道特征计算均值和方差；Group Norm，对每个样本的特征按照通道分组计算均值和方差。
 
@@ -358,7 +358,7 @@ LLM 常用的预训练任务：语言建模（Language Modeling, LM），去噪�
 
 <br>
 
-基于人类反馈的强化学习 RLHF（Reinforcement Learning from Human Feedback），3个阶段：
+基于人类反馈的强化学习 RLHF（Reinforcement Learning from Human Feedback），3 个阶段：
 
 1. 指令微调 SFT。
 2. 奖励模型训练：使用人类反馈数据训练奖励模型，使用语言模型针对任务指令生成一定数量的候选输出，邀请标注员对于输出文本进行偏好标注，使用人工标注的偏好数据进行奖励模型的训练。
@@ -366,9 +366,9 @@ LLM 常用的预训练任务：语言建模（Language Modeling, LM），去噪�
 
 强化学习 RL（Reinforcement Learning）
 
-1. 智能体(agent)与环境(environment)交互。
-2. 根据环境的状态(state)通过学习产生行动(action)的策略。
-3. 实现奖励(reward)最大化或其他特定目标。
+1. 智能体（agent）与环境（environment）交互。
+2. 根据环境的状态（state）通过学习产生行动（action）的策略。
+3. 实现奖励（reward）最大化或其他特定目标。
 
 ---
 
@@ -379,7 +379,7 @@ LLM 常用的预训练任务：语言建模（Language Modeling, LM），去噪�
 Prompt Engineering 提示工程 ，是针对特定任务构造能充分发挥大模型能力的 Prompt：
 
 1. 大语言模型的微调代价较高。
-2. 提示的质量在很大程度上会影响LLM在特定任务中的表现。
+2. 提示的质量在很大程度上会影响 LLM 在特定任务中的表现。
 
 大模型的**涌现能力**，被定义为“在较小规模模型中不存在但在大规模模型中存在的能力。因此，无法通过简单地推断在较小规模模型上的性能改进来预测它们”。通俗来讲就是当模型规模大到一定程度后，其语言理解、内容生成、逻辑推理等能力显著提升，“突然”可以能够回答并未见过的问题、、解答复杂的数学题。[^1]
 

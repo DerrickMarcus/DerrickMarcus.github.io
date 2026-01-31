@@ -145,7 +145,7 @@ $$
 
 ### 与卷积的比较
 
-相关与卷积的关系：卷积要“反褶 + 移位 + 积分”，相关仅为“移位 + 积分”，不用反褶。
+相关与卷积的关系：卷积要“反褶 + 移位 + 积分”，相关仅为“移位 + 积分”，不需要反褶。
 
 $$
 R_{12}(\tau) = f_1(t)*f_2(t) \\
@@ -198,19 +198,19 @@ P &= \frac{1}{2\pi}\int_{-\infty}^{\infty}\mathcal{P}(\omega)\,\mathrm{d}\omega
 \end{align*}
 $$
 
-自相关函数和功率谱函数是一对 Fourier 变换对。（维纳-欣钦关系）
+维纳-欣钦定理：自相关函数和功率谱函数是一对 Fourier 变换对。
 
-注意：能量信号和功率信号的自相关函数单位不同， 因此能量谱和功率谱的单位也不同，相差时间单位。
+注意，能量信号和功率信号的自相关函数单位不同，因此能量谱和功率谱的单位也不同，相差一个时间单位。
 
 ### 线性系统的自相关函数与能量谱、功率谱
 
 在频域，我们有：
 
-能量信号： $\mathcal{E}_r(\omega)=|H(\mathrm{j}\omega)|^2 \cdot \mathcal{E}_e(\omega)$
+能量信号： $\mathcal{E}_r(\omega)=|H(\mathrm{j}\omega)|^2 \cdot \mathcal{E}_e(\omega)$ .
 
-功率信号： $\mathcal{P}_r(\omega)=|H(\mathrm{j}\omega)|^2 \cdot \mathcal{P}_e(\omega)$
+功率信号： $\mathcal{P}_r(\omega)=|H(\mathrm{j}\omega)|^2 \cdot \mathcal{P}_e(\omega)$ .
 
-变换到时域，二者共同有： $R_r(\tau)=R_e(\tau)*R_h(\tau)$
+变换到时域，二者共同有： $R_r(\tau)=R_e(\tau)*R_h(\tau)$ .
 
 ## 6.5 匹配滤波器
 
@@ -218,7 +218,7 @@ $$
 
 有用信号 $s(t)$ 持续时间有限，为 $0 \sim T$ ，则匹配滤波器的冲激响应为 $h(t)=ks(t_m-t)$ .
 
-考虑到：系统因果可实现要求 $t_m\geqslant T$ ，且观察时间 $t_m$ 尽可能小，因此取 $t_m=T$ ，取系数 $k$ 为1，得到：$h(t)=s(T-t)$ .
+由于系统因果可实现要求 $t_m\geqslant T$ ，且观察时间 $t_m$ 尽可能小，因此取 $t_m=T$ ，取系数 $k$ 为1，得到 $h(t)=s(T-t)$ .
 
 输出为 $s_o(t)=s(t)*h(t)=s(t)*s(T-t)=R_{ss}(t_T)$ .
 

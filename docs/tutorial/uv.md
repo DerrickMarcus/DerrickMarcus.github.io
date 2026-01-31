@@ -63,10 +63,10 @@ uv init
 
 This will add:
 
-1. `pyproject.toml` : the description file.
-2. `.python-version` : lock the version of Python in the project.
-3. `main.py` : an example script.
-4. `README.md` .
+1. `pyproject.toml` : the description files
+2. `.python-version` : lock the version of Python in the project
+3. `main.py` : an example script
+4. `README.md`
 
 ---
 
@@ -92,7 +92,7 @@ uv add requests
 
 uv will:
 
-1. Create a virtual environment, defaultly `.venv` .
+1. Create a virtual environment, default to `.venv` .
 2. Download and install `requests` .
 3. Update the `pyproject.toml` .
 4. Generate or update the `uv.lock` .
@@ -120,7 +120,7 @@ uv sync
 uv will automatically install all the dependencies according to `pyproject.toml, uv.lock` or `requirements.txt`
 
 !!! note
-    `uv sync` is a dependency-management command that works like `pip install -r requirements.txt`, but faster, more powerful, and more reliable. It can install every third-party package (dependency) your project needs.
+    `uv sync` is a dependency-management command that works like `pip install -r requirements.txt`, but faster, more powerful, and more reliable. It can install every third-party package (dependency) that your project needs.
 
     If `uv sync` is too slow, you can point it to a Chinese mirror by adding the Tsinghua PyPI index. In your `pyproject.toml`, under the `[tool.uv]` section, add:
 
@@ -128,6 +128,12 @@ uv will automatically install all the dependencies according to `pyproject.toml,
     [tool.uv]
     index-url = "https://pypi.tuna.tsinghua.edu.cn/simple"
     ```
+
+Upgrade all the python dependencies in the project:
+
+```bash
+uv sync --upgrade
+```
 
 ## 3. Managing Python
 

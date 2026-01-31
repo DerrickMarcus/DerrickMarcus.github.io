@@ -78,7 +78,7 @@ $$
 
 输入 $x$ 时，重建电平为 $Q(x)=y_i,\; x_i<x\leqslant x_{i+1}$ . 称 $x_i$ 为分层电平，是决定重建电平取值的临界值，其最小值和最大值分别为 $x_{\min}=x_1,\;x_{\max}=x_{L+1}$ .
 
-记： $I_i=(x_i,x_{i+1}]$ 为第 $i$ 个量化区间，对应量化间隔为 $\Delta_i=x_{i+1}-x_i$ . 若 $\forall i,\Delta_i=\Delta$ 为常数，称为**均匀量化**，否则为**非均匀量化**。严格来说，只有 $X\in[x_{\min},x_{\max}]$ 即量化区间能完全覆盖 $X$ 的取值时，才算均匀量化。
+记： $I_i=(x_i,x_{i+1}]$ 为第 $i$ 个量化区间，对应量化间隔为 $\Delta_i=x_{i+1}-x_i$ . 若 $\forall i,\Delta_i=\Delta$ 为常数，称为均匀量化，否则为非均匀量化。严格来说，只有 $X\in[x_{\min},x_{\max}]$ 即量化区间能完全覆盖 $X$ 的取值时，才算均匀量化。
 
 量化误差 $e(x)=x=Q(x)$ 为一个随机噪声，均方误差（**噪声功率**）为：
 
@@ -161,12 +161,12 @@ $$
 
 但是抽样的幅值 $X$ 一般不满足均匀分布，因此我们需要寻找与 $X$ 分布尽量匹配的量化器，且希望概率密度 $p_X(x)$ 较大的地方，量化区间长度尽量小，量化更精细一些。类比城市轨道交通，人口密度越大的地方需要设置更密集的站点。
 
-定量分析：在给定量化区间个数 $L$ 的情况下，量化噪声为 $\sigma^2=\displaystyle\sum_{i=1}^L \int_{x_i}^{x_{i+1}}(x-y_i)^2p(x)\mathrm{d}x$ ，求偏导寻找极值：
+定量分析：在给定量化区间个数 $L$ 的情况下，量化噪声为 $\sigma^2=\sum_{i=1}^L \int_{x_i}^{x_{i+1}}(x-y_i)^2p(x)\mathrm{d}x$ ，求偏导寻找极值：
 
 $$
 \begin{align*}
 \frac{\partial \sigma^2}{\partial x_i} &= 0 \iff x_i = \frac{y_{i-1} + y_i}{2} \\
-\frac{\partial \sigma^2}{\partial y_i} &= 0 \iff y_i = \frac{\displaystyle\int_{x_i}^{x_{i+1}} x p(x) \mathrm{d}x}{\displaystyle\int_{x_i}^{x_{i+1}} p(x) \mathrm{d}x}
+\frac{\partial \sigma^2}{\partial y_i} &= 0 \iff y_i = \frac{\int_{x_i}^{x_{i+1}} x p(x) \mathrm{d}x}{\int_{x_i}^{x_{i+1}} p(x) \mathrm{d}x}
 \end{align*}
 $$
 
@@ -177,7 +177,7 @@ $$
 - 给定重建电平，求分层电平。
 - 给定译码器输出电平集合，优化编码器。这两个计算均与变量的分布 $p_X(x)$ **无关**。
 
-（2）重建电平 $y_i = \dfrac{\displaystyle\int_{x_i}^{x_{i+1}} x p(x) \mathrm{d}x}{\displaystyle\int_{x_i}^{x_{i+1}} p(x) \mathrm{d}x}$ ，称为**重心准则**。在一个量化区间 $(x_i,x_{i+1}]$ 内，重建电平 $y_i$ 应该更偏向概率密度更大的一方。直观理解：地铁站应该建在人口密度最大的地方。
+（2）重建电平 $y_i = \dfrac{\int_{x_i}^{x_{i+1}} x p(x) \mathrm{d}x}{\int_{x_i}^{x_{i+1}} p(x) \mathrm{d}x}$ ，称为**重心准则**。在一个量化区间 $(x_i,x_{i+1}]$ 内，重建电平 $y_i$ 应该更偏向概率密度更大的一方。直观理解：地铁站应该建在人口密度最大的地方。
 
 应用：
 
@@ -203,7 +203,7 @@ $$
 \end{align*}
 $$
 
-正常量化噪声：$\sigma_q^2 = \displaystyle\int_{-V}^{V} (x - Q(x))^2 p(x) \mathrm{d}x$
+正常量化噪声：$\sigma_q^2 = \int_{-V}^{V} (x - Q(x))^2 p(x) \mathrm{d}x$
 
 有过载时的**总量化噪声** $\sigma^2 = \sigma_q^2 + \sigma_o^2$ .
 
@@ -236,10 +236,10 @@ $$
 当量化 bit 数 $n$ 较大，区间数 $L$ 大到让任意量化区间 $I_i = (x_i, x_{i+1}]$ 中 $p(x)$ 近似均匀时，即：
 
 $$
-p(x) \approx \frac{\displaystyle\int_{x_i}^{x_{i+1}} p(x) \mathrm{d}x}{\Delta_i}, \quad x \in I_i
+p(x) \approx \frac{\int_{x_i}^{x_{i+1}} p(x) \mathrm{d}x}{\Delta_i}, \quad x \in I_i
 $$
 
-记 $P_i = \displaystyle\int_{x_i}^{x_{i+1}} p(x) \mathrm{d}x$ ，则：
+记 $P_i = \int_{x_i}^{x_{i+1}} p(x) \mathrm{d}x$ ，则：
 
 $$
 \begin{align*}

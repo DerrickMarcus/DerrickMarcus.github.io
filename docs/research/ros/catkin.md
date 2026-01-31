@@ -2,7 +2,7 @@
 
 CMake 是 C/C++ 开发中常用的编译工具链，在 ROS 中我们可以使用 catkin_make 工具，它集成了 CMake 且功能更加适用于 ROS 开发，语法与 CMake 相同，配置文件均为 `CMakeLists.txt` 。
 
-语法规则如下：
+## CMake
 
 注意：有一些预定义的变量， `PROJECT_SOURCE_DIR` 表示源代码目录（包含 `CMakeLists.txt` 文件的目录，一般也就是项目的根目录）， `PROJECT_BINARY_DIR` ，项目的构建目录，生成编译文件的位置，一般也就是 `build/` 。 `LIBRARY_OUTPUT_PATH` 是生成的库文件存放的位置。
 
@@ -147,4 +147,61 @@ include_directories(
 target_link_libraries(your_executable
   ${catkin_LIBRARIES}
 )
+```
+
+## catkin_make and catkin
+
+`catkin_make` 是 ROS 的第一代编译构建工具，本质是对 cmake + make 的轻量封装，核心作用是简化 ROS 包的编译流程。它直接调用 CMake 和 Make 工具链，将编译过程封装成单个命令，是 ROS Kinect 以及更早版本的默认编译工具。
+
+`catkin` 是 catkin_tools 工具集（核心命令为 catkin build），是 ROS 社区为解决 catkin_make 痛点开发的第二代编译工具，设计目标是提供更灵活、高效、模块化的编译体验，是 ROS Melodic/Noetic 及后续版本推荐使用的工具。
+
+!!! note
+    `catkin_make` 与 `catkin` 都是 ROS 1 的构建工具，而 ROS 2 的构建工具为 `colcon` 。
+
+对比：
+
+|          | catkin_make                                                  | catkin                                                       |
+| :------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 编译架构 | 单 CMake 上下文，所有包共享一个构建目录 `build` 和编译空间 `devel`，所有包编译配置耦合。 | 多 CMake 上下文，每个包独立构建，最终合并到统一的 `devel` / `install` 空间，包之间解耦。 |
+| 并行编译 | 仅支持 `catkin_make -jN` ，但单上下文下并行效率低，易因包依赖冲突失败。 | 原生支持智能并行 `catkin build -jN` ，可自动分析包依赖，并行编译无依赖的包，效率大幅提升。 |
+| 增量编译 | 单个包修改会触发整个工作空间的 CMake 重新配置，编译冗余。    | 仅重新编译修改的包及其直接依赖，增量编译效率极高。           |
+
+`catkin_make` 的使用方式：
+
+```bash
+# 初始化工作空间
+cd ~/catkin_ws
+catkin_make
+
+# 指定编译空间
+catkin_make -DCMAKE_BUILD_TYPE=Release  # 编译发布版本
+catkin_make install  # 安装到 install 目录
+
+# 清除编译文件
+catkin_make clean
+```
+
+`catkin` 的使用方式：
+
+```bash
+sudo apt-get install python3-catkin-tools
+
+# 初始化工作空间
+cd ~/catkin_ws
+catkin init
+
+# 编译所有包
+catkin build
+
+# 编译指定包
+catkin build <package_name>
+
+# 编译发布版本
+catkin build --cmake-args -DCMAKE_BUILD_TYPE=Release
+
+# 清除单个包的编译文件
+catkin clean <package_name>
+
+# 清除所有编译文件
+catkin clean -y
 ```

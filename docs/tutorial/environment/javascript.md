@@ -99,7 +99,7 @@ npm install -g cnpm --registry=https://registry.npmmirror.com
 cnpm -v
 ```
 
-## 5. COnfigs in VS Code
+## 5. Configs in VS Code
 
 下载插件 Code Runner（Jun Han）。
 

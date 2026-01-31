@@ -327,7 +327,7 @@ $$
 
 ## 香农公式
 
-首先考虑**高斯信道**：
+首先考虑高斯信道：
 
 $$
 \begin{matrix}
@@ -384,7 +384,7 @@ $$
 C=2W\frac{1}{2}\log_2\left(1+\frac{E_S}{\sigma^2}\right)=\boxed{W\log_2\left(1+\frac{P}{Wn_0}\right)} \quad\mathsf{bit/second}
 $$
 
-其中可以定义信**信噪比**（Signal-to-Noise Ratio, **SNR**）： $\mathrm{SNR}=\dfrac{P}{Wn_0}$ .
+其中可以定义信信噪比（Signal-to-Noise Ratio）为 $\mathrm{SNR}=\dfrac{P}{Wn_0}$ .
 
 <br>
 
